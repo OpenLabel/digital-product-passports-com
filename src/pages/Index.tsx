@@ -3,7 +3,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, FileText, Zap } from 'lucide-react';
+import { ArrowRight, Shield, Globe, FileText, Zap, Battery, Shirt, Package } from 'lucide-react';
+import wineBg from '@/assets/wine-bg.jpg';
 
 export default function Index() {
   const { user, loading } = useAuth();
@@ -88,9 +89,9 @@ export default function Index() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <FileText className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold mb-2">Rich Content</h3>
+                <h3 className="font-semibold mb-2">Free & Unlimited</h3>
                 <p className="text-sm text-muted-foreground">
-                  Add images and formatted text with our easy-to-use rich text editor.
+                  Create as many Digital Product Passports as you need, completely free of charge.
                 </p>
               </CardContent>
             </Card>
@@ -117,23 +118,28 @@ export default function Index() {
             Industry-specific templates with all the regulatory requirements built in.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <Card className="text-center p-6">
-              <span className="text-4xl mb-3 block">🍷</span>
-              <h3 className="font-semibold">Wine</h3>
-              <p className="text-xs text-muted-foreground mt-1">PDO/PGI, Organic, Sulfites</p>
+            <Card className="text-center p-6 relative overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-20"
+                style={{ backgroundImage: `url(${wineBg})` }}
+              />
+              <div className="relative z-10">
+                <h3 className="font-semibold">Wine</h3>
+                <p className="text-xs text-muted-foreground mt-1">PDO/PGI, Organic, Sulfites</p>
+              </div>
             </Card>
             <Card className="text-center p-6">
-              <span className="text-4xl mb-3 block">🔋</span>
+              <Battery className="h-10 w-10 mx-auto mb-3 text-primary" />
               <h3 className="font-semibold">Battery</h3>
               <p className="text-xs text-muted-foreground mt-1">Carbon Footprint, Recycling</p>
             </Card>
             <Card className="text-center p-6">
-              <span className="text-4xl mb-3 block">👕</span>
+              <Shirt className="h-10 w-10 mx-auto mb-3 text-primary" />
               <h3 className="font-semibold">Textiles</h3>
               <p className="text-xs text-muted-foreground mt-1">Fiber Composition, Care</p>
             </Card>
             <Card className="text-center p-6">
-              <span className="text-4xl mb-3 block">📦</span>
+              <Package className="h-10 w-10 mx-auto mb-3 text-primary" />
               <h3 className="font-semibold">Other</h3>
               <p className="text-xs text-muted-foreground mt-1">General Products</p>
             </Card>
