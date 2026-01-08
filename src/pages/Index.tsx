@@ -13,7 +13,7 @@ export default function Index() {
       {/* Header */}
       <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">DPP Platform</h1>
+          <h1 className="text-xl font-bold">European Digital Product Passports</h1>
           <div className="flex gap-2">
             {loading ? null : user ? (
               <Button asChild>
@@ -40,7 +40,7 @@ export default function Index() {
             EU Compliant Digital Product Passports
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 max-w-4xl mx-auto leading-tight">
-            Create Digital Product Passports in Minutes
+            Unlimited Free Digital Product Passports
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Meet EU regulatory requirements for Wine, Batteries, Textiles, and more. 
