@@ -3,7 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, FileText, Zap, Battery, Shirt, Package } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Infinity, Zap, Battery, Shirt, Package } from 'lucide-react';
 import wineBg from '@/assets/wine-bg.jpg';
 
 export default function Index() {
@@ -76,22 +76,22 @@ export default function Index() {
             <Card>
               <CardContent className="pt-6">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Globe className="h-6 w-6 text-primary" />
+                  <Infinity className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold mb-2">Public URLs</h3>
+                <h3 className="font-semibold mb-2">Free & Unlimited</h3>
                 <p className="text-sm text-muted-foreground">
-                  Each passport gets a unique public URL. Share with anyone, no login required.
+                  Create as many Digital Product Passports as you need, completely free of charge.
                 </p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="pt-6">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <FileText className="h-6 w-6 text-primary" />
+                  <Globe className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold mb-2">Free & Unlimited</h3>
+                <h3 className="font-semibold mb-2">Public URLs</h3>
                 <p className="text-sm text-muted-foreground">
-                  Create as many Digital Product Passports as you need, completely free of charge.
+                  Each passport gets a unique public URL. Share with anyone, no login required.
                 </p>
               </CardContent>
             </Card>
