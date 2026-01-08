@@ -15,7 +15,7 @@ const passwordSchema = z.string().min(6, 'Password must be at least 6 characters
 export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<'signin' | 'signup' | 'reset'>('signin');
   const { signIn, signUp, resetPassword, user } = useAuth();
@@ -55,7 +55,7 @@ export default function Auth() {
         if (error) throw error;
         toast({ title: 'Welcome back!' });
       } else if (mode === 'signup') {
-        const { error } = await signUp(email, password, fullName);
+        const { error } = await signUp(email, password, companyName);
         if (error) throw error;
         toast({ title: 'Account created!', description: 'You can now sign in.' });
       } else {
@@ -102,8 +102,8 @@ export default function Auth() {
               <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                 {mode === 'signup' && (
                   <div className="space-y-2">
-                    <Label htmlFor="fullName">Full Name</Label>
-                    <Input id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                    <Label htmlFor="companyName">Company Name</Label>
+                    <Input id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
                   </div>
                 )}
                 <div className="space-y-2">
