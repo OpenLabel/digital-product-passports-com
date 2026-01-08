@@ -3,8 +3,11 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, Infinity, Zap, Battery, Shirt, Package } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Infinity, Zap } from 'lucide-react';
 import wineBg from '@/assets/wine-bg.jpg';
+import batteryBg from '@/assets/battery-bg.jpg';
+import textilesBg from '@/assets/textiles-bg.jpg';
+import otherBg from '@/assets/other-bg.jpg';
 
 export default function Index() {
   const { user, loading } = useAuth();
@@ -128,20 +131,35 @@ export default function Index() {
                 <p className="text-xs text-muted-foreground mt-1">PDO/PGI, Organic, Sulfites</p>
               </div>
             </Card>
-            <Card className="text-center p-6">
-              <Battery className="h-10 w-10 mx-auto mb-3 text-primary" />
-              <h3 className="font-semibold">Battery</h3>
-              <p className="text-xs text-muted-foreground mt-1">Carbon Footprint, Recycling</p>
+            <Card className="text-center p-6 relative overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-20"
+                style={{ backgroundImage: `url(${batteryBg})` }}
+              />
+              <div className="relative z-10">
+                <h3 className="font-semibold">Battery</h3>
+                <p className="text-xs text-muted-foreground mt-1">Carbon Footprint, Recycling</p>
+              </div>
             </Card>
-            <Card className="text-center p-6">
-              <Shirt className="h-10 w-10 mx-auto mb-3 text-primary" />
-              <h3 className="font-semibold">Textiles</h3>
-              <p className="text-xs text-muted-foreground mt-1">Fiber Composition, Care</p>
+            <Card className="text-center p-6 relative overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-20"
+                style={{ backgroundImage: `url(${textilesBg})` }}
+              />
+              <div className="relative z-10">
+                <h3 className="font-semibold">Textiles</h3>
+                <p className="text-xs text-muted-foreground mt-1">Fiber Composition, Care</p>
+              </div>
             </Card>
-            <Card className="text-center p-6">
-              <Package className="h-10 w-10 mx-auto mb-3 text-primary" />
-              <h3 className="font-semibold">Other</h3>
-              <p className="text-xs text-muted-foreground mt-1">General Products</p>
+            <Card className="text-center p-6 relative overflow-hidden">
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-20"
+                style={{ backgroundImage: `url(${otherBg})` }}
+              />
+              <div className="relative z-10">
+                <h3 className="font-semibold">Other</h3>
+                <p className="text-xs text-muted-foreground mt-1">General Products</p>
+              </div>
             </Card>
           </div>
         </div>
