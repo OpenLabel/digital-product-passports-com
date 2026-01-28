@@ -50,28 +50,6 @@ export class WineTemplate extends BaseTemplate {
       ]
     },
     {
-      title: 'Allergen Information',
-      description: 'Mandatory allergen labeling per EU Regulation',
-      questions: [
-        {
-          id: 'contains_sulfites',
-          label: 'Contains sulfites',
-          type: 'checkbox',
-          helpText: 'Mandatory warning if sulfites exceed 10mg/L'
-        },
-        {
-          id: 'contains_egg',
-          label: 'Contains egg allergens (fining agents)',
-          type: 'checkbox'
-        },
-        {
-          id: 'contains_milk',
-          label: 'Contains milk allergens (fining agents)',
-          type: 'checkbox'
-        }
-      ]
-    },
-    {
       title: 'Producer Information',
       description: 'Information about the wine producer',
       questions: [
