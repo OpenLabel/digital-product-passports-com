@@ -1,0 +1,246 @@
+import { useState, useMemo } from 'react';
+import { Plus, GripVertical, X, AlertTriangle } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Badge } from '@/components/ui/badge';
+import { wineProductTypes, getIngredientById, WineIngredient } from '@/data/wineIngredients';
+import { IngredientPickerDialog } from './IngredientPickerDialog';
+import { CustomIngredientDialog, CustomIngredient } from './CustomIngredientDialog';
+
+interface SelectedIngredient {
+  id: string;
+  name: string;
+  eNumber?: string;
+  isAllergen?: boolean;
+  isCustom?: boolean;
+}
+
+interface WineIngredientsProps {
+  data: Record<string, unknown>;
+  onChange: (data: Record<string, unknown>) => void;
+}
+
+export function WineIngredients({ data, onChange }: WineIngredientsProps) {
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [customOpen, setCustomOpen] = useState(false);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+
+  const productType = (data.ingredient_product_type as string) || 'wine';
+  const selectedIngredients = (data.ingredients as SelectedIngredient[]) || [];
+
+  const handleProductTypeChange = (value: string) => {
+    onChange({ ...data, ingredient_product_type: value });
+  };
+
+  const handleApplyFromPicker = (selectedIds: string[]) => {
+    // Get existing custom ingredients
+    const customIngredients = selectedIngredients.filter((ing) => ing.isCustom);
+    
+    // Convert selected IDs to ingredient objects
+    const standardIngredients: SelectedIngredient[] = selectedIds
+      .map((id) => {
+        const ingredient = getIngredientById(id);
+        if (!ingredient) return null;
+        return {
+          id: ingredient.id,
+          name: ingredient.name,
+          eNumber: ingredient.eNumber,
+          isAllergen: ingredient.isAllergen,
+        };
+      })
+      .filter(Boolean) as SelectedIngredient[];
+
+    onChange({
+      ...data,
+      ingredients: [...standardIngredients, ...customIngredients],
+    });
+  };
+
+  const handleAddCustom = (ingredient: CustomIngredient) => {
+    onChange({
+      ...data,
+      ingredients: [...selectedIngredients, ingredient],
+    });
+  };
+
+  const handleRemoveIngredient = (id: string) => {
+    onChange({
+      ...data,
+      ingredients: selectedIngredients.filter((ing) => ing.id !== id),
+    });
+  };
+
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === index) return;
+
+    const newIngredients = [...selectedIngredients];
+    const draggedItem = newIngredients[draggedIndex];
+    newIngredients.splice(draggedIndex, 1);
+    newIngredients.splice(index, 0, draggedItem);
+
+    onChange({ ...data, ingredients: newIngredients });
+    setDraggedIndex(index);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null);
+  };
+
+  const standardIngredientIds = useMemo(
+    () => selectedIngredients.filter((ing) => !ing.isCustom).map((ing) => ing.id),
+    [selectedIngredients]
+  );
+
+  const allergenIngredients = selectedIngredients.filter((ing) => ing.isAllergen);
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-lg">Ingredients</CardTitle>
+        <CardDescription>
+          Select ingredients from the wine ingredient list. All ingredients are automatically included in the label.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {/* Step 1: Product Type */}
+        <div className="space-y-3">
+          <Label className="text-base font-medium">1. Select product type</Label>
+          <p className="text-sm text-muted-foreground">
+            Select the product type for which you want to create the ingredient list.
+          </p>
+          <RadioGroup
+            value={productType}
+            onValueChange={handleProductTypeChange}
+            className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {wineProductTypes.map((type) => (
+              <div key={type.id} className="flex items-start space-x-2">
+                <RadioGroupItem value={type.id} id={`type-${type.id}`} className="mt-1" />
+                <Label htmlFor={`type-${type.id}`} className="font-normal cursor-pointer">
+                  <span className="font-medium">{type.label}</span>
+                  <br />
+                  <span className="text-xs text-muted-foreground">{type.description}</span>
+                </Label>
+              </div>
+            ))}
+          </RadioGroup>
+        </div>
+
+        {/* Step 2: Choose Ingredients */}
+        <div className="space-y-3">
+          <Label className="text-base font-medium">2. Choose wine ingredients *</Label>
+          <p className="text-sm text-muted-foreground">
+            Select all ingredients that are part of your wine composition. Ingredients not mentioned don't need to be indicated. If necessary, you can add a custom ingredient.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              className="flex-1"
+              onClick={() => setPickerOpen(true)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Select ingredient from list
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              className="flex-1"
+              onClick={() => setCustomOpen(true)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Define custom ingredient
+            </Button>
+          </div>
+        </div>
+
+        {/* Step 3: Sort Ingredients */}
+        {selectedIngredients.length > 0 && (
+          <div className="space-y-3">
+            <Label className="text-base font-medium">3. Sort ingredients</Label>
+            <p className="text-sm text-muted-foreground">
+              The ingredient list should be sorted from largest to smallest quantity. Quantities below 0.1 g/100 ml don't need to be sorted.
+            </p>
+            <div className="border rounded-lg divide-y">
+              {selectedIngredients.map((ingredient, index) => (
+                <div
+                  key={ingredient.id}
+                  draggable
+                  onDragStart={() => handleDragStart(index)}
+                  onDragOver={(e) => handleDragOver(e, index)}
+                  onDragEnd={handleDragEnd}
+                  className={`flex items-center gap-3 p-3 bg-background hover:bg-muted/50 cursor-move ${
+                    draggedIndex === index ? 'opacity-50' : ''
+                  }`}
+                >
+                  <GripVertical className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                  <div className="flex-1 flex items-center gap-2 flex-wrap">
+                    <span className={ingredient.isAllergen ? 'font-semibold' : ''}>
+                      {ingredient.name}
+                    </span>
+                    {ingredient.eNumber && (
+                      <span className="text-muted-foreground text-sm">
+                        ({ingredient.eNumber})
+                      </span>
+                    )}
+                    {ingredient.isCustom && (
+                      <Badge variant="secondary" className="text-xs">
+                        Custom
+                      </Badge>
+                    )}
+                    {ingredient.isAllergen && (
+                      <Badge variant="destructive" className="text-xs">
+                        Allergen
+                      </Badge>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveIngredient(ingredient.id)}
+                    className="p-1 hover:bg-muted rounded"
+                  >
+                    <X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Allergen Warning */}
+        {allergenIngredients.length > 0 && (
+          <div className="flex items-start gap-3 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900 rounded-lg">
+            <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-medium text-amber-800 dark:text-amber-200">Allergen notice</p>
+              <p className="text-sm text-amber-700 dark:text-amber-300">
+                This wine contains allergens that must be declared:{' '}
+                {allergenIngredients.map((a) => a.name).join(', ')}
+              </p>
+            </div>
+          </div>
+        )}
+      </CardContent>
+
+      <IngredientPickerDialog
+        open={pickerOpen}
+        onOpenChange={setPickerOpen}
+        selectedIds={standardIngredientIds}
+        onApply={handleApplyFromPicker}
+      />
+
+      <CustomIngredientDialog
+        open={customOpen}
+        onOpenChange={setCustomOpen}
+        onAdd={handleAddCustom}
+      />
+    </Card>
+  );
+}
