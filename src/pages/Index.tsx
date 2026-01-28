@@ -3,7 +3,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 
 // Category data based on EU DPP research document
@@ -109,12 +109,6 @@ export default function Index() {
             <h1 className="text-lg font-semibold">Digital Product Passport</h1>
           </div>
           <div className="flex gap-2 items-center">
-            <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                Open Source
-              </a>
-            </Button>
             {loading ? null : user ? (
               <Button asChild>
                 <Link to="/dashboard">Go to Dashboard</Link>
@@ -165,10 +159,7 @@ export default function Index() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
-                View on GitHub
-              </a>
+              <Link to="/auth">View Demo Passport</Link>
             </Button>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
@@ -396,16 +387,13 @@ export default function Index() {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">
-              <Github className="h-3 w-3 mr-1" />
-              Open Source
-            </Badge>
+            <Badge variant="outline" className="mb-4">Open Source</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Run It On Your Own Servers</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               This project is fully open source. You can self-host on your own infrastructure for complete 
               data sovereignty, modify the code to fit your needs, or contribute to the project.
             </p>
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="grid md:grid-cols-3 gap-6">
               <Card>
                 <CardContent className="pt-6 text-center">
                   <h3 className="font-semibold mb-2">Self-Host</h3>
@@ -431,13 +419,6 @@ export default function Index() {
                 </CardContent>
               </Card>
             </div>
-            <Button variant="outline" size="lg" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
-                View Repository on GitHub
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
           </div>
         </div>
       </section>
@@ -449,19 +430,11 @@ export default function Index() {
           <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
             Start creating EU-compliant Digital Product Passports today. Free, unlimited, and open source.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
-              <Link to="/auth">
-                Start Free Today <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent border-primary-foreground/30 hover:bg-primary-foreground/10" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" />
-                Star on GitHub
-              </a>
-            </Button>
-          </div>
+          <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
+            <Link to="/auth">
+              Start Free Today <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -479,8 +452,9 @@ export default function Index() {
               </Badge>
             </div>
             <div className="flex items-center gap-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
-                GitHub
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Github className="h-4 w-4" />
+                View on GitHub
               </a>
               <span className="text-sm text-muted-foreground">
                 © {new Date().getFullYear()} European Digital Product Passports
