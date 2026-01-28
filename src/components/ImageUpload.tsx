@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Upload, X, Loader2 } from 'lucide-react';
@@ -15,10 +16,16 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { user } = useAuth();
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
+
+    if (!user) {
+      setError('You must be logged in to upload images');
+      return;
+    }
 
     if (!file.type.startsWith('image/')) {
       setError('Please upload an image file');
@@ -36,7 +43,8 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
     try {
       const fileExt = file.name.split('.').pop();
       const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
-      const filePath = fileName;
+      // Store files in user-specific folders for proper ownership verification
+      const filePath = `${user.id}/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
         .from('passport-images')
