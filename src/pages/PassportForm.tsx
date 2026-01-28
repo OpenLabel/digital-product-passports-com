@@ -162,15 +162,7 @@ export default function PassportForm() {
             </CardContent>
           </Card>
 
-          {/* Wine-specific fields (shown before description for wine category) */}
-          {formData.category === 'wine' && (
-            <WineFields
-              data={(formData.category_data as Record<string, unknown>) || {}}
-              onChange={(data) => setFormData({ ...formData, category_data: data })}
-            />
-          )}
-
-          {/* Product Image */}
+          {/* Product Image - right after basic information */}
           <Card>
             <CardHeader>
               <CardTitle>Product Image</CardTitle>
@@ -183,19 +175,29 @@ export default function PassportForm() {
             </CardContent>
           </Card>
 
-          {/* Product Description */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Product Description</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <RichTextEditor
-                content={formData.description}
-                onChange={(content) => setFormData({ ...formData, description: content })}
-                placeholder="Describe your product..."
-              />
-            </CardContent>
-          </Card>
+          {/* Wine-specific fields */}
+          {formData.category === 'wine' && (
+            <WineFields
+              data={(formData.category_data as Record<string, unknown>) || {}}
+              onChange={(data) => setFormData({ ...formData, category_data: data })}
+            />
+          )}
+
+          {/* Product Description - hidden for wine */}
+          {formData.category !== 'wine' && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Product Description</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <RichTextEditor
+                  content={formData.description}
+                  onChange={(content) => setFormData({ ...formData, description: content })}
+                  placeholder="Describe your product..."
+                />
+              </CardContent>
+            </Card>
+          )}
 
           {/* Category-Specific Questions (for non-wine categories or additional wine fields) */}
           <div>
