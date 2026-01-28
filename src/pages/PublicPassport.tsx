@@ -4,6 +4,7 @@ import { getTemplate, categoryList } from '@/templates';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
+import DOMPurify from 'dompurify';
 
 export default function PublicPassport() {
   const { slug } = useParams<{ slug: string }>();
@@ -79,7 +80,7 @@ export default function PublicPassport() {
               <CardContent>
                 <div 
                   className="prose prose-sm max-w-none"
-                  dangerouslySetInnerHTML={{ __html: passport.description }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(passport.description) }}
                 />
               </CardContent>
             </Card>
