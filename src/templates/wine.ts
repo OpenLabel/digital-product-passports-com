@@ -3,106 +3,71 @@ import { BaseTemplate, TemplateSection } from './base';
 export class WineTemplate extends BaseTemplate {
   id = 'wine';
   name = 'Wine';
-  description = 'Digital Product Passport for wine products with EU/French regulatory compliance';
+  description = 'Digital Product Passport for wine products with EU Regulation 2021/2117 compliance';
   icon = '🍷';
   
+  // Wine uses a custom component (WineFields) for its form,
+  // so sections are kept minimal - the component handles the complex logic
   sections: TemplateSection[] = [
-    {
-      title: 'Product Origin & Classification',
-      description: 'Information about the wine origin and protected designations',
-      questions: [
-        {
-          id: 'has_pdo',
-          label: 'Does this wine have a Protected Designation of Origin (PDO/AOP)?',
-          type: 'checkbox',
-          helpText: 'PDO wines must display the official EU PDO logo'
-        },
-        {
-          id: 'has_pgi',
-          label: 'Does this wine have a Protected Geographical Indication (PGI/IGP)?',
-          type: 'checkbox',
-          helpText: 'PGI wines must display the official EU PGI logo'
-        },
-        {
-          id: 'appellation',
-          label: 'Appellation/Region Name',
-          type: 'text',
-          placeholder: 'e.g., Bordeaux, Champagne, Burgundy'
-        },
-        {
-          id: 'vintage_year',
-          label: 'Vintage Year',
-          type: 'number',
-          placeholder: 'e.g., 2020'
-        },
-        {
-          id: 'grape_variety',
-          label: 'Grape Variety(ies)',
-          type: 'text',
-          placeholder: 'e.g., Cabernet Sauvignon, Merlot'
-        }
-      ]
-    },
     {
       title: 'Certifications & Labels',
       description: 'Organic, biodynamic, and sustainability certifications',
       questions: [
         {
+          id: 'has_pdo',
+          label: 'Protected Designation of Origin (PDO/AOP)',
+          type: 'checkbox',
+          helpText: 'PDO wines must display the official EU PDO logo'
+        },
+        {
+          id: 'has_pgi',
+          label: 'Protected Geographical Indication (PGI/IGP)',
+          type: 'checkbox',
+          helpText: 'PGI wines must display the official EU PGI logo'
+        },
+        {
           id: 'is_organic_eu',
-          label: 'Is this wine certified organic (EU Organic)?',
+          label: 'EU Organic certified',
           type: 'checkbox',
           helpText: 'Must display the EU organic leaf logo'
         },
         {
           id: 'is_biodynamic',
-          label: 'Is this wine biodynamic certified (Demeter/Biodyvin)?',
+          label: 'Biodynamic certified (Demeter/Biodyvin)',
           type: 'checkbox'
         },
         {
           id: 'is_hve',
-          label: 'Is the vineyard HVE certified (Haute Valeur Environnementale)?',
+          label: 'HVE certified (Haute Valeur Environnementale)',
           type: 'checkbox',
           helpText: 'French environmental certification'
         },
         {
           id: 'is_terra_vitis',
-          label: 'Is this wine Terra Vitis certified?',
+          label: 'Terra Vitis certified',
           type: 'checkbox'
         }
       ]
     },
     {
-      title: 'Content & Allergen Information',
-      description: 'Mandatory labeling requirements per EU Regulation 2019/787',
+      title: 'Allergen Information',
+      description: 'Mandatory allergen labeling per EU Regulation',
       questions: [
         {
-          id: 'alcohol_content',
-          label: 'Alcohol Content (%)',
-          type: 'number',
-          placeholder: 'e.g., 13.5',
-          required: true
-        },
-        {
           id: 'contains_sulfites',
-          label: 'Contains sulfites?',
+          label: 'Contains sulfites',
           type: 'checkbox',
           helpText: 'Mandatory warning if sulfites exceed 10mg/L'
         },
         {
           id: 'contains_egg',
-          label: 'Contains egg allergens (fining agents)?',
+          label: 'Contains egg allergens (fining agents)',
           type: 'checkbox'
         },
         {
           id: 'contains_milk',
-          label: 'Contains milk allergens (fining agents)?',
+          label: 'Contains milk allergens (fining agents)',
           type: 'checkbox'
-        },
-        {
-          id: 'nutritional_declaration',
-          label: 'Include nutritional declaration?',
-          type: 'checkbox',
-          helpText: 'Required for wines produced after December 8, 2023'
         }
       ]
     },
@@ -115,13 +80,6 @@ export class WineTemplate extends BaseTemplate {
           label: 'Producer/Winery Name',
           type: 'text',
           required: true
-        },
-        {
-          id: 'country_of_origin',
-          label: 'Country of Origin',
-          type: 'text',
-          required: true,
-          placeholder: 'e.g., France'
         },
         {
           id: 'bottler_info',
@@ -148,3 +106,30 @@ export class WineTemplate extends BaseTemplate {
 }
 
 export const wineTemplate = new WineTemplate();
+
+// Sugar classification options based on EU wine regulations
+export const sugarClassifications = [
+  { value: 'brut_nature', label: 'Brut Nature (0-3 g/L)' },
+  { value: 'extra_brut', label: 'Extra Brut (0-6 g/L)' },
+  { value: 'brut', label: 'Brut (0-12 g/L)' },
+  { value: 'extra_dry', label: 'Extra Dry (12-17 g/L)' },
+  { value: 'dry', label: 'Dry / Sec (17-32 g/L)' },
+  { value: 'demi_sec', label: 'Demi-Sec (32-50 g/L)' },
+  { value: 'sweet', label: 'Sweet / Doux (>50 g/L)' },
+];
+
+// Volume unit options
+export const volumeUnits = [
+  { value: 'ml', label: 'ml' },
+  { value: 'cl', label: 'cl' },
+  { value: 'L', label: 'L' },
+];
+
+// Common countries for wine production
+export const wineCountries = [
+  'France', 'Italy', 'Spain', 'Portugal', 'Germany', 
+  'Austria', 'Greece', 'Hungary', 'Romania', 'Bulgaria',
+  'Croatia', 'Slovenia', 'Czech Republic', 'Slovakia',
+  'United States', 'Argentina', 'Chile', 'Australia', 
+  'New Zealand', 'South Africa', 'China', 'Other'
+];
