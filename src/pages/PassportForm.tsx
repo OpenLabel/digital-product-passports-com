@@ -16,6 +16,7 @@ import { RichTextEditor } from '@/components/RichTextEditor';
 import { ImageUpload } from '@/components/ImageUpload';
 import { CategoryQuestions } from '@/components/CategoryQuestions';
 import { WineFields } from '@/components/WineFields';
+import { WinePassportPreview } from '@/components/wine/WinePassportPreview';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 
 interface FormData {
@@ -105,133 +106,168 @@ export default function PassportForm() {
     );
   }
 
+  const showWinePreview = formData.category === 'wine';
+
   return (
     <div className="min-h-screen bg-muted/30">
-      <header className="border-b bg-background">
-        <div className="container mx-auto px-4 py-4 flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')}>
-            <ArrowLeft className="h-4 w-4" />
+      <header className="border-b bg-background sticky top-0 z-10">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')}>
+              <ArrowLeft className="h-4 w-4" />
+            </Button>
+            <h1 className="text-xl font-semibold">
+              {isEditing ? 'Edit Passport' : 'Create New Passport'}
+            </h1>
+          </div>
+          <Button type="submit" form="passport-form" disabled={saving}>
+            {saving ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Saving...
+              </>
+            ) : (
+              <>
+                <Save className="h-4 w-4 mr-2" />
+                {isEditing ? 'Save Changes' : 'Create Passport'}
+              </>
+            )}
           </Button>
-          <h1 className="text-xl font-semibold">
-            {isEditing ? 'Edit Passport' : 'Create New Passport'}
-          </h1>
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto space-y-6">
-          {/* Basic Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Basic Information</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Product Name *</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Enter a name for this product"
+        <div className={`flex gap-8 ${showWinePreview ? 'lg:flex-row flex-col' : ''}`}>
+          {/* Form Section */}
+          <div className={showWinePreview ? 'flex-1 min-w-0' : 'max-w-3xl mx-auto w-full'}>
+            <form id="passport-form" onSubmit={handleSubmit} className="space-y-6">
+              {/* Basic Information */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Basic Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Product Name *</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Enter a name for this product"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="category">Product Category *</Label>
+                    <Select
+                      value={formData.category}
+                      onValueChange={(value: ProductCategory) => 
+                        setFormData({ ...formData, category: value, category_data: {} })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {categoryList.map((cat) => (
+                          <SelectItem key={cat.value} value={cat.value}>
+                            <span className="flex items-center gap-2">
+                              <span>{cat.icon}</span>
+                              <span>{cat.label}</span>
+                            </span>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Product Image - right after basic information */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>Product Image</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ImageUpload
+                    value={formData.image_url}
+                    onChange={(url) => setFormData({ ...formData, image_url: url })}
+                  />
+                </CardContent>
+              </Card>
+
+              {/* Wine-specific fields */}
+              {formData.category === 'wine' && (
+                <WineFields
+                  data={(formData.category_data as Record<string, unknown>) || {}}
+                  onChange={(data) => setFormData({ ...formData, category_data: data })}
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="category">Product Category *</Label>
-                <Select
-                  value={formData.category}
-                  onValueChange={(value: ProductCategory) => 
-                    setFormData({ ...formData, category: value, category_data: {} })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {categoryList.map((cat) => (
-                      <SelectItem key={cat.value} value={cat.value}>
-                        <span className="flex items-center gap-2">
-                          <span>{cat.icon}</span>
-                          <span>{cat.label}</span>
-                        </span>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Product Image - right after basic information */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Product Image</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ImageUpload
-                value={formData.image_url}
-                onChange={(url) => setFormData({ ...formData, image_url: url })}
-              />
-            </CardContent>
-          </Card>
-
-          {/* Wine-specific fields */}
-          {formData.category === 'wine' && (
-            <WineFields
-              data={(formData.category_data as Record<string, unknown>) || {}}
-              onChange={(data) => setFormData({ ...formData, category_data: data })}
-            />
-          )}
-
-          {/* Product Description - hidden for wine */}
-          {formData.category !== 'wine' && (
-            <Card>
-              <CardHeader>
-                <CardTitle>Product Description</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <RichTextEditor
-                  content={formData.description}
-                  onChange={(content) => setFormData({ ...formData, description: content })}
-                  placeholder="Describe your product..."
-                />
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Category-Specific Questions (for non-wine categories or additional wine fields) */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">
-              {categoryList.find(c => c.value === formData.category)?.icon}{' '}
-              {categoryList.find(c => c.value === formData.category)?.label} Details
-            </h2>
-            <CategoryQuestions
-              category={formData.category}
-              data={(formData.category_data as Record<string, unknown>) || {}}
-              onChange={(data) => setFormData({ ...formData, category_data: data })}
-            />
-          </div>
-
-          {/* Actions */}
-          <div className="flex gap-4 justify-end">
-            <Button type="button" variant="outline" onClick={() => navigate('/dashboard')}>
-              Cancel
-            </Button>
-            <Button type="submit" disabled={saving}>
-              {saving ? (
-                <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                  Saving...
-                </>
-              ) : (
-                <>
-                  <Save className="h-4 w-4 mr-2" />
-                  {isEditing ? 'Save Changes' : 'Create Passport'}
-                </>
               )}
-            </Button>
+
+              {/* Product Description - hidden for wine */}
+              {formData.category !== 'wine' && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Product Description</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <RichTextEditor
+                      content={formData.description}
+                      onChange={(content) => setFormData({ ...formData, description: content })}
+                      placeholder="Describe your product..."
+                    />
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Category-Specific Questions (for non-wine categories or additional wine fields) */}
+              <div>
+                <h2 className="text-lg font-semibold mb-4">
+                  {categoryList.find(c => c.value === formData.category)?.icon}{' '}
+                  {categoryList.find(c => c.value === formData.category)?.label} Details
+                </h2>
+                <CategoryQuestions
+                  category={formData.category}
+                  data={(formData.category_data as Record<string, unknown>) || {}}
+                  onChange={(data) => setFormData({ ...formData, category_data: data })}
+                />
+              </div>
+
+              {/* Actions - Mobile only */}
+              <div className="flex gap-4 justify-end lg:hidden">
+                <Button type="button" variant="outline" onClick={() => navigate('/dashboard')}>
+                  Cancel
+                </Button>
+                <Button type="submit" disabled={saving}>
+                  {saving ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Saving...
+                    </>
+                  ) : (
+                    <>
+                      <Save className="h-4 w-4 mr-2" />
+                      {isEditing ? 'Save Changes' : 'Create Passport'}
+                    </>
+                  )}
+                </Button>
+              </div>
+            </form>
           </div>
-        </form>
+
+          {/* Preview Section - Wine only */}
+          {showWinePreview && (
+            <aside className="lg:w-80 w-full lg:sticky lg:top-24 lg:self-start">
+              <WinePassportPreview
+                data={{
+                  name: formData.name,
+                  image_url: formData.image_url,
+                  category_data: formData.category_data,
+                }}
+              />
+            </aside>
+          )}
+        </div>
       </main>
     </div>
   );
