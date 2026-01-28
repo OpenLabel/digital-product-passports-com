@@ -402,16 +402,6 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               />
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="group_small_quantities"
-              checked={(data.group_small_quantities as boolean) !== false}
-              onCheckedChange={(checked) => handleChange('group_small_quantities', checked)}
-            />
-            <Label htmlFor="group_small_quantities" className="text-sm font-normal cursor-pointer">
-              Group small quantities (display as "Contains small quantities of...")
-            </Label>
-          </div>
         </CardContent>
       </Card>
 

@@ -119,7 +119,6 @@ describe("WinePublicPassport", () => {
     it("supports display option fields", () => {
       // These are display options, not data fields, but we verify the concept exists
       const displayOptions = [
-        "group_small_quantities",
         "display_alcohol",
         "display_residual_sugar",
         "display_total_acidity",

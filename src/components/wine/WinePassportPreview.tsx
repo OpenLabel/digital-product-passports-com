@@ -37,7 +37,6 @@ export function WinePassportPreview({ data }: WinePassportPreviewProps) {
   const saturatedFat = categoryData.saturated_fat as number;
   const proteins = categoryData.proteins as number;
   const salt = categoryData.salt as number;
-  const groupSmallQuantities = categoryData.group_small_quantities !== false;
   const ingredients = (categoryData.ingredients as SelectedIngredient[]) || [];
 
   const hasSmallQuantitiesWithValues = useMemo(() => {
@@ -170,14 +169,14 @@ export function WinePassportPreview({ data }: WinePassportPreviewProps) {
                 </div>
               )}
 
-              {/* Small quantities */}
-              {groupSmallQuantities && !hasSmallQuantitiesWithValues && smallQuantitiesText && (
+              {/* Small quantities - always grouped */}
+              {!hasSmallQuantitiesWithValues && smallQuantitiesText && (
                 <p className="text-xs text-muted-foreground pt-2 border-t">
                   Contains small quantities of: {smallQuantitiesText}
                 </p>
               )}
 
-              {(!groupSmallQuantities || hasSmallQuantitiesWithValues) && (
+              {hasSmallQuantitiesWithValues && (
                 <>
                   {(fat !== undefined && fat > 0) && (
                     <div className="flex justify-between">
