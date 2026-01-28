@@ -4,6 +4,7 @@ import { getTemplate, categoryList } from '@/templates';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
+import { WinePublicPassport } from '@/components/wine/WinePublicPassport';
 import DOMPurify from 'dompurify';
 
 export default function PublicPassport() {
@@ -34,6 +35,21 @@ export default function PublicPassport() {
           </CardContent>
         </Card>
       </div>
+    );
+  }
+
+  // Use specialized view for wine passports
+  if (passport.category === 'wine') {
+    return (
+      <WinePublicPassport
+        passport={{
+          name: passport.name,
+          image_url: passport.image_url,
+          description: passport.description,
+          category_data: (passport.category_data as Record<string, unknown>) || {},
+          updated_at: passport.updated_at,
+        }}
+      />
     );
   }
 
