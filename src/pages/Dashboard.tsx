@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { usePassports } from '@/hooks/usePassports';
@@ -6,11 +6,17 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, MoreVertical, Edit, Copy, Trash2, ExternalLink, LogOut } from 'lucide-react';
+import { Plus, MoreVertical, Edit, Copy, Trash2, ExternalLink, LogOut, QrCode, Link2 } from 'lucide-react';
 import { categoryList } from '@/templates';
+import { QRCodeDialog } from '@/components/QRCodeDialog';
+
+const PUBLIC_DOMAIN = 'https://dpp-check.com';
 
 export default function Dashboard() {
+  const [qrDialogOpen, setQrDialogOpen] = useState(false);
+  const [selectedPassport, setSelectedPassport] = useState<{ name: string; slug: string } | null>(null);
   const { user, loading: authLoading, signOut } = useAuth();
   const { passports, isLoading, duplicatePassport, deletePassport } = usePassports();
   const navigate = useNavigate();
@@ -39,6 +45,20 @@ export default function Dashboard() {
     } catch (error: any) {
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
     }
+  };
+
+  const getPublicUrl = (slug: string) => `${PUBLIC_DOMAIN}/p/${slug}`;
+
+  const handleCopyUrl = (slug: string) => {
+    const url = getPublicUrl(slug);
+    navigator.clipboard.writeText(url);
+    toast({ title: 'URL copied to clipboard' });
+  };
+
+  const handleShowQR = (passport: { name: string; public_slug: string | null }) => {
+    if (!passport.public_slug) return;
+    setSelectedPassport({ name: passport.name, slug: passport.public_slug });
+    setQrDialogOpen(true);
   };
 
   if (authLoading) {
@@ -122,14 +142,55 @@ export default function Dashboard() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-xs text-muted-foreground">
-                    Updated {new Date(passport.updated_at).toLocaleDateString()}
-                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs text-muted-foreground">
+                      Updated {new Date(passport.updated_at).toLocaleDateString()}
+                    </p>
+                    {passport.public_slug && (
+                      <TooltipProvider>
+                        <div className="flex items-center gap-1">
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleShowQR(passport)}
+                              >
+                                <QrCode className="h-4 w-4" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>Show QR Code</TooltipContent>
+                          </Tooltip>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleCopyUrl(passport.public_slug!)}
+                              >
+                                <Link2 className="h-4 w-4" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>Copy URL</TooltipContent>
+                          </Tooltip>
+                        </div>
+                      </TooltipProvider>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         )}
+
+        <QRCodeDialog
+          open={qrDialogOpen}
+          onOpenChange={setQrDialogOpen}
+          url={selectedPassport ? getPublicUrl(selectedPassport.slug) : ''}
+          productName={selectedPassport?.name || ''}
+        />
       </main>
     </div>
   );
