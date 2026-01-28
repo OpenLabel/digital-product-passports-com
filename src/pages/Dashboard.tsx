@@ -79,7 +79,7 @@ export default function Dashboard() {
           <Card className="text-center py-12">
             <CardContent>
               <p className="text-muted-foreground mb-4">No passports yet. Create your first one!</p>
-              <Button asChild><Link to="/passport/new"><Plus className="h-4 w-4 mr-2" /> Create Passport</Link></Button>
+              <Button asChild><Link to="/passport/new"><Plus className="h-4 w-4 mr-2" /> Create New</Link></Button>
             </CardContent>
           </Card>
         ) : (
