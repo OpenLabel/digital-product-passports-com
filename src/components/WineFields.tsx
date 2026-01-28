@@ -25,9 +25,9 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
     const totalAcidity = Number(data.total_acidity) || 0;
     const useManualGlycerine = data.glycerine_manual === true;
     
-    // Default glycerine: approximately 10% of alcohol by volume in g/L
+    // Default glycerine: approximately 1 g/L per 1% alcohol
     // For 13% alcohol wine, glycerine is typically 8-13 g/L
-    const defaultGlycerine = alcohol * 1; // ~1 g/L per 1% alcohol
+    const defaultGlycerine = alcohol * 1;
     const glycerine = useManualGlycerine 
       ? (Number(data.glycerine) || 0)
       : defaultGlycerine;
@@ -35,20 +35,20 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
     // Energy calculation per 100ml (EU Regulation 1169/2011)
     // Alcohol: 7 kcal/g, density 0.789 g/ml
     // Sugar/Carbohydrates: 4 kcal/g
-    // Organic acids (tartaric): 3 kcal/g
+    // Organic acids (tartaric C4H6O6): 3.12 kcal/g
     // Polyols (glycerine): 2.4 kcal/g
-    const alcoholGrams = (alcohol / 100) * 100 * 0.789; // grams of alcohol per 100ml
+    const alcoholGrams = alcohol * 0.789; // grams of alcohol per 100ml
     const sugarGrams = residualSugar / 10; // g/L to g/100ml
     const acidityGrams = totalAcidity / 10; // g/L to g/100ml
     const glycerineGrams = glycerine / 10; // g/L to g/100ml
 
     const energyKcal = Math.round(
-      (alcoholGrams * 7) + (sugarGrams * 4) + (acidityGrams * 3) + (glycerineGrams * 2.4)
+      (alcoholGrams * 7) + (sugarGrams * 4) + (acidityGrams * 3.12) + (glycerineGrams * 2.4)
     );
     const energyKj = Math.round(energyKcal * 4.184);
 
-    // Carbohydrates = residual sugar (simplified, glycerine is a polyol, not counted as carbs)
-    const carbohydrates = sugarGrams;
+    // Carbohydrates = sugar + glycerine (glycerine is a polyol, counted in carbs for wine labeling)
+    const carbohydrates = sugarGrams + glycerineGrams;
     const sugar = sugarGrams;
 
     return {
