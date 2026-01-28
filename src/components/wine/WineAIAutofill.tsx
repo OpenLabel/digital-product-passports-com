@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Sparkles, Camera, Upload, Loader2, AlertTriangle } from 'lucide-react';
+import { Sparkles, Camera, Upload, Loader2, AlertTriangle, FileText } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -128,7 +128,7 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
               AI Label Scanner
             </DialogTitle>
             <DialogDescription>
-              Upload a photo of your wine label and AI will extract the information automatically.
+              Upload a wine label photo, PDF, or document and AI will extract the information automatically.
             </DialogDescription>
           </DialogHeader>
 
@@ -143,24 +143,31 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
             <input
               ref={fileInputRef}
               type="file"
-              accept="image/*"
+              accept="image/*,.pdf,.doc,.docx"
               capture="environment"
               onChange={handleFileSelect}
               className="hidden"
             />
 
-            {previewUrl ? (
+            {previewUrl || isProcessing ? (
               <div className="relative">
-                <img 
-                  src={previewUrl} 
-                  alt="Wine label preview" 
-                  className="w-full rounded-lg object-cover max-h-64"
-                />
+                {previewUrl && (
+                  <img 
+                    src={previewUrl} 
+                    alt="Wine label preview" 
+                    className="w-full rounded-lg object-cover max-h-64"
+                  />
+                )}
+                {!previewUrl && isProcessing && (
+                  <div className="h-48 rounded-lg bg-muted flex items-center justify-center">
+                    <FileText className="h-16 w-16 text-muted-foreground" />
+                  </div>
+                )}
                 {isProcessing && (
                   <div className="absolute inset-0 flex items-center justify-center bg-background/80 rounded-lg">
                     <div className="flex flex-col items-center gap-2">
                       <Loader2 className="h-8 w-8 animate-spin text-purple-500" />
-                      <span className="text-sm font-medium">Analyzing label...</span>
+                      <span className="text-sm font-medium">Analyzing document...</span>
                     </div>
                   </div>
                 )}
@@ -183,15 +190,20 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
                   className="h-24 flex-col gap-2"
                 >
                   <Upload className="h-6 w-6" />
-                  <span className="text-sm">Upload Image</span>
+                  <span className="text-sm">Upload File</span>
                 </Button>
               </div>
             )}
 
-            {!previewUrl && (
-              <p className="text-xs text-muted-foreground text-center">
-                For best results, ensure the label is well-lit and clearly visible
-              </p>
+            {!previewUrl && !isProcessing && (
+              <div className="space-y-2 text-center">
+                <p className="text-xs text-muted-foreground">
+                  Supports photos, PDFs, and Word documents
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  <strong>Tip:</strong> Have multiple files? Run this again after each upload to merge data from different sources.
+                </p>
+              </div>
             )}
           </div>
         </DialogContent>
