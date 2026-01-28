@@ -196,24 +196,48 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                     <div className="flex-1 grid gap-3 sm:grid-cols-2">
                       <Select
                         value={material.compositionId || ''}
-                        onValueChange={(val) =>
-                          handleMaterialChange(material.id, 'compositionId', val)
-                        }
+                        onValueChange={(val) => {
+                          if (val === 'custom') {
+                            // Handle custom composition
+                            handleMaterialChange(material.id, 'compositionId', '');
+                          } else {
+                            handleMaterialChange(material.id, 'compositionId', val);
+                          }
+                        }}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Select material" />
                         </SelectTrigger>
                         <SelectContent>
-                          {compositionsByCategory.map((cat) => (
+                          <SelectGroup>
+                            <SelectLabel className="font-bold text-foreground">Individual Components</SelectLabel>
+                          </SelectGroup>
+                          {compositionsByCategory.individual.map((cat) => (
                             <SelectGroup key={cat.id}>
                               <SelectLabel>{cat.name}</SelectLabel>
                               {cat.compositions.map((comp) => (
                                 <SelectItem key={comp.id} value={comp.id}>
-                                  {comp.name} {comp.code && <span className="font-semibold">({comp.code})</span>}
+                                  {comp.name} <span className="font-semibold">({comp.code})</span>
                                 </SelectItem>
                               ))}
                             </SelectGroup>
                           ))}
+                          <SelectGroup>
+                            <SelectLabel className="font-bold text-foreground">Composite Components</SelectLabel>
+                          </SelectGroup>
+                          {compositionsByCategory.composite.map((cat) => (
+                            <SelectGroup key={cat.id}>
+                              {cat.compositions.map((comp) => (
+                                <SelectItem key={comp.id} value={comp.id}>
+                                  {comp.name} <span className="font-semibold">({comp.code})</span>
+                                </SelectItem>
+                              ))}
+                            </SelectGroup>
+                          ))}
+                          <SelectGroup>
+                            <SelectLabel className="font-bold text-foreground">Custom Material</SelectLabel>
+                            <SelectItem value="custom">Add custom material</SelectItem>
+                          </SelectGroup>
                         </SelectContent>
                       </Select>
 
