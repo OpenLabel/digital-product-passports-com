@@ -131,38 +131,10 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
           </div>
         </div>
 
-        {/* Step 2: Choose Ingredients */}
-        <div className="space-y-3">
-          <Label className="text-base font-medium">2. Choose wine ingredients *</Label>
-          <p className="text-sm text-muted-foreground">
-            Select all ingredients that are part of your wine composition. Ingredients not mentioned don't need to be indicated. If necessary, you can add a custom ingredient.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button
-              type="button"
-              variant="outline"
-              className="flex-1"
-              onClick={() => setPickerOpen(true)}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Select ingredient from list
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              className="flex-1"
-              onClick={() => setCustomOpen(true)}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Define custom ingredient
-            </Button>
-          </div>
-        </div>
-
         {/* Sort Ingredients */}
         {selectedIngredients.length > 0 && (
           <div className="space-y-3">
-            <Label className="text-base font-medium">3. Sort ingredients</Label>
+            <Label className="text-base font-medium">Sort ingredients</Label>
             <p className="text-sm text-muted-foreground">
               The ingredient list should be sorted from largest to smallest quantity. Quantities below 0.1 g/100 ml don't need to be sorted.
             </p>
