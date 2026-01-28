@@ -61,7 +61,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const salt = categoryData.salt as number | undefined;
 
   // Display options
-  const groupSmallQuantities = categoryData.group_small_quantities !== false;
   const showAlcohol = categoryData.display_alcohol !== false;
   const showResidualSugar = categoryData.display_residual_sugar !== false;
   const showTotalAcidity = categoryData.display_total_acidity !== false;
@@ -245,14 +244,14 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                     </div>
                   )}
 
-                  {/* Small quantities handling */}
-                  {groupSmallQuantities && !hasSmallQuantitiesWithValues && smallQuantitiesText && (
+                  {/* Small quantities - always grouped */}
+                  {!hasSmallQuantitiesWithValues && smallQuantitiesText && (
                     <p className="text-sm text-muted-foreground pt-2" data-testid="small-quantities-notice">
                       Contains small quantities of: {smallQuantitiesText}
                     </p>
                   )}
 
-                  {(!groupSmallQuantities || hasSmallQuantitiesWithValues) && (
+                  {hasSmallQuantitiesWithValues && (
                     <>
                       {fat !== undefined && fat > 0 && (
                         <div className="flex justify-between py-1 border-b" data-testid="field-fat">
