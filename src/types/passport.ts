@@ -1,6 +1,19 @@
 import type { Json } from '@/integrations/supabase/types';
 
-export type ProductCategory = 'wine' | 'battery' | 'textiles' | 'other';
+export type ProductCategory = 
+  | 'wine' 
+  | 'battery' 
+  | 'textiles' 
+  | 'construction'
+  | 'electronics'
+  | 'iron_steel'
+  | 'aluminum'
+  | 'toys'
+  | 'cosmetics'
+  | 'furniture'
+  | 'tires'
+  | 'detergents'
+  | 'other';
 
 export interface Passport {
   id: string;
