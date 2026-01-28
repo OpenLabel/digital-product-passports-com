@@ -7,6 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { volumeUnits, wineCountries } from '@/templates/wine';
 import { WineIngredients } from '@/components/wine/WineIngredients';
 import { WineRecycling } from '@/components/wine/WineRecycling';
+import { WineAIAutofill } from '@/components/wine/WineAIAutofill';
 import { calculateWineNutrition } from '@/lib/wineCalculations';
 
 interface WineFieldsProps {
@@ -73,8 +74,17 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
     );
   }, [data]);
 
+  const handleAIAutofill = (extractedData: Record<string, unknown>) => {
+    // Merge AI-extracted data with existing data
+    const mergedData = { ...data, ...extractedData };
+    onChange(mergedData);
+  };
+
   return (
     <div className="space-y-6">
+      {/* AI Autofill Button */}
+      <WineAIAutofill onAutofill={handleAIAutofill} />
+
       {/* Product Identity */}
       <Card>
         <CardHeader>
