@@ -48,7 +48,7 @@ const productCategories = [
     description: 'Repairability index, spare parts, software updates',
     status: 'priority' as const,
     regulation: 'ESPR Priority',
-    deadline: 'TBD'
+    deadline: '2027'
   },
   { 
     name: 'Iron & Steel', 
@@ -62,35 +62,42 @@ const productCategories = [
     description: 'Smelting energy source, coil traceability',
     status: 'priority' as const,
     regulation: 'ESPR 2025-2030',
-    deadline: 'TBD'
+    deadline: '2027'
   },
   { 
     name: 'Cosmetics', 
     description: 'INCI list, nanomaterials, packaging recyclability',
     status: 'priority' as const,
     regulation: 'ESPR Priority',
-    deadline: 'TBD'
+    deadline: '2027'
   },
   { 
     name: 'Furniture & Mattresses', 
     description: 'EUDR wood origin, spare parts, PFAS',
     status: 'priority' as const,
     regulation: 'ESPR + EUDR',
-    deadline: 'TBD'
+    deadline: '2027'
   },
   { 
     name: 'Tires', 
     description: 'Abrasion rate, retreading history, microplastics',
     status: 'priority' as const,
     regulation: 'ESPR Priority',
-    deadline: 'TBD'
+    deadline: '2027'
   },
   { 
     name: 'Detergents & Chemicals', 
     description: 'Digital SDS, biodegradability, dosage optimization',
     status: 'priority' as const,
     regulation: 'CLP/Detergents',
-    deadline: 'TBD'
+    deadline: '2027'
+  },
+  { 
+    name: 'All Other Products', 
+    description: 'Generic DPP template for any product type',
+    status: 'active' as const,
+    regulation: 'ESPR Framework',
+    deadline: '2027'
   },
 ];
 
@@ -307,9 +314,6 @@ export default function Index() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <p className="text-sm text-muted-foreground mb-4">
-              Plus a generic "Other" template for any product type not yet covered by specific regulations.
-            </p>
             <Button asChild>
               <Link to="/auth">
                 Start Creating Passports <ArrowRight className="ml-2 h-4 w-4" />
