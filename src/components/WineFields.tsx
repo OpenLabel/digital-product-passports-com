@@ -31,7 +31,6 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
       residualSugar,
       totalAcidity,
       glycerine,
-      useManualGlycerine: true, // Always manual now
     });
 
     return {
@@ -46,10 +45,6 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
   // Update calculated values when dependencies change
   useEffect(() => {
     const updates: Record<string, unknown> = {};
-    
-    if (!data.glycerine_manual && data.glycerine !== calculatedValues.glycerine) {
-      updates.glycerine = calculatedValues.glycerine;
-    }
     if (!data.energy_kcal_manual && data.energy_kcal !== calculatedValues.energyKcal) {
       updates.energy_kcal = calculatedValues.energyKcal;
     }
@@ -339,16 +334,6 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                   className={!data.sugar_manual ? 'bg-muted' : ''}
                 />
               </div>
-            </div>
-            <div className="flex items-center gap-2 mt-4">
-              <Checkbox
-                id="show_exact_values"
-                checked={(data.show_exact_values as boolean) || false}
-                onCheckedChange={(checked) => handleChange('show_exact_values', checked)}
-              />
-              <Label htmlFor="show_exact_values" className="text-sm font-normal cursor-pointer">
-                Show exact values without rounding
-              </Label>
             </div>
           </div>
         </CardContent>
