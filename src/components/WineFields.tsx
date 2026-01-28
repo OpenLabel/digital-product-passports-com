@@ -90,9 +90,6 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
 
   return (
     <div className="space-y-6">
-      {/* Ingredients */}
-      <WineIngredients data={data} onChange={onChange} />
-
       {/* Product Identity */}
       <Card>
         <CardHeader>
@@ -198,6 +195,9 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Ingredients */}
+      <WineIngredients data={data} onChange={onChange} />
 
       {/* Nutritional Values - Primary */}
       <Card>
