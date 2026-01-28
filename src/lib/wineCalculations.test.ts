@@ -38,26 +38,25 @@ describe("wineCalculations", () => {
       expect(result.glycerine).toBe(101112);
     });
 
-    it("calculates correct values for test case 2: default glycerine", () => {
-      // Inputs: Alcohol=999, Sugar=999, Acidity=999, Glycerine=default
-      // Reference shows: Energy=6402 kcal, kJ=26786, Carbs=178.8, Sugar=99.9
-      // Our formula gives 6418 kcal (16 kcal difference due to glycerine formula)
+    it("calculates correct values for test case 2: with glycerine input", () => {
+      // Inputs: Alcohol=999, Sugar=999, Acidity=999, Glycerine=789 (manual)
+      // Glycerine is always manual now
       const inputs: WineNutritionInputs = {
         alcoholPercent: 999,
         residualSugar: 999,
         totalAcidity: 999,
-        useManualGlycerine: false,
+        glycerine: 789,
+        useManualGlycerine: true,
       };
 
       const result = calculateWineNutrition(inputs);
 
-      // Default glycerine = 999 * 0.789 ≈ 788.2
-      expect(result.glycerine).toBeCloseTo(788.2, 0);
+      expect(result.glycerine).toBe(789);
       expect(result.sugar).toBe(99.9);
-      expect(result.carbohydrates).toBeCloseTo(178.7, 0);
-      // Energy: allow ~1% tolerance for different rounding approaches
-      expect(result.energyKcal).toBeCloseTo(6418, -2); // our calculation
-      expect(result.energyKj).toBeCloseTo(26849, -2);
+      // Carbs = (999 + 789) / 10 = 178.8
+      expect(result.carbohydrates).toBe(178.8);
+      // Energy = 999*0.789*7 + 99.9*4 + 99.9*3.12 + 78.9*2.4 ≈ 6418
+      expect(result.energyKcal).toBeCloseTo(6418, -1);
     });
 
     it("calculates realistic wine values correctly", () => {

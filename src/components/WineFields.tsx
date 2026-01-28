@@ -7,7 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { volumeUnits, wineCountries } from '@/templates/wine';
 import { WineIngredients } from '@/components/wine/WineIngredients';
 import { WineRecycling } from '@/components/wine/WineRecycling';
-import { calculateWineNutrition, calculateDefaultGlycerine } from '@/lib/wineCalculations';
+import { calculateWineNutrition } from '@/lib/wineCalculations';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -24,19 +24,18 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
     const alcohol = Number(data.alcohol_percent) || 0;
     const residualSugar = Number(data.residual_sugar) || 0;
     const totalAcidity = Number(data.total_acidity) || 0;
-    const useManualGlycerine = data.glycerine_manual === true;
-    const manualGlycerine = Number(data.glycerine) || 0;
+    const glycerine = Number(data.glycerine) || 0;
 
     const result = calculateWineNutrition({
       alcoholPercent: alcohol,
       residualSugar,
       totalAcidity,
-      glycerine: manualGlycerine,
-      useManualGlycerine,
+      glycerine,
+      useManualGlycerine: true, // Always manual now
     });
 
     return {
-      glycerine: useManualGlycerine ? manualGlycerine : result.glycerine,
+      glycerine,
       energyKcal: data.energy_kcal_manual ? Number(data.energy_kcal) : result.energyKcal,
       energyKj: data.energy_kj_manual ? Number(data.energy_kj) : result.energyKj,
       carbohydrates: data.carbohydrates_manual ? Number(data.carbohydrates) : result.carbohydrates,
@@ -235,34 +234,15 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
             </div>
 
             <div className="space-y-2">
-              <div className="flex items-center gap-2 mb-2">
-                <Checkbox
-                  id="glycerine_manual"
-                  checked={(data.glycerine_manual as boolean) || false}
-                  onCheckedChange={(checked) => handleChange('glycerine_manual', checked)}
-                />
-                <Label htmlFor="glycerine_manual" className="text-sm font-normal cursor-pointer">
-                  Manual glycerine value
-                </Label>
-              </div>
-              {data.glycerine_manual && (
-                <div className="space-y-2">
-                  <Label htmlFor="glycerine">Glycerine (g/L)</Label>
-                  <Input
-                    id="glycerine"
-                    type="number"
-                    step="0.1"
-                    value={(data.glycerine as number) || ''}
-                    onChange={(e) => handleChange('glycerine', e.target.value ? Number(e.target.value) : '')}
-                    placeholder="e.g., 8.5"
-                  />
-                </div>
-              )}
-              {!data.glycerine_manual && (
-                <p className="text-xs text-muted-foreground">
-                  Default: 10% of alcohol content ({calculatedValues.glycerine} g/L)
-                </p>
-              )}
+              <Label htmlFor="glycerine">Glycerine (g/L)</Label>
+              <Input
+                id="glycerine"
+                type="number"
+                step="0.1"
+                value={(data.glycerine as number) || ''}
+                onChange={(e) => handleChange('glycerine', e.target.value ? Number(e.target.value) : '')}
+                placeholder="e.g., 8.5"
+              />
             </div>
           </div>
 
