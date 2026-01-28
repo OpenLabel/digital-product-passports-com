@@ -122,11 +122,11 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
 
           <div className="space-y-2">
             <Label>Volume</Label>
-            <div className="flex gap-2">
+          <div className="flex gap-2">
               <Input
                 type="number"
-                value={(data.volume as number) || ''}
-                onChange={(e) => handleChange('volume', e.target.value ? Number(e.target.value) : '')}
+                value={data.volume !== undefined && data.volume !== '' ? String(data.volume) : ''}
+                onChange={(e) => handleChange('volume', e.target.value ? Number(e.target.value) : undefined)}
                 placeholder="e.g., 750"
                 className="flex-1"
               />
