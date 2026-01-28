@@ -89,7 +89,7 @@ export function IngredientPickerDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-lg max-h-[85vh] flex flex-col">
+      <DialogContent className="max-w-lg max-h-[85vh] h-[85vh] flex flex-col overflow-hidden">
         <DialogHeader>
           <DialogTitle>Select wine ingredients from list</DialogTitle>
         </DialogHeader>
