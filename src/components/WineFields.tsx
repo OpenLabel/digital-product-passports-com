@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { volumeUnits, wineCountries } from '@/templates/wine';
 import { WineIngredients } from '@/components/wine/WineIngredients';
+import { WineRecycling } from '@/components/wine/WineRecycling';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -492,6 +493,9 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Recycling Information */}
+      <WineRecycling data={data} onChange={onChange} />
     </div>
   );
 }
