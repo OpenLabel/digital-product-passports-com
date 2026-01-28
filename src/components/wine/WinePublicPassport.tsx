@@ -61,7 +61,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const salt = categoryData.salt as number | undefined;
 
   // Display options
-  const showExactValues = categoryData.show_exact_values === true;
   const groupSmallQuantities = categoryData.group_small_quantities !== false;
   const showAlcohol = categoryData.display_alcohol !== false;
   const showResidualSugar = categoryData.display_residual_sugar !== false;
@@ -94,8 +93,7 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
 
   const formatValue = (value: number | undefined, unit: string): string => {
     if (value === undefined) return '';
-    if (showExactValues) return `${value} ${unit}`;
-    return `${Math.round(value * 10) / 10} ${unit}`;
+    return `${value} ${unit}`;
   };
 
   const hasProductInfo = volume || grapeVariety || vintage || country || region || denomination || sugarClassification || productType;

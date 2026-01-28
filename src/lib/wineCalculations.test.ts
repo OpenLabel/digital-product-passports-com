@@ -1,32 +1,19 @@
 import { describe, it, expect } from "vitest";
 import {
   calculateWineNutrition,
-  calculateDefaultGlycerine,
   WineNutritionInputs,
 } from "./wineCalculations";
 
 describe("wineCalculations", () => {
-  describe("calculateDefaultGlycerine", () => {
-    it("calculates glycerine as ~0.789 g/L per 1% alcohol", () => {
-      expect(calculateDefaultGlycerine(13)).toBeCloseTo(10.3, 1);
-      expect(calculateDefaultGlycerine(14)).toBeCloseTo(11, 1);
-    });
-
-    it("returns 0 for 0% alcohol", () => {
-      expect(calculateDefaultGlycerine(0)).toBe(0);
-    });
-  });
-
   describe("calculateWineNutrition", () => {
-    it("calculates correct values for test case 1: manual glycerine", () => {
-      // Inputs: Alcohol=123, Sugar=456, Acidity=789, Glycerine=101112 (manual)
+    it("calculates correct values for test case 1: high glycerine", () => {
+      // Inputs: Alcohol=123, Sugar=456, Acidity=789, Glycerine=101112
       // Expected: Energy=25375 kcal, kJ=106169, Carbs=10156.8, Sugar=45.6
       const inputs: WineNutritionInputs = {
         alcoholPercent: 123,
         residualSugar: 456,
         totalAcidity: 789,
         glycerine: 101112,
-        useManualGlycerine: true,
       };
 
       const result = calculateWineNutrition(inputs);
@@ -38,15 +25,13 @@ describe("wineCalculations", () => {
       expect(result.glycerine).toBe(101112);
     });
 
-    it("calculates correct values for test case 2: with glycerine input", () => {
-      // Inputs: Alcohol=999, Sugar=999, Acidity=999, Glycerine=789 (manual)
-      // Glycerine is always manual now
+    it("calculates correct values for test case 2: high values", () => {
+      // Inputs: Alcohol=999, Sugar=999, Acidity=999, Glycerine=789
       const inputs: WineNutritionInputs = {
         alcoholPercent: 999,
         residualSugar: 999,
         totalAcidity: 999,
         glycerine: 789,
-        useManualGlycerine: true,
       };
 
       const result = calculateWineNutrition(inputs);
@@ -60,12 +45,12 @@ describe("wineCalculations", () => {
     });
 
     it("calculates realistic wine values correctly", () => {
-      // Typical wine: 13% alcohol, 5 g/L sugar, 6 g/L acidity
+      // Typical wine: 13% alcohol, 5 g/L sugar, 6 g/L acidity, 10 g/L glycerine
       const inputs: WineNutritionInputs = {
         alcoholPercent: 13,
         residualSugar: 5,
         totalAcidity: 6,
-        useManualGlycerine: false,
+        glycerine: 10,
       };
 
       const result = calculateWineNutrition(inputs);
@@ -73,12 +58,12 @@ describe("wineCalculations", () => {
       // Alcohol: 13 * 0.789 = 10.257g → 71.8 kcal
       // Sugar: 0.5g → 2 kcal
       // Acidity: 0.6g → 1.87 kcal
-      // Glycerine: ~1.03g → 2.46 kcal
+      // Glycerine: 1g → 2.4 kcal
       // Total: ~78 kcal
       expect(result.energyKcal).toBeGreaterThan(70);
       expect(result.energyKcal).toBeLessThan(90);
       expect(result.sugar).toBe(0.5);
-      expect(result.carbohydrates).toBeGreaterThan(1);
+      expect(result.carbohydrates).toBe(1.5);
     });
 
     it("handles zero values", () => {
@@ -86,7 +71,7 @@ describe("wineCalculations", () => {
         alcoholPercent: 0,
         residualSugar: 0,
         totalAcidity: 0,
-        useManualGlycerine: false,
+        glycerine: 0,
       };
 
       const result = calculateWineNutrition(inputs);
@@ -96,35 +81,6 @@ describe("wineCalculations", () => {
       expect(result.carbohydrates).toBe(0);
       expect(result.sugar).toBe(0);
       expect(result.glycerine).toBe(0);
-    });
-
-    it("uses manual glycerine when specified", () => {
-      const inputs: WineNutritionInputs = {
-        alcoholPercent: 13,
-        residualSugar: 5,
-        totalAcidity: 6,
-        glycerine: 15,
-        useManualGlycerine: true,
-      };
-
-      const result = calculateWineNutrition(inputs);
-
-      expect(result.glycerine).toBe(15);
-    });
-
-    it("ignores manual glycerine value when useManualGlycerine is false", () => {
-      const inputs: WineNutritionInputs = {
-        alcoholPercent: 13,
-        residualSugar: 5,
-        totalAcidity: 6,
-        glycerine: 999, // This should be ignored
-        useManualGlycerine: false,
-      };
-
-      const result = calculateWineNutrition(inputs);
-
-      // Should use default: 13 * 0.789 ≈ 10.3
-      expect(result.glycerine).toBeCloseTo(10.3, 0);
     });
   });
 
@@ -136,7 +92,6 @@ describe("wineCalculations", () => {
         residualSugar: 0,
         totalAcidity: 0,
         glycerine: 0,
-        useManualGlycerine: true,
       });
 
       // 100 * 0.789 = 78.9g alcohol → 78.9 * 7 = 552.3 kcal
@@ -150,7 +105,6 @@ describe("wineCalculations", () => {
         residualSugar: 1000,
         totalAcidity: 0,
         glycerine: 0,
-        useManualGlycerine: true,
       });
 
       // 100g sugar → 100 * 4 = 400 kcal
@@ -164,7 +118,6 @@ describe("wineCalculations", () => {
         residualSugar: 0,
         totalAcidity: 1000,
         glycerine: 0,
-        useManualGlycerine: true,
       });
 
       // 100g acidity → 100 * 3.12 = 312 kcal
@@ -178,7 +131,6 @@ describe("wineCalculations", () => {
         residualSugar: 0,
         totalAcidity: 0,
         glycerine: 1000,
-        useManualGlycerine: true,
       });
 
       // 100g glycerine → 100 * 2.4 = 240 kcal

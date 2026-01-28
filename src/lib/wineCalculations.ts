@@ -6,8 +6,7 @@ export interface WineNutritionInputs {
   alcoholPercent: number;
   residualSugar: number; // g/L
   totalAcidity: number; // g/L (tartaric acid C4H6O6)
-  glycerine?: number; // g/L (optional, auto-calculated if not provided)
-  useManualGlycerine?: boolean;
+  glycerine: number; // g/L
 }
 
 export interface WineNutritionResults {
@@ -16,14 +15,6 @@ export interface WineNutritionResults {
   energyKj: number; // per 100ml
   carbohydrates: number; // g per 100ml
   sugar: number; // g per 100ml
-}
-
-/**
- * Calculate default glycerine based on alcohol content
- * Approximately 0.789 g/L per 1% alcohol (density-based correlation)
- */
-export function calculateDefaultGlycerine(alcoholPercent: number): number {
-  return Math.round(alcoholPercent * 0.789 * 10) / 10;
 }
 
 /**
@@ -36,12 +27,7 @@ export function calculateDefaultGlycerine(alcoholPercent: number): number {
  * - Polyols (glycerine): 2.4 kcal/g
  */
 export function calculateWineNutrition(inputs: WineNutritionInputs): WineNutritionResults {
-  const { alcoholPercent, residualSugar, totalAcidity, glycerine: inputGlycerine, useManualGlycerine } = inputs;
-  
-  // Calculate glycerine
-  const glycerine = useManualGlycerine && inputGlycerine !== undefined
-    ? inputGlycerine
-    : calculateDefaultGlycerine(alcoholPercent);
+  const { alcoholPercent, residualSugar, totalAcidity, glycerine } = inputs;
 
   // Convert to grams per 100ml
   const alcoholGrams = alcoholPercent * 0.789;
