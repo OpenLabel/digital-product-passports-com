@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, X, Upload, Link as LinkIcon, FileEdit } from 'lucide-react';
+import { Plus, X, Upload, FileEdit } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -20,7 +20,7 @@ interface WineRecyclingProps {
   onChange: (data: Record<string, unknown>) => void;
 }
 
-type RecyclingMode = 'manual' | 'pdf' | 'website';
+type RecyclingMode = 'manual' | 'pdf';
 
 export function WineRecycling({ data, onChange }: WineRecyclingProps) {
   const [addMaterialOpen, setAddMaterialOpen] = useState(false);
@@ -30,7 +30,6 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
   const recyclingMode = (data.recycling_mode as RecyclingMode) || 'manual';
   const materials = (data.packaging_materials as PackagingMaterial[]) || [];
   const pdfUrl = (data.recycling_pdf_url as string) || '';
-  const websiteUrl = (data.recycling_website_url as string) || '';
 
   const handleModeChange = (mode: RecyclingMode) => {
     onChange({ ...data, recycling_mode: mode });
@@ -106,7 +105,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
       <CardHeader>
         <CardTitle className="text-lg">Recycling Information</CardTitle>
         <CardDescription>
-          If you have a website or PDF with recycling information, you can link it. Otherwise, select the materials used for your wine packaging. Recycling information will be generated automatically.
+          If you have a PDF with recycling information, you can link it. Otherwise, select the materials used for your wine packaging.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -128,14 +127,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
               <RadioGroupItem value="pdf" id="mode-pdf" />
               <Label htmlFor="mode-pdf" className="font-normal cursor-pointer flex items-center gap-2">
                 <Upload className="h-4 w-4" />
-                Upload PDF file
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="website" id="mode-website" />
-              <Label htmlFor="mode-website" className="font-normal cursor-pointer flex items-center gap-2">
-                <LinkIcon className="h-4 w-4" />
-                Link to website
+                Link to PDF file
               </Label>
             </div>
           </RadioGroup>
@@ -158,22 +150,6 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
           </div>
         )}
 
-        {/* Website Link Mode */}
-        {recyclingMode === 'website' && (
-          <div className="space-y-2">
-            <Label htmlFor="website-url">Website URL</Label>
-            <Input
-              id="website-url"
-              type="url"
-              placeholder="https://example.com/recycling"
-              value={websiteUrl}
-              onChange={(e) => onChange({ ...data, recycling_website_url: e.target.value })}
-            />
-            <p className="text-xs text-muted-foreground">
-              Enter the URL of your recycling information page
-            </p>
-          </div>
-        )}
 
         {/* Manual Entry Mode */}
         {recyclingMode === 'manual' && (

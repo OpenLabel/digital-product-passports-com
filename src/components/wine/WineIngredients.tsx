@@ -3,9 +3,8 @@ import { Plus, GripVertical, X, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Badge } from '@/components/ui/badge';
-import { wineProductTypes, getIngredientById, WineIngredient } from '@/data/wineIngredients';
+import { getIngredientById } from '@/data/wineIngredients';
 import { IngredientPickerDialog } from './IngredientPickerDialog';
 import { CustomIngredientDialog, CustomIngredient } from './CustomIngredientDialog';
 
@@ -27,12 +26,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
   const [customOpen, setCustomOpen] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
-  const productType = (data.ingredient_product_type as string) || 'wine';
   const selectedIngredients = (data.ingredients as SelectedIngredient[]) || [];
-
-  const handleProductTypeChange = (value: string) => {
-    onChange({ ...data, ingredient_product_type: value });
-  };
 
   const handleApplyFromPicker = (selectedIds: string[]) => {
     // Get existing custom ingredients
@@ -105,32 +99,36 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
       <CardHeader>
         <CardTitle className="text-lg">Ingredients</CardTitle>
         <CardDescription>
-          Select ingredients from the wine ingredient list. All ingredients are automatically included in the label.
+          Select ingredients from the wine ingredient list or add custom ones. Sort them by quantity (largest to smallest).
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Step 1: Product Type */}
+        {/* Choose Ingredients */}
         <div className="space-y-3">
-          <Label className="text-base font-medium">1. Select product type</Label>
+          <Label className="text-base font-medium">Choose wine ingredients *</Label>
           <p className="text-sm text-muted-foreground">
-            Select the product type for which you want to create the ingredient list.
+            Select all ingredients that are part of your wine composition. If necessary, you can add a custom ingredient.
           </p>
-          <RadioGroup
-            value={productType}
-            onValueChange={handleProductTypeChange}
-            className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {wineProductTypes.map((type) => (
-              <div key={type.id} className="flex items-start space-x-2">
-                <RadioGroupItem value={type.id} id={`type-${type.id}`} className="mt-1" />
-                <Label htmlFor={`type-${type.id}`} className="font-normal cursor-pointer">
-                  <span className="font-medium">{type.label}</span>
-                  <br />
-                  <span className="text-xs text-muted-foreground">{type.description}</span>
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              className="flex-1"
+              onClick={() => setPickerOpen(true)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Select ingredient from list
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              className="flex-1"
+              onClick={() => setCustomOpen(true)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              Define custom ingredient
+            </Button>
+          </div>
         </div>
 
         {/* Step 2: Choose Ingredients */}
@@ -161,7 +159,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
           </div>
         </div>
 
-        {/* Step 3: Sort Ingredients */}
+        {/* Sort Ingredients */}
         {selectedIngredients.length > 0 && (
           <div className="space-y-3">
             <Label className="text-base font-medium">3. Sort ingredients</Label>
