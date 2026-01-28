@@ -355,6 +355,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
             <p className="text-xs text-muted-foreground mt-2">
               Check the box next to a field to override the calculated value
             </p>
+            <div className="flex items-center gap-2 mt-4">
+              <Checkbox
+                id="show_exact_values"
+                checked={(data.show_exact_values as boolean) || false}
+                onCheckedChange={(checked) => handleChange('show_exact_values', checked)}
+              />
+              <Label htmlFor="show_exact_values" className="text-sm font-normal cursor-pointer">
+                Show exact values without rounding
+              </Label>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -372,53 +382,109 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
             }
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-2">
-            <Label htmlFor="fat">Fat (g)</Label>
-            <Input
-              id="fat"
-              type="number"
-              step="0.1"
-              value={(data.fat as number) || 0}
-              onChange={(e) => handleChange('fat', e.target.value ? Number(e.target.value) : 0)}
-              placeholder="0"
-            />
-          </div>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="space-y-2">
+              <Label htmlFor="fat">Fat (g)</Label>
+              <Input
+                id="fat"
+                type="number"
+                step="0.1"
+                value={(data.fat as number) || 0}
+                onChange={(e) => handleChange('fat', e.target.value ? Number(e.target.value) : 0)}
+                placeholder="0"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="saturated_fat">Saturated Fatty Acids (g)</Label>
-            <Input
-              id="saturated_fat"
-              type="number"
-              step="0.1"
-              value={(data.saturated_fat as number) || 0}
-              onChange={(e) => handleChange('saturated_fat', e.target.value ? Number(e.target.value) : 0)}
-              placeholder="0"
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="saturated_fat">Saturated Fatty Acids (g)</Label>
+              <Input
+                id="saturated_fat"
+                type="number"
+                step="0.1"
+                value={(data.saturated_fat as number) || 0}
+                onChange={(e) => handleChange('saturated_fat', e.target.value ? Number(e.target.value) : 0)}
+                placeholder="0"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="proteins">Proteins (g)</Label>
-            <Input
-              id="proteins"
-              type="number"
-              step="0.1"
-              value={(data.proteins as number) || 0}
-              onChange={(e) => handleChange('proteins', e.target.value ? Number(e.target.value) : 0)}
-              placeholder="0"
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="proteins">Proteins (g)</Label>
+              <Input
+                id="proteins"
+                type="number"
+                step="0.1"
+                value={(data.proteins as number) || 0}
+                onChange={(e) => handleChange('proteins', e.target.value ? Number(e.target.value) : 0)}
+                placeholder="0"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="salt">Salt (g)</Label>
-            <Input
-              id="salt"
-              type="number"
-              step="0.01"
-              value={(data.salt as number) || 0}
-              onChange={(e) => handleChange('salt', e.target.value ? Number(e.target.value) : 0)}
-              placeholder="0"
+            <div className="space-y-2">
+              <Label htmlFor="salt">Salt (g)</Label>
+              <Input
+                id="salt"
+                type="number"
+                step="0.01"
+                value={(data.salt as number) || 0}
+                onChange={(e) => handleChange('salt', e.target.value ? Number(e.target.value) : 0)}
+                placeholder="0"
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Checkbox
+              id="group_small_quantities"
+              checked={(data.group_small_quantities as boolean) !== false}
+              onCheckedChange={(checked) => handleChange('group_small_quantities', checked)}
             />
+            <Label htmlFor="group_small_quantities" className="text-sm font-normal cursor-pointer">
+              Group small quantities (display as "Contains small quantities of...")
+            </Label>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Electronic Label Display Options */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Electronic Label Display Options</CardTitle>
+          <CardDescription>
+            Choose which analysis data to show on the electronic label (optional)
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-6">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="show_alcohol_on_label"
+                checked={(data.show_alcohol_on_label as boolean) || false}
+                onCheckedChange={(checked) => handleChange('show_alcohol_on_label', checked)}
+              />
+              <Label htmlFor="show_alcohol_on_label" className="text-sm font-normal cursor-pointer">
+                Alcohol
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="show_residual_sugar_on_label"
+                checked={(data.show_residual_sugar_on_label as boolean) || false}
+                onCheckedChange={(checked) => handleChange('show_residual_sugar_on_label', checked)}
+              />
+              <Label htmlFor="show_residual_sugar_on_label" className="text-sm font-normal cursor-pointer">
+                Residual Sugar
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="show_total_acidity_on_label"
+                checked={(data.show_total_acidity_on_label as boolean) || false}
+                onCheckedChange={(checked) => handleChange('show_total_acidity_on_label', checked)}
+              />
+              <Label htmlFor="show_total_acidity_on_label" className="text-sm font-normal cursor-pointer">
+                Total Acidity (C₄H₆O₆)
+              </Label>
+            </div>
           </div>
         </CardContent>
       </Card>
