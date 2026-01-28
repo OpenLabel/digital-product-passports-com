@@ -271,13 +271,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
             <p className="text-sm font-medium mb-3">Calculated Values (per 100ml)</p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="space-y-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between">
                   <Label htmlFor="energy_kcal" className="text-sm">Energy (kcal)</Label>
-                  <Checkbox
-                    id="energy_kcal_manual"
-                    checked={(data.energy_kcal_manual as boolean) || false}
-                    onCheckedChange={(checked) => handleChange('energy_kcal_manual', checked)}
-                  />
+                  <label htmlFor="energy_kcal_manual" className="flex items-center gap-1.5 cursor-pointer">
+                    <Checkbox
+                      id="energy_kcal_manual"
+                      checked={(data.energy_kcal_manual as boolean) || false}
+                      onCheckedChange={(checked) => handleChange('energy_kcal_manual', checked)}
+                    />
+                    <span className="text-xs text-muted-foreground">Manual</span>
+                  </label>
                 </div>
                 <Input
                   id="energy_kcal"
@@ -290,13 +293,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between">
                   <Label htmlFor="energy_kj" className="text-sm">Energy (kJ)</Label>
-                  <Checkbox
-                    id="energy_kj_manual"
-                    checked={(data.energy_kj_manual as boolean) || false}
-                    onCheckedChange={(checked) => handleChange('energy_kj_manual', checked)}
-                  />
+                  <label htmlFor="energy_kj_manual" className="flex items-center gap-1.5 cursor-pointer">
+                    <Checkbox
+                      id="energy_kj_manual"
+                      checked={(data.energy_kj_manual as boolean) || false}
+                      onCheckedChange={(checked) => handleChange('energy_kj_manual', checked)}
+                    />
+                    <span className="text-xs text-muted-foreground">Manual</span>
+                  </label>
                 </div>
                 <Input
                   id="energy_kj"
@@ -309,13 +315,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between">
                   <Label htmlFor="carbohydrates" className="text-sm">Carbohydrates (g)</Label>
-                  <Checkbox
-                    id="carbohydrates_manual"
-                    checked={(data.carbohydrates_manual as boolean) || false}
-                    onCheckedChange={(checked) => handleChange('carbohydrates_manual', checked)}
-                  />
+                  <label htmlFor="carbohydrates_manual" className="flex items-center gap-1.5 cursor-pointer">
+                    <Checkbox
+                      id="carbohydrates_manual"
+                      checked={(data.carbohydrates_manual as boolean) || false}
+                      onCheckedChange={(checked) => handleChange('carbohydrates_manual', checked)}
+                    />
+                    <span className="text-xs text-muted-foreground">Manual</span>
+                  </label>
                 </div>
                 <Input
                   id="carbohydrates"
@@ -329,13 +338,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               </div>
 
               <div className="space-y-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between">
                   <Label htmlFor="sugar" className="text-sm">Sugar (g)</Label>
-                  <Checkbox
-                    id="sugar_manual"
-                    checked={(data.sugar_manual as boolean) || false}
-                    onCheckedChange={(checked) => handleChange('sugar_manual', checked)}
-                  />
+                  <label htmlFor="sugar_manual" className="flex items-center gap-1.5 cursor-pointer">
+                    <Checkbox
+                      id="sugar_manual"
+                      checked={(data.sugar_manual as boolean) || false}
+                      onCheckedChange={(checked) => handleChange('sugar_manual', checked)}
+                    />
+                    <span className="text-xs text-muted-foreground">Manual</span>
+                  </label>
                 </div>
                 <Input
                   id="sugar"
@@ -348,9 +360,6 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 />
               </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              Check the box next to a field to override the calculated value
-            </p>
             <div className="flex items-center gap-2 mt-4">
               <Checkbox
                 id="show_exact_values"
