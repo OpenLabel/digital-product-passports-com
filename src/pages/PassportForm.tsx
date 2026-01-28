@@ -15,6 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import { RichTextEditor } from '@/components/RichTextEditor';
 import { ImageUpload } from '@/components/ImageUpload';
 import { CategoryQuestions } from '@/components/CategoryQuestions';
+import { WineFields } from '@/components/WineFields';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 
 interface FormData {
@@ -68,7 +69,7 @@ export default function PassportForm() {
     e.preventDefault();
     
     if (!formData.name.trim()) {
-      toast({ title: 'Error', description: 'Please enter a passport name', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Please enter a product name', variant: 'destructive' });
       return;
     }
 
@@ -126,12 +127,12 @@ export default function PassportForm() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Passport Name *</Label>
+                <Label htmlFor="name">Product Name *</Label>
                 <Input
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Enter a name for this product passport"
+                  placeholder="Enter a name for this product"
                 />
               </div>
 
@@ -161,6 +162,14 @@ export default function PassportForm() {
             </CardContent>
           </Card>
 
+          {/* Wine-specific fields (shown before description for wine category) */}
+          {formData.category === 'wine' && (
+            <WineFields
+              data={(formData.category_data as Record<string, unknown>) || {}}
+              onChange={(data) => setFormData({ ...formData, category_data: data })}
+            />
+          )}
+
           {/* Product Image */}
           <Card>
             <CardHeader>
@@ -188,7 +197,7 @@ export default function PassportForm() {
             </CardContent>
           </Card>
 
-          {/* Category-Specific Questions */}
+          {/* Category-Specific Questions (for non-wine categories or additional wine fields) */}
           <div>
             <h2 className="text-lg font-semibold mb-4">
               {categoryList.find(c => c.value === formData.category)?.icon}{' '}
