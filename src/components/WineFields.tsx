@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { sugarClassifications, volumeUnits, wineCountries } from '@/templates/wine';
+import { volumeUnits, wineCountries } from '@/templates/wine';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -109,12 +109,9 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
             <Label htmlFor="vintage">Vintage</Label>
             <Input
               id="vintage"
-              type="number"
-              value={(data.vintage as number) || ''}
-              onChange={(e) => handleChange('vintage', e.target.value ? Number(e.target.value) : '')}
-              placeholder="e.g., 2020"
-              min={1900}
-              max={new Date().getFullYear()}
+              value={(data.vintage as string) || ''}
+              onChange={(e) => handleChange('vintage', e.target.value)}
+              placeholder="e.g., 2020, NV, Multi-vintage"
             />
           </div>
 
@@ -187,21 +184,12 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
 
           <div className="space-y-2 sm:col-span-2">
             <Label htmlFor="sugar_classification">Sugar Classification</Label>
-            <Select
+            <Input
+              id="sugar_classification"
               value={(data.sugar_classification as string) || ''}
-              onValueChange={(val) => handleChange('sugar_classification', val)}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select classification" />
-              </SelectTrigger>
-              <SelectContent>
-                {sugarClassifications.map((cls) => (
-                  <SelectItem key={cls.value} value={cls.value}>
-                    {cls.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              onChange={(e) => handleChange('sugar_classification', e.target.value)}
+              placeholder="e.g., Brut, Sec, Demi-Sec, Doux"
+            />
           </div>
         </CardContent>
       </Card>
