@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { volumeUnits, wineCountries } from '@/templates/wine';
+import { WineIngredients } from '@/components/wine/WineIngredients';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -88,6 +89,9 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
 
   return (
     <div className="space-y-6">
+      {/* Ingredients */}
+      <WineIngredients data={data} onChange={onChange} />
+
       {/* Product Identity */}
       <Card>
         <CardHeader>
