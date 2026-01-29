@@ -4,7 +4,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github, Sparkles, Upload, FileText, Camera } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 
 // Category data based on EU DPP research document
@@ -275,6 +275,100 @@ export default function Index() {
                 </p>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Autofill Section */}
+      <section className="py-20 md:py-28 bg-gradient-to-br from-violet-50 via-fuchsia-50 to-amber-50 dark:from-violet-950/30 dark:via-fuchsia-950/30 dark:to-amber-950/30 relative overflow-hidden">
+        {/* Animated gradient orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-fuchsia-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge className="mb-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white border-0">
+                <Sparkles className="h-3 w-3 mr-1" />
+                AI-Powered
+              </Badge>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-600 bg-clip-text text-transparent">
+                Autofill with AI
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Stop typing manually. Upload a photo of your product label or any document, 
+                and our AI extracts all the data automatically in seconds.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <Card className="bg-background/80 backdrop-blur-sm border-2 border-violet-200 dark:border-violet-800 hover:border-violet-400 dark:hover:border-violet-600 transition-all hover:shadow-xl hover:shadow-violet-500/10">
+                <CardContent className="pt-6 text-center">
+                  <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-violet-500/30">
+                    <Camera className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">Snap a Photo</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Take a picture of your wine label, product packaging, or any label with product information.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-background/80 backdrop-blur-sm border-2 border-fuchsia-200 dark:border-fuchsia-800 hover:border-fuchsia-400 dark:hover:border-fuchsia-600 transition-all hover:shadow-xl hover:shadow-fuchsia-500/10">
+                <CardContent className="pt-6 text-center">
+                  <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-amber-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-fuchsia-500/30">
+                    <FileText className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">Upload Documents</h3>
+                  <p className="text-sm text-muted-foreground">
+                    PDF datasheets, Word documents, Excel specs — upload any file and we'll extract the relevant data.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-background/80 backdrop-blur-sm border-2 border-amber-200 dark:border-amber-800 hover:border-amber-400 dark:hover:border-amber-600 transition-all hover:shadow-xl hover:shadow-amber-500/10">
+                <CardContent className="pt-6 text-center">
+                  <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30">
+                    <Sparkles className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">AI Extracts Data</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Our vision AI reads and understands your documents, filling in all passport fields automatically.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-background/90 backdrop-blur-sm rounded-2xl border-2 border-dashed border-violet-300 dark:border-violet-700 p-8 text-center">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 flex items-center justify-center animate-pulse">
+                  <Upload className="h-6 w-6 text-white" />
+                </div>
+                <div className="text-left">
+                  <h4 className="font-semibold">Works with multiple uploads</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Upload multiple photos or documents sequentially — AI merges data intelligently
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
+                <Badge variant="outline">Wine Labels</Badge>
+                <Badge variant="outline">Battery Specs</Badge>
+                <Badge variant="outline">Textile Composition</Badge>
+                <Badge variant="outline">Safety Datasheets</Badge>
+                <Badge variant="outline">Nutrition Facts</Badge>
+                <Badge variant="outline">Technical PDFs</Badge>
+              </div>
+            </div>
+
+            <div className="text-center mt-10">
+              <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 shadow-lg shadow-violet-500/30" asChild>
+                <Link to="/auth">
+                  Try AI Autofill Free <Sparkles className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
