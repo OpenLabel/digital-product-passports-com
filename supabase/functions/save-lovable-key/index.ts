@@ -27,28 +27,46 @@ serve(async (req) => {
     const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
-    // Require authentication
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader?.startsWith("Bearer ")) {
-      return new Response(
-        JSON.stringify({ success: false, error: "Unauthorized" }),
-        { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
-    }
+    // Use service role client to check setup status (no auth needed for this check)
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Verify the user is authenticated
-    const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
-      global: { headers: { Authorization: authHeader } }
-    });
+    // Check if setup is already complete
+    const { data: setupData } = await supabase
+      .from("site_config")
+      .select("value")
+      .eq("key", "setup_complete")
+      .single();
 
-    const token = authHeader.replace("Bearer ", "");
-    const { data: claimsData, error: claimsError } = await supabaseAuth.auth.getClaims(token);
-    
-    if (claimsError || !claimsData?.claims) {
-      return new Response(
-        JSON.stringify({ success: false, error: "Unauthorized" }),
-        { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
-      );
+    const isSetupComplete = setupData?.value === "true";
+
+    // If setup is complete, require authentication
+    if (isSetupComplete) {
+      const authHeader = req.headers.get("Authorization");
+      if (!authHeader?.startsWith("Bearer ")) {
+        return new Response(
+          JSON.stringify({ success: false, error: "Unauthorized" }),
+          { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
+
+      // Verify the user is authenticated
+      const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
+        global: { headers: { Authorization: authHeader } }
+      });
+
+      const token = authHeader.replace("Bearer ", "");
+      const { data: claimsData, error: claimsError } = await supabaseAuth.auth.getClaims(token);
+      
+      if (claimsError || !claimsData?.claims) {
+        return new Response(
+          JSON.stringify({ success: false, error: "Unauthorized" }),
+          { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
+
+      console.log("Authenticated request from user:", claimsData.claims.sub);
+    } else {
+      console.log("Initial setup mode - allowing unauthenticated access");
     }
 
     // Parse and validate input
@@ -74,9 +92,6 @@ serve(async (req) => {
     }
 
     const { lovableApiKey } = parseResult.data;
-
-    // Use service role client for database operations
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Check if key already exists - only allow initial setup
     const { data: existingKey } = await supabase.rpc("encrypted_secret_exists", {
@@ -117,7 +132,7 @@ serve(async (req) => {
       // Non-fatal - the encrypted key is what matters
     }
 
-    console.log("Lovable API key saved successfully (encrypted) by user:", claimsData.claims.sub);
+    console.log("Lovable API key saved successfully (encrypted)");
 
     return new Response(
       JSON.stringify({ success: true, maskedKey }),
