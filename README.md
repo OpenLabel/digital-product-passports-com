@@ -16,16 +16,27 @@ Create compliant Digital Product Passports in minutes, no installation needed.
 
 ---
 
-## 🖥️ Self-Hosting Guide
+## 🖥️ Self-Hosting Options
 
-Want to run your own instance? Follow the steps below.
+There are **two ways** to self-host this application:
+
+| Option | Best For | Complexity |
+|--------|----------|------------|
+| **Supabase Cloud** | Most users, quick setup | ⭐ Easy |
+| **Self-Hosted Supabase** | Air-gapped environments, full control | ⭐⭐⭐ Advanced |
+
+---
+
+## Option 1: Supabase Cloud (Recommended)
+
+Use Supabase's free cloud tier for the easiest setup.
 
 ### Prerequisites
 
-Create free accounts on these services first:
+Create free accounts on:
 
-1. **[Supabase](https://supabase.com)** — Database & Authentication
-2. **[Resend](https://resend.com)** — Email notifications (100 free emails/day)
+1. **[Supabase](https://supabase.com)** — Database & Authentication (free tier: 500MB, 2 projects)
+2. **[Resend](https://resend.com)** — Email notifications (free tier: 100 emails/day)
 
 ### One-Command Setup
 
@@ -54,7 +65,148 @@ After completion, run `npm run build` and deploy the `dist` folder!
 
 ---
 
-## 📋 Manual Setup (Alternative)
+## Option 2: Self-Hosted Supabase (Full Control)
+
+For enterprise, air-gapped, or fully on-premises deployments, you can run Supabase itself on your own servers using Docker.
+
+### Why Self-Host Supabase?
+
+- ✅ **100% data sovereignty** — Everything runs on your infrastructure
+- ✅ **Air-gapped deployments** — No external network calls
+- ✅ **No vendor lock-in** — Full control over your stack
+- ✅ **Compliance** — Meet strict regulatory requirements (GDPR, etc.)
+
+### Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Your Infrastructure                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐    ┌──────────────────────────────────┐   │
+│  │   Frontend   │    │      Self-Hosted Supabase        │   │
+│  │   (React)    │───▶│  ┌────────────────────────────┐  │   │
+│  │              │    │  │  PostgreSQL   (database)   │  │   │
+│  └──────────────┘    │  │  GoTrue       (auth)       │  │   │
+│         │            │  │  PostgREST    (API)        │  │   │
+│         │            │  │  Storage      (files)      │  │   │
+│         ▼            │  │  Edge Runtime (functions)  │  │   │
+│  ┌──────────────┐    │  │  Studio       (dashboard)  │  │   │
+│  │    Nginx     │    │  └────────────────────────────┘  │   │
+│  │  (optional)  │    └──────────────────────────────────┘   │
+│  └──────────────┘                                            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Step 1: Deploy Self-Hosted Supabase
+
+Follow the official Supabase self-hosting guide:
+
+📖 **[Supabase Self-Hosting with Docker](https://supabase.com/docs/guides/self-hosting/docker)**
+
+Quick start:
+
+```bash
+# Clone Supabase Docker setup
+git clone --depth 1 https://github.com/supabase/supabase
+cd supabase/docker
+
+# Copy example config
+cp .env.example .env
+
+# ⚠️ IMPORTANT: Edit .env and change these values:
+# - POSTGRES_PASSWORD (use a strong password)
+# - JWT_SECRET (generate with: openssl rand -base64 32)
+# - ANON_KEY (generate at https://supabase.com/docs/guides/self-hosting#api-keys)
+# - SERVICE_ROLE_KEY (generate at same URL)
+
+# Start Supabase
+docker compose up -d
+```
+
+Your self-hosted Supabase will be available at:
+- **API**: `http://localhost:8000`
+- **Studio Dashboard**: `http://localhost:3000`
+
+### Step 2: Configure This Application
+
+Create a `.env` file pointing to your self-hosted Supabase:
+
+```bash
+# Point to your self-hosted Supabase instance
+VITE_SUPABASE_URL=http://localhost:8000
+VITE_SUPABASE_PUBLISHABLE_KEY=your-generated-anon-key
+VITE_SUPABASE_PROJECT_ID=self-hosted
+```
+
+> **Production note**: Replace `localhost` with your actual server hostname/IP.
+
+### Step 3: Apply Database Schema
+
+Connect to your self-hosted PostgreSQL and run the migrations:
+
+```bash
+# Option A: Using Supabase CLI (if configured)
+supabase db push --db-url postgresql://postgres:your-password@localhost:5432/postgres
+
+# Option B: Using psql directly
+psql postgresql://postgres:your-password@localhost:5432/postgres < supabase/migrations/*.sql
+```
+
+### Step 4: Configure Edge Functions
+
+For self-hosted Supabase, you have two options for backend functions:
+
+**Option A: Supabase Edge Runtime (Docker)**
+
+The self-hosted Docker setup includes `supabase/edge-runtime`. Deploy functions to it:
+
+```bash
+# Copy functions to the edge-runtime volume
+docker cp supabase/functions/. supabase-edge-functions:/home/deno/functions/
+```
+
+**Option B: Run as Standalone Deno Server**
+
+If you prefer not to use edge-runtime, the functions can run as a standalone Deno server:
+
+```bash
+cd supabase/functions
+deno run --allow-net --allow-env --allow-read index.ts
+```
+
+### Step 5: Set Secrets for Functions
+
+For self-hosted deployments, set environment variables directly:
+
+```bash
+# In your docker-compose.yml or .env for edge functions:
+RESEND_API_KEY=re_xxxxxxxxxx
+LOVABLE_API_KEY=your_key_here  # Optional, for AI features
+```
+
+### Step 6: Build and Deploy Frontend
+
+```bash
+npm install
+npm run build
+# Deploy 'dist' folder to your web server (Nginx, Apache, etc.)
+```
+
+### Production Checklist for Self-Hosted
+
+- [ ] Use HTTPS (TLS certificates via Let's Encrypt or similar)
+- [ ] Set strong passwords for PostgreSQL and JWT secrets
+- [ ] Configure firewall rules (only expose ports 80/443)
+- [ ] Set up automated backups for PostgreSQL
+- [ ] Monitor disk space (especially for storage bucket)
+- [ ] Configure log rotation
+- [ ] Set up health checks / monitoring
+
+---
+
+## 📋 Manual Setup (Cloud Option)
 
 If you prefer to run commands manually, or if you're on Windows without WSL:
 
@@ -142,11 +294,11 @@ npm run build
 
 ---
 
-## 🖥️ Deployment Options
+## 🖥️ Frontend Deployment Options
 
 After setup, deploy the `dist` folder using any of these options:
 
-### Vercel (Recommended)
+### Vercel (Recommended for Cloud)
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenLabel%2Fdigital-product-passports-com&env=VITE_SUPABASE_URL,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PROJECT_ID)
 
