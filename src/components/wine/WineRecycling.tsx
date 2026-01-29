@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { Plus, X, Upload, FileEdit } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import {
@@ -20,20 +19,12 @@ interface WineRecyclingProps {
   onChange: (data: Record<string, unknown>) => void;
 }
 
-type RecyclingMode = 'manual' | 'pdf';
-
 export function WineRecycling({ data, onChange }: WineRecyclingProps) {
   const [addMaterialOpen, setAddMaterialOpen] = useState(false);
   const [customTypeOpen, setCustomTypeOpen] = useState(false);
   const [customTypeName, setCustomTypeName] = useState('');
 
-  const recyclingMode = (data.recycling_mode as RecyclingMode) || 'manual';
   const materials = (data.packaging_materials as PackagingMaterial[]) || [];
-  const pdfUrl = (data.recycling_pdf_url as string) || '';
-
-  const handleModeChange = (mode: RecyclingMode) => {
-    onChange({ ...data, recycling_mode: mode });
-  };
 
   const handleAddMaterial = (typeId: string, typeName: string, isCustom = false) => {
     const newMaterial: PackagingMaterial = {
@@ -105,160 +96,112 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
       <CardHeader>
         <CardTitle className="text-lg">Recycling Information</CardTitle>
         <CardDescription>
-          If you have a PDF with recycling information, you can link it. Otherwise, select the materials used for your wine packaging.
+          Select the materials used for your wine packaging.
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Input Mode Selection */}
-        <div className="border rounded-lg p-4">
-          <RadioGroup
-            value={recyclingMode}
-            onValueChange={(val) => handleModeChange(val as RecyclingMode)}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-8"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="manual" id="mode-manual" />
-              <Label htmlFor="mode-manual" className="font-normal cursor-pointer flex items-center gap-2">
-                <FileEdit className="h-4 w-4" />
-                Manual entry of recycling info
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="pdf" id="mode-pdf" />
-              <Label htmlFor="mode-pdf" className="font-normal cursor-pointer flex items-center gap-2">
-                <Upload className="h-4 w-4" />
-                Link to PDF file
-              </Label>
-            </div>
-          </RadioGroup>
-        </div>
+      <CardContent className="space-y-4">
+        {/* Materials List */}
+        {materials.length > 0 && (
+          <div className="space-y-3">
+            {materials.map((material) => (
+              <div
+                key={material.id}
+                className="flex flex-col sm:flex-row gap-3 p-4 border rounded-lg bg-muted/30"
+              >
+                <div className="flex items-center gap-3 min-w-[140px]">
+                  <span className="text-2xl">
+                    {material.isCustomType ? '📦' : getMaterialIcon(material.typeId)}
+                  </span>
+                  <span className="font-medium">{material.typeName}</span>
+                </div>
 
-        {/* PDF Upload Mode */}
-        {recyclingMode === 'pdf' && (
-          <div className="space-y-2">
-            <Label htmlFor="pdf-url">PDF URL</Label>
-            <Input
-              id="pdf-url"
-              type="url"
-              placeholder="https://example.com/recycling-info.pdf"
-              value={pdfUrl}
-              onChange={(e) => onChange({ ...data, recycling_pdf_url: e.target.value })}
-            />
-            <p className="text-xs text-muted-foreground">
-              Enter the URL of your recycling information PDF
-            </p>
-          </div>
-        )}
-
-
-        {/* Manual Entry Mode */}
-        {recyclingMode === 'manual' && (
-          <div className="space-y-4">
-            {/* Materials List */}
-            {materials.length > 0 && (
-              <div className="space-y-3">
-                {materials.map((material) => (
-                  <div
-                    key={material.id}
-                    className="flex flex-col sm:flex-row gap-3 p-4 border rounded-lg bg-muted/30"
+                <div className="flex-1 grid gap-3 sm:grid-cols-2">
+                  <Select
+                    value={material.compositionId || ''}
+                    onValueChange={(val) => {
+                      if (val === 'custom') {
+                        handleMaterialChange(material.id, 'compositionId', '');
+                      } else {
+                        handleMaterialChange(material.id, 'compositionId', val);
+                      }
+                    }}
                   >
-                    <div className="flex items-center gap-3 min-w-[140px]">
-                      <span className="text-2xl">
-                        {material.isCustomType ? '📦' : getMaterialIcon(material.typeId)}
-                      </span>
-                      <span className="font-medium">{material.typeName}</span>
-                    </div>
-
-                    <div className="flex-1 grid gap-3 sm:grid-cols-2">
-                      <Select
-                        value={material.compositionId || ''}
-                        onValueChange={(val) => {
-                          if (val === 'custom') {
-                            // Handle custom composition
-                            handleMaterialChange(material.id, 'compositionId', '');
-                          } else {
-                            handleMaterialChange(material.id, 'compositionId', val);
-                          }
-                        }}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select material" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectGroup>
-                            <SelectLabel className="font-bold text-foreground">Individual Components</SelectLabel>
-                          </SelectGroup>
-                          {compositionsByCategory.individual.map((cat) => (
-                            <SelectGroup key={cat.id}>
-                              <SelectLabel>{cat.name}</SelectLabel>
-                              {cat.compositions.map((comp) => (
-                                <SelectItem key={comp.id} value={comp.id}>
-                                  {comp.name} <span className="font-semibold">({comp.code})</span>
-                                </SelectItem>
-                              ))}
-                            </SelectGroup>
-                          ))}
-                          <SelectGroup>
-                            <SelectLabel className="font-bold text-foreground">Composite Components</SelectLabel>
-                          </SelectGroup>
-                          {compositionsByCategory.composite.map((cat) => (
-                            <SelectGroup key={cat.id}>
-                              {cat.compositions.map((comp) => (
-                                <SelectItem key={comp.id} value={comp.id}>
-                                  {comp.name} <span className="font-semibold">({comp.code})</span>
-                                </SelectItem>
-                              ))}
-                            </SelectGroup>
-                          ))}
-                          <SelectGroup>
-                            <SelectLabel className="font-bold text-foreground">Custom Material</SelectLabel>
-                            <SelectItem value="custom">Add custom material</SelectItem>
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
-
-                      <Select
-                        value={material.disposalMethodId || ''}
-                        onValueChange={(val) =>
-                          handleMaterialChange(material.id, 'disposalMethodId', val)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Disposal advice" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {disposalMethods.map((method) => (
-                            <SelectItem key={method.id} value={method.id}>
-                              {method.name}
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select material" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel className="font-bold text-foreground">Individual Components</SelectLabel>
+                      </SelectGroup>
+                      {compositionsByCategory.individual.map((cat) => (
+                        <SelectGroup key={cat.id}>
+                          <SelectLabel>{cat.name}</SelectLabel>
+                          {cat.compositions.map((comp) => (
+                            <SelectItem key={comp.id} value={comp.id}>
+                              {comp.name} <span className="font-semibold">({comp.code})</span>
                             </SelectItem>
                           ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                        </SelectGroup>
+                      ))}
+                      <SelectGroup>
+                        <SelectLabel className="font-bold text-foreground">Composite Components</SelectLabel>
+                      </SelectGroup>
+                      {compositionsByCategory.composite.map((cat) => (
+                        <SelectGroup key={cat.id}>
+                          {cat.compositions.map((comp) => (
+                            <SelectItem key={comp.id} value={comp.id}>
+                              {comp.name} <span className="font-semibold">({comp.code})</span>
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      ))}
+                      <SelectGroup>
+                        <SelectLabel className="font-bold text-foreground">Custom Material</SelectLabel>
+                        <SelectItem value="custom">Add custom material</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
 
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveMaterial(material.id)}
-                      className="self-start p-2 hover:bg-muted rounded"
-                    >
-                      <X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
-                    </button>
-                  </div>
-                ))}
+                  <Select
+                    value={material.disposalMethodId || ''}
+                    onValueChange={(val) =>
+                      handleMaterialChange(material.id, 'disposalMethodId', val)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Disposal advice" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {disposalMethods.map((method) => (
+                        <SelectItem key={method.id} value={method.id}>
+                          {method.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => handleRemoveMaterial(material.id)}
+                  className="self-start p-2 hover:bg-muted rounded"
+                >
+                  <X className="h-4 w-4 text-muted-foreground hover:text-destructive" />
+                </button>
               </div>
-            )}
-
-            {/* Add Material Button */}
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setAddMaterialOpen(true)}
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Add material
-            </Button>
+            ))}
           </div>
         )}
+
+        {/* Add Material Button */}
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => setAddMaterialOpen(true)}
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          Add material
+        </Button>
       </CardContent>
 
       {/* Add Material Dialog */}
