@@ -10,6 +10,7 @@ import { WineIngredients } from '@/components/wine/WineIngredients';
 import { WineRecycling } from '@/components/wine/WineRecycling';
 import { WineAIAutofill } from '@/components/wine/WineAIAutofill';
 import { calculateWineNutrition } from '@/lib/wineCalculations';
+import { TranslationButton, Translations } from '@/components/TranslationButton';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -17,7 +18,9 @@ interface WineFieldsProps {
 }
 
 export function WineFields({ data, onChange }: WineFieldsProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const currentLanguage = i18n.language.split('-')[0]; // Get base language code
 
   const handleChange = (id: string, value: unknown) => {
     onChange({ ...data, [id]: value });
@@ -184,22 +187,44 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
 
           <div className="space-y-2">
             <Label htmlFor="denomination">{t('wine.denomination')}</Label>
-            <Input
-              id="denomination"
-              value={(data.denomination as string) || ''}
-              onChange={(e) => handleChange('denomination', e.target.value)}
-              placeholder={t('wine.placeholders.denomination')}
-            />
+            <div className="flex gap-2">
+              <Input
+                id="denomination"
+                value={(data.denomination as string) || ''}
+                onChange={(e) => handleChange('denomination', e.target.value)}
+                placeholder={t('wine.placeholders.denomination')}
+                className="flex-1"
+              />
+              <TranslationButton
+                value={(data.denomination as string) || ''}
+                sourceLanguage={currentLanguage}
+                translations={(data.denomination_translations as Translations) || {}}
+                onSave={(translations) => handleChange('denomination_translations', translations)}
+                fieldLabel={t('wine.denomination')}
+                disabled={!data.denomination}
+              />
+            </div>
           </div>
 
           <div className="space-y-2 sm:col-span-2">
             <Label htmlFor="sugar_classification">{t('wine.sugarClassification')}</Label>
-            <Input
-              id="sugar_classification"
-              value={(data.sugar_classification as string) || ''}
-              onChange={(e) => handleChange('sugar_classification', e.target.value)}
-              placeholder={t('wine.placeholders.sugarClassification')}
-            />
+            <div className="flex gap-2">
+              <Input
+                id="sugar_classification"
+                value={(data.sugar_classification as string) || ''}
+                onChange={(e) => handleChange('sugar_classification', e.target.value)}
+                placeholder={t('wine.placeholders.sugarClassification')}
+                className="flex-1"
+              />
+              <TranslationButton
+                value={(data.sugar_classification as string) || ''}
+                sourceLanguage={currentLanguage}
+                translations={(data.sugar_classification_translations as Translations) || {}}
+                onSave={(translations) => handleChange('sugar_classification_translations', translations)}
+                fieldLabel={t('wine.sugarClassification')}
+                disabled={!data.sugar_classification}
+              />
+            </div>
           </div>
         </CardContent>
       </Card>

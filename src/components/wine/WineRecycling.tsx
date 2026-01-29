@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Plus, X } from 'lucide-react';
+import { Plus, X, Pencil } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { TranslationButton, Translations } from '@/components/TranslationButton';
 import {
   packagingMaterialTypes,
   getCompositionsByCategory,
@@ -15,21 +16,38 @@ import {
   materialCompositions,
 } from '@/data/wineRecycling';
 
+// Extended PackagingMaterial with translations
+interface PackagingMaterialWithTranslations extends PackagingMaterial {
+  customTypeNameTranslations?: Translations;
+}
+
 interface WineRecyclingProps {
   data: Record<string, unknown>;
   onChange: (data: Record<string, unknown>) => void;
 }
 
 export function WineRecycling({ data, onChange }: WineRecyclingProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [addMaterialOpen, setAddMaterialOpen] = useState(false);
   const [customTypeOpen, setCustomTypeOpen] = useState(false);
   const [customTypeName, setCustomTypeName] = useState('');
+  const [customTypeTranslations, setCustomTypeTranslations] = useState<Translations>({});
+  const [editingMaterial, setEditingMaterial] = useState<PackagingMaterialWithTranslations | null>(null);
 
-  const materials = (data.packaging_materials as PackagingMaterial[]) || [];
+  const currentLanguage = i18n.language.split('-')[0];
+  const materials = (data.packaging_materials as PackagingMaterialWithTranslations[]) || [];
+
+  // Reset form when dialog closes
+  useEffect(() => {
+    if (!customTypeOpen) {
+      setCustomTypeName('');
+      setCustomTypeTranslations({});
+      setEditingMaterial(null);
+    }
+  }, [customTypeOpen]);
 
   const handleAddMaterial = (typeId: string, typeName: string, isCustom = false) => {
-    const newMaterial: PackagingMaterial = {
+    const newMaterial: PackagingMaterialWithTranslations = {
       id: `mat_${Date.now()}`,
       typeId: isCustom ? 'custom' : typeId,
       typeName: isCustom ? typeName : typeName,
@@ -45,10 +63,51 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
 
   const handleAddCustomType = () => {
     if (customTypeName.trim()) {
-      handleAddMaterial('custom', customTypeName.trim(), true);
+      const newMaterial: PackagingMaterialWithTranslations = {
+        id: `mat_${Date.now()}`,
+        typeId: 'custom',
+        typeName: customTypeName.trim(),
+        isCustomType: true,
+        customTypeName: customTypeName.trim(),
+        customTypeNameTranslations: Object.keys(customTypeTranslations).length > 0 ? customTypeTranslations : undefined,
+      };
+      onChange({
+        ...data,
+        packaging_materials: [...materials, newMaterial],
+      });
       setCustomTypeName('');
+      setCustomTypeTranslations({});
       setCustomTypeOpen(false);
     }
+  };
+
+  const handleUpdateCustomType = () => {
+    if (editingMaterial && customTypeName.trim()) {
+      onChange({
+        ...data,
+        packaging_materials: materials.map((m) =>
+          m.id === editingMaterial.id
+            ? {
+                ...m,
+                typeName: customTypeName.trim(),
+                customTypeName: customTypeName.trim(),
+                customTypeNameTranslations: Object.keys(customTypeTranslations).length > 0 ? customTypeTranslations : undefined,
+              }
+            : m
+        ),
+      });
+      setCustomTypeName('');
+      setCustomTypeTranslations({});
+      setEditingMaterial(null);
+      setCustomTypeOpen(false);
+    }
+  };
+
+  const handleEditCustomMaterial = (material: PackagingMaterialWithTranslations) => {
+    setEditingMaterial(material);
+    setCustomTypeName(material.customTypeName || material.typeName);
+    setCustomTypeTranslations(material.customTypeNameTranslations || {});
+    setCustomTypeOpen(true);
   };
 
   const handleRemoveMaterial = (id: string) => {
@@ -93,6 +152,8 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
     return type?.icon || '📦';
   };
 
+  const isEditMode = !!editingMaterial;
+
   return (
     <Card>
       <CardHeader>
@@ -115,6 +176,16 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                     {material.isCustomType ? '📦' : getMaterialIcon(material.typeId)}
                   </span>
                   <span className="font-medium">{material.typeName}</span>
+                  {material.isCustomType && (
+                    <button
+                      type="button"
+                      onClick={() => handleEditCustomMaterial(material)}
+                      className="p-1 hover:bg-muted rounded"
+                      title={t('common.edit')}
+                    >
+                      <Pencil className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                    </button>
+                  )}
                 </div>
 
                 <div className="flex-1 grid gap-3 sm:grid-cols-2">
@@ -228,6 +299,9 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
               type="button"
               onClick={() => {
                 setAddMaterialOpen(false);
+                setEditingMaterial(null);
+                setCustomTypeName('');
+                setCustomTypeTranslations({});
                 setCustomTypeOpen(true);
               }}
               className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted text-left border-t mt-2 pt-4"
@@ -242,25 +316,44 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
       <Dialog open={customTypeOpen} onOpenChange={setCustomTypeOpen}>
         <DialogContent className="max-w-sm">
           <DialogHeader>
-            <DialogTitle>{t('recycling.addCustomType', 'Add custom material type')}</DialogTitle>
+            <DialogTitle>
+              {isEditMode 
+                ? t('recycling.editCustomType', 'Edit custom material type')
+                : t('recycling.addCustomType', 'Add custom material type')
+              }
+            </DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
               <Label htmlFor="custom-type-name">{t('recycling.materialName', 'Material name')}</Label>
-              <Input
-                id="custom-type-name"
-                placeholder={t('recycling.materialNamePlaceholder', 'e.g., Wooden crate')}
-                value={customTypeName}
-                onChange={(e) => setCustomTypeName(e.target.value)}
-              />
+              <div className="flex gap-2">
+                <Input
+                  id="custom-type-name"
+                  placeholder={t('recycling.materialNamePlaceholder', 'e.g., Wooden crate')}
+                  value={customTypeName}
+                  onChange={(e) => setCustomTypeName(e.target.value)}
+                  className="flex-1"
+                />
+                <TranslationButton
+                  value={customTypeName}
+                  sourceLanguage={currentLanguage}
+                  translations={customTypeTranslations}
+                  onSave={setCustomTypeTranslations}
+                  fieldLabel={t('recycling.materialName', 'Material name')}
+                  disabled={!customTypeName.trim()}
+                />
+              </div>
             </div>
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setCustomTypeOpen(false)}>
               {t('common.cancel')}
             </Button>
-            <Button onClick={handleAddCustomType} disabled={!customTypeName.trim()}>
-              {t('common.create')}
+            <Button 
+              onClick={isEditMode ? handleUpdateCustomType : handleAddCustomType} 
+              disabled={!customTypeName.trim()}
+            >
+              {isEditMode ? t('common.save') : t('common.create')}
             </Button>
           </DialogFooter>
         </DialogContent>

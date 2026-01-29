@@ -415,6 +415,7 @@
     "addPackagingMaterial": "Add packaging material",
     "customType": "Custom type",
     "addCustomType": "Add custom material type",
+    "editCustomType": "Edit custom material type",
     "materialName": "Material name",
     "materialNamePlaceholder": "e.g., Wooden crate"
   },
@@ -444,6 +445,7 @@
   },
   "customIngredient": {
     "title": "Define a custom ingredient",
+    "editTitle": "Edit custom ingredient",
     "ingredientName": "Ingredient name",
     "eNumber": "E-Number (optional)",
     "eNumberPlaceholder": "e.g., E 123",
@@ -458,5 +460,23 @@
     "title": "QR Code",
     "download": "Download QR Code",
     "copyLink": "Copy Link"
+  },
+  "translation": {
+    "title": "Translations",
+    "description": "Provide translations for all EU languages. Use AI to generate initial translations, then review and edit as needed.",
+    "manageTranslations": "Manage translations",
+    "translate": "Translate",
+    "sourceText": "Source text",
+    "empty": "(empty)",
+    "generateWithAI": "Generate with AI",
+    "enterTranslation": "Enter translation...",
+    "saveTranslations": "Save Translations",
+    "noSourceText": "No source text",
+    "enterTextFirst": "Please enter text in the field before generating translations.",
+    "generated": "Translations generated",
+    "reviewAndEdit": "Review and edit translations as needed.",
+    "error": "Translation error",
+    "errorDesc": "Failed to generate translations. Please try again.",
+    "saved": "Translations saved"
   }
 }

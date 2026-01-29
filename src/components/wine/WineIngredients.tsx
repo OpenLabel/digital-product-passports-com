@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Plus, GripVertical, X, AlertTriangle } from 'lucide-react';
+import { Plus, GripVertical, X, AlertTriangle, Pencil } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -16,6 +16,7 @@ interface SelectedIngredient {
   isAllergen?: boolean;
   isCustom?: boolean;
   category?: string;
+  nameTranslations?: Record<string, string>;
 }
 
 interface WineIngredientsProps {
@@ -27,6 +28,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
   const { t } = useTranslation();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [customOpen, setCustomOpen] = useState(false);
+  const [editingIngredient, setEditingIngredient] = useState<CustomIngredient | null>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const selectedIngredients = (data.ingredients as SelectedIngredient[]) || [];
@@ -71,6 +73,23 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
     });
   };
 
+  const handleUpdateCustom = (updatedIngredient: CustomIngredient) => {
+    onChange({
+      ...data,
+      ingredients: selectedIngredients.map((ing) =>
+        ing.id === updatedIngredient.id ? updatedIngredient : ing
+      ),
+    });
+    setEditingIngredient(null);
+  };
+
+  const handleEditCustomIngredient = (ingredient: SelectedIngredient) => {
+    if (ingredient.isCustom) {
+      setEditingIngredient(ingredient as CustomIngredient);
+      setCustomOpen(true);
+    }
+  };
+
   const handleRemoveIngredient = (id: string) => {
     onChange({
       ...data,
@@ -97,6 +116,13 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
 
   const handleDragEnd = () => {
     setDraggedIndex(null);
+  };
+
+  const handleCloseCustomDialog = (open: boolean) => {
+    setCustomOpen(open);
+    if (!open) {
+      setEditingIngredient(null);
+    }
   };
 
   const standardIngredientIds = useMemo(
@@ -135,7 +161,10 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
               type="button"
               variant="outline"
               className="flex-1"
-              onClick={() => setCustomOpen(true)}
+              onClick={() => {
+                setEditingIngredient(null);
+                setCustomOpen(true);
+              }}
             >
               <Plus className="h-4 w-4 mr-2" />
               {t('wine.defineCustom', 'Define custom ingredient')}
@@ -183,6 +212,16 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
                       </Badge>
                     )}
                   </div>
+                  {ingredient.isCustom && (
+                    <button
+                      type="button"
+                      onClick={() => handleEditCustomIngredient(ingredient)}
+                      className="p-1 hover:bg-muted rounded"
+                      title={t('common.edit')}
+                    >
+                      <Pencil className="h-4 w-4 text-muted-foreground hover:text-foreground" />
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={() => handleRemoveIngredient(ingredient.id)}
@@ -220,8 +259,10 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
 
       <CustomIngredientDialog
         open={customOpen}
-        onOpenChange={setCustomOpen}
+        onOpenChange={handleCloseCustomDialog}
         onAdd={handleAddCustom}
+        editIngredient={editingIngredient}
+        onUpdate={handleUpdateCustom}
       />
     </Card>
   );
