@@ -113,25 +113,25 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
               <span className="text-primary-foreground font-bold text-sm">DPP</span>
             </div>
-            <h1 className="text-lg font-semibold">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
+            <h1 className="hidden sm:block text-lg font-semibold">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-1.5 sm:gap-2 items-center">
             <LanguageSwitcher />
             {loading ? null : user ? (
-              <Button asChild>
+              <Button size="sm" className="sm:size-default" asChild>
                 <Link to="/dashboard">{t('nav.dashboard')}</Link>
               </Button>
             ) : (
               <>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" size="sm" className="sm:size-default hidden xs:inline-flex" asChild>
                   <Link to="/auth">{t('nav.signIn')}</Link>
                 </Button>
-                <Button asChild>
+                <Button size="sm" className="sm:size-default" asChild>
                   <Link to="/auth">{t('nav.getStarted')}</Link>
                 </Button>
               </>
