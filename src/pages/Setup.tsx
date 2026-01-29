@@ -184,6 +184,19 @@ export default function Setup() {
                   />
                 </div>
 
+                <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <h4 className="font-medium text-sm flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-500" />
+                    What this information is used for:
+                  </h4>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    <li>• Displayed in "Legal Mentions" on all Digital Product Passports</li>
+                    <li>• Required for EU e-label regulation compliance</li>
+                    <li>• Identifies the service provider to consumers</li>
+                    <li>• Privacy policy and terms links shown to users</li>
+                  </ul>
+                </div>
+
                 {/* Email Configuration Section */}
                 <div className="border-t pt-6 space-y-4">
                   <div className="flex items-center gap-2">
@@ -320,19 +333,6 @@ export default function Setup() {
                       AI features like automatic label scanning will be hidden from the interface.
                     </p>
                   )}
-                </div>
-
-                <div className="bg-muted/50 rounded-lg p-4 space-y-2">
-                  <h4 className="font-medium text-sm flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-green-500" />
-                    What this information is used for:
-                  </h4>
-                  <ul className="text-xs text-muted-foreground space-y-1">
-                    <li>• Displayed in "Legal Mentions" on all Digital Product Passports</li>
-                    <li>• Required for EU e-label regulation compliance</li>
-                    <li>• Identifies the service provider to consumers</li>
-                    <li>• Privacy policy and terms links shown to users</li>
-                  </ul>
                 </div>
 
                 <Button type="submit" className="w-full" size="lg" disabled={saving}>
