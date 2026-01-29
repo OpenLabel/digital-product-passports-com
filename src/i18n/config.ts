@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Import all translations
 import ar from './locales/ar.json';
+import bn from './locales/bn.json';
 import bg from './locales/bg.json';
 import cs from './locales/cs.json';
 import da from './locales/da.json';
@@ -39,6 +40,7 @@ import zh from './locales/zh.json';
 
 export const supportedLanguages = [
   { code: 'ar', name: 'Arabic', nativeName: 'العربية' },
+  { code: 'bn', name: 'Bengali', nativeName: 'বাংলা' },
   { code: 'bg', name: 'Bulgarian', nativeName: 'Български' },
   { code: 'cs', name: 'Czech', nativeName: 'Čeština' },
   { code: 'da', name: 'Danish', nativeName: 'Dansk' },
@@ -77,6 +79,7 @@ export type SupportedLanguage = typeof supportedLanguages[number]['code'];
 
 const resources = {
   ar: { translation: ar },
+  bn: { translation: bn },
   bg: { translation: bg },
   cs: { translation: cs },
   da: { translation: da },
