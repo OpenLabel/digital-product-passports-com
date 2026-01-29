@@ -11,6 +11,7 @@ interface CounterfeitRequest {
   userEmail: string;
   passportName: string;
   passportUrl: string;
+  requestedAt: string; // ISO timestamp
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -46,11 +47,24 @@ const handler = async (req: Request): Promise<Response> => {
     const RESEND_API_KEY = config.resend_api_key_secret;
     const senderEmail = config.sender_email || "noreply@digital-product-passports.com";
 
-    const { userEmail, passportName, passportUrl }: CounterfeitRequest = await req.json();
+    const { userEmail, passportName, passportUrl, requestedAt }: CounterfeitRequest = await req.json();
 
     if (!userEmail || !passportName || !passportUrl) {
       throw new Error("Missing required fields: userEmail, passportName, passportUrl");
     }
+
+    // Format the date and time
+    const requestDate = new Date(requestedAt || new Date().toISOString());
+    const formattedDate = requestDate.toLocaleDateString('en-GB', { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric' 
+    });
+    const formattedTime = requestDate.toLocaleTimeString('en-GB', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      hour12: false 
+    });
 
     const emailResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -64,24 +78,59 @@ const handler = async (req: Request): Promise<Response> => {
         cc: [userEmail],
         subject: `Counterfeit Protection Request - ${passportName}`,
         html: `
-          <h1>Counterfeit Protection Request</h1>
-          <p>A user has requested counterfeit protection for their Digital Product Passport.</p>
-          
-          <h2>Details</h2>
-          <ul>
-            <li><strong>Product Name:</strong> ${passportName}</li>
-            <li><strong>Passport URL:</strong> <a href="${passportUrl}">${passportUrl}</a></li>
-            <li><strong>User Email:</strong> ${userEmail}</li>
-          </ul>
-          
-          <p>I created this digital product passport and I would like to add a counterfeit protection with a security seal.</p>
-          
-          <p>Please contact the user to deliver the security seal.</p>
-          
-          <hr />
-          <p style="color: #666; font-size: 12px;">
-            This email was sent from <a href="https://www.digital-product-passports.com">EU Digital Product Passports</a>
-          </p>
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #1a1a1a; margin-bottom: 24px;">Counterfeit Protection Request</h2>
+            
+            <p style="color: #333; font-size: 16px; line-height: 1.6;">
+              Hello,
+            </p>
+            
+            <p style="color: #333; font-size: 16px; line-height: 1.6;">
+              I have created a Digital Product Passport and would like to add counterfeit protection with a security seal.
+            </p>
+            
+            <div style="background-color: #f8f9fa; border-radius: 8px; padding: 20px; margin: 24px 0;">
+              <h3 style="color: #1a1a1a; margin: 0 0 16px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Product Details</h3>
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="color: #666; padding: 8px 0; font-size: 14px; width: 120px;">Product Name</td>
+                  <td style="color: #1a1a1a; padding: 8px 0; font-size: 14px; font-weight: 500;">${passportName}</td>
+                </tr>
+                <tr>
+                  <td style="color: #666; padding: 8px 0; font-size: 14px;">Passport URL</td>
+                  <td style="padding: 8px 0; font-size: 14px;">
+                    <a href="${passportUrl}" style="color: #2563eb; text-decoration: none;">${passportUrl}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color: #666; padding: 8px 0; font-size: 14px;">Contact Email</td>
+                  <td style="color: #1a1a1a; padding: 8px 0; font-size: 14px;">${userEmail}</td>
+                </tr>
+              </table>
+            </div>
+            
+            <p style="color: #333; font-size: 16px; line-height: 1.6;">
+              Please contact me to discuss the security seal options and delivery.
+            </p>
+            
+            <p style="color: #333; font-size: 16px; line-height: 1.6;">
+              Thank you,<br/>
+              <span style="color: #666;">${userEmail}</span>
+            </p>
+            
+            <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 32px 0;" />
+            
+            <p style="color: #999; font-size: 12px; line-height: 1.5;">
+              <strong>Why did I receive this email?</strong><br/>
+              This email was sent because on ${formattedDate} at ${formattedTime}, the user clicked "Enable" on the counterfeit protection feature 
+              in their Digital Product Passport editor at <a href="https://www.digital-product-passports.com" style="color: #666;">digital-product-passports.com</a>.
+            </p>
+            
+            <p style="color: #999; font-size: 12px; line-height: 1.5;">
+              <strong>Was this a mistake?</strong><br/>
+              If you did not intend to request counterfeit protection, simply reply to this email thread to let us know it was sent in error.
+            </p>
+          </div>
         `,
       }),
     });

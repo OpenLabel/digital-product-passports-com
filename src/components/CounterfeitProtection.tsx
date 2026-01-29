@@ -44,12 +44,14 @@ export function CounterfeitProtection({
     setLoading(true);
     try {
       const passportUrl = `${window.location.origin}/p/${passportSlug}`;
+      const requestedAt = new Date().toISOString();
       
       const { error } = await supabase.functions.invoke('send-counterfeit-request', {
         body: {
           userEmail,
           passportName,
           passportUrl,
+          requestedAt,
         },
       });
 
