@@ -46,7 +46,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const RESEND_API_KEY = config.resend_api_key_secret;
     const senderEmail = config.sender_email;
-    const companyName = config.company_name || "Digital Product Passports";
+    const companyName = config.company_name || "Digital - Product - Passports .com";
 
     if (!senderEmail) {
       throw new Error("Sender email not configured. Please set it up in the Setup page.");

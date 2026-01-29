@@ -366,7 +366,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
             <p className="text-sm text-foreground">
               Powered by{' '}
               {isPreview ? (
-                <span className="text-primary font-medium">Digital<span className="text-muted-foreground/60 font-normal">-</span>Product<span className="text-muted-foreground/60 font-normal">-</span>Passports<span className="text-muted-foreground font-normal">.com</span></span>
+                <span className="text-primary font-medium">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></span>
               ) : (
                 <a 
                   href="https://www.digital-product-passports.com"
@@ -374,7 +374,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Digital<span className="text-muted-foreground/60 font-normal">-</span>Product<span className="text-muted-foreground/60 font-normal">-</span>Passports<span className="text-muted-foreground font-normal">.com</span>
+                  Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span>
                 </a>
               )}
             </p>

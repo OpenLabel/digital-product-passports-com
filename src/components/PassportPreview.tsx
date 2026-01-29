@@ -204,7 +204,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                     <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-center">
                       <p className="text-xs text-foreground">
                         Powered by{' '}
-                        <span className="text-primary font-medium">Digital<span className="text-muted-foreground/60 font-normal">-</span>Product<span className="text-muted-foreground/60 font-normal">-</span>Passports<span className="text-muted-foreground font-normal">.com</span></span>
+                        <span className="text-primary font-medium">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></span>
                       </p>
                     </div>
                   )}

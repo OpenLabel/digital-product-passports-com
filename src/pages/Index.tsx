@@ -115,7 +115,7 @@ export default function Index() {
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">DPP</span>
             </div>
-            <h1 className="text-lg font-semibold">Digital<span className="text-muted-foreground/60 font-normal">-</span>Product<span className="text-muted-foreground/60 font-normal">-</span>Passports <span className="text-muted-foreground font-normal">.com</span></h1>
+            <h1 className="text-lg font-semibold">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
           </div>
           <div className="flex gap-2 items-center">
             {loading ? null : user ? (

@@ -144,7 +144,7 @@ export function CategoryQuestions({ category, data, onChange }: CategoryQuestion
                 onCheckedChange={(checked) => handleChange('hide_promo', checked)}
               />
               <Label htmlFor="hide_promo" className="text-sm font-normal cursor-pointer">
-                Hide "Powered by Digital-Product-Passports.com" promotional message
+                Hide "Powered by Digital - Product - Passports .com" promotional message
               </Label>
             </div>
           </CardContent>
