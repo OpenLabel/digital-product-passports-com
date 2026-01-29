@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Jitgħabba...", "save": "Issejvja", "cancel": "Ikkanċella", "delete": "Ħassar", "edit": "Editja", "create": "Oħloq", "back": "Lura", "next": "Li jmiss", "search": "Fittex", "apply": "Applika", "close": "Agħlaq", "confirm": "Ikkonferma", "yes": "Iva", "no": "Le", "error": "Żball", "success": "Suċċess", "warning": "Twissija", "openSource": "Sors Miftuħ", "language": "Lingwa" },
+  "nav": { "signIn": "Idħol", "signUp": "Irreġistra", "signOut": "Oħroġ", "getStarted": "Ibda b'xejn", "dashboard": "Dashboard", "createNew": "Oħloq ġdid" },
+  "auth": { "title": "Passaport Diġitali tal-Prodott", "signIn": "Idħol", "signUp": "Irreġistra", "email": "Email", "password": "Password", "welcomeBack": "Merħba lura!" },
+  "dashboard": { "title": "Il-passaporti tiegħek", "noPassports": "Għad m'hemmx passaporti. Oħloq l-ewwel wieħed!", "updated": "Aġġornat" },
+  "passport": { "createTitle": "Oħloq passaport ġdid", "editTitle": "Editja l-passaport", "basicInfo": "Informazzjoni bażika", "productName": "Isem tal-prodott", "category": "Kategorija tal-prodott", "saving": "Qed issejvja...", "notFound": "Passaport ma nstabx", "checkAuthenticity": "Iċċekkja l-awtentiċità", "poweredBy": "Powered by" },
+  "categories": { "battery": "Batteriji", "construction": "Prodotti tal-kostruzzjoni", "textiles": "Tessuti", "wine": "Inbid u spirti", "toys": "Ġugarelli", "electronics": "Elettronika", "other": "Prodotti oħra" },
+  "wine": { "productIdentity": "Identità tal-prodott", "volume": "Volum", "grapeVariety": "Varjetà tal-għeneb", "vintage": "Vintage", "country": "Pajjiż tal-oriġini", "nutritionalValues": "Valuri nutrittivi", "energy": "Enerġija", "ingredients": "Ingredjenti", "recycling": "Informazzjoni dwar ir-riċiklaġġ" },
+  "ingredients": { "grapes": "Għeneb", "sulfites": "Sulfiti", "egg": "Bajda", "milk": "Ħalib" },
+  "legal": { "title": "Avviżi legali", "legalMentions": "Avviżi legali" },
+  "notFound": { "title": "404", "message": "Il-paġna ma nstabx", "returnHome": "Lura lejn id-dar" },
+  "landing": { "hero": { "badge": "Kompatibbli ma' EU ESPR", "title": "Oħloq Passaporti Diġitali tal-Prodotti <1>Bla Limitu</1>", "cta": "Oħloq l-ewwel passaport tiegħek" }, "footer": { "legal": "Avviżi legali", "github": "Ara fuq GitHub" } }
+}

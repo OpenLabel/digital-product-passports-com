@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Ładowanie...", "save": "Zapisz", "cancel": "Anuluj", "delete": "Usuń", "edit": "Edytuj", "create": "Utwórz", "back": "Wstecz", "next": "Dalej", "search": "Szukaj", "apply": "Zastosuj", "close": "Zamknij", "confirm": "Potwierdź", "yes": "Tak", "no": "Nie", "error": "Błąd", "success": "Sukces", "warning": "Ostrzeżenie", "openSource": "Open Source", "language": "Język" },
+  "nav": { "signIn": "Zaloguj się", "signUp": "Zarejestruj się", "signOut": "Wyloguj się", "getStarted": "Zacznij za darmo", "dashboard": "Panel", "createNew": "Utwórz nowy" },
+  "auth": { "title": "Cyfrowy Paszport Produktu", "subtitle": "Zaloguj się lub utwórz konto", "signIn": "Zaloguj się", "signUp": "Zarejestruj się", "email": "E-mail", "password": "Hasło", "companyName": "Nazwa firmy", "welcomeBack": "Witaj ponownie!" },
+  "dashboard": { "title": "Twoje paszporty", "noPassports": "Brak paszportów. Utwórz pierwszy!", "updated": "Zaktualizowano" },
+  "passport": { "createTitle": "Utwórz nowy paszport", "editTitle": "Edytuj paszport", "basicInfo": "Podstawowe informacje", "productName": "Nazwa produktu", "category": "Kategoria produktu", "productImage": "Zdjęcie produktu", "saving": "Zapisywanie...", "saveChanges": "Zapisz zmiany", "notFound": "Paszport nie znaleziony", "checkAuthenticity": "Sprawdź autentyczność", "poweredBy": "Powered by" },
+  "categories": { "battery": "Baterie", "construction": "Produkty budowlane", "textiles": "Tekstylia i obuwie", "wine": "Wina i alkohole", "toys": "Zabawki", "electronics": "Elektronika i ICT", "iron_steel": "Żelazo i stal", "aluminum": "Aluminium", "cosmetics": "Kosmetyki", "furniture": "Meble i materace", "tires": "Opony", "detergents": "Detergenty i chemikalia", "other": "Wszystkie inne produkty" },
+  "wine": { "productIdentity": "Tożsamość produktu", "volume": "Objętość", "grapeVariety": "Odmiana winogron", "vintage": "Rocznik", "country": "Kraj pochodzenia", "region": "Region", "nutritionalValues": "Wartości odżywcze", "alcohol": "Alkohol", "energy": "Energia", "fat": "Tłuszcz", "carbohydrate": "Węglowodany", "protein": "Białko", "salt": "Sól", "ingredients": "Składniki", "recycling": "Informacje o recyklingu" },
+  "ingredients": { "grapes": "Winogrona", "saccharose": "Sacharoza", "sulfites": "Siarczyny", "egg": "Jajko", "milk": "Mleko" },
+  "legal": { "title": "Informacje prawne", "legalMentions": "Informacje prawne" },
+  "notFound": { "title": "404", "message": "Strona nie znaleziona", "returnHome": "Wróć do strony głównej" },
+  "landing": { "hero": { "badge": "Zgodny z EU ESPR", "title": "Twórz <1>Nieograniczoną</1> liczbę Cyfrowych Paszportów Produktów", "cta": "Utwórz swój pierwszy paszport" }, "footer": { "legal": "Informacje prawne", "github": "Zobacz na GitHub" } }
+}

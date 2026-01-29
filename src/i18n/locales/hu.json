@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Betöltés...", "save": "Mentés", "cancel": "Mégse", "delete": "Törlés", "edit": "Szerkesztés", "create": "Létrehozás", "back": "Vissza", "next": "Következő", "search": "Keresés", "apply": "Alkalmaz", "close": "Bezárás", "confirm": "Megerősítés", "yes": "Igen", "no": "Nem", "error": "Hiba", "success": "Sikeres", "warning": "Figyelmeztetés", "openSource": "Nyílt forráskód", "language": "Nyelv" },
+  "nav": { "signIn": "Bejelentkezés", "signUp": "Regisztráció", "signOut": "Kijelentkezés", "getStarted": "Ingyenes kezdés", "dashboard": "Irányítópult", "createNew": "Új létrehozása" },
+  "auth": { "title": "Digitális termékútlevél", "signIn": "Bejelentkezés", "signUp": "Regisztráció", "email": "E-mail", "password": "Jelszó", "welcomeBack": "Üdv újra!" },
+  "dashboard": { "title": "Útleveleid", "noPassports": "Még nincsenek útlevelek. Hozd létre az elsőt!", "updated": "Frissítve" },
+  "passport": { "createTitle": "Új útlevél létrehozása", "editTitle": "Útlevél szerkesztése", "basicInfo": "Alapinformációk", "productName": "Terméknév", "category": "Termékkategória", "saving": "Mentés...", "notFound": "Útlevél nem található", "checkAuthenticity": "Hitelesség ellenőrzése", "poweredBy": "Készítette" },
+  "categories": { "battery": "Akkumulátorok", "construction": "Építőipari termékek", "textiles": "Textíliák", "wine": "Bor és szeszes italok", "toys": "Játékok", "electronics": "Elektronika", "other": "Egyéb termékek" },
+  "wine": { "productIdentity": "Termék azonosító", "volume": "Térfogat", "grapeVariety": "Szőlőfajta", "vintage": "Évjárat", "country": "Származási ország", "nutritionalValues": "Tápértékek", "energy": "Energia", "ingredients": "Összetevők", "recycling": "Újrahasznosítási információk" },
+  "ingredients": { "grapes": "Szőlő", "sulfites": "Szulfitok", "egg": "Tojás", "milk": "Tej" },
+  "legal": { "title": "Jogi közlemények", "legalMentions": "Jogi közlemények" },
+  "notFound": { "title": "404", "message": "Az oldal nem található", "returnHome": "Vissza a főoldalra" },
+  "landing": { "hero": { "badge": "EU ESPR kompatibilis", "title": "Hozzon létre <1>Korlátlan</1> Digitális Termékútlevelet", "cta": "Első útlevél létrehozása" }, "footer": { "legal": "Jogi közlemények", "github": "Megtekintés GitHubon" } }
+}

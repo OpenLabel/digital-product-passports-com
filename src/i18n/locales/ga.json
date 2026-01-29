@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Ag lódáil...", "save": "Sábháil", "cancel": "Cealaigh", "delete": "Scrios", "edit": "Cuir in eagar", "create": "Cruthaigh", "back": "Ar ais", "next": "Ar aghaidh", "search": "Cuardaigh", "apply": "Cuir i bhfeidhm", "close": "Dún", "confirm": "Deimhnigh", "yes": "Tá", "no": "Níl", "error": "Earráid", "success": "Éirithe", "warning": "Rabhadh", "openSource": "Foinse Oscailte", "language": "Teanga" },
+  "nav": { "signIn": "Sínigh isteach", "signUp": "Cláraigh", "signOut": "Sínigh amach", "getStarted": "Tosaigh saor in aisce", "dashboard": "Deais", "createNew": "Cruthaigh nua" },
+  "auth": { "title": "Pas Táirge Digiteach", "subtitle": "Sínigh isteach nó cruthaigh cuntas", "signIn": "Sínigh isteach", "signUp": "Cláraigh", "email": "Ríomhphost", "password": "Pasfhocal", "companyName": "Ainm na cuideachta", "welcomeBack": "Fáilte ar ais!" },
+  "dashboard": { "title": "Do phasanna", "noPassports": "Níl aon phasanna fós. Cruthaigh ceann!", "updated": "Nuashonraithe" },
+  "passport": { "createTitle": "Cruthaigh pas nua", "editTitle": "Cuir pas in eagar", "basicInfo": "Bunfhaisnéis", "productName": "Ainm an táirge", "category": "Catagóir táirge", "productImage": "Íomhá táirge", "saving": "Ag sábháil...", "saveChanges": "Sábháil athruithe", "notFound": "Pas gan aimsiú", "checkAuthenticity": "Seiceáil fírinne", "poweredBy": "Cumhachtaithe ag" },
+  "categories": { "battery": "Cadhnraí", "construction": "Táirgí tógála", "textiles": "Teicstílí", "wine": "Fíon agus biotáillí", "toys": "Bréagáin", "electronics": "Leictreonaic", "other": "Táirgí eile" },
+  "wine": { "productIdentity": "Aitheantas táirge", "volume": "Toirt", "grapeVariety": "Cineál fíonchaor", "vintage": "Fíon", "country": "Tír thionscnaimh", "nutritionalValues": "Luachanna cothaitheacha", "energy": "Fuinneamh", "ingredients": "Comhábhair", "recycling": "Faisnéis athchúrsála" },
+  "ingredients": { "grapes": "Fíonchaora", "saccharose": "Sacróis", "sulfites": "Sulfítí", "egg": "Ubh", "milk": "Bainne" },
+  "legal": { "title": "Faisnéis dhlíthiúil", "legalMentions": "Tagairtí dlíthiúla" },
+  "notFound": { "title": "404", "message": "Níor aimsíodh an leathanach", "returnHome": "Ar ais go baile" },
+  "landing": { "hero": { "badge": "Comhoiriúnach le EU ESPR", "title": "Cruthaigh Pasanna Táirgí Digiteacha <1>Gan teorainn</1>", "cta": "Cruthaigh do chéad phas" }, "footer": { "legal": "Tagairtí dlíthiúla", "github": "Féach ar GitHub" } }
+}

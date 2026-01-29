@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Nalaganje...", "save": "Shrani", "cancel": "Prekliči", "delete": "Izbriši", "edit": "Uredi", "create": "Ustvari", "back": "Nazaj", "next": "Naprej", "search": "Išči", "apply": "Uporabi", "close": "Zapri", "confirm": "Potrdi", "yes": "Da", "no": "Ne", "error": "Napaka", "success": "Uspeh", "warning": "Opozorilo", "openSource": "Odprta koda", "language": "Jezik" },
+  "nav": { "signIn": "Prijava", "signUp": "Registracija", "signOut": "Odjava", "getStarted": "Začni brezplačno", "dashboard": "Nadzorna plošča", "createNew": "Ustvari novo" },
+  "auth": { "title": "Digitalni potni list izdelka", "signIn": "Prijava", "signUp": "Registracija", "email": "E-pošta", "password": "Geslo", "welcomeBack": "Dobrodošli nazaj!" },
+  "dashboard": { "title": "Vaši potni listi", "noPassports": "Še ni potnih listov. Ustvarite prvega!", "updated": "Posodobljeno" },
+  "passport": { "createTitle": "Ustvari nov potni list", "editTitle": "Uredi potni list", "basicInfo": "Osnovne informacije", "productName": "Ime izdelka", "category": "Kategorija izdelka", "saving": "Shranjevanje...", "notFound": "Potni list ni najden", "checkAuthenticity": "Preveri pristnost", "poweredBy": "Powered by" },
+  "categories": { "battery": "Baterije", "construction": "Gradbeni izdelki", "textiles": "Tekstil in obutev", "wine": "Vino in žgane pijače", "toys": "Igrače", "electronics": "Elektronika", "other": "Ostali izdelki" },
+  "wine": { "productIdentity": "Identiteta izdelka", "volume": "Prostornina", "grapeVariety": "Sorta grozdja", "vintage": "Letnik", "country": "Država izvora", "nutritionalValues": "Hranilne vrednosti", "energy": "Energija", "ingredients": "Sestavine", "recycling": "Informacije o recikliranju" },
+  "ingredients": { "grapes": "Grozdje", "sulfites": "Sulfiti", "egg": "Jajce", "milk": "Mleko" },
+  "legal": { "title": "Pravne informacije", "legalMentions": "Pravne informacije" },
+  "notFound": { "title": "404", "message": "Stran ni najdena", "returnHome": "Nazaj domov" },
+  "landing": { "hero": { "badge": "Skladno z EU ESPR", "title": "Ustvarite <1>Neomejene</1> Digitalne Potne Liste Izdelkov", "cta": "Ustvarite svoj prvi potni list" }, "footer": { "legal": "Pravne informacije", "github": "Ogled na GitHub" } }
+}

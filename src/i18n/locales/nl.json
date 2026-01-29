@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Laden...", "save": "Opslaan", "cancel": "Annuleren", "delete": "Verwijderen", "edit": "Bewerken", "create": "Maken", "back": "Terug", "next": "Volgende", "search": "Zoeken", "apply": "Toepassen", "close": "Sluiten", "confirm": "Bevestigen", "yes": "Ja", "no": "Nee", "error": "Fout", "success": "Gelukt", "warning": "Waarschuwing", "openSource": "Open Source", "language": "Taal" },
+  "nav": { "signIn": "Inloggen", "signUp": "Registreren", "signOut": "Uitloggen", "getStarted": "Gratis beginnen", "dashboard": "Dashboard", "createNew": "Nieuw maken" },
+  "auth": { "title": "Digitaal Productpaspoort", "subtitle": "Log in of maak een account", "signIn": "Inloggen", "signUp": "Registreren", "email": "E-mail", "password": "Wachtwoord", "companyName": "Bedrijfsnaam", "welcomeBack": "Welkom terug!" },
+  "dashboard": { "title": "Uw paspoorten", "noPassports": "Nog geen paspoorten. Maak de eerste!", "updated": "Bijgewerkt" },
+  "passport": { "createTitle": "Nieuw paspoort maken", "editTitle": "Paspoort bewerken", "basicInfo": "Basisinformatie", "productName": "Productnaam", "category": "Productcategorie", "productImage": "Productafbeelding", "saving": "Opslaan...", "saveChanges": "Wijzigingen opslaan", "notFound": "Paspoort niet gevonden", "checkAuthenticity": "Authenticiteit controleren", "poweredBy": "Mogelijk gemaakt door" },
+  "categories": { "battery": "Batterijen", "construction": "Bouwproducten", "textiles": "Textiel en schoeisel", "wine": "Wijn en gedistilleerd", "toys": "Speelgoed", "electronics": "Elektronica en ICT", "iron_steel": "IJzer en staal", "aluminum": "Aluminium", "cosmetics": "Cosmetica", "furniture": "Meubels en matrassen", "tires": "Banden", "detergents": "Wasmiddelen en chemicaliën", "other": "Alle andere producten" },
+  "wine": { "productIdentity": "Productidentiteit", "volume": "Volume", "grapeVariety": "Druivenras", "vintage": "Jaargang", "country": "Land van herkomst", "region": "Regio", "nutritionalValues": "Voedingswaarden", "alcohol": "Alcohol", "energy": "Energie", "fat": "Vet", "carbohydrate": "Koolhydraten", "protein": "Eiwit", "salt": "Zout", "ingredients": "Ingrediënten", "recycling": "Recyclinginformatie" },
+  "ingredients": { "grapes": "Druiven", "saccharose": "Saccharose", "sulfites": "Sulfieten", "egg": "Ei", "milk": "Melk" },
+  "legal": { "title": "Juridische vermeldingen", "legalMentions": "Juridische vermeldingen" },
+  "notFound": { "title": "404", "message": "Pagina niet gevonden", "returnHome": "Terug naar home" },
+  "landing": { "hero": { "badge": "EU ESPR-compatibel", "title": "Maak <1>Onbeperkt</1> Digitale Productpaspoorten", "cta": "Maak uw eerste paspoort" }, "footer": { "legal": "Juridische vermeldingen", "github": "Bekijk op GitHub" } }
+}

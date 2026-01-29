@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Kraunama...", "save": "Išsaugoti", "cancel": "Atšaukti", "delete": "Ištrinti", "edit": "Redaguoti", "create": "Sukurti", "back": "Atgal", "next": "Kitas", "search": "Ieškoti", "apply": "Taikyti", "close": "Uždaryti", "confirm": "Patvirtinti", "yes": "Taip", "no": "Ne", "error": "Klaida", "success": "Pavyko", "warning": "Įspėjimas", "openSource": "Atviras kodas", "language": "Kalba" },
+  "nav": { "signIn": "Prisijungti", "signUp": "Registruotis", "signOut": "Atsijungti", "getStarted": "Pradėti nemokamai", "dashboard": "Valdymo skydas", "createNew": "Sukurti naują" },
+  "auth": { "title": "Skaitmeninis produkto pasas", "signIn": "Prisijungti", "signUp": "Registruotis", "email": "El. paštas", "password": "Slaptažodis", "welcomeBack": "Sveiki sugrįžę!" },
+  "dashboard": { "title": "Jūsų pasai", "noPassports": "Dar nėra pasų. Sukurkite pirmąjį!", "updated": "Atnaujinta" },
+  "passport": { "createTitle": "Sukurti naują pasą", "editTitle": "Redaguoti pasą", "basicInfo": "Pagrindinė informacija", "productName": "Produkto pavadinimas", "category": "Produkto kategorija", "saving": "Saugoma...", "notFound": "Pasas nerastas", "checkAuthenticity": "Patikrinti autentiškumą", "poweredBy": "Sukurta" },
+  "categories": { "battery": "Baterijos", "construction": "Statybos produktai", "textiles": "Tekstilė", "wine": "Vynas ir spiritiniai gėrimai", "toys": "Žaislai", "electronics": "Elektronika", "other": "Kiti produktai" },
+  "wine": { "productIdentity": "Produkto tapatybė", "volume": "Tūris", "grapeVariety": "Vynuogių veislė", "vintage": "Derlius", "country": "Kilmės šalis", "nutritionalValues": "Maistinė vertė", "energy": "Energija", "ingredients": "Sudedamosios dalys", "recycling": "Perdirbimo informacija" },
+  "ingredients": { "grapes": "Vynuogės", "sulfites": "Sulfitai", "egg": "Kiaušinis", "milk": "Pienas" },
+  "legal": { "title": "Teisinė informacija", "legalMentions": "Teisinė informacija" },
+  "notFound": { "title": "404", "message": "Puslapis nerastas", "returnHome": "Grįžti į pradžią" },
+  "landing": { "hero": { "badge": "Atitinka EU ESPR", "title": "Kurkite <1>Neribotai</1> Skaitmeninių Produktų Pasų", "cta": "Sukurkite pirmąjį pasą" }, "footer": { "legal": "Teisinė informacija", "github": "Žiūrėti GitHub" } }
+}

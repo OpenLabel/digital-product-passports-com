@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Načítava sa...", "save": "Uložiť", "cancel": "Zrušiť", "delete": "Vymazať", "edit": "Upraviť", "create": "Vytvoriť", "back": "Späť", "next": "Ďalej", "search": "Hľadať", "apply": "Použiť", "close": "Zavrieť", "confirm": "Potvrdiť", "yes": "Áno", "no": "Nie", "error": "Chyba", "success": "Úspech", "warning": "Varovanie", "openSource": "Open Source", "language": "Jazyk" },
+  "nav": { "signIn": "Prihlásiť sa", "signUp": "Registrovať sa", "signOut": "Odhlásiť sa", "getStarted": "Začať zadarmo", "dashboard": "Panel", "createNew": "Vytvoriť nový" },
+  "auth": { "title": "Digitálny pas produktu", "signIn": "Prihlásiť sa", "signUp": "Registrovať sa", "email": "E-mail", "password": "Heslo", "welcomeBack": "Vitajte späť!" },
+  "dashboard": { "title": "Vaše pasy", "noPassports": "Zatiaľ žiadne pasy. Vytvorte prvý!", "updated": "Aktualizované" },
+  "passport": { "createTitle": "Vytvoriť nový pas", "editTitle": "Upraviť pas", "basicInfo": "Základné informácie", "productName": "Názov produktu", "category": "Kategória produktu", "saving": "Ukladá sa...", "notFound": "Pas nenájdený", "checkAuthenticity": "Overiť pravosť", "poweredBy": "Powered by" },
+  "categories": { "battery": "Batérie", "construction": "Stavebné výrobky", "textiles": "Textil a obuv", "wine": "Víno a liehoviny", "toys": "Hračky", "electronics": "Elektronika", "other": "Ostatné produkty" },
+  "wine": { "productIdentity": "Identita produktu", "volume": "Objem", "grapeVariety": "Odroda hrozna", "vintage": "Ročník", "country": "Krajina pôvodu", "nutritionalValues": "Nutričné hodnoty", "energy": "Energia", "ingredients": "Zložky", "recycling": "Informácie o recyklácii" },
+  "ingredients": { "grapes": "Hrozno", "sulfites": "Siričitany", "egg": "Vajce", "milk": "Mlieko" },
+  "legal": { "title": "Právne informácie", "legalMentions": "Právne informácie" },
+  "notFound": { "title": "404", "message": "Stránka nenájdená", "returnHome": "Späť domov" },
+  "landing": { "hero": { "badge": "Súlad s EU ESPR", "title": "Vytvárajte <1>Neobmedzené</1> Digitálne Pasy Produktov", "cta": "Vytvorte svoj prvý pas" }, "footer": { "legal": "Právne informácie", "github": "Zobraziť na GitHub" } }
+}

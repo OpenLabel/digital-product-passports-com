@@ -1,0 +1,369 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "create": "Erstellen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "search": "Suchen",
+    "apply": "Anwenden",
+    "close": "Schließen",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "warning": "Warnung",
+    "openSource": "Open Source",
+    "language": "Sprache"
+  },
+  "nav": {
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "signOut": "Abmelden",
+    "getStarted": "Kostenlos starten",
+    "dashboard": "Zum Dashboard",
+    "createNew": "Neu erstellen"
+  },
+  "landing": {
+    "hero": {
+      "badge": "EU ESPR-konform",
+      "euFunded": "🇪🇺 Stolz EU-gefördert",
+      "title": "<1>Unbegrenzt</1> Digitale Produktpässe erstellen",
+      "subtitle": "Kostenlose Open-Source-Plattform für die EU-Ökodesign-Verordnung (ESPR). Erstellen Sie maschinenlesbare Pässe mit QR-Codes für Batterien, Textilien, Bauprodukte und 12+ Kategorien. Selbst hosten oder unsere gehostete Version nutzen.",
+      "cta": "Ersten Pass erstellen",
+      "demo": "Demo-Pass ansehen",
+      "features": {
+        "free": "100% Kostenlos & Open Source",
+        "selfHost": "Selbst hostbar",
+        "machineReadable": "Maschinenlesbares JSON/XML",
+        "categories": "12+ Produktkategorien"
+      }
+    },
+    "stats": {
+      "free": "Kostenlos & Open Source",
+      "categories": "Produktkategorien",
+      "deadline": "Erste EU-Frist",
+      "qr": "+ Einzigartige URLs"
+    },
+    "features": {
+      "badge": "Funktionen",
+      "title": "Alles für die Compliance",
+      "subtitle": "Nach EU-Standards gebaut: dezentrale Speicherung, ISO 15459-Kennungen, gestaffelte Zugriffsrechte und maschinenlesbare JSON/XML-Ausgabe.",
+      "espr": {
+        "title": "ESPR-konform",
+        "description": "Vorkonfigurierte Vorlagen nach EU-Ökodesign-Verordnung für jede Kategorie."
+      },
+      "openSource": {
+        "title": "Open Source",
+        "description": "Vollständig Open Source. Auf eigenen Servern hosten oder kostenlos unsere Version nutzen."
+      },
+      "machineReadable": {
+        "title": "Maschinenlesbar",
+        "description": "Keine statischen PDFs. Strukturierte JSON/XML-Daten für BIM, Recyclingsysteme und andere Software."
+      },
+      "qr": {
+        "title": "QR & Datenträger",
+        "description": "Jeder Pass erhält eine einzigartige URL und QR-Code. Bereit für NFC/RFID nach ISO 15459."
+      }
+    },
+    "ai": {
+      "badge": "KI-gestützt",
+      "title": "Automatisch ausfüllen mit KI",
+      "subtitle": "Schluss mit manuellem Tippen. Laden Sie ein Foto Ihres Produktetiketts hoch und unsere KI extrahiert alle Daten automatisch.",
+      "snap": {
+        "title": "Foto aufnehmen",
+        "description": "Fotografieren Sie Ihr Weinetikett, Ihre Produktverpackung oder ein beliebiges Etikett."
+      },
+      "upload": {
+        "title": "Dokumente hochladen",
+        "description": "PDF-Datenblätter, Word-Dokumente, Excel-Spezifikationen — laden Sie jede Datei hoch."
+      },
+      "extract": {
+        "title": "KI extrahiert Daten",
+        "description": "Unsere Vision-KI liest Ihre Dokumente und füllt alle Passfelder automatisch aus."
+      },
+      "multiUpload": {
+        "title": "Funktioniert mit mehreren Uploads",
+        "description": "Laden Sie mehrere Fotos oder Dokumente nacheinander hoch — KI fügt Daten intelligent zusammen"
+      },
+      "cta": "KI-Autofill kostenlos testen",
+      "tags": {
+        "wineLabels": "Weinetiketten",
+        "batterySpecs": "Batterie-Specs",
+        "textileComposition": "Textilzusammensetzung",
+        "safetyDatasheets": "Sicherheitsdatenblätter",
+        "nutritionFacts": "Nährwertangaben",
+        "technicalPdfs": "Technische PDFs"
+      }
+    },
+    "categories": {
+      "badge": "EU-Regulierungsbereich",
+      "title": "Unterstützte Produktkategorien",
+      "subtitle": "Vorlagen basierend auf offiziellen EU-Verordnungen. Aktive Vorschriften sind in Kraft, Prioritätsgruppen haben Vorlagen für kommende Anforderungen.",
+      "activeLaw": "Aktives Gesetz",
+      "priorityGroup": "Prioritätsgruppe",
+      "cta": "Pässe erstellen starten"
+    },
+    "timeline": {
+      "badge": "Regulierungszeitplan",
+      "title": "EU DPP-Umsetzungsfristen",
+      "subtitle": "Die EU führt Digital Product Passport-Anforderungen schrittweise ein. Bereiten Sie sich jetzt vor.",
+      "feb2027": {
+        "title": "Februar 2027",
+        "badge": "Erste Batterie-Frist",
+        "description": "EV-, Industrie- und LMT-Batterien müssen digitale Produktpässe mit Lebenszyklus-Daten, CO₂-Fußabdruck und Recyclinganteil für Kobalt, Lithium und Nickel haben."
+      },
+      "active": {
+        "title": "Jetzt aktiv",
+        "badge": "In Kraft",
+        "description": "Bauprodukte (EU 2024/3110), Wein & Spirituosen (EU 2021/2117) und Spielzeug (EU 2025/2509) erfordern bereits digitale Erklärungen."
+      },
+      "rollout": {
+        "title": "2027-2030: Vollständige Einführung",
+        "description": "Textilien, Elektronik, Möbel, Eisen/Stahl, Aluminium, Kosmetik, Reifen und Reinigungsmittel werden DPPs benötigen."
+      }
+    },
+    "selfHost": {
+      "badge": "Open Source",
+      "title": "Auf eigenen Servern betreiben",
+      "subtitle": "Vollständig Open Source. Selbst hosten für volle Datensouveränität, anpassen oder zum Projekt beitragen.",
+      "deploy": {
+        "title": "Selbst hosten",
+        "description": "Auf eigenen Servern bereitstellen. Volle Kontrolle über Daten und Compliance-Dokumentation."
+      },
+      "customize": {
+        "title": "Anpassen",
+        "description": "Eigene Felder hinzufügen, mit ERP/PLM-Systemen integrieren oder White-Label-Lösungen erstellen."
+      },
+      "contribute": {
+        "title": "Beitragen",
+        "description": "Helfen Sie, Vorlagen zu verbessern. Community-getriebene Compliance-Updates."
+      }
+    },
+    "cta": {
+      "title": "Bereit für die Compliance?",
+      "subtitle": "Erstellen Sie heute EU-konforme Digitale Produktpässe. Kostenlos, unbegrenzt und Open Source.",
+      "button": "Heute kostenlos starten"
+    },
+    "footer": {
+      "legal": "Impressum",
+      "github": "Auf GitHub ansehen"
+    }
+  },
+  "auth": {
+    "title": "Digitaler Produktpass",
+    "subtitle": "Anmelden oder Konto erstellen",
+    "resetSubtitle": "Passwort zurücksetzen",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "companyName": "Firmenname",
+    "sendResetLink": "Link senden",
+    "sending": "Wird gesendet...",
+    "backToSignIn": "Zurück zur Anmeldung",
+    "forgotPassword": "Passwort vergessen?",
+    "welcomeBack": "Willkommen zurück!",
+    "accountCreated": "Konto erstellt!",
+    "accountCreatedDesc": "Sie können sich jetzt anmelden.",
+    "checkEmail": "E-Mail prüfen",
+    "resetLinkSent": "Link zum Zurücksetzen gesendet."
+  },
+  "dashboard": {
+    "title": "Ihre Pässe",
+    "noPassports": "Noch keine Pässe. Erstellen Sie Ihren ersten!",
+    "updated": "Aktualisiert",
+    "duplicate": "Duplizieren",
+    "showQr": "QR-Code anzeigen",
+    "duplicated": "Pass dupliziert",
+    "deleted": "Pass gelöscht",
+    "confirmDelete": "Möchten Sie diesen Pass wirklich löschen?"
+  },
+  "passport": {
+    "createTitle": "Neuen Pass erstellen",
+    "editTitle": "Pass bearbeiten",
+    "basicInfo": "Grundinformationen",
+    "productName": "Produktname",
+    "productNamePlaceholder": "Namen für dieses Produkt eingeben",
+    "category": "Produktkategorie",
+    "productImage": "Produktbild",
+    "productDescription": "Produktbeschreibung",
+    "descriptionPlaceholder": "Beschreiben Sie Ihr Produkt...",
+    "details": "Details",
+    "saving": "Speichern...",
+    "saveChanges": "Änderungen speichern",
+    "createPassport": "Pass erstellen",
+    "updated": "Pass erfolgreich aktualisiert",
+    "created": "Pass erfolgreich erstellt",
+    "unsavedChanges": "Ungespeicherte Änderungen",
+    "unsavedChangesDesc": "Sie haben ungespeicherte Änderungen. Möchten Sie wirklich gehen?",
+    "leaveWithoutSaving": "Ohne Speichern verlassen",
+    "enterProductName": "Bitte Produktnamen eingeben",
+    "notFound": "Pass nicht gefunden",
+    "notFoundDesc": "Dieser digitale Produktpass existiert nicht oder wurde entfernt.",
+    "productPassport": "Produktpass",
+    "checkAuthenticity": "Echtheit prüfen",
+    "poweredBy": "Unterstützt von"
+  },
+  "categories": {
+    "battery": "Batterien",
+    "construction": "Bauprodukte",
+    "textiles": "Textilien & Schuhe",
+    "wine": "Wein & Spirituosen",
+    "toys": "Spielzeug",
+    "electronics": "Elektronik & IKT",
+    "iron_steel": "Eisen & Stahl",
+    "aluminum": "Aluminium",
+    "cosmetics": "Kosmetik",
+    "furniture": "Möbel & Matratzen",
+    "tires": "Reifen",
+    "detergents": "Reinigungsmittel & Chemikalien",
+    "other": "Alle anderen Produkte"
+  },
+  "categoryDescriptions": {
+    "battery": "CO₂-Fußabdruck, Recycling, Lieferketten-Sorgfalt",
+    "construction": "DoPC, GWP A1-A3, Brandwiderstand",
+    "textiles": "Faserzusammensetzung, Haltbarkeit, PFAS-Erklärung",
+    "wine": "Zutaten, Nährwerte, geografische Angabe",
+    "toys": "PFAS-frei, Allergene, Migrationstests",
+    "electronics": "Reparierbarkeitsindex, Ersatzteile, Software-Updates",
+    "iron_steel": "Kohlenstoffintensität, Schrottanteil, Legierungschemie",
+    "aluminum": "Schmelzenergiequelle, Coil-Rückverfolgbarkeit",
+    "cosmetics": "INCI-Liste, Nanomaterialien, Verpackungsrecycling",
+    "furniture": "EUDR-Holzherkunft, Ersatzteile, PFAS",
+    "tires": "Abriebrate, Runderneuerungshistorie, Mikroplastik",
+    "detergents": "Digitales SDS, Biologische Abbaubarkeit, Dosierungsoptimierung",
+    "other": "Generische DPP-Vorlage für jeden Produkttyp"
+  },
+  "wine": {
+    "productIdentity": "Produktidentität",
+    "volume": "Volumen",
+    "grapeVariety": "Rebsorte",
+    "vintage": "Jahrgang",
+    "country": "Herkunftsland",
+    "region": "Region",
+    "denomination": "Bezeichnung / Appellation",
+    "sugarClassification": "Zuckerklassifizierung",
+    "producerInfo": "Herstellerinformationen",
+    "producerName": "Erzeuger/Weingut",
+    "bottlerInfo": "Abfüllerinformationen",
+    "bottlerInfoPlaceholder": "Name und Adresse des Abfüllers",
+    "nutritionalValues": "Nährwerte",
+    "alcohol": "Alkohol",
+    "residualSugar": "Restzucker",
+    "acidity": "Säure",
+    "totalAcidity": "Gesamtsäure",
+    "glycerine": "Glycerin/Polyole",
+    "energy": "Energie",
+    "fat": "Fett",
+    "saturatedFat": "davon gesättigte Fettsäuren",
+    "carbohydrate": "Kohlenhydrate",
+    "sugars": "davon Zucker",
+    "protein": "Eiweiß",
+    "salt": "Salz",
+    "displayOptions": "Anzeigeoptionen",
+    "showAlcohol": "Alkohol auf Etikett anzeigen",
+    "showResidualSugar": "Restzucker auf Etikett anzeigen",
+    "showTotalAcidity": "Gesamtsäure auf Etikett anzeigen",
+    "ingredients": "Zutaten",
+    "addIngredients": "Zutaten hinzufügen",
+    "addCustomIngredient": "Eigene hinzufügen",
+    "noIngredients": "Keine Zutaten hinzugefügt",
+    "ingredientCategories": {
+      "general": "Allgemein",
+      "gases": "Gase und Schutzgase",
+      "acidity_regulators": "Säureregulatoren",
+      "stabilizers": "Stabilisatoren",
+      "preservatives": "Konservierungsmittel und Antioxidantien",
+      "processing_aids": "Verarbeitungshilfsstoffe"
+    },
+    "recycling": "Recyclinginformationen",
+    "recyclingNote": "Prüfen Sie Ihre lokalen Recyclingrichtlinien. Komponenten trennen und korrekt entsorgen.",
+    "legalInfo": "Rechtliche Informationen",
+    "negligibleAmounts": "Enthält vernachlässigbare Mengen an Fett, gesättigten Fettsäuren, Eiweiß und Salz.",
+    "per100ml": "pro 100 ml",
+    "selectCountry": "Land auswählen",
+    "selectClassification": "Klassifizierung auswählen",
+    "manualOverride": "Manuelle Überschreibung"
+  },
+  "ingredients": {
+    "grapes": "Trauben",
+    "saccharose": "Saccharose",
+    "aleppo_pine_resin": "Aleppo-Kiefernharz",
+    "caramel": "Karamell",
+    "concentrated_grape_must": "Konzentrierter Traubenmost",
+    "grape_must": "Traubenmost",
+    "rectified_concentrated_grape_must": "Rektifizierter konzentrierter Traubenmost",
+    "filling_dosage": "Fülldosage",
+    "expedition_dosage": "Versanddosage",
+    "argon": "Argon",
+    "nitrogen": "Stickstoff",
+    "carbon_dioxide": "Kohlendioxid",
+    "protective_atmosphere": "Unter Schutzatmosphäre abgefüllt",
+    "tartaric_acid": "Weinsäure",
+    "malic_acid": "Apfelsäure",
+    "lactic_acid": "Milchsäure",
+    "calcium_sulfate": "Calciumsulfat",
+    "citric_acid": "Zitronensäure",
+    "citric_acid_stabilizer": "Zitronensäure",
+    "metatartaric_acid": "Metaweinsäure",
+    "gum_arabic": "Gummi arabicum",
+    "yeast_mannoproteins": "Hefe-Mannoproteine",
+    "carboxymethylcellulose": "Carboxymethylcellulose",
+    "potassium_polyaspartate": "Kaliumpolyaspartat",
+    "fumaric_acid": "Fumarsäure",
+    "potassium_sorbate": "Kaliumsorbat",
+    "lysozyme": "Lysozym",
+    "ascorbic_acid": "L-Ascorbinsäure",
+    "dmdc": "Dimethyldicarbonat (DMDC)",
+    "sulfites": "Sulfite",
+    "sulfur_dioxide": "Schwefeldioxid",
+    "potassium_bisulfite": "Kaliumbisulfit",
+    "potassium_metabisulfite": "Kaliummetabisulfit",
+    "egg": "Ei",
+    "milk": "Milch",
+    "casein": "Kasein",
+    "albumin": "Albumin",
+    "isinglass": "Hausenblase (Fischblase)",
+    "bentonite": "Bentonit",
+    "gelatin": "Gelatine",
+    "pea_protein": "Erbsenprotein",
+    "potato_protein": "Kartoffelprotein",
+    "pvpp": "PVPP (Polyvinylpolypyrrolidon)"
+  },
+  "recycling": {
+    "code": "Code",
+    "material": "Material",
+    "disposal": "Entsorgung",
+    "componentTypes": {
+      "bottle": "Flasche",
+      "closure": "Verschluss",
+      "capsule": "Kapsel",
+      "label": "Etikett",
+      "box": "Karton"
+    }
+  },
+  "legal": {
+    "title": "Impressum",
+    "legalMentions": "Impressum"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Hoppla! Seite nicht gefunden",
+    "returnHome": "Zur Startseite"
+  },
+  "counterfeit": {
+    "title": "Fälschungsschutz",
+    "enable": "Fälschungsschutz aktivieren",
+    "description": "Sicherheitssiegel zum QR-Code hinzufügen"
+  },
+  "qrDialog": {
+    "title": "QR-Code",
+    "download": "QR-Code herunterladen",
+    "copyLink": "Link kopieren"
+  }
+}
