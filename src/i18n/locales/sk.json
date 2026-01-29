@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Hrozno", "sulfites": "Siričitany", "egg": "Vajce", "milk": "Mlieko" },
   "legal": { "title": "Právne informácie", "legalMentions": "Právne informácie" },
   "notFound": { "title": "404", "message": "Stránka nenájdená", "returnHome": "Späť domov" },
-  "landing": { "hero": { "badge": "Súlad s EU ESPR", "title": "Vytvárajte <1>Neobmedzené</1> Digitálne Pasy Produktov", "cta": "Vytvorte svoj prvý pas" }, "footer": { "legal": "Právne informácie", "github": "Zobraziť na GitHub" } }
+  "landing": { "hero": { "badge": "Súlad s EU ESPR", "title": "Vytvárajte Neobmedzené Digitálne Pasy Produktov", "cta": "Vytvorte svoj prvý pas" }, "footer": { "legal": "Právne informácie", "github": "Zobraziť na GitHub" } }
 }

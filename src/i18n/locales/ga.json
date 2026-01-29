@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Fíonchaora", "saccharose": "Sacróis", "sulfites": "Sulfítí", "egg": "Ubh", "milk": "Bainne" },
   "legal": { "title": "Faisnéis dhlíthiúil", "legalMentions": "Tagairtí dlíthiúla" },
   "notFound": { "title": "404", "message": "Níor aimsíodh an leathanach", "returnHome": "Ar ais go baile" },
-  "landing": { "hero": { "badge": "Comhoiriúnach le EU ESPR", "title": "Cruthaigh Pasanna Táirgí Digiteacha <1>Gan teorainn</1>", "cta": "Cruthaigh do chéad phas" }, "footer": { "legal": "Tagairtí dlíthiúla", "github": "Féach ar GitHub" } }
+  "landing": { "hero": { "badge": "Comhoiriúnach le EU ESPR", "title": "Cruthaigh Pasanna Táirgí Digiteacha Gan Teorainn", "cta": "Cruthaigh do chéad phas" }, "footer": { "legal": "Tagairtí dlíthiúla", "github": "Féach ar GitHub" } }
 }

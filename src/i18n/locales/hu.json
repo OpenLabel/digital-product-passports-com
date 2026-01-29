@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Szőlő", "sulfites": "Szulfitok", "egg": "Tojás", "milk": "Tej" },
   "legal": { "title": "Jogi közlemények", "legalMentions": "Jogi közlemények" },
   "notFound": { "title": "404", "message": "Az oldal nem található", "returnHome": "Vissza a főoldalra" },
-  "landing": { "hero": { "badge": "EU ESPR kompatibilis", "title": "Hozzon létre <1>Korlátlan</1> Digitális Termékútlevelet", "cta": "Első útlevél létrehozása" }, "footer": { "legal": "Jogi közlemények", "github": "Megtekintés GitHubon" } }
+  "landing": { "hero": { "badge": "EU ESPR kompatibilis", "title": "Hozzon létre Korlátlan Digitális Termékútlevelet", "cta": "Első útlevél létrehozása" }, "footer": { "legal": "Jogi közlemények", "github": "Megtekintés GitHubon" } }
 }

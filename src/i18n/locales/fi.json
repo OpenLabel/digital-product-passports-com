@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Rypäleet", "saccharose": "Sakkaroosi", "sulfites": "Sulfiitit", "egg": "Muna", "milk": "Maito" },
   "legal": { "title": "Oikeudelliset tiedot", "legalMentions": "Oikeudelliset tiedot" },
   "notFound": { "title": "404", "message": "Sivua ei löydy", "returnHome": "Takaisin etusivulle" },
-  "landing": { "hero": { "badge": "EU ESPR -yhteensopiva", "title": "Luo <1>Rajattomasti</1> Digitaalisia Tuotepasseja", "cta": "Luo ensimmäinen passisi" }, "footer": { "legal": "Oikeudelliset tiedot", "github": "Katso GitHubissa" } }
+  "landing": { "hero": { "badge": "EU ESPR -yhteensopiva", "title": "Luo Rajattomasti Digitaalisia Tuotepasseja", "cta": "Luo ensimmäinen passisi" }, "footer": { "legal": "Oikeudelliset tiedot", "github": "Katso GitHubissa" } }
 }

@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "포도", "saccharose": "자당", "sulfites": "아황산염", "egg": "달걀", "milk": "우유", "tartaric_acid": "주석산", "malic_acid": "사과산", "citric_acid": "구연산" },
   "legal": { "title": "법적 고지", "legalMentions": "법적 고지" },
   "notFound": { "title": "404", "message": "페이지를 찾을 수 없습니다", "returnHome": "홈으로 돌아가기" },
-  "landing": { "hero": { "badge": "EU ESPR 준수", "title": "<1>무제한</1> 디지털 제품 여권 생성", "cta": "첫 번째 여권 만들기" }, "footer": { "legal": "법적 고지", "github": "GitHub에서 보기" } }
+  "landing": { "hero": { "badge": "EU ESPR 준수", "title": "무제한 디지털 제품 여권 생성", "cta": "첫 번째 여권 만들기" }, "footer": { "legal": "법적 고지", "github": "GitHub에서 보기" } }
 }

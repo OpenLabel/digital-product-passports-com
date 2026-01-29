@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Għeneb", "sulfites": "Sulfiti", "egg": "Bajda", "milk": "Ħalib" },
   "legal": { "title": "Avviżi legali", "legalMentions": "Avviżi legali" },
   "notFound": { "title": "404", "message": "Il-paġna ma nstabx", "returnHome": "Lura lejn id-dar" },
-  "landing": { "hero": { "badge": "Kompatibbli ma' EU ESPR", "title": "Oħloq Passaporti Diġitali tal-Prodotti <1>Bla Limitu</1>", "cta": "Oħloq l-ewwel passaport tiegħek" }, "footer": { "legal": "Avviżi legali", "github": "Ara fuq GitHub" } }
+  "landing": { "hero": { "badge": "Kompatibbli ma' EU ESPR", "title": "Oħloq Passaporti Diġitali tal-Prodotti Bla Limitu", "cta": "Oħloq l-ewwel passaport tiegħek" }, "footer": { "legal": "Avviżi legali", "github": "Ara fuq GitHub" } }
 }
