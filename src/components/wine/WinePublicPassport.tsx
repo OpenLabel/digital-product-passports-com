@@ -356,7 +356,7 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
             <p className="text-sm text-foreground">
               Make your own digital product passports for free with{' '}
               <a 
-                href={window.location.origin} 
+                href="https://www.digital-product-passports.com"
                 className="text-primary font-medium hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
