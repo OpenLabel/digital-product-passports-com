@@ -50,11 +50,15 @@ export function WinePublicPassport({
   previewLanguage,
   onPreviewLanguageChange,
 }: WinePublicPassportProps) {
-  const { t, i18n } = useTranslation();
+  const { t: tBase, i18n } = useTranslation();
   const categoryData = (passport.category_data || {}) as Record<string, unknown>;
 
   // Get the effective language for displaying translated content
   const displayLanguage = previewLanguage || i18n.language.split('-')[0];
+  
+  // Create a translation function that respects the preview language
+  // This ensures ALL labels in the preview use the selected language, not the app language
+  const t = (key: string) => tBase(key, { lng: displayLanguage });
 
   // Product info
   const productName = (categoryData.product_name as string) || passport.name;
