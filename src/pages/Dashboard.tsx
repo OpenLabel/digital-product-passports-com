@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { usePassports } from '@/hooks/usePassports';
+import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -36,6 +37,7 @@ export default function Dashboard() {
   const [localPassports, setLocalPassports] = useState<Passport[]>([]);
   const { user, loading: authLoading, signOut } = useAuth();
   const { passports, isLoading, duplicatePassport, deletePassport, reorderPassports } = usePassports();
+  const { config } = useSiteConfig();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -99,7 +101,11 @@ export default function Dashboard() {
     }
   };
 
-  const getPublicUrl = (slug: string) => `${window.location.origin}/p/${slug}`;
+  // Use short URL for QR codes if configured, otherwise use current origin
+  const getPublicUrl = (slug: string) => {
+    const baseUrl = config?.short_url?.trim() || window.location.origin;
+    return `${baseUrl}/p/${slug}`;
+  };
 
   const handleShowQR = (passport: Passport) => {
     if (!passport.public_slug) return;
