@@ -2,6 +2,20 @@
 
 An open-source, self-hostable Digital Product Passport (DPP) generator for EU compliance. Supports wine e-labels, batteries, textiles, electronics, toys, and more product categories.
 
+## 🚀 One-Click Deploy
+
+Deploy your own DPP Platform instance in minutes:
+
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenLabel%2Fdigital-product-passports-com&env=VITE_SUPABASE_URL,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PROJECT_ID&envDescription=Supabase%20credentials%20from%20your%20project%20dashboard&envLink=https%3A%2F%2Fsupabase.com%2Fdashboard&project-name=dpp-platform&repository-name=dpp-platform)
+
+[![Deploy to Railway](https://railway.com/button.svg)](https://railway.com/template/new?template=https%3A%2F%2Fgithub.com%2FOpenLabel%2Fdigital-product-passports-com&envs=VITE_SUPABASE_URL,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PROJECT_ID)
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/OpenLabel/digital-product-passports-com)
+
+> **Note:** You'll need a [Supabase](https://supabase.com) project first. Create one for free, then use those credentials during deployment.
+
+---
+
 ## Features
 
 - 🍷 **Wine E-Labels**: Full EU Regulation 2021/2117 compliance with nutritional values, ingredients, and allergen display
@@ -11,6 +25,16 @@ An open-source, self-hostable Digital Product Passport (DPP) generator for EU co
 - 📱 **QR Codes**: Generate scannable QR codes linking to digital passports
 - 🌍 **Multi-language**: Support for EU language requirements
 - 🔒 **Self-Hostable**: Full data sovereignty with your own infrastructure
+
+---
+
+## 📋 What You Need
+
+| Requirement | Required? | Notes |
+|-------------|-----------|-------|
+| Supabase Project | ✅ Yes | Free tier available at [supabase.com](https://supabase.com) |
+| Resend API Key | ❌ Optional | Only for password reset emails ([resend.com](https://resend.com)) |
+| Lovable API Key | ❌ Optional | Only for AI features on self-hosted ([lovable.dev](https://lovable.dev)) |
 
 ---
 
@@ -28,7 +52,7 @@ An open-source, self-hostable Digital Product Passport (DPP) generator for EU co
 
 ```bash
 git clone https://github.com/OpenLabel/digital-product-passports-com.git
-cd dpp-platform
+cd digital-product-passports-com
 npm install
 ```
 
@@ -79,6 +103,7 @@ supabase functions deploy save-resend-key
 supabase functions deploy save-lovable-key
 supabase functions deploy send-counterfeit-request
 supabase functions deploy wine-label-ocr
+supabase functions deploy get-public-passport
 ```
 
 ### Step 7: Run Locally
@@ -95,6 +120,8 @@ Visit `http://localhost:5173` and complete the setup wizard.
 
 ### Option A: Vercel (Recommended)
 
+Use the one-click deploy button above, or manually:
+
 ```bash
 npm run build
 npx vercel --prod
@@ -109,7 +136,11 @@ npm run build
 npx netlify deploy --prod --dir=dist
 ```
 
-### Option C: Docker
+### Option C: Railway
+
+Use the one-click deploy button above, or connect your GitHub repository directly.
+
+### Option D: Docker
 
 ```dockerfile
 FROM node:18-alpine AS builder
@@ -144,7 +175,11 @@ http {
 Build and run:
 ```bash
 docker build -t dpp-platform .
-docker run -p 80:80 dpp-platform
+docker run -p 80:80 \
+  -e VITE_SUPABASE_URL=https://your-project.supabase.co \
+  -e VITE_SUPABASE_PUBLISHABLE_KEY=your-key \
+  -e VITE_SUPABASE_PROJECT_ID=your-id \
+  dpp-platform
 ```
 
 ---
@@ -157,12 +192,12 @@ After first deployment, you'll be redirected to `/setup` where you configure:
 |---------|----------|-------------|
 | Company Name | ✅ | Displayed in legal mentions |
 | Company Address | ✅ | Full legal address for EU compliance |
-| Privacy Policy URL | | Link to your privacy policy |
-| Terms URL | | Link to your terms of service |
-| Resend API Key | | For password reset emails (get from [resend.com](https://resend.com)) |
-| Sender Email | | Must be from a verified Resend domain |
-| Lovable API Key | | For AI features (only if self-hosting, not on Lovable Cloud) |
-| Enable AI | | Toggle AI features on/off |
+| Privacy Policy URL | ❌ | Link to your privacy policy |
+| Terms URL | ❌ | Link to your terms of service |
+| Resend API Key | ❌ | For password reset emails (get from [resend.com](https://resend.com)) |
+| Sender Email | ❌ | Must be from a verified Resend domain |
+| Enable AI | ❌ | Toggle AI features on/off |
+| Lovable API Key | ❌ | For AI features (only if AI enabled + self-hosting) |
 
 ---
 
@@ -174,9 +209,10 @@ The platform includes AI-powered features:
 
 ### For Self-Hosted Instances
 
-1. Obtain a Lovable API key from [lovable.dev](https://lovable.dev)
-2. During setup, enter the key in the "Lovable API Key" field
-3. Or set it as an edge function secret:
+1. During setup, check "Enable AI features"
+2. Obtain a Lovable API key from [lovable.dev](https://lovable.dev)
+3. Enter the key in the "Lovable API Key" field
+4. Or set it as an edge function secret:
    ```bash
    supabase secrets set LOVABLE_API_KEY=your-key
    ```
@@ -189,11 +225,19 @@ Simply uncheck "Enable AI features" during setup. The AI autofill buttons will b
 
 ## 🔒 Security
 
+### API Key Storage
+
+API keys (Resend, Lovable) are stored securely:
+- Keys are stored encrypted using Supabase Vault
+- RLS policies prevent client-side access to secrets
+- Only Edge Functions (with service role) can decrypt and use the keys
+- First-setup-only protection: keys cannot be changed via UI once set
+
 ### Row Level Security (RLS)
 
 All tables have RLS enabled:
 - Users can only access their own passports
-- Public passports are accessible via the `passports_public` view (excludes user_id)
+- Public passports are accessible via secure slugs
 - API keys in site_config are only readable by edge functions (service role)
 
 ### Best Practices
@@ -216,12 +260,7 @@ All tables have RLS enabled:
 | `passports` | All digital product passports |
 | `profiles` | User profile information |
 | `site_config` | Instance configuration (company info, API keys) |
-
-### Views
-
-| View | Description |
-|------|-------------|
-| `passports_public` | Public view of passports (excludes user_id for privacy) |
+| `api_usage` | Per-user AI feature usage tracking |
 
 ---
 
