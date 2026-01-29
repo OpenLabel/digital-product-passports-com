@@ -27,7 +27,7 @@ An open-source, self-hostable Digital Product Passport (DPP) generator for EU co
 ### Step 1: Clone & Install
 
 ```bash
-git clone https://github.com/cypheme/dpp-platform.git
+git clone https://github.com/OpenLabel/digital-product-passports-com.git
 cd dpp-platform
 npm install
 ```
