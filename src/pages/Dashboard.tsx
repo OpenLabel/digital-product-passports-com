@@ -188,6 +188,7 @@ export default function Dashboard() {
           onOpenChange={setQrDialogOpen}
           url={selectedPassport ? getPublicUrl(selectedPassport.slug) : ''}
           productName={selectedPassport?.name || ''}
+          showSecuritySealOverlay={selectedPassport?.counterfeitProtection || false}
         />
       </main>
     </div>
