@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Badge } from '@/components/ui/badge';
-import { Building2, MapPin, CheckCircle2, Server, Link2, FileText, Sparkles, AlertCircle, Mail, ExternalLink, Loader2 } from 'lucide-react';
+import { Building2, MapPin, CheckCircle2, Server, Link2, FileText, Sparkles, AlertCircle, Mail, ExternalLink, Loader2, Key } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -21,8 +21,11 @@ export default function Setup() {
   const [aiEnabled, setAiEnabled] = useState(true);
   const [resendApiKey, setResendApiKey] = useState('');
   const [senderEmail, setSenderEmail] = useState('noreply@digital-product-passports.com');
+  const [lovableApiKey, setLovableApiKey] = useState('');
   const [validatingResend, setValidatingResend] = useState(false);
+  const [validatingLovable, setValidatingLovable] = useState(false);
   const [resendValidated, setResendValidated] = useState(false);
+  const [lovableValidated, setLovableValidated] = useState(false);
   const [saving, setSaving] = useState(false);
   const { saveConfig, isLovableCloud } = useSiteConfig();
   const { toast } = useToast();
@@ -58,6 +61,36 @@ export default function Setup() {
     }
   };
 
+  const validateAndSaveLovableKey = async () => {
+    if (!lovableApiKey.trim()) {
+      toast({ title: 'Error', description: 'Please enter a Lovable API key', variant: 'destructive' });
+      return false;
+    }
+
+    setValidatingLovable(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('save-lovable-key', {
+        body: { lovableApiKey: lovableApiKey.trim() },
+      });
+
+      if (error) throw error;
+      if (!data.success) throw new Error(data.error);
+
+      setLovableValidated(true);
+      toast({ title: 'Success', description: 'Lovable API key saved' });
+      return true;
+    } catch (error: any) {
+      toast({ 
+        title: 'Error', 
+        description: error.message || 'Failed to save Lovable API key', 
+        variant: 'destructive' 
+      });
+      return false;
+    } finally {
+      setValidatingLovable(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -74,6 +107,12 @@ export default function Setup() {
     // Validate Resend key if provided and not already validated
     if (resendApiKey.trim() && !resendValidated) {
       const isValid = await validateAndSaveResendKey();
+      if (!isValid) return;
+    }
+
+    // Validate Lovable API key if AI is enabled and not on Lovable Cloud
+    if (aiEnabled && !isLovableCloud && lovableApiKey.trim() && !lovableValidated) {
+      const isValid = await validateAndSaveLovableKey();
       if (!isValid) return;
     }
 
@@ -319,21 +358,68 @@ export default function Setup() {
                       </AlertDescription>
                     </Alert>
                   ) : (
-                    <Alert>
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertDescription className="space-y-2">
-                        <p>Self-hosted installation detected. AI features require a Lovable API key.</p>
-                        <a
-                          href="https://lovable.dev"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
-                        >
-                          <ExternalLink className="h-3 w-3" />
-                          Get Lovable API Key
-                        </a>
-                      </AlertDescription>
-                    </Alert>
+                    <>
+                      <Alert>
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription className="space-y-2">
+                          <p>Self-hosted installation detected. AI features require a Lovable API key.</p>
+                          <a
+                            href="https://lovable.dev"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
+                          >
+                            <ExternalLink className="h-3 w-3" />
+                            Get Lovable API Key
+                          </a>
+                        </AlertDescription>
+                      </Alert>
+
+                      {aiEnabled && (
+                        <div className="space-y-2">
+                          <Label htmlFor="lovableApiKey" className="flex items-center gap-2">
+                            <Key className="h-4 w-4" />
+                            Lovable API Key *
+                          </Label>
+                          <div className="flex gap-2">
+                            <Input
+                              id="lovableApiKey"
+                              type="password"
+                              value={lovableApiKey}
+                              onChange={(e) => {
+                                setLovableApiKey(e.target.value);
+                                setLovableValidated(false);
+                              }}
+                              placeholder="Enter your Lovable API key..."
+                              className={lovableValidated ? 'border-green-500' : ''}
+                            />
+                            <Button
+                              type="button"
+                              variant="outline"
+                              onClick={validateAndSaveLovableKey}
+                              disabled={validatingLovable || !lovableApiKey.trim()}
+                            >
+                              {validatingLovable ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                              ) : lovableValidated ? (
+                                <CheckCircle2 className="h-4 w-4 text-green-500" />
+                              ) : (
+                                'Save'
+                              )}
+                            </Button>
+                          </div>
+                          {lovableValidated && (
+                            <p className="text-xs text-green-600 flex items-center gap-1">
+                              <CheckCircle2 className="h-3 w-3" />
+                              API key saved
+                            </p>
+                          )}
+                          <p className="text-xs text-muted-foreground">
+                            Required for AI features like label scanning and autofill.
+                          </p>
+                        </div>
+                      )}
+                    </>
                   )}
 
                   <div className="flex items-center gap-3">
