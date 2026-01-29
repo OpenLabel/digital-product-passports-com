@@ -6,15 +6,45 @@ Supports wine e-labels, batteries, textiles, electronics, toys, and more product
 
 ---
 
-## 🚀 Self-Hosting Quick Start
+## 🚀 Quick Install (Self-Hosting)
 
-### What You Need
+### Prerequisites
 
-| Service | Required? | Purpose |
-|---------|-----------|---------|
-| [Supabase](https://supabase.com) | ✅ Yes | Database & Auth (free tier available) |
-| [Resend](https://resend.com) | ✅ Yes | Sending emails (free tier: 100 emails/day) |
-| [Lovable](https://lovable.dev) | ❌ Optional | AI features only |
+Before running the setup script, create free accounts on:
+
+1. **[Supabase](https://supabase.com)** — Database & Authentication
+2. **[Resend](https://resend.com)** — Email notifications (100 free emails/day)
+
+### One-Command Setup
+
+```bash
+git clone https://github.com/OpenLabel/digital-product-passports-com.git
+cd digital-product-passports-com
+chmod +x setup.sh
+./setup.sh
+```
+
+The script will guide you through everything:
+
+- ✅ Checks prerequisites (Node.js, Supabase CLI)
+- ✅ Prompts for your Supabase credentials
+- ✅ Prompts for your Resend API key
+- ✅ Sets up the database schema
+- ✅ Configures all secrets securely
+- ✅ Deploys backend functions
+- ✅ Generates your `.env` file
+- ✅ Installs dependencies
+
+Then just run `npm run build` and deploy the `dist` folder!
+
+---
+
+## 📋 Manual Setup (Alternative)
+
+If you prefer to run commands manually, or if you're on Windows without WSL:
+
+<details>
+<summary>Click to expand manual instructions</summary>
 
 ### Step 1: Create a Supabase Project
 
@@ -24,85 +54,92 @@ Supports wine e-labels, batteries, textiles, electronics, toys, and more product
 
 ### Step 2: Get Your Supabase Credentials
 
-Go to **Settings** → **API** and copy:
+Go to **Settings** → **API** and note these values:
 
-| Value | Example | Where to find it |
-|-------|---------|------------------|
-| Project URL | `https://abcdef.supabase.co` | Under "Project URL" |
-| Anon Key | `eyJhbGci...` | Under "Project API keys" → anon/public |
-| Project ID | `abcdef` | The subdomain from the URL |
+| Value | Where to find it |
+|-------|------------------|
+| Project ID | The subdomain from your URL (e.g., `abcdef` from `https://abcdef.supabase.co`) |
+| Project URL | Full URL like `https://abcdef.supabase.co` |
+| Anon Key | Under "Project API keys" → starts with `eyJ...` |
 
-### Step 3: Set Up the Database
-
-Install the Supabase CLI and push the schema:
+### Step 3: Install Supabase CLI and Push Schema
 
 ```bash
-# Install Supabase CLI
+# Install Supabase CLI globally
 npm install -g supabase
 
-# Clone the repository
-git clone https://github.com/OpenLabel/digital-product-passports-com.git
-cd digital-product-passports-com
-
-# Login and link to your project
+# Login (opens browser)
 supabase login
+
+# Link to your project
 supabase link --project-ref YOUR_PROJECT_ID
 
-# Push database schema (creates all tables and security policies)
+# Push database schema
 supabase db push
 ```
 
-### Step 4: Get Your Resend API Key (Required)
-
-Resend is used to send counterfeit report emails. Free tier includes 100 emails/day.
+### Step 4: Get Your Resend API Key
 
 1. Go to [resend.com](https://resend.com) → Sign up (free)
-2. After signup, go to **API Keys**: [resend.com/api-keys](https://resend.com/api-keys)
-3. Click **"Create API Key"**
-4. Give it a name (e.g., "DPP Platform") → Click **"Add"**
-5. **Copy the key immediately** (starts with `re_`) — you won't see it again!
+2. Navigate to [resend.com/api-keys](https://resend.com/api-keys)
+3. Click **"Create API Key"** → Give it a name → **"Add"**
+4. **Copy the key immediately** (starts with `re_`) — you won't see it again!
 
-### Step 5: Configure Supabase Secrets
+> ⚠️ **For production**: Verify your sending domain at [resend.com/domains](https://resend.com/domains)
 
-Now add your API keys to Supabase:
+### Step 5: Set Secrets
 
 ```bash
-# REQUIRED: Paste your Resend API key (the one starting with re_)
+# Required: Resend API key
 supabase secrets set RESEND_API_KEY=re_xxxxxxxxxx
 
-# OPTIONAL: Only needed for AI features (wine label scanning)
-# Get this from https://lovable.dev if you want AI autofill
+# Optional: Lovable API key (for AI features)
 supabase secrets set LOVABLE_API_KEY=your_key_here
 ```
 
-> ⚠️ **Important**: For Resend to work in production, you must also [verify your sending domain](https://resend.com/domains). Until then, you can only send to your own email address.
-
-### Step 6: Deploy Edge Functions
+### Step 6: Deploy Backend Functions
 
 ```bash
-supabase functions deploy send-counterfeit-request
-supabase functions deploy wine-label-ocr
-supabase functions deploy get-public-passport
+supabase functions deploy send-counterfeit-request --no-verify-jwt
+supabase functions deploy wine-label-ocr --no-verify-jwt
+supabase functions deploy get-public-passport --no-verify-jwt
 ```
 
-### Step 7: Deploy the Frontend
+### Step 7: Create Environment File
 
-Choose one of these options:
+Create a `.env` file in the project root:
 
-#### Option A: Vercel (Recommended)
+```bash
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=eyJ...your-anon-key
+VITE_SUPABASE_PROJECT_ID=your-project-id
+```
+
+### Step 8: Build and Deploy
+
+```bash
+npm install
+npm run build
+# Deploy the 'dist' folder to your web server
+```
+
+</details>
+
+---
+
+## 🖥️ Deployment Options
+
+After setup, deploy the `dist` folder using any of these options:
+
+### Vercel (Recommended)
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenLabel%2Fdigital-product-passports-com&env=VITE_SUPABASE_URL,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PROJECT_ID)
 
-Set these environment variables during deployment:
-- `VITE_SUPABASE_URL` = Your Project URL
-- `VITE_SUPABASE_PUBLISHABLE_KEY` = Your Anon Key
-- `VITE_SUPABASE_PROJECT_ID` = Your Project ID
-
-#### Option B: Railway
+### Railway
 
 [![Deploy to Railway](https://railway.com/button.svg)](https://railway.com/template/new?template=https%3A%2F%2Fgithub.com%2FOpenLabel%2Fdigital-product-passports-com&envs=VITE_SUPABASE_URL,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PROJECT_ID)
 
-#### Option C: Docker
+### Docker
 
 ```bash
 docker build -t dpp-platform .
@@ -113,60 +150,50 @@ docker run -p 80:80 \
   dpp-platform
 ```
 
-#### Option D: Manual Build
+### Static Hosting (Nginx, Apache, etc.)
 
-```bash
-npm install
-npm run build
-# Serve the 'dist' folder with any static file server
-```
-
-### Step 8: Complete Setup
-
-1. Visit your deployed app
-2. The first visitor is automatically the admin and sees the setup wizard
-3. Fill in your company details (for EU legal compliance)
-4. Done! You can now create and manage Digital Product Passports
+Just upload the contents of the `dist` folder to your web server.
 
 ---
 
-## ✅ Checklist Summary
+## 🔧 Final Setup
 
-Before your first visit, make sure you have:
+After deploying:
 
-- [ ] Created a Supabase project
-- [ ] Pushed the database schema (`supabase db push`)
-- [ ] Set `RESEND_API_KEY` as a Supabase secret
-- [ ] Deployed all 3 edge functions
-- [ ] Deployed the frontend with the 3 environment variables
-
----
-
-## Features
-
-- 🍷 **Wine E-Labels**: Full EU Regulation 2021/2117 compliance
-- 🔋 **Battery Passports**: Carbon footprint and recycling info
-- 👕 **Textile Passports**: Care instructions and composition
-- 🤖 **AI Autofill**: Scan wine labels to extract data (optional)
-- 📱 **QR Codes**: Generate scannable codes for each passport
-- 🌍 **Multi-language**: All 24 EU official languages
-- 🔒 **Self-Hosted**: Full data sovereignty
+1. Visit your app URL
+2. The first visitor sees the setup wizard
+3. Enter your company details (required for EU compliance)
+4. Done! Start creating Digital Product Passports
 
 ---
 
-## AI Features (Optional)
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🍷 **Wine E-Labels** | Full EU Regulation 2021/2117 compliance |
+| 🔋 **Battery Passports** | Carbon footprint and recycling info |
+| 👕 **Textile Passports** | Care instructions and composition |
+| 🤖 **AI Autofill** | Scan wine labels to extract data (optional) |
+| 📱 **QR Codes** | Generate scannable codes for each passport |
+| 🌍 **24 Languages** | All EU official languages supported |
+| 🔒 **Self-Hosted** | Full data sovereignty |
+
+---
+
+## 🤖 AI Features (Optional)
 
 To enable AI-powered wine label scanning:
 
 1. Get an API key from [lovable.dev](https://lovable.dev)
 2. Set it: `supabase secrets set LOVABLE_API_KEY=your_key`
-3. Check "Enable AI" during setup
+3. The AI button will appear in wine passport forms
 
 Without this key, AI buttons are hidden but everything else works.
 
 ---
 
-## Security
+## 🔒 Security
 
 - All API keys stored as Supabase secrets (never in code)
 - Row Level Security (RLS) on all tables
@@ -176,7 +203,7 @@ Without this key, AI buttons are hidden but everything else works.
 
 ---
 
-## Development
+## 💻 Development
 
 ```bash
 npm install
@@ -187,7 +214,7 @@ npm run build    # Production build
 
 ---
 
-## License
+## 📜 License
 
 **GNU Affero General Public License v3.0 (AGPL-3.0)**
 
@@ -195,7 +222,7 @@ See [LICENSE](LICENSE) file.
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -203,7 +230,7 @@ See [LICENSE](LICENSE) file.
 
 ---
 
-## Support
+## ❓ Support
 
 - **GitHub Issues**: Report bugs
 - **Discussions**: Ask questions
