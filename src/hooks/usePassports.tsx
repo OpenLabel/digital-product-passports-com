@@ -16,7 +16,7 @@ export function usePassports() {
         .from('passports')
         .select('*')
         .eq('user_id', user.id)
-        .order('updated_at', { ascending: false });
+        .order('display_order', { ascending: true });
       
       if (error) throw error;
       return data as Passport[];
@@ -114,6 +114,25 @@ export function usePassports() {
     },
   });
 
+  const reorderPassports = useMutation({
+    mutationFn: async (orderedIds: string[]) => {
+      // Update each passport's display_order based on its position in the array
+      const updates = orderedIds.map((id, index) => 
+        supabase
+          .from('passports')
+          .update({ display_order: index })
+          .eq('id', id)
+      );
+      
+      const results = await Promise.all(updates);
+      const errors = results.filter(r => r.error);
+      if (errors.length > 0) throw errors[0].error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });
+    },
+  });
+
   return {
     passports: passports || [],
     isLoading,
@@ -122,6 +141,7 @@ export function usePassports() {
     updatePassport,
     duplicatePassport,
     deletePassport,
+    reorderPassports,
   };
 }
 

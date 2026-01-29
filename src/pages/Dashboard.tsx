@@ -4,23 +4,47 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { usePassports } from '@/hooks/usePassports';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, Edit, Copy, Trash2, LogOut, QrCode } from 'lucide-react';
+import { Plus, LogOut } from 'lucide-react';
 import { categoryList } from '@/templates';
 import { QRCodeDialog } from '@/components/QRCodeDialog';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { SortablePassportCard } from '@/components/SortablePassportCard';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  rectSortingStrategy,
+} from '@dnd-kit/sortable';
+import type { Passport } from '@/types/passport';
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
   const [selectedPassport, setSelectedPassport] = useState<{ name: string; slug: string; counterfeitProtection: boolean } | null>(null);
+  const [localPassports, setLocalPassports] = useState<Passport[]>([]);
   const { user, loading: authLoading, signOut } = useAuth();
-  const { passports, isLoading, duplicatePassport, deletePassport } = usePassports();
+  const { passports, isLoading, duplicatePassport, deletePassport, reorderPassports } = usePassports();
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  // Sync local state with server data
+  useEffect(() => {
+    if (passports.length > 0) {
+      setLocalPassports(passports);
+    }
+  }, [passports]);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -28,7 +52,35 @@ export default function Dashboard() {
     }
   }, [user, authLoading, navigate]);
 
-  const handleDuplicate = async (passport: any) => {
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over && active.id !== over.id) {
+      setLocalPassports((items) => {
+        const oldIndex = items.findIndex((item) => item.id === active.id);
+        const newIndex = items.findIndex((item) => item.id === over.id);
+        const newOrder = arrayMove(items, oldIndex, newIndex);
+        
+        // Save the new order to the database
+        reorderPassports.mutate(newOrder.map(p => p.id));
+        
+        return newOrder;
+      });
+    }
+  };
+
+  const handleDuplicate = async (passport: Passport) => {
     try {
       await duplicatePassport.mutateAsync(passport);
       toast({ title: 'Passport duplicated' });
@@ -49,7 +101,7 @@ export default function Dashboard() {
 
   const getPublicUrl = (slug: string) => `${window.location.origin}/p/${slug}`;
 
-  const handleShowQR = (passport: { name: string; public_slug: string | null; category_data: unknown }) => {
+  const handleShowQR = (passport: Passport) => {
     if (!passport.public_slug) return;
     const categoryData = (passport.category_data as Record<string, unknown>) || {};
     const counterfeitProtection = categoryData.counterfeit_protection_enabled === true;
@@ -57,13 +109,13 @@ export default function Dashboard() {
     setQrDialogOpen(true);
   };
 
-  if (authLoading) {
-    return <div className="min-h-screen flex items-center justify-center"><Skeleton className="h-8 w-32" /></div>;
-  }
-
   const getCategoryIcon = (category: string) => {
     return categoryList.find(c => c.value === category)?.icon || '📦';
   };
+
+  if (authLoading) {
+    return <div className="min-h-screen flex items-center justify-center"><Skeleton className="h-8 w-32" /></div>;
+  }
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -92,7 +144,7 @@ export default function Dashboard() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3].map(i => <Skeleton key={i} className="h-48" />)}
           </div>
-        ) : passports.length === 0 ? (
+        ) : localPassports.length === 0 ? (
           <Card className="text-center py-12">
             <CardContent>
               <p className="text-muted-foreground mb-4">{t('dashboard.noPassports')}</p>
@@ -100,89 +152,29 @@ export default function Dashboard() {
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {passports.map(passport => (
-              <Card key={passport.id} className="overflow-hidden">
-                {passport.image_url && (
-                  <div className="h-32 bg-muted overflow-hidden">
-                    <img src={passport.image_url} alt={passport.name} className="w-full h-full object-cover" />
-                  </div>
-                )}
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <span>{getCategoryIcon(passport.category)}</span>
-                    {passport.name}
-                  </CardTitle>
-                  <CardDescription>{t(`categories.${passport.category}`)}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs text-muted-foreground">
-                      {t('dashboard.updated')} {new Date(passport.updated_at).toLocaleDateString()}
-                    </p>
-                    <TooltipProvider>
-                      <div className="flex items-center gap-1">
-                        {passport.public_slug && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8"
-                                onClick={() => handleShowQR(passport)}
-                              >
-                                <QrCode className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Show QR Code</TooltipContent>
-                          </Tooltip>
-                        )}
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => navigate(`/passport/${passport.id}/edit`)}
-                            >
-                              <Edit className="h-4 w-4" />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>{t('common.edit')}</TooltipContent>
-                        </Tooltip>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => handleDuplicate(passport)}
-                            >
-                              <Copy className="h-4 w-4" />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>Duplicate</TooltipContent>
-                        </Tooltip>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8 text-destructive hover:text-destructive"
-                              onClick={() => handleDelete(passport.id)}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>{t('common.delete')}</TooltipContent>
-                        </Tooltip>
-                      </div>
-                    </TooltipProvider>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext
+              items={localPassports.map(p => p.id)}
+              strategy={rectSortingStrategy}
+            >
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {localPassports.map(passport => (
+                  <SortablePassportCard
+                    key={passport.id}
+                    passport={passport}
+                    getCategoryIcon={getCategoryIcon}
+                    onShowQR={handleShowQR}
+                    onDuplicate={handleDuplicate}
+                    onDelete={handleDelete}
+                  />
+                ))}
+              </div>
+            </SortableContext>
+          </DndContext>
         )}
 
         <QRCodeDialog
