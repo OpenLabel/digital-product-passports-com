@@ -247,45 +247,53 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                   </td>
                 </tr>
                 
-                {/* Fat (always show, 0 if negligible) */}
-                <tr className="border-b border-foreground/10">
-                  <td className="py-2">{t('wine.fat')}</td>
-                  <td className="py-2 text-right">{fat !== undefined && fat > 0 ? `${fat} g` : '0 g'}</td>
-                </tr>
+                {/* Fat - only show if non-zero, otherwise covered by negligible notice */}
+                {(fat !== undefined && fat > 0) ? (
+                  <tr className="border-b border-foreground/10">
+                    <td className="py-2">{t('wine.fat')}</td>
+                    <td className="py-2 text-right">{fat} g</td>
+                  </tr>
+                ) : null}
                 
-                {/* of which saturated fat (indented, always show) */}
-                <tr className="border-b border-foreground/10">
-                  <td className="py-2 pl-4 text-muted-foreground">{t('wine.saturatedFat')}</td>
-                  <td className="py-2 text-right">{saturatedFat !== undefined && saturatedFat > 0 ? `${saturatedFat} g` : '0 g'}</td>
-                </tr>
+                {/* of which saturated fat - only show if non-zero */}
+                {(saturatedFat !== undefined && saturatedFat > 0) ? (
+                  <tr className="border-b border-foreground/10">
+                    <td className="py-2 pl-4 text-muted-foreground">{t('wine.saturatedFat')}</td>
+                    <td className="py-2 text-right">{saturatedFat} g</td>
+                  </tr>
+                ) : null}
                 
-                {/* Carbohydrate */}
+                {/* Carbohydrate - always show as it's calculated from sugar */}
                 <tr className="border-b border-foreground/10">
                   <td className="py-2">{t('wine.carbohydrate')}</td>
                   <td className="py-2 text-right">{carbohydrates !== undefined ? `${carbohydrates} g` : '0 g'}</td>
                 </tr>
                 
-                {/* of which sugars (indented) */}
+                {/* of which sugars (indented) - always show */}
                 <tr className="border-b border-foreground/10">
                   <td className="py-2 pl-4 text-muted-foreground">{t('wine.sugars')}</td>
                   <td className="py-2 text-right">{sugar !== undefined ? `${sugar} g` : '0 g'}</td>
                 </tr>
                 
-                {/* Protein */}
-                <tr className="border-b border-foreground/10">
-                  <td className="py-2">{t('wine.protein')}</td>
-                  <td className="py-2 text-right">{proteins !== undefined && proteins > 0 ? `${proteins} g` : '0 g'}</td>
-                </tr>
+                {/* Protein - only show if non-zero */}
+                {(proteins !== undefined && proteins > 0) ? (
+                  <tr className="border-b border-foreground/10">
+                    <td className="py-2">{t('wine.protein')}</td>
+                    <td className="py-2 text-right">{proteins} g</td>
+                  </tr>
+                ) : null}
                 
-                {/* Salt */}
-                <tr className="border-b border-foreground/10">
-                  <td className="py-2">{t('wine.salt')}</td>
-                  <td className="py-2 text-right">{salt !== undefined && salt > 0 ? `${salt} g` : '0 g'}</td>
-                </tr>
+                {/* Salt - only show if non-zero */}
+                {(salt !== undefined && salt > 0) ? (
+                  <tr className="border-b border-foreground/10">
+                    <td className="py-2">{t('wine.salt')}</td>
+                    <td className="py-2 text-right">{salt} g</td>
+                  </tr>
+                ) : null}
               </tbody>
             </table>
 
-            {/* Optional: negligible amounts notice per EU guidance */}
+            {/* Negligible amounts notice - shown when fat, saturated fat, protein, salt are all 0 or undefined */}
             {(fat === 0 || fat === undefined) && 
              (saturatedFat === 0 || saturatedFat === undefined) && 
              (proteins === 0 || proteins === undefined) && 
