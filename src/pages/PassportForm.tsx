@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { usePassports, usePassportById } from '@/hooks/usePassports';
 import { categoryList } from '@/templates';
@@ -40,6 +41,7 @@ interface FormData {
 }
 
 export default function PassportForm() {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const isEditing = id && id !== 'new';
   const navigate = useNavigate();
@@ -108,7 +110,7 @@ export default function PassportForm() {
     e?.preventDefault();
     
     if (!formData.name.trim()) {
-      toast({ title: 'Error', description: 'Please enter a product name', variant: 'destructive' });
+      toast({ title: t('common.error'), description: 'Please enter a product name', variant: 'destructive' });
       return;
     }
 
@@ -120,19 +122,19 @@ export default function PassportForm() {
       };
       if (isEditing) {
         await updatePassport.mutateAsync({ id, ...submitData });
-        toast({ title: 'Passport updated successfully' });
+        toast({ title: t('common.success'), description: 'Passport updated successfully' });
         // Update saved state after successful save
         savedFormDataRef.current = JSON.stringify(formData);
       } else {
         const newPassport = await createPassport.mutateAsync(submitData);
-        toast({ title: 'Passport created successfully' });
+        toast({ title: t('common.success'), description: 'Passport created successfully' });
         // Update saved state after successful save
         savedFormDataRef.current = JSON.stringify(formData);
         // Navigate to edit mode for the newly created passport
         navigate(`/passport/${newPassport.id}/edit`, { replace: true });
       }
     } catch (error: any) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
     } finally {
       setSaving(false);
     }
@@ -176,7 +178,7 @@ export default function PassportForm() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
             <AlertDialogAction onClick={() => navigate('/dashboard')}>
               Leave without saving
             </AlertDialogAction>
@@ -192,19 +194,19 @@ export default function PassportForm() {
                 <ArrowLeft className="h-4 w-4" />
               </Button>
               <h1 className="text-xl font-semibold">
-              {isEditing ? 'Edit Passport' : 'Create New Passport'}
+              {isEditing ? t('passport.editTitle') : t('passport.createTitle')}
             </h1>
           </div>
           <Button type="submit" form="passport-form" disabled={saving} className="gap-2">
             {saving ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
+                {t('passport.saving')}
               </>
             ) : (
               <>
                 <Save className="h-4 w-4" />
-                {isEditing ? 'Save Changes' : 'Create Passport'}
+                {isEditing ? t('passport.saveChanges') : t('common.create')}
                 <span className="ml-1 text-xs opacity-60">⌘S</span>
               </>
             )}
@@ -220,11 +222,11 @@ export default function PassportForm() {
               {/* Basic Information */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Basic Information</CardTitle>
+                  <CardTitle>{t('passport.basicInfo')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Product Name *</Label>
+                    <Label htmlFor="name">{t('passport.productName')} *</Label>
                     <Input
                       id="name"
                       value={formData.name}
@@ -234,7 +236,7 @@ export default function PassportForm() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="category">Product Category *</Label>
+                    <Label htmlFor="category">{t('passport.category')} *</Label>
                     <Select
                       value={formData.category}
                       onValueChange={(value: ProductCategory) => 
@@ -249,7 +251,7 @@ export default function PassportForm() {
                           <SelectItem key={cat.value} value={cat.value}>
                             <span className="flex items-center gap-2">
                               <span>{cat.icon}</span>
-                              <span>{cat.label}</span>
+                              <span>{t(`categories.${cat.value}`)}</span>
                             </span>
                           </SelectItem>
                         ))}
@@ -262,7 +264,7 @@ export default function PassportForm() {
               {/* Product Image - right after basic information */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Product Image</CardTitle>
+                  <CardTitle>{t('passport.productImage')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ImageUpload
@@ -300,7 +302,7 @@ export default function PassportForm() {
               <div>
                 <h2 className="text-lg font-semibold mb-4">
                   {categoryList.find(c => c.value === formData.category)?.icon}{' '}
-                  {categoryList.find(c => c.value === formData.category)?.label} Details
+                  {t(`categories.${formData.category}`)} Details
                 </h2>
                 <CategoryQuestions
                   category={formData.category}
@@ -329,18 +331,18 @@ export default function PassportForm() {
               {/* Actions - Mobile only */}
               <div className="flex gap-4 justify-end lg:hidden">
                 <Button type="button" variant="outline" onClick={() => navigate('/dashboard')}>
-                  Cancel
+                  {t('common.cancel')}
                 </Button>
                 <Button type="submit" disabled={saving} className="gap-2">
                   {saving ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Saving...
+                      {t('passport.saving')}
                     </>
                   ) : (
                     <>
                       <Save className="h-4 w-4" />
-                      {isEditing ? 'Save Changes' : 'Create Passport'}
+                      {isEditing ? t('passport.saveChanges') : t('common.create')}
                     </>
                   )}
                 </Button>

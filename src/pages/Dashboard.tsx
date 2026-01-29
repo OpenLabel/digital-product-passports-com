@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { usePassports } from '@/hooks/usePassports';
 import { Button } from '@/components/ui/button';
@@ -11,9 +12,8 @@ import { Plus, Edit, Copy, Trash2, LogOut, QrCode } from 'lucide-react';
 import { categoryList } from '@/templates';
 import { QRCodeDialog } from '@/components/QRCodeDialog';
 
-
-
 export default function Dashboard() {
+  const { t } = useTranslation();
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
   const [selectedPassport, setSelectedPassport] = useState<{ name: string; slug: string; counterfeitProtection: boolean } | null>(null);
   const { user, loading: authLoading, signOut } = useAuth();
@@ -32,7 +32,7 @@ export default function Dashboard() {
       await duplicatePassport.mutateAsync(passport);
       toast({ title: 'Passport duplicated' });
     } catch (error: any) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
     }
   };
 
@@ -42,7 +42,7 @@ export default function Dashboard() {
       await deletePassport.mutateAsync(id);
       toast({ title: 'Passport deleted' });
     } catch (error: any) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
     }
   };
 
@@ -80,9 +80,9 @@ export default function Dashboard() {
       
       <main className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Your Passports</h2>
+          <h2 className="text-2xl font-bold">{t('dashboard.title')}</h2>
           <Button asChild>
-            <Link to="/passport/new"><Plus className="h-4 w-4 mr-2" /> Create New</Link>
+            <Link to="/passport/new"><Plus className="h-4 w-4 mr-2" /> {t('nav.createNew')}</Link>
           </Button>
         </div>
 
@@ -93,8 +93,8 @@ export default function Dashboard() {
         ) : passports.length === 0 ? (
           <Card className="text-center py-12">
             <CardContent>
-              <p className="text-muted-foreground mb-4">No passports yet. Create your first one!</p>
-              <Button asChild><Link to="/passport/new"><Plus className="h-4 w-4 mr-2" /> Create New</Link></Button>
+              <p className="text-muted-foreground mb-4">{t('dashboard.noPassports')}</p>
+              <Button asChild><Link to="/passport/new"><Plus className="h-4 w-4 mr-2" /> {t('nav.createNew')}</Link></Button>
             </CardContent>
           </Card>
         ) : (
@@ -111,12 +111,12 @@ export default function Dashboard() {
                     <span>{getCategoryIcon(passport.category)}</span>
                     {passport.name}
                   </CardTitle>
-                  <CardDescription className="capitalize">{passport.category}</CardDescription>
+                  <CardDescription>{t(`categories.${passport.category}`)}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <p className="text-xs text-muted-foreground">
-                      Updated {new Date(passport.updated_at).toLocaleDateString()}
+                      {t('dashboard.updated')} {new Date(passport.updated_at).toLocaleDateString()}
                     </p>
                     <TooltipProvider>
                       <div className="flex items-center gap-1">
@@ -146,7 +146,7 @@ export default function Dashboard() {
                               <Edit className="h-4 w-4" />
                             </Button>
                           </TooltipTrigger>
-                          <TooltipContent>Edit</TooltipContent>
+                          <TooltipContent>{t('common.edit')}</TooltipContent>
                         </Tooltip>
                         <Tooltip>
                           <TooltipTrigger asChild>
@@ -172,7 +172,7 @@ export default function Dashboard() {
                               <Trash2 className="h-4 w-4" />
                             </Button>
                           </TooltipTrigger>
-                          <TooltipContent>Delete</TooltipContent>
+                          <TooltipContent>{t('common.delete')}</TooltipContent>
                         </Tooltip>
                       </div>
                     </TooltipProvider>

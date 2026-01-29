@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 interface WinePassportData {
@@ -33,6 +34,7 @@ interface WinePublicPassportProps {
 }
 
 export function WinePublicPassport({ passport, isPreview = false }: WinePublicPassportProps) {
+  const { t } = useTranslation();
   const categoryData = (passport.category_data || {}) as Record<string, unknown>;
 
   // Product info
@@ -86,6 +88,13 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
   const hasRecyclingInfo = recyclingComponents.length > 0;
   const hasProducerInfo = producerName || bottlerInfo || country;
 
+  // Translate ingredient name - uses translation if available, otherwise falls back to stored name
+  const translateIngredient = (ingredient: SelectedIngredient): string => {
+    const translationKey = `ingredients.${ingredient.id}`;
+    const translated = t(translationKey);
+    // If translation key is returned (no translation found), use the stored name
+    return translated === translationKey ? ingredient.name : translated;
+  };
 
   // Get unique component types for recycling table columns
   const uniqueComponentTypes = useMemo(() => {
@@ -110,7 +119,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
             isPreview ? (
               <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 text-white rounded-lg font-medium cursor-default">
                 <ShieldCheck className="h-4 w-4" />
-                Check authenticity
+                {t('passport.checkAuthenticity')}
               </div>
             ) : (
               <a
@@ -120,7 +129,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                 className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
               >
                 <ShieldCheck className="h-4 w-4" />
-                Check authenticity
+                {t('passport.checkAuthenticity')}
               </a>
             )
           )}
@@ -139,19 +148,19 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
             <div className="flex-1 space-y-2 text-sm">
               {volume && (
                 <div>
-                  <p className="text-muted-foreground">Volume</p>
+                  <p className="text-muted-foreground">{t('wine.volume')}</p>
                   <p className="font-medium">{volume} {volumeUnit}</p>
                 </div>
               )}
               {grapeVariety && (
                 <div>
-                  <p className="text-muted-foreground">Grape Variety</p>
+                  <p className="text-muted-foreground">{t('wine.grapeVariety')}</p>
                   <p className="font-medium">{grapeVariety}</p>
                 </div>
               )}
               {vintage && (
                 <div>
-                  <p className="text-muted-foreground">Vintage</p>
+                  <p className="text-muted-foreground">{t('wine.vintage')}</p>
                   <p className="font-medium">{vintage}</p>
                 </div>
               )}
@@ -163,43 +172,43 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-6 text-sm">
           {showAlcohol && alcoholPercent !== undefined && (
             <div>
-              <p className="text-muted-foreground">Alcohol</p>
+              <p className="text-muted-foreground">{t('wine.alcohol')}</p>
               <p className="font-medium">{alcoholPercent}% vol</p>
             </div>
           )}
           {showResidualSugar && residualSugar !== undefined && (
             <div>
-              <p className="text-muted-foreground">Residual Sugar</p>
+              <p className="text-muted-foreground">{t('wine.residualSugar')}</p>
               <p className="font-medium">{residualSugar} g/l</p>
             </div>
           )}
           {showTotalAcidity && totalAcidity !== undefined && (
             <div>
-              <p className="text-muted-foreground">Acidity</p>
+              <p className="text-muted-foreground">{t('wine.acidity')}</p>
               <p className="font-medium">{totalAcidity} g/l</p>
             </div>
           )}
           {country && (
             <div>
-              <p className="text-muted-foreground">Country</p>
+              <p className="text-muted-foreground">{t('wine.country')}</p>
               <p className="font-medium">{country}</p>
             </div>
           )}
           {region && (
             <div>
-              <p className="text-muted-foreground">Region</p>
+              <p className="text-muted-foreground">{t('wine.region')}</p>
               <p className="font-medium">{region}</p>
             </div>
           )}
           {denomination && (
             <div>
-              <p className="text-muted-foreground">Denomination</p>
+              <p className="text-muted-foreground">{t('wine.denomination')}</p>
               <p className="font-medium">{denomination}</p>
             </div>
           )}
           {sugarClassification && (
             <div>
-              <p className="text-muted-foreground">Classification</p>
+              <p className="text-muted-foreground">{t('wine.sugarClassification')}</p>
               <p className="font-medium">{sugarClassification}</p>
             </div>
           )}
@@ -209,20 +218,20 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {/* Nutritional Values - EU Regulation 1169/2011 compliant format */}
         {hasNutritionalInfo && (
           <section className="mb-6" data-testid="nutritional-section">
-            <h2 className="text-xl font-semibold mb-3">Nutritional Values</h2>
+            <h2 className="text-xl font-semibold mb-3">{t('wine.nutritionalValues')}</h2>
             
             {/* EU mandates tabular format with values per 100ml */}
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b-2 border-foreground/20">
                   <th className="text-left py-2 font-medium"></th>
-                  <th className="text-right py-2 font-medium">per 100 ml</th>
+                  <th className="text-right py-2 font-medium">{t('wine.per100ml')}</th>
                 </tr>
               </thead>
               <tbody>
                 {/* EU Order: Energy first (mandatory kJ, optional kcal) */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2 font-medium">Energy</td>
+                  <td className="py-2 font-medium">{t('wine.energy')}</td>
                   <td className="py-2 text-right">
                     {energyKj !== undefined ? `${energyKj} kJ` : '0 kJ'}
                     {' / '}
@@ -232,37 +241,37 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                 
                 {/* Fat (always show, 0 if negligible) */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2">Fat</td>
+                  <td className="py-2">{t('wine.fat')}</td>
                   <td className="py-2 text-right">{fat !== undefined && fat > 0 ? `${fat} g` : '0 g'}</td>
                 </tr>
                 
                 {/* of which saturated fat (indented, always show) */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2 pl-4 text-muted-foreground">of which saturated fat</td>
+                  <td className="py-2 pl-4 text-muted-foreground">{t('wine.saturatedFat')}</td>
                   <td className="py-2 text-right">{saturatedFat !== undefined && saturatedFat > 0 ? `${saturatedFat} g` : '0 g'}</td>
                 </tr>
                 
                 {/* Carbohydrate */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2">Carbohydrate</td>
+                  <td className="py-2">{t('wine.carbohydrate')}</td>
                   <td className="py-2 text-right">{carbohydrates !== undefined ? `${carbohydrates} g` : '0 g'}</td>
                 </tr>
                 
                 {/* of which sugars (indented) */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2 pl-4 text-muted-foreground">of which sugars</td>
+                  <td className="py-2 pl-4 text-muted-foreground">{t('wine.sugars')}</td>
                   <td className="py-2 text-right">{sugar !== undefined ? `${sugar} g` : '0 g'}</td>
                 </tr>
                 
                 {/* Protein */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2">Protein</td>
+                  <td className="py-2">{t('wine.protein')}</td>
                   <td className="py-2 text-right">{proteins !== undefined && proteins > 0 ? `${proteins} g` : '0 g'}</td>
                 </tr>
                 
                 {/* Salt */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2">Salt</td>
+                  <td className="py-2">{t('wine.salt')}</td>
                   <td className="py-2 text-right">{salt !== undefined && salt > 0 ? `${salt} g` : '0 g'}</td>
                 </tr>
               </tbody>
@@ -274,7 +283,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
              (proteins === 0 || proteins === undefined) && 
              (salt === 0 || salt === undefined) && (
               <p className="text-xs text-muted-foreground mt-2 italic">
-                Contains negligible amounts of fat, saturates, protein and salt.
+                {t('wine.negligibleAmounts')}
               </p>
             )}
           </section>
@@ -283,12 +292,12 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {/* Ingredients */}
         {ingredients.length > 0 && (
           <section className="mb-6" data-testid="ingredients-section">
-            <h2 className="text-xl font-semibold mb-3">Ingredients</h2>
+            <h2 className="text-xl font-semibold mb-3">{t('wine.ingredients')}</h2>
             <p className="text-sm" data-testid="ingredients-list">
-              {regularIngredients.map((i) => i.name).join(', ')}
+              {regularIngredients.map((i) => translateIngredient(i)).join(', ')}
               {allergenIngredients.length > 0 && regularIngredients.length > 0 && ', '}
               {allergenIngredients.length > 0 && (
-                <strong>{allergenIngredients.map((i) => i.name).join(', ')}</strong>
+                <strong>{allergenIngredients.map((i) => translateIngredient(i)).join(', ')}</strong>
               )}
             </p>
           </section>
@@ -297,7 +306,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {/* Recycling Information */}
         {hasRecyclingInfo && (
           <section className="mb-6" data-testid="recycling-section">
-            <h2 className="text-xl font-semibold mb-3">Recycling Information</h2>
+            <h2 className="text-xl font-semibold mb-3">{t('wine.recycling')}</h2>
             
             {recyclingComponents.length > 0 && (
               <>
@@ -312,7 +321,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                   </thead>
                   <tbody>
                     <tr className="border-b">
-                      <td className="py-2 text-muted-foreground">Code</td>
+                      <td className="py-2 text-muted-foreground">{t('recycling.code')}</td>
                       {uniqueComponentTypes.map(([type]) => {
                         const comp = recyclingComponents.find(c => c.type === type);
                         return (
@@ -321,7 +330,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                       })}
                     </tr>
                     <tr className="border-b">
-                      <td className="py-2 text-muted-foreground">Material</td>
+                      <td className="py-2 text-muted-foreground">{t('recycling.material')}</td>
                       {uniqueComponentTypes.map(([type]) => {
                         const comp = recyclingComponents.find(c => c.type === type);
                         return (
@@ -330,7 +339,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                       })}
                     </tr>
                     <tr className="border-b">
-                      <td className="py-2 text-muted-foreground">Disposal</td>
+                      <td className="py-2 text-muted-foreground">{t('recycling.disposal')}</td>
                       {uniqueComponentTypes.map(([type]) => {
                         const comp = recyclingComponents.find(c => c.type === type);
                         return (
@@ -341,7 +350,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
                   </tbody>
                 </table>
                 <p className="text-xs text-muted-foreground">
-                  Check your local recycling guidelines. Separate components and dispose of them correctly.
+                  {t('wine.recyclingNote')}
                 </p>
               </>
             )}
@@ -351,7 +360,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {/* Legal Mentions / Producer Info */}
         {hasProducerInfo && (
           <section className="mb-6" data-testid="producer-section">
-            <h2 className="text-xl font-semibold mb-3">Legal Information</h2>
+            <h2 className="text-xl font-semibold mb-3">{t('wine.legalInfo')}</h2>
             <div className="text-sm space-y-1">
               {producerName && <p>{producerName}</p>}
               {bottlerInfo && <p className="whitespace-pre-wrap">{bottlerInfo}</p>}
@@ -364,7 +373,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {!categoryData.hide_promo && (
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
             <p className="text-sm text-foreground">
-              Powered by{' '}
+              {t('passport.poweredBy')}{' '}
               {isPreview ? (
                 <span className="text-primary font-medium">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></span>
               ) : (
@@ -384,10 +393,10 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground py-4 border-t">
           {isPreview ? (
-            <span className="underline">Legal Mentions</span>
+            <span className="underline">{t('legal.legalMentions')}</span>
           ) : (
             <Link to="/legal" className="underline hover:text-foreground">
-              Legal Mentions
+              {t('legal.legalMentions')}
             </Link>
           )}
         </footer>
