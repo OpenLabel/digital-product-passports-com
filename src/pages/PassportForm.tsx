@@ -20,6 +20,7 @@ import { WineFields } from '@/components/WineFields';
 import { PassportPreview } from '@/components/PassportPreview';
 import { CounterfeitProtection } from '@/components/CounterfeitProtection';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -197,20 +198,23 @@ export default function PassportForm() {
               {isEditing ? t('passport.editTitle') : t('passport.createTitle')}
             </h1>
           </div>
-          <Button type="submit" form="passport-form" disabled={saving} className="gap-2">
-            {saving ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                {t('passport.saving')}
-              </>
-            ) : (
-              <>
-                <Save className="h-4 w-4" />
-                {isEditing ? t('passport.saveChanges') : t('common.create')}
-                <span className="ml-1 text-xs opacity-60">⌘S</span>
-              </>
-            )}
-          </Button>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <Button type="submit" form="passport-form" disabled={saving} className="gap-2">
+              {saving ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  {t('passport.saving')}
+                </>
+              ) : (
+                <>
+                  <Save className="h-4 w-4" />
+                  {isEditing ? t('passport.saveChanges') : t('common.create')}
+                  <span className="ml-1 text-xs opacity-60">⌘S</span>
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </header>
 
