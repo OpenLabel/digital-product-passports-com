@@ -260,57 +260,64 @@ export function WinePublicPassport({
       <main className="container mx-auto px-4 py-6 max-w-lg">
         {/* Header with Product Name and Image */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold mb-4" data-testid="passport-name">{productName}</h1>
-          
-          {/* Check Authenticity Button */}
-          {counterfeitProtectionEnabled && (
-            isPreview ? (
-              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 text-white rounded-lg font-medium cursor-default">
-                <ShieldCheck className="h-4 w-4" />
-                {t('passport.checkAuthenticity')}
-              </div>
-            ) : (
-              <a
-                href="https://app.cypheme.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
-              >
-                <ShieldCheck className="h-4 w-4" />
-                {t('passport.checkAuthenticity')}
-              </a>
-            )
-          )}
-          <div className="flex gap-4">
+          {/* Product card with image and info side by side */}
+          <div className="flex gap-5 items-start">
             {/* Product Image */}
             {passport.image_url && (
-              <img
-                src={passport.image_url}
-                alt={productName}
-                className="w-24 h-36 object-contain"
-                data-testid="product-image"
-              />
+              <div className="flex-shrink-0">
+                <img
+                  src={passport.image_url}
+                  alt={productName}
+                  className="w-28 h-auto max-h-44 object-contain rounded-lg shadow-sm"
+                  data-testid="product-image"
+                />
+              </div>
             )}
             
-            {/* Key Info */}
-            <div className="flex-1 space-y-2 text-sm">
-              {volume && (
-                <div>
-                  <p className="text-muted-foreground">{t('wine.volume')}</p>
-                  <p className="font-medium">{volume} {volumeUnit}</p>
-                </div>
-              )}
-              {grapeVariety && (
-                <div>
-                  <p className="text-muted-foreground">{t('wine.grapeVariety')}</p>
-                  <p className="font-medium">{grapeVariety}</p>
-                </div>
-              )}
-              {vintage && (
-                <div>
-                  <p className="text-muted-foreground">{t('wine.vintage')}</p>
-                  <p className="font-medium">{vintage}</p>
-                </div>
+            {/* Product Info */}
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl font-bold leading-tight mb-2" data-testid="passport-name">{productName}</h1>
+              
+              {/* Key attributes inline */}
+              <div className="space-y-1.5 text-sm">
+                {volume && (
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-muted-foreground">{t('wine.volume')}:</span>
+                    <span className="font-medium">{volume} {volumeUnit}</span>
+                  </div>
+                )}
+                {vintage && (
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-muted-foreground">{t('wine.vintage')}:</span>
+                    <span className="font-medium">{vintage}</span>
+                  </div>
+                )}
+                {grapeVariety && (
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-muted-foreground">{t('wine.grapeVariety')}:</span>
+                    <span className="font-medium">{grapeVariety}</span>
+                  </div>
+                )}
+              </div>
+              
+              {/* Check Authenticity Button */}
+              {counterfeitProtectionEnabled && (
+                isPreview ? (
+                  <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 bg-green-600 text-white rounded-md font-medium text-sm cursor-default">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    {t('passport.checkAuthenticity')}
+                  </div>
+                ) : (
+                  <a
+                    href="https://app.cypheme.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium text-sm transition-colors"
+                  >
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    {t('passport.checkAuthenticity')}
+                  </a>
+                )
               )}
             </div>
           </div>
