@@ -547,9 +547,9 @@ export default function Index() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="h-6 w-6 rounded bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xs">EU</span>
+                <span className="text-primary-foreground font-bold text-xs">DPP</span>
               </div>
-              <span className="text-sm font-medium">Digital Product Passport Platform</span>
+              <span className="text-sm font-medium">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></span>
               <Badge variant="outline" className="text-xs">
                 Open Source
               </Badge>
@@ -563,7 +563,7 @@ export default function Index() {
                 View on GitHub
               </a>
               <span className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} {config?.company_name || 'Digital Product Passport Platform'}
+                © {new Date().getFullYear()} {config?.company_name || 'Digital - Product - Passports .com'}
               </span>
             </div>
           </div>
