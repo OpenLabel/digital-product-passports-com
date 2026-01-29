@@ -125,10 +125,9 @@ export default function Setup() {
                   </Label>
                   <Input
                     id="privacyPolicyUrl"
-                    type="url"
                     value={privacyPolicyUrl}
                     onChange={(e) => setPrivacyPolicyUrl(e.target.value)}
-                    placeholder="https://example.com/privacy-policy"
+                    placeholder="/privacy-policy or https://example.com/privacy"
                   />
                 </div>
 
@@ -139,10 +138,9 @@ export default function Setup() {
                   </Label>
                   <Input
                     id="termsConditionsUrl"
-                    type="url"
                     value={termsConditionsUrl}
                     onChange={(e) => setTermsConditionsUrl(e.target.value)}
-                    placeholder="https://example.com/terms"
+                    placeholder="/terms or https://example.com/terms"
                   />
                 </div>
 
