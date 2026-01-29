@@ -303,11 +303,12 @@
     "ingredientCategories": {
       "general": "Général",
       "gases": "Gaz et gaz de conditionnement",
-      "acidity_regulators": "Régulateurs d'acidité",
+      "acidity_regulators": "Régulateur d'acidité",
       "stabilizers": "Agents stabilisants",
       "preservatives": "Conservateurs et antioxydants",
       "processing_aids": "Auxiliaires technologiques"
     },
+    "bottledProtectiveAtmosphere": "Conditionné sous atmosphère protectrice",
     "ingredientsDescription": "Sélectionnez des ingrédients dans la liste des ingrédients du vin ou ajoutez-en de personnalisés. Triez-les par quantité (du plus grand au plus petit).",
     "chooseIngredients": "Choisir les ingrédients du vin",
     "chooseIngredientsDescription": "Sélectionnez tous les ingrédients qui font partie de la composition de votre vin. Si nécessaire, vous pouvez ajouter un ingrédient personnalisé.",

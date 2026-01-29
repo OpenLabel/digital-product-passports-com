@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { getIngredientById } from '@/data/wineIngredients';
+import { getIngredientById, getIngredientCategory } from '@/data/wineIngredients';
 import { IngredientPickerDialog } from './IngredientPickerDialog';
 import { CustomIngredientDialog, CustomIngredient } from './CustomIngredientDialog';
 
@@ -15,6 +15,7 @@ interface SelectedIngredient {
   eNumber?: string;
   isAllergen?: boolean;
   isCustom?: boolean;
+  category?: string;
 }
 
 interface WineIngredientsProps {
@@ -52,6 +53,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
           name: ingredient.name,
           eNumber: ingredient.eNumber,
           isAllergen: ingredient.isAllergen,
+          category: getIngredientCategory(id),
         };
       })
       .filter(Boolean) as SelectedIngredient[];

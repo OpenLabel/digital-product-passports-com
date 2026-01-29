@@ -16,6 +16,7 @@ interface SelectedIngredient {
   id: string;
   name: string;
   isAllergen?: boolean;
+  category?: string;
 }
 
 interface RecyclingComponent {
@@ -82,9 +83,6 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
   // Counterfeit protection
   const counterfeitProtectionEnabled = categoryData.counterfeit_protection_enabled === true;
 
-  const allergenIngredients = ingredients.filter((i) => i.isAllergen);
-  const regularIngredients = ingredients.filter((i) => !i.isAllergen);
-
   const hasNutritionalInfo = energyKcal || energyKj || carbohydrates !== undefined || sugar !== undefined;
   const hasRecyclingInfo = recyclingComponents.length > 0;
   const hasProducerInfo = producerName || bottlerInfo || country;
@@ -95,6 +93,93 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
     const translated = t(translationKey);
     // If translation key is returned (no translation found), use the stored name
     return translated === translationKey ? ingredient.name : translated;
+  };
+
+  // Format ingredients for display according to EU regulations
+  // - Gases become "Bottled in a protective atmosphere"
+  // - Acidity regulators, stabilizers, preservatives get category prefix
+  // - Allergens are bold
+  const formatIngredientsDisplay = (): React.ReactNode[] => {
+    const result: React.ReactNode[] = [];
+    
+    // Group ingredients by category
+    const generalIngredients: SelectedIngredient[] = [];
+    const gasIngredients: SelectedIngredient[] = [];
+    const acidityRegulators: SelectedIngredient[] = [];
+    const stabilizers: SelectedIngredient[] = [];
+    const preservatives: SelectedIngredient[] = [];
+    const processingAids: SelectedIngredient[] = [];
+    const customIngredients: SelectedIngredient[] = [];
+    
+    ingredients.forEach(ing => {
+      const category = ing.category || 'general';
+      if (category === 'gases') gasIngredients.push(ing);
+      else if (category === 'acidity_regulators') acidityRegulators.push(ing);
+      else if (category === 'stabilizers') stabilizers.push(ing);
+      else if (category === 'preservatives') preservatives.push(ing);
+      else if (category === 'processing_aids') processingAids.push(ing);
+      else if (ing.id?.startsWith('custom_')) customIngredients.push(ing);
+      else generalIngredients.push(ing);
+    });
+
+    // Helper to render an ingredient (bold if allergen)
+    const renderIngredient = (ing: SelectedIngredient): React.ReactNode => {
+      const name = translateIngredient(ing);
+      return ing.isAllergen ? <strong key={ing.id}>{name}</strong> : name;
+    };
+
+    // Add general ingredients
+    generalIngredients.forEach((ing, idx) => {
+      if (result.length > 0) result.push(', ');
+      result.push(renderIngredient(ing));
+    });
+
+    // Add custom ingredients
+    customIngredients.forEach((ing) => {
+      if (result.length > 0) result.push(', ');
+      result.push(renderIngredient(ing));
+    });
+
+    // Add gases as "Bottled in a protective atmosphere"
+    if (gasIngredients.length > 0) {
+      if (result.length > 0) result.push(', ');
+      result.push(t('wine.bottledProtectiveAtmosphere'));
+    }
+
+    // Add acidity regulators with category prefix
+    if (acidityRegulators.length > 0) {
+      if (result.length > 0) result.push(', ');
+      const names = acidityRegulators.map(ing => renderIngredient(ing));
+      result.push(
+        <span key="acidity">{t('wine.ingredientCategories.acidity_regulators')}: {names.reduce((prev, curr, i) => i === 0 ? [curr] : [...prev as React.ReactNode[], ', ', curr], [] as React.ReactNode[])}</span>
+      );
+    }
+
+    // Add stabilizers with category prefix
+    if (stabilizers.length > 0) {
+      if (result.length > 0) result.push(', ');
+      const names = stabilizers.map(ing => renderIngredient(ing));
+      result.push(
+        <span key="stabilizers">{t('wine.ingredientCategories.stabilizers')}: {names.reduce((prev, curr, i) => i === 0 ? [curr] : [...prev as React.ReactNode[], ', ', curr], [] as React.ReactNode[])}</span>
+      );
+    }
+
+    // Add preservatives with category prefix
+    if (preservatives.length > 0) {
+      if (result.length > 0) result.push(', ');
+      const names = preservatives.map(ing => renderIngredient(ing));
+      result.push(
+        <span key="preservatives">{t('wine.ingredientCategories.preservatives')}: {names.reduce((prev, curr, i) => i === 0 ? [curr] : [...prev as React.ReactNode[], ', ', curr], [] as React.ReactNode[])}</span>
+      );
+    }
+
+    // Add processing aids (allergens will be bold)
+    processingAids.forEach((ing) => {
+      if (result.length > 0) result.push(', ');
+      result.push(renderIngredient(ing));
+    });
+
+    return result;
   };
 
   // Get unique component types for recycling table columns
@@ -310,11 +395,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
           <section className="mb-6" data-testid="ingredients-section">
             <h2 className="text-xl font-semibold mb-3">{t('wine.ingredients')}</h2>
             <p className="text-sm" data-testid="ingredients-list">
-              {regularIngredients.map((i) => translateIngredient(i)).join(', ')}
-              {allergenIngredients.length > 0 && regularIngredients.length > 0 && ', '}
-              {allergenIngredients.length > 0 && (
-                <strong>{allergenIngredients.map((i) => translateIngredient(i)).join(', ')}</strong>
-              )}
+              {formatIngredientsDisplay()}
             </p>
           </section>
         )}

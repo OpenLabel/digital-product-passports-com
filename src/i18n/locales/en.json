@@ -303,11 +303,12 @@
     "ingredientCategories": {
       "general": "General",
       "gases": "Gases and packaging gases",
-      "acidity_regulators": "Acidity regulators",
+      "acidity_regulators": "Acidity regulator",
       "stabilizers": "Stabilizing agents",
       "preservatives": "Preservatives and antioxidants",
       "processing_aids": "Processing aids"
     },
+    "bottledProtectiveAtmosphere": "Bottled in a protective atmosphere",
     "ingredientsDescription": "Select ingredients from the wine ingredient list or add custom ones. Sort them by quantity (largest to smallest).",
     "chooseIngredients": "Choose wine ingredients",
     "chooseIngredientsDescription": "Select all ingredients that are part of your wine composition. If necessary, you can add a custom ingredient.",
