@@ -144,13 +144,16 @@ export default function Index() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="flex justify-center gap-2 mb-6">
+          <div className="flex justify-center gap-2 mb-6 flex-wrap">
             <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
               EU ESPR Compliant
             </Badge>
             <Badge variant="outline" className="border-primary/30">
               <Github className="h-3 w-3 mr-1" />
               Open Source
+            </Badge>
+            <Badge className="bg-blue-600/10 text-blue-600 border-blue-600/20 hover:bg-blue-600/20">
+              🇪🇺 Proudly EU Funded
             </Badge>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-5xl mx-auto leading-tight tracking-tight">
