@@ -25,6 +25,7 @@ import lt from './locales/lt.json';
 import lv from './locales/lv.json';
 import mt from './locales/mt.json';
 import nl from './locales/nl.json';
+import no from './locales/no.json';
 import pl from './locales/pl.json';
 import pt from './locales/pt.json';
 import ro from './locales/ro.json';
@@ -57,6 +58,7 @@ export const supportedLanguages = [
   { code: 'lv', name: 'Latvian', nativeName: 'Latviešu' },
   { code: 'mt', name: 'Maltese', nativeName: 'Malti' },
   { code: 'nl', name: 'Dutch', nativeName: 'Nederlands' },
+  { code: 'no', name: 'Norwegian', nativeName: 'Norsk' },
   { code: 'pl', name: 'Polish', nativeName: 'Polski' },
   { code: 'pt', name: 'Portuguese', nativeName: 'Português' },
   { code: 'ro', name: 'Romanian', nativeName: 'Română' },
@@ -92,6 +94,7 @@ const resources = {
   lv: { translation: lv },
   mt: { translation: mt },
   nl: { translation: nl },
+  no: { translation: no },
   pl: { translation: pl },
   pt: { translation: pt },
   ro: { translation: ro },
