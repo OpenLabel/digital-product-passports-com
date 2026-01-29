@@ -7,7 +7,6 @@ export interface SiteConfig {
   privacy_policy_url: string;
   terms_conditions_url: string;
   ai_enabled: boolean;
-  resend_api_key: string;
   sender_email: string;
   setup_complete: boolean;
 }
@@ -16,7 +15,6 @@ interface SiteConfigContextType {
   config: SiteConfig | null;
   loading: boolean;
   isSetupRequired: boolean;
-  isLovableCloud: boolean;
   refetch: () => Promise<void>;
   saveConfig: (config: Partial<SiteConfig>) => Promise<void>;
 }
@@ -27,26 +25,15 @@ const defaultConfig: SiteConfig = {
   privacy_policy_url: '',
   terms_conditions_url: '',
   ai_enabled: true,
-  resend_api_key: '',
   sender_email: '',
   setup_complete: false,
 };
 
 const SiteConfigContext = createContext<SiteConfigContextType | null>(null);
 
-// Detect if running on Lovable Cloud by checking the Supabase URL
-function detectLovableCloud(): boolean {
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-  // Lovable Cloud uses supabase.co URLs with specific project patterns
-  // Self-hosted would typically use custom domains or localhost
-  return supabaseUrl.includes('.supabase.co') && 
-         import.meta.env.VITE_SUPABASE_PROJECT_ID !== undefined;
-}
-
 export function SiteConfigProvider({ children }: { children: ReactNode }) {
   const [config, setConfig] = useState<SiteConfig | null>(null);
   const [loading, setLoading] = useState(true);
-  const isLovableCloud = detectLovableCloud();
 
   const fetchConfig = async () => {
     try {
@@ -75,7 +62,6 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
         privacy_policy_url: configObj.privacy_policy_url || '',
         terms_conditions_url: configObj.terms_conditions_url || '',
         ai_enabled: configObj.ai_enabled !== 'false', // Default to true
-        resend_api_key: configObj.resend_api_key || '',
         sender_email: configObj.sender_email || '',
         setup_complete: configObj.setup_complete === 'true',
       });
@@ -119,7 +105,6 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
         config,
         loading,
         isSetupRequired,
-        isLovableCloud,
         refetch: fetchConfig,
         saveConfig,
       }}

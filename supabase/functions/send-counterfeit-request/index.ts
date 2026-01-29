@@ -59,24 +59,18 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { userEmail, passportName, passportUrl, requestedAt } = parseResult.data;
 
-    // Get Resend API key from encrypted storage
+    // Get Resend API key from environment (Supabase secrets)
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    
+    if (!RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY not configured. Please set it as a Supabase secret.");
+    }
+
+    // Get config data from database
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Fetch decrypted Resend API key
-    const { data: resendApiKey, error: keyError } = await supabase.rpc(
-      "get_decrypted_secret",
-      { p_name: "resend_api_key" }
-    );
-
-    if (keyError || !resendApiKey) {
-      throw new Error("Resend API key not configured. Please complete the Setup wizard.");
-    }
-
-    const RESEND_API_KEY = resendApiKey;
-
-    // Fetch config data
     const { data: configData } = await supabase
       .from("site_config")
       .select("key, value")

@@ -44,33 +44,6 @@ export type Database = {
         }
         Relationships: []
       }
-      encrypted_secrets: {
-        Row: {
-          created_at: string
-          description: string | null
-          encrypted_value: string
-          id: string
-          name: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string | null
-          encrypted_value: string
-          id?: string
-          name: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          description?: string | null
-          encrypted_value?: string
-          id?: string
-          name?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       passports: {
         Row: {
           category: Database["public"]["Enums"]["product_category"]
@@ -169,15 +142,9 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      encrypted_secret_exists: { Args: { p_name: string }; Returns: boolean }
-      get_decrypted_secret: { Args: { p_name: string }; Returns: string }
       increment_api_usage: {
         Args: { p_function_name: string; p_limit?: number; p_user_id: string }
         Returns: Json
-      }
-      store_encrypted_secret: {
-        Args: { p_description?: string; p_name: string; p_value: string }
-        Returns: undefined
       }
     }
     Enums: {
