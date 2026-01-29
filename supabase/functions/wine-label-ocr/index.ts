@@ -110,21 +110,11 @@ serve(async (req) => {
 
     const { image } = parseResult.data;
 
-    // Get Lovable API key - first try environment variable, then encrypted storage
-    let LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    // Get Lovable API key from environment (Supabase secrets)
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
-      // Try encrypted storage
-      const { data: encryptedKey } = await supabaseService.rpc(
-        "get_decrypted_secret",
-        { p_name: "lovable_api_key" }
-      );
-      
-      LOVABLE_API_KEY = encryptedKey || null;
-    }
-    
-    if (!LOVABLE_API_KEY) {
-      throw new Error("Lovable API key not configured. Please complete the Setup wizard with AI features enabled.");
+      throw new Error("LOVABLE_API_KEY not configured. Please set it as a Supabase secret.");
     }
 
     // Call Lovable AI with the wine label image

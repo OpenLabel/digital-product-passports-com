@@ -9,9 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Badge } from '@/components/ui/badge';
-import { Building2, MapPin, CheckCircle2, Server, Link2, FileText, Sparkles, AlertCircle, Mail, ExternalLink, Loader2, Key } from 'lucide-react';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { supabase } from '@/integrations/supabase/client';
+import { Building2, MapPin, CheckCircle2, Server, Link2, FileText, Sparkles, Mail } from 'lucide-react';
 
 export default function Setup() {
   const [companyName, setCompanyName] = useState('');
@@ -19,77 +17,11 @@ export default function Setup() {
   const [privacyPolicyUrl, setPrivacyPolicyUrl] = useState('/privacy-policy');
   const [termsConditionsUrl, setTermsConditionsUrl] = useState('/terms');
   const [aiEnabled, setAiEnabled] = useState(true);
-  const [resendApiKey, setResendApiKey] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
-  const [lovableApiKey, setLovableApiKey] = useState('');
-  const [validatingResend, setValidatingResend] = useState(false);
-  const [validatingLovable, setValidatingLovable] = useState(false);
-  const [resendValidated, setResendValidated] = useState(false);
-  const [lovableValidated, setLovableValidated] = useState(false);
   const [saving, setSaving] = useState(false);
-  const { saveConfig, isLovableCloud } = useSiteConfig();
+  const { saveConfig } = useSiteConfig();
   const { toast } = useToast();
   const navigate = useNavigate();
-
-  const validateAndSaveResendKey = async () => {
-    if (!resendApiKey.trim()) {
-      toast({ title: 'Error', description: 'Please enter a Resend API key', variant: 'destructive' });
-      return false;
-    }
-
-    setValidatingResend(true);
-    try {
-      const { data, error } = await supabase.functions.invoke('save-resend-key', {
-        body: { resendApiKey: resendApiKey.trim() },
-      });
-
-      if (error) throw error;
-      if (!data.success) throw new Error(data.error);
-
-      setResendValidated(true);
-      toast({ title: 'Success', description: 'Resend API key validated and saved' });
-      return true;
-    } catch (error: any) {
-      toast({ 
-        title: 'Invalid API Key', 
-        description: error.message || 'Failed to validate Resend API key', 
-        variant: 'destructive' 
-      });
-      return false;
-    } finally {
-      setValidatingResend(false);
-    }
-  };
-
-  const validateAndSaveLovableKey = async () => {
-    if (!lovableApiKey.trim()) {
-      toast({ title: 'Error', description: 'Please enter a Lovable API key', variant: 'destructive' });
-      return false;
-    }
-
-    setValidatingLovable(true);
-    try {
-      const { data, error } = await supabase.functions.invoke('save-lovable-key', {
-        body: { lovableApiKey: lovableApiKey.trim() },
-      });
-
-      if (error) throw error;
-      if (!data.success) throw new Error(data.error);
-
-      setLovableValidated(true);
-      toast({ title: 'Success', description: 'Lovable API key saved' });
-      return true;
-    } catch (error: any) {
-      toast({ 
-        title: 'Error', 
-        description: error.message || 'Failed to save Lovable API key', 
-        variant: 'destructive' 
-      });
-      return false;
-    } finally {
-      setValidatingLovable(false);
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,27 +36,9 @@ export default function Setup() {
       return;
     }
 
-    // Resend key is required
-    if (!resendApiKey.trim()) {
-      toast({ title: 'Error', description: 'Resend API key is required for authentication emails', variant: 'destructive' });
-      return;
-    }
-
     if (!senderEmail.trim()) {
       toast({ title: 'Error', description: 'Sender email is required', variant: 'destructive' });
       return;
-    }
-
-    // Validate Resend key if not already validated
-    if (!resendValidated) {
-      const isValid = await validateAndSaveResendKey();
-      if (!isValid) return;
-    }
-
-    // Validate Lovable API key if AI is enabled and not on Lovable Cloud
-    if (aiEnabled && !isLovableCloud && lovableApiKey.trim() && !lovableValidated) {
-      const isValid = await validateAndSaveLovableKey();
-      if (!isValid) return;
     }
 
     setSaving(true);
@@ -249,85 +163,14 @@ export default function Setup() {
                   </ul>
                 </div>
 
-                {/* Email Configuration Section (Required) */}
+                {/* Sender Email Section */}
                 <div className="border-t pt-6 space-y-4">
                   <div className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-primary" />
-                    <h3 className="font-medium">Email Configuration (Resend)</h3>
+                    <h3 className="font-medium">Email Configuration</h3>
                     <Badge variant="default" className="text-xs">Required</Badge>
                   </div>
                   
-                  <Alert>
-                    <Mail className="h-4 w-4" />
-                    <AlertDescription className="space-y-2">
-                      <p>Email is required for password reset and authentication. Get your API key from Resend:</p>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        <a
-                          href="https://resend.com/api-keys"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
-                        >
-                          <ExternalLink className="h-3 w-3" />
-                          Get Resend API Key
-                        </a>
-                        <span className="text-muted-foreground">•</span>
-                        <a
-                          href="https://resend.com/domains"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
-                        >
-                          <ExternalLink className="h-3 w-3" />
-                          Verify Your Domain
-                        </a>
-                      </div>
-                    </AlertDescription>
-                  </Alert>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="resendApiKey" className="flex items-center gap-2">
-                      <Mail className="h-4 w-4" />
-                      Resend API Key *
-                    </Label>
-                    <div className="flex gap-2">
-                      <Input
-                        id="resendApiKey"
-                        type="password"
-                        value={resendApiKey}
-                        onChange={(e) => {
-                          setResendApiKey(e.target.value);
-                          setResendValidated(false);
-                        }}
-                        placeholder="re_xxxxxxxx..."
-                        className={resendValidated ? 'border-green-500' : ''}
-                      />
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={validateAndSaveResendKey}
-                        disabled={validatingResend || !resendApiKey.trim()}
-                      >
-                        {validatingResend ? (
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                        ) : resendValidated ? (
-                          <CheckCircle2 className="h-4 w-4 text-green-500" />
-                        ) : (
-                          'Validate'
-                        )}
-                      </Button>
-                    </div>
-                    {resendValidated && (
-                      <p className="text-xs text-green-600 flex items-center gap-1">
-                        <CheckCircle2 className="h-3 w-3" />
-                        API key validated and saved
-                      </p>
-                    )}
-                    <p className="text-xs text-muted-foreground">
-                      Required for password reset emails.
-                    </p>
-                  </div>
-
                   <div className="space-y-2">
                     <Label htmlFor="senderEmail" className="flex items-center gap-2">
                       <Mail className="h-4 w-4" />
@@ -339,9 +182,11 @@ export default function Setup() {
                       value={senderEmail}
                       onChange={(e) => setSenderEmail(e.target.value)}
                       placeholder="noreply@your-verified-domain.com"
+                      required
                     />
                     <p className="text-xs text-muted-foreground">
                       Must be from a domain verified in Resend. Used for counterfeit protection requests.
+                      The RESEND_API_KEY must be configured as a Supabase secret.
                     </p>
                   </div>
                 </div>
@@ -358,7 +203,7 @@ export default function Setup() {
 
                   <p className="text-sm text-muted-foreground">
                     AI-powered features include automatic wine label scanning and smart autofill. 
-                    These are completely optional and the platform works fully without them.
+                    These require the LOVABLE_API_KEY to be configured as a Supabase secret.
                   </p>
                   
                   <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
@@ -371,77 +216,6 @@ export default function Setup() {
                       Enable AI features (Autofill from labels, Translation)
                     </Label>
                   </div>
-
-                  {aiEnabled && (
-                    <>
-                      {isLovableCloud ? (
-                        <Alert>
-                          <CheckCircle2 className="h-4 w-4 text-green-500" />
-                          <AlertDescription className="space-y-2">
-                            <p>You're running on Lovable Cloud. AI features are automatically available — no API key needed.</p>
-                          </AlertDescription>
-                        </Alert>
-                      ) : (
-                        <>
-                          <Alert>
-                            <Key className="h-4 w-4" />
-                            <AlertDescription className="space-y-2">
-                              <p>Self-hosted installation: A Lovable API key is needed for AI features.</p>
-                              <a
-                                href="https://lovable.dev"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
-                              >
-                                <ExternalLink className="h-3 w-3" />
-                                Get Lovable API Key
-                              </a>
-                            </AlertDescription>
-                          </Alert>
-
-                          <div className="space-y-2">
-                            <Label htmlFor="lovableApiKey" className="flex items-center gap-2">
-                              <Key className="h-4 w-4" />
-                              Lovable API Key
-                            </Label>
-                            <div className="flex gap-2">
-                              <Input
-                                id="lovableApiKey"
-                                type="password"
-                                value={lovableApiKey}
-                                onChange={(e) => {
-                                  setLovableApiKey(e.target.value);
-                                  setLovableValidated(false);
-                                }}
-                                placeholder="Enter your Lovable API key..."
-                                className={lovableValidated ? 'border-green-500' : ''}
-                              />
-                              <Button
-                                type="button"
-                                variant="outline"
-                                onClick={validateAndSaveLovableKey}
-                                disabled={validatingLovable || !lovableApiKey.trim()}
-                              >
-                                {validatingLovable ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
-                                ) : lovableValidated ? (
-                                  <CheckCircle2 className="h-4 w-4 text-green-500" />
-                                ) : (
-                                  'Save'
-                                )}
-                              </Button>
-                            </div>
-                            {lovableValidated && (
-                              <p className="text-xs text-green-600 flex items-center gap-1">
-                                <CheckCircle2 className="h-3 w-3" />
-                                API key saved
-                              </p>
-                            )}
-                          </div>
-                        </>
-                      )}
-                    </>
-                  )}
                   
                   {!aiEnabled && (
                     <p className="text-xs text-muted-foreground">
@@ -459,8 +233,8 @@ export default function Setup() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-6">
-          This is a self-hosted open source DPP platform. To reset this configuration, 
-          delete all rows from the <code className="bg-muted px-1 py-0.5 rounded">site_config</code> table in your database.
+          API keys (RESEND_API_KEY, LOVABLE_API_KEY) must be set as Supabase secrets before deployment.
+          See README.md for deployment instructions.
         </p>
       </div>
     </div>

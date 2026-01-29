@@ -34,7 +34,7 @@ Deploy your own DPP Platform instance in minutes:
 |-------------|-----------|-------|
 | Supabase Project | ✅ Yes | Free tier available at [supabase.com](https://supabase.com) |
 | Resend API Key | ✅ Yes | Required for authentication emails ([resend.com](https://resend.com)) |
-| Lovable API Key | ❌ Optional | Only for AI features on self-hosted ([lovable.dev](https://lovable.dev)) |
+| Lovable API Key | ❌ Optional | Only for AI features ([lovable.dev](https://lovable.dev)) |
 
 ---
 
@@ -95,24 +95,34 @@ supabase link --project-ref YOUR_PROJECT_ID
 supabase db push
 ```
 
-### Step 6: Deploy Edge Functions
+### Step 6: Configure Secrets
+
+**IMPORTANT:** API keys must be set as Supabase secrets before deployment:
+
+```bash
+# Required: Email service for authentication
+supabase secrets set RESEND_API_KEY=re_your_resend_api_key
+
+# Optional: AI features (wine label scanning, autofill)
+supabase secrets set LOVABLE_API_KEY=your_lovable_api_key
+```
+
+### Step 7: Deploy Edge Functions
 
 ```bash
 # Deploy all edge functions
-supabase functions deploy save-resend-key
-supabase functions deploy save-lovable-key
 supabase functions deploy send-counterfeit-request
 supabase functions deploy wine-label-ocr
 supabase functions deploy get-public-passport
 ```
 
-### Step 7: Run Locally
+### Step 8: Run Locally
 
 ```bash
 npm run dev
 ```
 
-Visit `http://localhost:5173` and complete the setup wizard.
+Visit `http://localhost:5173` and complete the setup wizard (company info only).
 
 ---
 
@@ -194,10 +204,8 @@ After first deployment, you'll be redirected to `/setup` where you configure:
 | Company Address | ✅ | Full legal address for EU compliance |
 | Privacy Policy URL | ❌ | Link to your privacy policy |
 | Terms URL | ❌ | Link to your terms of service |
-| Resend API Key | ✅ | For authentication emails (get from [resend.com](https://resend.com)) |
-| Sender Email | ✅ | Must be from a verified Resend domain |
+| Sender Email | ✅ | Must be from a Resend-verified domain |
 | Enable AI | ❌ | Toggle AI features on/off |
-| Lovable API Key | ❌ | For AI features (only if AI enabled + self-hosting) |
 
 ---
 
@@ -207,15 +215,14 @@ The platform includes AI-powered features:
 - **Wine Label Scanner**: Upload a photo to auto-extract product data
 - **Document Parser**: Extract data from PDF/Word technical sheets
 
-### For Self-Hosted Instances
+### Enabling AI Features
 
-1. During setup, check "Enable AI features"
-2. Obtain a Lovable API key from [lovable.dev](https://lovable.dev)
-3. Enter the key in the "Lovable API Key" field
-4. Or set it as an edge function secret:
+1. Obtain a Lovable API key from [lovable.dev](https://lovable.dev)
+2. Set it as a Supabase secret:
    ```bash
    supabase secrets set LOVABLE_API_KEY=your-key
    ```
+3. Enable "AI features" during setup
 
 ### Disabling AI
 
@@ -227,18 +234,17 @@ Simply uncheck "Enable AI features" during setup. The AI autofill buttons will b
 
 ### API Key Storage
 
-API keys (Resend, Lovable) are stored securely:
-- Keys are stored encrypted using Supabase Vault
-- RLS policies prevent client-side access to secrets
-- Only Edge Functions (with service role) can decrypt and use the keys
-- First-setup-only protection: keys cannot be changed via UI once set
+API keys are stored as Supabase secrets:
+- Keys are set via CLI before deployment
+- Edge Functions access them via `Deno.env.get()`
+- Keys are never exposed to the client
 
 ### Row Level Security (RLS)
 
 All tables have RLS enabled:
 - Users can only access their own passports
-- Public passports are accessible via secure slugs
-- API keys in site_config are only readable by edge functions (service role)
+- Public passports are accessible via secure edge functions
+- Configuration data has an allowlist of readable keys
 
 ### Best Practices
 
@@ -260,7 +266,6 @@ All tables have RLS enabled:
 | `passports` | All digital product passports |
 | `profiles` | User profile information |
 | `site_config` | Instance configuration (company info, display settings) |
-| `encrypted_secrets` | API keys stored with AES-256 encryption |
 | `api_usage` | Per-user AI feature usage tracking |
 
 ---
