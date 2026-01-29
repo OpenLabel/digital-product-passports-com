@@ -104,8 +104,19 @@ export default function Setup() {
       return;
     }
 
-    // Validate Resend key if provided and not already validated
-    if (resendApiKey.trim() && !resendValidated) {
+    // Resend key is required
+    if (!resendApiKey.trim()) {
+      toast({ title: 'Error', description: 'Resend API key is required for authentication emails', variant: 'destructive' });
+      return;
+    }
+
+    if (!senderEmail.trim()) {
+      toast({ title: 'Error', description: 'Sender email is required', variant: 'destructive' });
+      return;
+    }
+
+    // Validate Resend key if not already validated
+    if (!resendValidated) {
       const isValid = await validateAndSaveResendKey();
       if (!isValid) return;
     }
@@ -238,18 +249,18 @@ export default function Setup() {
                   </ul>
                 </div>
 
-                {/* Email Configuration Section (Optional) */}
+                {/* Email Configuration Section (Required) */}
                 <div className="border-t pt-6 space-y-4">
                   <div className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-primary" />
                     <h3 className="font-medium">Email Configuration (Resend)</h3>
-                    <Badge variant="outline" className="text-xs">Optional</Badge>
+                    <Badge variant="default" className="text-xs">Required</Badge>
                   </div>
                   
                   <Alert>
                     <Mail className="h-4 w-4" />
                     <AlertDescription className="space-y-2">
-                      <p>Email is optional. Required only for password reset and counterfeit protection requests.</p>
+                      <p>Email is required for password reset and authentication. Get your API key from Resend:</p>
                       <div className="flex flex-wrap gap-2 mt-2">
                         <a
                           href="https://resend.com/api-keys"
@@ -277,7 +288,7 @@ export default function Setup() {
                   <div className="space-y-2">
                     <Label htmlFor="resendApiKey" className="flex items-center gap-2">
                       <Mail className="h-4 w-4" />
-                      Resend API Key
+                      Resend API Key *
                     </Label>
                     <div className="flex gap-2">
                       <Input
@@ -320,7 +331,7 @@ export default function Setup() {
                   <div className="space-y-2">
                     <Label htmlFor="senderEmail" className="flex items-center gap-2">
                       <Mail className="h-4 w-4" />
-                      Sender Email Address
+                      Sender Email Address *
                     </Label>
                     <Input
                       id="senderEmail"

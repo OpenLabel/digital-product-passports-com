@@ -33,7 +33,7 @@ Deploy your own DPP Platform instance in minutes:
 | Requirement | Required? | Notes |
 |-------------|-----------|-------|
 | Supabase Project | ✅ Yes | Free tier available at [supabase.com](https://supabase.com) |
-| Resend API Key | ❌ Optional | Only for password reset emails ([resend.com](https://resend.com)) |
+| Resend API Key | ✅ Yes | Required for authentication emails ([resend.com](https://resend.com)) |
 | Lovable API Key | ❌ Optional | Only for AI features on self-hosted ([lovable.dev](https://lovable.dev)) |
 
 ---
@@ -194,8 +194,8 @@ After first deployment, you'll be redirected to `/setup` where you configure:
 | Company Address | ✅ | Full legal address for EU compliance |
 | Privacy Policy URL | ❌ | Link to your privacy policy |
 | Terms URL | ❌ | Link to your terms of service |
-| Resend API Key | ❌ | For password reset emails (get from [resend.com](https://resend.com)) |
-| Sender Email | ❌ | Must be from a verified Resend domain |
+| Resend API Key | ✅ | For authentication emails (get from [resend.com](https://resend.com)) |
+| Sender Email | ✅ | Must be from a verified Resend domain |
 | Enable AI | ❌ | Toggle AI features on/off |
 | Lovable API Key | ❌ | For AI features (only if AI enabled + self-hosting) |
 
