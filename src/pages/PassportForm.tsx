@@ -254,6 +254,14 @@ export default function PassportForm() {
                   passportName={formData.name}
                   passportSlug={existingPassport.public_slug}
                   userEmail={user?.email}
+                  enabled={formData.category_data.counterfeit_protection_enabled === true}
+                  onChange={(enabled) => setFormData({
+                    ...formData,
+                    category_data: {
+                      ...formData.category_data,
+                      counterfeit_protection_enabled: enabled,
+                    },
+                  })}
                 />
               )}
 

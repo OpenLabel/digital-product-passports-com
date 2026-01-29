@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-
+import { ShieldCheck } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 interface WinePassportData {
   name: string;
   image_url: string | null;
@@ -76,6 +77,9 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const recyclingMode = categoryData.recycling_mode as string | undefined;
   const recyclingPdfUrl = categoryData.recycling_pdf_url as string | undefined;
 
+  // Counterfeit protection
+  const counterfeitProtectionEnabled = categoryData.counterfeit_protection_enabled === true;
+
   const allergenIngredients = ingredients.filter((i) => i.isAllergen);
   const regularIngredients = ingredients.filter((i) => !i.isAllergen);
 
@@ -102,6 +106,18 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
         <div className="mb-6">
           <h1 className="text-2xl font-bold mb-4" data-testid="passport-name">{passport.name}</h1>
           
+          {/* Check Authenticity Button */}
+          {counterfeitProtectionEnabled && (
+            <a
+              href="https://app.cypheme.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+            >
+              <ShieldCheck className="h-4 w-4" />
+              Check authenticity
+            </a>
+          )}
           <div className="flex gap-4">
             {/* Product Image */}
             {passport.image_url && (
