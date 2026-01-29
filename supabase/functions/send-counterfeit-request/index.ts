@@ -71,23 +71,10 @@ const handler = async (req: Request): Promise<Response> => {
     );
 
     if (keyError || !resendApiKey) {
-      // Fall back to legacy site_config for backwards compatibility
-      const { data: legacyData } = await supabase
-        .from("site_config")
-        .select("value")
-        .eq("key", "resend_api_key_secret")
-        .maybeSingle();
-      
-      if (!legacyData?.value) {
-        throw new Error("Resend API key not configured. Please set it up in the Setup page.");
-      }
+      throw new Error("Resend API key not configured. Please complete the Setup wizard.");
     }
 
-    const RESEND_API_KEY = resendApiKey || (await supabase
-      .from("site_config")
-      .select("value")
-      .eq("key", "resend_api_key_secret")
-      .maybeSingle()).data?.value;
+    const RESEND_API_KEY = resendApiKey;
 
     // Fetch config data
     const { data: configData } = await supabase

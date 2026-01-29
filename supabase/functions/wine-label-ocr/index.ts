@@ -110,11 +110,11 @@ serve(async (req) => {
 
     const { image } = parseResult.data;
 
-    // Get Lovable API key - first try environment variable, then encrypted storage, then legacy
+    // Get Lovable API key - first try environment variable, then encrypted storage
     let LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
-      // Try encrypted storage first
+      // Try encrypted storage
       const { data: encryptedKey } = await supabaseService.rpc(
         "get_decrypted_secret",
         { p_name: "lovable_api_key" }
@@ -124,18 +124,7 @@ serve(async (req) => {
     }
     
     if (!LOVABLE_API_KEY) {
-      // Fall back to legacy site_config for backwards compatibility
-      const { data: configData } = await supabaseService
-        .from("site_config")
-        .select("value")
-        .eq("key", "lovable_api_key_secret")
-        .maybeSingle();
-      
-      LOVABLE_API_KEY = configData?.value || null;
-    }
-    
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+      throw new Error("Lovable API key not configured. Please complete the Setup wizard with AI features enabled.");
     }
 
     // Call Lovable AI with the wine label image
