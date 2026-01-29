@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { WinePublicPassport } from './wine/WinePublicPassport';
 import { getTemplate, categoryList } from '@/templates';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,6 +19,13 @@ interface PassportPreviewProps {
 }
 
 export function PassportPreview({ formData }: PassportPreviewProps) {
+  const { i18n } = useTranslation();
+  
+  // Manage preview language separately from app language
+  const [previewLanguage, setPreviewLanguage] = useState(() => {
+    return i18n.language.split('-')[0];
+  });
+
   const previewPassport = {
     name: formData.name || 'Untitled Passport',
     image_url: formData.image_url,
@@ -45,7 +54,12 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                 transformOrigin: 'top left',
               }}
             >
-              <WinePublicPassport passport={previewPassport} isPreview={true} />
+              <WinePublicPassport 
+                passport={previewPassport} 
+                isPreview={true}
+                previewLanguage={previewLanguage}
+                onPreviewLanguageChange={setPreviewLanguage}
+              />
             </div>
           </div>
         </div>
