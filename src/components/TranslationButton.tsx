@@ -217,8 +217,8 @@ export function TranslationButton({
             </Button>
           </div>
 
-          <ScrollArea className="flex-1 -mx-6 px-6">
-            <div className="grid gap-3 py-4">
+          <ScrollArea className="flex-1 min-h-0 max-h-[50vh] -mx-6 px-6">
+            <div className="grid gap-3 py-4 pr-4">
               {EU_LANGUAGES.map((lang) => (
                 <div key={lang.code} className="grid grid-cols-[140px_1fr] gap-3 items-center">
                   <Label
