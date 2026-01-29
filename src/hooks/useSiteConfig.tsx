@@ -4,6 +4,9 @@ import { supabase } from '@/integrations/supabase/client';
 export interface SiteConfig {
   company_name: string;
   company_address: string;
+  privacy_policy_url: string;
+  terms_conditions_url: string;
+  ai_enabled: boolean;
   setup_complete: boolean;
 }
 
@@ -11,6 +14,7 @@ interface SiteConfigContextType {
   config: SiteConfig | null;
   loading: boolean;
   isSetupRequired: boolean;
+  isLovableCloud: boolean;
   refetch: () => Promise<void>;
   saveConfig: (config: Partial<SiteConfig>) => Promise<void>;
 }
@@ -18,14 +22,27 @@ interface SiteConfigContextType {
 const defaultConfig: SiteConfig = {
   company_name: '',
   company_address: '',
+  privacy_policy_url: '',
+  terms_conditions_url: '',
+  ai_enabled: true,
   setup_complete: false,
 };
 
 const SiteConfigContext = createContext<SiteConfigContextType | null>(null);
 
+// Detect if running on Lovable Cloud by checking the Supabase URL
+function detectLovableCloud(): boolean {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+  // Lovable Cloud uses supabase.co URLs with specific project patterns
+  // Self-hosted would typically use custom domains or localhost
+  return supabaseUrl.includes('.supabase.co') && 
+         import.meta.env.VITE_SUPABASE_PROJECT_ID !== undefined;
+}
+
 export function SiteConfigProvider({ children }: { children: ReactNode }) {
   const [config, setConfig] = useState<SiteConfig | null>(null);
   const [loading, setLoading] = useState(true);
+  const isLovableCloud = detectLovableCloud();
 
   const fetchConfig = async () => {
     try {
@@ -51,6 +68,9 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
       setConfig({
         company_name: configObj.company_name || '',
         company_address: configObj.company_address || '',
+        privacy_policy_url: configObj.privacy_policy_url || '',
+        terms_conditions_url: configObj.terms_conditions_url || '',
+        ai_enabled: configObj.ai_enabled !== 'false', // Default to true
         setup_complete: configObj.setup_complete === 'true',
       });
     } catch (error) {
@@ -93,6 +113,7 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
         config,
         loading,
         isSetupRequired,
+        isLovableCloud,
         refetch: fetchConfig,
         saveConfig,
       }}

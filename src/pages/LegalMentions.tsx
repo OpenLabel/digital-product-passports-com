@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Building2, MapPin, Scale } from 'lucide-react';
+import { ArrowLeft, Building2, MapPin, Scale, ExternalLink, FileText, Shield } from 'lucide-react';
 
 export default function LegalMentions() {
   const { config, loading } = useSiteConfig();
@@ -67,6 +67,42 @@ export default function LegalMentions() {
               )}
             </div>
           </section>
+
+          {/* Legal Documents Section */}
+          {(config?.privacy_policy_url || config?.terms_conditions_url) && (
+            <section className="space-y-4">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <FileText className="h-5 w-5" />
+                Legal Documents
+              </h2>
+              <div className="bg-muted/50 rounded-lg p-6 space-y-3">
+                {config?.privacy_policy_url && (
+                  <a 
+                    href={config.privacy_policy_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-primary hover:underline"
+                  >
+                    <Shield className="h-4 w-4" />
+                    Privacy Policy
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                )}
+                {config?.terms_conditions_url && (
+                  <a 
+                    href={config.terms_conditions_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-primary hover:underline"
+                  >
+                    <FileText className="h-4 w-4" />
+                    Terms & Conditions
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                )}
+              </div>
+            </section>
+          )}
 
           <section className="space-y-4">
             <h2 className="text-xl font-semibold">About This Service</h2>
