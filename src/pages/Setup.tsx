@@ -258,7 +258,7 @@ export default function Setup() {
                       </p>
                     )}
                     <p className="text-xs text-muted-foreground">
-                      Optional. Required only for counterfeit protection email notifications.
+                      Required for password reset emails and counterfeit protection notifications.
                     </p>
                   </div>
                 </div>
