@@ -14,7 +14,6 @@ interface QRCodeDialogProps {
   onOpenChange: (open: boolean) => void;
   url: string;
   productName: string;
-  counterfeitProtectionEnabled?: boolean;
 }
 
 // Rounded hexagon SVG with text - creates a hexagon with curved corners and instruction text
@@ -123,7 +122,6 @@ export function QRCodeDialog({
   onOpenChange, 
   url, 
   productName,
-  counterfeitProtectionEnabled = false,
 }: QRCodeDialogProps) {
   const [copied, setCopied] = useState(false);
 
@@ -148,9 +146,8 @@ export function QRCodeDialog({
                 level="H"
                 includeMargin={false}
               />
-              {counterfeitProtectionEnabled && (
-                <RoundedHexagonWithText size={80} />
-              )}
+              {/* Always show security seal placeholder for physical sticker application */}
+              <RoundedHexagonWithText size={80} />
             </div>
           )}
           <div className="flex items-center gap-2 w-full max-w-sm">
