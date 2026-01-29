@@ -12,6 +12,7 @@ import { WineAIAutofill } from '@/components/wine/WineAIAutofill';
 import { calculateWineNutrition } from '@/lib/wineCalculations';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
+import { LabelWithHint, FieldHint } from '@/components/ui/field-hint';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -132,38 +133,57 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-2 sm:col-span-2">
-            <Label htmlFor="product_name">{t('wine.productName')} *</Label>
+            <LabelWithHint 
+              label={t('wine.productName')} 
+              htmlFor="product_name" 
+              required 
+              tooltip={t('wine.hints.productNameTooltip')} 
+            />
             <Input
               id="product_name"
               value={(data.product_name as string) || ''}
               onChange={(e) => handleChange('product_name', e.target.value)}
               placeholder={t('wine.placeholders.productName')}
             />
+            <FieldHint hint={t('wine.hints.productName')} />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="grape_variety">{t('wine.grapeVariety')}</Label>
+            <LabelWithHint 
+              label={t('wine.grapeVariety')} 
+              htmlFor="grape_variety" 
+              tooltip={t('wine.hints.grapeVarietyTooltip')} 
+            />
             <Input
               id="grape_variety"
               value={(data.grape_variety as string) || ''}
               onChange={(e) => handleChange('grape_variety', e.target.value)}
               placeholder={t('wine.placeholders.grapeVariety')}
             />
+            <FieldHint hint={t('wine.hints.grapeVariety')} />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="vintage">{t('wine.vintage')}</Label>
+            <LabelWithHint 
+              label={t('wine.vintage')} 
+              htmlFor="vintage" 
+              tooltip={t('wine.hints.vintageTooltip')} 
+            />
             <Input
               id="vintage"
               value={(data.vintage as string) || ''}
               onChange={(e) => handleChange('vintage', e.target.value)}
               placeholder={t('wine.placeholders.vintage')}
             />
+            <FieldHint hint={t('wine.hints.vintage')} />
           </div>
 
           <div className="space-y-2">
-            <Label>{t('wine.volume')}</Label>
-          <div className="flex gap-2">
+            <LabelWithHint 
+              label={t('wine.volume')} 
+              tooltip={t('wine.hints.volumeTooltip')} 
+            />
+            <div className="flex gap-2">
               <Input
                 type="number"
                 value={data.volume !== undefined && data.volume !== '' ? String(data.volume) : ''}
@@ -187,10 +207,15 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 </SelectContent>
               </Select>
             </div>
+            <FieldHint hint={t('wine.hints.volume')} />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="country">{t('wine.country')}</Label>
+            <LabelWithHint 
+              label={t('wine.country')} 
+              htmlFor="country" 
+              tooltip={t('wine.hints.countryTooltip')} 
+            />
             <Select
               value={(data.country as string) || ''}
               onValueChange={(val) => handleChange('country', val)}
@@ -206,23 +231,33 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 ))}
               </SelectContent>
             </Select>
+            <FieldHint hint={t('wine.hints.country')} />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="region">{t('wine.region')}</Label>
+            <LabelWithHint 
+              label={t('wine.region')} 
+              htmlFor="region" 
+              tooltip={t('wine.hints.regionTooltip')} 
+            />
             <Input
               id="region"
               value={(data.region as string) || ''}
               onChange={(e) => handleChange('region', e.target.value)}
               placeholder={t('wine.placeholders.region')}
             />
+            <FieldHint hint={t('wine.hints.region')} />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="denomination">
-              {t('wine.denomination')}
-              {isDenominationTranslating && <span className="ml-2 text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
-            </Label>
+            <div className="flex items-center gap-1.5">
+              <LabelWithHint 
+                label={t('wine.denomination')} 
+                htmlFor="denomination" 
+                tooltip={t('wine.hints.denominationTooltip')} 
+              />
+              {isDenominationTranslating && <span className="text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
+            </div>
             <div className="flex gap-2">
               <Input
                 id="denomination"
@@ -244,13 +279,18 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 disabled={!data.denomination}
               />
             </div>
+            <FieldHint hint={t('wine.hints.denomination')} />
           </div>
 
           <div className="space-y-2 sm:col-span-2">
-            <Label htmlFor="sugar_classification">
-              {t('wine.sugarClassification')}
-              {isSugarTranslating && <span className="ml-2 text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
-            </Label>
+            <div className="flex items-center gap-1.5">
+              <LabelWithHint 
+                label={t('wine.sugarClassification')} 
+                htmlFor="sugar_classification" 
+                tooltip={t('wine.hints.sugarClassificationTooltip')} 
+              />
+              {isSugarTranslating && <span className="text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
+            </div>
             <div className="flex gap-2">
               <Input
                 id="sugar_classification"
@@ -272,6 +312,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 disabled={!data.sugar_classification}
               />
             </div>
+            <FieldHint hint={t('wine.hints.sugarClassification')} />
           </div>
         </CardContent>
       </Card>
@@ -284,22 +325,32 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="producer_name">{t('wine.producerName')}</Label>
+            <LabelWithHint 
+              label={t('wine.producerName')} 
+              htmlFor="producer_name" 
+              tooltip={t('wine.hints.producerNameTooltip')} 
+            />
             <Input
               id="producer_name"
               value={(data.producer_name as string) || ''}
               onChange={(e) => handleChange('producer_name', e.target.value)}
               placeholder={t('wine.placeholders.producerName')}
             />
+            <FieldHint hint={t('wine.hints.producerName')} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="bottler_info">{t('wine.bottlerInfo')}</Label>
+            <LabelWithHint 
+              label={t('wine.bottlerInfo')} 
+              htmlFor="bottler_info" 
+              tooltip={t('wine.hints.bottlerInfoTooltip')} 
+            />
             <Input
               id="bottler_info"
               value={(data.bottler_info as string) || ''}
               onChange={(e) => handleChange('bottler_info', e.target.value)}
               placeholder={t('wine.bottlerInfoPlaceholder')}
             />
+            <FieldHint hint={t('wine.hints.bottlerInfo')} />
           </div>
         </CardContent>
       </Card>
@@ -313,7 +364,12 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
         <CardContent className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="alcohol_percent">{t('wine.alcoholPercent')} *</Label>
+              <LabelWithHint 
+                label={t('wine.alcoholPercent')} 
+                htmlFor="alcohol_percent" 
+                required
+                tooltip={t('wine.hints.alcoholPercentTooltip')} 
+              />
               <Input
                 id="alcohol_percent"
                 type="number"
@@ -322,10 +378,15 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 onChange={(e) => handleChange('alcohol_percent', e.target.value ? Number(e.target.value) : '')}
                 placeholder={t('wine.placeholders.alcohol')}
               />
+              <FieldHint hint={t('wine.hints.alcoholPercent')} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="residual_sugar">{t('wine.residualSugarGL')}</Label>
+              <LabelWithHint 
+                label={t('wine.residualSugarGL')} 
+                htmlFor="residual_sugar" 
+                tooltip={t('wine.hints.residualSugarTooltip')} 
+              />
               <Input
                 id="residual_sugar"
                 type="number"
@@ -334,10 +395,15 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 onChange={(e) => handleChange('residual_sugar', e.target.value ? Number(e.target.value) : '')}
                 placeholder={t('wine.placeholders.residualSugar')}
               />
+              <FieldHint hint={t('wine.hints.residualSugar')} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="total_acidity">{t('wine.totalAcidityGL')}</Label>
+              <LabelWithHint 
+                label={t('wine.totalAcidityGL')} 
+                htmlFor="total_acidity" 
+                tooltip={t('wine.hints.totalAcidityTooltip')} 
+              />
               <Input
                 id="total_acidity"
                 type="number"
@@ -346,10 +412,15 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 onChange={(e) => handleChange('total_acidity', e.target.value ? Number(e.target.value) : '')}
                 placeholder={t('wine.placeholders.totalAcidity')}
               />
+              <FieldHint hint={t('wine.hints.totalAcidity')} />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="glycerine">{t('wine.glycerineGL')}</Label>
+              <LabelWithHint 
+                label={t('wine.glycerineGL')} 
+                htmlFor="glycerine" 
+                tooltip={t('wine.hints.glycerineTooltip')} 
+              />
               <Input
                 id="glycerine"
                 type="number"
@@ -358,12 +429,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 onChange={(e) => handleChange('glycerine', e.target.value ? Number(e.target.value) : '')}
                 placeholder={t('wine.placeholders.glycerine')}
               />
+              <FieldHint hint={t('wine.hints.glycerine')} />
             </div>
           </div>
 
           {/* Calculated values */}
           <div className="border-t pt-4 mt-4">
-            <p className="text-sm font-medium mb-3">{t('wine.calculatedValues')}</p>
+            <div className="flex items-center gap-1.5 mb-3">
+              <p className="text-sm font-medium">{t('wine.calculatedValues')}</p>
+              <LabelWithHint tooltip={t('wine.hints.calculatedValuesTooltip')} label="" />
+            </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -462,9 +537,12 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
       {/* Small Quantities */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">
-            {hasNonZeroSmallQuantities ? t('wine.additionalNutritional') : t('wine.smallQuantities')}
-          </CardTitle>
+          <div className="flex items-center gap-1.5">
+            <CardTitle className="text-lg">
+              {hasNonZeroSmallQuantities ? t('wine.additionalNutritional') : t('wine.smallQuantities')}
+            </CardTitle>
+            <LabelWithHint tooltip={t('wine.hints.smallQuantitiesTooltip')} label="" />
+          </div>
           <CardDescription>
             {hasNonZeroSmallQuantities 
               ? t('wine.additionalNutritionalDesc')
@@ -473,6 +551,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          <FieldHint hint={t('wine.hints.smallQuantitiesHint')} />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-2">
               <Label htmlFor="fat">{t('wine.fatG')}</Label>
@@ -531,12 +610,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
       {/* 6. Electronic Label Display Options */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">{t('wine.electronicLabelOptions')}</CardTitle>
+          <div className="flex items-center gap-1.5">
+            <CardTitle className="text-lg">{t('wine.electronicLabelOptions')}</CardTitle>
+            <LabelWithHint tooltip={t('wine.hints.electronicLabelTooltip')} label="" />
+          </div>
           <CardDescription>
             {t('wine.electronicLabelOptionsDesc')}
           </CardDescription>
         </CardHeader>
         <CardContent>
+          <FieldHint hint={t('wine.hints.electronicLabelHint')} className="mb-4" />
           <div className="flex flex-wrap gap-6">
             <div className="flex items-center gap-2">
               <Checkbox
@@ -584,6 +667,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          <FieldHint hint={t('wine.hints.displaySettingsHint')} className="mb-4" />
           <div className="flex items-center gap-2">
             <Checkbox
               id="hide_promo"
