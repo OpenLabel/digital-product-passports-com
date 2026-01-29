@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -103,6 +104,7 @@ const productCategories = [
 
 export default function Index() {
   const { user, loading } = useAuth();
+  const { config } = useSiteConfig();
 
   return (
     <div className="min-h-screen bg-background">
@@ -455,13 +457,16 @@ export default function Index() {
                 Open Source
               </Badge>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 flex-wrap justify-center">
+              <Link to="/legal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Legal Mentions
+              </Link>
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="h-4 w-4" />
                 View on GitHub
               </a>
               <span className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} European Digital Product Passports
+                © {new Date().getFullYear()} {config?.company_name || 'Digital Product Passport Platform'}
               </span>
             </div>
           </div>

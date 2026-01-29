@@ -2,37 +2,74 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import { SiteConfigProvider, useSiteConfig } from "@/hooks/useSiteConfig";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import PassportForm from "./pages/PassportForm";
 import PublicPassport from "./pages/PublicPassport";
+import LegalMentions from "./pages/LegalMentions";
+import Setup from "./pages/Setup";
 import NotFound from "./pages/NotFound";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const queryClient = new QueryClient();
 
+function AppRoutes() {
+  const { loading, isSetupRequired } = useSiteConfig();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Skeleton className="h-8 w-32" />
+      </div>
+    );
+  }
+
+  // If setup is not complete and we're not on the setup page, redirect to setup
+  // Exception: public passport pages should still work
+  if (isSetupRequired) {
+    return (
+      <Routes>
+        <Route path="/setup" element={<Setup />} />
+        <Route path="/p/:slug" element={<PublicPassport />} />
+        <Route path="/legal" element={<LegalMentions />} />
+        <Route path="*" element={<Navigate to="/setup" replace />} />
+      </Routes>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/passport/new" element={<PassportForm />} />
+      <Route path="/passport/:id/edit" element={<PassportForm />} />
+      <Route path="/p/:slug" element={<PublicPassport />} />
+      <Route path="/legal" element={<LegalMentions />} />
+      <Route path="/setup" element={<Navigate to="/" replace />} />
+      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/passport/new" element={<PassportForm />} />
-            <Route path="/passport/:id/edit" element={<PassportForm />} />
-            <Route path="/p/:slug" element={<PublicPassport />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
+    <SiteConfigProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </SiteConfigProvider>
   </QueryClientProvider>
 );
 
