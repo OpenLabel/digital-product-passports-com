@@ -131,15 +131,20 @@ export function usePassportBySlug(slug: string | undefined) {
     queryFn: async () => {
       if (!slug) return null;
       
-      // Use the public view that excludes user_id for privacy
-      const { data, error } = await supabase
-        .from('passports_public')
-        .select('*')
-        .eq('public_slug', slug)
-        .single();
+      // Use the edge function to fetch public passports (prevents scraping)
+      const response = await supabase.functions.invoke('get-public-passport', {
+        body: { slug },
+      });
       
-      if (error) throw error;
-      return data as Omit<Passport, 'user_id'>;
+      if (response.error) {
+        throw new Error(response.error.message || 'Failed to fetch passport');
+      }
+      
+      if (!response.data?.passport) {
+        throw new Error('Passport not found');
+      }
+      
+      return response.data.passport as Omit<Passport, 'user_id'>;
     },
     enabled: !!slug,
   });

@@ -136,45 +136,7 @@ export type Database = {
       }
     }
     Views: {
-      passports_public: {
-        Row: {
-          category: Database["public"]["Enums"]["product_category"] | null
-          category_data: Json | null
-          created_at: string | null
-          description: string | null
-          id: string | null
-          image_url: string | null
-          language: string | null
-          name: string | null
-          public_slug: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          category?: Database["public"]["Enums"]["product_category"] | null
-          category_data?: Json | null
-          created_at?: string | null
-          description?: string | null
-          id?: string | null
-          image_url?: string | null
-          language?: string | null
-          name?: string | null
-          public_slug?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          category?: Database["public"]["Enums"]["product_category"] | null
-          category_data?: Json | null
-          created_at?: string | null
-          description?: string | null
-          id?: string | null
-          image_url?: string | null
-          language?: string | null
-          name?: string | null
-          public_slug?: string | null
-          updated_at?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       increment_api_usage: {
