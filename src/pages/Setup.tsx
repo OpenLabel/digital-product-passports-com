@@ -70,10 +70,10 @@ export default function Setup() {
               <Server className="h-8 w-8 text-primary-foreground" />
             </div>
           </div>
-          <Badge variant="outline" className="mb-4">Initial Setup</Badge>
-          <h1 className="text-3xl font-bold mb-2">Welcome to DPP Platform</h1>
+          <Badge variant="outline" className="mb-4">Final Step</Badge>
+          <h1 className="text-3xl font-bold mb-2">Configure Your Instance</h1>
           <p className="text-muted-foreground">
-            Configure your Digital Product Passport instance. This information will appear in legal mentions on all passports.
+            Enter your company details for EU legal compliance. This appears on all Digital Product Passports.
           </p>
         </div>
 
@@ -185,8 +185,7 @@ export default function Setup() {
                       required
                     />
                     <p className="text-xs text-muted-foreground">
-                      Must be from a domain verified in Resend. Used for counterfeit protection requests.
-                      The RESEND_API_KEY must be configured as a Supabase secret.
+                      Must be from a domain you verified in Resend. Used for counterfeit protection requests.
                     </p>
                   </div>
                 </div>
@@ -202,8 +201,7 @@ export default function Setup() {
                   </div>
 
                   <p className="text-sm text-muted-foreground">
-                    AI-powered features include automatic wine label scanning and smart autofill. 
-                    These require the LOVABLE_API_KEY to be configured as a Supabase secret.
+                    Enable wine label scanning and smart autofill. Only works if you set LOVABLE_API_KEY before deployment.
                   </p>
                   
                   <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
@@ -213,15 +211,9 @@ export default function Setup() {
                       onCheckedChange={(checked) => setAiEnabled(checked === true)}
                     />
                     <Label htmlFor="aiEnabled" className="text-sm font-normal cursor-pointer flex-1">
-                      Enable AI features (Autofill from labels, Translation)
+                      Enable AI features
                     </Label>
                   </div>
-                  
-                  {!aiEnabled && (
-                    <p className="text-xs text-muted-foreground">
-                      You can enable AI features later by updating your site configuration.
-                    </p>
-                  )}
                 </div>
 
                 <Button type="submit" className="w-full" size="lg" disabled={saving}>
@@ -232,10 +224,6 @@ export default function Setup() {
           </Card>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground mt-6">
-          API keys (RESEND_API_KEY, LOVABLE_API_KEY) must be set as Supabase secrets before deployment.
-          See README.md for deployment instructions.
-        </p>
       </div>
     </div>
   );
