@@ -25,7 +25,7 @@ import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  rectSortingStrategy,
+  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import type { Passport } from '@/types/passport';
 
@@ -159,9 +159,9 @@ export default function Dashboard() {
           >
             <SortableContext
               items={localPassports.map(p => p.id)}
-              strategy={rectSortingStrategy}
+              strategy={verticalListSortingStrategy}
             >
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="flex flex-col gap-2">
                 {localPassports.map(passport => (
                   <SortablePassportCard
                     key={passport.id}
