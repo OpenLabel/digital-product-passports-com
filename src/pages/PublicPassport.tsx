@@ -189,14 +189,10 @@ export default function PublicPassport() {
           )}
 
           {/* Footer */}
-          <div className="text-center text-xs text-muted-foreground py-8 space-y-1">
-            <p>Digital Product Passport</p>
-            <p>Last updated: {new Date(passport.updated_at).toLocaleDateString()}</p>
-            <p>
-              <Link to="/legal" className="underline hover:text-foreground">
-                Legal Mentions
-              </Link>
-            </p>
+          <div className="text-center text-xs text-muted-foreground py-8">
+            <Link to="/legal" className="underline hover:text-foreground">
+              Legal Mentions
+            </Link>
           </div>
         </div>
       </main>
