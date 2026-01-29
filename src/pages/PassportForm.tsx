@@ -143,9 +143,7 @@ export default function PassportForm() {
               <>
                 <Save className="h-4 w-4" />
                 {isEditing ? 'Save Changes' : 'Create Passport'}
-                <kbd className="ml-1 pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-                  <span className="text-xs">⌘</span>S
-                </kbd>
+                <span className="ml-1 text-xs opacity-60">⌘S</span>
               </>
             )}
           </Button>
