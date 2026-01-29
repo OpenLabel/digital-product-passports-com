@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, Download } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -18,8 +18,8 @@ interface QRCodeDialogProps {
   showSecuritySealOverlay?: boolean;
 }
 
-// Rounded hexagon SVG with text - creates a hexagon with curved corners and instruction text
-function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
+// Generate rounded hexagon path
+function getRoundedHexagonPath(size: number) {
   const centerX = size / 2;
   const centerY = size / 2;
   const radius = size / 2 - 2;
@@ -61,17 +61,21 @@ function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
     
     path += `Q ${current.x} ${current.y} ${endPoint.x} ${endPoint.y} `;
     
-    const nextVertex = vertices[(i + 1) % 6];
-    
     if (i < 5) {
       const nextStartPoint = {
-        x: nextVertex.x + (toNext.x / lenNext) * -cornerRadius,
-        y: nextVertex.y + (toNext.y / lenNext) * -cornerRadius,
+        x: vertices[(i + 1) % 6].x + (toNext.x / lenNext) * -cornerRadius,
+        y: vertices[(i + 1) % 6].y + (toNext.y / lenNext) * -cornerRadius,
       };
       path += `L ${nextStartPoint.x} ${nextStartPoint.y} `;
     }
   }
   path += 'Z';
+  return { path, centerX, centerY };
+}
+
+// Rounded hexagon SVG with text - creates a hexagon with curved corners and instruction text
+function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
+  const { path, centerX, centerY } = getRoundedHexagonPath(size);
 
   return (
     <svg
@@ -128,12 +132,89 @@ export function QRCodeDialog({
 }: QRCodeDialogProps) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
+  const qrContainerRef = useRef<HTMLDivElement>(null);
 
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  const handleDownload = useCallback(() => {
+    if (!qrContainerRef.current) return;
+
+    // Get the QR code SVG
+    const qrSvg = qrContainerRef.current.querySelector('svg');
+    if (!qrSvg) return;
+
+    const qrSize = 250;
+    const padding = 16;
+    const totalSize = qrSize + padding * 2;
+    
+    // Create a canvas to render the QR code
+    const canvas = document.createElement('canvas');
+    canvas.width = totalSize;
+    canvas.height = totalSize;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // White background
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, totalSize, totalSize);
+
+    // Convert QR SVG to image
+    const svgData = new XMLSerializer().serializeToString(qrSvg);
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const svgUrl = URL.createObjectURL(svgBlob);
+
+    const img = new Image();
+    img.onload = () => {
+      // Draw QR code
+      ctx.drawImage(img, padding, padding, qrSize, qrSize);
+      URL.revokeObjectURL(svgUrl);
+
+      // If security seal overlay is enabled, draw it on top
+      if (showSecuritySealOverlay) {
+        const hexSize = 80;
+        const { path, centerX, centerY } = getRoundedHexagonPath(hexSize);
+        
+        // Position hexagon in center
+        const hexX = totalSize / 2 - hexSize / 2;
+        const hexY = totalSize / 2 - hexSize / 2;
+        
+        ctx.save();
+        ctx.translate(hexX, hexY);
+        
+        // Draw hexagon
+        const path2D = new Path2D(path);
+        ctx.fillStyle = 'white';
+        ctx.fill(path2D);
+        ctx.strokeStyle = '#e5e5e5';
+        ctx.lineWidth = 1;
+        ctx.stroke(path2D);
+        
+        // Draw text
+        ctx.fillStyle = '#666';
+        ctx.font = '500 6px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Place security', centerX, centerY - 10);
+        ctx.fillText('seals here', centerX, centerY);
+        
+        ctx.fillStyle = '#999';
+        ctx.font = '5px sans-serif';
+        ctx.fillText('cypheme.com', centerX, centerY + 14);
+        
+        ctx.restore();
+      }
+
+      // Download
+      const link = document.createElement('a');
+      link.download = `${productName.replace(/[^a-z0-9]/gi, '_')}_qr.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    };
+    img.src = svgUrl;
+  }, [productName, showSecuritySealOverlay]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -143,7 +224,7 @@ export function QRCodeDialog({
         </DialogHeader>
         <div className="flex flex-col items-center gap-4 py-4">
           {url && (
-            <div className="rounded-lg border p-4 bg-white relative">
+            <div ref={qrContainerRef} className="rounded-lg border p-4 bg-white relative">
               <QRCodeSVG
                 value={url}
                 size={250}
@@ -170,6 +251,15 @@ export function QRCodeDialog({
               ) : (
                 <Copy className="h-4 w-4" />
               )}
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleDownload}
+              className="flex-shrink-0"
+              title={t('qrDialog.download')}
+            >
+              <Download className="h-4 w-4" />
             </Button>
           </div>
         </div>
