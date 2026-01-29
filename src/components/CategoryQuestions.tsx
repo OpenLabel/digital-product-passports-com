@@ -127,27 +127,29 @@ export function CategoryQuestions({ category, data, onChange }: CategoryQuestion
         </Card>
       ))}
 
-      {/* Display Settings - Promotional */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Display Settings</CardTitle>
-          <CardDescription>
-            Configure what appears on your public Digital Product Passport
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="hide_promo"
-              checked={(data.hide_promo as boolean) || false}
-              onCheckedChange={(checked) => handleChange('hide_promo', checked)}
-            />
-            <Label htmlFor="hide_promo" className="text-sm font-normal cursor-pointer">
-              Hide "Made by EU Digital Product Passports" promotional message
-            </Label>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Display Settings - Promotional (skip for wine, it has its own in WineFields) */}
+      {category !== 'wine' && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">Display Settings</CardTitle>
+            <CardDescription>
+              Configure what appears on your public Digital Product Passport
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="hide_promo"
+                checked={(data.hide_promo as boolean) || false}
+                onCheckedChange={(checked) => handleChange('hide_promo', checked)}
+              />
+              <Label htmlFor="hide_promo" className="text-sm font-normal cursor-pointer">
+                Hide "Made by EU Digital Product Passports" promotional message
+              </Label>
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </div>
   );
 }
