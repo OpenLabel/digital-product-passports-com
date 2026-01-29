@@ -176,7 +176,7 @@ export default function Setup() {
                       onCheckedChange={(checked) => setAiEnabled(checked === true)}
                     />
                     <Label htmlFor="aiEnabled" className="text-sm font-normal cursor-pointer">
-                      Enable AI features (e.g., Autofill from wine labels)
+                      Enable AI features (Autofill from labels, Translation)
                     </Label>
                   </div>
                   
