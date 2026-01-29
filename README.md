@@ -52,19 +52,32 @@ supabase link --project-ref YOUR_PROJECT_ID
 supabase db push
 ```
 
-### Step 4: Configure API Keys
+### Step 4: Get Your Resend API Key (Required)
 
-Set your API keys as Supabase secrets:
+Resend is used to send counterfeit report emails. Free tier includes 100 emails/day.
+
+1. Go to [resend.com](https://resend.com) → Sign up (free)
+2. After signup, go to **API Keys**: [resend.com/api-keys](https://resend.com/api-keys)
+3. Click **"Create API Key"**
+4. Give it a name (e.g., "DPP Platform") → Click **"Add"**
+5. **Copy the key immediately** (starts with `re_`) — you won't see it again!
+
+### Step 5: Configure Supabase Secrets
+
+Now add your API keys to Supabase:
 
 ```bash
-# REQUIRED: Get your key from https://resend.com/api-keys
+# REQUIRED: Paste your Resend API key (the one starting with re_)
 supabase secrets set RESEND_API_KEY=re_xxxxxxxxxx
 
 # OPTIONAL: Only needed for AI features (wine label scanning)
+# Get this from https://lovable.dev if you want AI autofill
 supabase secrets set LOVABLE_API_KEY=your_key_here
 ```
 
-### Step 5: Deploy Edge Functions
+> ⚠️ **Important**: For Resend to work in production, you must also [verify your sending domain](https://resend.com/domains). Until then, you can only send to your own email address.
+
+### Step 6: Deploy Edge Functions
 
 ```bash
 supabase functions deploy send-counterfeit-request
@@ -72,7 +85,7 @@ supabase functions deploy wine-label-ocr
 supabase functions deploy get-public-passport
 ```
 
-### Step 6: Deploy the Frontend
+### Step 7: Deploy the Frontend
 
 Choose one of these options:
 
@@ -108,7 +121,7 @@ npm run build
 # Serve the 'dist' folder with any static file server
 ```
 
-### Step 7: Complete Setup
+### Step 8: Complete Setup
 
 1. Visit your deployed app
 2. The first visitor is automatically the admin and sees the setup wizard
