@@ -224,75 +224,75 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
           </div>
         )}
 
-        {/* Nutritional Values */}
+        {/* Nutritional Values - EU Regulation 1169/2011 compliant format */}
         {hasNutritionalInfo && (
           <section className="mb-6" data-testid="nutritional-section">
             <h2 className="text-xl font-semibold mb-3">Nutritional Values</h2>
             
-            <table className="w-full text-sm">
+            {/* EU mandates tabular format with values per 100ml */}
+            <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="border-b">
-                  <th className="text-left py-2"></th>
-                  <th className="text-right py-2 font-medium">100 ml</th>
+                <tr className="border-b-2 border-foreground/20">
+                  <th className="text-left py-2 font-medium"></th>
+                  <th className="text-right py-2 font-medium">per 100 ml</th>
                 </tr>
               </thead>
               <tbody>
-                {(energyKj || energyKcal) && (
-                  <tr className="border-b">
-                    <td className="py-2">Energy</td>
-                    <td className="py-2 text-right">
-                      {energyKj && <span>{energyKj} kJ</span>}
-                      {energyKj && energyKcal && <span> / </span>}
-                      {energyKcal && <span>{energyKcal} kcal</span>}
-                    </td>
-                  </tr>
-                )}
-                {fat !== undefined && fat > 0 && (
-                  <tr className="border-b">
-                    <td className="py-2">Fat</td>
-                    <td className="py-2 text-right">{fat} g</td>
-                  </tr>
-                )}
-                {saturatedFat !== undefined && saturatedFat > 0 && (
-                  <tr className="border-b">
-                    <td className="py-2 pl-4 text-muted-foreground">· of which saturated</td>
-                    <td className="py-2 text-right">{saturatedFat} g</td>
-                  </tr>
-                )}
-                {carbohydrates !== undefined && (
-                  <tr className="border-b">
-                    <td className="py-2">Carbohydrates</td>
-                    <td className="py-2 text-right">{carbohydrates} g</td>
-                  </tr>
-                )}
-                {sugar !== undefined && (
-                  <tr className="border-b">
-                    <td className="py-2 pl-4 text-muted-foreground">· of which sugars</td>
-                    <td className="py-2 text-right">{sugar} g</td>
-                  </tr>
-                )}
-                {proteins !== undefined && proteins > 0 && (
-                  <tr className="border-b">
-                    <td className="py-2">Proteins</td>
-                    <td className="py-2 text-right">{proteins} g</td>
-                  </tr>
-                )}
-                {salt !== undefined && salt > 0 && (
-                  <tr className="border-b">
-                    <td className="py-2">Salt</td>
-                    <td className="py-2 text-right">{salt} g</td>
-                  </tr>
-                )}
+                {/* EU Order: Energy first (mandatory kJ, optional kcal) */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2 font-medium">Energy</td>
+                  <td className="py-2 text-right">
+                    {energyKj !== undefined ? `${energyKj} kJ` : '0 kJ'}
+                    {' / '}
+                    {energyKcal !== undefined ? `${energyKcal} kcal` : '0 kcal'}
+                  </td>
+                </tr>
+                
+                {/* Fat (always show, 0 if negligible) */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2">Fat</td>
+                  <td className="py-2 text-right">{fat !== undefined && fat > 0 ? `${fat} g` : '0 g'}</td>
+                </tr>
+                
+                {/* of which saturates (indented, always show) */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2 pl-4 text-muted-foreground">of which saturates</td>
+                  <td className="py-2 text-right">{saturatedFat !== undefined && saturatedFat > 0 ? `${saturatedFat} g` : '0 g'}</td>
+                </tr>
+                
+                {/* Carbohydrate */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2">Carbohydrate</td>
+                  <td className="py-2 text-right">{carbohydrates !== undefined ? `${carbohydrates} g` : '0 g'}</td>
+                </tr>
+                
+                {/* of which sugars (indented) */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2 pl-4 text-muted-foreground">of which sugars</td>
+                  <td className="py-2 text-right">{sugar !== undefined ? `${sugar} g` : '0 g'}</td>
+                </tr>
+                
+                {/* Protein */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2">Protein</td>
+                  <td className="py-2 text-right">{proteins !== undefined && proteins > 0 ? `${proteins} g` : '0 g'}</td>
+                </tr>
+                
+                {/* Salt */}
+                <tr className="border-b border-foreground/10">
+                  <td className="py-2">Salt</td>
+                  <td className="py-2 text-right">{salt !== undefined && salt > 0 ? `${salt} g` : '0 g'}</td>
+                </tr>
               </tbody>
             </table>
 
-            {/* Small quantities notice */}
+            {/* Optional: negligible amounts notice per EU guidance */}
             {(fat === 0 || fat === undefined) && 
              (saturatedFat === 0 || saturatedFat === undefined) && 
              (proteins === 0 || proteins === undefined) && 
              (salt === 0 || salt === undefined) && (
-              <p className="text-xs text-muted-foreground mt-2">
-                Contains small quantities of fat, saturated fatty acids, proteins, and salt.
+              <p className="text-xs text-muted-foreground mt-2 italic">
+                Contains negligible amounts of fat, saturates, protein and salt.
               </p>
             )}
           </section>
