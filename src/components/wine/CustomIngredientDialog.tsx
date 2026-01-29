@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { TranslationButton, Translations } from '@/components/TranslationButton';
 
 export interface CustomIngredient {
   id: string;
@@ -12,40 +13,72 @@ export interface CustomIngredient {
   eNumber?: string;
   isAllergen?: boolean;
   isCustom: true;
+  nameTranslations?: Translations;
 }
 
 interface CustomIngredientDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onAdd: (ingredient: CustomIngredient) => void;
+  /** If provided, dialog is in edit mode */
+  editIngredient?: CustomIngredient | null;
+  onUpdate?: (ingredient: CustomIngredient) => void;
 }
 
 export function CustomIngredientDialog({
   open,
   onOpenChange,
   onAdd,
+  editIngredient,
+  onUpdate,
 }: CustomIngredientDialogProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [name, setName] = useState('');
   const [eNumber, setENumber] = useState('');
   const [isAllergen, setIsAllergen] = useState(false);
+  const [nameTranslations, setNameTranslations] = useState<Translations>({});
+
+  const currentLanguage = i18n.language.split('-')[0];
+  const isEditMode = !!editIngredient;
+
+  // Reset form when dialog opens/closes or editIngredient changes
+  useEffect(() => {
+    if (open && editIngredient) {
+      setName(editIngredient.name);
+      setENumber(editIngredient.eNumber || '');
+      setIsAllergen(editIngredient.isAllergen || false);
+      setNameTranslations(editIngredient.nameTranslations || {});
+    } else if (!open) {
+      setName('');
+      setENumber('');
+      setIsAllergen(false);
+      setNameTranslations({});
+    }
+  }, [open, editIngredient]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
 
     const ingredient: CustomIngredient = {
-      id: `custom_${Date.now()}`,
+      id: editIngredient?.id || `custom_${Date.now()}`,
       name: name.trim(),
       eNumber: eNumber.trim() || undefined,
       isAllergen,
       isCustom: true,
+      nameTranslations: Object.keys(nameTranslations).length > 0 ? nameTranslations : undefined,
     };
 
-    onAdd(ingredient);
+    if (isEditMode && onUpdate) {
+      onUpdate(ingredient);
+    } else {
+      onAdd(ingredient);
+    }
+    
     setName('');
     setENumber('');
     setIsAllergen(false);
+    setNameTranslations({});
     onOpenChange(false);
   };
 
@@ -53,19 +86,32 @@ export function CustomIngredientDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>{t('customIngredient.title')}</DialogTitle>
+          <DialogTitle>
+            {isEditMode ? t('customIngredient.editTitle', 'Edit custom ingredient') : t('customIngredient.title')}
+          </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="custom-name">{t('customIngredient.ingredientName')} *</Label>
-            <Input
-              id="custom-name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder={t('customIngredient.ingredientPlaceholder')}
-              required
-            />
+            <div className="flex gap-2">
+              <Input
+                id="custom-name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder={t('customIngredient.ingredientPlaceholder')}
+                required
+                className="flex-1"
+              />
+              <TranslationButton
+                value={name}
+                sourceLanguage={currentLanguage}
+                translations={nameTranslations}
+                onSave={setNameTranslations}
+                fieldLabel={t('customIngredient.ingredientName')}
+                disabled={!name.trim()}
+              />
+            </div>
           </div>
 
           <div className="space-y-2">
@@ -94,7 +140,7 @@ export function CustomIngredientDialog({
               {t('common.cancel')}
             </Button>
             <Button type="submit" disabled={!name.trim()}>
-              {t('customIngredient.addButton')}
+              {isEditMode ? t('common.save') : t('customIngredient.addButton')}
             </Button>
           </DialogFooter>
         </form>
