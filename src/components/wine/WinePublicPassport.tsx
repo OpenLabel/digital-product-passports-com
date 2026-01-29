@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 
 interface WinePassportData {
   name: string;
@@ -46,6 +45,18 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const sugarClassification = categoryData.sugar_classification as string | undefined;
   const productType = categoryData.product_type as string | undefined;
 
+  // Producer info
+  const producerName = categoryData.producer_name as string | undefined;
+  const bottlerInfo = categoryData.bottler_info as string | undefined;
+
+  // Certifications
+  const hasPdo = categoryData.has_pdo as boolean | undefined;
+  const hasPgi = categoryData.has_pgi as boolean | undefined;
+  const isOrganicEu = categoryData.is_organic_eu as boolean | undefined;
+  const isBiodynamic = categoryData.is_biodynamic as boolean | undefined;
+  const isHve = categoryData.is_hve as boolean | undefined;
+  const isTerraVitis = categoryData.is_terra_vitis as boolean | undefined;
+
   // Nutritional values
   const alcoholPercent = categoryData.alcohol_percent as number | undefined;
   const residualSugar = categoryData.residual_sugar as number | undefined;
@@ -60,10 +71,10 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const proteins = categoryData.proteins as number | undefined;
   const salt = categoryData.salt as number | undefined;
 
-  // Display options
-  const showAlcohol = categoryData.display_alcohol !== false;
-  const showResidualSugar = categoryData.display_residual_sugar !== false;
-  const showTotalAcidity = categoryData.display_total_acidity !== false;
+  // Display options - using correct field names from WineFields
+  const showAlcohol = categoryData.show_alcohol_on_label !== false;
+  const showResidualSugar = categoryData.show_residual_sugar_on_label === true;
+  const showTotalAcidity = categoryData.show_total_acidity_on_label === true;
 
   // Ingredients
   const ingredients = (categoryData.ingredients as SelectedIngredient[]) || [];
@@ -72,7 +83,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const recyclingComponents = (categoryData.recycling_components as RecyclingComponent[]) || [];
   const recyclingMode = categoryData.recycling_mode as string | undefined;
   const recyclingPdfUrl = categoryData.recycling_pdf_url as string | undefined;
-  const recyclingWebsiteUrl = categoryData.recycling_website_url as string | undefined;
 
   const hasSmallQuantitiesWithValues = useMemo(() => {
     return (fat || 0) > 0 || (saturatedFat || 0) > 0 || (proteins || 0) > 0 || (salt || 0) > 0;
@@ -96,8 +106,19 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   };
 
   const hasProductInfo = volume || grapeVariety || vintage || country || region || denomination || sugarClassification || productType;
+  const hasProducerInfo = producerName || bottlerInfo;
+  const hasCertifications = hasPdo || hasPgi || isOrganicEu || isBiodynamic || isHve || isTerraVitis;
   const hasNutritionalInfo = alcoholPercent || energyKcal || energyKj || carbohydrates !== undefined || sugar !== undefined;
-  const hasRecyclingInfo = recyclingComponents.length > 0 || recyclingPdfUrl || recyclingWebsiteUrl;
+  const hasRecyclingInfo = recyclingComponents.length > 0 || recyclingPdfUrl;
+
+  // Build certification badges
+  const certificationBadges: { label: string; variant: 'default' | 'secondary' | 'outline' }[] = [];
+  if (hasPdo) certificationBadges.push({ label: 'PDO/AOP', variant: 'default' });
+  if (hasPgi) certificationBadges.push({ label: 'PGI/IGP', variant: 'default' });
+  if (isOrganicEu) certificationBadges.push({ label: '🌿 EU Organic', variant: 'secondary' });
+  if (isBiodynamic) certificationBadges.push({ label: '🌙 Biodynamic', variant: 'secondary' });
+  if (isHve) certificationBadges.push({ label: 'HVE', variant: 'outline' });
+  if (isTerraVitis) certificationBadges.push({ label: 'Terra Vitis', variant: 'outline' });
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -123,6 +144,24 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                 className="w-full max-h-96 object-contain bg-background"
                 data-testid="product-image"
               />
+            </Card>
+          )}
+
+          {/* Certifications & Labels */}
+          {hasCertifications && (
+            <Card data-testid="certifications-section">
+              <CardHeader>
+                <CardTitle>Certifications & Labels</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {certificationBadges.map((cert, index) => (
+                    <Badge key={index} variant={cert.variant} className="text-sm py-1 px-3">
+                      {cert.label}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
             </Card>
           )}
 
@@ -177,6 +216,29 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                     </div>
                   )}
                 </dl>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Producer Information */}
+          {hasProducerInfo && (
+            <Card data-testid="producer-section">
+              <CardHeader>
+                <CardTitle>Producer Information</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {producerName && (
+                  <div data-testid="field-producer-name">
+                    <dt className="text-muted-foreground text-sm">Producer/Winery</dt>
+                    <dd className="font-medium">{producerName}</dd>
+                  </div>
+                )}
+                {bottlerInfo && (
+                  <div data-testid="field-bottler-info">
+                    <dt className="text-muted-foreground text-sm">Bottler</dt>
+                    <dd className="font-medium whitespace-pre-wrap">{bottlerInfo}</dd>
+                  </div>
+                )}
               </CardContent>
             </Card>
           )}
@@ -331,18 +393,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                     View recycling instructions (PDF)
                   </a>
                 )}
-                
-                {recyclingMode === 'website' && recyclingWebsiteUrl && (
-                  <a 
-                    href={recyclingWebsiteUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-primary underline"
-                    data-testid="recycling-website-link"
-                  >
-                    View recycling instructions
-                  </a>
-                )}
 
                 {(recyclingMode === 'manual' || !recyclingMode) && recyclingComponents.length > 0 && (
                   <div className="space-y-3" data-testid="recycling-components">
@@ -383,7 +433,10 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
 // Export field keys for testing
 export const WINE_PASSPORT_FIELDS = {
   productInfo: ['volume', 'grape_variety', 'vintage', 'country', 'region', 'denomination', 'sugar_classification', 'product_type'],
+  producer: ['producer_name', 'bottler_info'],
+  certifications: ['has_pdo', 'has_pgi', 'is_organic_eu', 'is_biodynamic', 'is_hve', 'is_terra_vitis'],
   nutritional: ['alcohol_percent', 'energy_kcal', 'energy_kj', 'carbohydrates', 'sugar', 'residual_sugar', 'total_acidity', 'glycerine', 'fat', 'saturated_fat', 'proteins', 'salt'],
+  displayOptions: ['show_alcohol_on_label', 'show_residual_sugar_on_label', 'show_total_acidity_on_label'],
   ingredients: ['ingredients'],
-  recycling: ['recycling_components', 'recycling_pdf_url', 'recycling_website_url'],
+  recycling: ['recycling_components', 'recycling_pdf_url', 'recycling_mode'],
 } as const;
