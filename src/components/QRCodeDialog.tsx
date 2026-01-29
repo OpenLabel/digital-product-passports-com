@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
-import jsQR from 'jsqr';
 import { Copy, Check, Download } from 'lucide-react';
 import {
   Dialog,
@@ -11,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { validateQrFromImageData } from '@/lib/qrValidation';
 
 interface QRCodeDialogProps {
   open: boolean;
@@ -211,21 +211,18 @@ export function QRCodeDialog({
 
       // Validate QR code by scanning it before download
       const imageData = ctx.getImageData(0, 0, totalSize, totalSize);
-      const scannedCode = jsQR(imageData.data, totalSize, totalSize);
-      
-      if (!scannedCode) {
-        console.error('QR validation failed: Could not scan the generated QR code');
-        toast.error(t('qrDialog.validationFailed', 'QR code validation failed - could not scan the generated code'));
-        return;
-      }
+      const validation = validateQrFromImageData(imageData, url);
+      if (validation.ok === false) {
+        if (validation.reason === 'scan_failed') {
+          console.error('QR validation failed: Could not scan the generated QR code');
+          toast.error(t('qrDialog.validationFailed', 'QR code validation failed - could not scan the generated code'));
+          return;
+        }
 
-      if (scannedCode.data !== url) {
-        console.error('QR validation failed: URL mismatch', { expected: url, got: scannedCode.data });
+        console.error('QR validation failed: URL mismatch', { expected: url, got: validation.decodedUrl });
         toast.error(t('qrDialog.urlMismatch', 'QR code validation failed - URL does not match'));
         return;
       }
-
-      console.log('QR validation passed:', scannedCode.data);
 
       // Download
       const link = document.createElement('a');
