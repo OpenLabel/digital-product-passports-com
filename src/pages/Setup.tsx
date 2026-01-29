@@ -207,7 +207,7 @@ export default function Setup() {
                   <Alert>
                     <Mail className="h-4 w-4" />
                     <AlertDescription className="space-y-2">
-                      <p>Email is used for counterfeit protection requests. Get your API key from Resend:</p>
+                      <p>Email is required for password reset functionality. Get your API key from Resend:</p>
                       <div className="flex flex-wrap gap-2 mt-2">
                         <a
                           href="https://resend.com/api-keys"
@@ -271,7 +271,7 @@ export default function Setup() {
                       </p>
                     )}
                     <p className="text-xs text-muted-foreground">
-                      Required for password reset emails and counterfeit protection notifications.
+                      Required for password reset emails.
                     </p>
                   </div>
                 </div>
