@@ -188,6 +188,9 @@
     "createTitle": "Créer un nouveau passeport",
     "editTitle": "Modifier le passeport",
     "basicInfo": "Informations de base",
+    "dppName": "Nom du DPP (interne uniquement)",
+    "dppNamePlaceholder": "Entrez un nom interne pour ce passeport",
+    "dppNameHelp": "Ce nom est visible uniquement sur votre tableau de bord",
     "productName": "Nom du produit",
     "productNamePlaceholder": "Entrez un nom pour ce produit",
     "category": "Catégorie de produit",
@@ -243,6 +246,7 @@
   "wine": {
     "productIdentity": "Identité du produit",
     "productIdentityDesc": "Informations de base sur le vin",
+    "productName": "Nom du produit",
     "volume": "Volume",
     "grapeVariety": "Cépage",
     "vintage": "Millésime",
@@ -331,6 +335,7 @@
     "selectClassification": "Sélectionner la classification",
     "manualOverride": "Saisie manuelle",
     "placeholders": {
+      "productName": "ex. Château Margaux 2018",
       "grapeVariety": "ex. Cabernet Sauvignon, Merlot",
       "vintage": "ex. 2020, NV, Multi-millésime",
       "volume": "ex. 750",
