@@ -28,16 +28,57 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">2. Description of Service</h2>
+            <h2 className="text-xl font-semibold mb-4">2. Open Source Software</h2>
             <p className="text-muted-foreground">
-              This platform enables users to create, manage, and publish Digital Product Passports (DPPs) 
-              in compliance with EU regulations. DPPs provide consumers with transparent information about 
-              products including ingredients, origin, and sustainability data.
+              This platform is open source software. If you are using a self-hosted instance of this platform 
+              on your own premises or infrastructure, you acknowledge that you are solely responsible for 
+              the deployment, configuration, maintenance, and operation of the software.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">3. User Accounts</h2>
+            <h2 className="text-xl font-semibold mb-4">3. Description of Service</h2>
+            <p className="text-muted-foreground">
+              This platform enables users to create, manage, and publish Digital Product Passports (DPPs). 
+              DPPs provide consumers with information about products including ingredients, origin, and sustainability data.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4">4. Disclaimer of Warranties</h2>
+            <p className="text-muted-foreground font-semibold uppercase mb-2">
+              THE SOFTWARE AND PLATFORM ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND, 
+              EXPRESS OR IMPLIED.
+            </p>
+            <p className="text-muted-foreground mb-2">
+              TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WE EXPRESSLY DISCLAIM ALL WARRANTIES, WHETHER EXPRESS, 
+              IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO:
+            </p>
+            <ul className="list-disc pl-6 text-muted-foreground space-y-1">
+              <li>IMPLIED WARRANTIES OF MERCHANTABILITY</li>
+              <li>FITNESS FOR A PARTICULAR PURPOSE</li>
+              <li>NON-INFRINGEMENT</li>
+              <li>ACCURACY, RELIABILITY, OR COMPLETENESS OF CONTENT</li>
+              <li>UNINTERRUPTED OR ERROR-FREE OPERATION</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4">5. No Regulatory Compliance Warranty</h2>
+            <p className="text-muted-foreground font-semibold uppercase mb-2">
+              WE MAKE NO WARRANTY, REPRESENTATION, OR GUARANTEE THAT ANY DIGITAL PRODUCT PASSPORTS (DPPs) 
+              CREATED USING THIS PLATFORM WILL BE COMPLIANT WITH ANY LAWS, REGULATIONS, DIRECTIVES, OR STANDARDS.
+            </p>
+            <p className="text-muted-foreground">
+              This includes, but is not limited to, the EU Digital Product Passport regulations, ESPR (Ecodesign for 
+              Sustainable Products Regulation), or any other national or international regulatory requirements. 
+              You are solely responsible for ensuring that your product passports meet all applicable legal and 
+              regulatory requirements in your jurisdiction.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4">6. User Accounts</h2>
             <p className="text-muted-foreground mb-2">When creating an account, you agree to:</p>
             <ul className="list-disc pl-6 text-muted-foreground space-y-1">
               <li>Provide accurate and complete information</li>
@@ -48,18 +89,47 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">4. User Responsibilities</h2>
-            <p className="text-muted-foreground mb-2">You are responsible for:</p>
+            <h2 className="text-xl font-semibold mb-4">7. User Responsibilities</h2>
+            <p className="text-muted-foreground mb-2">You are solely responsible for:</p>
             <ul className="list-disc pl-6 text-muted-foreground space-y-1">
-              <li>The accuracy and legality of all product information you submit</li>
-              <li>Ensuring your product passports comply with applicable regulations</li>
+              <li>The accuracy, legality, and regulatory compliance of all product information you submit</li>
+              <li>Ensuring your product passports comply with all applicable laws and regulations</li>
+              <li>Verifying that generated DPPs meet your jurisdiction's requirements</li>
               <li>Obtaining necessary rights for any content you upload</li>
               <li>Not using the service for any unlawful purpose</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">5. Intellectual Property</h2>
+            <h2 className="text-xl font-semibold mb-4">8. Limitation of Liability</h2>
+            <p className="text-muted-foreground font-semibold uppercase mb-2">
+              TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL WE BE LIABLE FOR ANY INDIRECT, 
+              INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO:
+            </p>
+            <ul className="list-disc pl-6 text-muted-foreground space-y-1">
+              <li>Loss of profits, revenue, or business opportunities</li>
+              <li>Regulatory fines, penalties, or sanctions</li>
+              <li>Damages arising from non-compliant product passports</li>
+              <li>Loss of data or business interruption</li>
+              <li>Any other pecuniary loss</li>
+            </ul>
+            <p className="text-muted-foreground mt-2">
+              This limitation applies regardless of the theory of liability (contract, tort, strict liability, or otherwise) 
+              and even if we have been advised of the possibility of such damages.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4">9. Indemnification</h2>
+            <p className="text-muted-foreground">
+              You agree to indemnify, defend, and hold harmless the platform operators and contributors from any claims, 
+              damages, losses, or expenses (including legal fees) arising from your use of the platform, your violation 
+              of these terms, or your violation of any applicable laws or regulations.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4">10. Intellectual Property</h2>
             <p className="text-muted-foreground">
               You retain ownership of the content you create. By using this platform, you grant us a 
               license to display and distribute your product passports as necessary to provide the service.
@@ -67,7 +137,7 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">6. Public Accessibility</h2>
+            <h2 className="text-xl font-semibold mb-4">11. Public Accessibility</h2>
             <p className="text-muted-foreground">
               Product passports created on this platform are designed to be publicly accessible via 
               unique URLs and QR codes. You acknowledge that any information in your product passports 
@@ -76,15 +146,7 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">7. Limitation of Liability</h2>
-            <p className="text-muted-foreground">
-              This platform is provided "as is" without warranties of any kind. We are not liable for 
-              any indirect, incidental, or consequential damages arising from your use of the service.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold mb-4">8. Modifications</h2>
+            <h2 className="text-xl font-semibold mb-4">12. Modifications</h2>
             <p className="text-muted-foreground">
               We reserve the right to modify these terms at any time. Continued use of the platform 
               after changes constitutes acceptance of the modified terms.
@@ -92,7 +154,7 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">9. Termination</h2>
+            <h2 className="text-xl font-semibold mb-4">13. Termination</h2>
             <p className="text-muted-foreground">
               We may terminate or suspend your account at any time for violations of these terms. 
               You may also delete your account at any time.
@@ -100,7 +162,15 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-4">10. Contact</h2>
+            <h2 className="text-xl font-semibold mb-4">14. Governing Law</h2>
+            <p className="text-muted-foreground">
+              These terms shall be governed by and construed in accordance with applicable laws, 
+              without regard to conflict of law principles.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-4">15. Contact</h2>
             <p className="text-muted-foreground">
               For questions about these Terms & Conditions, please contact:
             </p>
