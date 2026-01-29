@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Plus, X, Pencil } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
+import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 import {
   packagingMaterialTypes,
   getCompositionsByCategory,
@@ -36,6 +37,19 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
 
   const currentLanguage = i18n.language.split('-')[0];
   const materials = (data.packaging_materials as PackagingMaterialWithTranslations[]) || [];
+
+  // Auto-translate custom type name
+  const handleCustomTypeTranslationsGenerated = useCallback((translations: Translations) => {
+    setCustomTypeTranslations(translations);
+  }, []);
+
+  const { isTranslating: isCustomTypeTranslating, markAsUserEdited: markCustomTypeEdited } = useAutoTranslate({
+    value: customTypeName,
+    sourceLanguage: currentLanguage,
+    existingTranslations: customTypeTranslations,
+    onTranslationsGenerated: handleCustomTypeTranslationsGenerated,
+    enabled: customTypeOpen && !!customTypeName.trim(),
+  });
 
   // Reset form when dialog closes
   useEffect(() => {
@@ -325,7 +339,10 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="custom-type-name">{t('recycling.materialName', 'Material name')}</Label>
+              <Label htmlFor="custom-type-name">
+                {t('recycling.materialName', 'Material name')}
+                {isCustomTypeTranslating && <span className="ml-2 text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
+              </Label>
               <div className="flex gap-2">
                 <Input
                   id="custom-type-name"
@@ -338,7 +355,10 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                   value={customTypeName}
                   sourceLanguage={currentLanguage}
                   translations={customTypeTranslations}
-                  onSave={setCustomTypeTranslations}
+                  onSave={(translations) => {
+                    Object.keys(translations).forEach(lang => markCustomTypeEdited(lang));
+                    setCustomTypeTranslations(translations);
+                  }}
                   fieldLabel={t('recycling.materialName', 'Material name')}
                   disabled={!customTypeName.trim()}
                 />

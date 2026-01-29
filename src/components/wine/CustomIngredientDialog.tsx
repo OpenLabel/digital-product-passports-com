@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
+import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 
 export interface CustomIngredient {
   id: string;
@@ -40,6 +41,19 @@ export function CustomIngredientDialog({
 
   const currentLanguage = i18n.language.split('-')[0];
   const isEditMode = !!editIngredient;
+
+  // Auto-translate ingredient name
+  const handleTranslationsGenerated = useCallback((translations: Translations) => {
+    setNameTranslations(translations);
+  }, []);
+
+  const { isTranslating, markAsUserEdited } = useAutoTranslate({
+    value: name,
+    sourceLanguage: currentLanguage,
+    existingTranslations: nameTranslations,
+    onTranslationsGenerated: handleTranslationsGenerated,
+    enabled: open && !!name.trim(),
+  });
 
   // Reset form when dialog opens/closes or editIngredient changes
   useEffect(() => {
@@ -93,7 +107,10 @@ export function CustomIngredientDialog({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="custom-name">{t('customIngredient.ingredientName')} *</Label>
+            <Label htmlFor="custom-name">
+              {t('customIngredient.ingredientName')} *
+              {isTranslating && <span className="ml-2 text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
+            </Label>
             <div className="flex gap-2">
               <Input
                 id="custom-name"
@@ -107,7 +124,10 @@ export function CustomIngredientDialog({
                 value={name}
                 sourceLanguage={currentLanguage}
                 translations={nameTranslations}
-                onSave={setNameTranslations}
+                onSave={(translations) => {
+                  Object.keys(translations).forEach(lang => markAsUserEdited(lang));
+                  setNameTranslations(translations);
+                }}
                 fieldLabel={t('customIngredient.ingredientName')}
                 disabled={!name.trim()}
               />
