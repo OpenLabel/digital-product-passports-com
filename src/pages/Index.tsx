@@ -558,7 +558,7 @@ export default function Index() {
               <Link to="/legal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Legal Mentions
               </Link>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="https://github.com/cypheme/dpp-platform" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="h-4 w-4" />
                 View on GitHub
               </a>
