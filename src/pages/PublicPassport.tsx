@@ -171,6 +171,23 @@ export default function PublicPassport() {
             </div>
           )}
 
+          {/* Promotional Footer */}
+          {!categoryData?.hide_promo && (
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center mt-6">
+              <p className="text-sm text-foreground">
+                Make your own digital product passports for free with{' '}
+                <a 
+                  href={window.location.origin} 
+                  className="text-primary font-medium hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  EU Digital Product Passports
+                </a>
+              </p>
+            </div>
+          )}
+
           {/* Footer */}
           <div className="text-center text-xs text-muted-foreground py-8 space-y-1">
             <p>Digital Product Passport</p>
