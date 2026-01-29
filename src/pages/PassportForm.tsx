@@ -16,7 +16,7 @@ import { RichTextEditor } from '@/components/RichTextEditor';
 import { ImageUpload } from '@/components/ImageUpload';
 import { CategoryQuestions } from '@/components/CategoryQuestions';
 import { WineFields } from '@/components/WineFields';
-import { WinePassportPreview } from '@/components/wine/WinePassportPreview';
+import { PassportPreview } from '@/components/PassportPreview';
 import { CounterfeitProtection } from '@/components/CounterfeitProtection';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 
@@ -120,7 +120,8 @@ export default function PassportForm() {
     );
   }
 
-  const showWinePreview = formData.category === 'wine';
+  // Show preview for all categories
+  const showPreview = true;
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -152,9 +153,9 @@ export default function PassportForm() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className={`flex gap-8 ${showWinePreview ? 'lg:flex-row flex-col' : ''}`}>
+        <div className={`flex gap-8 ${showPreview ? 'lg:flex-row flex-col' : ''}`}>
           {/* Form Section */}
-          <div className={showWinePreview ? 'flex-1 min-w-0' : 'max-w-3xl mx-auto w-full'}>
+          <div className={showPreview ? 'flex-1 min-w-0' : 'max-w-3xl mx-auto w-full'}>
             <form id="passport-form" onSubmit={handleSubmit} className="space-y-6">
               {/* Basic Information */}
               <Card>
@@ -287,10 +288,10 @@ export default function PassportForm() {
             </form>
           </div>
 
-          {/* Preview Section - Wine only */}
-          {showWinePreview && (
+          {/* Preview Section - All categories */}
+          {showPreview && (
             <aside className="lg:w-80 w-full lg:sticky lg:top-24 lg:self-start">
-              <WinePassportPreview formData={formData} />
+              <PassportPreview formData={formData} />
             </aside>
           )}
         </div>
