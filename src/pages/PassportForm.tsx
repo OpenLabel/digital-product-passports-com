@@ -66,8 +66,8 @@ export default function PassportForm() {
     }
   }, [existingPassport]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     
     if (!formData.name.trim()) {
       toast({ title: 'Error', description: 'Please enter a product name', variant: 'destructive' });
@@ -84,16 +84,29 @@ export default function PassportForm() {
         await updatePassport.mutateAsync({ id, ...submitData });
         toast({ title: 'Passport updated successfully' });
       } else {
-        await createPassport.mutateAsync(submitData);
+        const newPassport = await createPassport.mutateAsync(submitData);
         toast({ title: 'Passport created successfully' });
+        // Navigate to edit mode for the newly created passport
+        navigate(`/passport/${newPassport.id}/edit`, { replace: true });
       }
-      navigate('/dashboard');
     } catch (error: any) {
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
     } finally {
       setSaving(false);
     }
   };
+
+  // Keyboard shortcut: ⌘+S (Mac) or Ctrl+S (Windows)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+        e.preventDefault();
+        handleSubmit();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [formData, saving]);
 
   if (authLoading || (isEditing && passportLoading)) {
     return (
@@ -120,16 +133,19 @@ export default function PassportForm() {
               {isEditing ? 'Edit Passport' : 'Create New Passport'}
             </h1>
           </div>
-          <Button type="submit" form="passport-form" disabled={saving}>
+          <Button type="submit" form="passport-form" disabled={saving} className="gap-2">
             {saving ? (
               <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                <Loader2 className="h-4 w-4 animate-spin" />
                 Saving...
               </>
             ) : (
               <>
-                <Save className="h-4 w-4 mr-2" />
+                <Save className="h-4 w-4" />
                 {isEditing ? 'Save Changes' : 'Create Passport'}
+                <kbd className="ml-1 pointer-events-none hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+                  <span className="text-xs">⌘</span>S
+                </kbd>
               </>
             )}
           </Button>
@@ -238,15 +254,15 @@ export default function PassportForm() {
                 <Button type="button" variant="outline" onClick={() => navigate('/dashboard')}>
                   Cancel
                 </Button>
-                <Button type="submit" disabled={saving}>
+                <Button type="submit" disabled={saving} className="gap-2">
                   {saving ? (
                     <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      <Loader2 className="h-4 w-4 animate-spin" />
                       Saving...
                     </>
                   ) : (
                     <>
-                      <Save className="h-4 w-4 mr-2" />
+                      <Save className="h-4 w-4" />
                       {isEditing ? 'Save Changes' : 'Create Passport'}
                     </>
                   )}
