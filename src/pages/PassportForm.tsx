@@ -212,23 +212,6 @@ export default function PassportForm() {
                 </CardContent>
               </Card>
 
-              {/* Counterfeit Protection - appears near top of preview */}
-              {isEditing && existingPassport && (
-                <CounterfeitProtection
-                  passportName={formData.name}
-                  passportSlug={existingPassport.public_slug}
-                  userEmail={user?.email}
-                  enabled={formData.category_data.counterfeit_protection_enabled === true}
-                  onChange={(enabled) => setFormData({
-                    ...formData,
-                    category_data: {
-                      ...formData.category_data,
-                      counterfeit_protection_enabled: enabled,
-                    },
-                  })}
-                />
-              )}
-
               {/* Wine-specific fields */}
               {formData.category === 'wine' && (
                 <WineFields
@@ -265,6 +248,23 @@ export default function PassportForm() {
                   onChange={(data) => setFormData({ ...formData, category_data: data })}
                 />
               </div>
+
+              {/* Counterfeit Protection - always last */}
+              {isEditing && existingPassport && (
+                <CounterfeitProtection
+                  passportName={formData.name}
+                  passportSlug={existingPassport.public_slug}
+                  userEmail={user?.email}
+                  enabled={formData.category_data.counterfeit_protection_enabled === true}
+                  onChange={(enabled) => setFormData({
+                    ...formData,
+                    category_data: {
+                      ...formData.category_data,
+                      counterfeit_protection_enabled: enabled,
+                    },
+                  })}
+                />
+              )}
 
               {/* Actions - Mobile only */}
               <div className="flex gap-4 justify-end lg:hidden">
