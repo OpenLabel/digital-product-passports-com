@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { DPPLanguagePicker } from '@/components/DPPLanguagePicker';
+
 interface WinePassportData {
   name: string;
   image_url: string | null;
@@ -17,27 +18,43 @@ interface SelectedIngredient {
   name: string;
   isAllergen?: boolean;
   category?: string;
+  nameTranslations?: Record<string, string>;
 }
 
-interface RecyclingComponent {
+interface PackagingMaterial {
   id: string;
-  type: string;
+  typeId: string;
   typeName: string;
-  composition: string;
-  compositionName: string;
-  compositionCode: string;
-  disposal: string;
-  disposalName: string;
+  compositionId?: string;
+  compositionName?: string;
+  compositionCode?: string;
+  disposalMethodId?: string;
+  disposalMethodName?: string;
+  isCustomType?: boolean;
+  customTypeName?: string;
+  customTypeNameTranslations?: Record<string, string>;
 }
 
 interface WinePublicPassportProps {
   passport: WinePassportData;
   isPreview?: boolean;
+  /** For preview mode: current preview language */
+  previewLanguage?: string;
+  /** For preview mode: callback when language changes */
+  onPreviewLanguageChange?: (lang: string) => void;
 }
 
-export function WinePublicPassport({ passport, isPreview = false }: WinePublicPassportProps) {
-  const { t } = useTranslation();
+export function WinePublicPassport({ 
+  passport, 
+  isPreview = false,
+  previewLanguage,
+  onPreviewLanguageChange,
+}: WinePublicPassportProps) {
+  const { t, i18n } = useTranslation();
   const categoryData = (passport.category_data || {}) as Record<string, unknown>;
+
+  // Get the effective language for displaying translated content
+  const displayLanguage = previewLanguage || i18n.language.split('-')[0];
 
   // Product info
   const productName = (categoryData.product_name as string) || passport.name;
@@ -47,8 +64,16 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
   const vintage = categoryData.vintage as string | undefined;
   const country = categoryData.country as string | undefined;
   const region = categoryData.region as string | undefined;
-  const denomination = categoryData.denomination as string | undefined;
-  const sugarClassification = categoryData.sugar_classification as string | undefined;
+  
+  // Denomination with translations
+  const denominationRaw = categoryData.denomination as string | undefined;
+  const denominationTranslations = categoryData.denomination_translations as Record<string, string> | undefined;
+  const denomination = denominationTranslations?.[displayLanguage] || denominationRaw;
+  
+  // Sugar classification with translations
+  const sugarClassificationRaw = categoryData.sugar_classification as string | undefined;
+  const sugarClassificationTranslations = categoryData.sugar_classification_translations as Record<string, string> | undefined;
+  const sugarClassification = sugarClassificationTranslations?.[displayLanguage] || sugarClassificationRaw;
 
   // Producer info
   const producerName = categoryData.producer_name as string | undefined;
@@ -78,18 +103,39 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
   // Ingredients
   const ingredients = (categoryData.ingredients as SelectedIngredient[]) || [];
 
-  // Recycling
-  const recyclingComponents = (categoryData.recycling_components as RecyclingComponent[]) || [];
+  // Recycling / Packaging materials
+  const packagingMaterials = (categoryData.packaging_materials as PackagingMaterial[]) || [];
 
   // Counterfeit protection
   const counterfeitProtectionEnabled = categoryData.counterfeit_protection_enabled === true;
 
   const hasNutritionalInfo = energyKcal || energyKj || carbohydrates !== undefined || sugar !== undefined;
-  const hasRecyclingInfo = recyclingComponents.length > 0;
+  const hasRecyclingInfo = packagingMaterials.length > 0;
   const hasProducerInfo = producerName || bottlerInfo || country;
+  
+  // Helper to get material type name with translation support
+  const getMaterialTypeName = (material: PackagingMaterial): string => {
+    if (material.isCustomType) {
+      // Check for user-provided translation
+      const customTranslation = material.customTypeNameTranslations?.[displayLanguage];
+      if (customTranslation) return customTranslation;
+      return material.customTypeName || material.typeName;
+    }
+    return material.typeName;
+  };
 
-  // Translate ingredient name - uses translation if available, otherwise falls back to stored name
+  // Translate ingredient name
+  // For custom ingredients: use nameTranslations if available for current displayLanguage
+  // For standard ingredients: use i18n translation
   const translateIngredient = (ingredient: SelectedIngredient): string => {
+    // Custom ingredients: check for user-provided translations first
+    if (ingredient.id?.startsWith('custom_')) {
+      const customTranslation = ingredient.nameTranslations?.[displayLanguage];
+      if (customTranslation) return customTranslation;
+      return ingredient.name; // Fall back to original name
+    }
+    
+    // Standard ingredients: use i18n system
     const translationKey = `ingredients.${ingredient.id}`;
     const translated = t(translationKey);
     // If translation key is returned (no translation found), use the stored name
@@ -185,21 +231,25 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
 
   // Get unique component types for recycling table columns
   const uniqueComponentTypes = useMemo(() => {
-    const types = new Map<string, string>();
-    recyclingComponents.forEach(c => {
-      if (!types.has(c.type)) {
-        types.set(c.type, c.typeName);
+    const types = new Map<string, { id: string; name: string }>();
+    packagingMaterials.forEach(m => {
+      if (!types.has(m.typeId)) {
+        types.set(m.typeId, { id: m.typeId, name: getMaterialTypeName(m) });
       }
     });
     return Array.from(types.entries());
-  }, [recyclingComponents]);
+  }, [packagingMaterials, displayLanguage]);
 
   return (
     <div className="min-h-screen bg-background">
       {/* Language Switcher - Top Right */}
       <div className="container mx-auto px-4 pt-4 max-w-lg">
         <div className="flex justify-end">
-          <LanguageSwitcher />
+          <DPPLanguagePicker 
+            localOnly={isPreview}
+            currentLanguage={previewLanguage}
+            onLanguageChange={onPreviewLanguageChange}
+          />
         </div>
       </div>
 
@@ -406,42 +456,42 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
           <section className="mb-6" data-testid="recycling-section">
             <h2 className="text-xl font-semibold mb-3">{t('wine.recycling')}</h2>
             
-            {recyclingComponents.length > 0 && (
+            {packagingMaterials.length > 0 && (
               <>
                 <table className="w-full text-sm mb-3">
                   <thead>
                     <tr className="border-b">
                       <th className="text-left py-2"></th>
-                      {uniqueComponentTypes.map(([type, typeName]) => (
-                        <th key={type} className="text-center py-2 font-medium">{typeName}</th>
+                      {uniqueComponentTypes.map(([typeId, typeInfo]) => (
+                        <th key={typeId} className="text-center py-2 font-medium">{typeInfo.name}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.code')}</td>
-                      {uniqueComponentTypes.map(([type]) => {
-                        const comp = recyclingComponents.find(c => c.type === type);
+                      {uniqueComponentTypes.map(([typeId]) => {
+                        const mat = packagingMaterials.find(m => m.typeId === typeId);
                         return (
-                          <td key={type} className="py-2 text-center">{comp?.compositionCode || '-'}</td>
+                          <td key={typeId} className="py-2 text-center">{mat?.compositionCode || '-'}</td>
                         );
                       })}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.material')}</td>
-                      {uniqueComponentTypes.map(([type]) => {
-                        const comp = recyclingComponents.find(c => c.type === type);
+                      {uniqueComponentTypes.map(([typeId]) => {
+                        const mat = packagingMaterials.find(m => m.typeId === typeId);
                         return (
-                          <td key={type} className="py-2 text-center">{comp?.compositionName || '-'}</td>
+                          <td key={typeId} className="py-2 text-center">{mat?.compositionName || '-'}</td>
                         );
                       })}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.disposal')}</td>
-                      {uniqueComponentTypes.map(([type]) => {
-                        const comp = recyclingComponents.find(c => c.type === type);
+                      {uniqueComponentTypes.map(([typeId]) => {
+                        const mat = packagingMaterials.find(m => m.typeId === typeId);
                         return (
-                          <td key={type} className="py-2 text-center">{comp?.disposalName || '-'}</td>
+                          <td key={typeId} className="py-2 text-center">{mat?.disposalMethodName || '-'}</td>
                         );
                       })}
                     </tr>
@@ -501,11 +551,11 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
 
 // Export field keys for testing - these are the ONLY fields that should be saved/displayed
 export const WINE_PASSPORT_FIELDS = {
-  productInfo: ['volume', 'volume_unit', 'grape_variety', 'vintage', 'country', 'region', 'denomination', 'sugar_classification'],
+  productInfo: ['volume', 'volume_unit', 'grape_variety', 'vintage', 'country', 'region', 'denomination', 'sugar_classification', 'denomination_translations', 'sugar_classification_translations'],
   producer: ['producer_name', 'bottler_info'],
   nutritional: ['alcohol_percent', 'energy_kcal', 'energy_kj', 'carbohydrates', 'sugar', 'residual_sugar', 'total_acidity', 'glycerine', 'fat', 'saturated_fat', 'proteins', 'salt'],
   manualOverrides: ['energy_kcal_manual', 'energy_kj_manual', 'carbohydrates_manual', 'sugar_manual'],
   displayOptions: ['show_alcohol_on_label', 'show_residual_sugar_on_label', 'show_total_acidity_on_label'],
   ingredients: ['ingredients'],
-  recycling: ['recycling_components'],
+  recycling: ['packaging_materials'],
 } as const;

@@ -23,6 +23,8 @@ const CANONICAL_WINE_FIELDS = {
     'region',             // text input - Region
     'denomination',       // text input - Denomination (AOC, AOP, IGP)
     'sugar_classification', // text input - Sugar Classification (Brut, Sec, etc.)
+    'denomination_translations', // object - translations for denomination
+    'sugar_classification_translations', // object - translations for sugar classification
   ],
   
   // Producer Information (wine.ts template - Producer Information section)
@@ -69,7 +71,7 @@ const CANONICAL_WINE_FIELDS = {
   
   // Recycling Information (WineRecycling component)
   recycling: [
-    'recycling_components',   // array of RecyclingComponent objects
+    'packaging_materials',   // array of PackagingMaterial objects (with translations)
   ],
 };
 
@@ -263,42 +265,58 @@ describe("WinePublicPassport", () => {
 
   describe("recycling structure", () => {
     it("recycling fields are properly defined", () => {
-      expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_components');
+      expect(WINE_PASSPORT_FIELDS.recycling).toContain('packaging_materials');
       expect(WINE_PASSPORT_FIELDS.recycling.length).toBe(1);
     });
     
-    // Type definition for recycling component
-    interface RecyclingComponent {
+    // Type definition for packaging material
+    interface PackagingMaterial {
       id: string;
-      type: string;
+      typeId: string;
       typeName: string;
-      composition: string;
-      compositionName: string;
-      compositionCode: string;
-      disposal: string;
-      disposalName: string;
+      compositionId?: string;
+      compositionName?: string;
+      compositionCode?: string;
+      disposalMethodId?: string;
+      disposalMethodName?: string;
+      isCustomType?: boolean;
+      customTypeName?: string;
+      customTypeNameTranslations?: Record<string, string>;
     }
     
-    it("recycling component objects have required properties", () => {
-      const sampleComponent: RecyclingComponent = {
-        id: '1',
-        type: 'bottle',
-        typeName: 'Glass Bottle',
-        composition: 'gl70',
+    it("packaging material objects have required properties", () => {
+      const sampleMaterial: PackagingMaterial = {
+        id: 'mat_1',
+        typeId: 'bottle',
+        typeName: 'Bottle',
+        compositionId: 'gl70',
         compositionName: 'Green Glass',
         compositionCode: 'GL 70',
-        disposal: 'glass-container',
-        disposalName: 'Glass Container',
+        disposalMethodId: 'glass-container',
+        disposalMethodName: 'Glass Container',
       };
       
-      expect(sampleComponent).toHaveProperty('id');
-      expect(sampleComponent).toHaveProperty('type');
-      expect(sampleComponent).toHaveProperty('typeName');
-      expect(sampleComponent).toHaveProperty('composition');
-      expect(sampleComponent).toHaveProperty('compositionName');
-      expect(sampleComponent).toHaveProperty('compositionCode');
-      expect(sampleComponent).toHaveProperty('disposal');
-      expect(sampleComponent).toHaveProperty('disposalName');
+      expect(sampleMaterial).toHaveProperty('id');
+      expect(sampleMaterial).toHaveProperty('typeId');
+      expect(sampleMaterial).toHaveProperty('typeName');
+    });
+
+    it("custom packaging material supports translations", () => {
+      const customMaterial: PackagingMaterial = {
+        id: 'mat_2',
+        typeId: 'custom',
+        typeName: 'Wooden crate',
+        isCustomType: true,
+        customTypeName: 'Wooden crate',
+        customTypeNameTranslations: {
+          de: 'Holzkiste',
+          fr: 'Caisse en bois',
+        },
+      };
+      
+      expect(customMaterial.isCustomType).toBe(true);
+      expect(customMaterial.customTypeNameTranslations).toHaveProperty('de');
+      expect(customMaterial.customTypeNameTranslations).toHaveProperty('fr');
     });
   });
 });
@@ -316,6 +334,8 @@ describe("Wine Field Save/Load Contract", () => {
       region: 'Bordeaux',
       denomination: 'AOC Bordeaux',
       sugar_classification: 'Sec',
+      denomination_translations: { de: 'AOC Bordeaux', fr: 'AOC Bordeaux' },
+      sugar_classification_translations: { de: 'Trocken', fr: 'Sec' },
       
       // Producer Info
       producer_name: 'Château Example',
@@ -353,16 +373,16 @@ describe("Wine Field Save/Load Contract", () => {
       ],
       
       // Recycling
-      recycling_components: [
+      packaging_materials: [
         {
-          id: '1',
-          type: 'bottle',
-          typeName: 'Glass Bottle',
-          composition: 'gl70',
+          id: 'mat_1',
+          typeId: 'bottle',
+          typeName: 'Bottle',
+          compositionId: 'gl70',
           compositionName: 'Green Glass',
           compositionCode: 'GL 70',
-          disposal: 'glass-container',
-          disposalName: 'Glass Container',
+          disposalMethodId: 'glass-container',
+          disposalMethodName: 'Glass Container',
         },
       ],
     };
