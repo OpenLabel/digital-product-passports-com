@@ -42,6 +42,20 @@ export function DPPLanguagePicker({
 
   const [selectedLang, setSelectedLang] = useState(getEffectiveLanguage);
 
+  // On initial mount (public DPP page), if user's language is non-EU, 
+  // sync i18n to English so the content matches the picker
+  useEffect(() => {
+    if (!localOnly && !currentLanguage) {
+      const currentLang = i18n.language.split('-')[0];
+      const isEULang = EU_LANGUAGES.some(l => l.code === currentLang);
+      
+      if (!isEULang && i18n.language !== 'en') {
+        // User's language is not an EU language - sync i18n to English
+        i18n.changeLanguage('en');
+      }
+    }
+  }, []); // Only run on mount
+
   // Sync with i18n changes when not in local mode
   useEffect(() => {
     if (!localOnly && !currentLanguage) {
