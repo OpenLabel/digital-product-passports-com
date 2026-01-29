@@ -248,21 +248,28 @@ export default function PassportForm() {
                 />
               </div>
 
-              {/* Counterfeit Protection */}
+              {/* Counterfeit Protection (Optional) */}
               {isEditing && existingPassport && (
-                <CounterfeitProtection
-                  passportName={formData.name}
-                  passportSlug={existingPassport.public_slug}
-                  userEmail={user?.email}
-                  enabled={formData.category_data.counterfeit_protection_enabled === true}
-                  onChange={(enabled) => setFormData({
-                    ...formData,
-                    category_data: {
-                      ...formData.category_data,
-                      counterfeit_protection_enabled: enabled,
-                    },
-                  })}
-                />
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Counterfeit Protection (Optional)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CounterfeitProtection
+                      passportName={formData.name}
+                      passportSlug={existingPassport.public_slug}
+                      userEmail={user?.email}
+                      enabled={formData.category_data.counterfeit_protection_enabled === true}
+                      onChange={(enabled) => setFormData({
+                        ...formData,
+                        category_data: {
+                          ...formData.category_data,
+                          counterfeit_protection_enabled: enabled,
+                        },
+                      })}
+                    />
+                  </CardContent>
+                </Card>
               )}
 
               {/* Actions - Mobile only */}
