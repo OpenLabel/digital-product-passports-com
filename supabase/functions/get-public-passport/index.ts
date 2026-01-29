@@ -8,11 +8,10 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-// Input validation - slug must be exactly 32 hex characters
+// Input validation - slug must be 16 hex characters (new) or 32 (legacy)
 const SlugSchema = z.object({
   slug: z.string()
-    .length(32, "Invalid passport identifier")
-    .regex(/^[a-f0-9]+$/, "Invalid passport identifier"),
+    .regex(/^[a-f0-9]{16}$|^[a-f0-9]{32}$/, "Invalid passport identifier"),
 });
 
 // Simple in-memory rate limiting (per IP, resets on function cold start)
