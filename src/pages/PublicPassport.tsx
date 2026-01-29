@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { usePassportBySlug } from '@/hooks/usePassports';
 import { getTemplate, categoryList } from '@/templates';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -172,9 +172,14 @@ export default function PublicPassport() {
           )}
 
           {/* Footer */}
-          <div className="text-center text-xs text-muted-foreground py-8">
+          <div className="text-center text-xs text-muted-foreground py-8 space-y-1">
             <p>Digital Product Passport</p>
             <p>Last updated: {new Date(passport.updated_at).toLocaleDateString()}</p>
+            <p>
+              <Link to="/legal" className="underline hover:text-foreground">
+                Legal Mentions
+              </Link>
+            </p>
           </div>
         </div>
       </main>
