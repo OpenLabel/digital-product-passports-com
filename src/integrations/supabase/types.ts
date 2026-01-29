@@ -77,6 +77,7 @@ export type Database = {
           category_data: Json | null
           created_at: string
           description: string | null
+          display_order: number | null
           id: string
           image_url: string | null
           language: string
@@ -90,6 +91,7 @@ export type Database = {
           category_data?: Json | null
           created_at?: string
           description?: string | null
+          display_order?: number | null
           id?: string
           image_url?: string | null
           language?: string
@@ -103,6 +105,7 @@ export type Database = {
           category_data?: Json | null
           created_at?: string
           description?: string | null
+          display_order?: number | null
           id?: string
           image_url?: string | null
           language?: string
