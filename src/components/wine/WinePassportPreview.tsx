@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { WinePublicPassport } from './WinePublicPassport';
 
 interface WinePassportPreviewProps {
@@ -10,6 +12,13 @@ interface WinePassportPreviewProps {
 }
 
 export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
+  const { i18n } = useTranslation();
+  
+  // Initialize preview language from current i18n language, but manage it separately
+  const [previewLanguage, setPreviewLanguage] = useState(() => {
+    return i18n.language.split('-')[0];
+  });
+
   // Create a passport object from form data for the preview
   const previewPassport = {
     name: formData.name || 'Untitled Passport',
@@ -37,7 +46,12 @@ export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
               transformOrigin: 'top left',
             }}
           >
-            <WinePublicPassport passport={previewPassport} isPreview={true} />
+            <WinePublicPassport 
+              passport={previewPassport} 
+              isPreview={true}
+              previewLanguage={previewLanguage}
+              onPreviewLanguageChange={setPreviewLanguage}
+            />
           </div>
         </div>
       </div>
