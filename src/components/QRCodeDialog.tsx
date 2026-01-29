@@ -17,8 +17,8 @@ interface QRCodeDialogProps {
   counterfeitProtectionEnabled?: boolean;
 }
 
-// Rounded hexagon SVG path - creates a hexagon with curved corners
-function RoundedHexagon({ size = 60 }: { size?: number }) {
+// Rounded hexagon SVG with text - creates a hexagon with curved corners and instruction text
+function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
   const centerX = size / 2;
   const centerY = size / 2;
   const radius = size / 2 - 2;
@@ -85,6 +85,35 @@ function RoundedHexagon({ size = 60 }: { size?: number }) {
         stroke="#e5e5e5"
         strokeWidth="1"
       />
+      <text
+        x={centerX}
+        y={centerY - 10}
+        textAnchor="middle"
+        fontSize="6"
+        fontWeight="500"
+        fill="#666"
+      >
+        Place security
+      </text>
+      <text
+        x={centerX}
+        y={centerY}
+        textAnchor="middle"
+        fontSize="6"
+        fontWeight="500"
+        fill="#666"
+      >
+        seal here
+      </text>
+      <text
+        x={centerX}
+        y={centerY + 14}
+        textAnchor="middle"
+        fontSize="5"
+        fill="#999"
+      >
+        cypheme.com
+      </text>
     </svg>
   );
 }
@@ -120,7 +149,7 @@ export function QRCodeDialog({
                 includeMargin={false}
               />
               {counterfeitProtectionEnabled && (
-                <RoundedHexagon size={70} />
+                <RoundedHexagonWithText size={80} />
               )}
             </div>
           )}
