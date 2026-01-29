@@ -156,7 +156,7 @@ export default function Index() {
               {t('common.openSource')}
             </Badge>
             <Badge className="bg-blue-600/10 text-blue-600 border-blue-600/20 hover:bg-blue-600/20">
-              🇪🇺 Proudly EU Funded
+              {t('landing.hero.euFunded')}
             </Badge>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-5xl mx-auto leading-tight tracking-tight">
@@ -165,9 +165,7 @@ export default function Index() {
             </Trans>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-            Free, open-source platform for EU Ecodesign for Sustainable Products Regulation (ESPR) compliance. 
-            Generate machine-readable passports with QR codes for batteries, textiles, construction products, and 12+ categories.
-            Self-host on your own servers or use our hosted version.
+            {t('landing.hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="text-lg px-8 py-6" asChild>
@@ -176,25 +174,25 @@ export default function Index() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
-              <Link to="/auth">View Demo Passport</Link>
+              <Link to="/auth">{t('landing.hero.demo')}</Link>
             </Button>
           </div>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span>100% Free & Open Source</span>
+              <span>{t('landing.hero.features.free')}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span>Self-Hostable</span>
+              <span>{t('landing.hero.features.selfHost')}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span>Machine-Readable JSON/XML</span>
+              <span>{t('landing.hero.features.machineReadable')}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span>12+ Product Categories</span>
+              <span>{t('landing.hero.features.categories')}</span>
             </div>
           </div>
         </div>
@@ -206,19 +204,19 @@ export default function Index() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-3xl md:text-4xl font-bold text-primary mb-1">100%</div>
-              <div className="text-sm text-muted-foreground">Free & Open Source</div>
+              <div className="text-sm text-muted-foreground">{t('landing.stats.free')}</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-primary mb-1">12+</div>
-              <div className="text-sm text-muted-foreground">Product Categories</div>
+              <div className="text-sm text-muted-foreground">{t('landing.stats.categories')}</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-primary mb-1">2027</div>
-              <div className="text-sm text-muted-foreground">First EU Deadline</div>
+              <div className="text-sm text-muted-foreground">{t('landing.stats.deadline')}</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-primary mb-1">QR</div>
-              <div className="text-sm text-muted-foreground">+ Unique URLs</div>
+              <div className="text-sm text-muted-foreground">{t('landing.stats.qr')}</div>
             </div>
           </div>
         </div>
@@ -228,11 +226,10 @@ export default function Index() {
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">Features</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything You Need for Compliance</h2>
+            <Badge variant="outline" className="mb-4">{t('landing.features.badge')}</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('landing.features.title')}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Built following EU technical standards: decentralized storage, ISO 15459 identifiers, 
-              tiered access rights, and machine-readable JSON/XML output.
+              {t('landing.features.subtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -241,9 +238,9 @@ export default function Index() {
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">ESPR Compliant</h3>
+                <h3 className="font-semibold text-lg mb-2">{t('landing.features.espr.title')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Pre-configured templates following EU Ecodesign for Sustainable Products Regulation requirements per category.
+                  {t('landing.features.espr.description')}
                 </p>
               </CardContent>
             </Card>
@@ -252,9 +249,9 @@ export default function Index() {
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Infinity className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">{t('common.openSource')}</h3>
+                <h3 className="font-semibold text-lg mb-2">{t('landing.features.openSource.title')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Fully open source. Self-host on your own servers for complete data control, or use our hosted version for free.
+                  {t('landing.features.openSource.description')}
                 </p>
               </CardContent>
             </Card>
@@ -263,9 +260,9 @@ export default function Index() {
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Globe className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Machine-Readable</h3>
+                <h3 className="font-semibold text-lg mb-2">{t('landing.features.machineReadable.title')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Not static PDFs. Structured JSON/XML data for integration with BIM, recycling systems, and other software.
+                  {t('landing.features.machineReadable.description')}
                 </p>
               </CardContent>
             </Card>
@@ -274,9 +271,9 @@ export default function Index() {
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Zap className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">QR & Data Carriers</h3>
+                <h3 className="font-semibold text-lg mb-2">{t('landing.features.qr.title')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Each passport gets a unique URL and QR code. Ready for NFC/RFID integration per ISO 15459.
+                  {t('landing.features.qr.description')}
                 </p>
               </CardContent>
             </Card>
@@ -296,14 +293,13 @@ export default function Index() {
             <div className="text-center mb-12">
               <Badge className="mb-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white border-0">
                 <Sparkles className="h-3 w-3 mr-1" />
-                AI-Powered
+                {t('landing.ai.badge')}
               </Badge>
               <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-600 bg-clip-text text-transparent">
-                Autofill with AI
+                {t('landing.ai.title')}
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Stop typing manually. Upload a photo of your product label or any document, 
-                and our AI extracts all the data automatically in seconds.
+                {t('landing.ai.subtitle')}
               </p>
             </div>
 
@@ -313,9 +309,9 @@ export default function Index() {
                   <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-violet-500/30">
                     <Camera className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">Snap a Photo</h3>
+                  <h3 className="font-semibold text-lg mb-2">{t('landing.ai.snap.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Take a picture of your wine label, product packaging, or any label with product information.
+                    {t('landing.ai.snap.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -325,9 +321,9 @@ export default function Index() {
                   <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-amber-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-fuchsia-500/30">
                     <FileText className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">Upload Documents</h3>
+                  <h3 className="font-semibold text-lg mb-2">{t('landing.ai.upload.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    PDF datasheets, Word documents, Excel specs — upload any file and we'll extract the relevant data.
+                    {t('landing.ai.upload.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -337,40 +333,40 @@ export default function Index() {
                   <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-amber-500/30">
                     <Sparkles className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">AI Extracts Data</h3>
+                  <h3 className="font-semibold text-lg mb-2">{t('landing.ai.extract.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Our vision AI reads and understands your documents, filling in all passport fields automatically.
+                    {t('landing.ai.extract.description')}
                   </p>
                 </CardContent>
               </Card>
             </div>
 
             <div className="bg-background/90 backdrop-blur-sm rounded-2xl border-2 border-dashed border-violet-300 dark:border-violet-700 p-8 text-center">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 flex items-center justify-center animate-pulse">
-                  <Upload className="h-6 w-6 text-white" />
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 flex items-center justify-center animate-pulse">
+                    <Upload className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-semibold">{t('landing.ai.multiUpload.title')}</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {t('landing.ai.multiUpload.description')}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-left">
-                  <h4 className="font-semibold">Works with multiple uploads</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Upload multiple photos or documents sequentially — AI merges data intelligently
-                  </p>
+                <div className="flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
+                  <Badge variant="outline">{t('landing.ai.tags.wineLabels')}</Badge>
+                  <Badge variant="outline">{t('landing.ai.tags.batterySpecs')}</Badge>
+                  <Badge variant="outline">{t('landing.ai.tags.textileComposition')}</Badge>
+                  <Badge variant="outline">{t('landing.ai.tags.safetyDatasheets')}</Badge>
+                  <Badge variant="outline">{t('landing.ai.tags.nutritionFacts')}</Badge>
+                  <Badge variant="outline">{t('landing.ai.tags.technicalPdfs')}</Badge>
                 </div>
               </div>
-              <div className="flex flex-wrap justify-center gap-2 text-xs text-muted-foreground">
-                <Badge variant="outline">Wine Labels</Badge>
-                <Badge variant="outline">Battery Specs</Badge>
-                <Badge variant="outline">Textile Composition</Badge>
-                <Badge variant="outline">Safety Datasheets</Badge>
-                <Badge variant="outline">Nutrition Facts</Badge>
-                <Badge variant="outline">Technical PDFs</Badge>
-              </div>
-            </div>
 
             <div className="text-center mt-10">
               <Button size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 shadow-lg shadow-violet-500/30" asChild>
                 <Link to="/auth">
-                  Try AI Autofill Free <Sparkles className="ml-2 h-5 w-5" />
+                  {t('landing.ai.cta')} <Sparkles className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -382,11 +378,10 @@ export default function Index() {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">EU Regulation Scope</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Supported Product Categories</h2>
+            <Badge variant="outline" className="mb-4">{t('landing.categories.badge')}</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('landing.categories.title')}</h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              Templates built from official EU regulations and delegated acts. Active regulations are in effect, 
-              Priority groups have templates ready for upcoming requirements.
+              {t('landing.categories.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -400,15 +395,15 @@ export default function Index() {
                     <h3 className="font-semibold text-sm">{t(`categories.${category.key}`)}</h3>
                     {category.status === 'active' ? (
                       <Badge className="bg-green-500/10 text-green-600 text-xs border-green-500/20">
-                        Active Law
+                        {t('landing.categories.activeLaw')}
                       </Badge>
                     ) : (
                       <Badge variant="outline" className="text-xs">
-                        Priority Group
+                        {t('landing.categories.priorityGroup')}
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-muted-foreground mb-3">{category.description}</p>
+                  <p className="text-xs text-muted-foreground mb-3">{t(`categoryDescriptions.${category.key}`)}</p>
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-muted-foreground">{category.regulation}</span>
                     <span className="font-medium">{category.deadline}</span>
@@ -420,7 +415,7 @@ export default function Index() {
           <div className="text-center mt-8">
             <Button asChild>
               <Link to="/auth">
-                Start Creating Passports <ArrowRight className="ml-2 h-4 w-4" />
+                {t('landing.categories.cta')} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
@@ -431,11 +426,10 @@ export default function Index() {
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">Regulatory Timeline</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">EU DPP Implementation Deadlines</h2>
+            <Badge variant="outline" className="mb-4">{t('landing.timeline.badge')}</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('landing.timeline.title')}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              The EU is rolling out Digital Product Passport requirements in phases. 
-              Start preparing now to ensure compliance.
+              {t('landing.timeline.subtitle')}
             </p>
           </div>
           <div className="max-w-3xl mx-auto space-y-6">
@@ -446,12 +440,11 @@ export default function Index() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold">February 2027</h3>
-                    <Badge>First Battery Deadline</Badge>
+                    <h3 className="font-semibold">{t('landing.timeline.feb2027.title')}</h3>
+                    <Badge>{t('landing.timeline.feb2027.badge')}</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    EV, industrial, and LMT batteries must have Digital Product Passports with full lifecycle data, 
-                    carbon footprint declarations (kg CO₂e/kWh with Class A-D rating), and recycled content percentages for cobalt, lithium, and nickel.
+                    {t('landing.timeline.feb2027.description')}
                   </p>
                 </div>
               </CardContent>
@@ -463,12 +456,11 @@ export default function Index() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-semibold">Active Now</h3>
-                    <Badge variant="outline">In Effect</Badge>
+                    <h3 className="font-semibold">{t('landing.timeline.active.title')}</h3>
+                    <Badge variant="outline">{t('landing.timeline.active.badge')}</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Construction Products (EU 2024/3110), Wine & Spirits (EU 2021/2117), and Toys (EU 2025/2509) 
-                    already require digital declarations. Templates available now.
+                    {t('landing.timeline.active.description')}
                   </p>
                 </div>
               </CardContent>
@@ -479,10 +471,9 @@ export default function Index() {
                   <Users className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">2027-2030: Full Rollout</h3>
+                  <h3 className="font-semibold mb-1">{t('landing.timeline.rollout.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Textiles, electronics, furniture, iron/steel, aluminum, cosmetics, tires, and detergents 
-                    will require DPPs as delegated acts are published. Priority group templates ready now.
+                    {t('landing.timeline.rollout.description')}
                   </p>
                 </div>
               </CardContent>
@@ -495,34 +486,33 @@ export default function Index() {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">{t('common.openSource')}</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Run It On Your Own Servers</h2>
+            <Badge variant="outline" className="mb-4">{t('landing.selfHost.badge')}</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('landing.selfHost.title')}</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              This project is fully open source. You can self-host on your own infrastructure for complete 
-              data sovereignty, modify the code to fit your needs, or contribute to the project.
+              {t('landing.selfHost.subtitle')}
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               <Card>
                 <CardContent className="pt-6 text-center">
-                  <h3 className="font-semibold mb-2">Self-Host</h3>
+                  <h3 className="font-semibold mb-2">{t('landing.selfHost.deploy.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Deploy on your own servers. Full control over your data and compliance documentation.
+                    {t('landing.selfHost.deploy.description')}
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6 text-center">
-                  <h3 className="font-semibold mb-2">Customize</h3>
+                  <h3 className="font-semibold mb-2">{t('landing.selfHost.customize.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Add custom fields, integrate with your ERP/PLM systems, or build white-label solutions.
+                    {t('landing.selfHost.customize.description')}
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6 text-center">
-                  <h3 className="font-semibold mb-2">Contribute</h3>
+                  <h3 className="font-semibold mb-2">{t('landing.selfHost.contribute.title')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Help improve templates as regulations evolve. Community-driven compliance updates.
+                    {t('landing.selfHost.contribute.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -534,13 +524,13 @@ export default function Index() {
       {/* CTA */}
       <section className="py-20 md:py-28 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Compliant?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('landing.cta.title')}</h2>
           <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Start creating EU-compliant Digital Product Passports today. Free, unlimited, and open source.
+            {t('landing.cta.subtitle')}
           </p>
           <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
             <Link to="/auth">
-              Start Free Today <ArrowRight className="ml-2 h-5 w-5" />
+              {t('landing.cta.button')} <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
