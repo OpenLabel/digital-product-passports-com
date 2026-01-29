@@ -217,28 +217,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
             </Card>
           )}
 
-          {/* Producer Information */}
-          {hasProducerInfo && (
-            <Card data-testid="producer-section">
-              <CardHeader>
-                <CardTitle>Producer Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {producerName && (
-                  <div data-testid="field-producer-name">
-                    <dt className="text-muted-foreground text-sm">Producer/Winery</dt>
-                    <dd className="font-medium">{producerName}</dd>
-                  </div>
-                )}
-                {bottlerInfo && (
-                  <div data-testid="field-bottler-info">
-                    <dt className="text-muted-foreground text-sm">Bottler</dt>
-                    <dd className="font-medium whitespace-pre-wrap">{bottlerInfo}</dd>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          )}
 
           {/* Nutritional Values */}
           {hasNutritionalInfo && (
@@ -410,6 +388,29 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                         )}
                       </div>
                     ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Producer Information */}
+          {hasProducerInfo && (
+            <Card data-testid="producer-section">
+              <CardHeader>
+                <CardTitle>Producer Information</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {producerName && (
+                  <div data-testid="field-producer-name">
+                    <dt className="text-muted-foreground text-sm">Producer/Winery</dt>
+                    <dd className="font-medium">{producerName}</dd>
+                  </div>
+                )}
+                {bottlerInfo && (
+                  <div data-testid="field-bottler-info">
+                    <dt className="text-muted-foreground text-sm">Bottler</dt>
+                    <dd className="font-medium whitespace-pre-wrap">{bottlerInfo}</dd>
                   </div>
                 )}
               </CardContent>
