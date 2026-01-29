@@ -214,9 +214,9 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                   <td className="py-2 text-right">{fat !== undefined && fat > 0 ? `${fat} g` : '0 g'}</td>
                 </tr>
                 
-                {/* of which saturates (indented, always show) */}
+                {/* of which saturated fat (indented, always show) */}
                 <tr className="border-b border-foreground/10">
-                  <td className="py-2 pl-4 text-muted-foreground">of which saturates</td>
+                  <td className="py-2 pl-4 text-muted-foreground">of which saturated fat</td>
                   <td className="py-2 text-right">{saturatedFat !== undefined && saturatedFat > 0 ? `${saturatedFat} g` : '0 g'}</td>
                 </tr>
                 
