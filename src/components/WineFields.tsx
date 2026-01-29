@@ -85,7 +85,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
       {/* AI Autofill Button */}
       <WineAIAutofill onAutofill={handleAIAutofill} />
 
-      {/* Product Identity */}
+      {/* 1. Product Identity */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Product Identity</CardTitle>
@@ -191,10 +191,107 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
         </CardContent>
       </Card>
 
-      {/* Ingredients */}
-      <WineIngredients data={data} onChange={onChange} />
+      {/* 2. Certifications & Labels */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Certifications & Labels</CardTitle>
+          <CardDescription>Organic, biodynamic, and sustainability certifications</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="has_pdo"
+                checked={(data.has_pdo as boolean) || false}
+                onCheckedChange={(checked) => handleChange('has_pdo', checked)}
+              />
+              <Label htmlFor="has_pdo" className="text-sm font-normal cursor-pointer">
+                Protected Designation of Origin (PDO/AOP)
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="has_pgi"
+                checked={(data.has_pgi as boolean) || false}
+                onCheckedChange={(checked) => handleChange('has_pgi', checked)}
+              />
+              <Label htmlFor="has_pgi" className="text-sm font-normal cursor-pointer">
+                Protected Geographical Indication (PGI/IGP)
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="is_organic_eu"
+                checked={(data.is_organic_eu as boolean) || false}
+                onCheckedChange={(checked) => handleChange('is_organic_eu', checked)}
+              />
+              <Label htmlFor="is_organic_eu" className="text-sm font-normal cursor-pointer">
+                EU Organic certified
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="is_biodynamic"
+                checked={(data.is_biodynamic as boolean) || false}
+                onCheckedChange={(checked) => handleChange('is_biodynamic', checked)}
+              />
+              <Label htmlFor="is_biodynamic" className="text-sm font-normal cursor-pointer">
+                Biodynamic certified (Demeter/Biodyvin)
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="is_hve"
+                checked={(data.is_hve as boolean) || false}
+                onCheckedChange={(checked) => handleChange('is_hve', checked)}
+              />
+              <Label htmlFor="is_hve" className="text-sm font-normal cursor-pointer">
+                HVE certified (Haute Valeur Environnementale)
+              </Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <Checkbox
+                id="is_terra_vitis"
+                checked={(data.is_terra_vitis as boolean) || false}
+                onCheckedChange={(checked) => handleChange('is_terra_vitis', checked)}
+              />
+              <Label htmlFor="is_terra_vitis" className="text-sm font-normal cursor-pointer">
+                Terra Vitis certified
+              </Label>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
-      {/* Nutritional Values - Primary */}
+      {/* 3. Producer Information */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Producer Information</CardTitle>
+          <CardDescription>Information about the wine producer</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="producer_name">Producer/Winery Name</Label>
+            <Input
+              id="producer_name"
+              value={(data.producer_name as string) || ''}
+              onChange={(e) => handleChange('producer_name', e.target.value)}
+              placeholder="e.g., Château Margaux"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="bottler_info">Bottler Information</Label>
+            <Input
+              id="bottler_info"
+              value={(data.bottler_info as string) || ''}
+              onChange={(e) => handleChange('bottler_info', e.target.value)}
+              placeholder="Name and address of bottler"
+            />
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* 4. Nutritional Values - Primary */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Nutritional Values</CardTitle>
@@ -415,7 +512,10 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
         </CardContent>
       </Card>
 
-      {/* Electronic Label Display Options */}
+      {/* 5. Ingredients */}
+      <WineIngredients data={data} onChange={onChange} />
+
+      {/* 6. Electronic Label Display Options */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Electronic Label Display Options</CardTitle>
@@ -459,7 +559,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
         </CardContent>
       </Card>
 
-      {/* Recycling Information */}
+      {/* 7. Recycling Information */}
       <WineRecycling data={data} onChange={onChange} />
 
       {/* Promotional Settings */}
