@@ -1,9 +1,10 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 // Input validation schema
@@ -17,13 +18,75 @@ const WineOCRSchema = z.object({
     ),
 });
 
+const MONTHLY_LIMIT = 100;
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    // Parse and validate input
+    // ===== AUTHENTICATION CHECK =====
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return new Response(
+        JSON.stringify({ error: "Unauthorized", code: "AUTH_REQUIRED" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+    // Create client with user's auth token to verify authentication
+    const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } }
+    });
+
+    const token = authHeader.replace("Bearer ", "");
+    const { data: claimsData, error: claimsError } = await supabaseAuth.auth.getClaims(token);
+    
+    if (claimsError || !claimsData?.claims) {
+      return new Response(
+        JSON.stringify({ error: "Unauthorized", code: "INVALID_TOKEN" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const userId = claimsData.claims.sub;
+    console.log("Authenticated user:", userId);
+
+    // ===== RATE LIMITING CHECK =====
+    // Use service role to call the increment function
+    const supabaseService = createClient(supabaseUrl, supabaseServiceKey);
+    
+    const { data: usageData, error: usageError } = await supabaseService.rpc(
+      "increment_api_usage",
+      {
+        p_user_id: userId,
+        p_function_name: "wine-label-ocr",
+        p_limit: MONTHLY_LIMIT
+      }
+    );
+
+    if (usageError) {
+      console.error("Usage tracking error:", usageError);
+      // Don't block the request if usage tracking fails, but log it
+    } else if (usageData && !usageData.allowed) {
+      console.log("Rate limit exceeded for user:", userId, usageData);
+      return new Response(
+        JSON.stringify({ 
+          error: usageData.message,
+          code: "QUOTA_EXCEEDED",
+          current_count: usageData.current_count,
+          limit: usageData.limit
+        }),
+        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // ===== INPUT VALIDATION =====
     let body: unknown;
     try {
       body = await req.json();
@@ -148,7 +211,7 @@ Be conservative - only extract data you can clearly read from the label. Do not 
     }
 
     const aiResponse = await response.json();
-    console.log("AI Response:", JSON.stringify(aiResponse, null, 2));
+    console.log("AI Response for user", userId, ":", JSON.stringify(aiResponse, null, 2));
 
     // Extract the tool call arguments
     const toolCall = aiResponse.choices?.[0]?.message?.tool_calls?.[0];
@@ -167,12 +230,16 @@ Be conservative - only extract data you can clearly read from the label. Do not 
       }
     }
 
-    console.log("Extracted wine data:", cleanedData);
+    console.log("Extracted wine data for user", userId, ":", cleanedData);
+
+    // Include remaining quota in response
+    const remaining = usageData ? usageData.remaining : null;
 
     return new Response(
       JSON.stringify({ 
         success: true, 
-        extractedData: cleanedData 
+        extractedData: cleanedData,
+        ...(remaining !== null && { quota: { remaining, limit: MONTHLY_LIMIT } })
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
