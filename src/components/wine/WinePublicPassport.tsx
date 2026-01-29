@@ -1,5 +1,10 @@
 import { useMemo } from 'react';
-import { Badge } from '@/components/ui/badge';
+
+// Certification logos
+import pdoLogo from '@/assets/certifications/pdo-logo.jpg';
+import pgiLogo from '@/assets/certifications/pgi-logo.jpg';
+import euOrganicLogo from '@/assets/certifications/eu-organic-logo.jpg';
+import demeterLogo from '@/assets/certifications/demeter-logo.png';
 
 interface WinePassportData {
   name: string;
@@ -89,14 +94,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const hasRecyclingInfo = recyclingComponents.length > 0 || recyclingPdfUrl;
   const hasProducerInfo = producerName || bottlerInfo || country;
 
-  // Build certification badges
-  const certificationBadges: string[] = [];
-  if (hasPdo) certificationBadges.push('PDO/AOP');
-  if (hasPgi) certificationBadges.push('PGI/IGP');
-  if (isOrganicEu) certificationBadges.push('EU Organic');
-  if (isBiodynamic) certificationBadges.push('Biodynamic');
-  if (isHve) certificationBadges.push('HVE');
-  if (isTerraVitis) certificationBadges.push('Terra Vitis');
 
   // Get unique component types for recycling table columns
   const uniqueComponentTypes = useMemo(() => {
@@ -199,12 +196,31 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
 
         {/* Certifications */}
         {hasCertifications && (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {certificationBadges.map((cert, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
-                {cert}
-              </Badge>
-            ))}
+          <div className="mb-6">
+            <div className="flex flex-wrap items-center gap-3">
+              {hasPdo && (
+                <img src={pdoLogo} alt="Protected Designation of Origin (PDO)" className="h-12 object-contain" />
+              )}
+              {hasPgi && (
+                <img src={pgiLogo} alt="Protected Geographical Indication (PGI)" className="h-12 object-contain" />
+              )}
+              {isOrganicEu && (
+                <img src={euOrganicLogo} alt="EU Organic" className="h-12 object-contain" />
+              )}
+              {isBiodynamic && (
+                <img src={demeterLogo} alt="Demeter Biodynamic" className="h-12 object-contain" />
+              )}
+              {isHve && (
+                <div className="flex items-center justify-center h-12 px-3 rounded-full bg-orange-500 text-white text-xs font-bold">
+                  HVE
+                </div>
+              )}
+              {isTerraVitis && (
+                <div className="flex items-center justify-center h-12 px-3 rounded bg-teal-700 text-white text-xs font-bold">
+                  Terra Vitis
+                </div>
+              )}
+            </div>
           </div>
         )}
 
