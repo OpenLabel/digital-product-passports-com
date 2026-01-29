@@ -24,17 +24,27 @@ const handler = async (req: Request): Promise<Response> => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Fetch Resend API key
     const { data: configData, error: configError } = await supabase
       .from("site_config")
-      .select("value")
-      .eq("key", "resend_api_key_secret")
-      .single();
+      .select("key, value")
+      .in("key", ["resend_api_key_secret", "sender_email"]);
 
-    if (configError || !configData?.value) {
+    if (configError) {
+      throw new Error("Failed to fetch configuration");
+    }
+
+    const config: Record<string, string> = {};
+    configData?.forEach((row: { key: string; value: string | null }) => {
+      config[row.key] = row.value || "";
+    });
+
+    if (!config.resend_api_key_secret) {
       throw new Error("Resend API key not configured. Please set it up in the Setup page.");
     }
 
-    const RESEND_API_KEY = configData.value;
+    const RESEND_API_KEY = config.resend_api_key_secret;
+    const senderEmail = config.sender_email || "noreply@digital-product-passports.com";
 
     const { userEmail, passportName, passportUrl }: CounterfeitRequest = await req.json();
 
@@ -49,7 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "EU Digital Product Passports <onboarding@resend.dev>",
+        from: `EU Digital Product Passports <${senderEmail}>`,
         to: ["contact@cypheme.com"],
         cc: [userEmail],
         subject: `Counterfeit Protection Request - ${passportName}`,
