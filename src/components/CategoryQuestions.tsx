@@ -7,6 +7,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { AlertTriangle } from 'lucide-react';
 
 interface CategoryQuestionsProps {
   category: ProductCategory;
@@ -100,6 +102,18 @@ export function CategoryQuestions({ category, data, onChange }: CategoryQuestion
 
   return (
     <div className="space-y-6">
+      {/* Alpha Warning for non-wine categories */}
+      {category !== 'wine' && (
+        <Alert variant="destructive" className="bg-destructive/10 border-destructive/30">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>Early Alpha</AlertTitle>
+          <AlertDescription>
+            This template is in early alpha and may not be fully compliant with current regulations. 
+            Please verify all information against official requirements before use.
+          </AlertDescription>
+        </Alert>
+      )}
+      
       {template.sections.map((section, sectionIndex) => (
         <Card key={sectionIndex}>
           <CardHeader>
