@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
+import jsQR from 'jsqr';
 import { Copy, Check, Download } from 'lucide-react';
 import {
   Dialog,
@@ -9,6 +10,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 interface QRCodeDialogProps {
   open: boolean;
@@ -207,6 +209,24 @@ export function QRCodeDialog({
         ctx.restore();
       }
 
+      // Validate QR code by scanning it before download
+      const imageData = ctx.getImageData(0, 0, totalSize, totalSize);
+      const scannedCode = jsQR(imageData.data, totalSize, totalSize);
+      
+      if (!scannedCode) {
+        console.error('QR validation failed: Could not scan the generated QR code');
+        toast.error(t('qrDialog.validationFailed', 'QR code validation failed - could not scan the generated code'));
+        return;
+      }
+
+      if (scannedCode.data !== url) {
+        console.error('QR validation failed: URL mismatch', { expected: url, got: scannedCode.data });
+        toast.error(t('qrDialog.urlMismatch', 'QR code validation failed - URL does not match'));
+        return;
+      }
+
+      console.log('QR validation passed:', scannedCode.data);
+
       // Download
       const link = document.createElement('a');
       link.download = `${productName.replace(/[^a-z0-9]/gi, '_')}_qr.png`;
@@ -214,7 +234,7 @@ export function QRCodeDialog({
       link.click();
     };
     img.src = svgUrl;
-  }, [productName, showSecuritySealOverlay]);
+  }, [productName, showSecuritySealOverlay, url, t]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
