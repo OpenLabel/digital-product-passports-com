@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Ladataan...", "save": "Tallenna", "cancel": "Peruuta", "delete": "Poista", "edit": "Muokkaa", "create": "Luo", "back": "Takaisin", "next": "Seuraava", "search": "Etsi", "apply": "Käytä", "close": "Sulje", "confirm": "Vahvista", "yes": "Kyllä", "no": "Ei", "error": "Virhe", "success": "Onnistui", "warning": "Varoitus", "openSource": "Avoin lähdekoodi", "language": "Kieli" },
+  "nav": { "signIn": "Kirjaudu", "signUp": "Rekisteröidy", "signOut": "Kirjaudu ulos", "getStarted": "Aloita ilmaiseksi", "dashboard": "Hallintapaneeli", "createNew": "Luo uusi" },
+  "auth": { "title": "Digitaalinen tuotepassi", "subtitle": "Kirjaudu tai luo tili", "signIn": "Kirjaudu", "signUp": "Rekisteröidy", "email": "Sähköposti", "password": "Salasana", "companyName": "Yrityksen nimi", "welcomeBack": "Tervetuloa takaisin!" },
+  "dashboard": { "title": "Passisi", "noPassports": "Ei vielä passeja. Luo ensimmäinen!", "updated": "Päivitetty" },
+  "passport": { "createTitle": "Luo uusi passi", "editTitle": "Muokkaa passia", "basicInfo": "Perustiedot", "productName": "Tuotteen nimi", "category": "Tuotekategoria", "productImage": "Tuotekuva", "saving": "Tallennetaan...", "saveChanges": "Tallenna muutokset", "notFound": "Passia ei löydy", "checkAuthenticity": "Tarkista aitous", "poweredBy": "Powered by" },
+  "categories": { "battery": "Akut", "construction": "Rakennustuotteet", "textiles": "Tekstiilit", "wine": "Viinit ja väkevät", "toys": "Lelut", "electronics": "Elektroniikka", "other": "Muut tuotteet" },
+  "wine": { "productIdentity": "Tuotteen identiteetti", "volume": "Tilavuus", "grapeVariety": "Rypälelajike", "vintage": "Vuosikerta", "country": "Alkuperämaa", "nutritionalValues": "Ravintosisältö", "energy": "Energia", "ingredients": "Ainesosat", "recycling": "Kierrätystiedot" },
+  "ingredients": { "grapes": "Rypäleet", "saccharose": "Sakkaroosi", "sulfites": "Sulfiitit", "egg": "Muna", "milk": "Maito" },
+  "legal": { "title": "Oikeudelliset tiedot", "legalMentions": "Oikeudelliset tiedot" },
+  "notFound": { "title": "404", "message": "Sivua ei löydy", "returnHome": "Takaisin etusivulle" },
+  "landing": { "hero": { "badge": "EU ESPR -yhteensopiva", "title": "Luo <1>Rajattomasti</1> Digitaalisia Tuotepasseja", "cta": "Luo ensimmäinen passisi" }, "footer": { "legal": "Oikeudelliset tiedot", "github": "Katso GitHubissa" } }
+}

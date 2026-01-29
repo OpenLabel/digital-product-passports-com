@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Učitavanje...", "save": "Spremi", "cancel": "Odustani", "delete": "Obriši", "edit": "Uredi", "create": "Stvori", "back": "Natrag", "next": "Dalje", "search": "Pretraži", "apply": "Primijeni", "close": "Zatvori", "confirm": "Potvrdi", "yes": "Da", "no": "Ne", "error": "Greška", "success": "Uspjeh", "warning": "Upozorenje", "openSource": "Otvoreni kod", "language": "Jezik" },
+  "nav": { "signIn": "Prijava", "signUp": "Registracija", "signOut": "Odjava", "getStarted": "Započni besplatno", "dashboard": "Nadzorna ploča", "createNew": "Stvori novo" },
+  "auth": { "title": "Digitalna putovnica proizvoda", "signIn": "Prijava", "signUp": "Registracija", "email": "E-pošta", "password": "Lozinka", "welcomeBack": "Dobrodošli natrag!" },
+  "dashboard": { "title": "Vaše putovnice", "noPassports": "Još nema putovnica. Stvorite prvu!", "updated": "Ažurirano" },
+  "passport": { "createTitle": "Stvori novu putovnicu", "editTitle": "Uredi putovnicu", "basicInfo": "Osnovne informacije", "productName": "Naziv proizvoda", "category": "Kategorija proizvoda", "saving": "Spremanje...", "notFound": "Putovnica nije pronađena", "checkAuthenticity": "Provjeri autentičnost", "poweredBy": "Pokreće" },
+  "categories": { "battery": "Baterije", "construction": "Građevinski proizvodi", "textiles": "Tekstil", "wine": "Vina i žestoka pića", "toys": "Igračke", "electronics": "Elektronika", "other": "Ostali proizvodi" },
+  "wine": { "productIdentity": "Identitet proizvoda", "volume": "Volumen", "grapeVariety": "Sorta grožđa", "vintage": "Berba", "country": "Zemlja podrijetla", "nutritionalValues": "Nutritivne vrijednosti", "energy": "Energija", "ingredients": "Sastojci", "recycling": "Informacije o recikliranju" },
+  "ingredients": { "grapes": "Grožđe", "sulfites": "Sulfiti", "egg": "Jaje", "milk": "Mlijeko" },
+  "legal": { "title": "Pravne napomene", "legalMentions": "Pravne napomene" },
+  "notFound": { "title": "404", "message": "Stranica nije pronađena", "returnHome": "Povratak na početnu" },
+  "landing": { "hero": { "badge": "Sukladno EU ESPR", "title": "Stvorite <1>Neograničene</1> Digitalne Putovnice Proizvoda", "cta": "Stvorite prvu putovnicu" }, "footer": { "legal": "Pravne napomene", "github": "Pogledaj na GitHub" } }
+}

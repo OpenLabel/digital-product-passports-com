@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Laddar...", "save": "Spara", "cancel": "Avbryt", "delete": "Radera", "edit": "Redigera", "create": "Skapa", "back": "Tillbaka", "next": "Nästa", "search": "Sök", "apply": "Tillämpa", "close": "Stäng", "confirm": "Bekräfta", "yes": "Ja", "no": "Nej", "error": "Fel", "success": "Lyckades", "warning": "Varning", "openSource": "Öppen källkod", "language": "Språk" },
+  "nav": { "signIn": "Logga in", "signUp": "Registrera", "signOut": "Logga ut", "getStarted": "Kom igång gratis", "dashboard": "Kontrollpanel", "createNew": "Skapa ny" },
+  "auth": { "title": "Digitalt produktpass", "subtitle": "Logga in eller skapa konto", "signIn": "Logga in", "signUp": "Registrera", "email": "E-post", "password": "Lösenord", "companyName": "Företagsnamn", "welcomeBack": "Välkommen tillbaka!" },
+  "dashboard": { "title": "Dina pass", "noPassports": "Inga pass än. Skapa det första!", "updated": "Uppdaterad" },
+  "passport": { "createTitle": "Skapa nytt pass", "editTitle": "Redigera pass", "basicInfo": "Grundläggande information", "productName": "Produktnamn", "category": "Produktkategori", "productImage": "Produktbild", "saving": "Sparar...", "saveChanges": "Spara ändringar", "notFound": "Pass hittades inte", "checkAuthenticity": "Kontrollera äkthet", "poweredBy": "Drivs av" },
+  "categories": { "battery": "Batterier", "construction": "Byggprodukter", "textiles": "Textil och skor", "wine": "Vin och sprit", "toys": "Leksaker", "electronics": "Elektronik och IKT", "iron_steel": "Järn och stål", "aluminum": "Aluminium", "cosmetics": "Kosmetik", "furniture": "Möbler och madrasser", "tires": "Däck", "detergents": "Tvättmedel och kemikalier", "other": "Alla andra produkter" },
+  "wine": { "productIdentity": "Produktidentitet", "volume": "Volym", "grapeVariety": "Druvsort", "vintage": "Årgång", "country": "Ursprungsland", "region": "Region", "nutritionalValues": "Näringsvärden", "alcohol": "Alkohol", "energy": "Energi", "fat": "Fett", "carbohydrate": "Kolhydrater", "protein": "Protein", "salt": "Salt", "ingredients": "Ingredienser", "recycling": "Återvinningsinformation" },
+  "ingredients": { "grapes": "Druvor", "saccharose": "Sackaros", "sulfites": "Sulfiter", "egg": "Ägg", "milk": "Mjölk" },
+  "legal": { "title": "Juridisk information", "legalMentions": "Juridisk information" },
+  "notFound": { "title": "404", "message": "Sidan hittades inte", "returnHome": "Tillbaka till startsidan" },
+  "landing": { "hero": { "badge": "EU ESPR-kompatibel", "title": "Skapa <1>Obegränsade</1> Digitala Produktpass", "cta": "Skapa ditt första pass" }, "footer": { "legal": "Juridisk information", "github": "Visa på GitHub" } }
+}

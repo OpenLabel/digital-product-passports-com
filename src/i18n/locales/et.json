@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Laadimine...", "save": "Salvesta", "cancel": "Tühista", "delete": "Kustuta", "edit": "Muuda", "create": "Loo", "back": "Tagasi", "next": "Järgmine", "search": "Otsi", "apply": "Rakenda", "close": "Sulge", "confirm": "Kinnita", "yes": "Jah", "no": "Ei", "error": "Viga", "success": "Õnnestus", "warning": "Hoiatus", "openSource": "Avatud lähtekood", "language": "Keel" },
+  "nav": { "signIn": "Logi sisse", "signUp": "Registreeru", "signOut": "Logi välja", "getStarted": "Alusta tasuta", "dashboard": "Töölaud", "createNew": "Loo uus" },
+  "auth": { "title": "Digitaalne tootepass", "subtitle": "Logi sisse või loo konto", "signIn": "Logi sisse", "signUp": "Registreeru", "email": "E-post", "password": "Parool", "companyName": "Ettevõtte nimi", "welcomeBack": "Tere tulemast tagasi!" },
+  "dashboard": { "title": "Sinu passid", "noPassports": "Passe pole veel. Loo esimene!", "updated": "Uuendatud" },
+  "passport": { "createTitle": "Loo uus pass", "editTitle": "Muuda passi", "basicInfo": "Põhiinfo", "productName": "Toote nimi", "category": "Tootekategooria", "productImage": "Toote pilt", "saving": "Salvestamine...", "saveChanges": "Salvesta muudatused", "notFound": "Passi ei leitud", "checkAuthenticity": "Kontrolli ehtsust", "poweredBy": "Powered by" },
+  "categories": { "battery": "Akud", "construction": "Ehitustooted", "textiles": "Tekstiilid", "wine": "Vein ja kanged joogid", "toys": "Mänguasjad", "electronics": "Elektroonika", "other": "Muud tooted" },
+  "wine": { "productIdentity": "Toote identiteet", "volume": "Maht", "grapeVariety": "Viinamarjasort", "vintage": "Aastakäik", "country": "Päritolumaa", "nutritionalValues": "Toiteväärtused", "energy": "Energia", "ingredients": "Koostisained", "recycling": "Taaskasutusinfo" },
+  "ingredients": { "grapes": "Viinamarjad", "saccharose": "Sahharoos", "sulfites": "Sulfitid", "egg": "Muna", "milk": "Piim" },
+  "legal": { "title": "Õiguslik teave", "legalMentions": "Õiguslik teave" },
+  "notFound": { "title": "404", "message": "Lehte ei leitud", "returnHome": "Tagasi avalehele" },
+  "landing": { "hero": { "badge": "EU ESPR-iga ühilduv", "title": "Loo <1>Piiramatult</1> Digitaalseid Tootepasse", "cta": "Loo oma esimene pass" }, "footer": { "legal": "Õiguslik teave", "github": "Vaata GitHubis" } }
+}

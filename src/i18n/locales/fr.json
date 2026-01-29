@@ -1,0 +1,369 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "back": "Retour",
+    "next": "Suivant",
+    "search": "Rechercher",
+    "apply": "Appliquer",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non",
+    "error": "Erreur",
+    "success": "Succès",
+    "warning": "Avertissement",
+    "openSource": "Open Source",
+    "language": "Langue"
+  },
+  "nav": {
+    "signIn": "Connexion",
+    "signUp": "Inscription",
+    "signOut": "Déconnexion",
+    "getStarted": "Commencer gratuitement",
+    "dashboard": "Tableau de bord",
+    "createNew": "Créer nouveau"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Conforme EU ESPR",
+      "euFunded": "🇪🇺 Fièrement financé par l'UE",
+      "title": "Créez des Passeports Numériques de Produits <1>Illimités</1>",
+      "subtitle": "Plateforme gratuite et open source pour la conformité au règlement européen sur l'écoconception (ESPR). Générez des passeports lisibles par machine avec codes QR pour batteries, textiles, produits de construction et 12+ catégories.",
+      "cta": "Créer votre premier passeport",
+      "demo": "Voir le passeport démo",
+      "features": {
+        "free": "100% Gratuit & Open Source",
+        "selfHost": "Auto-hébergeable",
+        "machineReadable": "JSON/XML lisible par machine",
+        "categories": "12+ Catégories de produits"
+      }
+    },
+    "stats": {
+      "free": "Gratuit & Open Source",
+      "categories": "Catégories de produits",
+      "deadline": "Première échéance UE",
+      "qr": "+ URLs uniques"
+    },
+    "features": {
+      "badge": "Fonctionnalités",
+      "title": "Tout pour la conformité",
+      "subtitle": "Construit selon les normes techniques UE : stockage décentralisé, identifiants ISO 15459, droits d'accès hiérarchisés et sortie JSON/XML lisible par machine.",
+      "espr": {
+        "title": "Conforme ESPR",
+        "description": "Modèles préconfigurés selon le règlement européen sur l'écoconception par catégorie."
+      },
+      "openSource": {
+        "title": "Open Source",
+        "description": "Entièrement open source. Auto-hébergez sur vos serveurs ou utilisez notre version hébergée gratuitement."
+      },
+      "machineReadable": {
+        "title": "Lisible par machine",
+        "description": "Pas de PDFs statiques. Données JSON/XML structurées pour l'intégration BIM, systèmes de recyclage et autres logiciels."
+      },
+      "qr": {
+        "title": "QR & Support de données",
+        "description": "Chaque passeport reçoit une URL unique et un code QR. Prêt pour NFC/RFID selon ISO 15459."
+      }
+    },
+    "ai": {
+      "badge": "Propulsé par l'IA",
+      "title": "Remplissage automatique par IA",
+      "subtitle": "Arrêtez de saisir manuellement. Téléchargez une photo de votre étiquette produit et notre IA extrait toutes les données automatiquement.",
+      "snap": {
+        "title": "Prenez une photo",
+        "description": "Photographiez votre étiquette de vin, emballage produit ou toute étiquette."
+      },
+      "upload": {
+        "title": "Téléchargez des documents",
+        "description": "Fiches PDF, documents Word, spécifications Excel — téléchargez tout type de fichier."
+      },
+      "extract": {
+        "title": "L'IA extrait les données",
+        "description": "Notre IA de vision lit vos documents et remplit automatiquement tous les champs du passeport."
+      },
+      "multiUpload": {
+        "title": "Fonctionne avec plusieurs téléchargements",
+        "description": "Téléchargez plusieurs photos ou documents séquentiellement — l'IA fusionne les données intelligemment"
+      },
+      "cta": "Essayer l'IA gratuitement",
+      "tags": {
+        "wineLabels": "Étiquettes de vin",
+        "batterySpecs": "Spécifications batterie",
+        "textileComposition": "Composition textile",
+        "safetyDatasheets": "Fiches de sécurité",
+        "nutritionFacts": "Valeurs nutritionnelles",
+        "technicalPdfs": "PDFs techniques"
+      }
+    },
+    "categories": {
+      "badge": "Champ d'application UE",
+      "title": "Catégories de produits supportées",
+      "subtitle": "Modèles basés sur les règlements officiels de l'UE. Les règlements actifs sont en vigueur, les groupes prioritaires ont des modèles prêts.",
+      "activeLaw": "Loi active",
+      "priorityGroup": "Groupe prioritaire",
+      "cta": "Commencer à créer des passeports"
+    },
+    "timeline": {
+      "badge": "Calendrier réglementaire",
+      "title": "Échéances de mise en œuvre du DPP UE",
+      "subtitle": "L'UE déploie les exigences du Passeport Numérique de Produit par phases. Préparez-vous maintenant.",
+      "feb2027": {
+        "title": "Février 2027",
+        "badge": "Première échéance batteries",
+        "description": "Les batteries VE, industrielles et LMT doivent avoir des Passeports Numériques avec données de cycle de vie, empreinte carbone et pourcentages de contenu recyclé."
+      },
+      "active": {
+        "title": "Actif maintenant",
+        "badge": "En vigueur",
+        "description": "Les produits de construction (EU 2024/3110), Vins & Spiritueux (EU 2021/2117) et Jouets (EU 2025/2509) nécessitent déjà des déclarations numériques."
+      },
+      "rollout": {
+        "title": "2027-2030 : Déploiement complet",
+        "description": "Textiles, électronique, meubles, fer/acier, aluminium, cosmétiques, pneus et détergents nécessiteront des DPP."
+      }
+    },
+    "selfHost": {
+      "badge": "Open Source",
+      "title": "Exécutez sur vos propres serveurs",
+      "subtitle": "Entièrement open source. Auto-hébergez pour une souveraineté totale des données, personnalisez ou contribuez au projet.",
+      "deploy": {
+        "title": "Auto-hébergement",
+        "description": "Déployez sur vos propres serveurs. Contrôle total sur vos données et documentation de conformité."
+      },
+      "customize": {
+        "title": "Personnaliser",
+        "description": "Ajoutez des champs personnalisés, intégrez avec vos systèmes ERP/PLM ou créez des solutions en marque blanche."
+      },
+      "contribute": {
+        "title": "Contribuer",
+        "description": "Aidez à améliorer les modèles. Mises à jour de conformité pilotées par la communauté."
+      }
+    },
+    "cta": {
+      "title": "Prêt pour la conformité ?",
+      "subtitle": "Créez des Passeports Numériques de Produits conformes UE dès aujourd'hui. Gratuit, illimité et open source.",
+      "button": "Commencer gratuitement"
+    },
+    "footer": {
+      "legal": "Mentions légales",
+      "github": "Voir sur GitHub"
+    }
+  },
+  "auth": {
+    "title": "Passeport Numérique de Produit",
+    "subtitle": "Connectez-vous ou créez un compte",
+    "resetSubtitle": "Réinitialiser votre mot de passe",
+    "signIn": "Connexion",
+    "signUp": "Inscription",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "companyName": "Nom de l'entreprise",
+    "sendResetLink": "Envoyer le lien",
+    "sending": "Envoi en cours...",
+    "backToSignIn": "Retour à la connexion",
+    "forgotPassword": "Mot de passe oublié ?",
+    "welcomeBack": "Bon retour !",
+    "accountCreated": "Compte créé !",
+    "accountCreatedDesc": "Vous pouvez maintenant vous connecter.",
+    "checkEmail": "Vérifiez votre e-mail",
+    "resetLinkSent": "Lien de réinitialisation envoyé."
+  },
+  "dashboard": {
+    "title": "Vos passeports",
+    "noPassports": "Pas encore de passeports. Créez le premier !",
+    "updated": "Mis à jour",
+    "duplicate": "Dupliquer",
+    "showQr": "Afficher le code QR",
+    "duplicated": "Passeport dupliqué",
+    "deleted": "Passeport supprimé",
+    "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce passeport ?"
+  },
+  "passport": {
+    "createTitle": "Créer un nouveau passeport",
+    "editTitle": "Modifier le passeport",
+    "basicInfo": "Informations de base",
+    "productName": "Nom du produit",
+    "productNamePlaceholder": "Entrez un nom pour ce produit",
+    "category": "Catégorie de produit",
+    "productImage": "Image du produit",
+    "productDescription": "Description du produit",
+    "descriptionPlaceholder": "Décrivez votre produit...",
+    "details": "Détails",
+    "saving": "Enregistrement...",
+    "saveChanges": "Enregistrer les modifications",
+    "createPassport": "Créer le passeport",
+    "updated": "Passeport mis à jour avec succès",
+    "created": "Passeport créé avec succès",
+    "unsavedChanges": "Modifications non enregistrées",
+    "unsavedChangesDesc": "Vous avez des modifications non enregistrées. Êtes-vous sûr de vouloir partir ?",
+    "leaveWithoutSaving": "Partir sans enregistrer",
+    "enterProductName": "Veuillez entrer un nom de produit",
+    "notFound": "Passeport non trouvé",
+    "notFoundDesc": "Ce passeport numérique de produit n'existe pas ou a été supprimé.",
+    "productPassport": "Passeport produit",
+    "checkAuthenticity": "Vérifier l'authenticité",
+    "poweredBy": "Propulsé par"
+  },
+  "categories": {
+    "battery": "Batteries",
+    "construction": "Produits de construction",
+    "textiles": "Textiles & Chaussures",
+    "wine": "Vins & Spiritueux",
+    "toys": "Jouets",
+    "electronics": "Électronique & TIC",
+    "iron_steel": "Fer & Acier",
+    "aluminum": "Aluminium",
+    "cosmetics": "Cosmétiques",
+    "furniture": "Meubles & Matelas",
+    "tires": "Pneus",
+    "detergents": "Détergents & Produits chimiques",
+    "other": "Tous les autres produits"
+  },
+  "categoryDescriptions": {
+    "battery": "Empreinte carbone, recyclage, diligence chaîne d'approvisionnement",
+    "construction": "DoPC, GWP A1-A3, résistance au feu",
+    "textiles": "Composition fibres, durabilité, déclaration PFAS",
+    "wine": "Ingrédients, nutrition, indication géographique",
+    "toys": "Sans PFAS, allergènes, tests de migration",
+    "electronics": "Indice de réparabilité, pièces détachées, mises à jour logicielles",
+    "iron_steel": "Intensité carbone, contenu ferraille, chimie alliage",
+    "aluminum": "Source énergie fusion, traçabilité bobine",
+    "cosmetics": "Liste INCI, nanomatériaux, recyclabilité emballage",
+    "furniture": "Origine bois EUDR, pièces détachées, PFAS",
+    "tires": "Taux d'abrasion, historique rechapage, microplastiques",
+    "detergents": "FDS numérique, biodégradabilité, optimisation dosage",
+    "other": "Modèle DPP générique pour tout type de produit"
+  },
+  "wine": {
+    "productIdentity": "Identité du produit",
+    "volume": "Volume",
+    "grapeVariety": "Cépage",
+    "vintage": "Millésime",
+    "country": "Pays d'origine",
+    "region": "Région",
+    "denomination": "Dénomination / Appellation",
+    "sugarClassification": "Classification du sucre",
+    "producerInfo": "Informations producteur",
+    "producerName": "Producteur/Domaine",
+    "bottlerInfo": "Informations embouteilleur",
+    "bottlerInfoPlaceholder": "Nom et adresse de l'embouteilleur",
+    "nutritionalValues": "Valeurs nutritionnelles",
+    "alcohol": "Alcool",
+    "residualSugar": "Sucre résiduel",
+    "acidity": "Acidité",
+    "totalAcidity": "Acidité totale",
+    "glycerine": "Glycérine/Polyols",
+    "energy": "Énergie",
+    "fat": "Matières grasses",
+    "saturatedFat": "dont acides gras saturés",
+    "carbohydrate": "Glucides",
+    "sugars": "dont sucres",
+    "protein": "Protéines",
+    "salt": "Sel",
+    "displayOptions": "Options d'affichage",
+    "showAlcohol": "Afficher l'alcool sur l'étiquette",
+    "showResidualSugar": "Afficher le sucre résiduel sur l'étiquette",
+    "showTotalAcidity": "Afficher l'acidité totale sur l'étiquette",
+    "ingredients": "Ingrédients",
+    "addIngredients": "Ajouter des ingrédients",
+    "addCustomIngredient": "Ajouter personnalisé",
+    "noIngredients": "Aucun ingrédient ajouté",
+    "ingredientCategories": {
+      "general": "Général",
+      "gases": "Gaz et gaz de conditionnement",
+      "acidity_regulators": "Régulateurs d'acidité",
+      "stabilizers": "Agents stabilisants",
+      "preservatives": "Conservateurs et antioxydants",
+      "processing_aids": "Auxiliaires technologiques"
+    },
+    "recycling": "Informations de recyclage",
+    "recyclingNote": "Vérifiez vos consignes de recyclage locales. Séparez les composants et éliminez-les correctement.",
+    "legalInfo": "Informations légales",
+    "negligibleAmounts": "Contient des quantités négligeables de matières grasses, saturées, protéines et sel.",
+    "per100ml": "pour 100 ml",
+    "selectCountry": "Sélectionner le pays",
+    "selectClassification": "Sélectionner la classification",
+    "manualOverride": "Saisie manuelle"
+  },
+  "ingredients": {
+    "grapes": "Raisins",
+    "saccharose": "Saccharose",
+    "aleppo_pine_resin": "Résine de pin d'Alep",
+    "caramel": "Caramel",
+    "concentrated_grape_must": "Moût de raisin concentré",
+    "grape_must": "Moût de raisin",
+    "rectified_concentrated_grape_must": "Moût de raisin concentré rectifié",
+    "filling_dosage": "Liqueur de tirage",
+    "expedition_dosage": "Liqueur d'expédition",
+    "argon": "Argon",
+    "nitrogen": "Azote",
+    "carbon_dioxide": "Dioxyde de carbone",
+    "protective_atmosphere": "Conditionné sous atmosphère protectrice",
+    "tartaric_acid": "Acide tartrique",
+    "malic_acid": "Acide malique",
+    "lactic_acid": "Acide lactique",
+    "calcium_sulfate": "Sulfate de calcium",
+    "citric_acid": "Acide citrique",
+    "citric_acid_stabilizer": "Acide citrique",
+    "metatartaric_acid": "Acide métatartrique",
+    "gum_arabic": "Gomme arabique",
+    "yeast_mannoproteins": "Mannoprotéines de levure",
+    "carboxymethylcellulose": "Carboxyméthylcellulose",
+    "potassium_polyaspartate": "Polyaspartate de potassium",
+    "fumaric_acid": "Acide fumarique",
+    "potassium_sorbate": "Sorbate de potassium",
+    "lysozyme": "Lysozyme",
+    "ascorbic_acid": "Acide L-ascorbique",
+    "dmdc": "Diméthyldicarbonate (DMDC)",
+    "sulfites": "Sulfites",
+    "sulfur_dioxide": "Dioxyde de soufre",
+    "potassium_bisulfite": "Bisulfite de potassium",
+    "potassium_metabisulfite": "Métabisulfite de potassium",
+    "egg": "Œuf",
+    "milk": "Lait",
+    "casein": "Caséine",
+    "albumin": "Albumine",
+    "isinglass": "Colle de poisson (vessie natatoire)",
+    "bentonite": "Bentonite",
+    "gelatin": "Gélatine",
+    "pea_protein": "Protéine de pois",
+    "potato_protein": "Protéine de pomme de terre",
+    "pvpp": "PVPP (Polyvinylpolypyrrolidone)"
+  },
+  "recycling": {
+    "code": "Code",
+    "material": "Matériau",
+    "disposal": "Élimination",
+    "componentTypes": {
+      "bottle": "Bouteille",
+      "closure": "Bouchon",
+      "capsule": "Capsule",
+      "label": "Étiquette",
+      "box": "Boîte"
+    }
+  },
+  "legal": {
+    "title": "Mentions légales",
+    "legalMentions": "Mentions légales"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oups ! Page non trouvée",
+    "returnHome": "Retour à l'accueil"
+  },
+  "counterfeit": {
+    "title": "Protection anti-contrefaçon",
+    "enable": "Activer la protection anti-contrefaçon",
+    "description": "Ajouter un sceau de sécurité au code QR"
+  },
+  "qrDialog": {
+    "title": "Code QR",
+    "download": "Télécharger le code QR",
+    "copyLink": "Copier le lien"
+  }
+}

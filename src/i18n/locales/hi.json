@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "लोड हो रहा है...", "save": "सहेजें", "cancel": "रद्द करें", "delete": "हटाएं", "edit": "संपादित करें", "create": "बनाएं", "back": "वापस", "next": "अगला", "search": "खोजें", "apply": "लागू करें", "close": "बंद करें", "confirm": "पुष्टि करें", "yes": "हां", "no": "नहीं", "error": "त्रुटि", "success": "सफल", "warning": "चेतावनी", "openSource": "ओपन सोर्स", "language": "भाषा" },
+  "nav": { "signIn": "साइन इन", "signUp": "साइन अप", "signOut": "साइन आउट", "getStarted": "मुफ्त में शुरू करें", "dashboard": "डैशबोर्ड", "createNew": "नया बनाएं" },
+  "auth": { "title": "डिजिटल उत्पाद पासपोर्ट", "subtitle": "साइन इन करें या खाता बनाएं", "signIn": "साइन इन", "signUp": "साइन अप", "email": "ईमेल", "password": "पासवर्ड", "companyName": "कंपनी का नाम", "welcomeBack": "वापस स्वागत है!" },
+  "dashboard": { "title": "आपके पासपोर्ट", "noPassports": "अभी तक कोई पासपोर्ट नहीं। पहला बनाएं!", "updated": "अपडेट किया गया" },
+  "passport": { "createTitle": "नया पासपोर्ट बनाएं", "editTitle": "पासपोर्ट संपादित करें", "basicInfo": "बुनियादी जानकारी", "productName": "उत्पाद का नाम", "category": "उत्पाद श्रेणी", "productImage": "उत्पाद छवि", "saving": "सहेजा जा रहा है...", "saveChanges": "परिवर्तन सहेजें", "notFound": "पासपोर्ट नहीं मिला", "checkAuthenticity": "प्रामाणिकता जांचें", "poweredBy": "द्वारा संचालित" },
+  "categories": { "battery": "बैटरियां", "construction": "निर्माण उत्पाद", "textiles": "वस्त्र", "wine": "वाइन और स्पिरिट्स", "toys": "खिलौने", "electronics": "इलेक्ट्रॉनिक्स", "other": "अन्य उत्पाद" },
+  "wine": { "productIdentity": "उत्पाद पहचान", "volume": "मात्रा", "grapeVariety": "अंगूर की किस्म", "vintage": "विंटेज", "country": "मूल देश", "nutritionalValues": "पोषण मूल्य", "energy": "ऊर्जा", "ingredients": "सामग्री", "recycling": "रीसाइक्लिंग जानकारी" },
+  "ingredients": { "grapes": "अंगूर", "saccharose": "सुक्रोज", "sulfites": "सल्फाइट्स", "egg": "अंडा", "milk": "दूध" },
+  "legal": { "title": "कानूनी उल्लेख", "legalMentions": "कानूनी उल्लेख" },
+  "notFound": { "title": "404", "message": "पृष्ठ नहीं मिला", "returnHome": "होम पर वापस जाएं" },
+  "landing": { "hero": { "badge": "EU ESPR अनुरूप", "title": "<1>असीमित</1> डिजिटल उत्पाद पासपोर्ट बनाएं", "cta": "अपना पहला पासपोर्ट बनाएं" }, "footer": { "legal": "कानूनी उल्लेख", "github": "GitHub पर देखें" } }
+}

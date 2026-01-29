@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Se încarcă...", "save": "Salvează", "cancel": "Anulează", "delete": "Șterge", "edit": "Editează", "create": "Creează", "back": "Înapoi", "next": "Următorul", "search": "Caută", "apply": "Aplică", "close": "Închide", "confirm": "Confirmă", "yes": "Da", "no": "Nu", "error": "Eroare", "success": "Succes", "warning": "Avertisment", "openSource": "Open Source", "language": "Limbă" },
+  "nav": { "signIn": "Autentificare", "signUp": "Înregistrare", "signOut": "Deconectare", "getStarted": "Începe gratuit", "dashboard": "Panou", "createNew": "Creează nou" },
+  "auth": { "title": "Pașaport Digital de Produs", "signIn": "Autentificare", "signUp": "Înregistrare", "email": "E-mail", "password": "Parolă", "welcomeBack": "Bine ai revenit!" },
+  "dashboard": { "title": "Pașapoartele tale", "noPassports": "Nu există pașapoarte. Creează primul!", "updated": "Actualizat" },
+  "passport": { "createTitle": "Creează pașaport nou", "editTitle": "Editează pașaport", "basicInfo": "Informații de bază", "productName": "Nume produs", "category": "Categorie produs", "saving": "Se salvează...", "notFound": "Pașaport negăsit", "checkAuthenticity": "Verifică autenticitatea", "poweredBy": "Powered by" },
+  "categories": { "battery": "Baterii", "construction": "Produse de construcții", "textiles": "Textile și încălțăminte", "wine": "Vinuri și băuturi spirtoase", "toys": "Jucării", "electronics": "Electronică și TIC", "other": "Toate celelalte produse" },
+  "wine": { "productIdentity": "Identitate produs", "volume": "Volum", "grapeVariety": "Soi de struguri", "vintage": "Recoltă", "country": "Țara de origine", "nutritionalValues": "Valori nutriționale", "energy": "Energie", "ingredients": "Ingrediente", "recycling": "Informații despre reciclare" },
+  "ingredients": { "grapes": "Struguri", "sulfites": "Sulfiți", "egg": "Ou", "milk": "Lapte" },
+  "legal": { "title": "Mențiuni legale", "legalMentions": "Mențiuni legale" },
+  "notFound": { "title": "404", "message": "Pagină negăsită", "returnHome": "Înapoi acasă" },
+  "landing": { "hero": { "badge": "Conform EU ESPR", "title": "Creează Pașapoarte Digitale de Produse <1>Nelimitate</1>", "cta": "Creează primul tău pașaport" }, "footer": { "legal": "Mențiuni legale", "github": "Vezi pe GitHub" } }
+}

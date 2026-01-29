@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Ielādē...", "save": "Saglabāt", "cancel": "Atcelt", "delete": "Dzēst", "edit": "Rediģēt", "create": "Izveidot", "back": "Atpakaļ", "next": "Tālāk", "search": "Meklēt", "apply": "Lietot", "close": "Aizvērt", "confirm": "Apstiprināt", "yes": "Jā", "no": "Nē", "error": "Kļūda", "success": "Veiksmīgi", "warning": "Brīdinājums", "openSource": "Atvērtā koda", "language": "Valoda" },
+  "nav": { "signIn": "Ieiet", "signUp": "Reģistrēties", "signOut": "Iziet", "getStarted": "Sākt bez maksas", "dashboard": "Panelis", "createNew": "Izveidot jaunu" },
+  "auth": { "title": "Digitālā produkta pase", "signIn": "Ieiet", "signUp": "Reģistrēties", "email": "E-pasts", "password": "Parole", "welcomeBack": "Laipni lūdzam atpakaļ!" },
+  "dashboard": { "title": "Jūsu pases", "noPassports": "Vēl nav pasu. Izveidojiet pirmo!", "updated": "Atjaunināts" },
+  "passport": { "createTitle": "Izveidot jaunu pasi", "editTitle": "Rediģēt pasi", "basicInfo": "Pamatinformācija", "productName": "Produkta nosaukums", "category": "Produkta kategorija", "saving": "Saglabā...", "notFound": "Pase nav atrasta", "checkAuthenticity": "Pārbaudīt autentiskumu", "poweredBy": "Darbina" },
+  "categories": { "battery": "Baterijas", "construction": "Būvizstrādājumi", "textiles": "Tekstilizstrādājumi", "wine": "Vīns un stiprie dzērieni", "toys": "Rotaļlietas", "electronics": "Elektronika", "other": "Citi produkti" },
+  "wine": { "productIdentity": "Produkta identitāte", "volume": "Tilpums", "grapeVariety": "Vīnogu šķirne", "vintage": "Ražas gads", "country": "Izcelsmes valsts", "nutritionalValues": "Uzturvērtība", "energy": "Enerģija", "ingredients": "Sastāvdaļas", "recycling": "Pārstrādes informācija" },
+  "ingredients": { "grapes": "Vīnogas", "sulfites": "Sulfīti", "egg": "Ola", "milk": "Piens" },
+  "legal": { "title": "Juridiskā informācija", "legalMentions": "Juridiskā informācija" },
+  "notFound": { "title": "404", "message": "Lapa nav atrasta", "returnHome": "Atgriezties sākumā" },
+  "landing": { "hero": { "badge": "ES ESPR saderīgs", "title": "Izveidojiet <1>Neierobežotas</1> Digitālās Produktu Pases", "cta": "Izveidojiet pirmo pasi" }, "footer": { "legal": "Juridiskā informācija", "github": "Skatīt GitHub" } }
+}
