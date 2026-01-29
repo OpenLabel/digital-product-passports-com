@@ -52,19 +52,36 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Check if key already exists - only allow initial setup
+    const { data: existingKey } = await supabase
+      .from("site_config")
+      .select("key")
+      .eq("key", "lovable_api_key_secret")
+      .maybeSingle();
+
+    if (existingKey) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "API key already configured. To modify, manually clear the site_config table first." 
+        }),
+        { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     // Store a masked version for display and the actual key
     const maskedKey = lovableApiKey.substring(0, 8) + "..." + lovableApiKey.substring(lovableApiKey.length - 4);
 
-    // Upsert both the masked display version and the actual secret
+    // Insert both the masked display version and the actual secret
     const { error: maskedError } = await supabase
       .from("site_config")
-      .upsert({ key: "lovable_api_key", value: maskedKey }, { onConflict: "key" });
+      .insert({ key: "lovable_api_key", value: maskedKey });
 
     if (maskedError) throw maskedError;
 
     const { error: secretError } = await supabase
       .from("site_config")
-      .upsert({ key: "lovable_api_key_secret", value: lovableApiKey }, { onConflict: "key" });
+      .insert({ key: "lovable_api_key_secret", value: lovableApiKey });
 
     if (secretError) throw secretError;
 

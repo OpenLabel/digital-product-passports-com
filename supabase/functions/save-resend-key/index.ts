@@ -51,12 +51,29 @@ const handler = async (req: Request): Promise<Response> => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Check if key already exists - only allow initial setup
+    const { data: existingKey } = await supabase
+      .from("site_config")
+      .select("key")
+      .eq("key", "resend_api_key_secret")
+      .maybeSingle();
+
+    if (existingKey) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "API key already configured. To modify, manually clear the site_config table first." 
+        }),
+        { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     // Store masked version in site_config for UI display
     const maskedKey = resendApiKey.slice(0, 8) + "..." + resendApiKey.slice(-4);
     
     const { error: error1 } = await supabase
       .from("site_config")
-      .upsert({ key: "resend_api_key", value: maskedKey }, { onConflict: "key" });
+      .insert({ key: "resend_api_key", value: maskedKey });
 
     if (error1) {
       console.error("Error saving masked key:", error1);
@@ -66,7 +83,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Store the actual key in a separate config entry
     const { error: error2 } = await supabase
       .from("site_config")
-      .upsert({ key: "resend_api_key_secret", value: resendApiKey }, { onConflict: "key" });
+      .insert({ key: "resend_api_key_secret", value: resendApiKey });
 
     if (error2) {
       console.error("Error saving secret key:", error2);
