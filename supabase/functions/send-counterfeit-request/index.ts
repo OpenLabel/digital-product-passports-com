@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,12 +8,25 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-interface CounterfeitRequest {
-  userEmail: string;
-  passportName: string;
-  passportUrl: string;
-  requestedAt: string; // ISO timestamp
-}
+// Input validation schema
+const CounterfeitRequestSchema = z.object({
+  userEmail: z.string()
+    .email("Invalid email address")
+    .max(255, "Email too long"),
+  passportName: z.string()
+    .min(1, "Passport name is required")
+    .max(500, "Passport name too long"),
+  passportUrl: z.string()
+    .url("Invalid URL format")
+    .max(2000, "URL too long"),
+  requestedAt: z.string()
+    .refine(
+      (val) => !isNaN(Date.parse(val)),
+      "Invalid date format"
+    )
+    .optional()
+    .default(() => new Date().toISOString()),
+});
 
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
@@ -20,6 +34,31 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Parse and validate input
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ success: false, error: "Invalid JSON body" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const parseResult = CounterfeitRequestSchema.safeParse(body);
+    if (!parseResult.success) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: "Invalid input", 
+          details: parseResult.error.errors.map(e => e.message) 
+        }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const { userEmail, passportName, passportUrl, requestedAt } = parseResult.data;
+
     // Get Resend API key from site_config
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -52,14 +91,8 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Sender email not configured. Please set it up in the Setup page.");
     }
 
-    const { userEmail, passportName, passportUrl, requestedAt }: CounterfeitRequest = await req.json();
-
-    if (!userEmail || !passportName || !passportUrl) {
-      throw new Error("Missing required fields: userEmail, passportName, passportUrl");
-    }
-
     // Format the date and time
-    const requestDate = new Date(requestedAt || new Date().toISOString());
+    const requestDate = new Date(requestedAt);
     const formattedDate = requestDate.toLocaleDateString('en-GB', { 
       day: '2-digit', 
       month: '2-digit', 
@@ -71,6 +104,20 @@ const handler = async (req: Request): Promise<Response> => {
       hour12: false 
     });
 
+    // Sanitize user inputs for HTML output to prevent XSS
+    const escapeHtml = (str: string): string => {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    };
+
+    const safePassportName = escapeHtml(passportName);
+    const safeUserEmail = escapeHtml(userEmail);
+    const safePassportUrl = escapeHtml(passportUrl);
+
     const emailResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -81,7 +128,7 @@ const handler = async (req: Request): Promise<Response> => {
         from: `${companyName} <${senderEmail}>`,
         to: ["contact@cypheme.com"],
         cc: [userEmail],
-        subject: `Counterfeit Protection Request - ${passportName}`,
+        subject: `Counterfeit Protection Request - ${safePassportName}`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #1a1a1a; margin-bottom: 24px;">Counterfeit Protection Request</h2>
@@ -99,17 +146,17 @@ const handler = async (req: Request): Promise<Response> => {
               <table style="width: 100%; border-collapse: collapse;">
                 <tr>
                   <td style="color: #666; padding: 8px 0; font-size: 14px; width: 120px;">Product Name</td>
-                  <td style="color: #1a1a1a; padding: 8px 0; font-size: 14px; font-weight: 500;">${passportName}</td>
+                  <td style="color: #1a1a1a; padding: 8px 0; font-size: 14px; font-weight: 500;">${safePassportName}</td>
                 </tr>
                 <tr>
                   <td style="color: #666; padding: 8px 0; font-size: 14px;">Passport URL</td>
                   <td style="padding: 8px 0; font-size: 14px;">
-                    <a href="${passportUrl}" style="color: #2563eb; text-decoration: none;">${passportUrl}</a>
+                    <a href="${safePassportUrl}" style="color: #2563eb; text-decoration: none;">${safePassportUrl}</a>
                   </td>
                 </tr>
                 <tr>
                   <td style="color: #666; padding: 8px 0; font-size: 14px;">Contact Email</td>
-                  <td style="color: #1a1a1a; padding: 8px 0; font-size: 14px;">${userEmail}</td>
+                  <td style="color: #1a1a1a; padding: 8px 0; font-size: 14px;">${safeUserEmail}</td>
                 </tr>
               </table>
             </div>
@@ -120,7 +167,7 @@ const handler = async (req: Request): Promise<Response> => {
             
             <p style="color: #333; font-size: 16px; line-height: 1.6;">
               Thank you,<br/>
-              <span style="color: #666;">${userEmail}</span>
+              <span style="color: #666;">${safeUserEmail}</span>
             </p>
             
             <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 32px 0;" />

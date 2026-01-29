@@ -1,9 +1,21 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+// Input validation schema
+const WineOCRSchema = z.object({
+  image: z.string()
+    .min(1, "Image is required")
+    .max(10_000_000, "Image data too large (max ~7MB)")
+    .refine(
+      (val) => /^data:image\/(png|jpeg|jpg|webp|gif);base64,/.test(val),
+      "Invalid image format - must be a valid base64 data URL"
+    ),
+});
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -11,14 +23,29 @@ serve(async (req) => {
   }
 
   try {
-    const { image } = await req.json();
-    
-    if (!image) {
+    // Parse and validate input
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
       return new Response(
-        JSON.stringify({ error: "No image provided" }),
+        JSON.stringify({ error: "Invalid JSON body" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+
+    const parseResult = WineOCRSchema.safeParse(body);
+    if (!parseResult.success) {
+      return new Response(
+        JSON.stringify({ 
+          error: "Invalid input", 
+          details: parseResult.error.errors.map(e => e.message) 
+        }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const { image } = parseResult.data;
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) {
