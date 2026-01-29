@@ -121,6 +121,7 @@ export default function Index() {
             <h1 className="text-lg font-semibold">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
           </div>
           <div className="flex gap-2 items-center">
+            <LanguageSwitcher />
             {loading ? null : user ? (
               <Button asChild>
                 <Link to="/dashboard">{t('nav.dashboard')}</Link>
