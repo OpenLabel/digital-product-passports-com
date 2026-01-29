@@ -37,7 +37,7 @@ export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
               transformOrigin: 'top left',
             }}
           >
-            <WinePublicPassport passport={previewPassport} />
+            <WinePublicPassport passport={previewPassport} isPreview={true} />
           </div>
         </div>
       </div>
