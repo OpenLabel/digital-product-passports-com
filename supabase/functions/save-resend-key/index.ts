@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,26 +8,43 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// Input validation schema - Resend API keys start with "re_" and are alphanumeric
+const ResendKeySchema = z.object({
+  resendApiKey: z.string()
+    .min(20, "API key is too short")
+    .max(200, "API key is too long")
+    .regex(/^re_[a-zA-Z0-9_]+$/, "Invalid Resend API key format. Keys should start with 're_' and contain only alphanumeric characters and underscores"),
+});
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { resendApiKey } = await req.json();
-
-    if (!resendApiKey || typeof resendApiKey !== 'string') {
-      throw new Error("resendApiKey is required");
+    // Parse and validate input
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ success: false, error: "Invalid JSON body" }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
-    // Validate the API key format (Resend keys start with "re_")
-    if (!resendApiKey.startsWith('re_')) {
-      throw new Error("Invalid Resend API key format. Keys should start with 're_'");
+    const parseResult = ResendKeySchema.safeParse(body);
+    if (!parseResult.success) {
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: parseResult.error.errors[0]?.message || "Invalid input" 
+        }),
+        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
     }
 
-    if (resendApiKey.length < 20) {
-      throw new Error("Invalid Resend API key format. Key appears too short.");
-    }
+    const { resendApiKey } = parseResult.data;
 
     // Store the API key in the site_config table
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
