@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "جاري التحميل...", "save": "حفظ", "cancel": "إلغاء", "delete": "حذف", "edit": "تعديل", "create": "إنشاء", "back": "رجوع", "next": "التالي", "search": "بحث", "apply": "تطبيق", "close": "إغلاق", "confirm": "تأكيد", "yes": "نعم", "no": "لا", "error": "خطأ", "success": "نجاح", "warning": "تحذير", "openSource": "مفتوح المصدر", "language": "اللغة" },
+  "nav": { "signIn": "تسجيل الدخول", "signUp": "إنشاء حساب", "signOut": "تسجيل الخروج", "getStarted": "ابدأ مجاناً", "dashboard": "لوحة التحكم", "createNew": "إنشاء جديد" },
+  "auth": { "title": "جواز المنتج الرقمي", "subtitle": "سجل الدخول أو أنشئ حساباً", "signIn": "تسجيل الدخول", "signUp": "إنشاء حساب", "email": "البريد الإلكتروني", "password": "كلمة المرور", "companyName": "اسم الشركة", "welcomeBack": "مرحباً بعودتك!" },
+  "dashboard": { "title": "جوازاتك", "noPassports": "لا توجد جوازات بعد. أنشئ أول جواز!", "updated": "تم التحديث" },
+  "passport": { "createTitle": "إنشاء جواز جديد", "editTitle": "تعديل الجواز", "basicInfo": "المعلومات الأساسية", "productName": "اسم المنتج", "category": "فئة المنتج", "productImage": "صورة المنتج", "saving": "جاري الحفظ...", "saveChanges": "حفظ التغييرات", "notFound": "الجواز غير موجود", "checkAuthenticity": "التحقق من الأصالة", "poweredBy": "مدعوم من" },
+  "categories": { "battery": "البطاريات", "construction": "منتجات البناء", "textiles": "المنسوجات والأحذية", "wine": "النبيذ والمشروبات الروحية", "toys": "الألعاب", "electronics": "الإلكترونيات", "iron_steel": "الحديد والصلب", "aluminum": "الألومنيوم", "cosmetics": "مستحضرات التجميل", "furniture": "الأثاث والمراتب", "tires": "الإطارات", "detergents": "المنظفات والكيماويات", "other": "جميع المنتجات الأخرى" },
+  "wine": { "productIdentity": "هوية المنتج", "volume": "الحجم", "grapeVariety": "صنف العنب", "vintage": "سنة الإنتاج", "country": "بلد المنشأ", "region": "المنطقة", "nutritionalValues": "القيم الغذائية", "alcohol": "الكحول", "energy": "الطاقة", "fat": "الدهون", "carbohydrate": "الكربوهيدرات", "protein": "البروتين", "salt": "الملح", "ingredients": "المكونات", "recycling": "معلومات إعادة التدوير" },
+  "ingredients": { "grapes": "العنب", "saccharose": "السكروز", "sulfites": "الكبريتيت", "egg": "البيض", "milk": "الحليب", "tartaric_acid": "حمض الطرطريك", "malic_acid": "حمض الماليك", "citric_acid": "حمض الستريك" },
+  "legal": { "title": "إشعارات قانونية", "legalMentions": "إشعارات قانونية" },
+  "notFound": { "title": "404", "message": "الصفحة غير موجودة", "returnHome": "العودة للرئيسية" },
+  "landing": { "hero": { "badge": "متوافق مع EU ESPR", "title": "أنشئ جوازات منتجات رقمية <1>غير محدودة</1>", "cta": "أنشئ جوازك الأول" }, "footer": { "legal": "إشعارات قانونية", "github": "عرض على GitHub" } }
+}

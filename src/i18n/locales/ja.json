@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "読み込み中...", "save": "保存", "cancel": "キャンセル", "delete": "削除", "edit": "編集", "create": "作成", "back": "戻る", "next": "次へ", "search": "検索", "apply": "適用", "close": "閉じる", "confirm": "確認", "yes": "はい", "no": "いいえ", "error": "エラー", "success": "成功", "warning": "警告", "openSource": "オープンソース", "language": "言語" },
+  "nav": { "signIn": "ログイン", "signUp": "新規登録", "signOut": "ログアウト", "getStarted": "無料で始める", "dashboard": "ダッシュボード", "createNew": "新規作成" },
+  "auth": { "title": "デジタル製品パスポート", "subtitle": "ログインまたはアカウント作成", "signIn": "ログイン", "signUp": "新規登録", "email": "メールアドレス", "password": "パスワード", "companyName": "会社名", "welcomeBack": "おかえりなさい！" },
+  "dashboard": { "title": "あなたのパスポート", "noPassports": "パスポートはまだありません。最初のパスポートを作成しましょう！", "updated": "更新日" },
+  "passport": { "createTitle": "新しいパスポートを作成", "editTitle": "パスポートを編集", "basicInfo": "基本情報", "productName": "製品名", "category": "製品カテゴリ", "productImage": "製品画像", "saving": "保存中...", "saveChanges": "変更を保存", "notFound": "パスポートが見つかりません", "checkAuthenticity": "真正性を確認", "poweredBy": "提供" },
+  "categories": { "battery": "バッテリー", "construction": "建設製品", "textiles": "繊維製品・履物", "wine": "ワイン・蒸留酒", "toys": "おもちゃ", "electronics": "電子機器・ICT", "iron_steel": "鉄鋼", "aluminum": "アルミニウム", "cosmetics": "化粧品", "furniture": "家具・マットレス", "tires": "タイヤ", "detergents": "洗剤・化学品", "other": "その他すべての製品" },
+  "wine": { "productIdentity": "製品識別", "volume": "容量", "grapeVariety": "ブドウ品種", "vintage": "ヴィンテージ", "country": "原産国", "region": "地域", "nutritionalValues": "栄養成分", "alcohol": "アルコール", "energy": "エネルギー", "fat": "脂質", "carbohydrate": "炭水化物", "protein": "タンパク質", "salt": "食塩相当量", "ingredients": "原材料", "recycling": "リサイクル情報" },
+  "ingredients": { "grapes": "ブドウ", "saccharose": "ショ糖", "sulfites": "亜硫酸塩", "egg": "卵", "milk": "牛乳", "tartaric_acid": "酒石酸", "malic_acid": "リンゴ酸", "citric_acid": "クエン酸" },
+  "legal": { "title": "法的表示", "legalMentions": "法的表示" },
+  "notFound": { "title": "404", "message": "ページが見つかりません", "returnHome": "ホームに戻る" },
+  "landing": { "hero": { "badge": "EU ESPR準拠", "title": "<1>無制限</1>のデジタル製品パスポートを作成", "cta": "最初のパスポートを作成" }, "footer": { "legal": "法的表示", "github": "GitHubで見る" } }
+}
