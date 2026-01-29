@@ -10,46 +10,6 @@ export class WineTemplate extends BaseTemplate {
   // so sections are kept minimal - the component handles the complex logic
   sections: TemplateSection[] = [
     {
-      title: 'Certifications & Labels',
-      description: 'Organic, biodynamic, and sustainability certifications',
-      questions: [
-        {
-          id: 'has_pdo',
-          label: 'Protected Designation of Origin (PDO/AOP)',
-          type: 'checkbox',
-          helpText: 'PDO wines must display the official EU PDO logo'
-        },
-        {
-          id: 'has_pgi',
-          label: 'Protected Geographical Indication (PGI/IGP)',
-          type: 'checkbox',
-          helpText: 'PGI wines must display the official EU PGI logo'
-        },
-        {
-          id: 'is_organic_eu',
-          label: 'EU Organic certified',
-          type: 'checkbox',
-          helpText: 'Must display the EU organic leaf logo'
-        },
-        {
-          id: 'is_biodynamic',
-          label: 'Biodynamic certified (Demeter/Biodyvin)',
-          type: 'checkbox'
-        },
-        {
-          id: 'is_hve',
-          label: 'HVE certified (Haute Valeur Environnementale)',
-          type: 'checkbox',
-          helpText: 'French environmental certification'
-        },
-        {
-          id: 'is_terra_vitis',
-          label: 'Terra Vitis certified',
-          type: 'checkbox'
-        }
-      ]
-    },
-    {
       title: 'Producer Information',
       description: 'Information about the wine producer',
       questions: [
@@ -70,16 +30,8 @@ export class WineTemplate extends BaseTemplate {
   ];
 
   getRequiredLogos(data: Record<string, unknown>): string[] {
-    const logos: string[] = [];
-    
-    if (data.has_pdo) logos.push('eu-pdo');
-    if (data.has_pgi) logos.push('eu-pgi');
-    if (data.is_organic_eu) logos.push('eu-organic');
-    if (data.is_biodynamic) logos.push('demeter');
-    if (data.is_hve) logos.push('hve');
-    if (data.is_terra_vitis) logos.push('terra-vitis');
-    
-    return logos;
+    // No certification logos to return
+    return [];
   }
 }
 

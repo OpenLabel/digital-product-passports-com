@@ -1,12 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
-// Certification logos
-import pdoLogo from '@/assets/certifications/pdo-logo.jpg';
-import pgiLogo from '@/assets/certifications/pgi-logo.jpg';
-import euOrganicLogo from '@/assets/certifications/eu-organic-logo.jpg';
-import demeterLogo from '@/assets/certifications/demeter-logo.png';
-
 interface WinePassportData {
   name: string;
   image_url: string | null;
@@ -53,13 +47,8 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const producerName = categoryData.producer_name as string | undefined;
   const bottlerInfo = categoryData.bottler_info as string | undefined;
 
-  // Certifications
-  const hasPdo = categoryData.has_pdo as boolean | undefined;
-  const hasPgi = categoryData.has_pgi as boolean | undefined;
-  const isOrganicEu = categoryData.is_organic_eu as boolean | undefined;
-  const isBiodynamic = categoryData.is_biodynamic as boolean | undefined;
-  const isHve = categoryData.is_hve as boolean | undefined;
-  const isTerraVitis = categoryData.is_terra_vitis as boolean | undefined;
+
+  // Nutritional values
 
   // Nutritional values
   const alcoholPercent = categoryData.alcohol_percent as number | undefined;
@@ -90,7 +79,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const allergenIngredients = ingredients.filter((i) => i.isAllergen);
   const regularIngredients = ingredients.filter((i) => !i.isAllergen);
 
-  const hasCertifications = hasPdo || hasPgi || isOrganicEu || isBiodynamic || isHve || isTerraVitis;
   const hasNutritionalInfo = energyKcal || energyKj || carbohydrates !== undefined || sugar !== undefined;
   const hasRecyclingInfo = recyclingComponents.length > 0 || recyclingPdfUrl;
   const hasProducerInfo = producerName || bottlerInfo || country;
@@ -195,35 +183,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
           )}
         </div>
 
-        {/* Certifications */}
-        {hasCertifications && (
-          <div className="mb-6">
-            <div className="flex flex-wrap items-center gap-3">
-              {hasPdo && (
-                <img src={pdoLogo} alt="Protected Designation of Origin (PDO)" className="h-12 object-contain" />
-              )}
-              {hasPgi && (
-                <img src={pgiLogo} alt="Protected Geographical Indication (PGI)" className="h-12 object-contain" />
-              )}
-              {isOrganicEu && (
-                <img src={euOrganicLogo} alt="EU Organic" className="h-12 object-contain" />
-              )}
-              {isBiodynamic && (
-                <img src={demeterLogo} alt="Demeter Biodynamic" className="h-12 object-contain" />
-              )}
-              {isHve && (
-                <div className="flex items-center justify-center h-12 px-3 rounded-full bg-orange-500 text-white text-xs font-bold">
-                  HVE
-                </div>
-              )}
-              {isTerraVitis && (
-                <div className="flex items-center justify-center h-12 px-3 rounded bg-teal-700 text-white text-xs font-bold">
-                  Terra Vitis
-                </div>
-              )}
-            </div>
-          </div>
-        )}
 
         {/* Nutritional Values - EU Regulation 1169/2011 compliant format */}
         {hasNutritionalInfo && (
@@ -427,7 +386,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
 export const WINE_PASSPORT_FIELDS = {
   productInfo: ['volume', 'volume_unit', 'grape_variety', 'vintage', 'country', 'region', 'denomination', 'sugar_classification'],
   producer: ['producer_name', 'bottler_info'],
-  certifications: ['has_pdo', 'has_pgi', 'is_organic_eu', 'is_biodynamic', 'is_hve', 'is_terra_vitis'],
   nutritional: ['alcohol_percent', 'energy_kcal', 'energy_kj', 'carbohydrates', 'sugar', 'residual_sugar', 'total_acidity', 'glycerine', 'fat', 'saturated_fat', 'proteins', 'salt'],
   manualOverrides: ['energy_kcal_manual', 'energy_kj_manual', 'carbohydrates_manual', 'sugar_manual'],
   displayOptions: ['show_alcohol_on_label', 'show_residual_sugar_on_label', 'show_total_acidity_on_label'],
