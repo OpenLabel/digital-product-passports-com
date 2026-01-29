@@ -506,7 +506,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               onCheckedChange={(checked) => handleChange('hide_promo', checked)}
             />
             <Label htmlFor="hide_promo" className="text-sm font-normal cursor-pointer">
-              Hide "Make your own DPP" promotional message
+              Hide "Made by EU Digital Product Passports" promotional message
             </Label>
           </div>
         </CardContent>
