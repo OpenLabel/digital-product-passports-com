@@ -125,8 +125,7 @@ i18n
       escapeValue: false,
     },
     detection: {
-      order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
-      lookupQuerystring: 'lang',
+      order: ['localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
     },
   });
