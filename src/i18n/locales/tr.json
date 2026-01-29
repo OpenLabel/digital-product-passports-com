@@ -1,0 +1,13 @@
+{
+  "common": { "loading": "Yükleniyor...", "save": "Kaydet", "cancel": "İptal", "delete": "Sil", "edit": "Düzenle", "create": "Oluştur", "back": "Geri", "next": "İleri", "search": "Ara", "apply": "Uygula", "close": "Kapat", "confirm": "Onayla", "yes": "Evet", "no": "Hayır", "error": "Hata", "success": "Başarılı", "warning": "Uyarı", "openSource": "Açık Kaynak", "language": "Dil" },
+  "nav": { "signIn": "Giriş Yap", "signUp": "Kayıt Ol", "signOut": "Çıkış Yap", "getStarted": "Ücretsiz Başla", "dashboard": "Kontrol Paneli", "createNew": "Yeni Oluştur" },
+  "auth": { "title": "Dijital Ürün Pasaportu", "subtitle": "Giriş yapın veya hesap oluşturun", "signIn": "Giriş Yap", "signUp": "Kayıt Ol", "email": "E-posta", "password": "Şifre", "companyName": "Şirket Adı", "welcomeBack": "Tekrar hoş geldiniz!" },
+  "dashboard": { "title": "Pasaportlarınız", "noPassports": "Henüz pasaport yok. İlkini oluşturun!", "updated": "Güncellendi" },
+  "passport": { "createTitle": "Yeni Pasaport Oluştur", "editTitle": "Pasaportu Düzenle", "basicInfo": "Temel Bilgiler", "productName": "Ürün Adı", "category": "Ürün Kategorisi", "productImage": "Ürün Görseli", "saving": "Kaydediliyor...", "saveChanges": "Değişiklikleri Kaydet", "notFound": "Pasaport bulunamadı", "checkAuthenticity": "Orijinalliği Doğrula", "poweredBy": "Sağlayan" },
+  "categories": { "battery": "Piller", "construction": "İnşaat Ürünleri", "textiles": "Tekstil ve Ayakkabı", "wine": "Şarap ve Distile İçecekler", "toys": "Oyuncaklar", "electronics": "Elektronik ve BİT", "iron_steel": "Demir ve Çelik", "aluminum": "Alüminyum", "cosmetics": "Kozmetik", "furniture": "Mobilya ve Yataklar", "tires": "Lastikler", "detergents": "Deterjanlar ve Kimyasallar", "other": "Diğer Tüm Ürünler" },
+  "wine": { "productIdentity": "Ürün Kimliği", "volume": "Hacim", "grapeVariety": "Üzüm Çeşidi", "vintage": "Hasat Yılı", "country": "Menşe Ülke", "region": "Bölge", "nutritionalValues": "Besin Değerleri", "alcohol": "Alkol", "energy": "Enerji", "fat": "Yağ", "carbohydrate": "Karbonhidrat", "protein": "Protein", "salt": "Tuz", "ingredients": "İçindekiler", "recycling": "Geri Dönüşüm Bilgileri" },
+  "ingredients": { "grapes": "Üzüm", "saccharose": "Sakkaroz", "sulfites": "Sülfitler", "egg": "Yumurta", "milk": "Süt", "tartaric_acid": "Tartarik Asit", "malic_acid": "Malik Asit", "citric_acid": "Sitrik Asit" },
+  "legal": { "title": "Yasal Bilgiler", "legalMentions": "Yasal Bilgiler" },
+  "notFound": { "title": "404", "message": "Sayfa bulunamadı", "returnHome": "Ana Sayfaya Dön" },
+  "landing": { "hero": { "badge": "EU ESPR Uyumlu", "title": "<1>Sınırsız</1> Dijital Ürün Pasaportu Oluşturun", "cta": "İlk Pasaportunuzu Oluşturun" }, "footer": { "legal": "Yasal Bilgiler", "github": "GitHub'da Görüntüle" } }
+}
