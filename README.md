@@ -259,7 +259,8 @@ All tables have RLS enabled:
 |-------|-------------|
 | `passports` | All digital product passports |
 | `profiles` | User profile information |
-| `site_config` | Instance configuration (company info, API keys) |
+| `site_config` | Instance configuration (company info, display settings) |
+| `encrypted_secrets` | API keys stored with AES-256 encryption |
 | `api_usage` | Per-user AI feature usage tracking |
 
 ---
