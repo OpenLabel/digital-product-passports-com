@@ -189,34 +189,34 @@ export default function PassportForm() {
 
       <div className="min-h-screen bg-muted/30">
         <header className="border-b bg-background sticky top-0 z-10">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="icon" onClick={handleBack}>
+          <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+              <Button variant="ghost" size="icon" onClick={handleBack} className="shrink-0">
                 <ArrowLeft className="h-4 w-4" />
               </Button>
-              <h1 className="text-xl font-semibold">
-              {isEditing ? t('passport.editTitle') : t('passport.createTitle')}
-            </h1>
+              <h1 className="text-lg sm:text-xl font-semibold truncate">
+                {isEditing ? t('passport.editTitle') : t('passport.createTitle')}
+              </h1>
+            </div>
+            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+              <LanguageSwitcher />
+              <Button type="submit" form="passport-form" disabled={saving} size="sm" className="gap-1 sm:gap-2 sm:size-default">
+                {saving ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span className="hidden sm:inline">{t('passport.saving')}</span>
+                  </>
+                ) : (
+                  <>
+                    <Save className="h-4 w-4" />
+                    <span className="hidden sm:inline">{isEditing ? t('passport.saveChanges') : t('common.create')}</span>
+                    <span className="hidden md:inline ml-1 text-xs opacity-60">⌘S</span>
+                  </>
+                )}
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher />
-            <Button type="submit" form="passport-form" disabled={saving} className="gap-2">
-              {saving ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  {t('passport.saving')}
-                </>
-              ) : (
-                <>
-                  <Save className="h-4 w-4" />
-                  {isEditing ? t('passport.saveChanges') : t('common.create')}
-                  <span className="ml-1 text-xs opacity-60">⌘S</span>
-                </>
-              )}
-            </Button>
-          </div>
-        </div>
-      </header>
+        </header>
 
       <main className="container mx-auto px-4 py-8">
         <div className={`flex gap-8 ${showPreview ? 'lg:flex-row flex-col' : ''}`}>

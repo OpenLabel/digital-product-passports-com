@@ -126,11 +126,16 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-muted/30">
       <header className="border-b bg-background">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
-          <div className="flex items-center gap-4">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex justify-between items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shrink-0">
+              <span className="text-primary-foreground font-bold text-sm">DPP</span>
+            </div>
+            <h1 className="hidden md:block text-xl font-semibold whitespace-nowrap">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
+          </div>
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <LanguageSwitcher />
-            <span className="text-sm text-muted-foreground">{user?.email}</span>
+            <span className="hidden sm:inline text-sm text-muted-foreground truncate max-w-[150px]">{user?.email}</span>
             <Button variant="ghost" size="icon" onClick={() => signOut()}>
               <LogOut className="h-4 w-4" />
             </Button>
