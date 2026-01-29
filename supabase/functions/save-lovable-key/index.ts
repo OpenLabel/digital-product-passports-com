@@ -5,7 +5,7 @@ import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 // Input validation schema - Lovable API keys are alphanumeric strings
@@ -47,45 +47,51 @@ serve(async (req) => {
 
     const { lovableApiKey } = parseResult.data;
 
-    // Save the key to site_config using service role (bypasses RLS)
+    // Save the key encrypted using service role (bypasses RLS)
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Check if key already exists - only allow initial setup
-    const { data: existingKey } = await supabase
-      .from("site_config")
-      .select("key")
-      .eq("key", "lovable_api_key_secret")
-      .maybeSingle();
+    const { data: existingKey } = await supabase.rpc("encrypted_secret_exists", {
+      p_name: "lovable_api_key"
+    });
 
     if (existingKey) {
       return new Response(
         JSON.stringify({ 
           success: false, 
-          error: "API key already configured. To modify, manually clear the site_config table first." 
+          error: "API key already configured. To modify, manually clear the encrypted_secrets table first." 
         }),
         { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
-    // Store a masked version for display and the actual key
+    // Store encrypted using pgcrypto
+    const { error: encryptError } = await supabase.rpc("store_encrypted_secret", {
+      p_name: "lovable_api_key",
+      p_value: lovableApiKey,
+      p_description: "Lovable API key for AI features"
+    });
+
+    if (encryptError) {
+      console.error("Error storing encrypted key:", encryptError);
+      throw new Error("Failed to save API key");
+    }
+
+    // Store a masked version for display in site_config
     const maskedKey = lovableApiKey.substring(0, 8) + "..." + lovableApiKey.substring(lovableApiKey.length - 4);
 
-    // Insert both the masked display version and the actual secret
-    const { error: maskedError } = await supabase
+    const { error: configError } = await supabase
       .from("site_config")
-      .insert({ key: "lovable_api_key", value: maskedKey });
+      .upsert({ key: "lovable_api_key", value: maskedKey }, { onConflict: "key" });
 
-    if (maskedError) throw maskedError;
+    if (configError) {
+      console.error("Error saving masked key:", configError);
+      // Non-fatal - the encrypted key is what matters
+    }
 
-    const { error: secretError } = await supabase
-      .from("site_config")
-      .insert({ key: "lovable_api_key_secret", value: lovableApiKey });
-
-    if (secretError) throw secretError;
-
-    console.log("Lovable API key saved successfully");
+    console.log("Lovable API key saved successfully (encrypted)");
 
     return new Response(
       JSON.stringify({ success: true, maskedKey }),

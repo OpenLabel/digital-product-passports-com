@@ -46,51 +46,51 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { resendApiKey } = parseResult.data;
 
-    // Store the API key in the site_config table
+    // Store the API key encrypted
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Check if key already exists - only allow initial setup
-    const { data: existingKey } = await supabase
-      .from("site_config")
-      .select("key")
-      .eq("key", "resend_api_key_secret")
-      .maybeSingle();
+    const { data: existingKey } = await supabase.rpc("encrypted_secret_exists", {
+      p_name: "resend_api_key"
+    });
 
     if (existingKey) {
       return new Response(
         JSON.stringify({ 
           success: false, 
-          error: "API key already configured. To modify, manually clear the site_config table first." 
+          error: "API key already configured. To modify, manually clear the encrypted_secrets table first." 
         }),
         { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
 
+    // Store encrypted using pgcrypto
+    const { error: encryptError } = await supabase.rpc("store_encrypted_secret", {
+      p_name: "resend_api_key",
+      p_value: resendApiKey,
+      p_description: "Resend API key for sending emails"
+    });
+
+    if (encryptError) {
+      console.error("Error storing encrypted key:", encryptError);
+      throw new Error("Failed to save API key");
+    }
+
     // Store masked version in site_config for UI display
     const maskedKey = resendApiKey.slice(0, 8) + "..." + resendApiKey.slice(-4);
     
-    const { error: error1 } = await supabase
+    const { error: configError } = await supabase
       .from("site_config")
-      .insert({ key: "resend_api_key", value: maskedKey });
+      .upsert({ key: "resend_api_key", value: maskedKey }, { onConflict: "key" });
 
-    if (error1) {
-      console.error("Error saving masked key:", error1);
-      throw new Error("Failed to save API key");
+    if (configError) {
+      console.error("Error saving masked key:", configError);
+      // Non-fatal - the encrypted key is what matters
     }
 
-    // Store the actual key in a separate config entry
-    const { error: error2 } = await supabase
-      .from("site_config")
-      .insert({ key: "resend_api_key_secret", value: resendApiKey });
-
-    if (error2) {
-      console.error("Error saving secret key:", error2);
-      throw new Error("Failed to save API key");
-    }
-
-    console.log("Resend API key saved successfully");
+    console.log("Resend API key saved successfully (encrypted)");
 
     return new Response(
       JSON.stringify({ success: true, message: "Resend API key saved successfully" }),

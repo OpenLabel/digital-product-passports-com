@@ -238,17 +238,18 @@ export default function Setup() {
                   </ul>
                 </div>
 
-                {/* Email Configuration Section */}
+                {/* Email Configuration Section (Optional) */}
                 <div className="border-t pt-6 space-y-4">
                   <div className="flex items-center gap-2">
                     <Mail className="h-5 w-5 text-primary" />
                     <h3 className="font-medium">Email Configuration (Resend)</h3>
+                    <Badge variant="outline" className="text-xs">Optional</Badge>
                   </div>
                   
                   <Alert>
                     <Mail className="h-4 w-4" />
                     <AlertDescription className="space-y-2">
-                      <p>Email is required for password reset functionality. Get your API key from Resend:</p>
+                      <p>Email is optional. Required only for password reset and counterfeit protection requests.</p>
                       <div className="flex flex-wrap gap-2 mt-2">
                         <a
                           href="https://resend.com/api-keys"
@@ -334,108 +335,106 @@ export default function Setup() {
                   </div>
                 </div>
 
-                {/* AI Features Section */}
+                {/* AI Features Section (Optional) */}
                 <div className="border-t pt-6 space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="h-5 w-5 text-primary" />
-                    <h3 className="font-medium">AI Features</h3>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="h-5 w-5 text-primary" />
+                      <h3 className="font-medium">AI Features</h3>
+                      <Badge variant="outline" className="text-xs">Optional</Badge>
+                    </div>
                   </div>
+
+                  <p className="text-sm text-muted-foreground">
+                    AI-powered features include automatic wine label scanning and smart autofill. 
+                    These are completely optional and the platform works fully without them.
+                  </p>
                   
-                  {isLovableCloud ? (
-                    <Alert>
-                      <CheckCircle2 className="h-4 w-4 text-green-500" />
-                      <AlertDescription className="space-y-2">
-                        <p>You're running on Lovable Cloud. AI features are automatically available.</p>
-                        <a
-                          href="https://lovable.dev"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
-                        >
-                          <ExternalLink className="h-3 w-3" />
-                          Learn more about Lovable
-                        </a>
-                      </AlertDescription>
-                    </Alert>
-                  ) : (
-                    <>
-                      <Alert>
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription className="space-y-2">
-                          <p>Self-hosted installation detected. AI features require a Lovable API key.</p>
-                          <a
-                            href="https://lovable.dev"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
-                          >
-                            <ExternalLink className="h-3 w-3" />
-                            Get Lovable API Key
-                          </a>
-                        </AlertDescription>
-                      </Alert>
-
-                      {aiEnabled && (
-                        <div className="space-y-2">
-                          <Label htmlFor="lovableApiKey" className="flex items-center gap-2">
-                            <Key className="h-4 w-4" />
-                            Lovable API Key *
-                          </Label>
-                          <div className="flex gap-2">
-                            <Input
-                              id="lovableApiKey"
-                              type="password"
-                              value={lovableApiKey}
-                              onChange={(e) => {
-                                setLovableApiKey(e.target.value);
-                                setLovableValidated(false);
-                              }}
-                              placeholder="Enter your Lovable API key..."
-                              className={lovableValidated ? 'border-green-500' : ''}
-                            />
-                            <Button
-                              type="button"
-                              variant="outline"
-                              onClick={validateAndSaveLovableKey}
-                              disabled={validatingLovable || !lovableApiKey.trim()}
-                            >
-                              {validatingLovable ? (
-                                <Loader2 className="h-4 w-4 animate-spin" />
-                              ) : lovableValidated ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                              ) : (
-                                'Save'
-                              )}
-                            </Button>
-                          </div>
-                          {lovableValidated && (
-                            <p className="text-xs text-green-600 flex items-center gap-1">
-                              <CheckCircle2 className="h-3 w-3" />
-                              API key saved
-                            </p>
-                          )}
-                          <p className="text-xs text-muted-foreground">
-                            Required for AI features like label scanning and autofill.
-                          </p>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
                     <Checkbox
                       id="aiEnabled"
                       checked={aiEnabled}
                       onCheckedChange={(checked) => setAiEnabled(checked === true)}
                     />
-                    <Label htmlFor="aiEnabled" className="text-sm font-normal cursor-pointer">
+                    <Label htmlFor="aiEnabled" className="text-sm font-normal cursor-pointer flex-1">
                       Enable AI features (Autofill from labels, Translation)
                     </Label>
                   </div>
+
+                  {aiEnabled && (
+                    <>
+                      {isLovableCloud ? (
+                        <Alert>
+                          <CheckCircle2 className="h-4 w-4 text-green-500" />
+                          <AlertDescription className="space-y-2">
+                            <p>You're running on Lovable Cloud. AI features are automatically available — no API key needed.</p>
+                          </AlertDescription>
+                        </Alert>
+                      ) : (
+                        <>
+                          <Alert>
+                            <Key className="h-4 w-4" />
+                            <AlertDescription className="space-y-2">
+                              <p>Self-hosted installation: A Lovable API key is needed for AI features.</p>
+                              <a
+                                href="https://lovable.dev"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-primary hover:underline text-sm font-medium"
+                              >
+                                <ExternalLink className="h-3 w-3" />
+                                Get Lovable API Key
+                              </a>
+                            </AlertDescription>
+                          </Alert>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="lovableApiKey" className="flex items-center gap-2">
+                              <Key className="h-4 w-4" />
+                              Lovable API Key
+                            </Label>
+                            <div className="flex gap-2">
+                              <Input
+                                id="lovableApiKey"
+                                type="password"
+                                value={lovableApiKey}
+                                onChange={(e) => {
+                                  setLovableApiKey(e.target.value);
+                                  setLovableValidated(false);
+                                }}
+                                placeholder="Enter your Lovable API key..."
+                                className={lovableValidated ? 'border-green-500' : ''}
+                              />
+                              <Button
+                                type="button"
+                                variant="outline"
+                                onClick={validateAndSaveLovableKey}
+                                disabled={validatingLovable || !lovableApiKey.trim()}
+                              >
+                                {validatingLovable ? (
+                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                ) : lovableValidated ? (
+                                  <CheckCircle2 className="h-4 w-4 text-green-500" />
+                                ) : (
+                                  'Save'
+                                )}
+                              </Button>
+                            </div>
+                            {lovableValidated && (
+                              <p className="text-xs text-green-600 flex items-center gap-1">
+                                <CheckCircle2 className="h-3 w-3" />
+                                API key saved
+                              </p>
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )}
                   
                   {!aiEnabled && (
                     <p className="text-xs text-muted-foreground">
-                      AI features like automatic label scanning will be hidden from the interface.
+                      You can enable AI features later by updating your site configuration.
                     </p>
                   )}
                 </div>

@@ -59,31 +59,47 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { userEmail, passportName, passportUrl, requestedAt } = parseResult.data;
 
-    // Get Resend API key from site_config
+    // Get Resend API key from encrypted storage
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Fetch Resend API key
-    const { data: configData, error: configError } = await supabase
+    // Fetch decrypted Resend API key
+    const { data: resendApiKey, error: keyError } = await supabase.rpc(
+      "get_decrypted_secret",
+      { p_name: "resend_api_key" }
+    );
+
+    if (keyError || !resendApiKey) {
+      // Fall back to legacy site_config for backwards compatibility
+      const { data: legacyData } = await supabase
+        .from("site_config")
+        .select("value")
+        .eq("key", "resend_api_key_secret")
+        .maybeSingle();
+      
+      if (!legacyData?.value) {
+        throw new Error("Resend API key not configured. Please set it up in the Setup page.");
+      }
+    }
+
+    const RESEND_API_KEY = resendApiKey || (await supabase
+      .from("site_config")
+      .select("value")
+      .eq("key", "resend_api_key_secret")
+      .maybeSingle()).data?.value;
+
+    // Fetch config data
+    const { data: configData } = await supabase
       .from("site_config")
       .select("key, value")
-      .in("key", ["resend_api_key_secret", "sender_email", "company_name"]);
-
-    if (configError) {
-      throw new Error("Failed to fetch configuration");
-    }
+      .in("key", ["sender_email", "company_name"]);
 
     const config: Record<string, string> = {};
     configData?.forEach((row: { key: string; value: string | null }) => {
       config[row.key] = row.value || "";
     });
 
-    if (!config.resend_api_key_secret) {
-      throw new Error("Resend API key not configured. Please set it up in the Setup page.");
-    }
-
-    const RESEND_API_KEY = config.resend_api_key_secret;
     const senderEmail = config.sender_email;
     const companyName = config.company_name || "Digital - Product - Passports .com";
 

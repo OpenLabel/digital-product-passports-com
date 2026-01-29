@@ -110,11 +110,21 @@ serve(async (req) => {
 
     const { image } = parseResult.data;
 
-    // Get Lovable API key - first try environment variable, then fall back to database
+    // Get Lovable API key - first try environment variable, then encrypted storage, then legacy
     let LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
-      // Fall back to database for self-hosted instances
+      // Try encrypted storage first
+      const { data: encryptedKey } = await supabaseService.rpc(
+        "get_decrypted_secret",
+        { p_name: "lovable_api_key" }
+      );
+      
+      LOVABLE_API_KEY = encryptedKey || null;
+    }
+    
+    if (!LOVABLE_API_KEY) {
+      // Fall back to legacy site_config for backwards compatibility
       const { data: configData } = await supabaseService
         .from("site_config")
         .select("value")
