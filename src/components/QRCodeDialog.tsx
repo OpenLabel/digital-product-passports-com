@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
-import { Copy, Check, Download } from 'lucide-react';
+import { Copy, Check, Download, ExternalLink } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -256,6 +256,15 @@ export function QRCodeDialog({
             <div className="flex-1 text-sm text-muted-foreground bg-muted rounded-md px-3 py-2 truncate">
               {url}
             </div>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => window.open(url, '_blank')}
+              className="flex-shrink-0"
+              title={t('qrDialog.openPassport', 'Open Passport')}
+            >
+              <ExternalLink className="h-4 w-4" />
+            </Button>
             <Button
               variant="outline"
               size="icon"
