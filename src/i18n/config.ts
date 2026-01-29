@@ -31,6 +31,7 @@ import ro from './locales/ro.json';
 import sk from './locales/sk.json';
 import sl from './locales/sl.json';
 import sv from './locales/sv.json';
+import tr from './locales/tr.json';
 import zh from './locales/zh.json';
 
 export const supportedLanguages = [
@@ -62,6 +63,7 @@ export const supportedLanguages = [
   { code: 'sk', name: 'Slovak', nativeName: 'Slovenčina' },
   { code: 'sl', name: 'Slovenian', nativeName: 'Slovenščina' },
   { code: 'sv', name: 'Swedish', nativeName: 'Svenska' },
+  { code: 'tr', name: 'Turkish', nativeName: 'Türkçe' },
   { code: 'zh', name: 'Chinese', nativeName: '中文' },
 ] as const;
 
@@ -96,6 +98,7 @@ const resources = {
   sk: { translation: sk },
   sl: { translation: sl },
   sv: { translation: sv },
+  tr: { translation: tr },
   zh: { translation: zh },
 };
 
