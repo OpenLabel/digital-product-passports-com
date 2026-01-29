@@ -108,3 +108,12 @@ export const getAllIngredients = (): WineIngredient[] => {
 export const getIngredientById = (id: string): WineIngredient | undefined => {
   return getAllIngredients().find((ing) => ing.id === id);
 };
+
+export const getIngredientCategory = (ingredientId: string): string | undefined => {
+  for (const category of wineIngredientCategories) {
+    if (category.ingredients.some(ing => ing.id === ingredientId)) {
+      return category.id;
+    }
+  }
+  return undefined;
+};
