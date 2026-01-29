@@ -1,4 +1,4 @@
-# Digital Product Passports .com
+# Digital-Product-Passports.com
 
 An open-source, self-hostable Digital Product Passport (DPP) generator for EU compliance. Supports wine e-labels, batteries, textiles, electronics, toys, and more product categories.
 

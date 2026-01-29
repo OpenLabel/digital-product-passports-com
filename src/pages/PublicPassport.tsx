@@ -196,7 +196,7 @@ export default function PublicPassport() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Digital Product Passports .com
+                  Digital<span className="text-muted-foreground/60 font-normal">-</span>Product<span className="text-muted-foreground/60 font-normal">-</span>Passports<span className="text-muted-foreground font-normal">.com</span>
                 </a>
               </p>
             </div>
