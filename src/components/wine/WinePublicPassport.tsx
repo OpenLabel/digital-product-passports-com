@@ -43,7 +43,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const region = categoryData.region as string | undefined;
   const denomination = categoryData.denomination as string | undefined;
   const sugarClassification = categoryData.sugar_classification as string | undefined;
-  const productType = categoryData.product_type as string | undefined;
 
   // Producer info
   const producerName = categoryData.producer_name as string | undefined;
@@ -105,7 +104,7 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
     return `${value} ${unit}`;
   };
 
-  const hasProductInfo = volume || grapeVariety || vintage || country || region || denomination || sugarClassification || productType;
+  const hasProductInfo = volume || grapeVariety || vintage || country || region || denomination || sugarClassification;
   const hasProducerInfo = producerName || bottlerInfo;
   const hasCertifications = hasPdo || hasPgi || isOrganicEu || isBiodynamic || isHve || isTerraVitis;
   const hasNutritionalInfo = alcoholPercent || energyKcal || energyKj || carbohydrates !== undefined || sugar !== undefined;
@@ -130,9 +129,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
               🍷 Wine Product Passport
             </Badge>
             <h1 className="text-3xl font-bold mb-2" data-testid="passport-name">{passport.name}</h1>
-            {productType && (
-              <p className="text-muted-foreground capitalize" data-testid="product-type">{productType}</p>
-            )}
           </div>
 
           {/* Product Image */}
@@ -430,12 +426,13 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   );
 }
 
-// Export field keys for testing
+// Export field keys for testing - these are the ONLY fields that should be saved/displayed
 export const WINE_PASSPORT_FIELDS = {
-  productInfo: ['volume', 'grape_variety', 'vintage', 'country', 'region', 'denomination', 'sugar_classification', 'product_type'],
+  productInfo: ['volume', 'volume_unit', 'grape_variety', 'vintage', 'country', 'region', 'denomination', 'sugar_classification'],
   producer: ['producer_name', 'bottler_info'],
   certifications: ['has_pdo', 'has_pgi', 'is_organic_eu', 'is_biodynamic', 'is_hve', 'is_terra_vitis'],
   nutritional: ['alcohol_percent', 'energy_kcal', 'energy_kj', 'carbohydrates', 'sugar', 'residual_sugar', 'total_acidity', 'glycerine', 'fat', 'saturated_fat', 'proteins', 'salt'],
+  manualOverrides: ['energy_kcal_manual', 'energy_kj_manual', 'carbohydrates_manual', 'sugar_manual'],
   displayOptions: ['show_alcohol_on_label', 'show_residual_sugar_on_label', 'show_total_acidity_on_label'],
   ingredients: ['ingredients'],
   recycling: ['recycling_components', 'recycling_pdf_url', 'recycling_mode'],

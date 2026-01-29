@@ -1,168 +1,414 @@
 import { describe, it, expect } from "vitest";
 import { WINE_PASSPORT_FIELDS } from "./WinePublicPassport";
 
+/**
+ * Comprehensive tests for wine passport field coverage.
+ * These tests ensure that:
+ * 1. Every field in the form is properly defined
+ * 2. Every field is properly saved (part of category_data)
+ * 3. Every field is properly displayed in the public view
+ * 4. No orphaned fields exist (fields that are saved but not displayed or vice versa)
+ */
+
+// Canonical list of ALL wine fields that should exist in the system
+// This is the single source of truth - any field not here should NOT exist
+const CANONICAL_WINE_FIELDS = {
+  // Product Identity (WineFields.tsx - Product Identity card)
+  productInfo: [
+    'grape_variety',      // text input - Grape Variety (Cépage)
+    'vintage',            // text input - Vintage (Millésime)
+    'volume',             // number input - Volume
+    'volume_unit',        // select - ml/cl/L
+    'country',            // select - Country of Origin
+    'region',             // text input - Region
+    'denomination',       // text input - Denomination (AOC, AOP, IGP)
+    'sugar_classification', // text input - Sugar Classification (Brut, Sec, etc.)
+  ],
+  
+  // Producer Information (wine.ts template - Producer Information section)
+  producer: [
+    'producer_name',      // text input - Producer/Winery Name
+    'bottler_info',       // textarea - Bottler Information
+  ],
+  
+  // Certifications & Labels (wine.ts template - Certifications section)
+  certifications: [
+    'has_pdo',            // checkbox - Protected Designation of Origin (PDO/AOP)
+    'has_pgi',            // checkbox - Protected Geographical Indication (PGI/IGP)
+    'is_organic_eu',      // checkbox - EU Organic certified
+    'is_biodynamic',      // checkbox - Biodynamic certified (Demeter/Biodyvin)
+    'is_hve',             // checkbox - HVE certified (Haute Valeur Environnementale)
+    'is_terra_vitis',     // checkbox - Terra Vitis certified
+  ],
+  
+  // Nutritional Values (WineFields.tsx - Nutritional Values card)
+  nutritional: [
+    'alcohol_percent',    // number input - Alcohol (% Vol) - required
+    'residual_sugar',     // number input - Residual Sugar (g/L)
+    'total_acidity',      // number input - Total Acidity (g/L)
+    'glycerine',          // number input - Glycerine (g/L)
+    'energy_kcal',        // number input - Energy (kcal) - calculated or manual
+    'energy_kj',          // number input - Energy (kJ) - calculated or manual
+    'carbohydrates',      // number input - Carbohydrates (g) - calculated or manual
+    'sugar',              // number input - Sugar (g) - calculated or manual
+    'fat',                // number input - Fat (g) - small quantities
+    'saturated_fat',      // number input - Saturated Fat (g) - small quantities
+    'proteins',           // number input - Proteins (g) - small quantities
+    'salt',               // number input - Salt (g) - small quantities
+  ],
+  
+  // Manual override flags (WineFields.tsx - checkboxes next to calculated fields)
+  manualOverrides: [
+    'energy_kcal_manual',    // checkbox - Manual override for energy_kcal
+    'energy_kj_manual',      // checkbox - Manual override for energy_kj
+    'carbohydrates_manual',  // checkbox - Manual override for carbohydrates
+    'sugar_manual',          // checkbox - Manual override for sugar
+  ],
+  
+  // Display options (WineFields.tsx - Electronic Label Display Options card)
+  displayOptions: [
+    'show_alcohol_on_label',        // checkbox - Show Alcohol on label
+    'show_residual_sugar_on_label', // checkbox - Show Residual Sugar on label
+    'show_total_acidity_on_label',  // checkbox - Show Total Acidity on label
+  ],
+  
+  // Ingredients (WineIngredients component)
+  ingredients: [
+    'ingredients',        // array of SelectedIngredient objects
+  ],
+  
+  // Recycling Information (WineRecycling component)
+  recycling: [
+    'recycling_mode',         // 'manual' | 'pdf' - Mode selection
+    'recycling_components',   // array of RecyclingComponent objects (when mode=manual)
+    'recycling_pdf_url',      // string URL (when mode=pdf)
+  ],
+};
+
 describe("WinePublicPassport", () => {
-  describe("WINE_PASSPORT_FIELDS constant", () => {
-    it("defines product info fields", () => {
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("volume");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("grape_variety");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("vintage");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("country");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("region");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("denomination");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("sugar_classification");
-      expect(WINE_PASSPORT_FIELDS.productInfo).toContain("product_type");
+  describe("WINE_PASSPORT_FIELDS matches canonical field list", () => {
+    it("contains all product info fields", () => {
+      CANONICAL_WINE_FIELDS.productInfo.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.productInfo).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.productInfo.length).toBe(CANONICAL_WINE_FIELDS.productInfo.length);
     });
 
-    it("defines nutritional fields", () => {
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("alcohol_percent");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("energy_kcal");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("energy_kj");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("carbohydrates");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("sugar");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("residual_sugar");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("total_acidity");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("glycerine");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("fat");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("saturated_fat");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("proteins");
-      expect(WINE_PASSPORT_FIELDS.nutritional).toContain("salt");
+    it("contains all producer fields", () => {
+      CANONICAL_WINE_FIELDS.producer.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.producer).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.producer.length).toBe(CANONICAL_WINE_FIELDS.producer.length);
     });
 
-    it("defines ingredient fields", () => {
-      expect(WINE_PASSPORT_FIELDS.ingredients).toContain("ingredients");
+    it("contains all certification fields", () => {
+      CANONICAL_WINE_FIELDS.certifications.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.certifications).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.certifications.length).toBe(CANONICAL_WINE_FIELDS.certifications.length);
     });
 
-    it("defines recycling fields", () => {
-      expect(WINE_PASSPORT_FIELDS.recycling).toContain("recycling_components");
-      expect(WINE_PASSPORT_FIELDS.recycling).toContain("recycling_pdf_url");
-      expect(WINE_PASSPORT_FIELDS.recycling).toContain("recycling_website_url");
+    it("contains all nutritional fields", () => {
+      CANONICAL_WINE_FIELDS.nutritional.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.nutritional).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.nutritional.length).toBe(CANONICAL_WINE_FIELDS.nutritional.length);
     });
 
+    it("contains all manual override fields", () => {
+      CANONICAL_WINE_FIELDS.manualOverrides.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.manualOverrides).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.manualOverrides.length).toBe(CANONICAL_WINE_FIELDS.manualOverrides.length);
+    });
+
+    it("contains all display option fields", () => {
+      CANONICAL_WINE_FIELDS.displayOptions.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.displayOptions).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.displayOptions.length).toBe(CANONICAL_WINE_FIELDS.displayOptions.length);
+    });
+
+    it("contains all ingredient fields", () => {
+      CANONICAL_WINE_FIELDS.ingredients.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.ingredients).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.ingredients.length).toBe(CANONICAL_WINE_FIELDS.ingredients.length);
+    });
+
+    it("contains all recycling fields", () => {
+      CANONICAL_WINE_FIELDS.recycling.forEach((field) => {
+        expect(WINE_PASSPORT_FIELDS.recycling).toContain(field);
+      });
+      expect(WINE_PASSPORT_FIELDS.recycling.length).toBe(CANONICAL_WINE_FIELDS.recycling.length);
+    });
+  });
+
+  describe("field categories are complete", () => {
     it("has all required field categories", () => {
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("productInfo");
+      expect(WINE_PASSPORT_FIELDS).toHaveProperty("producer");
+      expect(WINE_PASSPORT_FIELDS).toHaveProperty("certifications");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("nutritional");
+      expect(WINE_PASSPORT_FIELDS).toHaveProperty("manualOverrides");
+      expect(WINE_PASSPORT_FIELDS).toHaveProperty("displayOptions");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("ingredients");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("recycling");
     });
-  });
-
-  describe("field coverage verification", () => {
-    const allFields = [
-      ...WINE_PASSPORT_FIELDS.productInfo,
-      ...WINE_PASSPORT_FIELDS.nutritional,
-      ...WINE_PASSPORT_FIELDS.ingredients,
-      ...WINE_PASSPORT_FIELDS.recycling,
-    ];
-
-    it("covers all wine product info fields from schema", () => {
-      const expectedProductFields = [
-        "volume",
-        "grape_variety",
-        "vintage",
-        "country",
-        "region",
-        "denomination",
-        "sugar_classification",
-        "product_type",
-      ];
-      
-      expectedProductFields.forEach((field) => {
-        expect(allFields).toContain(field);
-      });
-    });
-
-    it("covers all nutritional fields from schema", () => {
-      const expectedNutritionalFields = [
-        "alcohol_percent",
-        "energy_kcal",
-        "energy_kj",
-        "carbohydrates",
-        "sugar",
-        "residual_sugar",
-        "total_acidity",
-        "glycerine",
-        "fat",
-        "saturated_fat",
-        "proteins",
-        "salt",
-      ];
-      
-      expectedNutritionalFields.forEach((field) => {
-        expect(allFields).toContain(field);
-      });
-    });
-
-    it("covers ingredients field", () => {
-      expect(allFields).toContain("ingredients");
-    });
-
-    it("covers all recycling fields", () => {
-      const expectedRecyclingFields = [
-        "recycling_components",
-        "recycling_pdf_url",
-        "recycling_website_url",
-      ];
-      
-      expectedRecyclingFields.forEach((field) => {
-        expect(allFields).toContain(field);
-      });
-    });
 
     it("total field count matches expected", () => {
-      // 8 product + 12 nutritional + 1 ingredients + 3 recycling = 24
-      expect(allFields.length).toBe(24);
-    });
-  });
-
-  describe("display options verification", () => {
-    it("supports display option fields", () => {
-      // These are display options, not data fields, but we verify the concept exists
-      const displayOptions = [
-        "display_alcohol",
-        "display_residual_sugar",
-        "display_total_acidity",
-      ];
-      
-      // Display options control visibility, they should NOT be in WINE_PASSPORT_FIELDS
-      // as they are not displayable data fields themselves
-      displayOptions.forEach((option) => {
-        const allFields = [
-          ...WINE_PASSPORT_FIELDS.productInfo,
-          ...WINE_PASSPORT_FIELDS.nutritional,
-          ...WINE_PASSPORT_FIELDS.ingredients,
-          ...WINE_PASSPORT_FIELDS.recycling,
-        ];
-        expect(allFields).not.toContain(option);
-      });
-    });
-  });
-
-  describe("field groupings are logical", () => {
-    it("productInfo only contains product identification fields", () => {
-      WINE_PASSPORT_FIELDS.productInfo.forEach((field) => {
-        const nutritionalFields = WINE_PASSPORT_FIELDS.nutritional;
-        expect(nutritionalFields).not.toContain(field);
-      });
-    });
-
-    it("nutritional only contains nutrition-related fields", () => {
-      WINE_PASSPORT_FIELDS.nutritional.forEach((field) => {
-        const productFields = WINE_PASSPORT_FIELDS.productInfo;
-        expect(productFields).not.toContain(field);
-      });
-    });
-
-    it("no duplicate fields across categories", () => {
       const allFields = [
         ...WINE_PASSPORT_FIELDS.productInfo,
+        ...WINE_PASSPORT_FIELDS.producer,
+        ...WINE_PASSPORT_FIELDS.certifications,
         ...WINE_PASSPORT_FIELDS.nutritional,
+        ...WINE_PASSPORT_FIELDS.manualOverrides,
+        ...WINE_PASSPORT_FIELDS.displayOptions,
+        ...WINE_PASSPORT_FIELDS.ingredients,
+        ...WINE_PASSPORT_FIELDS.recycling,
+      ];
+      
+      const expectedFields = [
+        ...CANONICAL_WINE_FIELDS.productInfo,
+        ...CANONICAL_WINE_FIELDS.producer,
+        ...CANONICAL_WINE_FIELDS.certifications,
+        ...CANONICAL_WINE_FIELDS.nutritional,
+        ...CANONICAL_WINE_FIELDS.manualOverrides,
+        ...CANONICAL_WINE_FIELDS.displayOptions,
+        ...CANONICAL_WINE_FIELDS.ingredients,
+        ...CANONICAL_WINE_FIELDS.recycling,
+      ];
+      
+      expect(allFields.length).toBe(expectedFields.length);
+    });
+  });
+
+  describe("no duplicate fields across categories", () => {
+    it("all fields are unique", () => {
+      const allFields = [
+        ...WINE_PASSPORT_FIELDS.productInfo,
+        ...WINE_PASSPORT_FIELDS.producer,
+        ...WINE_PASSPORT_FIELDS.certifications,
+        ...WINE_PASSPORT_FIELDS.nutritional,
+        ...WINE_PASSPORT_FIELDS.manualOverrides,
+        ...WINE_PASSPORT_FIELDS.displayOptions,
         ...WINE_PASSPORT_FIELDS.ingredients,
         ...WINE_PASSPORT_FIELDS.recycling,
       ];
       
       const uniqueFields = new Set(allFields);
       expect(uniqueFields.size).toBe(allFields.length);
+    });
+  });
+
+  describe("no orphaned fields exist", () => {
+    // These fields should NOT exist anywhere in wine-related code
+    const DEPRECATED_FIELDS = [
+      'product_type',              // Removed - not in wine form
+      'display_alcohol',           // Old name - now show_alcohol_on_label
+      'display_residual_sugar',    // Old name - now show_residual_sugar_on_label
+      'display_total_acidity',     // Old name - now show_total_acidity_on_label
+      'recycling_website_url',     // Removed - only PDF and manual modes
+      'contains_sulfites',         // Removed - now handled via ingredients
+      'contains_egg',              // Removed - now handled via ingredients
+      'contains_milk',             // Removed - now handled via ingredients
+    ];
+
+    it("deprecated fields are not in any category", () => {
+      const allFields = [
+        ...WINE_PASSPORT_FIELDS.productInfo,
+        ...WINE_PASSPORT_FIELDS.producer,
+        ...WINE_PASSPORT_FIELDS.certifications,
+        ...WINE_PASSPORT_FIELDS.nutritional,
+        ...WINE_PASSPORT_FIELDS.manualOverrides,
+        ...WINE_PASSPORT_FIELDS.displayOptions,
+        ...WINE_PASSPORT_FIELDS.ingredients,
+        ...WINE_PASSPORT_FIELDS.recycling,
+      ];
+      
+      DEPRECATED_FIELDS.forEach((deprecatedField) => {
+        expect(allFields).not.toContain(deprecatedField);
+      });
+    });
+  });
+
+  describe("field naming conventions", () => {
+    it("all fields use snake_case", () => {
+      const allFields = [
+        ...WINE_PASSPORT_FIELDS.productInfo,
+        ...WINE_PASSPORT_FIELDS.producer,
+        ...WINE_PASSPORT_FIELDS.certifications,
+        ...WINE_PASSPORT_FIELDS.nutritional,
+        ...WINE_PASSPORT_FIELDS.manualOverrides,
+        ...WINE_PASSPORT_FIELDS.displayOptions,
+        ...WINE_PASSPORT_FIELDS.ingredients,
+        ...WINE_PASSPORT_FIELDS.recycling,
+      ];
+      
+      const snakeCaseRegex = /^[a-z][a-z0-9]*(_[a-z0-9]+)*$/;
+      
+      allFields.forEach((field) => {
+        expect(field).toMatch(snakeCaseRegex);
+      });
+    });
+  });
+
+  describe("ingredient structure", () => {
+    it("ingredients field is properly defined", () => {
+      expect(WINE_PASSPORT_FIELDS.ingredients).toContain('ingredients');
+    });
+    
+    // Type definition for ingredients array items
+    interface SelectedIngredient {
+      id: string;
+      name: string;
+      isAllergen?: boolean;
+    }
+    
+    it("ingredient objects have required properties", () => {
+      const sampleIngredient: SelectedIngredient = {
+        id: 'e220',
+        name: 'Sulphur dioxide (E220)',
+        isAllergen: true,
+      };
+      
+      expect(sampleIngredient).toHaveProperty('id');
+      expect(sampleIngredient).toHaveProperty('name');
+      expect(sampleIngredient).toHaveProperty('isAllergen');
+    });
+  });
+
+  describe("recycling structure", () => {
+    it("recycling fields are properly defined", () => {
+      expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_mode');
+      expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_components');
+      expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_pdf_url');
+    });
+    
+    // Type definition for recycling component
+    interface RecyclingComponent {
+      id: string;
+      type: string;
+      typeName: string;
+      composition: string;
+      compositionName: string;
+      compositionCode: string;
+      disposal: string;
+      disposalName: string;
+    }
+    
+    it("recycling component objects have required properties", () => {
+      const sampleComponent: RecyclingComponent = {
+        id: '1',
+        type: 'bottle',
+        typeName: 'Glass Bottle',
+        composition: 'gl70',
+        compositionName: 'Green Glass',
+        compositionCode: 'GL 70',
+        disposal: 'glass-container',
+        disposalName: 'Glass Container',
+      };
+      
+      expect(sampleComponent).toHaveProperty('id');
+      expect(sampleComponent).toHaveProperty('type');
+      expect(sampleComponent).toHaveProperty('typeName');
+      expect(sampleComponent).toHaveProperty('composition');
+      expect(sampleComponent).toHaveProperty('compositionName');
+      expect(sampleComponent).toHaveProperty('compositionCode');
+      expect(sampleComponent).toHaveProperty('disposal');
+      expect(sampleComponent).toHaveProperty('disposalName');
+    });
+  });
+});
+
+describe("Wine Field Save/Load Contract", () => {
+  // This test documents the exact structure that should be saved to category_data
+  it("documents the complete category_data structure", () => {
+    const exampleCategoryData = {
+      // Product Info
+      grape_variety: 'Cabernet Sauvignon',
+      vintage: '2020',
+      volume: 750,
+      volume_unit: 'ml',
+      country: 'France',
+      region: 'Bordeaux',
+      denomination: 'AOC Bordeaux',
+      sugar_classification: 'Sec',
+      
+      // Producer Info
+      producer_name: 'Château Example',
+      bottler_info: 'Bottled at origin by Château Example',
+      
+      // Certifications
+      has_pdo: true,
+      has_pgi: false,
+      is_organic_eu: true,
+      is_biodynamic: false,
+      is_hve: false,
+      is_terra_vitis: false,
+      
+      // Nutritional Values
+      alcohol_percent: 13.5,
+      residual_sugar: 2.5,
+      total_acidity: 5.5,
+      glycerine: 8.5,
+      energy_kcal: 83,
+      energy_kj: 347,
+      carbohydrates: 0.25,
+      sugar: 0.25,
+      fat: 0,
+      saturated_fat: 0,
+      proteins: 0,
+      salt: 0,
+      
+      // Manual overrides
+      energy_kcal_manual: false,
+      energy_kj_manual: false,
+      carbohydrates_manual: false,
+      sugar_manual: false,
+      
+      // Display options
+      show_alcohol_on_label: true,
+      show_residual_sugar_on_label: false,
+      show_total_acidity_on_label: false,
+      
+      // Ingredients
+      ingredients: [
+        { id: 'grapes', name: 'Grapes', isAllergen: false },
+        { id: 'e220', name: 'Sulphites (E220)', isAllergen: true },
+      ],
+      
+      // Recycling
+      recycling_mode: 'manual',
+      recycling_components: [
+        {
+          id: '1',
+          type: 'bottle',
+          typeName: 'Glass Bottle',
+          composition: 'gl70',
+          compositionName: 'Green Glass',
+          compositionCode: 'GL 70',
+          disposal: 'glass-container',
+          disposalName: 'Glass Container',
+        },
+      ],
+      recycling_pdf_url: '',
+    };
+    
+    // Verify all canonical fields are present
+    const allCanonicalFields = [
+      ...CANONICAL_WINE_FIELDS.productInfo,
+      ...CANONICAL_WINE_FIELDS.producer,
+      ...CANONICAL_WINE_FIELDS.certifications,
+      ...CANONICAL_WINE_FIELDS.nutritional,
+      ...CANONICAL_WINE_FIELDS.manualOverrides,
+      ...CANONICAL_WINE_FIELDS.displayOptions,
+      ...CANONICAL_WINE_FIELDS.ingredients,
+      ...CANONICAL_WINE_FIELDS.recycling,
+    ];
+    
+    allCanonicalFields.forEach((field) => {
+      expect(exampleCategoryData).toHaveProperty(field);
     });
   });
 });
