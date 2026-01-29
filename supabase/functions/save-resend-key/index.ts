@@ -19,20 +19,37 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("resendApiKey is required");
     }
 
-    // Validate the API key by making a test request to Resend
-    const testResponse = await fetch("https://api.resend.com/api-keys", {
+    // Validate the API key format (Resend keys start with "re_")
+    if (!resendApiKey.startsWith('re_')) {
+      throw new Error("Invalid Resend API key format. Keys should start with 're_'");
+    }
+
+    if (resendApiKey.length < 20) {
+      throw new Error("Invalid Resend API key format. Key appears too short.");
+    }
+
+    // Test the API key by fetching domains (works with most key permissions)
+    const testResponse = await fetch("https://api.resend.com/domains", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${resendApiKey}`,
       },
     });
 
-    if (!testResponse.ok) {
-      const errorData = await testResponse.json();
-      throw new Error(errorData.message || "Invalid Resend API key");
+    // If we get 401, the key is invalid
+    if (testResponse.status === 401) {
+      throw new Error("Invalid Resend API key");
     }
 
-    // Store the API key in the site_config table (masked for display)
+    // If we get 403 (forbidden), the key is valid but restricted - that's OK for sending emails
+    // If we get 200, the key has full access
+    // Both are acceptable
+    if (testResponse.status !== 200 && testResponse.status !== 403) {
+      const errorData = await testResponse.json();
+      throw new Error(errorData.message || "Failed to validate Resend API key");
+    }
+
+    // Store the API key in the site_config table
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
@@ -44,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
       .from("site_config")
       .upsert({ key: "resend_api_key", value: maskedKey }, { onConflict: "key" });
 
-    // Store the actual key in a separate config entry (encrypted in DB)
+    // Store the actual key in a separate config entry
     await supabase
       .from("site_config")
       .upsert({ key: "resend_api_key_secret", value: resendApiKey }, { onConflict: "key" });
