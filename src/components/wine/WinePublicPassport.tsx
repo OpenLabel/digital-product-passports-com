@@ -143,23 +143,6 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
             </Card>
           )}
 
-          {/* Certifications & Labels */}
-          {hasCertifications && (
-            <Card data-testid="certifications-section">
-              <CardHeader>
-                <CardTitle>Certifications & Labels</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {certificationBadges.map((cert, index) => (
-                    <Badge key={index} variant={cert.variant} className="text-sm py-1 px-3">
-                      {cert.label}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          )}
 
           {/* Product Information */}
           {hasProductInfo && (
@@ -212,6 +195,24 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
                     </div>
                   )}
                 </dl>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Certifications & Labels */}
+          {hasCertifications && (
+            <Card data-testid="certifications-section">
+              <CardHeader>
+                <CardTitle>Certifications & Labels</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {certificationBadges.map((cert, index) => (
+                    <Badge key={index} variant={cert.variant} className="text-sm py-1 px-3">
+                      {cert.label}
+                    </Badge>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           )}
