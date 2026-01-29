@@ -293,7 +293,7 @@
     "allergenNotice": "过敏原提示",
     "allergenWarning": "本葡萄酒含有必须声明的过敏原：",
     "selectIngredientsTitle": "从列表中选择葡萄酒配料",
-    "noIngredientsFound": "未找到与"{{search}}"匹配的配料",
+    "noIngredientsFound": "未找到与「{{search}}」匹配的配料",
     "recycling": "回收信息",
     "recyclingDescription": "选择您葡萄酒包装使用的材料。",
     "recyclingNote": "请查阅当地回收指南。分离各组件并正确处理。",
