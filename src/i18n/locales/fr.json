@@ -18,7 +18,8 @@
     "success": "Succès",
     "warning": "Avertissement",
     "openSource": "Open Source",
-    "language": "Langue"
+    "language": "Langue",
+    "custom": "Personnalisé"
   },
   "nav": {
     "signIn": "Connexion",
@@ -281,7 +282,20 @@
       "preservatives": "Conservateurs et antioxydants",
       "processing_aids": "Auxiliaires technologiques"
     },
+    "ingredientsDescription": "Sélectionnez des ingrédients dans la liste des ingrédients du vin ou ajoutez-en de personnalisés. Triez-les par quantité (du plus grand au plus petit).",
+    "chooseIngredients": "Choisir les ingrédients du vin",
+    "chooseIngredientsDescription": "Sélectionnez tous les ingrédients qui font partie de la composition de votre vin. Si nécessaire, vous pouvez ajouter un ingrédient personnalisé.",
+    "selectFromList": "Sélectionner un ingrédient dans la liste",
+    "defineCustom": "Définir un ingrédient personnalisé",
+    "sortIngredients": "Trier les ingrédients",
+    "sortIngredientsDescription": "La liste des ingrédients doit être triée de la plus grande à la plus petite quantité. Les quantités inférieures à 0,1 g/100 ml n'ont pas besoin d'être triées.",
+    "allergen": "Allergène",
+    "allergenNotice": "Avis allergène",
+    "allergenWarning": "Ce vin contient des allergènes qui doivent être déclarés :",
+    "selectIngredientsTitle": "Sélectionner les ingrédients du vin dans la liste",
+    "noIngredientsFound": "Aucun ingrédient trouvé correspondant à « {{search}} »",
     "recycling": "Informations de recyclage",
+    "recyclingDescription": "Sélectionnez les matériaux utilisés pour l'emballage de votre vin.",
     "recyclingNote": "Vérifiez vos consignes de recyclage locales. Séparez les composants et éliminez-les correctement.",
     "legalInfo": "Informations légales",
     "negligibleAmounts": "Contient des quantités négligeables de matières grasses, saturées, protéines et sel.",
@@ -345,7 +359,19 @@
       "capsule": "Capsule",
       "label": "Étiquette",
       "box": "Boîte"
-    }
+    },
+    "selectMaterial": "Sélectionner le matériau",
+    "individualComponents": "Composants individuels",
+    "compositeComponents": "Composants composites",
+    "customMaterial": "Matériau personnalisé",
+    "addCustomMaterial": "Ajouter un matériau personnalisé",
+    "disposalAdvice": "Conseil d'élimination",
+    "addMaterial": "Ajouter un matériau",
+    "addPackagingMaterial": "Ajouter un matériau d'emballage",
+    "customType": "Type personnalisé",
+    "addCustomType": "Ajouter un type de matériau personnalisé",
+    "materialName": "Nom du matériau",
+    "materialNamePlaceholder": "ex. Caisse en bois"
   },
   "legal": {
     "title": "Mentions légales",
@@ -358,8 +384,18 @@
   },
   "counterfeit": {
     "title": "Protection anti-contrefaçon",
-    "enable": "Activer la protection anti-contrefaçon",
-    "description": "Ajouter un sceau de sécurité au code QR"
+    "enable": "Activer",
+    "disable": "Désactiver",
+    "description": "Protégez votre produit contre la contrefaçon avec un sceau de sécurité de notre partenaire.",
+    "addProtection": "Ajouter une protection anti-contrefaçon (optionnel)",
+    "enabled": "Protection anti-contrefaçon activée",
+    "enabledDescription": "Un e-mail a été envoyé à notre partenaire de protection anti-contrefaçon. Ils vous contacteront pour livrer le sceau de sécurité.",
+    "requestSent": "Demande envoyée !",
+    "requestSentDescription": "Un e-mail a été envoyé à notre partenaire de protection anti-contrefaçon. Ils vous contacteront pour livrer le sceau de sécurité.",
+    "sending": "Envoi en cours...",
+    "errorNoEmail": "Impossible d'envoyer la demande - e-mail utilisateur non trouvé",
+    "errorSaveFirst": "Veuillez d'abord enregistrer le passeport avant d'activer la protection anti-contrefaçon",
+    "errorFailed": "Échec de l'envoi de la demande de protection anti-contrefaçon"
   },
   "qrDialog": {
     "title": "Code QR",

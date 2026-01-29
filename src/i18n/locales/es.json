@@ -18,7 +18,8 @@
     "success": "Éxito",
     "warning": "Advertencia",
     "openSource": "Código abierto",
-    "language": "Idioma"
+    "language": "Idioma",
+    "custom": "Personalizado"
   },
   "nav": {
     "signIn": "Iniciar sesión",
@@ -281,7 +282,20 @@
       "preservatives": "Conservantes y antioxidantes",
       "processing_aids": "Coadyuvantes tecnológicos"
     },
+    "ingredientsDescription": "Seleccione ingredientes de la lista de ingredientes del vino o añada personalizados. Ordénelos por cantidad (de mayor a menor).",
+    "chooseIngredients": "Elegir ingredientes del vino",
+    "chooseIngredientsDescription": "Seleccione todos los ingredientes que forman parte de la composición de su vino. Si es necesario, puede añadir un ingrediente personalizado.",
+    "selectFromList": "Seleccionar ingrediente de la lista",
+    "defineCustom": "Definir ingrediente personalizado",
+    "sortIngredients": "Ordenar ingredientes",
+    "sortIngredientsDescription": "La lista de ingredientes debe estar ordenada de mayor a menor cantidad. Las cantidades inferiores a 0,1 g/100 ml no necesitan ordenarse.",
+    "allergen": "Alérgeno",
+    "allergenNotice": "Aviso de alérgenos",
+    "allergenWarning": "Este vino contiene alérgenos que deben declararse:",
+    "selectIngredientsTitle": "Seleccionar ingredientes del vino de la lista",
+    "noIngredientsFound": "No se encontraron ingredientes que coincidan con \"{{search}}\"",
     "recycling": "Información de reciclaje",
+    "recyclingDescription": "Seleccione los materiales utilizados para el embalaje de su vino.",
     "recyclingNote": "Consulta las directrices de reciclaje locales. Separa los componentes y deséchelos correctamente.",
     "legalInfo": "Información legal",
     "negligibleAmounts": "Contiene cantidades insignificantes de grasas, saturadas, proteínas y sal.",
@@ -345,7 +359,19 @@
       "capsule": "Cápsula",
       "label": "Etiqueta",
       "box": "Caja"
-    }
+    },
+    "selectMaterial": "Seleccionar material",
+    "individualComponents": "Componentes individuales",
+    "compositeComponents": "Componentes compuestos",
+    "customMaterial": "Material personalizado",
+    "addCustomMaterial": "Añadir material personalizado",
+    "disposalAdvice": "Consejo de eliminación",
+    "addMaterial": "Añadir material",
+    "addPackagingMaterial": "Añadir material de embalaje",
+    "customType": "Tipo personalizado",
+    "addCustomType": "Añadir tipo de material personalizado",
+    "materialName": "Nombre del material",
+    "materialNamePlaceholder": "ej. Caja de madera"
   },
   "legal": {
     "title": "Menciones legales",
@@ -358,8 +384,18 @@
   },
   "counterfeit": {
     "title": "Protección antifalsificación",
-    "enable": "Activar protección antifalsificación",
-    "description": "Añadir un sello de seguridad al código QR"
+    "enable": "Activar",
+    "disable": "Desactivar",
+    "description": "Proteja su producto contra la falsificación con un sello de seguridad de nuestro socio.",
+    "addProtection": "Añadir protección antifalsificación (opcional)",
+    "enabled": "Protección antifalsificación activada",
+    "enabledDescription": "Se ha enviado un correo electrónico a nuestro socio de protección antifalsificación. Se pondrán en contacto con usted para entregar el sello de seguridad.",
+    "requestSent": "¡Solicitud enviada!",
+    "requestSentDescription": "Se ha enviado un correo electrónico a nuestro socio de protección antifalsificación. Se pondrán en contacto con usted para entregar el sello de seguridad.",
+    "sending": "Enviando...",
+    "errorNoEmail": "No se puede enviar la solicitud - correo electrónico del usuario no encontrado",
+    "errorSaveFirst": "Por favor guarde el pasaporte primero antes de activar la protección antifalsificación",
+    "errorFailed": "Error al enviar la solicitud de protección antifalsificación"
   },
   "qrDialog": {
     "title": "Código QR",
