@@ -26,8 +26,19 @@ export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
         <div className="bg-muted/50 p-2 flex justify-center">
           <div className="w-20 h-1 bg-muted-foreground/20 rounded-full" />
         </div>
-        <div className="h-[500px] overflow-y-auto transform scale-[0.65] origin-top-left w-[154%]">
-          <WinePublicPassport passport={previewPassport} />
+        {/* Scaled preview container */}
+        <div className="h-[500px] overflow-hidden">
+          <div 
+            className="overflow-y-auto origin-top"
+            style={{
+              transform: 'scale(0.65)',
+              width: '154%', // 1 / 0.65 ≈ 154%
+              height: '154%', // Scale the height to match
+              transformOrigin: 'top left',
+            }}
+          >
+            <WinePublicPassport passport={previewPassport} />
+          </div>
         </div>
       </div>
       <p className="text-xs text-center text-muted-foreground mt-2">Live Preview</p>
