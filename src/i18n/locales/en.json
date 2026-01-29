@@ -18,7 +18,8 @@
     "success": "Success",
     "warning": "Warning",
     "openSource": "Open Source",
-    "language": "Language"
+    "language": "Language",
+    "custom": "Custom"
   },
   "nav": {
     "signIn": "Sign In",
@@ -281,7 +282,20 @@
       "preservatives": "Preservatives and antioxidants",
       "processing_aids": "Processing aids"
     },
+    "ingredientsDescription": "Select ingredients from the wine ingredient list or add custom ones. Sort them by quantity (largest to smallest).",
+    "chooseIngredients": "Choose wine ingredients",
+    "chooseIngredientsDescription": "Select all ingredients that are part of your wine composition. If necessary, you can add a custom ingredient.",
+    "selectFromList": "Select ingredient from list",
+    "defineCustom": "Define custom ingredient",
+    "sortIngredients": "Sort ingredients",
+    "sortIngredientsDescription": "The ingredient list should be sorted from largest to smallest quantity. Quantities below 0.1 g/100 ml don't need to be sorted.",
+    "allergen": "Allergen",
+    "allergenNotice": "Allergen notice",
+    "allergenWarning": "This wine contains allergens that must be declared:",
+    "selectIngredientsTitle": "Select wine ingredients from list",
+    "noIngredientsFound": "No ingredients found matching \"{{search}}\"",
     "recycling": "Recycling Information",
+    "recyclingDescription": "Select the materials used for your wine packaging.",
     "recyclingNote": "Check your local recycling guidelines. Separate components and dispose of them correctly.",
     "legalInfo": "Legal Information",
     "negligibleAmounts": "Contains negligible amounts of fat, saturates, protein and salt.",
@@ -345,7 +359,19 @@
       "capsule": "Capsule",
       "label": "Label",
       "box": "Box"
-    }
+    },
+    "selectMaterial": "Select material",
+    "individualComponents": "Individual Components",
+    "compositeComponents": "Composite Components",
+    "customMaterial": "Custom Material",
+    "addCustomMaterial": "Add custom material",
+    "disposalAdvice": "Disposal advice",
+    "addMaterial": "Add material",
+    "addPackagingMaterial": "Add packaging material",
+    "customType": "Custom type",
+    "addCustomType": "Add custom material type",
+    "materialName": "Material name",
+    "materialNamePlaceholder": "e.g., Wooden crate"
   },
   "legal": {
     "title": "Legal Mentions",
@@ -358,8 +384,18 @@
   },
   "counterfeit": {
     "title": "Counterfeit Protection",
-    "enable": "Enable counterfeit protection",
-    "description": "Add a security seal to your product's QR code"
+    "enable": "Enable",
+    "disable": "Disable",
+    "description": "Protect your product against counterfeiting with a security seal from our partner.",
+    "addProtection": "Add Counterfeit Protection (optional)",
+    "enabled": "Counterfeit Protection Enabled",
+    "enabledDescription": "An email has been sent to our counterfeit protection partner. They will contact you to deliver the security seal.",
+    "requestSent": "Request sent!",
+    "requestSentDescription": "An email has been sent to our counterfeit protection partner. They will contact you to deliver the security seal.",
+    "sending": "Sending...",
+    "errorNoEmail": "Unable to send request - user email not found",
+    "errorSaveFirst": "Please save the passport first before enabling counterfeit protection",
+    "errorFailed": "Failed to send counterfeit protection request"
   },
   "qrDialog": {
     "title": "QR Code",

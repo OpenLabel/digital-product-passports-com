@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { QRCodeSVG } from 'qrcode.react';
 import { Copy, Check } from 'lucide-react';
 import {
@@ -125,6 +126,7 @@ export function QRCodeDialog({
   productName,
   showSecuritySealOverlay = false,
 }: QRCodeDialogProps) {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
   const handleCopyUrl = () => {
@@ -137,7 +139,7 @@ export function QRCodeDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-center">QR Code for {productName}</DialogTitle>
+          <DialogTitle className="text-center">{t('qrDialog.title')} - {productName}</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col items-center gap-4 py-4">
           {url && (
@@ -161,6 +163,7 @@ export function QRCodeDialog({
               size="icon"
               onClick={handleCopyUrl}
               className="flex-shrink-0"
+              title={t('qrDialog.copyLink')}
             >
               {copied ? (
                 <Check className="h-4 w-4 text-green-600" />

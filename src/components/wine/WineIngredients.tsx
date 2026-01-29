@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Plus, GripVertical, X, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -22,11 +23,20 @@ interface WineIngredientsProps {
 }
 
 export function WineIngredients({ data, onChange }: WineIngredientsProps) {
+  const { t } = useTranslation();
   const [pickerOpen, setPickerOpen] = useState(false);
   const [customOpen, setCustomOpen] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   const selectedIngredients = (data.ingredients as SelectedIngredient[]) || [];
+
+  // Translate ingredient name - uses translation if available, otherwise falls back to stored name
+  const translateIngredient = (ingredient: SelectedIngredient): string => {
+    if (ingredient.isCustom) return ingredient.name;
+    const translationKey = `ingredients.${ingredient.id}`;
+    const translated = t(translationKey);
+    return translated === translationKey ? ingredient.name : translated;
+  };
 
   const handleApplyFromPicker = (selectedIds: string[]) => {
     // Get existing custom ingredients
@@ -97,17 +107,17 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Ingredients</CardTitle>
+        <CardTitle className="text-lg">{t('wine.ingredients')}</CardTitle>
         <CardDescription>
-          Select ingredients from the wine ingredient list or add custom ones. Sort them by quantity (largest to smallest).
+          {t('wine.ingredientsDescription', 'Select ingredients from the wine ingredient list or add custom ones. Sort them by quantity (largest to smallest).')}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Choose Ingredients */}
         <div className="space-y-3">
-          <Label className="text-base font-medium">Choose wine ingredients *</Label>
+          <Label className="text-base font-medium">{t('wine.chooseIngredients', 'Choose wine ingredients')} *</Label>
           <p className="text-sm text-muted-foreground">
-            Select all ingredients that are part of your wine composition. If necessary, you can add a custom ingredient.
+            {t('wine.chooseIngredientsDescription', 'Select all ingredients that are part of your wine composition. If necessary, you can add a custom ingredient.')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
@@ -117,7 +127,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
               onClick={() => setPickerOpen(true)}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Select ingredient from list
+              {t('wine.selectFromList', 'Select ingredient from list')}
             </Button>
             <Button
               type="button"
@@ -126,7 +136,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
               onClick={() => setCustomOpen(true)}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Define custom ingredient
+              {t('wine.defineCustom', 'Define custom ingredient')}
             </Button>
           </div>
         </div>
@@ -134,9 +144,9 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
         {/* Sort Ingredients */}
         {selectedIngredients.length > 0 && (
           <div className="space-y-3">
-            <Label className="text-base font-medium">Sort ingredients</Label>
+            <Label className="text-base font-medium">{t('wine.sortIngredients', 'Sort ingredients')}</Label>
             <p className="text-sm text-muted-foreground">
-              The ingredient list should be sorted from largest to smallest quantity. Quantities below 0.1 g/100 ml don't need to be sorted.
+              {t('wine.sortIngredientsDescription', "The ingredient list should be sorted from largest to smallest quantity. Quantities below 0.1 g/100 ml don't need to be sorted.")}
             </p>
             <div className="border rounded-lg divide-y">
               {selectedIngredients.map((ingredient, index) => (
@@ -153,7 +163,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
                   <GripVertical className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                   <div className="flex-1 flex items-center gap-2 flex-wrap">
                     <span className={ingredient.isAllergen ? 'font-semibold' : ''}>
-                      {ingredient.name}
+                      {translateIngredient(ingredient)}
                     </span>
                     {ingredient.eNumber && (
                       <span className="text-muted-foreground text-sm">
@@ -162,12 +172,12 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
                     )}
                     {ingredient.isCustom && (
                       <Badge variant="secondary" className="text-xs">
-                        Custom
+                        {t('common.custom', 'Custom')}
                       </Badge>
                     )}
                     {ingredient.isAllergen && (
                       <Badge variant="destructive" className="text-xs">
-                        Allergen
+                        {t('wine.allergen', 'Allergen')}
                       </Badge>
                     )}
                   </div>
@@ -189,10 +199,10 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
           <div className="flex items-start gap-3 p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900 rounded-lg">
             <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="font-medium text-amber-800 dark:text-amber-200">Allergen notice</p>
+              <p className="font-medium text-amber-800 dark:text-amber-200">{t('wine.allergenNotice', 'Allergen notice')}</p>
               <p className="text-sm text-amber-700 dark:text-amber-300">
-                This wine contains allergens that must be declared:{' '}
-                {allergenIngredients.map((a) => a.name).join(', ')}
+                {t('wine.allergenWarning', 'This wine contains allergens that must be declared:')}{' '}
+                {allergenIngredients.map((a) => translateIngredient(a)).join(', ')}
               </p>
             </div>
           </div>
