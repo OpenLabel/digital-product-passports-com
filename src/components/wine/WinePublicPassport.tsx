@@ -68,7 +68,8 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
   const proteins = categoryData.proteins as number | undefined;
   const salt = categoryData.salt as number | undefined;
 
-  // Display options
+  // Display options - these control visibility in product info section
+  const showAlcohol = categoryData.show_alcohol_on_label === true;
   const showResidualSugar = categoryData.show_residual_sugar_on_label === true;
   const showTotalAcidity = categoryData.show_total_acidity_on_label === true;
 
@@ -152,7 +153,7 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
 
         {/* Wine Attributes Grid */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-6 text-sm">
-          {alcoholPercent !== undefined && (
+          {showAlcohol && alcoholPercent !== undefined && (
             <div>
               <p className="text-muted-foreground">Alcohol</p>
               <p className="font-medium">{alcoholPercent}% vol</p>
