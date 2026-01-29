@@ -28,27 +28,6 @@ const handler = async (req: Request): Promise<Response> => {
       throw new Error("Invalid Resend API key format. Key appears too short.");
     }
 
-    // Test the API key by fetching domains (works with most key permissions)
-    const testResponse = await fetch("https://api.resend.com/domains", {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${resendApiKey}`,
-      },
-    });
-
-    // If we get 401, the key is invalid
-    if (testResponse.status === 401) {
-      throw new Error("Invalid Resend API key");
-    }
-
-    // If we get 403 (forbidden), the key is valid but restricted - that's OK for sending emails
-    // If we get 200, the key has full access
-    // Both are acceptable
-    if (testResponse.status !== 200 && testResponse.status !== 403) {
-      const errorData = await testResponse.json();
-      throw new Error(errorData.message || "Failed to validate Resend API key");
-    }
-
     // Store the API key in the site_config table
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -57,17 +36,29 @@ const handler = async (req: Request): Promise<Response> => {
     // Store masked version in site_config for UI display
     const maskedKey = resendApiKey.slice(0, 8) + "..." + resendApiKey.slice(-4);
     
-    await supabase
+    const { error: error1 } = await supabase
       .from("site_config")
       .upsert({ key: "resend_api_key", value: maskedKey }, { onConflict: "key" });
 
+    if (error1) {
+      console.error("Error saving masked key:", error1);
+      throw new Error("Failed to save API key");
+    }
+
     // Store the actual key in a separate config entry
-    await supabase
+    const { error: error2 } = await supabase
       .from("site_config")
       .upsert({ key: "resend_api_key_secret", value: resendApiKey }, { onConflict: "key" });
 
+    if (error2) {
+      console.error("Error saving secret key:", error2);
+      throw new Error("Failed to save API key");
+    }
+
+    console.log("Resend API key saved successfully");
+
     return new Response(
-      JSON.stringify({ success: true, message: "Resend API key validated and saved" }),
+      JSON.stringify({ success: true, message: "Resend API key saved successfully" }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   } catch (error: unknown) {
