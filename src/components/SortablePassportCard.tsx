@@ -47,7 +47,98 @@ export function SortablePassportCard({
       style={style} 
       className={`overflow-hidden ${isDragging ? 'ring-2 ring-primary shadow-lg' : ''}`}
     >
-      <div className="flex items-center gap-4 p-4">
+      {/* Mobile layout: stacked */}
+      <div className="sm:hidden p-3">
+        <div className="flex items-start gap-3">
+          <button
+            {...attributes}
+            {...listeners}
+            className="cursor-grab active:cursor-grabbing p-1 text-muted-foreground hover:text-foreground touch-none flex-shrink-0 mt-1"
+            aria-label="Drag to reorder"
+          >
+            <GripVertical className="h-5 w-5" />
+          </button>
+          
+          {passport.image_url && (
+            <div className="h-14 w-14 bg-muted overflow-hidden rounded flex-shrink-0">
+              <img src={passport.image_url} alt={passport.name} className="w-full h-full object-cover" />
+            </div>
+          )}
+          
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+              <span>{getCategoryIcon(passport.category)}</span>
+              <span>{t(`categories.${passport.category}`)}</span>
+            </div>
+            <h3 className="font-medium text-sm leading-tight">{passport.name}</h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              {t('dashboard.updated')} {new Date(passport.updated_at).toLocaleDateString()}
+            </p>
+          </div>
+        </div>
+        
+        <div className="flex items-center justify-end gap-1 mt-2 pt-2 border-t">
+          <TooltipProvider>
+            {passport.public_slug && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 px-2"
+                    onClick={() => onShowQR(passport)}
+                  >
+                    <QrCode className="h-4 w-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Show QR Code</TooltipContent>
+              </Tooltip>
+            )}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2"
+                  onClick={() => navigate(`/passport/${passport.id}/edit`)}
+                >
+                  <Edit className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t('common.edit')}</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2"
+                  onClick={() => onDuplicate(passport)}
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Duplicate</TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 px-2 text-destructive hover:text-destructive"
+                  onClick={() => onDelete(passport.id)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t('common.delete')}</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+      </div>
+
+      {/* Desktop layout: horizontal */}
+      <div className="hidden sm:flex items-center gap-4 p-4">
         <button
           {...attributes}
           {...listeners}
@@ -64,14 +155,12 @@ export function SortablePassportCard({
         )}
         
         <div className="flex-1 min-w-0">
-          <div className="flex items-start gap-2">
-            <span className="shrink-0">{getCategoryIcon(passport.category)}</span>
-            <div className="min-w-0">
-              <span className="font-medium line-clamp-2 break-words">{passport.name}</span>
-              <span className="text-sm text-muted-foreground block sm:inline sm:ml-1">({t(`categories.${passport.category}`)})</span>
-            </div>
+          <div className="flex items-center gap-2">
+            <span>{getCategoryIcon(passport.category)}</span>
+            <span className="font-medium truncate">{passport.name}</span>
+            <span className="text-sm text-muted-foreground">({t(`categories.${passport.category}`)})</span>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-muted-foreground">
             {t('dashboard.updated')} {new Date(passport.updated_at).toLocaleDateString()}
           </p>
         </div>
