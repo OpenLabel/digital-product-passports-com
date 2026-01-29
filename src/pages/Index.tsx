@@ -1,100 +1,102 @@
 import { Link } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github, Sparkles, Upload, FileText, Camera } from 'lucide-react';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import heroBg from '@/assets/hero-bg.jpg';
 
 // Category data based on EU DPP research document
 const productCategories = [
   { 
-    name: 'Batteries', 
+    key: 'battery',
     description: 'Carbon footprint, recycling, supply chain due diligence',
     status: 'active' as const,
     regulation: 'EU 2023/1542',
     deadline: 'Feb 2027'
   },
   { 
-    name: 'Construction Products', 
+    key: 'construction',
     description: 'DoPC, GWP A1-A3, fire resistance',
     status: 'active' as const,
     regulation: 'EU 2024/3110',
     deadline: '2024'
   },
   { 
-    name: 'Textiles & Footwear', 
+    key: 'textiles',
     description: 'Fiber composition, durability, PFAS declaration',
     status: 'active' as const,
     regulation: 'ESPR Framework',
     deadline: '2027-2030'
   },
   { 
-    name: 'Wine & Spirits', 
+    key: 'wine',
     description: 'Ingredients, nutrition, geographic indication',
     status: 'active' as const,
     regulation: 'EU 2021/2117',
     deadline: 'Active'
   },
   { 
-    name: 'Toys', 
+    key: 'toys',
     description: 'PFAS-free, allergens, migration testing',
     status: 'active' as const,
     regulation: 'EU 2025/2509',
     deadline: '2025'
   },
   { 
-    name: 'Electronics & ICT', 
+    key: 'electronics',
     description: 'Repairability index, spare parts, software updates',
     status: 'priority' as const,
     regulation: 'ESPR Priority',
     deadline: '2027'
   },
   { 
-    name: 'Iron & Steel', 
+    key: 'iron_steel',
     description: 'Carbon intensity, scrap content, alloy chemistry',
     status: 'priority' as const,
     regulation: 'CBAM aligned',
     deadline: 'Q2 2026'
   },
   { 
-    name: 'Aluminum', 
+    key: 'aluminum',
     description: 'Smelting energy source, coil traceability',
     status: 'priority' as const,
     regulation: 'ESPR 2025-2030',
     deadline: '2027'
   },
   { 
-    name: 'Cosmetics', 
+    key: 'cosmetics',
     description: 'INCI list, nanomaterials, packaging recyclability',
     status: 'priority' as const,
     regulation: 'ESPR Priority',
     deadline: '2027'
   },
   { 
-    name: 'Furniture & Mattresses', 
+    key: 'furniture',
     description: 'EUDR wood origin, spare parts, PFAS',
     status: 'priority' as const,
     regulation: 'ESPR + EUDR',
     deadline: '2027'
   },
   { 
-    name: 'Tires', 
+    key: 'tires',
     description: 'Abrasion rate, retreading history, microplastics',
     status: 'priority' as const,
     regulation: 'ESPR Priority',
     deadline: '2027'
   },
   { 
-    name: 'Detergents & Chemicals', 
+    key: 'detergents',
     description: 'Digital SDS, biodegradability, dosage optimization',
     status: 'priority' as const,
     regulation: 'CLP/Detergents',
     deadline: '2027'
   },
   { 
-    name: 'All Other Products', 
+    key: 'other',
     description: 'Generic DPP template for any product type',
     status: 'active' as const,
     regulation: 'ESPR Framework',
@@ -103,6 +105,7 @@ const productCategories = [
 ];
 
 export default function Index() {
+  const { t } = useTranslation();
   const { user, loading } = useAuth();
   const { config } = useSiteConfig();
 
@@ -120,15 +123,15 @@ export default function Index() {
           <div className="flex gap-2 items-center">
             {loading ? null : user ? (
               <Button asChild>
-                <Link to="/dashboard">Go to Dashboard</Link>
+                <Link to="/dashboard">{t('nav.dashboard')}</Link>
               </Button>
             ) : (
               <>
                 <Button variant="ghost" asChild>
-                  <Link to="/auth">Sign In</Link>
+                  <Link to="/auth">{t('nav.signIn')}</Link>
                 </Button>
                 <Button asChild>
-                  <Link to="/auth">Get Started Free</Link>
+                  <Link to="/auth">{t('nav.getStarted')}</Link>
                 </Button>
               </>
             )}
@@ -146,18 +149,20 @@ export default function Index() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="flex justify-center gap-2 mb-6 flex-wrap">
             <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
-              EU ESPR Compliant
+              {t('landing.hero.badge')}
             </Badge>
             <Badge variant="outline" className="border-primary/30">
               <Github className="h-3 w-3 mr-1" />
-              Open Source
+              {t('common.openSource')}
             </Badge>
             <Badge className="bg-blue-600/10 text-blue-600 border-blue-600/20 hover:bg-blue-600/20">
               🇪🇺 Proudly EU Funded
             </Badge>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-5xl mx-auto leading-tight tracking-tight">
-            Create <span className="text-primary">Unlimited</span> Digital Product Passports
+            <Trans i18nKey="landing.hero.title">
+              Create <span className="text-primary">Unlimited</span> Digital Product Passports
+            </Trans>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
             Free, open-source platform for EU Ecodesign for Sustainable Products Regulation (ESPR) compliance. 
@@ -167,7 +172,7 @@ export default function Index() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="text-lg px-8 py-6" asChild>
               <Link to="/auth">
-                Create Your First Passport <ArrowRight className="ml-2 h-5 w-5" />
+                {t('landing.hero.cta')} <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
@@ -247,7 +252,7 @@ export default function Index() {
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <Infinity className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Open Source</h3>
+                <h3 className="font-semibold text-lg mb-2">{t('common.openSource')}</h3>
                 <p className="text-sm text-muted-foreground">
                   Fully open source. Self-host on your own servers for complete data control, or use our hosted version for free.
                 </p>
@@ -387,12 +392,12 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {productCategories.map((category) => (
               <Card 
-                key={category.name} 
+                key={category.key} 
                 className="relative overflow-hidden group cursor-pointer transition-all hover:shadow-lg hover:border-primary"
               >
                 <CardContent className="p-5">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-semibold text-sm">{category.name}</h3>
+                    <h3 className="font-semibold text-sm">{t(`categories.${category.key}`)}</h3>
                     {category.status === 'active' ? (
                       <Badge className="bg-green-500/10 text-green-600 text-xs border-green-500/20">
                         Active Law
@@ -490,7 +495,7 @@ export default function Index() {
       <section className="py-20 md:py-28 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">Open Source</Badge>
+            <Badge variant="outline" className="mb-4">{t('common.openSource')}</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Run It On Your Own Servers</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               This project is fully open source. You can self-host on your own infrastructure for complete 
@@ -551,16 +556,17 @@ export default function Index() {
               </div>
               <span className="text-sm font-medium">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></span>
               <Badge variant="outline" className="text-xs">
-                Open Source
+                {t('common.openSource')}
               </Badge>
             </div>
             <div className="flex items-center gap-4 flex-wrap justify-center">
+              <LanguageSwitcher />
               <Link to="/legal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Legal Mentions
+                {t('landing.footer.legal')}
               </Link>
               <a href="https://github.com/OpenLabel/digital-product-passports-com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Github className="h-4 w-4" />
-                View on GitHub
+                {t('landing.footer.github')}
               </a>
               <span className="text-sm text-muted-foreground">
                 © {new Date().getFullYear()} {config?.company_name || 'Digital - Product - Passports .com'}

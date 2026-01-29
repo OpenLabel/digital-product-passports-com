@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +14,7 @@ const emailSchema = z.string().email('Please enter a valid email address');
 const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
 
 export default function Auth() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [companyName, setCompanyName] = useState('');
@@ -31,13 +33,13 @@ export default function Auth() {
   const validateInputs = () => {
     const emailResult = emailSchema.safeParse(email);
     if (!emailResult.success) {
-      toast({ title: 'Error', description: emailResult.error.errors[0].message, variant: 'destructive' });
+      toast({ title: t('common.error'), description: emailResult.error.errors[0].message, variant: 'destructive' });
       return false;
     }
     if (mode !== 'reset') {
       const passwordResult = passwordSchema.safeParse(password);
       if (!passwordResult.success) {
-        toast({ title: 'Error', description: passwordResult.error.errors[0].message, variant: 'destructive' });
+        toast({ title: t('common.error'), description: passwordResult.error.errors[0].message, variant: 'destructive' });
         return false;
       }
     }
@@ -53,7 +55,7 @@ export default function Auth() {
       if (mode === 'signin') {
         const { error } = await signIn(email, password);
         if (error) throw error;
-        toast({ title: 'Welcome back!' });
+        toast({ title: t('auth.welcomeBack') });
       } else if (mode === 'signup') {
         const { error } = await signUp(email, password, companyName);
         if (error) throw error;
@@ -64,7 +66,7 @@ export default function Auth() {
         toast({ title: 'Check your email', description: 'Password reset link sent.' });
       }
     } catch (error: any) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
     } finally {
       setLoading(false);
     }
@@ -74,48 +76,48 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Digital Product Passport</CardTitle>
+          <CardTitle className="text-2xl">{t('auth.title')}</CardTitle>
           <CardDescription>
-            {mode === 'reset' ? 'Reset your password' : 'Sign in or create an account'}
+            {mode === 'reset' ? 'Reset your password' : t('auth.subtitle')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           {mode === 'reset' ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t('auth.email')}</Label>
                 <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
               </div>
               <Button type="submit" className="w-full" disabled={loading}>
                 {loading ? 'Sending...' : 'Send Reset Link'}
               </Button>
               <Button type="button" variant="link" className="w-full" onClick={() => setMode('signin')}>
-                Back to sign in
+                {t('common.back')} to sign in
               </Button>
             </form>
           ) : (
             <Tabs value={mode} onValueChange={(v) => setMode(v as 'signin' | 'signup')}>
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="signin">Sign In</TabsTrigger>
-                <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                <TabsTrigger value="signin">{t('auth.signIn')}</TabsTrigger>
+                <TabsTrigger value="signup">{t('auth.signUp')}</TabsTrigger>
               </TabsList>
               <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                 {mode === 'signup' && (
                   <div className="space-y-2">
-                    <Label htmlFor="companyName">Company Name</Label>
+                    <Label htmlFor="companyName">{t('auth.companyName')}</Label>
                     <Input id="companyName" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
                   </div>
                 )}
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t('auth.email')}</Label>
                   <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t('auth.password')}</Label>
                   <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? 'Loading...' : mode === 'signin' ? 'Sign In' : 'Sign Up'}
+                  {loading ? t('common.loading') : mode === 'signin' ? t('auth.signIn') : t('auth.signUp')}
                 </Button>
                 {mode === 'signin' && (
                   <Button type="button" variant="link" className="w-full" onClick={() => setMode('reset')}>
