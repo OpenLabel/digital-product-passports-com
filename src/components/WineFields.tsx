@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,6 +11,7 @@ import { WineRecycling } from '@/components/wine/WineRecycling';
 import { WineAIAutofill } from '@/components/wine/WineAIAutofill';
 import { calculateWineNutrition } from '@/lib/wineCalculations';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
+import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -25,6 +26,38 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
   const handleChange = (id: string, value: unknown) => {
     onChange({ ...data, [id]: value });
   };
+
+  // Auto-translate denomination
+  const denominationValue = (data.denomination as string) || '';
+  const denominationTranslations = (data.denomination_translations as Translations) || {};
+  
+  const handleDenominationTranslations = useCallback((translations: Translations) => {
+    onChange({ ...data, denomination_translations: translations });
+  }, [data, onChange]);
+
+  const { isTranslating: isDenominationTranslating, markAsUserEdited: markDenominationEdited } = useAutoTranslate({
+    value: denominationValue,
+    sourceLanguage: currentLanguage,
+    existingTranslations: denominationTranslations,
+    onTranslationsGenerated: handleDenominationTranslations,
+    enabled: !!denominationValue.trim(),
+  });
+
+  // Auto-translate sugar classification
+  const sugarClassificationValue = (data.sugar_classification as string) || '';
+  const sugarClassificationTranslations = (data.sugar_classification_translations as Translations) || {};
+  
+  const handleSugarClassificationTranslations = useCallback((translations: Translations) => {
+    onChange({ ...data, sugar_classification_translations: translations });
+  }, [data, onChange]);
+
+  const { isTranslating: isSugarTranslating, markAsUserEdited: markSugarEdited } = useAutoTranslate({
+    value: sugarClassificationValue,
+    sourceLanguage: currentLanguage,
+    existingTranslations: sugarClassificationTranslations,
+    onTranslationsGenerated: handleSugarClassificationTranslations,
+    enabled: !!sugarClassificationValue.trim(),
+  });
 
   // Calculate nutritional values using the utility function
   const calculatedValues = useMemo(() => {
@@ -186,7 +219,10 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="denomination">{t('wine.denomination')}</Label>
+            <Label htmlFor="denomination">
+              {t('wine.denomination')}
+              {isDenominationTranslating && <span className="ml-2 text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
+            </Label>
             <div className="flex gap-2">
               <Input
                 id="denomination"
@@ -198,8 +234,12 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               <TranslationButton
                 value={(data.denomination as string) || ''}
                 sourceLanguage={currentLanguage}
-                translations={(data.denomination_translations as Translations) || {}}
-                onSave={(translations) => handleChange('denomination_translations', translations)}
+                translations={denominationTranslations}
+                onSave={(translations) => {
+                  // Mark all languages as user-edited when saving from dialog
+                  Object.keys(translations).forEach(lang => markDenominationEdited(lang));
+                  handleChange('denomination_translations', translations);
+                }}
                 fieldLabel={t('wine.denomination')}
                 disabled={!data.denomination}
               />
@@ -207,7 +247,10 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           </div>
 
           <div className="space-y-2 sm:col-span-2">
-            <Label htmlFor="sugar_classification">{t('wine.sugarClassification')}</Label>
+            <Label htmlFor="sugar_classification">
+              {t('wine.sugarClassification')}
+              {isSugarTranslating && <span className="ml-2 text-xs text-muted-foreground animate-pulse">{t('translation.autoTranslating', 'Translating...')}</span>}
+            </Label>
             <div className="flex gap-2">
               <Input
                 id="sugar_classification"
@@ -219,8 +262,12 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
               <TranslationButton
                 value={(data.sugar_classification as string) || ''}
                 sourceLanguage={currentLanguage}
-                translations={(data.sugar_classification_translations as Translations) || {}}
-                onSave={(translations) => handleChange('sugar_classification_translations', translations)}
+                translations={sugarClassificationTranslations}
+                onSave={(translations) => {
+                  // Mark all languages as user-edited when saving from dialog
+                  Object.keys(translations).forEach(lang => markSugarEdited(lang));
+                  handleChange('sugar_classification_translations', translations);
+                }}
                 fieldLabel={t('wine.sugarClassification')}
                 disabled={!data.sugar_classification}
               />
