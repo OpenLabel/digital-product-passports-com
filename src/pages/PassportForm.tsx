@@ -290,7 +290,7 @@ export default function PassportForm() {
           {/* Preview Section - Wine only */}
           {showWinePreview && (
             <aside className="lg:w-80 w-full lg:sticky lg:top-24 lg:self-start">
-              <WinePassportPreview publicSlug={existingPassport?.public_slug} />
+              <WinePassportPreview formData={formData} />
             </aside>
           )}
         </div>
