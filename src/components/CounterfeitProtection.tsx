@@ -111,7 +111,7 @@ export function CounterfeitProtection({
             Add Counterfeit Protection
           </h3>
           <p className="text-sm text-red-700 dark:text-red-300 mt-1">
-            Protect your product with a security seal from our partner.
+            Protect your product against counterfeiting with a security seal from our partner.
           </p>
         </div>
         <Button
