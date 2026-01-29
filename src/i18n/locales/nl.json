@@ -1,13 +1,405 @@
 {
-  "common": { "loading": "Laden...", "save": "Opslaan", "cancel": "Annuleren", "delete": "Verwijderen", "edit": "Bewerken", "create": "Maken", "back": "Terug", "next": "Volgende", "search": "Zoeken", "apply": "Toepassen", "close": "Sluiten", "confirm": "Bevestigen", "yes": "Ja", "no": "Nee", "error": "Fout", "success": "Gelukt", "warning": "Waarschuwing", "openSource": "Open Source", "language": "Taal" },
-  "nav": { "signIn": "Inloggen", "signUp": "Registreren", "signOut": "Uitloggen", "getStarted": "Gratis beginnen", "dashboard": "Dashboard", "createNew": "Nieuw maken" },
-  "auth": { "title": "Digitaal Productpaspoort", "subtitle": "Log in of maak een account", "signIn": "Inloggen", "signUp": "Registreren", "email": "E-mail", "password": "Wachtwoord", "companyName": "Bedrijfsnaam", "welcomeBack": "Welkom terug!" },
-  "dashboard": { "title": "Uw paspoorten", "noPassports": "Nog geen paspoorten. Maak de eerste!", "updated": "Bijgewerkt" },
-  "passport": { "createTitle": "Nieuw paspoort maken", "editTitle": "Paspoort bewerken", "basicInfo": "Basisinformatie", "productName": "Productnaam", "category": "Productcategorie", "productImage": "Productafbeelding", "saving": "Opslaan...", "saveChanges": "Wijzigingen opslaan", "notFound": "Paspoort niet gevonden", "checkAuthenticity": "Authenticiteit controleren", "poweredBy": "Mogelijk gemaakt door" },
-  "categories": { "battery": "Batterijen", "construction": "Bouwproducten", "textiles": "Textiel en schoeisel", "wine": "Wijn en gedistilleerd", "toys": "Speelgoed", "electronics": "Elektronica en ICT", "iron_steel": "IJzer en staal", "aluminum": "Aluminium", "cosmetics": "Cosmetica", "furniture": "Meubels en matrassen", "tires": "Banden", "detergents": "Wasmiddelen en chemicaliën", "other": "Alle andere producten" },
-  "wine": { "productIdentity": "Productidentiteit", "volume": "Volume", "grapeVariety": "Druivenras", "vintage": "Jaargang", "country": "Land van herkomst", "region": "Regio", "nutritionalValues": "Voedingswaarden", "alcohol": "Alcohol", "energy": "Energie", "fat": "Vet", "carbohydrate": "Koolhydraten", "protein": "Eiwit", "salt": "Zout", "ingredients": "Ingrediënten", "recycling": "Recyclinginformatie" },
-  "ingredients": { "grapes": "Druiven", "saccharose": "Saccharose", "sulfites": "Sulfieten", "egg": "Ei", "milk": "Melk" },
-  "legal": { "title": "Juridische vermeldingen", "legalMentions": "Juridische vermeldingen" },
-  "notFound": { "title": "404", "message": "Pagina niet gevonden", "returnHome": "Terug naar home" },
-  "landing": { "hero": { "badge": "EU ESPR-compatibel", "title": "Maak <1>Onbeperkt</1> Digitale Productpaspoorten", "cta": "Maak uw eerste paspoort" }, "footer": { "legal": "Juridische vermeldingen", "github": "Bekijk op GitHub" } }
+  "common": {
+    "loading": "Laden...",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "edit": "Bewerken",
+    "create": "Maken",
+    "back": "Terug",
+    "next": "Volgende",
+    "search": "Zoeken",
+    "apply": "Toepassen",
+    "close": "Sluiten",
+    "confirm": "Bevestigen",
+    "yes": "Ja",
+    "no": "Nee",
+    "error": "Fout",
+    "success": "Gelukt",
+    "warning": "Waarschuwing",
+    "openSource": "Open Source",
+    "language": "Taal",
+    "custom": "Aangepast"
+  },
+  "nav": {
+    "signIn": "Inloggen",
+    "signUp": "Registreren",
+    "signOut": "Uitloggen",
+    "getStarted": "Gratis Beginnen",
+    "dashboard": "Ga naar Dashboard",
+    "createNew": "Nieuw Maken"
+  },
+  "landing": {
+    "hero": {
+      "badge": "EU ESPR-compatibel",
+      "euFunded": "🇪🇺 Trots EU-gefinancierd",
+      "title": "Maak <1>Onbeperkt</1> Digitale Productpaspoorten",
+      "subtitle": "Gratis, open-source platform voor EU Ecodesign voor Duurzame Producten Verordening (ESPR) naleving. Genereer machineleesbare paspoorten met QR-codes voor batterijen, textiel, bouwproducten en 12+ categorieën.",
+      "cta": "Maak Uw Eerste Paspoort",
+      "demo": "Bekijk Demo Paspoort",
+      "features": {
+        "free": "100% Gratis & Open Source",
+        "selfHost": "Zelf te Hosten",
+        "machineReadable": "Machineleesbaar JSON/XML",
+        "categories": "12+ Productcategorieën"
+      }
+    },
+    "stats": {
+      "free": "Gratis & Open Source",
+      "categories": "Productcategorieën",
+      "deadline": "Eerste EU Deadline",
+      "qr": "+ Unieke URLs"
+    },
+    "features": {
+      "badge": "Functies",
+      "title": "Alles Wat U Nodig Heeft voor Naleving",
+      "subtitle": "Gebouwd volgens EU technische normen: gedecentraliseerde opslag, ISO 15459 identificatoren, gelaagde toegangsrechten en machineleesbare JSON/XML output.",
+      "espr": {
+        "title": "ESPR-compatibel",
+        "description": "Vooraf geconfigureerde sjablonen volgens EU Ecodesign voor Duurzame Producten Verordening vereisten per categorie."
+      },
+      "openSource": {
+        "title": "Open Source",
+        "description": "Volledig open source. Host op uw eigen servers voor volledige datacontrole, of gebruik onze gehoste versie gratis."
+      },
+      "machineReadable": {
+        "title": "Machineleesbaar",
+        "description": "Geen statische PDFs. Gestructureerde JSON/XML data voor integratie met BIM, recyclingsystemen en andere software."
+      },
+      "qr": {
+        "title": "QR & Datadragers",
+        "description": "Elk paspoort krijgt een unieke URL en QR-code. Klaar voor NFC/RFID integratie volgens ISO 15459."
+      }
+    },
+    "ai": {
+      "badge": "AI-aangedreven",
+      "title": "Automatisch Invullen met AI",
+      "subtitle": "Stop met handmatig typen. Upload een foto van uw productlabel en onze AI haalt automatisch alle gegevens eruit in seconden.",
+      "snap": {
+        "title": "Maak een Foto",
+        "description": "Maak een foto van uw wijnlabel, productverpakking of elk label met productinformatie."
+      },
+      "upload": {
+        "title": "Upload Documenten",
+        "description": "PDF datasheets, Word documenten, Excel specs — upload elk bestand en wij halen de relevante data eruit."
+      },
+      "extract": {
+        "title": "AI Haalt Data Eruit",
+        "description": "Onze vision AI leest en begrijpt uw documenten en vult automatisch alle paspoort velden in."
+      },
+      "multiUpload": {
+        "title": "Werkt met meerdere uploads",
+        "description": "Upload meerdere foto's of documenten achtereenvolgens — AI voegt data intelligent samen"
+      },
+      "cta": "Probeer AI Gratis",
+      "tags": {
+        "wineLabels": "Wijnlabels",
+        "batterySpecs": "Batterij Specs",
+        "textileComposition": "Textiel Samenstelling",
+        "safetyDatasheets": "Veiligheidsdatasheets",
+        "nutritionFacts": "Voedingswaarden",
+        "technicalPdfs": "Technische PDFs"
+      }
+    },
+    "categories": {
+      "badge": "EU Regelgeving Scope",
+      "title": "Ondersteunde Productcategorieën",
+      "subtitle": "Sjablonen gebouwd op basis van officiële EU regelgeving en gedelegeerde handelingen. Actieve regelgeving is van kracht, Prioriteitsgroepen hebben sjablonen klaar voor komende vereisten.",
+      "activeLaw": "Actieve Wet",
+      "priorityGroup": "Prioriteitsgroep",
+      "cta": "Begin met Paspoorten Maken"
+    },
+    "timeline": {
+      "badge": "Regelgevende Tijdlijn",
+      "title": "EU DPP Implementatie Deadlines",
+      "subtitle": "De EU rolt Digital Product Passport vereisten gefaseerd uit. Begin nu met voorbereiden om naleving te garanderen.",
+      "feb2027": {
+        "title": "Februari 2027",
+        "badge": "Eerste Batterij Deadline",
+        "description": "EV, industriële en LMT batterijen moeten Digitale Productpaspoorten hebben met volledige levenscyclusdata, koolstofvoetafdruk declaraties (kg CO₂e/kWh met klasse A-D rating) en gerecycled materiaal percentages voor kobalt, lithium en nikkel."
+      },
+      "active": {
+        "title": "Nu Actief",
+        "badge": "Van Kracht",
+        "description": "Bouwproducten (EU 2024/3110), Wijn & Gedistilleerd (EU 2021/2117) en Speelgoed (EU 2025/2509) vereisen al digitale verklaringen. Sjablonen nu beschikbaar."
+      },
+      "rollout": {
+        "title": "2027-2030: Volledige Uitrol",
+        "description": "Textiel, elektronica, meubels, ijzer/staal, aluminium, cosmetica, banden en wasmiddelen zullen DPPs vereisen naarmate gedelegeerde handelingen worden gepubliceerd."
+      }
+    },
+    "selfHost": {
+      "badge": "Open Source",
+      "title": "Draai Het Op Uw Eigen Servers",
+      "subtitle": "Dit project is volledig open source. U kunt zelf hosten op uw eigen infrastructuur voor volledige data soevereiniteit, de code aanpassen aan uw behoeften, of bijdragen aan het project.",
+      "deploy": {
+        "title": "Zelf Hosten",
+        "description": "Implementeer op uw eigen servers. Volledige controle over uw data en nalevingsdocumentatie."
+      },
+      "customize": {
+        "title": "Aanpassen",
+        "description": "Voeg aangepaste velden toe, integreer met uw ERP/PLM systemen, of bouw white-label oplossingen."
+      },
+      "contribute": {
+        "title": "Bijdragen",
+        "description": "Help sjablonen verbeteren naarmate regelgeving evolueert. Community-gedreven naleving updates."
+      }
+    },
+    "cta": {
+      "title": "Klaar om Compliant te Worden?",
+      "subtitle": "Begin vandaag met het maken van EU-compliant Digitale Productpaspoorten. Gratis, onbeperkt en open source.",
+      "button": "Begin Vandaag Gratis"
+    },
+    "footer": {
+      "legal": "Juridische Vermeldingen",
+      "github": "Bekijk op GitHub"
+    }
+  },
+  "auth": {
+    "title": "Digitaal Productpaspoort",
+    "subtitle": "Log in of maak een account",
+    "resetSubtitle": "Reset uw wachtwoord",
+    "signIn": "Inloggen",
+    "signUp": "Registreren",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "companyName": "Bedrijfsnaam",
+    "sendResetLink": "Verzend Reset Link",
+    "sending": "Verzenden...",
+    "backToSignIn": "Terug naar inloggen",
+    "forgotPassword": "Wachtwoord vergeten?",
+    "welcomeBack": "Welkom terug!",
+    "accountCreated": "Account aangemaakt!",
+    "accountCreatedDesc": "U kunt nu inloggen.",
+    "checkEmail": "Controleer uw e-mail",
+    "resetLinkSent": "Wachtwoord reset link verzonden."
+  },
+  "dashboard": {
+    "title": "Uw Paspoorten",
+    "noPassports": "Nog geen paspoorten. Maak uw eerste!",
+    "updated": "Bijgewerkt",
+    "duplicate": "Dupliceren",
+    "showQr": "Toon QR Code",
+    "duplicated": "Paspoort gedupliceerd",
+    "deleted": "Paspoort verwijderd",
+    "confirmDelete": "Weet u zeker dat u dit paspoort wilt verwijderen?"
+  },
+  "passport": {
+    "createTitle": "Nieuw Paspoort Maken",
+    "editTitle": "Paspoort Bewerken",
+    "basicInfo": "Basisinformatie",
+    "productName": "Productnaam",
+    "productNamePlaceholder": "Voer een naam in voor dit product",
+    "category": "Productcategorie",
+    "productImage": "Productafbeelding",
+    "productDescription": "Productbeschrijving",
+    "descriptionPlaceholder": "Beschrijf uw product...",
+    "details": "Details",
+    "saving": "Opslaan...",
+    "saveChanges": "Wijzigingen Opslaan",
+    "createPassport": "Paspoort Maken",
+    "updated": "Paspoort succesvol bijgewerkt",
+    "created": "Paspoort succesvol aangemaakt",
+    "unsavedChanges": "Niet-opgeslagen wijzigingen",
+    "unsavedChangesDesc": "U heeft niet-opgeslagen wijzigingen. Weet u zeker dat u wilt vertrekken? Uw wijzigingen gaan verloren.",
+    "leaveWithoutSaving": "Vertrekken zonder opslaan",
+    "enterProductName": "Voer een productnaam in",
+    "notFound": "Paspoort Niet Gevonden",
+    "notFoundDesc": "Dit digitale productpaspoort bestaat niet of is verwijderd.",
+    "productPassport": "Productpaspoort",
+    "checkAuthenticity": "Authenticiteit controleren",
+    "poweredBy": "Mogelijk gemaakt door"
+  },
+  "categories": {
+    "battery": "Batterijen",
+    "construction": "Bouwproducten",
+    "textiles": "Textiel & Schoeisel",
+    "wine": "Wijn & Gedistilleerd",
+    "toys": "Speelgoed",
+    "electronics": "Elektronica & ICT",
+    "iron_steel": "IJzer & Staal",
+    "aluminum": "Aluminium",
+    "cosmetics": "Cosmetica",
+    "furniture": "Meubels & Matrassen",
+    "tires": "Banden",
+    "detergents": "Wasmiddelen & Chemicaliën",
+    "other": "Alle Andere Producten"
+  },
+  "categoryDescriptions": {
+    "battery": "Koolstofvoetafdruk, recycling, due diligence toeleveringsketen",
+    "construction": "DoPC, GWP A1-A3, brandwerendheid",
+    "textiles": "Vezelsamenstelling, duurzaamheid, PFAS verklaring",
+    "wine": "Ingrediënten, voeding, geografische aanduiding",
+    "toys": "PFAS-vrij, allergenen, migratietesten",
+    "electronics": "Repareerbaarheidsindex, reserveonderdelen, software-updates",
+    "iron_steel": "Koolstofintensiteit, schrootinhoud, legeringschemie",
+    "aluminum": "Smeltenergiebron, spoeltraceerbaarheid",
+    "cosmetics": "INCI-lijst, nanomaterialen, recycleerbaarheid verpakking",
+    "furniture": "EUDR houtherkomst, reserveonderdelen, PFAS",
+    "tires": "Slijtagepercentage, loopvlakvernieuwingsgeschiedenis, microplastics",
+    "detergents": "Digitale SDS, biologische afbreekbaarheid, doseeroptimalisatie",
+    "other": "Generieke DPP sjabloon voor elk producttype"
+  },
+  "wine": {
+    "productIdentity": "Productidentiteit",
+    "volume": "Volume",
+    "grapeVariety": "Druivenras",
+    "vintage": "Jaargang",
+    "country": "Land van Herkomst",
+    "region": "Regio",
+    "denomination": "Benaming / Oorsprongsbenaming",
+    "sugarClassification": "Suikerclassificatie",
+    "producerInfo": "Producentinformatie",
+    "producerName": "Producent/Wijnhuis Naam",
+    "bottlerInfo": "Bottelaarsinformatie",
+    "bottlerInfoPlaceholder": "Naam en adres van bottelaar",
+    "nutritionalValues": "Voedingswaarden",
+    "alcohol": "Alcohol",
+    "residualSugar": "Restsuiker",
+    "acidity": "Zuurgraad",
+    "totalAcidity": "Totale Zuurgraad",
+    "glycerine": "Glycerine/Polyolen",
+    "energy": "Energie",
+    "fat": "Vet",
+    "saturatedFat": "waarvan verzadigd",
+    "carbohydrate": "Koolhydraten",
+    "sugars": "waarvan suikers",
+    "protein": "Eiwit",
+    "salt": "Zout",
+    "displayOptions": "Weergave-opties",
+    "showAlcohol": "Toon Alcohol op label",
+    "showResidualSugar": "Toon Restsuiker op label",
+    "showTotalAcidity": "Toon Totale Zuurgraad op label",
+    "ingredients": "Ingrediënten",
+    "addIngredients": "Ingrediënten Toevoegen",
+    "addCustomIngredient": "Aangepast Toevoegen",
+    "noIngredients": "Geen ingrediënten toegevoegd",
+    "ingredientCategories": {
+      "general": "Algemeen",
+      "gases": "Gassen en verpakkingsgassen",
+      "acidity_regulators": "Zuurteregelaars",
+      "stabilizers": "Stabilisatoren",
+      "preservatives": "Conserveermiddelen en antioxidanten",
+      "processing_aids": "Verwerkingshulpmiddelen"
+    },
+    "ingredientsDescription": "Selecteer ingrediënten uit de wijn ingrediëntenlijst of voeg aangepaste toe. Sorteer ze op hoeveelheid (grootste naar kleinste).",
+    "chooseIngredients": "Kies wijn ingrediënten",
+    "chooseIngredientsDescription": "Selecteer alle ingrediënten die deel uitmaken van uw wijnsamenstelling. Indien nodig kunt u een aangepast ingrediënt toevoegen.",
+    "selectFromList": "Selecteer ingrediënt uit lijst",
+    "defineCustom": "Definieer aangepast ingrediënt",
+    "sortIngredients": "Sorteer ingrediënten",
+    "sortIngredientsDescription": "De ingrediëntenlijst moet worden gesorteerd van grootste naar kleinste hoeveelheid. Hoeveelheden onder 0,1 g/100 ml hoeven niet te worden gesorteerd.",
+    "allergen": "Allergeen",
+    "allergenNotice": "Allergeenmelding",
+    "allergenWarning": "Deze wijn bevat allergenen die moeten worden aangegeven:",
+    "selectIngredientsTitle": "Selecteer wijn ingrediënten uit lijst",
+    "noIngredientsFound": "Geen ingrediënten gevonden die overeenkomen met \"{{search}}\"",
+    "recycling": "Recyclinginformatie",
+    "recyclingDescription": "Selecteer de materialen die worden gebruikt voor uw wijnverpakking.",
+    "recyclingNote": "Controleer uw lokale recyclingrichtlijnen. Scheid componenten en gooi ze correct weg.",
+    "legalInfo": "Juridische Informatie",
+    "negligibleAmounts": "Bevat verwaarloosbare hoeveelheden vet, verzadigden, eiwit en zout.",
+    "per100ml": "per 100 ml",
+    "selectCountry": "Selecteer land",
+    "selectClassification": "Selecteer classificatie",
+    "manualOverride": "Handmatige overschrijving"
+  },
+  "ingredients": {
+    "grapes": "Druiven",
+    "saccharose": "Saccharose",
+    "aleppo_pine_resin": "Aleppo dennenhars",
+    "caramel": "Karamel",
+    "concentrated_grape_must": "Geconcentreerde druivenmost",
+    "grape_must": "Druivenmost",
+    "rectified_concentrated_grape_must": "Gerectificeerde geconcentreerde druivenmost",
+    "filling_dosage": "Vuldosering",
+    "expedition_dosage": "Expeditiodosering",
+    "argon": "Argon",
+    "nitrogen": "Stikstof",
+    "carbon_dioxide": "Kooldioxide",
+    "protective_atmosphere": "Gebotteld onder beschermende atmosfeer",
+    "tartaric_acid": "Wijnsteenzuur",
+    "malic_acid": "Appelzuur",
+    "lactic_acid": "Melkzuur",
+    "calcium_sulfate": "Calciumsulfaat",
+    "citric_acid": "Citroenzuur",
+    "citric_acid_stabilizer": "Citroenzuur",
+    "metatartaric_acid": "Metawijnsteenzuur",
+    "gum_arabic": "Arabische gom",
+    "yeast_mannoproteins": "Gistmannoproteïnen",
+    "carboxymethylcellulose": "Carboxymethylcellulose",
+    "potassium_polyaspartate": "Kaliumpolyaspartaat",
+    "fumaric_acid": "Fumaarzuur",
+    "potassium_sorbate": "Kaliumsorbaat",
+    "lysozyme": "Lysozym",
+    "ascorbic_acid": "L-Ascorbinezuur",
+    "dmdc": "Dimethyldicarbonaat (DMDC)",
+    "sulfites": "Sulfieten",
+    "sulfur_dioxide": "Zwaveldioxide",
+    "potassium_bisulfite": "Kaliumbisulfiet",
+    "potassium_metabisulfite": "Kaliummetabisulfiet",
+    "egg": "Ei",
+    "milk": "Melk",
+    "casein": "Caseïne",
+    "albumin": "Albumine",
+    "isinglass": "Vislijm (visblaas)",
+    "bentonite": "Bentoniet",
+    "gelatin": "Gelatine",
+    "pea_protein": "Erwtenproteïne",
+    "potato_protein": "Aardappelproteïne",
+    "pvpp": "PVPP (Polyvinylpolypyrrolidon)"
+  },
+  "recycling": {
+    "code": "Code",
+    "material": "Materiaal",
+    "disposal": "Afvoer",
+    "componentTypes": {
+      "bottle": "Fles",
+      "closure": "Sluiting",
+      "capsule": "Capsule",
+      "label": "Etiket",
+      "box": "Doos"
+    },
+    "selectMaterial": "Selecteer materiaal",
+    "individualComponents": "Individuele Componenten",
+    "compositeComponents": "Samengestelde Componenten",
+    "customMaterial": "Aangepast Materiaal",
+    "addCustomMaterial": "Aangepast materiaal toevoegen",
+    "disposalAdvice": "Afvoeradvies",
+    "addMaterial": "Materiaal toevoegen",
+    "addPackagingMaterial": "Verpakkingsmateriaal toevoegen",
+    "customType": "Aangepast type",
+    "addCustomType": "Aangepast materiaaltype toevoegen",
+    "materialName": "Materiaalnaam",
+    "materialNamePlaceholder": "bijv. Houten krat"
+  },
+  "legal": {
+    "title": "Juridische Vermeldingen",
+    "legalMentions": "Juridische Vermeldingen"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oeps! Pagina niet gevonden",
+    "returnHome": "Terug naar Home"
+  },
+  "counterfeit": {
+    "title": "Vervalsingsbeveiliging",
+    "enable": "Inschakelen",
+    "disable": "Uitschakelen",
+    "description": "Bescherm uw product tegen vervalsing met een beveiligingszegel van onze partner.",
+    "addProtection": "Vervalsingsbeveiliging Toevoegen (optioneel)",
+    "enabled": "Vervalsingsbeveiliging Ingeschakeld",
+    "enabledDescription": "Er is een e-mail verzonden naar onze vervalsingsbeveiliging partner. Zij zullen contact met u opnemen om het beveiligingszegel te leveren.",
+    "requestSent": "Verzoek verzonden!",
+    "requestSentDescription": "Er is een e-mail verzonden naar onze vervalsingsbeveiliging partner. Zij zullen contact met u opnemen om het beveiligingszegel te leveren.",
+    "sending": "Verzenden...",
+    "errorNoEmail": "Kan verzoek niet verzenden - gebruikers-e-mail niet gevonden",
+    "errorSaveFirst": "Sla eerst het paspoort op voordat u vervalsingsbeveiliging inschakelt",
+    "errorFailed": "Verzenden van vervalsingsbeveiliging verzoek mislukt"
+  },
+  "qrDialog": {
+    "title": "QR Code",
+    "download": "Download QR Code",
+    "copyLink": "Kopieer Link"
+  }
 }

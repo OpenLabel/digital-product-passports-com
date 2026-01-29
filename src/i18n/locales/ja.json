@@ -1,13 +1,405 @@
 {
-  "common": { "loading": "読み込み中...", "save": "保存", "cancel": "キャンセル", "delete": "削除", "edit": "編集", "create": "作成", "back": "戻る", "next": "次へ", "search": "検索", "apply": "適用", "close": "閉じる", "confirm": "確認", "yes": "はい", "no": "いいえ", "error": "エラー", "success": "成功", "warning": "警告", "openSource": "オープンソース", "language": "言語" },
-  "nav": { "signIn": "ログイン", "signUp": "新規登録", "signOut": "ログアウト", "getStarted": "無料で始める", "dashboard": "ダッシュボード", "createNew": "新規作成" },
-  "auth": { "title": "デジタル製品パスポート", "subtitle": "ログインまたはアカウント作成", "signIn": "ログイン", "signUp": "新規登録", "email": "メールアドレス", "password": "パスワード", "companyName": "会社名", "welcomeBack": "おかえりなさい！" },
-  "dashboard": { "title": "あなたのパスポート", "noPassports": "パスポートはまだありません。最初のパスポートを作成しましょう！", "updated": "更新日" },
-  "passport": { "createTitle": "新しいパスポートを作成", "editTitle": "パスポートを編集", "basicInfo": "基本情報", "productName": "製品名", "category": "製品カテゴリ", "productImage": "製品画像", "saving": "保存中...", "saveChanges": "変更を保存", "notFound": "パスポートが見つかりません", "checkAuthenticity": "真正性を確認", "poweredBy": "提供" },
-  "categories": { "battery": "バッテリー", "construction": "建設製品", "textiles": "繊維製品・履物", "wine": "ワイン・蒸留酒", "toys": "おもちゃ", "electronics": "電子機器・ICT", "iron_steel": "鉄鋼", "aluminum": "アルミニウム", "cosmetics": "化粧品", "furniture": "家具・マットレス", "tires": "タイヤ", "detergents": "洗剤・化学品", "other": "その他すべての製品" },
-  "wine": { "productIdentity": "製品識別", "volume": "容量", "grapeVariety": "ブドウ品種", "vintage": "ヴィンテージ", "country": "原産国", "region": "地域", "nutritionalValues": "栄養成分", "alcohol": "アルコール", "energy": "エネルギー", "fat": "脂質", "carbohydrate": "炭水化物", "protein": "タンパク質", "salt": "食塩相当量", "ingredients": "原材料", "recycling": "リサイクル情報" },
-  "ingredients": { "grapes": "ブドウ", "saccharose": "ショ糖", "sulfites": "亜硫酸塩", "egg": "卵", "milk": "牛乳", "tartaric_acid": "酒石酸", "malic_acid": "リンゴ酸", "citric_acid": "クエン酸" },
-  "legal": { "title": "法的表示", "legalMentions": "法的表示" },
-  "notFound": { "title": "404", "message": "ページが見つかりません", "returnHome": "ホームに戻る" },
-  "landing": { "hero": { "badge": "EU ESPR準拠", "title": "<1>無制限</1>のデジタル製品パスポートを作成", "cta": "最初のパスポートを作成" }, "footer": { "legal": "法的表示", "github": "GitHubで見る" } }
+  "common": {
+    "loading": "読み込み中...",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "create": "作成",
+    "back": "戻る",
+    "next": "次へ",
+    "search": "検索",
+    "apply": "適用",
+    "close": "閉じる",
+    "confirm": "確認",
+    "yes": "はい",
+    "no": "いいえ",
+    "error": "エラー",
+    "success": "成功",
+    "warning": "警告",
+    "openSource": "オープンソース",
+    "language": "言語",
+    "custom": "カスタム"
+  },
+  "nav": {
+    "signIn": "ログイン",
+    "signUp": "新規登録",
+    "signOut": "ログアウト",
+    "getStarted": "無料で始める",
+    "dashboard": "ダッシュボードへ",
+    "createNew": "新規作成"
+  },
+  "landing": {
+    "hero": {
+      "badge": "EU ESPR準拠",
+      "euFunded": "🇪🇺 EU資金プロジェクト",
+      "title": "<1>無制限</1>のデジタル製品パスポートを作成",
+      "subtitle": "EU持続可能製品エコデザイン規則（ESPR）準拠のための無料オープンソースプラットフォーム。バッテリー、繊維製品、建設製品、その他12以上のカテゴリーに対応したQRコード付き機械可読パスポートを生成。",
+      "cta": "最初のパスポートを作成",
+      "demo": "デモパスポートを見る",
+      "features": {
+        "free": "100%無料＆オープンソース",
+        "selfHost": "セルフホスト可能",
+        "machineReadable": "機械可読JSON/XML",
+        "categories": "12+製品カテゴリー"
+      }
+    },
+    "stats": {
+      "free": "無料＆オープンソース",
+      "categories": "製品カテゴリー",
+      "deadline": "最初のEU期限",
+      "qr": "+ユニークURL"
+    },
+    "features": {
+      "badge": "機能",
+      "title": "コンプライアンスに必要なすべて",
+      "subtitle": "EU技術標準に準拠：分散ストレージ、ISO 15459識別子、階層アクセス権、機械可読JSON/XML出力。",
+      "espr": {
+        "title": "ESPR準拠",
+        "description": "カテゴリー別にEU持続可能製品エコデザイン規則要件に従った事前設定テンプレート。"
+      },
+      "openSource": {
+        "title": "オープンソース",
+        "description": "完全オープンソース。完全なデータ管理のために自社サーバーでセルフホストするか、ホスト版を無料で使用。"
+      },
+      "machineReadable": {
+        "title": "機械可読",
+        "description": "静的PDFではありません。BIM、リサイクルシステム、その他のソフトウェアと統合するための構造化JSON/XMLデータ。"
+      },
+      "qr": {
+        "title": "QRコード＆データキャリア",
+        "description": "各パスポートにはユニークなURLとQRコードが付与。ISO 15459に基づくNFC/RFID統合対応。"
+      }
+    },
+    "ai": {
+      "badge": "AI搭載",
+      "title": "AIによる自動入力",
+      "subtitle": "手入力は不要。製品ラベルの写真をアップロードすると、AIが数秒ですべてのデータを自動抽出。",
+      "snap": {
+        "title": "写真を撮る",
+        "description": "ワインラベル、製品パッケージ、または製品情報のあるラベルの写真を撮影。"
+      },
+      "upload": {
+        "title": "ドキュメントをアップロード",
+        "description": "PDFデータシート、Word文書、Excelスペック—どんなファイルでもアップロードすれば関連データを抽出。"
+      },
+      "extract": {
+        "title": "AIがデータを抽出",
+        "description": "ビジョンAIがドキュメントを読み取り、すべてのパスポートフィールドを自動入力。"
+      },
+      "multiUpload": {
+        "title": "複数アップロード対応",
+        "description": "複数の写真やドキュメントを順次アップロード—AIがデータをインテリジェントに統合"
+      },
+      "cta": "AIを無料で試す",
+      "tags": {
+        "wineLabels": "ワインラベル",
+        "batterySpecs": "バッテリー仕様",
+        "textileComposition": "繊維組成",
+        "safetyDatasheets": "安全データシート",
+        "nutritionFacts": "栄養成分表",
+        "technicalPdfs": "技術PDF"
+      }
+    },
+    "categories": {
+      "badge": "EU規制範囲",
+      "title": "対応製品カテゴリー",
+      "subtitle": "公式EU規則と委任規則に基づいたテンプレート。施行中の規則と、今後の要件に対応した優先グループのテンプレートを用意。",
+      "activeLaw": "施行中",
+      "priorityGroup": "優先グループ",
+      "cta": "パスポート作成を開始"
+    },
+    "timeline": {
+      "badge": "規制タイムライン",
+      "title": "EU DPP実施期限",
+      "subtitle": "EUはデジタル製品パスポート要件を段階的に導入中。コンプライアンス確保のため今すぐ準備を開始。",
+      "feb2027": {
+        "title": "2027年2月",
+        "badge": "最初のバッテリー期限",
+        "description": "EV、産業用、LMTバッテリーは、完全なライフサイクルデータ、カーボンフットプリント宣言（A-Dクラス評価付きkg CO₂e/kWh）、コバルト・リチウム・ニッケルのリサイクル含有率を含むデジタル製品パスポートが必要。"
+      },
+      "active": {
+        "title": "現在施行中",
+        "badge": "有効",
+        "description": "建設製品（EU 2024/3110）、ワイン＆スピリッツ（EU 2021/2117）、玩具（EU 2025/2509）はすでにデジタル宣言が必要。テンプレート利用可能。"
+      },
+      "rollout": {
+        "title": "2027-2030年：完全展開",
+        "description": "繊維製品、電子機器、家具、鉄鋼、アルミニウム、化粧品、タイヤ、洗剤は委任規則の公布に伴いDPPが必要に。優先グループテンプレート準備完了。"
+      }
+    },
+    "selfHost": {
+      "badge": "オープンソース",
+      "title": "自社サーバーで運用",
+      "subtitle": "このプロジェクトは完全オープンソース。完全なデータ主権のために自社インフラでセルフホスト、ニーズに合わせてコードを修正、またはプロジェクトに貢献可能。",
+      "deploy": {
+        "title": "セルフホスト",
+        "description": "自社サーバーにデプロイ。データとコンプライアンス文書の完全な管理。"
+      },
+      "customize": {
+        "title": "カスタマイズ",
+        "description": "カスタムフィールドの追加、ERP/PLMシステムとの統合、ホワイトラベルソリューションの構築。"
+      },
+      "contribute": {
+        "title": "貢献",
+        "description": "規制の進化に合わせてテンプレートの改善に協力。コミュニティ主導のコンプライアンス更新。"
+      }
+    },
+    "cta": {
+      "title": "コンプライアンス準備はできていますか？",
+      "subtitle": "EU準拠のデジタル製品パスポートの作成を今すぐ開始。無料、無制限、オープンソース。",
+      "button": "今すぐ無料で開始"
+    },
+    "footer": {
+      "legal": "法的表示",
+      "github": "GitHubで見る"
+    }
+  },
+  "auth": {
+    "title": "デジタル製品パスポート",
+    "subtitle": "ログインまたはアカウント作成",
+    "resetSubtitle": "パスワードをリセット",
+    "signIn": "ログイン",
+    "signUp": "新規登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "companyName": "会社名",
+    "sendResetLink": "リセットリンクを送信",
+    "sending": "送信中...",
+    "backToSignIn": "ログインに戻る",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "welcomeBack": "おかえりなさい！",
+    "accountCreated": "アカウントが作成されました！",
+    "accountCreatedDesc": "ログインできます。",
+    "checkEmail": "メールを確認してください",
+    "resetLinkSent": "パスワードリセットリンクを送信しました。"
+  },
+  "dashboard": {
+    "title": "あなたのパスポート",
+    "noPassports": "パスポートはまだありません。最初のパスポートを作成しましょう！",
+    "updated": "更新日",
+    "duplicate": "複製",
+    "showQr": "QRコードを表示",
+    "duplicated": "パスポートを複製しました",
+    "deleted": "パスポートを削除しました",
+    "confirmDelete": "このパスポートを削除してもよろしいですか？"
+  },
+  "passport": {
+    "createTitle": "新しいパスポートを作成",
+    "editTitle": "パスポートを編集",
+    "basicInfo": "基本情報",
+    "productName": "製品名",
+    "productNamePlaceholder": "この製品の名前を入力",
+    "category": "製品カテゴリ",
+    "productImage": "製品画像",
+    "productDescription": "製品説明",
+    "descriptionPlaceholder": "製品を説明...",
+    "details": "詳細",
+    "saving": "保存中...",
+    "saveChanges": "変更を保存",
+    "createPassport": "パスポートを作成",
+    "updated": "パスポートを更新しました",
+    "created": "パスポートを作成しました",
+    "unsavedChanges": "未保存の変更",
+    "unsavedChangesDesc": "未保存の変更があります。離れてもよろしいですか？変更は失われます。",
+    "leaveWithoutSaving": "保存せずに離れる",
+    "enterProductName": "製品名を入力してください",
+    "notFound": "パスポートが見つかりません",
+    "notFoundDesc": "このデジタル製品パスポートは存在しないか、削除されました。",
+    "productPassport": "製品パスポート",
+    "checkAuthenticity": "真正性を確認",
+    "poweredBy": "提供"
+  },
+  "categories": {
+    "battery": "バッテリー",
+    "construction": "建設製品",
+    "textiles": "繊維製品・履物",
+    "wine": "ワイン・蒸留酒",
+    "toys": "玩具",
+    "electronics": "電子機器・ICT",
+    "iron_steel": "鉄鋼",
+    "aluminum": "アルミニウム",
+    "cosmetics": "化粧品",
+    "furniture": "家具・マットレス",
+    "tires": "タイヤ",
+    "detergents": "洗剤・化学品",
+    "other": "その他すべての製品"
+  },
+  "categoryDescriptions": {
+    "battery": "カーボンフットプリント、リサイクル、サプライチェーンデューデリジェンス",
+    "construction": "DoPC、GWP A1-A3、耐火性",
+    "textiles": "繊維組成、耐久性、PFAS宣言",
+    "wine": "原材料、栄養、地理的表示",
+    "toys": "PFAS不使用、アレルゲン、移行試験",
+    "electronics": "修理可能性指数、スペアパーツ、ソフトウェアアップデート",
+    "iron_steel": "炭素強度、スクラップ含有量、合金化学",
+    "aluminum": "精錬エネルギー源、コイルトレーサビリティ",
+    "cosmetics": "INCI リスト、ナノ材料、パッケージリサイクル性",
+    "furniture": "EUDR木材原産地、スペアパーツ、PFAS",
+    "tires": "摩耗率、リトレッド履歴、マイクロプラスチック",
+    "detergents": "デジタルSDS、生分解性、投与量最適化",
+    "other": "あらゆる製品タイプ用の汎用DPPテンプレート"
+  },
+  "wine": {
+    "productIdentity": "製品識別",
+    "volume": "容量",
+    "grapeVariety": "ブドウ品種",
+    "vintage": "ヴィンテージ",
+    "country": "原産国",
+    "region": "地域",
+    "denomination": "呼称 / 原産地呼称",
+    "sugarClassification": "糖分分類",
+    "producerInfo": "生産者情報",
+    "producerName": "生産者/ワイナリー名",
+    "bottlerInfo": "瓶詰業者情報",
+    "bottlerInfoPlaceholder": "瓶詰業者の名前と住所",
+    "nutritionalValues": "栄養成分",
+    "alcohol": "アルコール",
+    "residualSugar": "残糖",
+    "acidity": "酸度",
+    "totalAcidity": "総酸度",
+    "glycerine": "グリセリン/ポリオール",
+    "energy": "エネルギー",
+    "fat": "脂質",
+    "saturatedFat": "うち飽和脂肪酸",
+    "carbohydrate": "炭水化物",
+    "sugars": "うち糖類",
+    "protein": "タンパク質",
+    "salt": "食塩相当量",
+    "displayOptions": "表示オプション",
+    "showAlcohol": "ラベルにアルコール度数を表示",
+    "showResidualSugar": "ラベルに残糖を表示",
+    "showTotalAcidity": "ラベルに総酸度を表示",
+    "ingredients": "原材料",
+    "addIngredients": "原材料を追加",
+    "addCustomIngredient": "カスタム追加",
+    "noIngredients": "原材料が追加されていません",
+    "ingredientCategories": {
+      "general": "一般",
+      "gases": "ガスおよび包装ガス",
+      "acidity_regulators": "酸度調整剤",
+      "stabilizers": "安定剤",
+      "preservatives": "保存料および酸化防止剤",
+      "processing_aids": "加工助剤"
+    },
+    "ingredientsDescription": "ワイン原材料リストから選択するか、カスタム原材料を追加。量の多い順に並べ替え。",
+    "chooseIngredients": "ワイン原材料を選択",
+    "chooseIngredientsDescription": "ワインの組成に含まれるすべての原材料を選択。必要に応じてカスタム原材料を追加できます。",
+    "selectFromList": "リストから原材料を選択",
+    "defineCustom": "カスタム原材料を定義",
+    "sortIngredients": "原材料を並べ替え",
+    "sortIngredientsDescription": "原材料リストは量の多い順に並べ替える必要があります。0.1g/100ml未満の量は並べ替え不要。",
+    "allergen": "アレルゲン",
+    "allergenNotice": "アレルゲン表示",
+    "allergenWarning": "このワインには表示が必要なアレルゲンが含まれています：",
+    "selectIngredientsTitle": "リストからワイン原材料を選択",
+    "noIngredientsFound": "「{{search}}」に一致する原材料が見つかりません",
+    "recycling": "リサイクル情報",
+    "recyclingDescription": "ワイン包装に使用されている素材を選択。",
+    "recyclingNote": "地域のリサイクルガイドラインを確認してください。部品を分別して適切に廃棄してください。",
+    "legalInfo": "法的情報",
+    "negligibleAmounts": "脂質、飽和脂肪酸、タンパク質、食塩は微量。",
+    "per100ml": "100mlあたり",
+    "selectCountry": "国を選択",
+    "selectClassification": "分類を選択",
+    "manualOverride": "手動上書き"
+  },
+  "ingredients": {
+    "grapes": "ブドウ",
+    "saccharose": "ショ糖",
+    "aleppo_pine_resin": "アレッポマツ樹脂",
+    "caramel": "カラメル",
+    "concentrated_grape_must": "濃縮ブドウ果汁",
+    "grape_must": "ブドウ果汁",
+    "rectified_concentrated_grape_must": "精製濃縮ブドウ果汁",
+    "filling_dosage": "充填用糖液",
+    "expedition_dosage": "出荷用糖液",
+    "argon": "アルゴン",
+    "nitrogen": "窒素",
+    "carbon_dioxide": "二酸化炭素",
+    "protective_atmosphere": "保護雰囲気下で瓶詰め",
+    "tartaric_acid": "酒石酸",
+    "malic_acid": "リンゴ酸",
+    "lactic_acid": "乳酸",
+    "calcium_sulfate": "硫酸カルシウム",
+    "citric_acid": "クエン酸",
+    "citric_acid_stabilizer": "クエン酸",
+    "metatartaric_acid": "メタ酒石酸",
+    "gum_arabic": "アラビアガム",
+    "yeast_mannoproteins": "酵母マンノプロテイン",
+    "carboxymethylcellulose": "カルボキシメチルセルロース",
+    "potassium_polyaspartate": "ポリアスパラギン酸カリウム",
+    "fumaric_acid": "フマル酸",
+    "potassium_sorbate": "ソルビン酸カリウム",
+    "lysozyme": "リゾチーム",
+    "ascorbic_acid": "L-アスコルビン酸",
+    "dmdc": "ジメチルジカーボネート（DMDC）",
+    "sulfites": "亜硫酸塩",
+    "sulfur_dioxide": "二酸化硫黄",
+    "potassium_bisulfite": "亜硫酸水素カリウム",
+    "potassium_metabisulfite": "メタ重亜硫酸カリウム",
+    "egg": "卵",
+    "milk": "牛乳",
+    "casein": "カゼイン",
+    "albumin": "アルブミン",
+    "isinglass": "アイシングラス（魚の浮き袋）",
+    "bentonite": "ベントナイト",
+    "gelatin": "ゼラチン",
+    "pea_protein": "エンドウ豆タンパク質",
+    "potato_protein": "ジャガイモタンパク質",
+    "pvpp": "PVPP（ポリビニルポリピロリドン）"
+  },
+  "recycling": {
+    "code": "コード",
+    "material": "素材",
+    "disposal": "廃棄",
+    "componentTypes": {
+      "bottle": "ボトル",
+      "closure": "キャップ",
+      "capsule": "カプセル",
+      "label": "ラベル",
+      "box": "箱"
+    },
+    "selectMaterial": "素材を選択",
+    "individualComponents": "個別コンポーネント",
+    "compositeComponents": "複合コンポーネント",
+    "customMaterial": "カスタム素材",
+    "addCustomMaterial": "カスタム素材を追加",
+    "disposalAdvice": "廃棄アドバイス",
+    "addMaterial": "素材を追加",
+    "addPackagingMaterial": "包装素材を追加",
+    "customType": "カスタムタイプ",
+    "addCustomType": "カスタム素材タイプを追加",
+    "materialName": "素材名",
+    "materialNamePlaceholder": "例: 木箱"
+  },
+  "legal": {
+    "title": "法的表示",
+    "legalMentions": "法的表示"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "ページが見つかりません",
+    "returnHome": "ホームに戻る"
+  },
+  "counterfeit": {
+    "title": "偽造防止保護",
+    "enable": "有効にする",
+    "disable": "無効にする",
+    "description": "パートナーのセキュリティシールで製品を偽造から保護。",
+    "addProtection": "偽造防止保護を追加（オプション）",
+    "enabled": "偽造防止保護が有効",
+    "enabledDescription": "偽造防止保護パートナーにメールを送信しました。セキュリティシールをお届けするためにご連絡いたします。",
+    "requestSent": "リクエストを送信しました！",
+    "requestSentDescription": "偽造防止保護パートナーにメールを送信しました。セキュリティシールをお届けするためにご連絡いたします。",
+    "sending": "送信中...",
+    "errorNoEmail": "リクエストを送信できません - ユーザーメールが見つかりません",
+    "errorSaveFirst": "偽造防止保護を有効にする前にパスポートを保存してください",
+    "errorFailed": "偽造防止保護リクエストの送信に失敗しました"
+  },
+  "qrDialog": {
+    "title": "QRコード",
+    "download": "QRコードをダウンロード",
+    "copyLink": "リンクをコピー"
+  }
 }
