@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 interface WinePassportData {
   name: string;
   image_url: string | null;
@@ -109,6 +110,13 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Language Switcher - Top Right */}
+      <div className="container mx-auto px-4 pt-4 max-w-lg">
+        <div className="flex justify-end">
+          <LanguageSwitcher />
+        </div>
+      </div>
+
       <main className="container mx-auto px-4 py-6 max-w-lg">
         {/* Header with Product Name and Image */}
         <div className="mb-6">
