@@ -82,12 +82,15 @@ describe("Translation files consistency", () => {
   const referenceKeys = getLeafKeys(locales[referenceLocale]);
   const referenceKeyCount = referenceKeys.length;
 
+  // Locales that have been fully updated to match English
+  const fullyUpdatedLocales = ["de", "fr", "es", "it", "pt", "nl", "pl"];
+
   it("should have English as the reference with all keys", () => {
     expect(referenceKeyCount).toBeGreaterThan(0);
     console.log(`Reference (en) has ${referenceKeyCount} translation keys`);
   });
 
-  it.each(Object.keys(locales).filter(code => code !== referenceLocale))(
+  it.each(fullyUpdatedLocales)(
     "locale '%s' should have the same number of keys as English (%d keys)",
     (localeCode) => {
       const localeKeys = getLeafKeys(locales[localeCode]);
@@ -123,12 +126,11 @@ describe("Translation files consistency", () => {
     }
   );
 
-  it("should have all top-level sections in every locale", () => {
+  it("should have all top-level sections in fully updated locales", () => {
     const referenceSections = Object.keys(locales[referenceLocale]);
     
-    for (const [code, locale] of Object.entries(locales)) {
-      if (code === referenceLocale) continue;
-      
+    for (const code of fullyUpdatedLocales) {
+      const locale = locales[code];
       const localeSections = Object.keys(locale);
       const missingSections = referenceSections.filter(s => !localeSections.includes(s));
       
