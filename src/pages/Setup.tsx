@@ -20,6 +20,7 @@ export default function Setup() {
   const [termsConditionsUrl, setTermsConditionsUrl] = useState('/terms');
   const [aiEnabled, setAiEnabled] = useState(true);
   const [resendApiKey, setResendApiKey] = useState('');
+  const [senderEmail, setSenderEmail] = useState('noreply@digital-product-passports.com');
   const [validatingResend, setValidatingResend] = useState(false);
   const [resendValidated, setResendValidated] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -84,6 +85,7 @@ export default function Setup() {
         privacy_policy_url: privacyPolicyUrl.trim(),
         terms_conditions_url: termsConditionsUrl.trim(),
         ai_enabled: aiEnabled,
+        sender_email: senderEmail.trim(),
         setup_complete: true,
       });
       toast({ title: 'Setup complete!', description: 'Your instance is now configured.' });
@@ -272,6 +274,23 @@ export default function Setup() {
                     )}
                     <p className="text-xs text-muted-foreground">
                       Required for password reset emails.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="senderEmail" className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      Sender Email Address
+                    </Label>
+                    <Input
+                      id="senderEmail"
+                      type="email"
+                      value={senderEmail}
+                      onChange={(e) => setSenderEmail(e.target.value)}
+                      placeholder="noreply@your-verified-domain.com"
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Must be from a domain verified in Resend. Used for counterfeit protection requests.
                     </p>
                   </div>
                 </div>

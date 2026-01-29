@@ -8,6 +8,7 @@ export interface SiteConfig {
   terms_conditions_url: string;
   ai_enabled: boolean;
   resend_api_key: string;
+  sender_email: string;
   setup_complete: boolean;
 }
 
@@ -27,6 +28,7 @@ const defaultConfig: SiteConfig = {
   terms_conditions_url: '',
   ai_enabled: true,
   resend_api_key: '',
+  sender_email: 'noreply@digital-product-passports.com',
   setup_complete: false,
 };
 
@@ -74,6 +76,7 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
         terms_conditions_url: configObj.terms_conditions_url || '',
         ai_enabled: configObj.ai_enabled !== 'false', // Default to true
         resend_api_key: configObj.resend_api_key || '',
+        sender_email: configObj.sender_email || 'noreply@digital-product-passports.com',
         setup_complete: configObj.setup_complete === 'true',
       });
     } catch (error) {
