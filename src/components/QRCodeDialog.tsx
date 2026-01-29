@@ -102,7 +102,7 @@ function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
         fontWeight="500"
         fill="#666"
       >
-        seal here
+        seals here
       </text>
       <text
         x={centerX}
