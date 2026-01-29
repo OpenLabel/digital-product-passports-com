@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Badge } from '@/components/ui/badge';
-import { Building2, MapPin, CheckCircle2, Server, Link2, FileText, Sparkles, Mail } from 'lucide-react';
+import { Building2, MapPin, CheckCircle2, Server, Link2, FileText, Sparkles, Mail, QrCode } from 'lucide-react';
 
 export default function Setup() {
   const [companyName, setCompanyName] = useState('');
@@ -18,6 +18,7 @@ export default function Setup() {
   const [termsConditionsUrl, setTermsConditionsUrl] = useState('/terms');
   const [aiEnabled, setAiEnabled] = useState(true);
   const [senderEmail, setSenderEmail] = useState('');
+  const [shortUrl, setShortUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const { saveConfig } = useSiteConfig();
   const { toast } = useToast();
@@ -50,6 +51,7 @@ export default function Setup() {
         terms_conditions_url: termsConditionsUrl.trim(),
         ai_enabled: aiEnabled,
         sender_email: senderEmail.trim(),
+        short_url: shortUrl.trim(),
         setup_complete: true,
       });
       toast({ title: 'Setup complete!', description: 'Your instance is now configured.' });
@@ -186,6 +188,33 @@ export default function Setup() {
                     />
                     <p className="text-xs text-muted-foreground">
                       Must be from a domain you verified in Resend. Used for counterfeit protection requests.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Short URL Section (Optional) */}
+                <div className="border-t pt-6 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <QrCode className="h-5 w-5 text-primary" />
+                    <h3 className="font-medium">QR Code Optimization</h3>
+                    <Badge variant="outline" className="text-xs">Optional</Badge>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="shortUrl" className="flex items-center gap-2">
+                      <Link2 className="h-4 w-4" />
+                      Short URL Base
+                    </Label>
+                    <Input
+                      id="shortUrl"
+                      type="url"
+                      value={shortUrl}
+                      onChange={(e) => setShortUrl(e.target.value)}
+                      placeholder="https://dpp.co"
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Optional: Use a short domain for smaller QR codes. Set up a redirect from this URL to your full DPP URL.
+                      Example: <code className="bg-muted px-1 rounded">https://dpp.co/p/abc123</code> → <code className="bg-muted px-1 rounded">https://digital-product-passports.com/p/abc123</code>
                     </p>
                   </div>
                 </div>
