@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      api_usage: {
+        Row: {
+          call_count: number
+          created_at: string
+          function_name: string
+          id: string
+          month_year: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          call_count?: number
+          created_at?: string
+          function_name: string
+          id?: string
+          month_year: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          call_count?: number
+          created_at?: string
+          function_name?: string
+          id?: string
+          month_year?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       passports: {
         Row: {
           category: Database["public"]["Enums"]["product_category"]
@@ -147,7 +177,10 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      increment_api_usage: {
+        Args: { p_function_name: string; p_limit?: number; p_user_id: string }
+        Returns: Json
+      }
     }
     Enums: {
       product_category:

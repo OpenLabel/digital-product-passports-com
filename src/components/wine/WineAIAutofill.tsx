@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Sparkles, Camera, Upload, Loader2, AlertTriangle, FileText } from 'lucide-react';
+import { Sparkles, Camera, Upload, Loader2, AlertTriangle, FileText, Mail } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
@@ -15,6 +15,7 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [showQuotaDialog, setShowQuotaDialog] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
   const { config } = useSiteConfig();
@@ -60,14 +61,31 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
       });
 
       if (error) {
+        // Check if this is a quota exceeded error
+        if (error.message?.includes('QUOTA_EXCEEDED') || error.message?.includes('Fair usage quota')) {
+          setShowQuotaDialog(true);
+          setIsOpen(false);
+          setPreviewUrl(null);
+          return;
+        }
         throw new Error(error.message || 'Failed to process image');
       }
 
+      // Check for quota exceeded in response data
+      if (data?.code === 'QUOTA_EXCEEDED') {
+        setShowQuotaDialog(true);
+        setIsOpen(false);
+        setPreviewUrl(null);
+        return;
+      }
+
       if (data?.extractedData) {
+        // Show remaining quota if available
+        const quotaInfo = data.quota ? ` (${data.quota.remaining} scans remaining this month)` : '';
         onAutofill(data.extractedData);
         toast({
           title: '✨ AI Autofill Complete',
-          description: 'Fields have been populated. Please review and verify the data before saving.',
+          description: `Fields have been populated. Please review and verify the data before saving.${quotaInfo}`,
         });
         setIsOpen(false);
         setPreviewUrl(null);
@@ -76,9 +94,19 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
       }
     } catch (error) {
       console.error('Error processing wine label:', error);
+      
+      // Check for quota error in catch block as well
+      const errorMessage = error instanceof Error ? error.message : '';
+      if (errorMessage.includes('QUOTA_EXCEEDED') || errorMessage.includes('Fair usage quota') || errorMessage.includes('429')) {
+        setShowQuotaDialog(true);
+        setIsOpen(false);
+        setPreviewUrl(null);
+        return;
+      }
+      
       toast({
         title: 'Processing Failed',
-        description: error instanceof Error ? error.message : 'Failed to extract data from the label',
+        description: errorMessage || 'Failed to extract data from the label',
         variant: 'destructive',
       });
     } finally {
@@ -213,6 +241,49 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
               </div>
             )}
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Quota Exceeded Dialog */}
+      <Dialog open={showQuotaDialog} onOpenChange={setShowQuotaDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-amber-600">
+              <AlertTriangle className="h-5 w-5" />
+              Fair Usage Quota Exceeded
+            </DialogTitle>
+            <DialogDescription>
+              You've reached the monthly limit of 100 AI label scans.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 py-4">
+            <p className="text-sm text-muted-foreground">
+              To ensure fair access for all users, we limit AI-powered label scanning to 100 scans per month. Your quota will reset at the beginning of next month.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              If you need a higher limit for your business, please contact us and we'll be happy to discuss options.
+            </p>
+          </div>
+
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setShowQuotaDialog(false)}
+              className="w-full sm:w-auto"
+            >
+              Close
+            </Button>
+            <Button
+              onClick={() => {
+                window.location.href = 'mailto:contact@digital-product-passports.com?subject=AI%20Label%20Scan%20Quota%20Increase%20Request';
+              }}
+              className="w-full sm:w-auto gap-2"
+            >
+              <Mail className="h-4 w-4" />
+              Contact Us
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </>
