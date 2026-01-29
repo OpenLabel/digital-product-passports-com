@@ -6,11 +6,23 @@ Supports wine e-labels, batteries, textiles, electronics, toys, and more product
 
 ---
 
-## 🚀 Quick Install (Self-Hosting)
+## 🌐 Just Want to Create a DPP?
+
+**No setup required!** Use our free hosted service:
+
+👉 **[digital-product-passports.com](https://www.digital-product-passports.com/)**
+
+Create compliant Digital Product Passports in minutes, no installation needed.
+
+---
+
+## 🖥️ Self-Hosting Guide
+
+Want to run your own instance? Follow the steps below.
 
 ### Prerequisites
 
-Before running the setup script, create free accounts on:
+Create free accounts on these services first:
 
 1. **[Supabase](https://supabase.com)** — Database & Authentication
 2. **[Resend](https://resend.com)** — Email notifications (100 free emails/day)
@@ -24,18 +36,21 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-The script will guide you through everything:
+**The interactive `setup.sh` script handles everything:**
 
-- ✅ Checks prerequisites (Node.js, Supabase CLI)
-- ✅ Prompts for your Supabase credentials
-- ✅ Prompts for your Resend API key
-- ✅ Sets up the database schema
-- ✅ Configures all secrets securely
-- ✅ Deploys backend functions
-- ✅ Generates your `.env` file
-- ✅ Installs dependencies
+| Step | What it does |
+|------|--------------|
+| 1 | Checks prerequisites (Node.js, npm, Supabase CLI) |
+| 2 | Prompts for your Supabase credentials |
+| 3 | Prompts for your Resend API key |
+| 4 | Connects and links your Supabase project |
+| 5 | Pushes the database schema |
+| 6 | Configures all secrets securely |
+| 7 | Deploys edge functions |
+| 8 | Generates your `.env` file |
+| 9 | Installs npm dependencies |
 
-Then just run `npm run build` and deploy the `dist` folder!
+After completion, run `npm run build` and deploy the `dist` folder!
 
 ---
 
