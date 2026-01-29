@@ -20,7 +20,7 @@ export default function Setup() {
   const [termsConditionsUrl, setTermsConditionsUrl] = useState('/terms');
   const [aiEnabled, setAiEnabled] = useState(true);
   const [resendApiKey, setResendApiKey] = useState('');
-  const [senderEmail, setSenderEmail] = useState('noreply@digital-product-passports.com');
+  const [senderEmail, setSenderEmail] = useState('');
   const [lovableApiKey, setLovableApiKey] = useState('');
   const [validatingResend, setValidatingResend] = useState(false);
   const [validatingLovable, setValidatingLovable] = useState(false);
