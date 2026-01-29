@@ -15,7 +15,7 @@ import { QRCodeDialog } from '@/components/QRCodeDialog';
 
 export default function Dashboard() {
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
-  const [selectedPassport, setSelectedPassport] = useState<{ name: string; slug: string } | null>(null);
+  const [selectedPassport, setSelectedPassport] = useState<{ name: string; slug: string; counterfeitProtection: boolean } | null>(null);
   const { user, loading: authLoading, signOut } = useAuth();
   const { passports, isLoading, duplicatePassport, deletePassport } = usePassports();
   const navigate = useNavigate();
@@ -54,9 +54,11 @@ export default function Dashboard() {
     toast({ title: 'URL copied to clipboard' });
   };
 
-  const handleShowQR = (passport: { name: string; public_slug: string | null }) => {
+  const handleShowQR = (passport: { name: string; public_slug: string | null; category_data: unknown }) => {
     if (!passport.public_slug) return;
-    setSelectedPassport({ name: passport.name, slug: passport.public_slug });
+    const categoryData = (passport.category_data as Record<string, unknown>) || {};
+    const counterfeitProtection = categoryData.counterfeit_protection_enabled === true;
+    setSelectedPassport({ name: passport.name, slug: passport.public_slug, counterfeitProtection });
     setQrDialogOpen(true);
   };
 
@@ -207,6 +209,7 @@ export default function Dashboard() {
           onOpenChange={setQrDialogOpen}
           url={selectedPassport ? getPublicUrl(selectedPassport.slug) : ''}
           productName={selectedPassport?.name || ''}
+          counterfeitProtectionEnabled={selectedPassport?.counterfeitProtection || false}
         />
       </main>
     </div>
