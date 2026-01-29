@@ -69,9 +69,7 @@ const CANONICAL_WINE_FIELDS = {
   
   // Recycling Information (WineRecycling component)
   recycling: [
-    'recycling_mode',         // 'manual' | 'pdf' - Mode selection
-    'recycling_components',   // array of RecyclingComponent objects (when mode=manual)
-    'recycling_pdf_url',      // string URL (when mode=pdf)
+    'recycling_components',   // array of RecyclingComponent objects
   ],
 };
 
@@ -187,7 +185,9 @@ describe("WinePublicPassport", () => {
       'display_alcohol',           // Old name - now show_alcohol_on_label
       'display_residual_sugar',    // Old name - now show_residual_sugar_on_label
       'display_total_acidity',     // Old name - now show_total_acidity_on_label
-      'recycling_website_url',     // Removed - only PDF and manual modes
+      'recycling_website_url',     // Removed - only manual mode now
+      'recycling_mode',            // Removed - only manual entry now
+      'recycling_pdf_url',         // Removed - PDF option removed
       'contains_sulfites',         // Removed - now handled via ingredients
       'contains_egg',              // Removed - now handled via ingredients
       'contains_milk',             // Removed - now handled via ingredients
@@ -263,9 +263,8 @@ describe("WinePublicPassport", () => {
 
   describe("recycling structure", () => {
     it("recycling fields are properly defined", () => {
-      expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_mode');
       expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_components');
-      expect(WINE_PASSPORT_FIELDS.recycling).toContain('recycling_pdf_url');
+      expect(WINE_PASSPORT_FIELDS.recycling.length).toBe(1);
     });
     
     // Type definition for recycling component
@@ -354,7 +353,6 @@ describe("Wine Field Save/Load Contract", () => {
       ],
       
       // Recycling
-      recycling_mode: 'manual',
       recycling_components: [
         {
           id: '1',
@@ -367,7 +365,6 @@ describe("Wine Field Save/Load Contract", () => {
           disposalName: 'Glass Container',
         },
       ],
-      recycling_pdf_url: '',
     };
     
     // Verify all canonical fields are present
