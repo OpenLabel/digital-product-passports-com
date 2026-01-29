@@ -64,12 +64,14 @@ export function SortablePassportCard({
         )}
         
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <span>{getCategoryIcon(passport.category)}</span>
-            <span className="font-medium truncate">{passport.name}</span>
-            <span className="text-sm text-muted-foreground">({t(`categories.${passport.category}`)})</span>
+          <div className="flex items-start gap-2">
+            <span className="shrink-0">{getCategoryIcon(passport.category)}</span>
+            <div className="min-w-0">
+              <span className="font-medium line-clamp-2 break-words">{passport.name}</span>
+              <span className="text-sm text-muted-foreground block sm:inline sm:ml-1">({t(`categories.${passport.category}`)})</span>
+            </div>
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground mt-1">
             {t('dashboard.updated')} {new Date(passport.updated_at).toLocaleDateString()}
           </p>
         </div>
