@@ -113,9 +113,9 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">EU</span>
+              <span className="text-primary-foreground font-bold text-sm">DPP</span>
             </div>
-            <h1 className="text-lg font-semibold">Digital Product Passport</h1>
+            <h1 className="text-lg font-semibold">Digital Product Passports <span className="text-muted-foreground font-normal">.com</span></h1>
           </div>
           <div className="flex gap-2 items-center">
             {loading ? null : user ? (

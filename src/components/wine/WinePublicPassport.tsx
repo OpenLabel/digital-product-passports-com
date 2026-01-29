@@ -366,15 +366,15 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
             <p className="text-sm text-foreground">
               Powered by{' '}
               {isPreview ? (
-                <span className="text-primary font-medium">Open Source DPP Platform</span>
+                <span className="text-primary font-medium">Digital Product Passports .com</span>
               ) : (
                 <a 
-                  href="https://github.com/cypheme/dpp-platform"
+                  href="https://www.digital-product-passports.com"
                   className="text-primary font-medium hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Open Source DPP Platform
+                  Digital Product Passports .com
                 </a>
               )}
             </p>

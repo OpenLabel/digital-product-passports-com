@@ -203,8 +203,8 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                   {!categoryData?.hide_promo && (
                     <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-center">
                       <p className="text-xs text-foreground">
-                        Made by{' '}
-                        <span className="text-primary font-medium">EU Digital Product Passports</span>
+                        Powered by{' '}
+                        <span className="text-primary font-medium">Digital Product Passports .com</span>
                       </p>
                     </div>
                   )}

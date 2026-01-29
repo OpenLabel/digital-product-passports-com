@@ -191,12 +191,12 @@ export default function PublicPassport() {
               <p className="text-sm text-foreground">
                 Powered by{' '}
                 <a 
-                  href="https://github.com/cypheme/dpp-platform"
+                  href="https://www.digital-product-passports.com"
                   className="text-primary font-medium hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Open Source DPP Platform
+                  Digital Product Passports .com
                 </a>
               </p>
             </div>
