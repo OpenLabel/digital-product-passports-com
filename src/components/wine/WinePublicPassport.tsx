@@ -29,9 +29,10 @@ interface RecyclingComponent {
 
 interface WinePublicPassportProps {
   passport: WinePassportData;
+  isPreview?: boolean;
 }
 
-export function WinePublicPassport({ passport }: WinePublicPassportProps) {
+export function WinePublicPassport({ passport, isPreview = false }: WinePublicPassportProps) {
   const categoryData = (passport.category_data || {}) as Record<string, unknown>;
 
   // Product info
@@ -108,15 +109,22 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
           
           {/* Check Authenticity Button */}
           {counterfeitProtectionEnabled && (
-            <a
-              href="https://app.cypheme.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
-            >
-              <ShieldCheck className="h-4 w-4" />
-              Check authenticity
-            </a>
+            isPreview ? (
+              <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 text-white rounded-lg font-medium cursor-default">
+                <ShieldCheck className="h-4 w-4" />
+                Check authenticity
+              </div>
+            ) : (
+              <a
+                href="https://app.cypheme.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+              >
+                <ShieldCheck className="h-4 w-4" />
+                Check authenticity
+              </a>
+            )
           )}
           <div className="flex gap-4">
             {/* Product Image */}
@@ -371,23 +379,31 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
             <p className="text-sm text-foreground">
               Made by{' '}
-              <a 
-                href="https://www.digital-product-passports.com"
-                className="text-primary font-medium hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                EU Digital Product Passports
-              </a>
+              {isPreview ? (
+                <span className="text-primary font-medium">EU Digital Product Passports</span>
+              ) : (
+                <a 
+                  href="https://www.digital-product-passports.com"
+                  className="text-primary font-medium hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  EU Digital Product Passports
+                </a>
+              )}
             </p>
           </div>
         )}
 
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground py-4 border-t">
-          <Link to="/legal" className="underline hover:text-foreground">
-            Legal Mentions
-          </Link>
+          {isPreview ? (
+            <span className="underline">Legal Mentions</span>
+          ) : (
+            <Link to="/legal" className="underline hover:text-foreground">
+              Legal Mentions
+            </Link>
+          )}
         </footer>
       </main>
     </div>
