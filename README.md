@@ -2,9 +2,15 @@
 
 An open-source, self-hostable Digital Product Passport (DPP) generator for EU compliance. Supports wine e-labels, batteries, textiles, electronics, toys, and more product categories.
 
-## 🚀 One-Click Deploy
+## 🚀 Deployment Options
 
-Deploy your own DPP Platform instance in minutes:
+### Option 1: Lovable Cloud (Recommended)
+
+If you're using [Lovable](https://lovable.dev), the backend is automatically configured for you. No Supabase setup required — just set your secrets in the Lovable dashboard and you're ready to go.
+
+### Option 2: Self-Hosted Deploy
+
+Deploy your own DPP Platform instance using one of these options:
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenLabel%2Fdigital-product-passports-com&env=VITE_SUPABASE_URL,VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_PROJECT_ID&envDescription=Supabase%20credentials%20from%20your%20project%20dashboard&envLink=https%3A%2F%2Fsupabase.com%2Fdashboard&project-name=dpp-platform&repository-name=dpp-platform)
 
@@ -12,7 +18,7 @@ Deploy your own DPP Platform instance in minutes:
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/OpenLabel/digital-product-passports-com)
 
-> **Note:** You'll need a [Supabase](https://supabase.com) project first. Create one for free, then use those credentials during deployment.
+> **Note for self-hosted deployments:** You'll need a [Supabase](https://supabase.com) project first. Create one for free, then use those credentials during deployment.
 
 ---
 
