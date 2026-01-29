@@ -6,28 +6,9 @@ export class WineTemplate extends BaseTemplate {
   description = 'Digital Product Passport for wine products with EU Regulation 2021/2117 compliance';
   icon = '🍷';
   
-  // Wine uses a custom component (WineFields) for its form,
-  // so sections are kept minimal - the component handles the complex logic
-  sections: TemplateSection[] = [
-    {
-      title: 'Producer Information',
-      description: 'Information about the wine producer',
-      questions: [
-        {
-          id: 'producer_name',
-          label: 'Producer/Winery Name',
-          type: 'text',
-          required: true
-        },
-        {
-          id: 'bottler_info',
-          label: 'Bottler Information',
-          type: 'textarea',
-          placeholder: 'Name and address of bottler'
-        }
-      ]
-    }
-  ];
+  // Wine uses a fully custom component (WineFields) for its form,
+  // so sections are empty - the component handles all fields with rich form hints and tooltips
+  sections: TemplateSection[] = [];
 
   getRequiredLogos(data: Record<string, unknown>): string[] {
     // No certification logos to return
