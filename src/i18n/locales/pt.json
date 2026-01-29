@@ -449,6 +449,7 @@
   },
   "customIngredient": {
     "title": "Definir um ingrediente personalizado",
+    "editTitle": "Editar ingrediente personalizado",
     "ingredientName": "Nome do ingrediente",
     "eNumber": "Número E (opcional)",
     "eNumberPlaceholder": "ex., E 123",
@@ -458,5 +459,70 @@
   },
   "certifications": {
     "title": "Certificações e Rótulos"
+  },
+  "qrDialog": {
+    "title": "Código QR",
+    "download": "Baixar código QR",
+    "copyLink": "Copiar link"
+  },
+  "translation": {
+    "title": "Traduções",
+    "description": "Forneça traduções para todos os idiomas da UE. Use IA para gerar traduções iniciais, depois revise e edite conforme necessário.",
+    "manageTranslations": "Gerir traduções",
+    "translate": "Traduzir",
+    "sourceText": "Texto fonte",
+    "empty": "(vazio)",
+    "generateWithAI": "Gerar com IA",
+    "enterTranslation": "Introduzir tradução...",
+    "saveTranslations": "Guardar traduções",
+    "noSourceText": "Sem texto fonte",
+    "enterTextFirst": "Por favor, introduza texto no campo antes de gerar traduções.",
+    "generated": "Traduções geradas",
+    "reviewAndEdit": "Revise e edite as traduções conforme necessário.",
+    "error": "Erro de tradução",
+    "errorDesc": "Falha ao gerar traduções. Por favor, tente novamente.",
+    "saved": "Traduções guardadas",
+    "autoTranslating": "A traduzir..."
+  },
+  "recycling": {
+    "code": "Código",
+    "material": "Material",
+    "disposal": "Eliminação",
+    "componentTypes": {
+      "bottle": "Garrafa",
+      "closure": "Fecho",
+      "capsule": "Cápsula",
+      "label": "Rótulo",
+      "box": "Caixa"
+    },
+    "selectMaterial": "Selecionar material",
+    "individualComponents": "Componentes individuais",
+    "compositeComponents": "Componentes compostos",
+    "customMaterial": "Material personalizado",
+    "addCustomMaterial": "Adicionar material personalizado",
+    "disposalAdvice": "Conselho de eliminação",
+    "addMaterial": "Adicionar material",
+    "addPackagingMaterial": "Adicionar material de embalagem",
+    "customType": "Tipo personalizado",
+    "addCustomType": "Adicionar tipo de material personalizado",
+    "editCustomType": "Editar tipo de material personalizado",
+    "materialName": "Nome do material",
+    "materialNamePlaceholder": "ex. Caixa de madeira"
+  },
+  "preview": {
+    "livePreview": "Pré-visualização ao vivo",
+    "productPassport": "Passaporte de Produto",
+    "productName": "Nome do produto",
+    "checkAuthenticity": "Verificar autenticidade",
+    "productDescription": "Descrição do produto",
+    "certificationsLabels": "Certificações e Rótulos",
+    "poweredBy": "Alimentado por"
+  },
+  "ai": {
+    "analyzing": "A analisar documento...",
+    "takePhoto": "Tirar foto",
+    "uploadFile": "Carregar ficheiro",
+    "supportedFormats": "Suporta fotos, PDFs e documentos Word",
+    "multiUploadTip": "Vários ficheiros? Execute novamente após cada carregamento para combinar dados."
   }
 }

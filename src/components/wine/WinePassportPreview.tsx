@@ -12,7 +12,7 @@ interface WinePassportPreviewProps {
 }
 
 export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   // Initialize preview language from current i18n language, but manage it separately
   const [previewLanguage, setPreviewLanguage] = useState(() => {
@@ -55,7 +55,7 @@ export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
           </div>
         </div>
       </div>
-      <p className="text-xs text-center text-muted-foreground mt-2">Live Preview</p>
+      <p className="text-xs text-center text-muted-foreground mt-2">{t('preview.livePreview')}</p>
     </div>
   );
 }

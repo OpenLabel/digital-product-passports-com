@@ -480,6 +480,23 @@
     "reviewAndEdit": "Review and edit translations as needed.",
     "error": "Translation error",
     "errorDesc": "Failed to generate translations. Please try again.",
-    "saved": "Translations saved"
+    "saved": "Translations saved",
+    "autoTranslating": "Translating..."
+  },
+  "preview": {
+    "livePreview": "Live Preview",
+    "productPassport": "Product Passport",
+    "productName": "Product Name",
+    "checkAuthenticity": "Check authenticity",
+    "productDescription": "Product Description",
+    "certificationsLabels": "Certifications & Labels",
+    "poweredBy": "Powered by"
+  },
+  "ai": {
+    "analyzing": "Analyzing document...",
+    "takePhoto": "Take Photo",
+    "uploadFile": "Upload File",
+    "supportedFormats": "Supports photos, PDFs, and Word documents",
+    "multiUploadTip": "Have multiple files? Run this again after each upload to merge data from different sources."
   }
 }

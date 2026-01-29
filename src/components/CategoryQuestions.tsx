@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { getTemplate } from '@/templates';
 import type { ProductCategory } from '@/types/passport';
 import type { TemplateQuestion } from '@/templates/base';
@@ -17,6 +18,7 @@ interface CategoryQuestionsProps {
 }
 
 export function CategoryQuestions({ category, data, onChange }: CategoryQuestionsProps) {
+  const { t } = useTranslation();
   const template = getTemplate(category);
 
   const handleChange = (id: string, value: unknown) => {
@@ -145,9 +147,9 @@ export function CategoryQuestions({ category, data, onChange }: CategoryQuestion
       {category !== 'wine' && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Display Settings</CardTitle>
+            <CardTitle className="text-lg">{t('wine.displaySettings')}</CardTitle>
             <CardDescription>
-              Configure what appears on your public Digital Product Passport
+              {t('wine.displaySettingsDesc')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -158,7 +160,7 @@ export function CategoryQuestions({ category, data, onChange }: CategoryQuestion
                 onCheckedChange={(checked) => handleChange('hide_promo', checked)}
               />
               <Label htmlFor="hide_promo" className="text-sm font-normal cursor-pointer">
-                Hide "Powered by Digital - Product - Passports .com" promotional message
+                {t('wine.hidePromo')}
               </Label>
             </div>
           </CardContent>

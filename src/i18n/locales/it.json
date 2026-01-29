@@ -444,6 +444,7 @@
   },
   "customIngredient": {
     "title": "Definisci un ingrediente personalizzato",
+    "editTitle": "Modifica ingrediente personalizzato",
     "ingredientName": "Nome ingrediente",
     "eNumber": "Numero E (opzionale)",
     "eNumberPlaceholder": "es. E 123",
@@ -458,5 +459,65 @@
     "title": "Codice QR",
     "download": "Scarica codice QR",
     "copyLink": "Copia link"
+  },
+  "translation": {
+    "title": "Traduzioni",
+    "description": "Fornisci traduzioni per tutte le lingue dell'UE. Usa l'IA per generare le traduzioni iniziali, poi rivedi e modifica se necessario.",
+    "manageTranslations": "Gestisci traduzioni",
+    "translate": "Traduci",
+    "sourceText": "Testo originale",
+    "empty": "(vuoto)",
+    "generateWithAI": "Genera con IA",
+    "enterTranslation": "Inserisci traduzione...",
+    "saveTranslations": "Salva traduzioni",
+    "noSourceText": "Nessun testo originale",
+    "enterTextFirst": "Inserisci il testo nel campo prima di generare le traduzioni.",
+    "generated": "Traduzioni generate",
+    "reviewAndEdit": "Rivedi e modifica le traduzioni se necessario.",
+    "error": "Errore di traduzione",
+    "errorDesc": "Generazione traduzioni fallita. Riprova.",
+    "saved": "Traduzioni salvate",
+    "autoTranslating": "Traduzione in corso..."
+  },
+  "recycling": {
+    "code": "Codice",
+    "material": "Materiale",
+    "disposal": "Smaltimento",
+    "componentTypes": {
+      "bottle": "Bottiglia",
+      "closure": "Chiusura",
+      "capsule": "Capsula",
+      "label": "Etichetta",
+      "box": "Scatola"
+    },
+    "selectMaterial": "Seleziona materiale",
+    "individualComponents": "Componenti singoli",
+    "compositeComponents": "Componenti compositi",
+    "customMaterial": "Materiale personalizzato",
+    "addCustomMaterial": "Aggiungi materiale personalizzato",
+    "disposalAdvice": "Consigli smaltimento",
+    "addMaterial": "Aggiungi materiale",
+    "addPackagingMaterial": "Aggiungi materiale di imballaggio",
+    "customType": "Tipo personalizzato",
+    "addCustomType": "Aggiungi tipo di materiale personalizzato",
+    "editCustomType": "Modifica tipo di materiale personalizzato",
+    "materialName": "Nome del materiale",
+    "materialNamePlaceholder": "es. Cassa di legno"
+  },
+  "preview": {
+    "livePreview": "Anteprima live",
+    "productPassport": "Passaporto Prodotto",
+    "productName": "Nome del prodotto",
+    "checkAuthenticity": "Verifica autenticità",
+    "productDescription": "Descrizione prodotto",
+    "certificationsLabels": "Certificazioni e Etichette",
+    "poweredBy": "Alimentato da"
+  },
+  "ai": {
+    "analyzing": "Analisi documento...",
+    "takePhoto": "Scatta foto",
+    "uploadFile": "Carica file",
+    "supportedFormats": "Supporta foto, PDF e documenti Word",
+    "multiUploadTip": "Più file? Esegui di nuovo dopo ogni caricamento per unire i dati."
   }
 }

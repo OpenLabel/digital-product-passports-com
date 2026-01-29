@@ -19,7 +19,7 @@ interface PassportPreviewProps {
 }
 
 export function PassportPreview({ formData }: PassportPreviewProps) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   // Manage preview language separately from app language
   const [previewLanguage, setPreviewLanguage] = useState(() => {
@@ -63,7 +63,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
             </div>
           </div>
         </div>
-        <p className="text-xs text-center text-muted-foreground mt-2">Live Preview</p>
+        <p className="text-xs text-center text-muted-foreground mt-2">{t('preview.livePreview')}</p>
       </div>
     );
   }
@@ -105,15 +105,15 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                   {/* Header */}
                   <div className="text-center">
                     <Badge variant="secondary" className="mb-3">
-                      {categoryInfo?.icon} {categoryInfo?.label} Product Passport
+                      {categoryInfo?.icon} {categoryInfo?.label} {t('preview.productPassport')}
                     </Badge>
-                    <h1 className="text-xl font-bold mb-2">{formData.name || 'Product Name'}</h1>
+                    <h1 className="text-xl font-bold mb-2">{formData.name || t('preview.productName')}</h1>
                     
                     {/* Check Authenticity Button (preview mode - non-clickable) */}
                     {categoryData?.counterfeit_protection_enabled && (
                       <div className="inline-flex items-center gap-2 mt-3 px-3 py-1.5 bg-green-600 text-white rounded-lg font-medium text-sm cursor-default">
                         <ShieldCheck className="h-3 w-3" />
-                        Check authenticity
+                        {t('preview.checkAuthenticity')}
                       </div>
                     )}
                   </div>
@@ -133,7 +133,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                   {formData.description && (
                     <Card>
                       <CardHeader className="pb-2">
-                        <CardTitle className="text-sm">Product Description</CardTitle>
+                        <CardTitle className="text-sm">{t('preview.productDescription')}</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <div 
@@ -148,7 +148,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                   {requiredLogos.length > 0 && (
                     <Card>
                       <CardHeader className="pb-2">
-                        <CardTitle className="text-sm">Certifications & Labels</CardTitle>
+                        <CardTitle className="text-sm">{t('preview.certificationsLabels')}</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <div className="flex flex-wrap gap-1">
@@ -217,7 +217,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                   {!categoryData?.hide_promo && (
                     <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-center">
                       <p className="text-xs text-foreground">
-                        Powered by{' '}
+                        {t('preview.poweredBy')}{' '}
                         <span className="text-primary font-medium">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></span>
                       </p>
                     </div>
@@ -225,7 +225,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
 
                   {/* Footer */}
                   <footer className="text-center text-[10px] text-muted-foreground py-3 border-t">
-                    <span className="underline">Legal Mentions</span>
+                    <span className="underline">{t('legal.legalMentions')}</span>
                   </footer>
                 </div>
               </main>
@@ -233,7 +233,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
           </div>
         </div>
       </div>
-      <p className="text-xs text-center text-muted-foreground mt-2">Live Preview</p>
+      <p className="text-xs text-center text-muted-foreground mt-2">{t('preview.livePreview')}</p>
     </div>
   );
 }

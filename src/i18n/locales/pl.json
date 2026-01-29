@@ -453,6 +453,7 @@
   },
   "customIngredient": {
     "title": "Zdefiniuj własny składnik",
+    "editTitle": "Edytuj własny składnik",
     "ingredientName": "Nazwa składnika",
     "eNumber": "Numer E (opcjonalnie)",
     "eNumberPlaceholder": "np. E 123",
@@ -462,5 +463,65 @@
   },
   "certifications": {
     "title": "Certyfikaty i Etykiety"
+  },
+  "translation": {
+    "title": "Tłumaczenia",
+    "description": "Podaj tłumaczenia dla wszystkich języków UE. Użyj AI do wygenerowania początkowych tłumaczeń, a następnie przejrzyj i edytuj w razie potrzeby.",
+    "manageTranslations": "Zarządzaj tłumaczeniami",
+    "translate": "Tłumacz",
+    "sourceText": "Tekst źródłowy",
+    "empty": "(pusty)",
+    "generateWithAI": "Generuj z AI",
+    "enterTranslation": "Wprowadź tłumaczenie...",
+    "saveTranslations": "Zapisz tłumaczenia",
+    "noSourceText": "Brak tekstu źródłowego",
+    "enterTextFirst": "Proszę wprowadzić tekst w polu przed wygenerowaniem tłumaczeń.",
+    "generated": "Tłumaczenia wygenerowane",
+    "reviewAndEdit": "Przejrzyj i edytuj tłumaczenia w razie potrzeby.",
+    "error": "Błąd tłumaczenia",
+    "errorDesc": "Nie udało się wygenerować tłumaczeń. Spróbuj ponownie.",
+    "saved": "Tłumaczenia zapisane",
+    "autoTranslating": "Tłumaczenie..."
+  },
+  "recycling": {
+    "code": "Kod",
+    "material": "Materiał",
+    "disposal": "Utylizacja",
+    "componentTypes": {
+      "bottle": "Butelka",
+      "closure": "Zamknięcie",
+      "capsule": "Kapsuła",
+      "label": "Etykieta",
+      "box": "Pudełko"
+    },
+    "selectMaterial": "Wybierz materiał",
+    "individualComponents": "Komponenty pojedyncze",
+    "compositeComponents": "Komponenty złożone",
+    "customMaterial": "Materiał niestandardowy",
+    "addCustomMaterial": "Dodaj materiał niestandardowy",
+    "disposalAdvice": "Porada dotycząca utylizacji",
+    "addMaterial": "Dodaj materiał",
+    "addPackagingMaterial": "Dodaj materiał opakowania",
+    "customType": "Typ niestandardowy",
+    "addCustomType": "Dodaj niestandardowy typ materiału",
+    "editCustomType": "Edytuj niestandardowy typ materiału",
+    "materialName": "Nazwa materiału",
+    "materialNamePlaceholder": "np. Drewniana skrzynka"
+  },
+  "preview": {
+    "livePreview": "Podgląd na żywo",
+    "productPassport": "Paszport Produktu",
+    "productName": "Nazwa produktu",
+    "checkAuthenticity": "Sprawdź autentyczność",
+    "productDescription": "Opis produktu",
+    "certificationsLabels": "Certyfikaty i Etykiety",
+    "poweredBy": "Obsługiwane przez"
+  },
+  "ai": {
+    "analyzing": "Analizowanie dokumentu...",
+    "takePhoto": "Zrób zdjęcie",
+    "uploadFile": "Prześlij plik",
+    "supportedFormats": "Obsługuje zdjęcia, PDF-y i dokumenty Word",
+    "multiUploadTip": "Wiele plików? Uruchom ponownie po każdym przesłaniu, aby połączyć dane."
   }
 }

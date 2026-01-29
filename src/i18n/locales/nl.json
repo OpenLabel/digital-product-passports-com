@@ -453,6 +453,7 @@
   },
   "customIngredient": {
     "title": "Definieer een aangepast ingrediënt",
+    "editTitle": "Aangepast ingrediënt bewerken",
     "ingredientName": "Ingrediëntnaam",
     "eNumber": "E-nummer (optioneel)",
     "eNumberPlaceholder": "bijv. E 123",
@@ -462,5 +463,65 @@
   },
   "certifications": {
     "title": "Certificeringen en Labels"
+  },
+  "translation": {
+    "title": "Vertalingen",
+    "description": "Verstrek vertalingen voor alle EU-talen. Gebruik AI om eerste vertalingen te genereren, controleer en bewerk dan indien nodig.",
+    "manageTranslations": "Vertalingen beheren",
+    "translate": "Vertalen",
+    "sourceText": "Brontekst",
+    "empty": "(leeg)",
+    "generateWithAI": "Genereren met AI",
+    "enterTranslation": "Voer vertaling in...",
+    "saveTranslations": "Vertalingen opslaan",
+    "noSourceText": "Geen brontekst",
+    "enterTextFirst": "Voer eerst tekst in het veld in voordat u vertalingen genereert.",
+    "generated": "Vertalingen gegenereerd",
+    "reviewAndEdit": "Controleer en bewerk vertalingen indien nodig.",
+    "error": "Vertaalfout",
+    "errorDesc": "Vertalingen genereren mislukt. Probeer het opnieuw.",
+    "saved": "Vertalingen opgeslagen",
+    "autoTranslating": "Bezig met vertalen..."
+  },
+  "recycling": {
+    "code": "Code",
+    "material": "Materiaal",
+    "disposal": "Afvoer",
+    "componentTypes": {
+      "bottle": "Fles",
+      "closure": "Sluiting",
+      "capsule": "Capsule",
+      "label": "Etiket",
+      "box": "Doos"
+    },
+    "selectMaterial": "Selecteer materiaal",
+    "individualComponents": "Individuele componenten",
+    "compositeComponents": "Samengestelde componenten",
+    "customMaterial": "Aangepast materiaal",
+    "addCustomMaterial": "Aangepast materiaal toevoegen",
+    "disposalAdvice": "Afvoeradvies",
+    "addMaterial": "Materiaal toevoegen",
+    "addPackagingMaterial": "Verpakkingsmateriaal toevoegen",
+    "customType": "Aangepast type",
+    "addCustomType": "Aangepast materiaaltype toevoegen",
+    "editCustomType": "Aangepast materiaaltype bewerken",
+    "materialName": "Materiaalnaam",
+    "materialNamePlaceholder": "bijv. Houten kist"
+  },
+  "preview": {
+    "livePreview": "Live voorbeeld",
+    "productPassport": "Productpaspoort",
+    "productName": "Productnaam",
+    "checkAuthenticity": "Authenticiteit controleren",
+    "productDescription": "Productbeschrijving",
+    "certificationsLabels": "Certificeringen en Labels",
+    "poweredBy": "Aangedreven door"
+  },
+  "ai": {
+    "analyzing": "Document analyseren...",
+    "takePhoto": "Foto maken",
+    "uploadFile": "Bestand uploaden",
+    "supportedFormats": "Ondersteunt foto's, PDFs en Word-documenten",
+    "multiUploadTip": "Meerdere bestanden? Voer opnieuw uit na elke upload om gegevens samen te voegen."
   }
 }

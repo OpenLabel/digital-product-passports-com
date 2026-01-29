@@ -444,6 +444,7 @@
   },
   "customIngredient": {
     "title": "Benutzerdefinierte Zutat definieren",
+    "editTitle": "Benutzerdefinierte Zutat bearbeiten",
     "ingredientName": "Zutatname",
     "eNumber": "E-Nummer (optional)",
     "eNumberPlaceholder": "z.B. E 123",
@@ -458,5 +459,65 @@
     "title": "QR-Code",
     "download": "QR-Code herunterladen",
     "copyLink": "Link kopieren"
+  },
+  "translation": {
+    "title": "Übersetzungen",
+    "description": "Stellen Sie Übersetzungen für alle EU-Sprachen bereit. Verwenden Sie KI, um erste Übersetzungen zu generieren, dann überprüfen und bearbeiten Sie nach Bedarf.",
+    "manageTranslations": "Übersetzungen verwalten",
+    "translate": "Übersetzen",
+    "sourceText": "Quelltext",
+    "empty": "(leer)",
+    "generateWithAI": "Mit KI generieren",
+    "enterTranslation": "Übersetzung eingeben...",
+    "saveTranslations": "Übersetzungen speichern",
+    "noSourceText": "Kein Quelltext",
+    "enterTextFirst": "Bitte geben Sie Text in das Feld ein, bevor Sie Übersetzungen generieren.",
+    "generated": "Übersetzungen generiert",
+    "reviewAndEdit": "Überprüfen und bearbeiten Sie die Übersetzungen nach Bedarf.",
+    "error": "Übersetzungsfehler",
+    "errorDesc": "Übersetzungen konnten nicht generiert werden. Bitte versuchen Sie es erneut.",
+    "saved": "Übersetzungen gespeichert",
+    "autoTranslating": "Wird übersetzt..."
+  },
+  "recycling": {
+    "code": "Code",
+    "material": "Material",
+    "disposal": "Entsorgung",
+    "componentTypes": {
+      "bottle": "Flasche",
+      "closure": "Verschluss",
+      "capsule": "Kapsel",
+      "label": "Etikett",
+      "box": "Karton"
+    },
+    "selectMaterial": "Material auswählen",
+    "individualComponents": "Einzelkomponenten",
+    "compositeComponents": "Verbundkomponenten",
+    "customMaterial": "Benutzerdefiniertes Material",
+    "addCustomMaterial": "Benutzerdefiniertes Material hinzufügen",
+    "disposalAdvice": "Entsorgungshinweis",
+    "addMaterial": "Material hinzufügen",
+    "addPackagingMaterial": "Verpackungsmaterial hinzufügen",
+    "customType": "Benutzerdefinierter Typ",
+    "addCustomType": "Benutzerdefinierten Materialtyp hinzufügen",
+    "editCustomType": "Benutzerdefinierten Materialtyp bearbeiten",
+    "materialName": "Materialname",
+    "materialNamePlaceholder": "z.B. Holzkiste"
+  },
+  "preview": {
+    "livePreview": "Live-Vorschau",
+    "productPassport": "Produktpass",
+    "productName": "Produktname",
+    "checkAuthenticity": "Authentizität prüfen",
+    "productDescription": "Produktbeschreibung",
+    "certificationsLabels": "Zertifizierungen & Labels",
+    "poweredBy": "Unterstützt von"
+  },
+  "ai": {
+    "analyzing": "Dokument wird analysiert...",
+    "takePhoto": "Foto aufnehmen",
+    "uploadFile": "Datei hochladen",
+    "supportedFormats": "Unterstützt Fotos, PDFs und Word-Dokumente",
+    "multiUploadTip": "Mehrere Dateien? Nach jedem Upload erneut ausführen, um Daten zusammenzuführen."
   }
 }

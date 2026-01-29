@@ -444,6 +444,7 @@
   },
   "customIngredient": {
     "title": "Definir un ingrediente personalizado",
+    "editTitle": "Editar ingrediente personalizado",
     "ingredientName": "Nombre del ingrediente",
     "eNumber": "Número E (opcional)",
     "eNumberPlaceholder": "ej. E 123",
@@ -458,5 +459,65 @@
     "title": "Código QR",
     "download": "Descargar código QR",
     "copyLink": "Copiar enlace"
+  },
+  "translation": {
+    "title": "Traducciones",
+    "description": "Proporcione traducciones para todos los idiomas de la UE. Use IA para generar traducciones iniciales, luego revise y edite según sea necesario.",
+    "manageTranslations": "Gestionar traducciones",
+    "translate": "Traducir",
+    "sourceText": "Texto fuente",
+    "empty": "(vacío)",
+    "generateWithAI": "Generar con IA",
+    "enterTranslation": "Introducir traducción...",
+    "saveTranslations": "Guardar traducciones",
+    "noSourceText": "Sin texto fuente",
+    "enterTextFirst": "Por favor, introduzca texto en el campo antes de generar traducciones.",
+    "generated": "Traducciones generadas",
+    "reviewAndEdit": "Revise y edite las traducciones según sea necesario.",
+    "error": "Error de traducción",
+    "errorDesc": "Error al generar traducciones. Por favor, inténtelo de nuevo.",
+    "saved": "Traducciones guardadas",
+    "autoTranslating": "Traduciendo..."
+  },
+  "recycling": {
+    "code": "Código",
+    "material": "Material",
+    "disposal": "Eliminación",
+    "componentTypes": {
+      "bottle": "Botella",
+      "closure": "Cierre",
+      "capsule": "Cápsula",
+      "label": "Etiqueta",
+      "box": "Caja"
+    },
+    "selectMaterial": "Seleccionar material",
+    "individualComponents": "Componentes individuales",
+    "compositeComponents": "Componentes compuestos",
+    "customMaterial": "Material personalizado",
+    "addCustomMaterial": "Añadir material personalizado",
+    "disposalAdvice": "Consejo de eliminación",
+    "addMaterial": "Añadir material",
+    "addPackagingMaterial": "Añadir material de embalaje",
+    "customType": "Tipo personalizado",
+    "addCustomType": "Añadir tipo de material personalizado",
+    "editCustomType": "Editar tipo de material personalizado",
+    "materialName": "Nombre del material",
+    "materialNamePlaceholder": "ej. Caja de madera"
+  },
+  "preview": {
+    "livePreview": "Vista previa en vivo",
+    "productPassport": "Pasaporte de Producto",
+    "productName": "Nombre del producto",
+    "checkAuthenticity": "Verificar autenticidad",
+    "productDescription": "Descripción del producto",
+    "certificationsLabels": "Certificaciones y Etiquetas",
+    "poweredBy": "Impulsado por"
+  },
+  "ai": {
+    "analyzing": "Analizando documento...",
+    "takePhoto": "Tomar foto",
+    "uploadFile": "Subir archivo",
+    "supportedFormats": "Compatible con fotos, PDFs y documentos Word",
+    "multiUploadTip": "¿Varios archivos? Ejecute de nuevo después de cada carga para combinar datos."
   }
 }
