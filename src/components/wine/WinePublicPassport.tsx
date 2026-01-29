@@ -391,6 +391,23 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
           </section>
         )}
 
+        {/* Promotional Footer */}
+        {!categoryData.hide_promo && (
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
+            <p className="text-sm text-foreground">
+              Make your own digital product passports for free with{' '}
+              <a 
+                href={window.location.origin} 
+                className="text-primary font-medium hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                EU Digital Product Passports
+              </a>
+            </p>
+          </div>
+        )}
+
         {/* Footer */}
         <footer className="text-center text-xs text-muted-foreground py-4 border-t space-y-2">
           <p>Digital Product Passport</p>

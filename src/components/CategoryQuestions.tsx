@@ -126,6 +126,28 @@ export function CategoryQuestions({ category, data, onChange }: CategoryQuestion
           </CardContent>
         </Card>
       ))}
+
+      {/* Display Settings - Promotional */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Display Settings</CardTitle>
+          <CardDescription>
+            Configure what appears on your public Digital Product Passport
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2">
+            <Checkbox
+              id="hide_promo"
+              checked={(data.hide_promo as boolean) || false}
+              onCheckedChange={(checked) => handleChange('hide_promo', checked)}
+            />
+            <Label htmlFor="hide_promo" className="text-sm font-normal cursor-pointer">
+              Hide "Make your own DPP" promotional message
+            </Label>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
