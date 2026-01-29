@@ -5,6 +5,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Sparkles, Camera, Upload, Loader2, AlertTriangle, FileText } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { useSiteConfig } from '@/hooks/useSiteConfig';
 
 interface WineAIAutofillProps {
   onAutofill: (data: Record<string, unknown>) => void;
@@ -16,6 +17,12 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const { config } = useSiteConfig();
+
+  // Don't render if AI is disabled
+  if (!config?.ai_enabled) {
+    return null;
+  }
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
