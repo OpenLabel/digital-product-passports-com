@@ -1,13 +1,405 @@
 {
-  "common": { "loading": "Ładowanie...", "save": "Zapisz", "cancel": "Anuluj", "delete": "Usuń", "edit": "Edytuj", "create": "Utwórz", "back": "Wstecz", "next": "Dalej", "search": "Szukaj", "apply": "Zastosuj", "close": "Zamknij", "confirm": "Potwierdź", "yes": "Tak", "no": "Nie", "error": "Błąd", "success": "Sukces", "warning": "Ostrzeżenie", "openSource": "Open Source", "language": "Język" },
-  "nav": { "signIn": "Zaloguj się", "signUp": "Zarejestruj się", "signOut": "Wyloguj się", "getStarted": "Zacznij za darmo", "dashboard": "Panel", "createNew": "Utwórz nowy" },
-  "auth": { "title": "Cyfrowy Paszport Produktu", "subtitle": "Zaloguj się lub utwórz konto", "signIn": "Zaloguj się", "signUp": "Zarejestruj się", "email": "E-mail", "password": "Hasło", "companyName": "Nazwa firmy", "welcomeBack": "Witaj ponownie!" },
-  "dashboard": { "title": "Twoje paszporty", "noPassports": "Brak paszportów. Utwórz pierwszy!", "updated": "Zaktualizowano" },
-  "passport": { "createTitle": "Utwórz nowy paszport", "editTitle": "Edytuj paszport", "basicInfo": "Podstawowe informacje", "productName": "Nazwa produktu", "category": "Kategoria produktu", "productImage": "Zdjęcie produktu", "saving": "Zapisywanie...", "saveChanges": "Zapisz zmiany", "notFound": "Paszport nie znaleziony", "checkAuthenticity": "Sprawdź autentyczność", "poweredBy": "Powered by" },
-  "categories": { "battery": "Baterie", "construction": "Produkty budowlane", "textiles": "Tekstylia i obuwie", "wine": "Wina i alkohole", "toys": "Zabawki", "electronics": "Elektronika i ICT", "iron_steel": "Żelazo i stal", "aluminum": "Aluminium", "cosmetics": "Kosmetyki", "furniture": "Meble i materace", "tires": "Opony", "detergents": "Detergenty i chemikalia", "other": "Wszystkie inne produkty" },
-  "wine": { "productIdentity": "Tożsamość produktu", "volume": "Objętość", "grapeVariety": "Odmiana winogron", "vintage": "Rocznik", "country": "Kraj pochodzenia", "region": "Region", "nutritionalValues": "Wartości odżywcze", "alcohol": "Alkohol", "energy": "Energia", "fat": "Tłuszcz", "carbohydrate": "Węglowodany", "protein": "Białko", "salt": "Sól", "ingredients": "Składniki", "recycling": "Informacje o recyklingu" },
-  "ingredients": { "grapes": "Winogrona", "saccharose": "Sacharoza", "sulfites": "Siarczyny", "egg": "Jajko", "milk": "Mleko" },
-  "legal": { "title": "Informacje prawne", "legalMentions": "Informacje prawne" },
-  "notFound": { "title": "404", "message": "Strona nie znaleziona", "returnHome": "Wróć do strony głównej" },
-  "landing": { "hero": { "badge": "Zgodny z EU ESPR", "title": "Twórz <1>Nieograniczoną</1> liczbę Cyfrowych Paszportów Produktów", "cta": "Utwórz swój pierwszy paszport" }, "footer": { "legal": "Informacje prawne", "github": "Zobacz na GitHub" } }
+  "common": {
+    "loading": "Ładowanie...",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "create": "Utwórz",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "search": "Szukaj",
+    "apply": "Zastosuj",
+    "close": "Zamknij",
+    "confirm": "Potwierdź",
+    "yes": "Tak",
+    "no": "Nie",
+    "error": "Błąd",
+    "success": "Sukces",
+    "warning": "Ostrzeżenie",
+    "openSource": "Open Source",
+    "language": "Język",
+    "custom": "Niestandardowe"
+  },
+  "nav": {
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "signOut": "Wyloguj się",
+    "getStarted": "Rozpocznij za darmo",
+    "dashboard": "Przejdź do panelu",
+    "createNew": "Utwórz nowy"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Zgodny z EU ESPR",
+      "euFunded": "🇪🇺 Z dumą finansowany przez UE",
+      "title": "Twórz <1>Nieograniczoną</1> Liczbę Cyfrowych Paszportów Produktów",
+      "subtitle": "Darmowa, open-source platforma do zgodności z Rozporządzeniem UE o Ekoprojektowaniu dla Zrównoważonych Produktów (ESPR). Generuj paszporty czytelne maszynowo z kodami QR dla baterii, tekstyliów, produktów budowlanych i ponad 12 kategorii.",
+      "cta": "Utwórz Swój Pierwszy Paszport",
+      "demo": "Zobacz Demo Paszportu",
+      "features": {
+        "free": "100% Darmowe i Open Source",
+        "selfHost": "Możliwość Self-Hostingu",
+        "machineReadable": "Maszynowo Czytelne JSON/XML",
+        "categories": "12+ Kategorii Produktów"
+      }
+    },
+    "stats": {
+      "free": "Darmowe i Open Source",
+      "categories": "Kategorii Produktów",
+      "deadline": "Pierwszy Termin UE",
+      "qr": "+ Unikalnych URL"
+    },
+    "features": {
+      "badge": "Funkcje",
+      "title": "Wszystko, Czego Potrzebujesz do Zgodności",
+      "subtitle": "Zbudowane zgodnie ze standardami technicznymi UE: zdecentralizowane przechowywanie, identyfikatory ISO 15459, warstwowe prawa dostępu i maszynowo czytelne wyjście JSON/XML.",
+      "espr": {
+        "title": "Zgodny z ESPR",
+        "description": "Wstępnie skonfigurowane szablony zgodne z wymaganiami Rozporządzenia UE o Ekoprojektowaniu dla Zrównoważonych Produktów dla każdej kategorii."
+      },
+      "openSource": {
+        "title": "Open Source",
+        "description": "W pełni open source. Hostuj samodzielnie na własnych serwerach lub korzystaj bezpłatnie z naszej wersji hostowanej."
+      },
+      "machineReadable": {
+        "title": "Czytelne Maszynowo",
+        "description": "Nie statyczne pliki PDF. Ustrukturyzowane dane JSON/XML do integracji z BIM, systemami recyklingu i innym oprogramowaniem."
+      },
+      "qr": {
+        "title": "QR i Nośniki Danych",
+        "description": "Każdy paszport otrzymuje unikalny URL i kod QR. Gotowy do integracji NFC/RFID zgodnie z ISO 15459."
+      }
+    },
+    "ai": {
+      "badge": "Napędzane przez AI",
+      "title": "Autouzupełnianie z AI",
+      "subtitle": "Przestań wpisywać ręcznie. Prześlij zdjęcie etykiety produktu, a nasza AI automatycznie wyodrębni wszystkie dane w ciągu sekund.",
+      "snap": {
+        "title": "Zrób Zdjęcie",
+        "description": "Zrób zdjęcie etykiety wina, opakowania produktu lub dowolnej etykiety z informacjami o produkcie."
+      },
+      "upload": {
+        "title": "Prześlij Dokumenty",
+        "description": "Karty danych PDF, dokumenty Word, specyfikacje Excel — prześlij dowolny plik, a wyodrębnimy odpowiednie dane."
+      },
+      "extract": {
+        "title": "AI Wyodrębnia Dane",
+        "description": "Nasza AI wizualna czyta i rozumie Twoje dokumenty, automatycznie wypełniając wszystkie pola paszportu."
+      },
+      "multiUpload": {
+        "title": "Działa z wieloma przesyłkami",
+        "description": "Prześlij wiele zdjęć lub dokumentów sekwencyjnie — AI inteligentnie łączy dane"
+      },
+      "cta": "Wypróbuj AI za Darmo",
+      "tags": {
+        "wineLabels": "Etykiety Win",
+        "batterySpecs": "Specyfikacje Baterii",
+        "textileComposition": "Skład Tekstylny",
+        "safetyDatasheets": "Karty Bezpieczeństwa",
+        "nutritionFacts": "Wartości Odżywcze",
+        "technicalPdfs": "Techniczne PDF-y"
+      }
+    },
+    "categories": {
+      "badge": "Zakres Regulacji UE",
+      "title": "Obsługiwane Kategorie Produktów",
+      "subtitle": "Szablony zbudowane na podstawie oficjalnych przepisów UE i aktów delegowanych. Aktywne przepisy obowiązują, Grupy priorytetowe mają szablony gotowe na nadchodzące wymagania.",
+      "activeLaw": "Aktywne Prawo",
+      "priorityGroup": "Grupa Priorytetowa",
+      "cta": "Zacznij Tworzyć Paszporty"
+    },
+    "timeline": {
+      "badge": "Harmonogram Regulacyjny",
+      "title": "Terminy Wdrożenia DPP UE",
+      "subtitle": "UE wprowadza wymagania Digital Product Passport etapami. Zacznij przygotowania już teraz, aby zapewnić zgodność.",
+      "feb2027": {
+        "title": "Luty 2027",
+        "badge": "Pierwszy Termin dla Baterii",
+        "description": "Baterie EV, przemysłowe i LMT muszą mieć Cyfrowe Paszporty Produktów z pełnymi danymi cyklu życia, deklaracjami śladu węglowego (kg CO₂e/kWh z oceną klasy A-D) i procentami zawartości materiałów z recyklingu dla kobaltu, litu i niklu."
+      },
+      "active": {
+        "title": "Aktywne Teraz",
+        "badge": "Obowiązuje",
+        "description": "Produkty Budowlane (EU 2024/3110), Wino i Spirytualia (EU 2021/2117) oraz Zabawki (EU 2025/2509) już wymagają deklaracji cyfrowych. Szablony dostępne teraz."
+      },
+      "rollout": {
+        "title": "2027-2030: Pełne Wdrożenie",
+        "description": "Tekstylia, elektronika, meble, żelazo/stal, aluminium, kosmetyki, opony i detergenty będą wymagać DPP w miarę publikacji aktów delegowanych."
+      }
+    },
+    "selfHost": {
+      "badge": "Open Source",
+      "title": "Uruchom Na Własnych Serwerach",
+      "subtitle": "Ten projekt jest w pełni open source. Możesz hostować samodzielnie na własnej infrastrukturze dla pełnej suwerenności danych, modyfikować kod według potrzeb lub wnosić wkład do projektu.",
+      "deploy": {
+        "title": "Self-Hosting",
+        "description": "Wdróż na własnych serwerach. Pełna kontrola nad danymi i dokumentacją zgodności."
+      },
+      "customize": {
+        "title": "Dostosuj",
+        "description": "Dodaj niestandardowe pola, zintegruj z systemami ERP/PLM lub twórz rozwiązania white-label."
+      },
+      "contribute": {
+        "title": "Przyczyń się",
+        "description": "Pomóż ulepszać szablony w miarę ewolucji przepisów. Aktualizacje zgodności napędzane przez społeczność."
+      }
+    },
+    "cta": {
+      "title": "Gotowy na Zgodność?",
+      "subtitle": "Zacznij tworzyć Cyfrowe Paszporty Produktów zgodne z UE już dziś. Bezpłatnie, bez ograniczeń i open source.",
+      "button": "Zacznij Dziś za Darmo"
+    },
+    "footer": {
+      "legal": "Informacje Prawne",
+      "github": "Zobacz na GitHub"
+    }
+  },
+  "auth": {
+    "title": "Cyfrowy Paszport Produktu",
+    "subtitle": "Zaloguj się lub utwórz konto",
+    "resetSubtitle": "Zresetuj hasło",
+    "signIn": "Zaloguj się",
+    "signUp": "Zarejestruj się",
+    "email": "E-mail",
+    "password": "Hasło",
+    "companyName": "Nazwa Firmy",
+    "sendResetLink": "Wyślij Link Resetujący",
+    "sending": "Wysyłanie...",
+    "backToSignIn": "Powrót do logowania",
+    "forgotPassword": "Zapomniałeś hasła?",
+    "welcomeBack": "Witaj ponownie!",
+    "accountCreated": "Konto utworzone!",
+    "accountCreatedDesc": "Możesz się teraz zalogować.",
+    "checkEmail": "Sprawdź e-mail",
+    "resetLinkSent": "Link do resetowania hasła wysłany."
+  },
+  "dashboard": {
+    "title": "Twoje Paszporty",
+    "noPassports": "Brak paszportów. Utwórz pierwszy!",
+    "updated": "Zaktualizowano",
+    "duplicate": "Duplikuj",
+    "showQr": "Pokaż Kod QR",
+    "duplicated": "Paszport zduplikowany",
+    "deleted": "Paszport usunięty",
+    "confirmDelete": "Czy na pewno chcesz usunąć ten paszport?"
+  },
+  "passport": {
+    "createTitle": "Utwórz Nowy Paszport",
+    "editTitle": "Edytuj Paszport",
+    "basicInfo": "Podstawowe Informacje",
+    "productName": "Nazwa Produktu",
+    "productNamePlaceholder": "Wprowadź nazwę dla tego produktu",
+    "category": "Kategoria Produktu",
+    "productImage": "Zdjęcie Produktu",
+    "productDescription": "Opis Produktu",
+    "descriptionPlaceholder": "Opisz swój produkt...",
+    "details": "Szczegóły",
+    "saving": "Zapisywanie...",
+    "saveChanges": "Zapisz Zmiany",
+    "createPassport": "Utwórz Paszport",
+    "updated": "Paszport pomyślnie zaktualizowany",
+    "created": "Paszport pomyślnie utworzony",
+    "unsavedChanges": "Niezapisane zmiany",
+    "unsavedChangesDesc": "Masz niezapisane zmiany. Czy na pewno chcesz wyjść? Twoje zmiany zostaną utracone.",
+    "leaveWithoutSaving": "Wyjdź bez zapisywania",
+    "enterProductName": "Proszę wprowadzić nazwę produktu",
+    "notFound": "Nie Znaleziono Paszportu",
+    "notFoundDesc": "Ten cyfrowy paszport produktu nie istnieje lub został usunięty.",
+    "productPassport": "Paszport Produktu",
+    "checkAuthenticity": "Sprawdź autentyczność",
+    "poweredBy": "Powered by"
+  },
+  "categories": {
+    "battery": "Baterie",
+    "construction": "Produkty Budowlane",
+    "textiles": "Tekstylia i Obuwie",
+    "wine": "Wina i Spirytualia",
+    "toys": "Zabawki",
+    "electronics": "Elektronika i ICT",
+    "iron_steel": "Żelazo i Stal",
+    "aluminum": "Aluminium",
+    "cosmetics": "Kosmetyki",
+    "furniture": "Meble i Materace",
+    "tires": "Opony",
+    "detergents": "Detergenty i Chemikalia",
+    "other": "Wszystkie Inne Produkty"
+  },
+  "categoryDescriptions": {
+    "battery": "Ślad węglowy, recykling, należyta staranność łańcucha dostaw",
+    "construction": "DoPC, GWP A1-A3, odporność ogniowa",
+    "textiles": "Skład włókien, trwałość, deklaracja PFAS",
+    "wine": "Składniki, wartości odżywcze, oznaczenie geograficzne",
+    "toys": "Bez PFAS, alergeny, testy migracji",
+    "electronics": "Indeks naprawialności, części zamienne, aktualizacje oprogramowania",
+    "iron_steel": "Intensywność węglowa, zawartość złomu, chemia stopu",
+    "aluminum": "Źródło energii topienia, śledzenie zwoju",
+    "cosmetics": "Lista INCI, nanomateriały, możliwość recyklingu opakowań",
+    "furniture": "Pochodzenie drewna EUDR, części zamienne, PFAS",
+    "tires": "Wskaźnik ścierania, historia bieżnikowania, mikroplastiki",
+    "detergents": "Cyfrowa SDS, biodegradowalność, optymalizacja dozowania",
+    "other": "Ogólny szablon DPP dla dowolnego typu produktu"
+  },
+  "wine": {
+    "productIdentity": "Tożsamość Produktu",
+    "volume": "Objętość",
+    "grapeVariety": "Odmiana Winogron",
+    "vintage": "Rocznik",
+    "country": "Kraj Pochodzenia",
+    "region": "Region",
+    "denomination": "Denominacja / Apelacja",
+    "sugarClassification": "Klasyfikacja Cukru",
+    "producerInfo": "Informacje o Producencie",
+    "producerName": "Nazwa Producenta/Winnicy",
+    "bottlerInfo": "Informacje o Butelkowniku",
+    "bottlerInfoPlaceholder": "Nazwa i adres butelkownika",
+    "nutritionalValues": "Wartości Odżywcze",
+    "alcohol": "Alkohol",
+    "residualSugar": "Cukier Resztkowy",
+    "acidity": "Kwasowość",
+    "totalAcidity": "Kwasowość Całkowita",
+    "glycerine": "Gliceryna/Poliole",
+    "energy": "Energia",
+    "fat": "Tłuszcz",
+    "saturatedFat": "w tym tłuszcze nasycone",
+    "carbohydrate": "Węglowodany",
+    "sugars": "w tym cukry",
+    "protein": "Białko",
+    "salt": "Sól",
+    "displayOptions": "Opcje Wyświetlania",
+    "showAlcohol": "Pokaż Alkohol na etykiecie",
+    "showResidualSugar": "Pokaż Cukier Resztkowy na etykiecie",
+    "showTotalAcidity": "Pokaż Kwasowość Całkowitą na etykiecie",
+    "ingredients": "Składniki",
+    "addIngredients": "Dodaj Składniki",
+    "addCustomIngredient": "Dodaj Niestandardowy",
+    "noIngredients": "Nie dodano składników",
+    "ingredientCategories": {
+      "general": "Ogólne",
+      "gases": "Gazy i gazy pakujące",
+      "acidity_regulators": "Regulatory kwasowości",
+      "stabilizers": "Środki stabilizujące",
+      "preservatives": "Konserwanty i przeciwutleniacze",
+      "processing_aids": "Środki pomocnicze w przetwarzaniu"
+    },
+    "ingredientsDescription": "Wybierz składniki z listy składników wina lub dodaj niestandardowe. Posortuj je według ilości (od największej do najmniejszej).",
+    "chooseIngredients": "Wybierz składniki wina",
+    "chooseIngredientsDescription": "Wybierz wszystkie składniki, które są częścią składu Twojego wina. W razie potrzeby możesz dodać niestandardowy składnik.",
+    "selectFromList": "Wybierz składnik z listy",
+    "defineCustom": "Zdefiniuj niestandardowy składnik",
+    "sortIngredients": "Sortuj składniki",
+    "sortIngredientsDescription": "Lista składników powinna być posortowana od największej do najmniejszej ilości. Ilości poniżej 0,1 g/100 ml nie muszą być sortowane.",
+    "allergen": "Alergen",
+    "allergenNotice": "Informacja o alergenach",
+    "allergenWarning": "To wino zawiera alergeny, które muszą być zadeklarowane:",
+    "selectIngredientsTitle": "Wybierz składniki wina z listy",
+    "noIngredientsFound": "Nie znaleziono składników pasujących do \"{{search}}\"",
+    "recycling": "Informacje o Recyklingu",
+    "recyclingDescription": "Wybierz materiały używane do pakowania Twojego wina.",
+    "recyclingNote": "Sprawdź lokalne wytyczne dotyczące recyklingu. Oddziel komponenty i prawidłowo je utylizuj.",
+    "legalInfo": "Informacje Prawne",
+    "negligibleAmounts": "Zawiera znikome ilości tłuszczu, tłuszczów nasyconych, białka i soli.",
+    "per100ml": "na 100 ml",
+    "selectCountry": "Wybierz kraj",
+    "selectClassification": "Wybierz klasyfikację",
+    "manualOverride": "Ręczne nadpisanie"
+  },
+  "ingredients": {
+    "grapes": "Winogrona",
+    "saccharose": "Sacharoza",
+    "aleppo_pine_resin": "Żywica sosny alepskiej",
+    "caramel": "Karmel",
+    "concentrated_grape_must": "Skoncentrowany moszcz gronowy",
+    "grape_must": "Moszcz gronowy",
+    "rectified_concentrated_grape_must": "Rektyfikowany skoncentrowany moszcz gronowy",
+    "filling_dosage": "Dawka napełniająca",
+    "expedition_dosage": "Dawka ekspedycyjna",
+    "argon": "Argon",
+    "nitrogen": "Azot",
+    "carbon_dioxide": "Dwutlenek węgla",
+    "protective_atmosphere": "Butelkowane w atmosferze ochronnej",
+    "tartaric_acid": "Kwas winowy",
+    "malic_acid": "Kwas jabłkowy",
+    "lactic_acid": "Kwas mlekowy",
+    "calcium_sulfate": "Siarczan wapnia",
+    "citric_acid": "Kwas cytrynowy",
+    "citric_acid_stabilizer": "Kwas cytrynowy",
+    "metatartaric_acid": "Kwas metawinowy",
+    "gum_arabic": "Guma arabska",
+    "yeast_mannoproteins": "Mannoproteiny drożdżowe",
+    "carboxymethylcellulose": "Karboksymetyloceluloza",
+    "potassium_polyaspartate": "Poliasparaginian potasu",
+    "fumaric_acid": "Kwas fumarowy",
+    "potassium_sorbate": "Sorbinian potasu",
+    "lysozyme": "Lizozym",
+    "ascorbic_acid": "Kwas L-askorbinowy",
+    "dmdc": "Dimetylodiwęglan (DMDC)",
+    "sulfites": "Siarczyny",
+    "sulfur_dioxide": "Dwutlenek siarki",
+    "potassium_bisulfite": "Wodorosiarczan potasu",
+    "potassium_metabisulfite": "Metabisiarczan potasu",
+    "egg": "Jajko",
+    "milk": "Mleko",
+    "casein": "Kazeina",
+    "albumin": "Albumina",
+    "isinglass": "Karuk (pęcherz rybi)",
+    "bentonite": "Bentonit",
+    "gelatin": "Żelatyna",
+    "pea_protein": "Białko grochu",
+    "potato_protein": "Białko ziemniaczane",
+    "pvpp": "PVPP (Poliwinylopirolidon)"
+  },
+  "recycling": {
+    "code": "Kod",
+    "material": "Materiał",
+    "disposal": "Utylizacja",
+    "componentTypes": {
+      "bottle": "Butelka",
+      "closure": "Zamknięcie",
+      "capsule": "Kapsuła",
+      "label": "Etykieta",
+      "box": "Pudełko"
+    },
+    "selectMaterial": "Wybierz materiał",
+    "individualComponents": "Komponenty Indywidualne",
+    "compositeComponents": "Komponenty Złożone",
+    "customMaterial": "Niestandardowy Materiał",
+    "addCustomMaterial": "Dodaj niestandardowy materiał",
+    "disposalAdvice": "Porada dotycząca utylizacji",
+    "addMaterial": "Dodaj materiał",
+    "addPackagingMaterial": "Dodaj materiał opakowaniowy",
+    "customType": "Niestandardowy typ",
+    "addCustomType": "Dodaj niestandardowy typ materiału",
+    "materialName": "Nazwa materiału",
+    "materialNamePlaceholder": "np. Drewniana skrzynia"
+  },
+  "legal": {
+    "title": "Informacje Prawne",
+    "legalMentions": "Informacje Prawne"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Ups! Strona nie znaleziona",
+    "returnHome": "Wróć do Strony Głównej"
+  },
+  "counterfeit": {
+    "title": "Ochrona Przed Fałszerstwami",
+    "enable": "Włącz",
+    "disable": "Wyłącz",
+    "description": "Chroń swój produkt przed fałszerstwami za pomocą pieczęci bezpieczeństwa od naszego partnera.",
+    "addProtection": "Dodaj Ochronę Przed Fałszerstwami (opcjonalnie)",
+    "enabled": "Ochrona Przed Fałszerstwami Włączona",
+    "enabledDescription": "Wysłano e-mail do naszego partnera ds. ochrony przed fałszerstwami. Skontaktują się z Tobą w celu dostarczenia pieczęci bezpieczeństwa.",
+    "requestSent": "Żądanie wysłane!",
+    "requestSentDescription": "Wysłano e-mail do naszego partnera ds. ochrony przed fałszerstwami. Skontaktują się z Tobą w celu dostarczenia pieczęci bezpieczeństwa.",
+    "sending": "Wysyłanie...",
+    "errorNoEmail": "Nie można wysłać żądania - nie znaleziono e-maila użytkownika",
+    "errorSaveFirst": "Proszę najpierw zapisać paszport przed włączeniem ochrony przed fałszerstwami",
+    "errorFailed": "Nie udało się wysłać żądania ochrony przed fałszerstwami"
+  },
+  "qrDialog": {
+    "title": "Kod QR",
+    "download": "Pobierz Kod QR",
+    "copyLink": "Kopiuj Link"
+  }
 }
