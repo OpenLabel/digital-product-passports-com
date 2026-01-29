@@ -17,6 +17,7 @@ import { ImageUpload } from '@/components/ImageUpload';
 import { CategoryQuestions } from '@/components/CategoryQuestions';
 import { WineFields } from '@/components/WineFields';
 import { WinePassportPreview } from '@/components/wine/WinePassportPreview';
+import { CounterfeitProtection } from '@/components/CounterfeitProtection';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 
 interface FormData {
@@ -246,6 +247,15 @@ export default function PassportForm() {
                   onChange={(data) => setFormData({ ...formData, category_data: data })}
                 />
               </div>
+
+              {/* Counterfeit Protection */}
+              {isEditing && existingPassport && (
+                <CounterfeitProtection
+                  passportName={formData.name}
+                  passportSlug={existingPassport.public_slug}
+                  userEmail={user?.email}
+                />
+              )}
 
               {/* Actions - Mobile only */}
               <div className="flex gap-4 justify-end lg:hidden">
