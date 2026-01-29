@@ -160,9 +160,7 @@ export default function Index() {
             </Badge>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-5xl mx-auto leading-tight tracking-tight">
-            <Trans i18nKey="landing.hero.title">
-              Create <span className="text-primary">Unlimited</span> Digital Product Passports
-            </Trans>
+            {t('landing.hero.title')}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
             {t('landing.hero.subtitle')}
