@@ -354,7 +354,7 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
         {!categoryData.hide_promo && (
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
             <p className="text-sm text-foreground">
-              Make your own digital product passports for free with{' '}
+              Made by{' '}
               <a 
                 href="https://www.digital-product-passports.com"
                 className="text-primary font-medium hover:underline"
