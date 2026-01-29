@@ -15,8 +15,8 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 export default function Setup() {
   const [companyName, setCompanyName] = useState('');
   const [companyAddress, setCompanyAddress] = useState('');
-  const [privacyPolicyUrl, setPrivacyPolicyUrl] = useState('');
-  const [termsConditionsUrl, setTermsConditionsUrl] = useState('');
+  const [privacyPolicyUrl, setPrivacyPolicyUrl] = useState('/privacy-policy');
+  const [termsConditionsUrl, setTermsConditionsUrl] = useState('/terms');
   const [aiEnabled, setAiEnabled] = useState(true);
   const [saving, setSaving] = useState(false);
   const { saveConfig, isLovableCloud } = useSiteConfig();

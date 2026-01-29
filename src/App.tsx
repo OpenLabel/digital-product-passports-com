@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import PassportForm from "./pages/PassportForm";
 import PublicPassport from "./pages/PublicPassport";
 import LegalMentions from "./pages/LegalMentions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 import Setup from "./pages/Setup";
 import NotFound from "./pages/NotFound";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -36,6 +38,8 @@ function AppRoutes() {
         <Route path="/setup" element={<Setup />} />
         <Route path="/p/:slug" element={<PublicPassport />} />
         <Route path="/legal" element={<LegalMentions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<Navigate to="/setup" replace />} />
       </Routes>
     );
@@ -50,6 +54,8 @@ function AppRoutes() {
       <Route path="/passport/:id/edit" element={<PassportForm />} />
       <Route path="/p/:slug" element={<PublicPassport />} />
       <Route path="/legal" element={<LegalMentions />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<Terms />} />
       <Route path="/setup" element={<Navigate to="/" replace />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
