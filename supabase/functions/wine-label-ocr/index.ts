@@ -139,29 +139,49 @@ serve(async (req) => {
         messages: [
           {
             role: "system",
-            content: `You are a wine label data extractor. Analyze wine label images and extract structured information.
+            content: `You are a wine label and document data extractor. Analyze wine label images, technical sheets, or analysis documents and extract structured information.
             
-Extract the following fields if visible on the label:
+Extract the following fields if visible:
+
+PRODUCT IDENTITY:
 - grape_variety: The grape variety (e.g., "Cabernet Sauvignon", "Merlot", "Chardonnay")
 - vintage: The year (e.g., "2020") or "NV" for non-vintage
 - volume: The bottle volume as a number (e.g., 750 for 750ml)
 - volume_unit: The unit (ml, cl, or L)
 - country: The country of origin
-- region: The wine region (e.g., "Bordeaux", "Napa Valley")
+- region: The wine region (e.g., "Bordeaux", "Napa Valley", "Burgundy")
 - denomination: Any designation (AOC, AOP, IGP, DOC, DOCG, etc.)
-- alcohol_percent: The alcohol percentage as a number (e.g., 13.5)
-- producer_name: The winery/producer name
-- sugar_classification: Sugar level if mentioned (Brut, Sec, Demi-Sec, Doux, etc.)
-- residual_sugar: Residual sugar in g/L if mentioned
+- sugar_classification: Sugar level if mentioned (Brut, Sec, Demi-Sec, Doux, Extra Brut, etc.)
 
-Be conservative - only extract data you can clearly read from the label. Do not guess or make up values.`
+PRODUCER INFORMATION:
+- producer_name: The winery/producer/château name
+- bottler_info: Bottler name and address if different from producer
+
+NUTRITIONAL & ANALYSIS VALUES (per liter or percentage):
+- alcohol_percent: The alcohol percentage as a number (e.g., 13.5)
+- residual_sugar: Residual sugar in g/L (e.g., 2.5)
+- total_acidity: Total acidity in g/L expressed as tartaric acid (e.g., 5.5)
+- glycerine: Glycerine/glycerol/polyols content in g/L (e.g., 8.5)
+
+CALCULATED NUTRITIONAL VALUES (per 100ml - only if explicitly stated):
+- energy_kcal: Energy in kcal per 100ml
+- energy_kj: Energy in kJ per 100ml
+- carbohydrates: Carbohydrates in g per 100ml
+- sugar: Sugar in g per 100ml
+- fat: Fat in g per 100ml (usually 0 for wine)
+- saturated_fat: Saturated fat in g per 100ml (usually 0 for wine)
+- proteins: Proteins in g per 100ml (usually 0 for wine)
+- salt: Salt in g per 100ml (usually 0 for wine)
+
+Be conservative - only extract data you can clearly read. Do not guess or make up values.
+For analysis values, pay attention to units and convert to the expected format if needed.`
           },
           {
             role: "user",
             content: [
               {
                 type: "text",
-                text: "Please analyze this wine label and extract all visible information. Return a JSON object with the extracted fields."
+                text: "Please analyze this wine label or document and extract all visible information. Return a JSON object with the extracted fields."
               },
               {
                 type: "image_url",
@@ -177,10 +197,11 @@ Be conservative - only extract data you can clearly read from the label. Do not 
             type: "function",
             function: {
               name: "extract_wine_label_data",
-              description: "Extract structured data from a wine label image",
+              description: "Extract structured data from a wine label or analysis document",
               parameters: {
                 type: "object",
                 properties: {
+                  // Product Identity
                   grape_variety: { type: "string", description: "The grape variety" },
                   vintage: { type: "string", description: "The vintage year or NV" },
                   volume: { type: "number", description: "Bottle volume as a number" },
@@ -188,10 +209,24 @@ Be conservative - only extract data you can clearly read from the label. Do not 
                   country: { type: "string", description: "Country of origin" },
                   region: { type: "string", description: "Wine region" },
                   denomination: { type: "string", description: "Wine designation (AOC, AOP, etc.)" },
-                  alcohol_percent: { type: "number", description: "Alcohol percentage" },
+                  sugar_classification: { type: "string", description: "Sugar classification (Brut, Sec, etc.)" },
+                  // Producer
                   producer_name: { type: "string", description: "Producer/winery name" },
-                  sugar_classification: { type: "string", description: "Sugar classification" },
-                  residual_sugar: { type: "number", description: "Residual sugar in g/L" }
+                  bottler_info: { type: "string", description: "Bottler name and address" },
+                  // Analysis values
+                  alcohol_percent: { type: "number", description: "Alcohol percentage" },
+                  residual_sugar: { type: "number", description: "Residual sugar in g/L" },
+                  total_acidity: { type: "number", description: "Total acidity in g/L (as tartaric acid)" },
+                  glycerine: { type: "number", description: "Glycerine/polyols in g/L" },
+                  // Nutritional values (per 100ml)
+                  energy_kcal: { type: "number", description: "Energy in kcal per 100ml" },
+                  energy_kj: { type: "number", description: "Energy in kJ per 100ml" },
+                  carbohydrates: { type: "number", description: "Carbohydrates in g per 100ml" },
+                  sugar: { type: "number", description: "Sugar in g per 100ml" },
+                  fat: { type: "number", description: "Fat in g per 100ml" },
+                  saturated_fat: { type: "number", description: "Saturated fat in g per 100ml" },
+                  proteins: { type: "number", description: "Proteins in g per 100ml" },
+                  salt: { type: "number", description: "Salt in g per 100ml" }
                 },
                 additionalProperties: false
               }
