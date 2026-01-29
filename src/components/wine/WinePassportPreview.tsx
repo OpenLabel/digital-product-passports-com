@@ -23,9 +23,6 @@ export function WinePassportPreview({ publicSlug }: WinePassportPreviewProps) {
     );
   }
 
-  // Add a cache-busting timestamp to force iframe refresh on save
-  const iframeSrc = `/p/${publicSlug}?t=${Date.now()}`;
-
   return (
     <div className="sticky top-8">
       <div className="bg-background shadow-lg overflow-hidden max-w-[280px] mx-auto rounded-2xl border">
@@ -34,8 +31,7 @@ export function WinePassportPreview({ publicSlug }: WinePassportPreviewProps) {
           <div className="w-20 h-1 bg-muted-foreground/20 rounded-full" />
         </div>
         <iframe
-          key={iframeSrc}
-          src={iframeSrc}
+          src={`/p/${publicSlug}`}
           className="w-full h-[500px] border-0"
           title="Wine Passport Preview"
         />
