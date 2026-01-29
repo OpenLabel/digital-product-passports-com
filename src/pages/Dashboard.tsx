@@ -11,7 +11,7 @@ import { Plus, Edit, Copy, Trash2, LogOut, QrCode, Link2 } from 'lucide-react';
 import { categoryList } from '@/templates';
 import { QRCodeDialog } from '@/components/QRCodeDialog';
 
-const PUBLIC_DOMAIN = 'https://dpp-check.com';
+
 
 export default function Dashboard() {
   const [qrDialogOpen, setQrDialogOpen] = useState(false);
@@ -46,7 +46,7 @@ export default function Dashboard() {
     }
   };
 
-  const getPublicUrl = (slug: string) => `${PUBLIC_DOMAIN}/p/${slug}`;
+  const getPublicUrl = (slug: string) => `${window.location.origin}/p/${slug}`;
 
   const handleCopyUrl = (slug: string) => {
     const url = getPublicUrl(slug);
