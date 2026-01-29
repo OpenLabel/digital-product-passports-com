@@ -95,6 +95,16 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
           <CardDescription>{t('wine.productIdentityDesc')}</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2 sm:col-span-2">
+            <Label htmlFor="product_name">{t('wine.productName')} *</Label>
+            <Input
+              id="product_name"
+              value={(data.product_name as string) || ''}
+              onChange={(e) => handleChange('product_name', e.target.value)}
+              placeholder={t('wine.placeholders.productName')}
+            />
+          </div>
+          
           <div className="space-y-2">
             <Label htmlFor="grape_variety">{t('wine.grapeVariety')}</Label>
             <Input

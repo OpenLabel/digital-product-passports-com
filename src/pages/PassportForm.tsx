@@ -230,13 +230,14 @@ export default function PassportForm() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">{t('passport.productName')} *</Label>
+                    <Label htmlFor="name">{t('passport.dppName')} *</Label>
                     <Input
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Enter a name for this product"
+                      placeholder={t('passport.dppNamePlaceholder')}
                     />
+                    <p className="text-xs text-muted-foreground">{t('passport.dppNameHelp')}</p>
                   </div>
 
                   <div className="space-y-2">

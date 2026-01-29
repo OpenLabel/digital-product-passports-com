@@ -40,6 +40,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
   const categoryData = (passport.category_data || {}) as Record<string, unknown>;
 
   // Product info
+  const productName = (categoryData.product_name as string) || passport.name;
   const volume = categoryData.volume as number | undefined;
   const volumeUnit = (categoryData.volume_unit as string) || 'ml';
   const grapeVariety = categoryData.grape_variety as string | undefined;
@@ -205,7 +206,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
       <main className="container mx-auto px-4 py-6 max-w-lg">
         {/* Header with Product Name and Image */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold mb-4" data-testid="passport-name">{passport.name}</h1>
+          <h1 className="text-2xl font-bold mb-4" data-testid="passport-name">{productName}</h1>
           
           {/* Check Authenticity Button */}
           {counterfeitProtectionEnabled && (
@@ -231,7 +232,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
             {passport.image_url && (
               <img
                 src={passport.image_url}
-                alt={passport.name}
+                alt={productName}
                 className="w-24 h-36 object-contain"
                 data-testid="product-image"
               />
