@@ -209,7 +209,8 @@ export default function Setup() {
         </div>
 
         <p className="text-center text-xs text-muted-foreground mt-6">
-          This is a self-hosted open source DPP platform. You can modify this configuration later in the admin settings.
+          This is a self-hosted open source DPP platform. To reset this configuration, 
+          delete all rows from the <code className="bg-muted px-1 py-0.5 rounded">site_config</code> table in your database.
         </p>
       </div>
     </div>
