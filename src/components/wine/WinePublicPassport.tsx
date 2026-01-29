@@ -368,14 +368,10 @@ export function WinePublicPassport({ passport }: WinePublicPassportProps) {
         )}
 
         {/* Footer */}
-        <footer className="text-center text-xs text-muted-foreground py-4 border-t space-y-2">
-          <p>Digital Product Passport</p>
-          <p>Last updated: {new Date(passport.updated_at).toLocaleDateString()}</p>
-          <p>
-            <Link to="/legal" className="underline hover:text-foreground">
-              Legal Mentions
-            </Link>
-          </p>
+        <footer className="text-center text-xs text-muted-foreground py-4 border-t">
+          <Link to="/legal" className="underline hover:text-foreground">
+            Legal Mentions
+          </Link>
         </footer>
       </main>
     </div>
