@@ -79,11 +79,17 @@ export default function Terms() {
               WE MAKE NO WARRANTY, REPRESENTATION, OR GUARANTEE THAT ANY DIGITAL PRODUCT PASSPORTS (DPPs) 
               CREATED USING THIS PLATFORM WILL BE COMPLIANT WITH ANY LAWS, REGULATIONS, DIRECTIVES, OR STANDARDS.
             </p>
+            <p className="text-muted-foreground mb-2">
+              This platform is provided as a <strong>free service</strong>. As such, we do not and cannot provide 
+              any guarantees regarding regulatory compliance. Only you, the end user, can verify and guarantee 
+              that your Digital Product Passports comply with applicable regulations, including but not limited to 
+              the EU Digital Product Passport regulations, ESPR (Ecodesign for Sustainable Products Regulation), 
+              EU Regulation 2021/2117 for wine products, or any other national or international regulatory requirements.
+            </p>
             <p className="text-muted-foreground">
-              This includes, but is not limited to, the EU Digital Product Passport regulations, ESPR (Ecodesign for 
-              Sustainable Products Regulation), or any other national or international regulatory requirements. 
-              You are solely responsible for ensuring that your product passports meet all applicable legal and 
-              regulatory requirements in your jurisdiction.
+              You are solely responsible for reviewing, verifying, and ensuring that all information in your 
+              product passports is accurate, complete, and meets all applicable legal and regulatory requirements 
+              in your jurisdiction before publication and use.
             </p>
           </section>
 
