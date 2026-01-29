@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -24,6 +25,7 @@ export function CustomIngredientDialog({
   onOpenChange,
   onAdd,
 }: CustomIngredientDialogProps) {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [eNumber, setENumber] = useState('');
   const [isAllergen, setIsAllergen] = useState(false);
@@ -51,28 +53,28 @@ export function CustomIngredientDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle>Define a custom ingredient</DialogTitle>
+          <DialogTitle>{t('customIngredient.title')}</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="custom-name">Ingredient name *</Label>
+            <Label htmlFor="custom-name">{t('customIngredient.ingredientName')} *</Label>
             <Input
               id="custom-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g., Oak chips"
+              placeholder={t('customIngredient.ingredientPlaceholder')}
               required
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="custom-enumber">E-Number (optional)</Label>
+            <Label htmlFor="custom-enumber">{t('customIngredient.eNumber')}</Label>
             <Input
               id="custom-enumber"
               value={eNumber}
               onChange={(e) => setENumber(e.target.value)}
-              placeholder="e.g., E 123"
+              placeholder={t('customIngredient.eNumberPlaceholder')}
             />
           </div>
 
@@ -83,16 +85,16 @@ export function CustomIngredientDialog({
               onCheckedChange={(checked) => setIsAllergen(checked === true)}
             />
             <Label htmlFor="custom-allergen" className="font-normal cursor-pointer">
-              This is an allergen
+              {t('customIngredient.isAllergen')}
             </Label>
           </div>
 
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
+              {t('common.cancel')}
             </Button>
             <Button type="submit" disabled={!name.trim()}>
-              Add ingredient
+              {t('customIngredient.addButton')}
             </Button>
           </DialogFooter>
         </form>
