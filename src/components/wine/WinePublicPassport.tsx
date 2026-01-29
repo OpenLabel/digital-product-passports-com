@@ -364,17 +364,17 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
         {!categoryData.hide_promo && (
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center">
             <p className="text-sm text-foreground">
-              Made by{' '}
+              Powered by{' '}
               {isPreview ? (
-                <span className="text-primary font-medium">EU Digital Product Passports</span>
+                <span className="text-primary font-medium">Open Source DPP Platform</span>
               ) : (
                 <a 
-                  href="https://www.digital-product-passports.com"
+                  href="https://github.com/cypheme/dpp-platform"
                   className="text-primary font-medium hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  EU Digital Product Passports
+                  Open Source DPP Platform
                 </a>
               )}
             </p>

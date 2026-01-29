@@ -14,144 +14,103 @@ An open-source, self-hostable Digital Product Passport (DPP) generator for EU co
 
 ---
 
-## 🚀 Self-Hosting Guide
+## 🚀 Quick Start (Self-Hosting)
 
 ### Prerequisites
 
 - **Node.js** 18+ or **Bun** 1.0+
-- **Supabase** account (free tier works)
+- **Supabase CLI** installed (`npm install -g supabase`)
 - **Git** installed
-- A server or hosting platform (Vercel, Netlify, Docker, VPS, etc.)
 
 ---
 
-### Step 1: Clone the Repository
+### Step 1: Clone & Install
 
 ```bash
-git clone https://github.com/your-org/dpp-platform.git
+git clone https://github.com/cypheme/dpp-platform.git
 cd dpp-platform
-```
-
-### Step 2: Install Dependencies
-
-Using npm:
-```bash
 npm install
 ```
 
-Using Bun (faster):
+### Step 2: Create Supabase Project
+
+1. Go to [supabase.com](https://supabase.com) and create a free account
+2. Click **"New Project"** → Choose a name → Set database password
+3. Wait for provisioning (~2 minutes)
+
+### Step 3: Get Your Credentials
+
+In your Supabase dashboard → **Settings** → **API**, copy:
+- **Project URL** (e.g., `https://xxxxx.supabase.co`)
+- **anon/public key** (starts with `eyJ...`)
+- **Project ID** (the `xxxxx` part from the URL)
+
+### Step 4: Configure Environment
+
 ```bash
-bun install
+cp .env.example .env
 ```
 
-### Step 3: Set Up Supabase
-
-#### 3.1 Create a Supabase Project
-
-1. Go to [supabase.com](https://supabase.com) and create an account
-2. Click "New Project"
-3. Choose a name and set a database password
-4. Wait for the project to be provisioned (~2 minutes)
-
-#### 3.2 Get Your Supabase Credentials
-
-1. In your Supabase dashboard, go to **Settings** → **API**
-2. Copy the following values:
-   - **Project URL** (e.g., `https://xxxxx.supabase.co`)
-   - **anon/public key** (starts with `eyJ...`)
-   - **Project ID** (from the URL: `xxxxx` part)
-
-#### 3.3 Run Database Migrations
-
-1. Install Supabase CLI:
-   ```bash
-   npm install -g supabase
-   ```
-
-2. Login to Supabase:
-   ```bash
-   supabase login
-   ```
-
-3. Link your project:
-   ```bash
-   supabase link --project-ref YOUR_PROJECT_ID
-   ```
-
-4. Run migrations:
-   ```bash
-   supabase db push
-   ```
-
-This creates the following tables:
-- `passports` - Stores all digital product passports
-- `profiles` - User profile information
-- `site_config` - Instance configuration (company name, legal info, etc.)
-
-### Step 4: Configure Environment Variables
-
-Create a `.env` file in the project root:
-
+Edit `.env` with your values:
 ```env
-# Required: Supabase Configuration
 VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_PUBLISHABLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6...
 VITE_SUPABASE_PROJECT_ID=your-project-id
-
-# Optional: AI Features (for wine label scanning)
-# Only needed if NOT using Lovable Cloud
-# Get your key from Lovable developer settings
-LOVABLE_API_KEY=your-lovable-api-key
 ```
 
-### Step 5: Deploy Edge Functions (for AI Features)
-
-If you want AI-powered label scanning:
+### Step 5: Set Up Database
 
 ```bash
+# Login to Supabase CLI
+supabase login
+
+# Link to your project
+supabase link --project-ref YOUR_PROJECT_ID
+
+# Push all migrations (creates tables, RLS policies, functions)
+supabase db push
+```
+
+### Step 6: Deploy Edge Functions
+
+```bash
+# Deploy all edge functions
+supabase functions deploy save-resend-key
+supabase functions deploy save-lovable-key
+supabase functions deploy send-counterfeit-request
 supabase functions deploy wine-label-ocr
 ```
 
-Set the API key as a secret:
+### Step 7: Run Locally
+
 ```bash
-supabase secrets set LOVABLE_API_KEY=your-lovable-api-key
+npm run dev
 ```
 
-### Step 6: Configure Authentication
+Visit `http://localhost:5173` and complete the setup wizard.
 
-1. In Supabase dashboard, go to **Authentication** → **Providers**
-2. Enable **Email** provider
-3. (Optional) Enable **Google**, **Apple**, or other OAuth providers
-4. Go to **Authentication** → **Email Templates** and customize if needed
+---
 
-**Recommended Settings:**
-- Enable "Confirm email" for production
-- Disable "Confirm email" for development/testing
+## 🌐 Production Deployment
 
-### Step 7: Build and Deploy
+### Option A: Vercel (Recommended)
 
-#### Option A: Static Hosting (Vercel, Netlify, Cloudflare Pages)
-
-Build the project:
 ```bash
 npm run build
-```
-
-The output will be in the `dist/` folder. Deploy this folder to your hosting provider.
-
-**Vercel:**
-```bash
 npx vercel --prod
 ```
 
-**Netlify:**
+Set environment variables in Vercel dashboard → Project Settings → Environment Variables.
+
+### Option B: Netlify
+
 ```bash
+npm run build
 npx netlify deploy --prod --dir=dist
 ```
 
-#### Option B: Docker
+### Option C: Docker
 
-Create a `Dockerfile`:
 ```dockerfile
 FROM node:18-alpine AS builder
 WORKDIR /app
@@ -169,20 +128,12 @@ CMD ["nginx", "-g", "daemon off;"]
 
 Create `nginx.conf`:
 ```nginx
-events {
-    worker_connections 1024;
-}
-
+events { worker_connections 1024; }
 http {
     include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
     server {
         listen 80;
-        server_name localhost;
         root /usr/share/nginx/html;
-        index index.html;
-
         location / {
             try_files $uri $uri/ /index.html;
         }
@@ -196,118 +147,43 @@ docker build -t dpp-platform .
 docker run -p 80:80 dpp-platform
 ```
 
-#### Option C: VPS / Bare Metal
+---
 
-1. Build the project on your server:
-   ```bash
-   npm run build
-   ```
+## ⚙️ Initial Setup Wizard
 
-2. Serve the `dist/` folder with Nginx, Apache, or Caddy
+After first deployment, you'll be redirected to `/setup` where you configure:
 
-Example Nginx config:
-```nginx
-server {
-    listen 80;
-    server_name yourdomain.com;
-    root /var/www/dpp-platform/dist;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-### Step 8: Initial Setup
-
-1. Visit your deployed application
-2. You'll be redirected to the **Setup** page
-3. Enter your organization details:
-   - **Company Name** (required)
-   - **Company Address** (required)
-   - **Privacy Policy URL** (optional)
-   - **Terms & Conditions URL** (optional)
-   - **Enable/Disable AI Features**
-
-4. Click "Complete Setup"
+| Setting | Required | Description |
+|---------|----------|-------------|
+| Company Name | ✅ | Displayed in legal mentions |
+| Company Address | ✅ | Full legal address for EU compliance |
+| Privacy Policy URL | | Link to your privacy policy |
+| Terms URL | | Link to your terms of service |
+| Resend API Key | | For password reset emails (get from [resend.com](https://resend.com)) |
+| Sender Email | | Must be from a verified Resend domain |
+| Lovable API Key | | For AI features (only if self-hosting, not on Lovable Cloud) |
+| Enable AI | | Toggle AI features on/off |
 
 ---
 
-## 🔧 Configuration Options
+## 🤖 AI Features (Optional)
 
-### Environment Variables
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `VITE_SUPABASE_URL` | Yes | Your Supabase project URL |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Yes | Supabase anon/public key |
-| `VITE_SUPABASE_PROJECT_ID` | Yes | Supabase project ID |
-| `LOVABLE_API_KEY` | No* | Required for AI features if self-hosting |
-
-*Not required if running on Lovable Cloud (auto-detected)
-
-### Site Configuration (via Setup Page)
-
-| Setting | Description |
-|---------|-------------|
-| Company Name | Displayed in legal mentions |
-| Company Address | Full legal address |
-| Privacy Policy URL | Link to your privacy policy |
-| Terms & Conditions URL | Link to your T&C |
-| AI Enabled | Toggle AI features on/off |
-
----
-
-## 🤖 AI Features
-
-The platform includes optional AI-powered features:
-
-- **Wine Label Scanner**: Upload a photo of a wine label to automatically extract product information
+The platform includes AI-powered features:
+- **Wine Label Scanner**: Upload a photo to auto-extract product data
 - **Document Parser**: Extract data from PDF/Word technical sheets
 
-### Enabling AI for Self-Hosted Instances
+### For Self-Hosted Instances
 
 1. Obtain a Lovable API key from [lovable.dev](https://lovable.dev)
-2. Set the `LOVABLE_API_KEY` environment variable
-3. Deploy the edge function:
+2. During setup, enter the key in the "Lovable API Key" field
+3. Or set it as an edge function secret:
    ```bash
-   supabase functions deploy wine-label-ocr
    supabase secrets set LOVABLE_API_KEY=your-key
    ```
 
-### Disabling AI Features
+### Disabling AI
 
-If you don't want AI features:
-1. During setup, uncheck "Enable AI features"
-2. Or update the `ai_enabled` config in the database
-
----
-
-## 🗄️ Database Schema
-
-### Tables
-
-**passports**
-- `id` (UUID) - Primary key
-- `user_id` (UUID) - Owner reference
-- `name` (TEXT) - Product name
-- `description` (TEXT) - Product description
-- `category` (ENUM) - Product category
-- `category_data` (JSONB) - Category-specific fields
-- `image_url` (TEXT) - Product image
-- `public_slug` (TEXT) - URL slug for public access
-- `language` (TEXT) - Passport language
-
-**profiles**
-- `id` (UUID) - Primary key
-- `user_id` (UUID) - Auth user reference
-- `email` (TEXT) - User email
-- `company_name` (TEXT) - User's company
-
-**site_config**
-- `key` (TEXT) - Configuration key
-- `value` (TEXT) - Configuration value
+Simply uncheck "Enable AI features" during setup. The AI autofill buttons will be hidden from the interface.
 
 ---
 
@@ -317,55 +193,74 @@ If you don't want AI features:
 
 All tables have RLS enabled:
 - Users can only access their own passports
-- Public passports are accessible via the `passports_public` view
-- Site config is readable by all, writable by authenticated users
+- Public passports are accessible via the `passports_public` view (excludes user_id)
+- API keys in site_config are only readable by edge functions (service role)
 
 ### Best Practices
 
-1. Use HTTPS in production
-2. Set strong Supabase database passwords
-3. Enable email confirmation for production
-4. Regularly backup your database
-5. Keep dependencies updated
+1. ✅ Use HTTPS in production
+2. ✅ Set strong Supabase database passwords
+3. ✅ Enable email confirmation for production
+4. ✅ Regularly backup your database
+5. ✅ Keep dependencies updated
+6. ✅ Verify your Resend sending domain
+
+---
+
+## 🗄️ Database Schema
+
+### Tables
+
+| Table | Description |
+|-------|-------------|
+| `passports` | All digital product passports |
+| `profiles` | User profile information |
+| `site_config` | Instance configuration (company info, API keys) |
+
+### Views
+
+| View | Description |
+|------|-------------|
+| `passports_public` | Public view of passports (excludes user_id for privacy) |
 
 ---
 
 ## 🧪 Development
 
-### Running Locally
-
 ```bash
+# Run development server
 npm run dev
-```
 
-### Running Tests
-
-```bash
+# Run tests
 npm run test
-```
 
-### Type Checking
-
-```bash
+# Type checking
 npm run typecheck
+
+# Build for production
+npm run build
 ```
 
 ---
 
 ## 📝 License
 
-This project is open source. See LICENSE file for details.
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
+
+See [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
 
 ---
 
 ## 📞 Support
 
 - **GitHub Issues**: Report bugs and feature requests
-- **Documentation**: [docs.example.com](https://docs.example.com)
-- **Community**: Join our Discord server
+- **Discussions**: Ask questions and share ideas

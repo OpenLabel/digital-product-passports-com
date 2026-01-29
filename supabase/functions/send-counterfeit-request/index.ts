@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
     const { data: configData, error: configError } = await supabase
       .from("site_config")
       .select("key, value")
-      .in("key", ["resend_api_key_secret", "sender_email"]);
+      .in("key", ["resend_api_key_secret", "sender_email", "company_name"]);
 
     if (configError) {
       throw new Error("Failed to fetch configuration");
@@ -45,7 +45,12 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const RESEND_API_KEY = config.resend_api_key_secret;
-    const senderEmail = config.sender_email || "noreply@digital-product-passports.com";
+    const senderEmail = config.sender_email;
+    const companyName = config.company_name || "Digital Product Passports";
+
+    if (!senderEmail) {
+      throw new Error("Sender email not configured. Please set it up in the Setup page.");
+    }
 
     const { userEmail, passportName, passportUrl, requestedAt }: CounterfeitRequest = await req.json();
 
@@ -73,7 +78,7 @@ const handler = async (req: Request): Promise<Response> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: `EU Digital Product Passports <${senderEmail}>`,
+        from: `${companyName} <${senderEmail}>`,
         to: ["contact@cypheme.com"],
         cc: [userEmail],
         subject: `Counterfeit Protection Request - ${passportName}`,
@@ -123,7 +128,7 @@ const handler = async (req: Request): Promise<Response> => {
             <p style="color: #999; font-size: 12px; line-height: 1.5;">
               <strong>Why did I receive this email?</strong><br/>
               This email was sent because on ${formattedDate} at ${formattedTime}, the user clicked "Enable" on the counterfeit protection feature 
-              in their Digital Product Passport editor at <a href="https://www.digital-product-passports.com" style="color: #666;">digital-product-passports.com</a>.
+              in their Digital Product Passport editor.
             </p>
             
             <p style="color: #999; font-size: 12px; line-height: 1.5;">
