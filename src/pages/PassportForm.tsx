@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { usePassports, usePassportById } from '@/hooks/usePassports';
@@ -19,6 +19,16 @@ import { WineFields } from '@/components/WineFields';
 import { PassportPreview } from '@/components/PassportPreview';
 import { CounterfeitProtection } from '@/components/CounterfeitProtection';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 interface FormData {
   name: string;
@@ -47,6 +57,23 @@ export default function PassportForm() {
     category_data: {},
   });
   const [saving, setSaving] = useState(false);
+  const [showUnsavedDialog, setShowUnsavedDialog] = useState(false);
+  const savedFormDataRef = useRef<string>('');
+
+  // Check if form has unsaved changes
+  const hasUnsavedChanges = useCallback(() => {
+    const currentData = JSON.stringify(formData);
+    return currentData !== savedFormDataRef.current;
+  }, [formData]);
+
+  // Handle back navigation with unsaved changes check
+  const handleBack = useCallback(() => {
+    if (hasUnsavedChanges()) {
+      setShowUnsavedDialog(true);
+    } else {
+      navigate('/dashboard');
+    }
+  }, [hasUnsavedChanges, navigate]);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -56,16 +83,26 @@ export default function PassportForm() {
 
   useEffect(() => {
     if (existingPassport) {
-      setFormData({
+      const newFormData = {
         name: existingPassport.name,
         category: existingPassport.category,
         image_url: existingPassport.image_url,
         description: existingPassport.description || '',
         language: existingPassport.language,
         category_data: (existingPassport.category_data as Record<string, unknown>) || {},
-      });
+      };
+      setFormData(newFormData);
+      // Store initial saved state
+      savedFormDataRef.current = JSON.stringify(newFormData);
     }
   }, [existingPassport]);
+
+  // For new passports, set initial saved state once
+  useEffect(() => {
+    if (!isEditing && savedFormDataRef.current === '') {
+      savedFormDataRef.current = JSON.stringify(formData);
+    }
+  }, [isEditing, formData]);
 
   const handleSubmit = async (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -84,9 +121,13 @@ export default function PassportForm() {
       if (isEditing) {
         await updatePassport.mutateAsync({ id, ...submitData });
         toast({ title: 'Passport updated successfully' });
+        // Update saved state after successful save
+        savedFormDataRef.current = JSON.stringify(formData);
       } else {
         const newPassport = await createPassport.mutateAsync(submitData);
         toast({ title: 'Passport created successfully' });
+        // Update saved state after successful save
+        savedFormDataRef.current = JSON.stringify(formData);
         // Navigate to edit mode for the newly created passport
         navigate(`/passport/${newPassport.id}/edit`, { replace: true });
       }
@@ -124,14 +165,33 @@ export default function PassportForm() {
   const showPreview = true;
 
   return (
-    <div className="min-h-screen bg-muted/30">
-      <header className="border-b bg-background sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={() => navigate('/dashboard')}>
-              <ArrowLeft className="h-4 w-4" />
-            </Button>
-            <h1 className="text-xl font-semibold">
+    <>
+      {/* Unsaved changes dialog */}
+      <AlertDialog open={showUnsavedDialog} onOpenChange={setShowUnsavedDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
+            <AlertDialogDescription>
+              You have unsaved changes. Are you sure you want to leave? Your changes will be lost.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => navigate('/dashboard')}>
+              Leave without saving
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <div className="min-h-screen bg-muted/30">
+        <header className="border-b bg-background sticky top-0 z-10">
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" size="icon" onClick={handleBack}>
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+              <h1 className="text-xl font-semibold">
               {isEditing ? 'Edit Passport' : 'Create New Passport'}
             </h1>
           </div>
@@ -297,5 +357,6 @@ export default function PassportForm() {
         </div>
       </main>
     </div>
+    </>
   );
 }
