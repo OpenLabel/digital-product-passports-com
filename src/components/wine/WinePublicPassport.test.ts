@@ -31,16 +31,6 @@ const CANONICAL_WINE_FIELDS = {
     'bottler_info',       // textarea - Bottler Information
   ],
   
-  // Certifications & Labels (wine.ts template - Certifications section)
-  certifications: [
-    'has_pdo',            // checkbox - Protected Designation of Origin (PDO/AOP)
-    'has_pgi',            // checkbox - Protected Geographical Indication (PGI/IGP)
-    'is_organic_eu',      // checkbox - EU Organic certified
-    'is_biodynamic',      // checkbox - Biodynamic certified (Demeter/Biodyvin)
-    'is_hve',             // checkbox - HVE certified (Haute Valeur Environnementale)
-    'is_terra_vitis',     // checkbox - Terra Vitis certified
-  ],
-  
   // Nutritional Values (WineFields.tsx - Nutritional Values card)
   nutritional: [
     'alcohol_percent',    // number input - Alcohol (% Vol) - required
@@ -101,13 +91,6 @@ describe("WinePublicPassport", () => {
       expect(WINE_PASSPORT_FIELDS.producer.length).toBe(CANONICAL_WINE_FIELDS.producer.length);
     });
 
-    it("contains all certification fields", () => {
-      CANONICAL_WINE_FIELDS.certifications.forEach((field) => {
-        expect(WINE_PASSPORT_FIELDS.certifications).toContain(field);
-      });
-      expect(WINE_PASSPORT_FIELDS.certifications.length).toBe(CANONICAL_WINE_FIELDS.certifications.length);
-    });
-
     it("contains all nutritional fields", () => {
       CANONICAL_WINE_FIELDS.nutritional.forEach((field) => {
         expect(WINE_PASSPORT_FIELDS.nutritional).toContain(field);
@@ -148,7 +131,6 @@ describe("WinePublicPassport", () => {
     it("has all required field categories", () => {
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("productInfo");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("producer");
-      expect(WINE_PASSPORT_FIELDS).toHaveProperty("certifications");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("nutritional");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("manualOverrides");
       expect(WINE_PASSPORT_FIELDS).toHaveProperty("displayOptions");
@@ -160,7 +142,6 @@ describe("WinePublicPassport", () => {
       const allFields = [
         ...WINE_PASSPORT_FIELDS.productInfo,
         ...WINE_PASSPORT_FIELDS.producer,
-        ...WINE_PASSPORT_FIELDS.certifications,
         ...WINE_PASSPORT_FIELDS.nutritional,
         ...WINE_PASSPORT_FIELDS.manualOverrides,
         ...WINE_PASSPORT_FIELDS.displayOptions,
@@ -171,7 +152,6 @@ describe("WinePublicPassport", () => {
       const expectedFields = [
         ...CANONICAL_WINE_FIELDS.productInfo,
         ...CANONICAL_WINE_FIELDS.producer,
-        ...CANONICAL_WINE_FIELDS.certifications,
         ...CANONICAL_WINE_FIELDS.nutritional,
         ...CANONICAL_WINE_FIELDS.manualOverrides,
         ...CANONICAL_WINE_FIELDS.displayOptions,
@@ -188,7 +168,6 @@ describe("WinePublicPassport", () => {
       const allFields = [
         ...WINE_PASSPORT_FIELDS.productInfo,
         ...WINE_PASSPORT_FIELDS.producer,
-        ...WINE_PASSPORT_FIELDS.certifications,
         ...WINE_PASSPORT_FIELDS.nutritional,
         ...WINE_PASSPORT_FIELDS.manualOverrides,
         ...WINE_PASSPORT_FIELDS.displayOptions,
@@ -212,13 +191,18 @@ describe("WinePublicPassport", () => {
       'contains_sulfites',         // Removed - now handled via ingredients
       'contains_egg',              // Removed - now handled via ingredients
       'contains_milk',             // Removed - now handled via ingredients
+      'has_pdo',                   // Removed - certifications removed
+      'has_pgi',                   // Removed - certifications removed
+      'is_organic_eu',             // Removed - certifications removed
+      'is_biodynamic',             // Removed - certifications removed
+      'is_hve',                    // Removed - certifications removed
+      'is_terra_vitis',            // Removed - certifications removed
     ];
 
     it("deprecated fields are not in any category", () => {
       const allFields = [
         ...WINE_PASSPORT_FIELDS.productInfo,
         ...WINE_PASSPORT_FIELDS.producer,
-        ...WINE_PASSPORT_FIELDS.certifications,
         ...WINE_PASSPORT_FIELDS.nutritional,
         ...WINE_PASSPORT_FIELDS.manualOverrides,
         ...WINE_PASSPORT_FIELDS.displayOptions,
@@ -237,7 +221,6 @@ describe("WinePublicPassport", () => {
       const allFields = [
         ...WINE_PASSPORT_FIELDS.productInfo,
         ...WINE_PASSPORT_FIELDS.producer,
-        ...WINE_PASSPORT_FIELDS.certifications,
         ...WINE_PASSPORT_FIELDS.nutritional,
         ...WINE_PASSPORT_FIELDS.manualOverrides,
         ...WINE_PASSPORT_FIELDS.displayOptions,
@@ -339,14 +322,6 @@ describe("Wine Field Save/Load Contract", () => {
       producer_name: 'Château Example',
       bottler_info: 'Bottled at origin by Château Example',
       
-      // Certifications
-      has_pdo: true,
-      has_pgi: false,
-      is_organic_eu: true,
-      is_biodynamic: false,
-      is_hve: false,
-      is_terra_vitis: false,
-      
       // Nutritional Values
       alcohol_percent: 13.5,
       residual_sugar: 2.5,
@@ -399,7 +374,6 @@ describe("Wine Field Save/Load Contract", () => {
     const allCanonicalFields = [
       ...CANONICAL_WINE_FIELDS.productInfo,
       ...CANONICAL_WINE_FIELDS.producer,
-      ...CANONICAL_WINE_FIELDS.certifications,
       ...CANONICAL_WINE_FIELDS.nutritional,
       ...CANONICAL_WINE_FIELDS.manualOverrides,
       ...CANONICAL_WINE_FIELDS.displayOptions,
