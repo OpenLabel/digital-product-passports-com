@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
-import { Plus, Edit, Copy, Trash2, LogOut, QrCode, Link2 } from 'lucide-react';
+import { Plus, Edit, Copy, Trash2, LogOut, QrCode } from 'lucide-react';
 import { categoryList } from '@/templates';
 import { QRCodeDialog } from '@/components/QRCodeDialog';
 
@@ -47,12 +47,6 @@ export default function Dashboard() {
   };
 
   const getPublicUrl = (slug: string) => `${window.location.origin}/p/${slug}`;
-
-  const handleCopyUrl = (slug: string) => {
-    const url = getPublicUrl(slug);
-    navigator.clipboard.writeText(url);
-    toast({ title: 'URL copied to clipboard' });
-  };
 
   const handleShowQR = (passport: { name: string; public_slug: string | null; category_data: unknown }) => {
     if (!passport.public_slug) return;
@@ -127,34 +121,19 @@ export default function Dashboard() {
                     <TooltipProvider>
                       <div className="flex items-center gap-1">
                         {passport.public_slug && (
-                          <>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8"
-                                  onClick={() => handleShowQR(passport)}
-                                >
-                                  <QrCode className="h-4 w-4" />
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>Show QR Code</TooltipContent>
-                            </Tooltip>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8"
-                                  onClick={() => handleCopyUrl(passport.public_slug!)}
-                                >
-                                  <Link2 className="h-4 w-4" />
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>Copy URL</TooltipContent>
-                            </Tooltip>
-                          </>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => handleShowQR(passport)}
+                              >
+                                <QrCode className="h-4 w-4" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>Show QR Code</TooltipContent>
+                          </Tooltip>
                         )}
                         <Tooltip>
                           <TooltipTrigger asChild>

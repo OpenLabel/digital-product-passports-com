@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
+import { Copy, Check } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 interface QRCodeDialogProps {
   open: boolean;
@@ -16,30 +19,26 @@ interface QRCodeDialogProps {
 
 // Rounded hexagon SVG path - creates a hexagon with curved corners
 function RoundedHexagon({ size = 60 }: { size?: number }) {
-  // Create a hexagon path with rounded corners
   const centerX = size / 2;
   const centerY = size / 2;
-  const radius = size / 2 - 2; // Slight padding
-  const cornerRadius = radius * 0.2; // 20% corner rounding
+  const radius = size / 2 - 2;
+  const cornerRadius = radius * 0.2;
   
-  // Calculate hexagon vertices
   const vertices = [];
   for (let i = 0; i < 6; i++) {
-    const angle = (Math.PI / 3) * i - Math.PI / 2; // Start from top
+    const angle = (Math.PI / 3) * i - Math.PI / 2;
     vertices.push({
       x: centerX + radius * Math.cos(angle),
       y: centerY + radius * Math.sin(angle),
     });
   }
   
-  // Create path with rounded corners using quadratic curves
   let path = '';
   for (let i = 0; i < 6; i++) {
     const current = vertices[i];
     const next = vertices[(i + 1) % 6];
     const prev = vertices[(i + 5) % 6];
     
-    // Calculate points for the curved corners
     const toPrev = { x: prev.x - current.x, y: prev.y - current.y };
     const toNext = { x: next.x - current.x, y: next.y - current.y };
     
@@ -59,14 +58,9 @@ function RoundedHexagon({ size = 60 }: { size?: number }) {
       path += `M ${startPoint.x} ${startPoint.y} `;
     }
     
-    // Quadratic curve through the vertex
     path += `Q ${current.x} ${current.y} ${endPoint.x} ${endPoint.y} `;
     
-    // Line to next corner start
     const nextVertex = vertices[(i + 1) % 6];
-    const nextNext = vertices[(i + 2) % 6];
-    const toNextNext = { x: nextNext.x - nextVertex.x, y: nextNext.y - nextVertex.y };
-    const lenNextNext = Math.sqrt(toNextNext.x ** 2 + toNextNext.y ** 2);
     
     if (i < 5) {
       const nextStartPoint = {
@@ -102,6 +96,14 @@ export function QRCodeDialog({
   productName,
   counterfeitProtectionEnabled = false,
 }: QRCodeDialogProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyUrl = () => {
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
@@ -114,7 +116,7 @@ export function QRCodeDialog({
               <QRCodeSVG
                 value={url}
                 size={250}
-                level="H" // High error correction when we have an overlay
+                level="H"
                 includeMargin={false}
               />
               {counterfeitProtectionEnabled && (
@@ -122,9 +124,23 @@ export function QRCodeDialog({
               )}
             </div>
           )}
-          <p className="text-sm text-muted-foreground text-center break-all px-4">
-            {url}
-          </p>
+          <div className="flex items-center gap-2 w-full max-w-sm">
+            <div className="flex-1 text-sm text-muted-foreground bg-muted rounded-md px-3 py-2 truncate">
+              {url}
+            </div>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleCopyUrl}
+              className="flex-shrink-0"
+            >
+              {copied ? (
+                <Check className="h-4 w-4 text-green-600" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
