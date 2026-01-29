@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { usePassportBySlug } from '@/hooks/usePassports';
 import { getTemplate, categoryList } from '@/templates';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +10,7 @@ import { ShieldCheck } from 'lucide-react';
 import DOMPurify from 'dompurify';
 
 export default function PublicPassport() {
+  const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const { data: passport, isLoading, error } = usePassportBySlug(slug);
 
@@ -29,9 +31,9 @@ export default function PublicPassport() {
       <div className="min-h-screen bg-muted/30 flex items-center justify-center">
         <Card className="max-w-md w-full mx-4">
           <CardContent className="pt-6 text-center">
-            <h2 className="text-xl font-semibold mb-2">Passport Not Found</h2>
+            <h2 className="text-xl font-semibold mb-2">{t('passport.notFound')}</h2>
             <p className="text-muted-foreground">
-              This digital product passport doesn't exist or has been removed.
+              {t('passport.notFoundDesc')}
             </p>
           </CardContent>
         </Card>
@@ -105,7 +107,7 @@ export default function PublicPassport() {
           {passport.description && (
             <Card>
               <CardHeader>
-                <CardTitle>Product Description</CardTitle>
+                <CardTitle>{t('passport.productDescription')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div 
@@ -120,7 +122,7 @@ export default function PublicPassport() {
           {requiredLogos.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>Certifications & Labels</CardTitle>
+                <CardTitle>{t('certifications.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">

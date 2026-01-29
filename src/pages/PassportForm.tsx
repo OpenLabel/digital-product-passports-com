@@ -172,15 +172,15 @@ export default function PassportForm() {
       <AlertDialog open={showUnsavedDialog} onOpenChange={setShowUnsavedDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Unsaved changes</AlertDialogTitle>
+            <AlertDialogTitle>{t('passport.unsavedChanges')}</AlertDialogTitle>
             <AlertDialogDescription>
-              You have unsaved changes. Are you sure you want to leave? Your changes will be lost.
+              {t('passport.unsavedChangesDesc')}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>{t('common.cancel')}</AlertDialogCancel>
             <AlertDialogAction onClick={() => navigate('/dashboard')}>
-              Leave without saving
+              {t('passport.leaveWithoutSaving')}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -286,13 +286,13 @@ export default function PassportForm() {
               {formData.category !== 'wine' && (
                 <Card>
                   <CardHeader>
-                    <CardTitle>Product Description</CardTitle>
+                    <CardTitle>{t('passport.productDescription')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <RichTextEditor
                       content={formData.description}
                       onChange={(content) => setFormData({ ...formData, description: content })}
-                      placeholder="Describe your product..."
+                      placeholder={t('passport.descriptionPlaceholder')}
                     />
                   </CardContent>
                 </Card>
