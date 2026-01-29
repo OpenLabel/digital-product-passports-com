@@ -108,7 +108,7 @@ export function CounterfeitProtection({
         <Shield className="h-5 w-5 text-red-500 dark:text-red-400 mt-0.5 flex-shrink-0" />
         <div className="flex-1">
           <h3 className="font-medium text-red-800 dark:text-red-200">
-            Add Counterfeit Protection
+            Add Counterfeit Protection (optional)
           </h3>
           <p className="text-sm text-red-700 dark:text-red-300 mt-1">
             Protect your product against counterfeiting with a security seal from our partner.
