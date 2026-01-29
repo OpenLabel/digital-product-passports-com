@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { WinePublicPassport } from '@/components/wine/WinePublicPassport';
+import { ShieldCheck } from 'lucide-react';
 import DOMPurify from 'dompurify';
 
 export default function PublicPassport() {
@@ -74,6 +75,19 @@ export default function PublicPassport() {
               {categoryInfo?.icon} {categoryInfo?.label} Product Passport
             </Badge>
             <h1 className="text-3xl font-bold mb-2">{passport.name}</h1>
+            
+            {/* Check Authenticity Button */}
+            {categoryData?.counterfeit_protection_enabled && (
+              <a
+                href="https://app.cypheme.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors"
+              >
+                <ShieldCheck className="h-4 w-4" />
+                Check authenticity
+              </a>
+            )}
           </div>
 
           {/* Product Image */}
@@ -175,7 +189,7 @@ export default function PublicPassport() {
           {!categoryData?.hide_promo && (
             <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-center mt-6">
               <p className="text-sm text-foreground">
-                Make your own digital product passports for free with{' '}
+                Made by{' '}
                 <a 
                   href="https://www.digital-product-passports.com"
                   className="text-primary font-medium hover:underline"
