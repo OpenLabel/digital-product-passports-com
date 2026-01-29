@@ -110,7 +110,20 @@ serve(async (req) => {
 
     const { image } = parseResult.data;
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    // Get Lovable API key - first try environment variable, then fall back to database
+    let LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    
+    if (!LOVABLE_API_KEY) {
+      // Fall back to database for self-hosted instances
+      const { data: configData } = await supabaseService
+        .from("site_config")
+        .select("value")
+        .eq("key", "lovable_api_key_secret")
+        .maybeSingle();
+      
+      LOVABLE_API_KEY = configData?.value || null;
+    }
+    
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
