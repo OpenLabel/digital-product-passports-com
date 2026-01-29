@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Plus, X } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -20,6 +21,7 @@ interface WineRecyclingProps {
 }
 
 export function WineRecycling({ data, onChange }: WineRecyclingProps) {
+  const { t } = useTranslation();
   const [addMaterialOpen, setAddMaterialOpen] = useState(false);
   const [customTypeOpen, setCustomTypeOpen] = useState(false);
   const [customTypeName, setCustomTypeName] = useState('');
@@ -94,9 +96,9 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Recycling Information</CardTitle>
+        <CardTitle className="text-lg">{t('wine.recycling')}</CardTitle>
         <CardDescription>
-          Select the materials used for your wine packaging.
+          {t('wine.recyclingDescription', 'Select the materials used for your wine packaging.')}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -127,11 +129,11 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                     }}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select material" />
+                      <SelectValue placeholder={t('recycling.selectMaterial', 'Select material')} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
-                        <SelectLabel className="font-bold text-foreground">Individual Components</SelectLabel>
+                        <SelectLabel className="font-bold text-foreground">{t('recycling.individualComponents', 'Individual Components')}</SelectLabel>
                       </SelectGroup>
                       {compositionsByCategory.individual.map((cat) => (
                         <SelectGroup key={cat.id}>
@@ -144,7 +146,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                         </SelectGroup>
                       ))}
                       <SelectGroup>
-                        <SelectLabel className="font-bold text-foreground">Composite Components</SelectLabel>
+                        <SelectLabel className="font-bold text-foreground">{t('recycling.compositeComponents', 'Composite Components')}</SelectLabel>
                       </SelectGroup>
                       {compositionsByCategory.composite.map((cat) => (
                         <SelectGroup key={cat.id}>
@@ -156,8 +158,8 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                         </SelectGroup>
                       ))}
                       <SelectGroup>
-                        <SelectLabel className="font-bold text-foreground">Custom Material</SelectLabel>
-                        <SelectItem value="custom">Add custom material</SelectItem>
+                        <SelectLabel className="font-bold text-foreground">{t('recycling.customMaterial', 'Custom Material')}</SelectLabel>
+                        <SelectItem value="custom">{t('recycling.addCustomMaterial', 'Add custom material')}</SelectItem>
                       </SelectGroup>
                     </SelectContent>
                   </Select>
@@ -169,7 +171,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                     }
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Disposal advice" />
+                      <SelectValue placeholder={t('recycling.disposalAdvice', 'Disposal advice')} />
                     </SelectTrigger>
                     <SelectContent>
                       {disposalMethods.map((method) => (
@@ -200,7 +202,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
           onClick={() => setAddMaterialOpen(true)}
         >
           <Plus className="h-4 w-4 mr-2" />
-          Add material
+          {t('recycling.addMaterial', 'Add material')}
         </Button>
       </CardContent>
 
@@ -208,7 +210,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
       <Dialog open={addMaterialOpen} onOpenChange={setAddMaterialOpen}>
         <DialogContent className="max-w-sm">
           <DialogHeader>
-            <DialogTitle>Add packaging material</DialogTitle>
+            <DialogTitle>{t('recycling.addPackagingMaterial', 'Add packaging material')}</DialogTitle>
           </DialogHeader>
           <div className="grid gap-2 py-4">
             {packagingMaterialTypes.map((type) => (
@@ -230,7 +232,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
               }}
               className="flex items-center gap-3 p-3 rounded-lg hover:bg-muted text-left border-t mt-2 pt-4"
             >
-              <span className="text-muted-foreground">Custom type</span>
+              <span className="text-muted-foreground">{t('recycling.customType', 'Custom type')}</span>
             </button>
           </div>
         </DialogContent>
@@ -240,14 +242,14 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
       <Dialog open={customTypeOpen} onOpenChange={setCustomTypeOpen}>
         <DialogContent className="max-w-sm">
           <DialogHeader>
-            <DialogTitle>Add custom material type</DialogTitle>
+            <DialogTitle>{t('recycling.addCustomType', 'Add custom material type')}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="custom-type-name">Material name</Label>
+              <Label htmlFor="custom-type-name">{t('recycling.materialName', 'Material name')}</Label>
               <Input
                 id="custom-type-name"
-                placeholder="e.g., Wooden crate"
+                placeholder={t('recycling.materialNamePlaceholder', 'e.g., Wooden crate')}
                 value={customTypeName}
                 onChange={(e) => setCustomTypeName(e.target.value)}
               />
@@ -255,10 +257,10 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setCustomTypeOpen(false)}>
-              Cancel
+              {t('common.cancel')}
             </Button>
             <Button onClick={handleAddCustomType} disabled={!customTypeName.trim()}>
-              Add
+              {t('common.create')}
             </Button>
           </DialogFooter>
         </DialogContent>

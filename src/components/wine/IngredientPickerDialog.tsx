@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Search, X } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -20,8 +21,23 @@ export function IngredientPickerDialog({
   selectedIds,
   onApply,
 }: IngredientPickerDialogProps) {
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [tempSelected, setTempSelected] = useState<string[]>(selectedIds);
+
+  // Translate ingredient name
+  const translateIngredient = (ingredient: WineIngredient): string => {
+    const translationKey = `ingredients.${ingredient.id}`;
+    const translated = t(translationKey);
+    return translated === translationKey ? ingredient.name : translated;
+  };
+
+  // Translate category name
+  const translateCategory = (categoryId: string): string => {
+    const translationKey = `wine.ingredientCategories.${categoryId}`;
+    const translated = t(translationKey);
+    return translated === translationKey ? categoryId : translated;
+  };
 
   // Reset temp selection when dialog opens
   const handleOpenChange = (isOpen: boolean) => {
@@ -42,11 +58,12 @@ export function IngredientPickerDialog({
         ingredients: category.ingredients.filter(
           (ing) =>
             ing.name.toLowerCase().includes(searchLower) ||
+            translateIngredient(ing).toLowerCase().includes(searchLower) ||
             ing.eNumber?.toLowerCase().includes(searchLower)
         ),
       }))
       .filter((category) => category.ingredients.length > 0);
-  }, [search]);
+  }, [search, t]);
 
   const toggleIngredient = (id: string) => {
     setTempSelected((prev) =>
@@ -68,7 +85,7 @@ export function IngredientPickerDialog({
             className="flex items-center gap-2 cursor-pointer"
           >
             <span className={ingredient.isAllergen ? 'font-semibold' : ''}>
-              {ingredient.name}
+              {translateIngredient(ingredient)}
             </span>
             {ingredient.eNumber && (
               <span className="text-muted-foreground">({ingredient.eNumber})</span>
@@ -91,13 +108,13 @@ export function IngredientPickerDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-lg max-h-[85vh] h-[85vh] flex flex-col overflow-hidden">
         <DialogHeader>
-          <DialogTitle>Select wine ingredients from list</DialogTitle>
+          <DialogTitle>{t('wine.selectIngredientsTitle', 'Select wine ingredients from list')}</DialogTitle>
         </DialogHeader>
 
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search..."
+            placeholder={t('common.search')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9"
@@ -117,7 +134,7 @@ export function IngredientPickerDialog({
             {filteredCategories.map((category) => (
               <div key={category.id}>
                 <h3 className="text-base font-medium text-muted-foreground mb-2">
-                  {category.name}
+                  {translateCategory(category.id)}
                 </h3>
                 <div className="space-y-1 ml-2">
                   {category.ingredients.map(renderIngredient)}
@@ -126,14 +143,14 @@ export function IngredientPickerDialog({
             ))}
             {filteredCategories.length === 0 && (
               <p className="text-center text-muted-foreground py-8">
-                No ingredients found matching "{search}"
+                {t('wine.noIngredientsFound', 'No ingredients found matching "{{search}}"', { search })}
               </p>
             )}
           </div>
         </ScrollArea>
 
         <div className="flex justify-end pt-4 border-t">
-          <Button onClick={handleApply}>Apply</Button>
+          <Button onClick={handleApply}>{t('common.apply')}</Button>
         </div>
       </DialogContent>
     </Dialog>
