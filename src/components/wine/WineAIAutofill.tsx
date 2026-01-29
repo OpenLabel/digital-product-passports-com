@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -12,6 +13,7 @@ interface WineAIAutofillProps {
 }
 
 export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -202,7 +204,7 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
                   <div className="absolute inset-0 flex items-center justify-center bg-background/80 rounded-lg">
                     <div className="flex flex-col items-center gap-2">
                       <Loader2 className="h-8 w-8 animate-spin text-purple-500" />
-                      <span className="text-sm font-medium">Analyzing document...</span>
+                      <span className="text-sm font-medium">{t('ai.analyzing')}</span>
                     </div>
                   </div>
                 )}
@@ -216,7 +218,7 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
                   className="h-24 flex-col gap-2"
                 >
                   <Camera className="h-6 w-6" />
-                  <span className="text-sm">Take Photo</span>
+                  <span className="text-sm">{t('ai.takePhoto')}</span>
                 </Button>
                 <Button
                   type="button"
@@ -225,7 +227,7 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
                   className="h-24 flex-col gap-2"
                 >
                   <Upload className="h-6 w-6" />
-                  <span className="text-sm">Upload File</span>
+                  <span className="text-sm">{t('ai.uploadFile')}</span>
                 </Button>
               </div>
             )}
@@ -233,10 +235,10 @@ export function WineAIAutofill({ onAutofill }: WineAIAutofillProps) {
             {!previewUrl && !isProcessing && (
               <div className="space-y-2 text-center">
                 <p className="text-xs text-muted-foreground">
-                  Supports photos, PDFs, and Word documents
+                  {t('ai.supportedFormats')}
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  <strong>Tip:</strong> Have multiple files? Run this again after each upload to merge data from different sources.
+                  <strong>{t('ai.multiUploadTip')}</strong>
                 </p>
               </div>
             )}
