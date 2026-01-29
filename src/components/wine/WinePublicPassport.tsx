@@ -75,8 +75,6 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
 
   // Recycling
   const recyclingComponents = (categoryData.recycling_components as RecyclingComponent[]) || [];
-  const recyclingMode = categoryData.recycling_mode as string | undefined;
-  const recyclingPdfUrl = categoryData.recycling_pdf_url as string | undefined;
 
   // Counterfeit protection
   const counterfeitProtectionEnabled = categoryData.counterfeit_protection_enabled === true;
@@ -85,7 +83,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
   const regularIngredients = ingredients.filter((i) => !i.isAllergen);
 
   const hasNutritionalInfo = energyKcal || energyKj || carbohydrates !== undefined || sugar !== undefined;
-  const hasRecyclingInfo = recyclingComponents.length > 0 || recyclingPdfUrl;
+  const hasRecyclingInfo = recyclingComponents.length > 0;
   const hasProducerInfo = producerName || bottlerInfo || country;
 
 
@@ -301,19 +299,7 @@ export function WinePublicPassport({ passport, isPreview = false }: WinePublicPa
           <section className="mb-6" data-testid="recycling-section">
             <h2 className="text-xl font-semibold mb-3">Recycling Information</h2>
             
-            {recyclingMode === 'pdf' && recyclingPdfUrl && (
-              <a 
-                href={recyclingPdfUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary underline text-sm"
-                data-testid="recycling-pdf-link"
-              >
-                View recycling instructions (PDF)
-              </a>
-            )}
-
-            {(recyclingMode === 'manual' || !recyclingMode) && recyclingComponents.length > 0 && (
+            {recyclingComponents.length > 0 && (
               <>
                 <table className="w-full text-sm mb-3">
                   <thead>
@@ -418,5 +404,5 @@ export const WINE_PASSPORT_FIELDS = {
   manualOverrides: ['energy_kcal_manual', 'energy_kj_manual', 'carbohydrates_manual', 'sugar_manual'],
   displayOptions: ['show_alcohol_on_label', 'show_residual_sugar_on_label', 'show_total_acidity_on_label'],
   ingredients: ['ingredients'],
-  recycling: ['recycling_components', 'recycling_pdf_url', 'recycling_mode'],
+  recycling: ['recycling_components'],
 } as const;
