@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Vynuogės", "sulfites": "Sulfitai", "egg": "Kiaušinis", "milk": "Pienas" },
   "legal": { "title": "Teisinė informacija", "legalMentions": "Teisinė informacija" },
   "notFound": { "title": "404", "message": "Puslapis nerastas", "returnHome": "Grįžti į pradžią" },
-  "landing": { "hero": { "badge": "Atitinka EU ESPR", "title": "Kurkite <1>Neribotai</1> Skaitmeninių Produktų Pasų", "cta": "Sukurkite pirmąjį pasą" }, "footer": { "legal": "Teisinė informacija", "github": "Žiūrėti GitHub" } }
+  "landing": { "hero": { "badge": "Atitinka EU ESPR", "title": "Kurkite Neribotai Skaitmeninių Produktų Pasų", "cta": "Sukurkite pirmąjį pasą" }, "footer": { "legal": "Teisinė informacija", "github": "Žiūrėti GitHub" } }
 }

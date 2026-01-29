@@ -142,5 +142,5 @@
   "ingredients": { "grapes": "अंगूर", "saccharose": "सुक्रोज", "sulfites": "सल्फाइट्स", "egg": "अंडा", "milk": "दूध" },
   "legal": { "title": "कानूनी उल्लेख", "legalMentions": "कानूनी उल्लेख" },
   "notFound": { "title": "404", "message": "पृष्ठ नहीं मिला", "returnHome": "होम पर वापस जाएं" },
-  "landing": { "hero": { "badge": "EU ESPR अनुरूप", "title": "<1>असीमित</1> डिजिटल उत्पाद पासपोर्ट बनाएं", "cta": "अपना पहला पासपोर्ट बनाएं" }, "footer": { "legal": "कानूनी उल्लेख", "github": "GitHub पर देखें" } }
+  "landing": { "hero": { "badge": "EU ESPR अनुरूप", "title": "असीमित डिजिटल उत्पाद पासपोर्ट बनाएं", "cta": "अपना पहला पासपोर्ट बनाएं" }, "footer": { "legal": "कानूनी उल्लेख", "github": "GitHub पर देखें" } }
 }

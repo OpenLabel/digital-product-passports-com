@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Grožđe", "sulfites": "Sulfiti", "egg": "Jaje", "milk": "Mlijeko" },
   "legal": { "title": "Pravne napomene", "legalMentions": "Pravne napomene" },
   "notFound": { "title": "404", "message": "Stranica nije pronađena", "returnHome": "Povratak na početnu" },
-  "landing": { "hero": { "badge": "Sukladno EU ESPR", "title": "Stvorite <1>Neograničene</1> Digitalne Putovnice Proizvoda", "cta": "Stvorite prvu putovnicu" }, "footer": { "legal": "Pravne napomene", "github": "Pogledaj na GitHub" } }
+  "landing": { "hero": { "badge": "Sukladno EU ESPR", "title": "Stvorite Neograničene Digitalne Putovnice Proizvoda", "cta": "Stvorite prvu putovnicu" }, "footer": { "legal": "Pravne napomene", "github": "Pogledaj na GitHub" } }
 }

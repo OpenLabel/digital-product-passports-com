@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Viinamarjad", "saccharose": "Sahharoos", "sulfites": "Sulfitid", "egg": "Muna", "milk": "Piim" },
   "legal": { "title": "Õiguslik teave", "legalMentions": "Õiguslik teave" },
   "notFound": { "title": "404", "message": "Lehte ei leitud", "returnHome": "Tagasi avalehele" },
-  "landing": { "hero": { "badge": "EU ESPR-iga ühilduv", "title": "Loo <1>Piiramatult</1> Digitaalseid Tootepasse", "cta": "Loo oma esimene pass" }, "footer": { "legal": "Õiguslik teave", "github": "Vaata GitHubis" } }
+  "landing": { "hero": { "badge": "EU ESPR-iga ühilduv", "title": "Loo Piiramatult Digitaalseid Tootepasse", "cta": "Loo oma esimene pass" }, "footer": { "legal": "Õiguslik teave", "github": "Vaata GitHubis" } }
 }

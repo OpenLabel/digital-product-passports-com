@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Struguri", "sulfites": "Sulfiți", "egg": "Ou", "milk": "Lapte" },
   "legal": { "title": "Mențiuni legale", "legalMentions": "Mențiuni legale" },
   "notFound": { "title": "404", "message": "Pagină negăsită", "returnHome": "Înapoi acasă" },
-  "landing": { "hero": { "badge": "Conform EU ESPR", "title": "Creează Pașapoarte Digitale de Produse <1>Nelimitate</1>", "cta": "Creează primul tău pașaport" }, "footer": { "legal": "Mențiuni legale", "github": "Vezi pe GitHub" } }
+  "landing": { "hero": { "badge": "Conform EU ESPR", "title": "Creează Pașapoarte Digitale de Produse Nelimitate", "cta": "Creează primul tău pașaport" }, "footer": { "legal": "Mențiuni legale", "github": "Vezi pe GitHub" } }
 }

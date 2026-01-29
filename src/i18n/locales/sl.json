@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Grozdje", "sulfites": "Sulfiti", "egg": "Jajce", "milk": "Mleko" },
   "legal": { "title": "Pravne informacije", "legalMentions": "Pravne informacije" },
   "notFound": { "title": "404", "message": "Stran ni najdena", "returnHome": "Nazaj domov" },
-  "landing": { "hero": { "badge": "Skladno z EU ESPR", "title": "Ustvarite <1>Neomejene</1> Digitalne Potne Liste Izdelkov", "cta": "Ustvarite svoj prvi potni list" }, "footer": { "legal": "Pravne informacije", "github": "Ogled na GitHub" } }
+  "landing": { "hero": { "badge": "Skladno z EU ESPR", "title": "Ustvarite Neomejene Digitalne Potne Liste Izdelkov", "cta": "Ustvarite svoj prvi potni list" }, "footer": { "legal": "Pravne informacije", "github": "Ogled na GitHub" } }
 }

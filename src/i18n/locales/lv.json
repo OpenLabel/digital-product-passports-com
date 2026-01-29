@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Vīnogas", "sulfites": "Sulfīti", "egg": "Ola", "milk": "Piens" },
   "legal": { "title": "Juridiskā informācija", "legalMentions": "Juridiskā informācija" },
   "notFound": { "title": "404", "message": "Lapa nav atrasta", "returnHome": "Atgriezties sākumā" },
-  "landing": { "hero": { "badge": "ES ESPR saderīgs", "title": "Izveidojiet <1>Neierobežotas</1> Digitālās Produktu Pases", "cta": "Izveidojiet pirmo pasi" }, "footer": { "legal": "Juridiskā informācija", "github": "Skatīt GitHub" } }
+  "landing": { "hero": { "badge": "ES ESPR saderīgs", "title": "Izveidojiet Neierobežotas Digitālās Produktu Pases", "cta": "Izveidojiet pirmo pasi" }, "footer": { "legal": "Juridiskā informācija", "github": "Skatīt GitHub" } }
 }

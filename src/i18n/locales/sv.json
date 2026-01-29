@@ -9,5 +9,5 @@
   "ingredients": { "grapes": "Druvor", "saccharose": "Sackaros", "sulfites": "Sulfiter", "egg": "Ägg", "milk": "Mjölk" },
   "legal": { "title": "Juridisk information", "legalMentions": "Juridisk information" },
   "notFound": { "title": "404", "message": "Sidan hittades inte", "returnHome": "Tillbaka till startsidan" },
-  "landing": { "hero": { "badge": "EU ESPR-kompatibel", "title": "Skapa <1>Obegränsade</1> Digitala Produktpass", "cta": "Skapa ditt första pass" }, "footer": { "legal": "Juridisk information", "github": "Visa på GitHub" } }
+  "landing": { "hero": { "badge": "EU ESPR-kompatibel", "title": "Skapa Obegränsade Digitala Produktpass", "cta": "Skapa ditt första pass" }, "footer": { "legal": "Juridisk information", "github": "Visa på GitHub" } }
 }
