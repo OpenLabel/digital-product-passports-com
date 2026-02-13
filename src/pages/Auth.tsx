@@ -81,12 +81,12 @@ export default function Auth() {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
             <span className="bg-primary text-primary-foreground px-2 py-0.5 rounded text-sm font-black">DPP</span>
-            <span>Digital</span>
-            <span className="text-muted-foreground font-normal">-</span>
-            <span>Product</span>
-            <span className="text-muted-foreground font-normal">-</span>
-            <span>Passports</span>
-            <span className="text-muted-foreground font-normal">.com</span>
+            <span className="hidden sm:inline">Digital</span>
+            <span className="hidden sm:inline text-muted-foreground font-normal">-</span>
+            <span className="hidden sm:inline">Product</span>
+            <span className="hidden sm:inline text-muted-foreground font-normal">-</span>
+            <span className="hidden sm:inline">Passports</span>
+            <span className="hidden sm:inline text-muted-foreground font-normal">.com</span>
           </Link>
           <LanguageSwitcher />
         </div>
