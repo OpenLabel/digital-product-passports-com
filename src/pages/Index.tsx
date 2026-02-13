@@ -120,7 +120,7 @@ export default function Index() {
             </div>
             <h1 className="hidden sm:block text-lg font-semibold">Digital <span className="text-muted-foreground/60 font-normal">-</span> Product <span className="text-muted-foreground/60 font-normal">-</span> Passports <span className="text-muted-foreground font-normal">.com</span></h1>
           </div>
-          <div className="flex gap-1.5 sm:gap-2 items-center">
+          <div className="flex gap-1.5 sm:gap-2 items-center min-w-0">
             <LanguageSwitcher />
             {loading ? null : user ? (
               <Button size="sm" className="sm:size-default" asChild>
@@ -131,7 +131,7 @@ export default function Index() {
                 <Button variant="ghost" size="sm" className="sm:size-default hidden xs:inline-flex" asChild>
                   <Link to="/auth">{t('nav.signIn')}</Link>
                 </Button>
-                <Button size="sm" className="sm:size-default" asChild>
+                <Button size="sm" className="sm:size-default text-xs sm:text-sm whitespace-nowrap shrink-0" asChild>
                   <Link to="/auth">{t('nav.getStarted')}</Link>
                 </Button>
               </>
