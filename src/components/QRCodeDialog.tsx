@@ -76,7 +76,7 @@ function getRoundedHexagonPath(size: number) {
 }
 
 // Rounded hexagon SVG with text - creates a hexagon with curved corners and instruction text
-function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
+function RoundedHexagonWithText({ size = 104 }: { size?: number }) {
   const { path, centerX, centerY } = getRoundedHexagonPath(size);
 
   return (
@@ -94,9 +94,9 @@ function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
       />
       <text
         x={centerX}
-        y={centerY - 10}
+        y={centerY - 12}
         textAnchor="middle"
-        fontSize="6"
+        fontSize="8"
         fontWeight="500"
         fill="#666"
       >
@@ -106,7 +106,7 @@ function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
         x={centerX}
         y={centerY}
         textAnchor="middle"
-        fontSize="6"
+        fontSize="8"
         fontWeight="500"
         fill="#666"
       >
@@ -114,9 +114,9 @@ function RoundedHexagonWithText({ size = 80 }: { size?: number }) {
       </text>
       <text
         x={centerX}
-        y={centerY + 14}
+        y={centerY + 18}
         textAnchor="middle"
-        fontSize="5"
+        fontSize="6.5"
         fill="#999"
       >
         cypheme.com
@@ -177,7 +177,7 @@ export function QRCodeDialog({
 
       // If security seal overlay is enabled, draw it on top
       if (showSecuritySealOverlay) {
-        const hexSize = 80;
+        const hexSize = 104;
         const { path, centerX, centerY } = getRoundedHexagonPath(hexSize);
         
         // Position hexagon in center
@@ -197,14 +197,14 @@ export function QRCodeDialog({
         
         // Draw text
         ctx.fillStyle = '#666';
-        ctx.font = '500 6px sans-serif';
+        ctx.font = '500 8px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText('Place security', centerX, centerY - 10);
+        ctx.fillText('Place security', centerX, centerY - 12);
         ctx.fillText('seals here', centerX, centerY);
         
         ctx.fillStyle = '#999';
-        ctx.font = '5px sans-serif';
-        ctx.fillText('cypheme.com', centerX, centerY + 14);
+        ctx.font = '6.5px sans-serif';
+        ctx.fillText('cypheme.com', centerX, centerY + 18);
         
         ctx.restore();
       }
@@ -249,8 +249,14 @@ export function QRCodeDialog({
                 includeMargin={false}
               />
               {/* Only show security seal placeholder when counterfeit protection is enabled */}
-              {showSecuritySealOverlay && <RoundedHexagonWithText size={80} />}
+              {showSecuritySealOverlay && <RoundedHexagonWithText size={104} />}
             </div>
+          )}
+          {/* Print size instruction when security seal is enabled */}
+          {showSecuritySealOverlay && (
+            <p className="text-xs text-muted-foreground text-center max-w-[250px]">
+              {t('qrDialog.printSizeInstruction', 'Print at 2.4 × 2.4 cm. The hexagon corresponds to 1 cm for the security seal.')}
+            </p>
           )}
           <div className="flex items-center gap-2 w-full max-w-sm">
             <div className="flex-1 text-sm text-muted-foreground bg-muted rounded-md px-3 py-2 truncate">
