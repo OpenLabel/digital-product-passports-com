@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { Link } from 'react-router-dom';
 import { z } from 'zod';
 
 const emailSchema = z.string().email('Please enter a valid email address');
@@ -77,7 +78,16 @@ export default function Auth() {
     <div className="min-h-screen bg-muted/30">
       {/* Header with language switcher */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
-        <div className="container mx-auto px-4 py-4 flex justify-end items-center">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <Link to="/" className="flex items-center gap-1.5 text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">
+            <span className="bg-primary text-primary-foreground px-2 py-0.5 rounded text-sm font-black">DPP</span>
+            <span>Digital</span>
+            <span className="text-muted-foreground font-normal">-</span>
+            <span>Product</span>
+            <span className="text-muted-foreground font-normal">-</span>
+            <span>Passports</span>
+            <span className="text-muted-foreground font-normal">.com</span>
+          </Link>
           <LanguageSwitcher />
         </div>
       </header>
