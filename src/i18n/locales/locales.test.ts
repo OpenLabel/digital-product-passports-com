@@ -1,51 +1,39 @@
 import { describe, it as test, expect } from "vitest";
 
-// Import all locale files
+// Import all locale files (24 official EU languages)
 import enLocale from "./en.json";
-import deLocale from "./de.json";
-import frLocale from "./fr.json";
-import esLocale from "./es.json";
-import itLocale from "./it.json";
-import ptLocale from "./pt.json";
-import nlLocale from "./nl.json";
-import plLocale from "./pl.json";
-import roLocale from "./ro.json";
-import elLocale from "./el.json";
-import csLocale from "./cs.json";
-import skLocale from "./sk.json";
-import huLocale from "./hu.json";
 import bgLocale from "./bg.json";
-import hrLocale from "./hr.json";
-import slLocale from "./sl.json";
-import ltLocale from "./lt.json";
-import lvLocale from "./lv.json";
+import csLocale from "./cs.json";
+import daLocale from "./da.json";
+import deLocale from "./de.json";
+import elLocale from "./el.json";
+import esLocale from "./es.json";
 import etLocale from "./et.json";
 import fiLocale from "./fi.json";
-import svLocale from "./sv.json";
-import daLocale from "./da.json";
+import frLocale from "./fr.json";
 import gaLocale from "./ga.json";
+import hrLocale from "./hr.json";
+import huLocale from "./hu.json";
+import itLocale from "./it.json";
+import ltLocale from "./lt.json";
+import lvLocale from "./lv.json";
 import mtLocale from "./mt.json";
-import zhLocale from "./zh.json";
-import jaLocale from "./ja.json";
-import koLocale from "./ko.json";
-import arLocale from "./ar.json";
-import hiLocale from "./hi.json";
-import bnLocale from "./bn.json";
-import viLocale from "./vi.json";
-import trLocale from "./tr.json";
-import ukLocale from "./uk.json";
-import noLocale from "./no.json";
+import nlLocale from "./nl.json";
+import plLocale from "./pl.json";
+import ptLocale from "./pt.json";
+import roLocale from "./ro.json";
+import skLocale from "./sk.json";
+import slLocale from "./sl.json";
+import svLocale from "./sv.json";
 
 type TranslationObject = Record<string, unknown>;
 
 const locales: Record<string, TranslationObject> = {
-  en: enLocale, de: deLocale, fr: frLocale, es: esLocale, it: itLocale,
-  pt: ptLocale, nl: nlLocale, pl: plLocale, ro: roLocale, el: elLocale,
-  cs: csLocale, sk: skLocale, hu: huLocale, bg: bgLocale, hr: hrLocale,
-  sl: slLocale, lt: ltLocale, lv: lvLocale, et: etLocale, fi: fiLocale,
-  sv: svLocale, da: daLocale, ga: gaLocale, mt: mtLocale, zh: zhLocale,
-  ja: jaLocale, ko: koLocale, ar: arLocale, hi: hiLocale, bn: bnLocale,
-  vi: viLocale, tr: trLocale, uk: ukLocale, no: noLocale
+  en: enLocale, bg: bgLocale, cs: csLocale, da: daLocale, de: deLocale,
+  el: elLocale, es: esLocale, et: etLocale, fi: fiLocale, fr: frLocale,
+  ga: gaLocale, hr: hrLocale, hu: huLocale, it: itLocale, lt: ltLocale,
+  lv: lvLocale, mt: mtLocale, nl: nlLocale, pl: plLocale, pt: ptLocale,
+  ro: roLocale, sk: skLocale, sl: slLocale, sv: svLocale,
 };
 
 // Recursively count all keys in a nested object
