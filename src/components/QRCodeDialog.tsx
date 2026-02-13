@@ -177,7 +177,7 @@ export function QRCodeDialog({
 
       // If security seal overlay is enabled, draw it on top
       if (showSecuritySealOverlay) {
-        const hexSize = 147;
+        const hexSize = 139;
         const { path, centerX, centerY } = getRoundedHexagonPath(hexSize);
         
         // Position hexagon in center
@@ -249,13 +249,13 @@ export function QRCodeDialog({
                 includeMargin={false}
               />
               {/* Only show security seal placeholder when counterfeit protection is enabled */}
-              {showSecuritySealOverlay && <RoundedHexagonWithText size={147} />}
+              {showSecuritySealOverlay && <RoundedHexagonWithText size={139} />}
             </div>
           )}
           {/* Print size instruction when security seal is enabled */}
           {showSecuritySealOverlay && (
             <p className="text-xs text-muted-foreground text-center max-w-[250px]">
-              {t('qrDialog.printSizeInstruction', 'Print at 1.7 × 1.7 cm. The hexagon corresponds to 1 cm for the security seal.')}
+              {t('qrDialog.printSizeInstruction', 'Print at 1.8 × 1.8 cm. The hexagon corresponds to 1 cm for the security seal.')}
             </p>
           )}
           <div className="flex items-center gap-2 w-full max-w-sm">
