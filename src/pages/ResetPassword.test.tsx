@@ -9,7 +9,11 @@ vi.mock('react-i18next', () => ({
 vi.mock('@/integrations/supabase/client', () => ({
   supabase: {
     auth: {
-      onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
+      // Immediately fire PASSWORD_RECOVERY so the gated form is rendered.
+      onAuthStateChange: vi.fn((cb: (event: string) => void) => {
+        cb('PASSWORD_RECOVERY');
+        return { data: { subscription: { unsubscribe: vi.fn() } } };
+      }),
       updateUser: vi.fn(),
     },
   },
@@ -27,13 +31,13 @@ describe('ResetPassword page', () => {
     expect(screen.getByText('auth.setNewPassword')).toBeInTheDocument();
   });
 
-  it('shows password fields', () => {
+  it('shows password fields once a recovery session is delivered', () => {
     render(<MemoryRouter><ResetPassword /></MemoryRouter>);
     expect(screen.getByLabelText('auth.newPassword')).toBeInTheDocument();
     expect(screen.getByLabelText('auth.confirmPassword')).toBeInTheDocument();
   });
 
-  it('shows submit button', () => {
+  it('shows submit button once a recovery session is delivered', () => {
     render(<MemoryRouter><ResetPassword /></MemoryRouter>);
     expect(screen.getByText('auth.updatePassword')).toBeInTheDocument();
   });
