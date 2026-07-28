@@ -125,7 +125,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Verify the authenticated user actually owns a passport matching the
     // submitted passport URL (slug) — prevents abuse of the relay with arbitrary URLs.
-    const slugMatch = passportUrl.match(/\/p\/([a-f0-9]{16})(?:[/?#]|$)/i);
+    const slugMatch = passportUrl.match(/\/p\/([a-f0-9]{8}|[a-f0-9]{16}|[a-f0-9]{32})(?:[/?#]|$)/i);
     if (!slugMatch) {
       return new Response(
         JSON.stringify({ success: false, error: "Invalid passport URL" }),
