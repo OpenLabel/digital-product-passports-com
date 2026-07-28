@@ -27,26 +27,44 @@ describe('CounterfeitProtection', () => {
     expect(screen.getByText('Add Counterfeit Protection (optional)')).toBeInTheDocument();
   });
 
-  it('renders enabled state', () => {
+  it('renders enabled state once a request has been sent', () => {
     render(
       <CounterfeitProtection
         passportName="Test"
         passportSlug="slug"
         userEmail="test@test.com"
         enabled={true}
+        requestSentAt="2026-01-01T00:00:00.000Z"
         onChange={vi.fn()}
       />
     );
     expect(screen.getByText('Counterfeit Protection Enabled')).toBeInTheDocument();
   });
 
-  it('shows disable button when enabled', () => {
+  it('still shows the enable prompt when enabled but no request has been sent yet', () => {
+    render(
+      <CounterfeitProtection
+        passportName="Test"
+        passportSlug={null}
+        userEmail="test@test.com"
+        enabled={true}
+        requestSentAt={null}
+        onChange={vi.fn()}
+      />
+    );
+    // BUG-10: email is only dispatched on save, so before the timestamp
+    // exists we intentionally stay in the un-sent state.
+    expect(screen.getByText('Add Counterfeit Protection (optional)')).toBeInTheDocument();
+  });
+
+  it('shows disable button when enabled with a request timestamp', () => {
     render(
       <CounterfeitProtection
         passportName="Test"
         passportSlug="slug"
         userEmail="test@test.com"
         enabled={true}
+        requestSentAt="2026-01-01T00:00:00.000Z"
         onChange={vi.fn()}
       />
     );
@@ -61,6 +79,7 @@ describe('CounterfeitProtection', () => {
         passportSlug="slug"
         userEmail="test@test.com"
         enabled={true}
+        requestSentAt="2026-01-01T00:00:00.000Z"
         onChange={onChange}
       />
     );
