@@ -508,12 +508,18 @@ export function ToyPublicPassport({
               if (userOverride && !isLegacyAllergenDeclaration(userOverride)) {
                 return userOverride;
               }
-              if (d.has_allergenic_fragrances === 'yes' && fragrances.length > 0) {
+              // BUG-06: distinguish declared / not-declared / not-assessed. A
+              // blank/unknown state must NOT read "no allergens present".
+              const state = d.has_allergenic_fragrances as string | undefined;
+              if (state === 'no') {
+                return t('toyPublic.values.noFragrancesDeclared');
+              }
+              if (state === 'yes' && fragrances.length > 0) {
                 return t('toyPublic.values.fragrancesDeclared', {
                   names: fragrances.map((f) => f.name).join(', '),
                 });
               }
-              return t('toyPublic.values.noFragrancesDeclared');
+              return t('toyPublic.values.fragrancesNotAssessed');
             })()}
           </p>
           {fragrances.length > 0 && (
