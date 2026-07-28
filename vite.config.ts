@@ -166,12 +166,14 @@ function runTestsOnBuild(): Plugin {
       if (!fs.existsSync(coverageDir)) fs.mkdirSync(coverageDir, { recursive: true });
 
       try {
-        console.log("[run-tests-on-build] Running vitest (single-fork, low-memory mode)...");
-        // Serialize test files in one long-lived worker to keep peak RSS flat
-        // and drop the html coverage reporter (biggest memory hog) — json-summary
+        console.log("[run-tests-on-build] Running vitest...");
+        // Use default forks pool (one fork per test file). singleFork mode
+        // shares module state across files, which causes cross-file test
+        // pollution (e.g. i18n init, module mocks) and false failures.
+        // Drop the html coverage reporter (biggest memory hog) — json-summary
         // is all buildVerboseStatus() actually reads.
         execSync(
-          "npx vitest run --coverage --pool=forks --poolOptions.forks.singleFork=true --poolOptions.forks.maxForks=1 --coverage.reporter=json-summary --coverage.reporter=text-summary --coverage.reporter=json",
+          "npx vitest run --coverage --coverage.reporter=json-summary --coverage.reporter=text-summary --coverage.reporter=json",
           {
             stdio: "pipe",
             cwd: __dirname,
@@ -180,7 +182,7 @@ function runTestsOnBuild(): Plugin {
             env: {
               ...process.env,
               NODE_ENV: "test",
-              NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --max-old-space-size=4096`.trim(),
+              NODE_OPTIONS: `${process.env.NODE_OPTIONS ?? ""} --max-old-space-size=6144`.trim(),
             },
           },
         );
