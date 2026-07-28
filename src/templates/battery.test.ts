@@ -52,9 +52,10 @@ describe('BatteryTemplate', () => {
     }
   });
 
-  it('getRequiredLogos returns weee when separate_collection_required', () => {
-    expect(batteryTemplate.getRequiredLogos!({ separate_collection_required: true })).toContain('weee');
+  it('getRequiredLogos returns battery-crossed-bin when separate_collection_required', () => {
+    expect(batteryTemplate.getRequiredLogos!({ separate_collection_required: true })).toContain('battery-crossed-bin');
   });
+
 
   it('getRequiredLogos returns carbon-class when carbon_footprint_class set', () => {
     expect(batteryTemplate.getRequiredLogos!({ carbon_footprint_class: 'A' })).toContain('carbon-class');
