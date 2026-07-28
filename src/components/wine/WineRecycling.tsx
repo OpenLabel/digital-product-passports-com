@@ -26,13 +26,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '
 import { TranslationButton, Translations } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 import {
-import { toDppLanguage } from '@/lib/dppLanguage';
   packagingMaterialTypes,
   getCompositionsByCategory,
   disposalMethods,
   PackagingMaterial,
   materialCompositions,
 } from '@/data/wineRecycling';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 // Extended PackagingMaterial with translations
 interface PackagingMaterialWithTranslations extends PackagingMaterial {

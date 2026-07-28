@@ -43,7 +43,6 @@ import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import {
-import { toDppLanguage } from '@/lib/dppLanguage';
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -53,6 +52,7 @@ import { toDppLanguage } from '@/lib/dppLanguage';
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface FormData {
   name: string;
