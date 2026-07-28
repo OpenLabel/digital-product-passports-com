@@ -652,7 +652,8 @@
         "yes": "Da",
         "no": "Ne",
         "unknown": "Neznano"
-      }
+      },
+      "fragrancesNotAssessed": "Prisotnost alergenih dišav, ki so predmet obveznega označevanja, za ta izdelek ni bila ovrednotena."
     },
     "table": {
       "substance": "Snov",

@@ -31,6 +31,7 @@ import { calculateWineNutrition } from '@/lib/wineCalculations';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 import { LabelWithHint, FieldHint } from '@/components/ui/field-hint';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;
@@ -40,7 +41,7 @@ interface WineFieldsProps {
 export function WineFields({ data, onChange }: WineFieldsProps) {
   const { t, i18n } = useTranslation();
 
-  const currentLanguage = i18n.language.split('-')[0]; // Get base language code
+  const currentLanguage = toDppLanguage(i18n.language); // Get base language code
 
   const handleChange = (id: string, value: unknown) => {
     onChange({ ...data, [id]: value });

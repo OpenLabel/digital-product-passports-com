@@ -652,7 +652,8 @@
         "yes": "Oui",
         "no": "Non",
         "unknown": "Inconnu"
-      }
+      },
+      "fragrancesNotAssessed": "La présence de parfums allergènes soumis à l’obligation d’étiquetage n’a pas été évaluée pour ce produit."
     },
     "table": {
       "substance": "Substance chimique",

@@ -116,6 +116,24 @@ export function useAutoTranslate({
     }
   }, [sourceLanguage, existingTranslations, onTranslationsGenerated, enabled]);
 
+  // BUG-03: on first mount, if curated translations already exist for the
+  // current value, seed the "last translated" ref so the initial debounced
+  // pass no-ops and never clobbers manual edits.
+  const didInitRef = useRef(false);
+  useEffect(() => {
+    if (didInitRef.current) return;
+    didInitRef.current = true;
+    const hasExisting = Object.values(existingTranslations || {}).some(
+      (v) => typeof v === 'string' && v.trim().length > 0,
+    );
+    if (hasExisting && value) {
+      lastTranslatedValueRef.current = value;
+    }
+    // Intentionally run once — subsequent value changes still trigger the
+    // debounced effect below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Debounced auto-translate when value changes
   useEffect(() => {
     if (!enabled || !value.trim()) return;

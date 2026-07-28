@@ -652,7 +652,8 @@
         "yes": "Jah",
         "no": "Ei",
         "unknown": "Teadmata"
-      }
+      },
+      "fragrancesNotAssessed": "Märgistamiskohustusega allergeensete lõhnaainete esinemist pole selle toote puhul hinnatud."
     },
     "table": {
       "substance": "Aine",

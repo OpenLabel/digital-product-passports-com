@@ -652,7 +652,8 @@
         "yes": "Sí",
         "no": "No",
         "unknown": "Desconocido"
-      }
+      },
+      "fragrancesNotAssessed": "No se ha evaluado la presencia de fragancias alergénicas sujetas a etiquetado en este producto."
     },
     "table": {
       "substance": "Sustancia",

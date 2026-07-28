@@ -652,7 +652,8 @@
         "yes": "Iva",
         "no": "Le",
         "unknown": "Mhux magħruf"
-      }
+      },
+      "fragrancesNotAssessed": "Il-preżenza ta’ fwejjaħ allerġeniċi soġġetti għal ħtiġijiet tat-tikkettar ma ġietx ivvalutata għal dan il-prodott."
     },
     "table": {
       "substance": "Sustanzi",

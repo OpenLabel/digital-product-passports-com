@@ -35,6 +35,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { isLegacyAllergenDeclaration, type SelectedFragrance } from '@/data/toyFragrances';
 
 import { DPPLanguagePicker } from '@/components/DPPLanguagePicker';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface ToyPublicPassportProps {
   passport: {
@@ -107,7 +108,7 @@ export function ToyPublicPassport({
   const { i18n } = useTranslation();
   const { config } = useSiteConfig();
   const d = passport.category_data || {};
-  const displayLanguage = previewLanguage || (i18n.language || 'en').split('-')[0];
+  const displayLanguage = previewLanguage || toDppLanguage(i18n.language);
   const t = i18n.getFixedT(displayLanguage);
 
   /** Prefer per-language translation, fall back to the source value. */
@@ -507,12 +508,18 @@ export function ToyPublicPassport({
               if (userOverride && !isLegacyAllergenDeclaration(userOverride)) {
                 return userOverride;
               }
-              if (d.has_allergenic_fragrances === 'yes' && fragrances.length > 0) {
+              // BUG-06: distinguish declared / not-declared / not-assessed. A
+              // blank/unknown state must NOT read "no allergens present".
+              const state = d.has_allergenic_fragrances as string | undefined;
+              if (state === 'no') {
+                return t('toyPublic.values.noFragrancesDeclared');
+              }
+              if (state === 'yes' && fragrances.length > 0) {
                 return t('toyPublic.values.fragrancesDeclared', {
                   names: fragrances.map((f) => f.name).join(', '),
                 });
               }
-              return t('toyPublic.values.noFragrancesDeclared');
+              return t('toyPublic.values.fragrancesNotAssessed');
             })()}
           </p>
           {fragrances.length > 0 && (

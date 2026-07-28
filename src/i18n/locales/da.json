@@ -652,7 +652,8 @@
         "yes": "Ja",
         "no": "Nej",
         "unknown": "Ukendt"
-      }
+      },
+      "fragrancesNotAssessed": "Forekomsten af allergifremkaldende duftstoffer, der er omfattet af mærkningskrav, er ikke vurderet for dette produkt."
     },
     "table": {
       "substance": "Stof",

@@ -330,13 +330,23 @@ export function QRCodeDialog({
       yOffset += lineHeight + 6;
     }
 
-    // QR code
+    // QR code — BUG-08: react-qr-code's inner <path> uses viewBox coordinates
+    // (cells), not pixels. Without a `scale(qrSize/cells)` transform the QR
+    // renders as a ~30px stamp inside the frame and is unscannable at 1.8cm.
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    g.setAttribute('transform', `translate(${padding}, ${yOffset})`);
+    const cloneViewBox = clone.getAttribute('viewBox');
+    const cells = cloneViewBox
+      ? parseFloat(cloneViewBox.split(/\s+/)[2] || String(qrSize)) || qrSize
+      : qrSize;
+    const scale = qrSize / cells;
+    g.setAttribute(
+      'transform',
+      `translate(${padding}, ${yOffset}) scale(${scale})`,
+    );
     while (clone.childNodes.length > 0) {
       g.appendChild(clone.childNodes[0]);
     }
-    clone.getAttribute('viewBox') && g.setAttribute('data-viewbox', clone.getAttribute('viewBox')!);
+    if (cloneViewBox) g.setAttribute('data-viewbox', cloneViewBox);
     wrapper.appendChild(g);
 
     // Security seal overlay

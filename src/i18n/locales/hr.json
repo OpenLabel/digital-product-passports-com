@@ -652,7 +652,8 @@
         "yes": "Da",
         "no": "Ne",
         "unknown": "Nepoznato"
-      }
+      },
+      "fragrancesNotAssessed": "Prisutnost alergenih mirisa podložnih obvezi označavanja nije procijenjena za ovaj proizvod."
     },
     "table": {
       "substance": "Tvar",

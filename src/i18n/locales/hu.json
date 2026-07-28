@@ -652,7 +652,8 @@
         "yes": "Igen",
         "no": "Nem",
         "unknown": "Ismeretlen"
-      }
+      },
+      "fragrancesNotAssessed": "A címkézési kötelezettség alá eső allergén illatanyagok jelenlétét ennél a terméknél nem értékelték."
     },
     "table": {
       "substance": "Anyag",

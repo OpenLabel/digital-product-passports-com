@@ -24,6 +24,7 @@ import { Badge } from '@/components/ui/badge';
 import { ShieldCheck } from 'lucide-react';
 import DOMPurify from 'dompurify';
 import type { ProductCategory } from '@/types/passport';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface PassportPreviewProps {
   formData: {
@@ -40,7 +41,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
   
   // Manage preview language separately from app language
   const [previewLanguage, setPreviewLanguage] = useState(() => {
-    return i18n.language.split('-')[0];
+    return toDppLanguage(i18n.language);
   });
 
   const previewPassport = {
@@ -236,8 +237,13 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                                 {section.questions.map((question) => {
                                   const value = categoryData[question.id];
                                   const displayValue = getDisplayValue(value);
-                                  
-                                  if (!displayValue || displayValue === 'No') return null;
+
+                                  // BUG-07: filter checkboxes by raw boolean, not by translated text ('No' vs 'Non')
+                                  if (question.type === 'checkbox' || typeof value === 'boolean') {
+                                    if (!value) return null;
+                                  } else if (!displayValue) {
+                                    return null;
+                                  }
 
                                   let displayLabel = displayValue;
                                   if (question.type === 'select' && question.options) {

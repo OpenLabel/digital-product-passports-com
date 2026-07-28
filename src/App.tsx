@@ -65,6 +65,9 @@ function AppRoutes() {
     return (
       <Routes>
         <Route path="/setup" element={<Setup />} />
+        {/* BUG-01: auth flows must remain reachable during setup so admins can sign in / recover */}
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/p/:slug" element={<PublicPassport />} />
         <Route path="/referral/:code" element={<ReferralStats />} />
         <Route path="/referral-leaderboard" element={<ReferralLeaderboard />} />

@@ -652,7 +652,8 @@
         "yes": "Ano",
         "no": "Ne",
         "unknown": "Neznámo"
-      }
+      },
+      "fragrancesNotAssessed": "Přítomnost alergenních vonných látek podléhajících označení nebyla u tohoto výrobku posouzena."
     },
     "table": {
       "substance": "Látka",

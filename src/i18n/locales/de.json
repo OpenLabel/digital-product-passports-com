@@ -652,7 +652,8 @@
         "yes": "Ja",
         "no": "Nein",
         "unknown": "Unbekannt"
-      }
+      },
+      "fragrancesNotAssessed": "Das Vorhandensein kennzeichnungspflichtiger allergener Duftstoffe wurde für dieses Produkt nicht bewertet."
     },
     "table": {
       "substance": "Substanz",

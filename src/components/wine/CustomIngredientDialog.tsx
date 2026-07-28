@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 export interface CustomIngredient {
   id: string;
@@ -55,7 +56,7 @@ export function CustomIngredientDialog({
   const [isAllergen, setIsAllergen] = useState(false);
   const [nameTranslations, setNameTranslations] = useState<Translations>({});
 
-  const currentLanguage = i18n.language.split('-')[0];
+  const currentLanguage = toDppLanguage(i18n.language);
   const isEditMode = !!editIngredient;
 
   // Auto-translate ingredient name

@@ -14,6 +14,7 @@
  * See LICENSE and NOTICE files for details.
  */
 
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -67,9 +68,20 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
     },
   });
 
+  // BUG-02: sync late `content` prop into the editor DOM (e.g. after async fetch)
+  useEffect(() => {
+    if (!editor?.commands?.setContent) return;
+    const incoming = content || '';
+    const current = typeof editor.getHTML === 'function' ? editor.getHTML() : '';
+    if (current !== incoming) {
+      editor.commands.setContent(incoming, { emitUpdate: false });
+    }
+  }, [content, editor]);
+
   if (!editor) {
     return null;
   }
+
 
   const addLink = () => {
     const url = window.prompt(t('richText.enterUrl'));

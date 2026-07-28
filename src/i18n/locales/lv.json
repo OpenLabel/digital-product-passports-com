@@ -652,7 +652,8 @@
         "yes": "Jā",
         "no": "Nē",
         "unknown": "Nezināms"
-      }
+      },
+      "fragrancesNotAssessed": "Marķēšanas prasībām pakļauto alergēnu smaržvielu klātbūtne šim produktam nav novērtēta."
     },
     "table": {
       "substance": "Viela",

@@ -20,6 +20,8 @@ import { useTranslation } from 'react-i18next';
 import { ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DPPLanguagePicker } from '@/components/DPPLanguagePicker';
+import { getIngredientById } from '@/data/wineIngredients';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface WinePassportData {
   name: string;
@@ -70,7 +72,7 @@ export function WinePublicPassport({
   const categoryData = (passport.category_data || {}) as Record<string, unknown>;
 
   // Get the effective language for displaying translated content
-  const displayLanguage = previewLanguage || i18n.language.split('-')[0];
+  const displayLanguage = previewLanguage || toDppLanguage(i18n.language);
   
   // Create a translation function that respects the preview language
   // This ensures ALL labels in the preview use the selected language, not the app language
@@ -199,10 +201,13 @@ export function WinePublicPassport({
       else generalIngredients.push(ing);
     });
 
-    // Helper to render an ingredient (bold if allergen)
+    // Helper to render an ingredient (bold if allergen). BUG-05: re-derive
+    // the allergen flag from the canonical data source so legacy passports
+    // (persisted before sulfites carried isAllergen) still emphasize them.
     const renderIngredient = (ing: SelectedIngredient): React.ReactNode => {
       const name = translateIngredient(ing);
-      return ing.isAllergen ? <strong key={ing.id}>{name}</strong> : name;
+      const isAllergen = ing.isAllergen || getIngredientById(ing.id)?.isAllergen;
+      return isAllergen ? <strong key={ing.id}>{name}</strong> : name;
     };
 
     // Add general ingredients

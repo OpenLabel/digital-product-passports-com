@@ -23,6 +23,7 @@ import {
   type Translations,
 } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface TranslatableFieldProps {
   id: string;
@@ -55,7 +56,7 @@ export function TranslatableField({
   autoTranslate = true,
 }: TranslatableFieldProps) {
   const { t, i18n } = useTranslation();
-  const sourceLanguage = (i18n.language || 'en').split('-')[0];
+  const sourceLanguage = toDppLanguage(i18n.language);
 
   const handleAutoTranslations = useCallback(
     (next: Translations) => onTranslationsChange(next),
