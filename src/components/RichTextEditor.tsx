@@ -70,9 +70,10 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
 
   // BUG-02: sync late `content` prop into the editor DOM (e.g. after async fetch)
   useEffect(() => {
-    if (!editor) return;
+    if (!editor?.commands?.setContent) return;
     const incoming = content || '';
-    if (editor.getHTML() !== incoming) {
+    const current = typeof editor.getHTML === 'function' ? editor.getHTML() : '';
+    if (current !== incoming) {
       editor.commands.setContent(incoming, { emitUpdate: false });
     }
   }, [content, editor]);
