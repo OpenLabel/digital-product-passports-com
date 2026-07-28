@@ -222,10 +222,27 @@ export function WinePublicPassport({
       result.push(renderIngredient(ing));
     });
 
-    // Add gases as "Bottled in a protective atmosphere"
+    // BUG-27: If CO2 is present as an additive gas, name it explicitly
+    // (regulatory transparency) instead of collapsing into the generic
+    // "bottled in a protective atmosphere" statement.
     if (gasIngredients.length > 0) {
+      const hasCO2 = gasIngredients.some(
+        (ing) => ing.id === 'carbon_dioxide' || /co2|carbon dioxide|e ?290/i.test(ing.name || ''),
+      );
       if (result.length > 0) result.push(', ');
-      result.push(t('wine.bottledProtectiveAtmosphere'));
+      if (hasCO2) {
+        const names = gasIngredients.map((ing) => renderIngredient(ing));
+        result.push(
+          <span key="gases">
+            {names.reduce(
+              (prev, curr, i) => (i === 0 ? [curr] : [...(prev as React.ReactNode[]), ', ', curr]),
+              [] as React.ReactNode[],
+            )}
+          </span>,
+        );
+      } else {
+        result.push(t('wine.bottledProtectiveAtmosphere'));
+      }
     }
 
     // Add acidity regulators with category prefix
