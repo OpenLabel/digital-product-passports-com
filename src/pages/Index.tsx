@@ -21,7 +21,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github, Sparkles, Upload, FileText, Camera } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Infinity as InfinityIcon, Zap, CheckCircle2, Clock, Users, Github, Sparkles, Upload, FileText, Camera } from 'lucide-react';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import heroBg from '@/assets/hero-bg.jpg';
 

@@ -61,7 +61,7 @@ function buildVerboseStatus(testResultsDir: string, coverageDir: string): object
         const actual = raw.total[metric]?.pct ?? 0;
         if (actual < (threshold as number)) problems.push(`${metric}: ${actual}% < ${threshold}%`);
       }
-    } catch {}
+    } catch { /* coverage file unreadable */ }
   }
 
   if (testRunError) {
