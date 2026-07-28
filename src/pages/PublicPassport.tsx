@@ -190,7 +190,9 @@ export default function PublicPassport() {
                 return (
                   <Card key={sectionIndex}>
                     <CardHeader>
-                      <CardTitle className="text-lg">{section.title}</CardTitle>
+                      <CardTitle className="text-lg">
+                        {section.titleKey ? t(section.titleKey, section.title) : section.title}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <dl className="grid gap-3">
@@ -208,12 +210,17 @@ export default function PublicPassport() {
                           let displayLabel = displayValue;
                           if (question.type === 'select' && question.options) {
                             const option = question.options.find(o => o.value === value);
-                            if (option) displayLabel = option.label;
+                            if (option) {
+                              displayLabel = option.labelKey ? t(option.labelKey, option.label) : option.label;
+                            }
                           }
+
+                          const questionLabel = question.labelKey ? t(question.labelKey, question.label) : question.label;
 
                           return (
                             <div key={question.id} className="grid grid-cols-2 gap-2">
-                              <dt className="text-muted-foreground text-sm">{question.label}</dt>
+                              <dt className="text-muted-foreground text-sm">{questionLabel}</dt>
+
                               <dd className="text-sm font-medium">
                                 {question.type === 'checkbox' ? (
                                   <Badge variant="secondary" className="text-xs">✓ {t('common.confirmed')}</Badge>

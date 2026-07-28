@@ -222,13 +222,9 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                 <div className="flex-1 grid gap-3 sm:grid-cols-2">
                   <Select
                     value={material.compositionId || ''}
-                    onValueChange={(val) => {
-                      if (val === 'custom') {
-                        handleMaterialChange(material.id, 'compositionId', '');
-                      } else {
-                        handleMaterialChange(material.id, 'compositionId', val);
-                      }
-                    }}
+                    onValueChange={(val) =>
+                      handleMaterialChange(material.id, 'compositionId', val)
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder={t('recycling.selectMaterial', 'Select material')} />
@@ -259,12 +255,9 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
                           ))}
                         </SelectGroup>
                       ))}
-                      <SelectGroup>
-                        <SelectLabel className="font-bold text-foreground">{t('recycling.customMaterial', 'Custom Material')}</SelectLabel>
-                        <SelectItem value="custom">{t('recycling.addCustomMaterial', 'Add custom material')}</SelectItem>
-                      </SelectGroup>
                     </SelectContent>
                   </Select>
+
 
                   <Select
                     value={material.disposalMethodId || ''}

@@ -28,6 +28,15 @@ export class BatteryTemplate extends BaseTemplate {
       description: 'Basic battery identification per EU Battery Regulation',
       questions: [
         {
+          id: 'battery_unique_identifier',
+          label: 'Unique Battery Identifier',
+          type: 'text',
+          required: true,
+          placeholder: 'Serial number / GS1 unique ID',
+          helpText: 'Persistent unique identifier per Annex VI of Regulation (EU) 2023/1542.',
+        },
+
+        {
           id: 'battery_type',
           label: 'Battery Type',
           type: 'select',
@@ -115,9 +124,18 @@ export class BatteryTemplate extends BaseTemplate {
           label: 'Recycled Nickel Content (%)',
           type: 'number',
           placeholder: 'Minimum 6% required from 2031'
+        },
+        {
+          id: 'recycled_content_lead',
+          label: 'Recycled Lead Content (%)',
+          type: 'number',
+          placeholder: 'Minimum 85% required for lead-acid batteries',
+          helpText: 'Applies to lead-acid chemistries per Annex XII.',
+          showWhen: { field: 'battery_chemistry', equals: 'lead-acid' },
         }
       ]
     },
+
     {
       title: 'Performance & Durability',
       description: 'Battery performance and expected lifespan information',
@@ -221,7 +239,7 @@ export class BatteryTemplate extends BaseTemplate {
   getRequiredLogos(data: Record<string, unknown>): string[] {
     const logos: string[] = [];
     
-    if (data.separate_collection_required) logos.push('weee');
+    if (data.separate_collection_required) logos.push('battery-crossed-bin');
     if (data.carbon_footprint_class) logos.push('carbon-class');
     
     return logos;
