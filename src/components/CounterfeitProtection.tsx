@@ -26,6 +26,7 @@ interface CounterfeitProtectionProps {
   passportSlug: string | null;
   userEmail: string | undefined;
   enabled: boolean;
+  requestSentAt?: string | null;
   onChange: (enabled: boolean) => void;
 }
 
@@ -34,6 +35,7 @@ export function CounterfeitProtection({
   passportSlug, 
   userEmail,
   enabled,
+  requestSentAt,
   onChange,
 }: CounterfeitProtectionProps) {
   const { t } = useTranslation();
