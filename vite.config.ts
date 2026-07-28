@@ -12,6 +12,7 @@ let testRunError: string | null = null;
 let testRunAttempted = false;
 let testRunStderr: string | null = null;
 let testRunStdout: string | null = null;
+let testRunTerminated = false;
 
 /** Extract up to `max` failed test names from vitest JSON reporter output */
 function extractFailedTests(resultsPath: string, max = 50): string[] {
