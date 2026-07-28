@@ -1,31 +1,26 @@
+## Fix 3 verification findings
 
-## Problem
+### Issue 1 — Stabilize empty-passports reference (infinite loop)
+File: `src/hooks/usePassports.tsx`
+- Add module-level `const EMPTY_PASSPORTS: Passport[] = []`.
+- Change `passports: passports || []` → `passports: passports ?? EMPTY_PASSPORTS`.
+- Preserves BUG-14 sync semantics but keeps referential stability across renders when the query returns no data, breaking the Dashboard `useEffect` loop.
 
-Same exit 143 (SIGTERM) as before. My previous edit stopped setting `testRunError` on SIGTERM, but `buildVerboseStatus()` still falls through to:
+### Issue 2 — Update stale PassportPreview test expectation
+File: `src/components/PassportPreview.test.tsx` line 71
+- The rendered logo id is now `battery-crossed-bin` (BUG-25 rename), formatted to `Battery Crossed Bin` by the component's title-case transform.
+- Update expectation from `getByText('Weee')` to `getByText('Battery Crossed Bin')`.
 
-```ts
-if (testRunAttempted && !trExists && !cvExists) {
-  return { status: "fail", message: "No test artifacts generated.", ... };
-}
-```
+### Issue 3 — Fail-closed build gate
+File: `package.json`
+- Change `"build": "vitest run --coverage; vite build"` to use `&&` so a non-zero test exit aborts the build.
+- Additionally clean stale results before the run so the status pipeline can't read a previous artifact when tests are killed. Update `build` to:
+  `"rm -rf test-results coverage && vitest run --coverage && vite build"`
+- This makes the vite plugin's `buildVerboseStatus` (which now returns `unknown` on missing artifacts) accurately reflect the current run, and prevents `pass` from leaking through when tests fail.
 
-So when the sandbox kills vitest before any artifacts are flushed, the build still reports `fail`. The stderr shown in the report is just router/dialog warnings that were in the buffer at SIGTERM — not the cause.
-
-## Fix
-
-Add a `testRunTerminated` flag in `vite.config.ts`, set it in the SIGTERM/143 branch of `runTestsOnBuild()`, and in `buildVerboseStatus()` short-circuit to `{ status: "unknown", message: "Test run terminated by environment (SIGTERM). Artifacts unavailable." }` when that flag is set and no artifacts exist. This mirrors the existing `"unknown"` path used when no run has been attempted at all.
-
-No other changes:
-- Thresholds stay at 30.
-- English audit rules untouched.
-- No tests skipped or deleted.
-- No source changes for the non-fatal router/dialog warnings.
-
-## Verification
-
-Rebuild and confirm `build-status.json` reports `status: "unknown"` (or `"pass"` if artifacts land) instead of `"fail"` when SIGTERM hits.
-
-## Technical notes
-
-- Exit 143 = 128 + 15 (SIGTERM) — the sandbox OOM/timeout killer, not vitest.
-- `"unknown"` is the correct status for "we couldn't measure", distinct from `"fail"` ("we measured and it failed"). The BuildStatusBanner already handles `"unknown"` without blocking.
+### Verification
+Run in sequence and report each result:
+1. `bunx tsgo --noEmit`
+2. `bunx vitest run` (full suite — should no longer OOM once Issue 1 is fixed)
+3. `bun run lint`
+4. `bun run build`

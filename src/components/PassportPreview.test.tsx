@@ -68,7 +68,7 @@ describe('PassportPreview', () => {
         category_data: { separate_collection_required: true },
       }} />
     );
-    expect(screen.getByText('Weee')).toBeInTheDocument();
+    expect(screen.getByText('Battery Crossed Bin')).toBeInTheDocument();
   });
 
   it('renders category-specific data when section has values', () => {
