@@ -19,6 +19,10 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import type { Passport, PassportFormData, ProductCategory } from '@/types/passport';
 
+// Stable empty-array reference so consumers that sync via useEffect don't
+// re-fire on every render when the query has no data (would infinite-loop).
+const EMPTY_PASSPORTS: Passport[] = [];
+
 export function usePassports() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -151,7 +155,7 @@ export function usePassports() {
   });
 
   return {
-    passports: passports || [],
+    passports: passports ?? EMPTY_PASSPORTS,
     isLoading,
     error,
     createPassport,
