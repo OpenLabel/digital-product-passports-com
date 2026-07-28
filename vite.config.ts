@@ -198,6 +198,7 @@ function runTestsOnBuild(): Plugin {
         } else if (execError.status === 143 || execError.signal === "SIGTERM") {
           // Sandbox killed the process (OOM/timeout) before artifacts were flushed.
           // Don't block the build on an environmental limit — CI has more headroom.
+          testRunTerminated = true;
           console.warn("[run-tests-on-build] Vitest was terminated by the environment (SIGTERM/143) before artifacts were written. Treating as unknown.");
         } else {
           testRunError = `Vitest failed to execute during build. Exit code: ${execError.status ?? "unknown"}. ${testRunStderr || testRunStdout || "No output captured."}`.trim();
