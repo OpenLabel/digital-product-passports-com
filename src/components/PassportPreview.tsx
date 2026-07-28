@@ -237,8 +237,13 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                                 {section.questions.map((question) => {
                                   const value = categoryData[question.id];
                                   const displayValue = getDisplayValue(value);
-                                  
-                                  if (!displayValue || displayValue === 'No') return null;
+
+                                  // BUG-07: filter checkboxes by raw boolean, not by translated text ('No' vs 'Non')
+                                  if (question.type === 'checkbox' || typeof value === 'boolean') {
+                                    if (!value) return null;
+                                  } else if (!displayValue) {
+                                    return null;
+                                  }
 
                                   let displayLabel = displayValue;
                                   if (question.type === 'select' && question.options) {

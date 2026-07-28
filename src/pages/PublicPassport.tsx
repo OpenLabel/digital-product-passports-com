@@ -197,8 +197,13 @@ export default function PublicPassport() {
                         {section.questions.map((question) => {
                           const value = categoryData[question.id];
                           const displayValue = getDisplayValue(value, question.type);
-                          
-                          if (!displayValue || displayValue === 'No') return null;
+
+                          // BUG-07: filter checkboxes by raw boolean, not translated 'No'
+                          if (question.type === 'checkbox' || typeof value === 'boolean') {
+                            if (!value) return null;
+                          } else if (!displayValue) {
+                            return null;
+                          }
 
                           let displayLabel = displayValue;
                           if (question.type === 'select' && question.options) {
