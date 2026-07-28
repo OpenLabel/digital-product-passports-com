@@ -157,6 +157,7 @@ function runTestsOnBuild(): Plugin {
     buildStart() {
       testRunAttempted = true;
       testRunError = null;
+      testRunTerminated = false;
 
       // Ensure output directories exist
       const testResultsDir = path.resolve(__dirname, "test-results");
