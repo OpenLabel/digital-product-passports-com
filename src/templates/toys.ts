@@ -541,9 +541,9 @@ export class ToysTemplate extends BaseTemplate {
       'Channels available to consumers and authorities.',
       [
         f({ id: 'safety_channels', label: 'Public safety reporting channels', type: 'multi_select', required: true, badge: 'required', options: TOY_SAFETY_CHANNELS }),
-        f({ id: 'safety_phone', label: 'Safety reporting telephone', type: 'text', placeholder: '+33 ...', showWhen: { field: 'safety_channels', equals: 'phone', includes: true } }),
-        f({ id: 'safety_email', label: 'Safety reporting email', type: 'text', placeholder: 'safety@company.com', showWhen: { field: 'safety_channels', equals: 'email', includes: true } }),
-        f({ id: 'safety_website', label: 'Safety reporting website / contact form URL', type: 'text', placeholder: 'https://...', showWhen: { field: 'safety_channels', equals: ['website', 'form'], includes: true } }),
+        f({ id: 'safety_phone', label: 'Safety reporting telephone', type: 'text', placeholder: '+33 ...', required: true, badge: 'required', showWhen: { field: 'safety_channels', equals: 'phone', includes: true } }),
+        f({ id: 'safety_email', label: 'Safety reporting email', type: 'text', placeholder: 'safety@company.com', required: true, badge: 'required', showWhen: { field: 'safety_channels', equals: 'email', includes: true } }),
+        f({ id: 'safety_website', label: 'Safety reporting website / contact form URL', type: 'text', placeholder: 'https://...', required: true, badge: 'required', showWhen: { field: 'safety_channels', equals: ['website', 'form'], includes: true } }),
       ],
     ),
   ];

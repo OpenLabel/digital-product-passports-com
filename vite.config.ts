@@ -52,7 +52,7 @@ function buildVerboseStatus(testResultsDir: string, coverageDir: string): object
         problems.push(`${numFailed} test(s) failed`);
         failedTests = extractFailedTests(trPath);
       }
-    } catch {}
+    } catch { /* test results file unreadable */ }
   }
   if (cvExists) {
     try {
@@ -61,7 +61,7 @@ function buildVerboseStatus(testResultsDir: string, coverageDir: string): object
         const actual = raw.total[metric]?.pct ?? 0;
         if (actual < (threshold as number)) problems.push(`${metric}: ${actual}% < ${threshold}%`);
       }
-    } catch {}
+    } catch { /* coverage file unreadable */ }
   }
 
   if (testRunError) {

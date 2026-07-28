@@ -79,7 +79,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
 
   const handleAddMaterial = (typeId: string, typeName: string, isCustom = false) => {
     const newMaterial: PackagingMaterialWithTranslations = {
-      id: `mat_${Date.now()}`,
+      id: `mat_${crypto.randomUUID()}`,
       typeId: isCustom ? 'custom' : typeId,
       typeName: isCustom ? typeName : typeName,
       isCustomType: isCustom,
@@ -95,7 +95,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
   const handleAddCustomType = () => {
     if (customTypeName.trim()) {
       const newMaterial: PackagingMaterialWithTranslations = {
-        id: `mat_${Date.now()}`,
+        id: `mat_${crypto.randomUUID()}`,
         typeId: 'custom',
         typeName: customTypeName.trim(),
         isCustomType: true,

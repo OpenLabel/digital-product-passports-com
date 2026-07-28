@@ -21,7 +21,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Shield, Globe, Infinity, Zap, CheckCircle2, Clock, Users, Github, Sparkles, Upload, FileText, Camera } from 'lucide-react';
+import { ArrowRight, Shield, Globe, Infinity as InfinityIcon, Zap, CheckCircle2, Clock, Users, Github, Sparkles, Upload, FileText, Camera } from 'lucide-react';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import heroBg from '@/assets/hero-bg.jpg';
 
@@ -190,7 +190,7 @@ export default function Index() {
             <Card className="border-2 hover:border-primary/50 transition-colors">
               <CardContent className="pt-6">
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Infinity className="h-6 w-6 text-primary" />
+                  <InfinityIcon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{t('landing.features.openSource.title')}</h3>
                 <p className="text-sm text-muted-foreground">
