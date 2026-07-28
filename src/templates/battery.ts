@@ -124,9 +124,18 @@ export class BatteryTemplate extends BaseTemplate {
           label: 'Recycled Nickel Content (%)',
           type: 'number',
           placeholder: 'Minimum 6% required from 2031'
+        },
+        {
+          id: 'recycled_content_lead',
+          label: 'Recycled Lead Content (%)',
+          type: 'number',
+          placeholder: 'Minimum 85% required for lead-acid batteries',
+          helpText: 'Applies to lead-acid chemistries per Annex XII.',
+          showWhen: { field: 'battery_chemistry', equals: 'lead-acid' },
         }
       ]
     },
+
     {
       title: 'Performance & Durability',
       description: 'Battery performance and expected lifespan information',
