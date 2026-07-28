@@ -98,6 +98,11 @@ export function CounterfeitProtection({
 
   if (enabled) {
     return (
+  // BUG-10: only show the "email sent" confirmation once we actually have a
+  // request timestamp persisted. Before that, the toggle is on but no email
+  // has been dispatched yet (happens on first save via PassportForm).
+  if (enabled && requestSentAt) {
+    return (
       <div className="rounded-lg border-2 border-green-500/50 bg-green-50 dark:bg-green-950/20 p-4">
         <div className="flex items-start gap-3">
           <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
