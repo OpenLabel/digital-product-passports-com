@@ -68,6 +68,7 @@ export function usePassports() {
 
   const updatePassport = useMutation({
     mutationFn: async ({ id, ...formData }: PassportFormData & { id: string }) => {
+      if (!user) throw new Error('User not authenticated');
       const { data, error } = await supabase
         .from('passports')
         .update({
@@ -79,6 +80,7 @@ export function usePassports() {
           category_data: formData.category_data,
         })
         .eq('id', id)
+        .eq('user_id', user.id) // BUG-38: defense-in-depth scoping
         .select()
         .single();
       
@@ -118,10 +120,12 @@ export function usePassports() {
 
   const deletePassport = useMutation({
     mutationFn: async (id: string) => {
+      if (!user) throw new Error('User not authenticated');
       const { error } = await supabase
         .from('passports')
         .delete()
-        .eq('id', id);
+        .eq('id', id)
+        .eq('user_id', user.id); // BUG-38: defense-in-depth scoping
       
       if (error) throw error;
     },
@@ -132,12 +136,14 @@ export function usePassports() {
 
   const reorderPassports = useMutation({
     mutationFn: async (orderedIds: string[]) => {
+      if (!user) throw new Error('User not authenticated');
       // Update each passport's display_order based on its position in the array
       const updates = orderedIds.map((id, index) => 
         supabase
           .from('passports')
           .update({ display_order: index })
           .eq('id', id)
+          .eq('user_id', user.id) // BUG-38: defense-in-depth scoping
       );
       
       const results = await Promise.all(updates);
@@ -145,6 +151,9 @@ export function usePassports() {
       if (errors.length > 0) throw errors[0].error;
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });
+    },
+    onError: () => {
       queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });
     },
   });

@@ -404,7 +404,10 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
     });
   };
 
-  const handleAIAutofill = (extractedData: Record<string, unknown>) => {
+  const handleAIAutofill = (
+    extractedData: Record<string, unknown>,
+    baseData: Record<string, unknown>,
+  ) => {
     // Map detected_ingredients names to proper ingredient objects
     const detectedNames = extractedData.detected_ingredients as string[] | undefined;
     delete extractedData.detected_ingredients;
@@ -494,26 +497,28 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
       }
     }
 
+    // BUG-04: merge from baseData (sentinel already stripped) — never stale `data`
     const mergedData = {
-      ...data,
+      ...baseData,
       ...extractedData,
       ...(ingredientsToSet ? { ingredients: ingredientsToSet } : {}),
       ...(recyclingToSet ? { recycling_materials: recyclingToSet } : {}),
     };
+    delete (mergedData as Record<string, unknown>).__ai_autofill;
     onChange(mergedData);
   };
 
-  // Process AI autofill data passed from PassportForm via __ai_autofill sentinel
+  // Process AI autofill data passed from PassportForm via __ai_autofill sentinel.
+  // BUG-04: strip sentinel and merge in ONE onChange call, using cleanData as
+  // the base so we never reintroduce the sentinel from stale `data`.
   useEffect(() => {
     if (data.__ai_autofill) {
       const autofillData = { ...(data.__ai_autofill as Record<string, unknown>) };
-      // Remove sentinel immediately
       const cleanData = { ...data };
       delete cleanData.__ai_autofill;
-      onChange(cleanData);
-      // Process through handleAIAutofill
-      handleAIAutofill(autofillData);
+      handleAIAutofill(autofillData, cleanData);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.__ai_autofill]);
 
   return (
