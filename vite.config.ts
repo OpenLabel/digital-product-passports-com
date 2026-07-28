@@ -52,7 +52,7 @@ function buildVerboseStatus(testResultsDir: string, coverageDir: string): object
         problems.push(`${numFailed} test(s) failed`);
         failedTests = extractFailedTests(trPath);
       }
-    } catch {}
+    } catch { /* test results file unreadable */ }
   }
   if (cvExists) {
     try {
