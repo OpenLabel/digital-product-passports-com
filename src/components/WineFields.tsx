@@ -1009,8 +1009,8 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 id="fat"
                 type="number"
                 step="0.1"
-                value={(data.fat as number) || 0}
-                onChange={(e) => handleChange('fat', e.target.value ? Number(e.target.value) : 0)}
+                value={(data.fat as number | string | undefined) ?? ''}
+                onChange={(e) => handleChange('fat', e.target.value === '' ? '' : Number(e.target.value))}
                 placeholder="0"
               />
             </div>
@@ -1021,8 +1021,8 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 id="saturated_fat"
                 type="number"
                 step="0.1"
-                value={(data.saturated_fat as number) || 0}
-                onChange={(e) => handleChange('saturated_fat', e.target.value ? Number(e.target.value) : 0)}
+                value={(data.saturated_fat as number | string | undefined) ?? ''}
+                onChange={(e) => handleChange('saturated_fat', e.target.value === '' ? '' : Number(e.target.value))}
                 placeholder="0"
               />
             </div>
@@ -1033,8 +1033,8 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 id="proteins"
                 type="number"
                 step="0.1"
-                value={(data.proteins as number) || 0}
-                onChange={(e) => handleChange('proteins', e.target.value ? Number(e.target.value) : 0)}
+                value={(data.proteins as number | string | undefined) ?? ''}
+                onChange={(e) => handleChange('proteins', e.target.value === '' ? '' : Number(e.target.value))}
                 placeholder="0"
               />
             </div>
@@ -1045,8 +1045,8 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 id="salt"
                 type="number"
                 step="0.01"
-                value={(data.salt as number) || 0}
-                onChange={(e) => handleChange('salt', e.target.value ? Number(e.target.value) : 0)}
+                value={(data.salt as number | string | undefined) ?? ''}
+                onChange={(e) => handleChange('salt', e.target.value === '' ? '' : Number(e.target.value))}
                 placeholder="0"
               />
             </div>
