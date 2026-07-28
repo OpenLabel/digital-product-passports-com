@@ -12,6 +12,7 @@ let testRunError: string | null = null;
 let testRunAttempted = false;
 let testRunStderr: string | null = null;
 let testRunStdout: string | null = null;
+let testRunTerminated = false;
 
 /** Extract up to `max` failed test names from vitest JSON reporter output */
 function extractFailedTests(resultsPath: string, max = 50): string[] {
@@ -81,6 +82,9 @@ function buildVerboseStatus(testResultsDir: string, coverageDir: string): object
     };
   }
   if (testRunAttempted && !trExists && !cvExists) {
+    if (testRunTerminated) {
+      return { status: "unknown", message: "Test run terminated by environment (SIGTERM). Artifacts unavailable." };
+    }
     return { status: "fail", message: "No test artifacts generated.", stderr: testRunStderr?.slice(-3000) || undefined };
   }
   if (!trExists && !cvExists) {
@@ -153,6 +157,7 @@ function runTestsOnBuild(): Plugin {
     buildStart() {
       testRunAttempted = true;
       testRunError = null;
+      testRunTerminated = false;
 
       // Ensure output directories exist
       const testResultsDir = path.resolve(__dirname, "test-results");
@@ -193,6 +198,7 @@ function runTestsOnBuild(): Plugin {
         } else if (execError.status === 143 || execError.signal === "SIGTERM") {
           // Sandbox killed the process (OOM/timeout) before artifacts were flushed.
           // Don't block the build on an environmental limit — CI has more headroom.
+          testRunTerminated = true;
           console.warn("[run-tests-on-build] Vitest was terminated by the environment (SIGTERM/143) before artifacts were written. Treating as unknown.");
         } else {
           testRunError = `Vitest failed to execute during build. Exit code: ${execError.status ?? "unknown"}. ${testRunStderr || testRunStdout || "No output captured."}`.trim();
