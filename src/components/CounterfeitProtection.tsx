@@ -19,13 +19,13 @@ import { useTranslation } from 'react-i18next';
 import { Shield, ShieldCheck, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 interface CounterfeitProtectionProps {
   passportName: string;
   passportSlug: string | null;
   userEmail: string | undefined;
   enabled: boolean;
+  requestSentAt?: string | null;
   onChange: (enabled: boolean) => void;
 }
 
@@ -34,20 +34,17 @@ export function CounterfeitProtection({
   passportSlug, 
   userEmail,
   enabled,
+  requestSentAt,
   onChange,
 }: CounterfeitProtectionProps) {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const loading = false;
 
   const handleEnable = async () => {
-    // If passport hasn't been saved yet (no slug), just toggle the flag locally.
-    // The email notification will be sent when the user saves and a slug exists.
-    if (!passportSlug) {
-      onChange(true);
-      return;
-    }
-
+    // BUG-10: the email is now dispatched by PassportForm.handleSubmit after
+    // the passport is persisted (and the slug exists). Here we just toggle
+    // the flag; the user must save the passport to trigger the email.
     if (!userEmail) {
       toast({
         title: t('common.error'),
@@ -56,45 +53,17 @@ export function CounterfeitProtection({
       });
       return;
     }
-
-    setLoading(true);
-    try {
-      const passportUrl = `${window.location.origin}/p/${passportSlug}`;
-      const requestedAt = new Date().toISOString();
-      
-      const { error } = await supabase.functions.invoke('send-counterfeit-request', {
-        body: {
-          userEmail,
-          passportName,
-          passportUrl,
-          requestedAt,
-        },
-      });
-
-      if (error) throw error;
-
-      onChange(true);
-      toast({
-        title: t('counterfeit.requestSent', 'Request sent!'),
-        description: t('counterfeit.requestSentDescription', 'An email has been sent to our counterfeit protection partner. They will contact you to deliver the security seal.'),
-      });
-    } catch (error: any) {
-      console.error('Counterfeit protection request failed:', error);
-      toast({
-        title: t('common.error'),
-        description: error.message || t('counterfeit.errorFailed', 'Failed to send counterfeit protection request'),
-        variant: 'destructive',
-      });
-    } finally {
-      setLoading(false);
-    }
+    onChange(true);
   };
 
   const handleDisable = () => {
     onChange(false);
   };
 
-  if (enabled) {
+  // BUG-10: only show the "email sent" confirmation once we actually have a
+  // request timestamp persisted. Before that, the toggle is on but no email
+  // has been dispatched yet (happens on first save via PassportForm).
+  if (enabled && requestSentAt) {
     return (
       <div className="rounded-lg border-2 border-green-500/50 bg-green-50 dark:bg-green-950/20 p-4">
         <div className="flex items-start gap-3">

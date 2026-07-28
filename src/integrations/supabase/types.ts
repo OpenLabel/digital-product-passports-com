@@ -168,6 +168,7 @@ export type Database = {
         Returns: Json
       }
       is_site_admin: { Args: never; Returns: boolean }
+      reorder_passports: { Args: { p_ids: string[] }; Returns: undefined }
     }
     Enums: {
       product_category:

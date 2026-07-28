@@ -137,18 +137,10 @@ export function usePassports() {
   const reorderPassports = useMutation({
     mutationFn: async (orderedIds: string[]) => {
       if (!user) throw new Error('User not authenticated');
-      // Update each passport's display_order based on its position in the array
-      const updates = orderedIds.map((id, index) => 
-        supabase
-          .from('passports')
-          .update({ display_order: index })
-          .eq('id', id)
-          .eq('user_id', user.id) // BUG-38: defense-in-depth scoping
-      );
-      
-      const results = await Promise.all(updates);
-      const errors = results.filter(r => r.error);
-      if (errors.length > 0) throw errors[0].error;
+      // BUG-15: single-transaction reorder via SECURITY DEFINER RPC scoped to
+      // auth.uid(). Prevents partial updates when the network flakes mid-batch.
+      const { error } = await supabase.rpc('reorder_passports', { p_ids: orderedIds });
+      if (error) throw error;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });

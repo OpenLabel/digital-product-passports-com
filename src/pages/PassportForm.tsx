@@ -232,18 +232,56 @@ export default function PassportForm() {
         ...formData,
         category_data: formData.category_data as Json,
       };
+      let savedPassport: { id: string; public_slug?: string | null } | null = null;
       if (isEditing) {
-        await updatePassport.mutateAsync({ id, ...submitData });
+        savedPassport = await updatePassport.mutateAsync({ id, ...submitData });
         toast({ title: t('common.success'), description: t('passport.updated') });
-        // Update saved state after successful save
         savedFormDataRef.current = JSON.stringify(formData);
       } else {
         const newPassport = await createPassport.mutateAsync(submitData);
+        savedPassport = newPassport;
         toast({ title: t('common.success'), description: t('passport.created') });
-        // Update saved state after successful save
         savedFormDataRef.current = JSON.stringify(formData);
-        // Navigate to edit mode for the newly created passport
         navigate(`/passport/${newPassport.id}/edit`, { replace: true });
+      }
+
+      // BUG-10: dispatch counterfeit protection email after a successful save
+      // whenever the toggle is on and no request has been sent yet. The
+      // timestamp is persisted so we never resend on subsequent saves.
+      const cfEnabled = formData.category_data.counterfeit_protection_enabled === true;
+      const cfAlreadySent = !!formData.category_data.counterfeit_request_sent_at;
+      const slug = savedPassport?.public_slug;
+      if (cfEnabled && !cfAlreadySent && slug && user?.email && savedPassport) {
+        const requestedAt = new Date().toISOString();
+        try {
+          const { error } = await supabase.functions.invoke('send-counterfeit-request', {
+            body: {
+              userEmail: user.email,
+              passportName: formData.name,
+              passportUrl: `${window.location.origin}/p/${slug}`,
+              requestedAt,
+            },
+          });
+          if (error) throw error;
+          const updatedCategoryData = {
+            ...formData.category_data,
+            counterfeit_request_sent_at: requestedAt,
+          };
+          await updatePassport.mutateAsync({
+            id: savedPassport.id,
+            ...submitData,
+            category_data: updatedCategoryData as Json,
+          });
+          setFormData(prev => ({ ...prev, category_data: updatedCategoryData }));
+          savedFormDataRef.current = JSON.stringify({ ...formData, category_data: updatedCategoryData });
+        } catch (cfErr) {
+          console.error('Counterfeit protection email failed:', cfErr);
+          toast({
+            title: t('common.error'),
+            description: t('counterfeit.errorFailed', 'Failed to send counterfeit protection request'),
+            variant: 'destructive',
+          });
+        }
       }
     } catch (error: any) {
       toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
@@ -561,6 +599,7 @@ export default function PassportForm() {
                 passportSlug={existingPassport?.public_slug ?? null}
                 userEmail={user?.email}
                 enabled={formData.category_data.counterfeit_protection_enabled === true}
+                requestSentAt={(formData.category_data.counterfeit_request_sent_at as string | undefined) ?? null}
                 onChange={(enabled) => setFormData((prev) => ({
                   ...prev,
                   category_data: {
