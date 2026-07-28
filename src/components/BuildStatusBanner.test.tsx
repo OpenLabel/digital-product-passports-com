@@ -1,5 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render as rtlRender, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import type { ReactElement } from 'react';
 
 const mockInvoke = vi.fn();
 
@@ -23,6 +25,8 @@ vi.mock('@/hooks/useSiteConfig', () => ({
 vi.stubGlobal('location', { ...window.location, hostname: 'id-preview--test.lovable.app' });
 
 import { BuildStatusBanner } from './BuildStatusBanner';
+
+const render = (ui: ReactElement) => rtlRender(<MemoryRouter>{ui}</MemoryRouter>);
 
 describe('BuildStatusBanner', () => {
   beforeEach(() => {
