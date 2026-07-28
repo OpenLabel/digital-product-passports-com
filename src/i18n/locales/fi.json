@@ -652,7 +652,8 @@
         "yes": "Kyllä",
         "no": "Ei",
         "unknown": "Tuntematon"
-      }
+      },
+      "fragrancesNotAssessed": "Merkintävelvollisuuden alaisten allergisoivien hajusteiden esiintymistä ei ole arvioitu tässä tuotteessa."
     },
     "table": {
       "substance": "Aine",

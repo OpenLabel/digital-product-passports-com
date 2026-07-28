@@ -652,7 +652,8 @@
         "yes": "Yes",
         "no": "No",
         "unknown": "Unknown"
-      }
+      },
+      "fragrancesNotAssessed": "The presence of allergenic fragrances subject to labelling requirements has not been assessed for this product."
     },
     "table": {
       "substance": "Substance",

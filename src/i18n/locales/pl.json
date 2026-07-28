@@ -652,7 +652,8 @@
         "yes": "Tak",
         "no": "Nie",
         "unknown": "Nieznany"
-      }
+      },
+      "fragrancesNotAssessed": "Obecność alergennych substancji zapachowych podlegających obowiązkowi etykietowania nie została oceniona dla tego produktu."
     },
     "table": {
       "substance": "Substancja",

@@ -652,7 +652,8 @@
         "yes": "Da",
         "no": "Nu",
         "unknown": "Necunoscut"
-      }
+      },
+      "fragrancesNotAssessed": "Prezența parfumurilor alergene supuse etichetării nu a fost evaluată pentru acest produs."
     },
     "table": {
       "substance": "Substanță",

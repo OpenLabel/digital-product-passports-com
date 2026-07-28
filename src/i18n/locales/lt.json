@@ -652,7 +652,8 @@
         "yes": "Taip",
         "no": "Ne",
         "unknown": "Nežinoma"
-      }
+      },
+      "fragrancesNotAssessed": "Kvapiųjų alergenų, kuriems taikomi ženklinimo reikalavimai, buvimas šiame gaminyje nebuvo įvertintas."
     },
     "table": {
       "substance": "Medžiaga",

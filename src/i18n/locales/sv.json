@@ -652,7 +652,8 @@
         "yes": "Ja",
         "no": "Nej",
         "unknown": "Okänd"
-      }
+      },
+      "fragrancesNotAssessed": "Förekomsten av allergiframkallande doftämnen som omfattas av märkningskrav har inte bedömts för denna produkt."
     },
     "table": {
       "substance": "Ämne",

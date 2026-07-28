@@ -652,7 +652,8 @@
         "yes": "是",
         "no": "否",
         "unknown": "未知"
-      }
+      },
+      "fragrancesNotAssessed": "本产品尚未评估是否含有须标注的致敏香料。"
     },
     "table": {
       "substance": "物质",

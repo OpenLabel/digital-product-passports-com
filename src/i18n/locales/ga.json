@@ -652,7 +652,8 @@
         "yes": "Tá",
         "no": "Níl",
         "unknown": "Anaithnid"
-      }
+      },
+      "fragrancesNotAssessed": "Níor rinneadh measúnú ar láithreacht cumhraí ailléirgineacha atá faoi réir riachtanas lipéadaithe don táirge seo."
     },
     "table": {
       "substance": "Substaint",

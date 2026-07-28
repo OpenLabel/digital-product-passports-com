@@ -652,7 +652,8 @@
         "yes": "Ja",
         "no": "Nee",
         "unknown": "Onbekend"
-      }
+      },
+      "fragrancesNotAssessed": "De aanwezigheid van etiketteringsplichtige allergene geurstoffen is voor dit product niet beoordeeld."
     },
     "table": {
       "substance": "Stof",
