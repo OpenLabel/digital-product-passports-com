@@ -32,7 +32,7 @@ export function WinePassportPreview({ formData }: WinePassportPreviewProps) {
   
   // Initialize preview language from current i18n language, but manage it separately
   const [previewLanguage, setPreviewLanguage] = useState(() => {
-    return i18n.language.split('-')[0];
+    return toDppLanguage(i18n.language);
   });
 
   // Create a passport object from form data for the preview

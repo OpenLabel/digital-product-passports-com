@@ -40,7 +40,7 @@ interface WineFieldsProps {
 export function WineFields({ data, onChange }: WineFieldsProps) {
   const { t, i18n } = useTranslation();
 
-  const currentLanguage = i18n.language.split('-')[0]; // Get base language code
+  const currentLanguage = toDppLanguage(i18n.language); // Get base language code
 
   const handleChange = (id: string, value: unknown) => {
     onChange({ ...data, [id]: value });

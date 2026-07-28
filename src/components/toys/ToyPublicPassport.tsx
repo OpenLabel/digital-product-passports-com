@@ -107,7 +107,7 @@ export function ToyPublicPassport({
   const { i18n } = useTranslation();
   const { config } = useSiteConfig();
   const d = passport.category_data || {};
-  const displayLanguage = previewLanguage || (i18n.language || 'en').split('-')[0];
+  const displayLanguage = previewLanguage || toDppLanguage(i18n.language);
   const t = i18n.getFixedT(displayLanguage);
 
   /** Prefer per-language translation, fall back to the source value. */

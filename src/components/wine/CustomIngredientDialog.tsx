@@ -55,7 +55,7 @@ export function CustomIngredientDialog({
   const [isAllergen, setIsAllergen] = useState(false);
   const [nameTranslations, setNameTranslations] = useState<Translations>({});
 
-  const currentLanguage = i18n.language.split('-')[0];
+  const currentLanguage = toDppLanguage(i18n.language);
   const isEditMode = !!editIngredient;
 
   // Auto-translate ingredient name

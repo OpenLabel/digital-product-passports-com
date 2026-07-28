@@ -51,7 +51,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
   const [customTypeTranslations, setCustomTypeTranslations] = useState<Translations>({});
   const [editingMaterial, setEditingMaterial] = useState<PackagingMaterialWithTranslations | null>(null);
 
-  const currentLanguage = i18n.language.split('-')[0];
+  const currentLanguage = toDppLanguage(i18n.language);
   const materials = (data.packaging_materials as PackagingMaterialWithTranslations[]) || [];
 
   // Auto-translate custom type name

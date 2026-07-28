@@ -64,7 +64,7 @@ interface FormData {
 
 export default function PassportForm() {
   const { t, i18n } = useTranslation();
-  const currentLanguage = i18n.language.split('-')[0];
+  const currentLanguage = toDppLanguage(i18n.language);
   const { id } = useParams<{ id: string }>();
   const isEditing = id && id !== 'new';
   const navigate = useNavigate();

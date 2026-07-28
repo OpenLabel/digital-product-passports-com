@@ -55,7 +55,7 @@ export function TranslatableField({
   autoTranslate = true,
 }: TranslatableFieldProps) {
   const { t, i18n } = useTranslation();
-  const sourceLanguage = (i18n.language || 'en').split('-')[0];
+  const sourceLanguage = toDppLanguage(i18n.language);
 
   const handleAutoTranslations = useCallback(
     (next: Translations) => onTranslationsChange(next),

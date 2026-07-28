@@ -40,7 +40,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
   
   // Manage preview language separately from app language
   const [previewLanguage, setPreviewLanguage] = useState(() => {
-    return i18n.language.split('-')[0];
+    return toDppLanguage(i18n.language);
   });
 
   const previewPassport = {
