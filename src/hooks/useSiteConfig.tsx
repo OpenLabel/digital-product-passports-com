@@ -34,6 +34,7 @@ interface SiteConfigContextType {
   config: SiteConfig | null;
   loading: boolean;
   isSetupRequired: boolean;
+  error: boolean;
   refetch: () => Promise<void>;
   saveConfig: (config: Partial<SiteConfig>) => Promise<void>;
 }
@@ -56,6 +57,7 @@ const SiteConfigContext = createContext<SiteConfigContextType | null>(null);
 export function SiteConfigProvider({ children }: { children: ReactNode }) {
   const [config, setConfig] = useState<SiteConfig | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchConfig = async () => {
     try {
@@ -68,6 +70,7 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
       if (!data || data.length === 0) {
         // No config exists yet - setup required
         setConfig(defaultConfig);
+        setError(false);
         setLoading(false);
         return;
       }
@@ -90,9 +93,12 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
         admin_user_id: configObj.admin_user_id || '',
         admin_leaderboard_token: configObj.admin_leaderboard_token || '',
       });
-    } catch (error) {
-      console.error('Error fetching site config:', error);
-      setConfig(defaultConfig);
+      setError(false);
+    } catch (err) {
+      console.error('Error fetching site config:', err);
+      // BUG-12: keep prior config on fetch error; do NOT force setup mode.
+      setError(true);
+      setConfig((prev) => prev ?? defaultConfig);
     } finally {
       setLoading(false);
     }
@@ -122,7 +128,8 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
     fetchConfig();
   }, []);
 
-  const isSetupRequired = !loading && config !== null && !config.setup_complete;
+  // BUG-12: if fetch errored, don't route the user into setup wizard.
+  const isSetupRequired = !loading && !error && config !== null && !config.setup_complete;
 
   return (
     <SiteConfigContext.Provider
@@ -130,6 +137,7 @@ export function SiteConfigProvider({ children }: { children: ReactNode }) {
         config,
         loading,
         isSetupRequired,
+        error,
         refetch: fetchConfig,
         saveConfig,
       }}
