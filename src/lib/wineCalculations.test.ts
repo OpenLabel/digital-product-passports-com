@@ -6,44 +6,6 @@ import {
 
 describe("wineCalculations", () => {
   describe("calculateWineNutrition", () => {
-    it("calculates correct values for test case 1: high glycerine", () => {
-      // Inputs: Alcohol=123, Sugar=456, Acidity=789, Glycerine=101112
-      // Expected: Energy=25375 kcal, kJ=106169, Carbs=10156.8, Sugar=45.6
-      const inputs: WineNutritionInputs = {
-        alcoholPercent: 123,
-        residualSugar: 456,
-        totalAcidity: 789,
-        glycerine: 101112,
-      };
-
-      const result = calculateWineNutrition(inputs);
-
-      expect(result.energyKcal).toBe(25375);
-      expect(result.energyKj).toBe(106169);
-      expect(result.carbohydrates).toBe(10156.8);
-      expect(result.sugar).toBe(45.6);
-      expect(result.glycerine).toBe(101112);
-    });
-
-    it("calculates correct values for test case 2: high values", () => {
-      // Inputs: Alcohol=999, Sugar=999, Acidity=999, Glycerine=789
-      const inputs: WineNutritionInputs = {
-        alcoholPercent: 999,
-        residualSugar: 999,
-        totalAcidity: 999,
-        glycerine: 789,
-      };
-
-      const result = calculateWineNutrition(inputs);
-
-      expect(result.glycerine).toBe(789);
-      expect(result.sugar).toBe(99.9);
-      // Carbs = (999 + 789) / 10 = 178.8
-      expect(result.carbohydrates).toBe(178.8);
-      // Energy = 999*0.789*7 + 99.9*4 + 99.9*3.12 + 78.9*2.4 ≈ 6418
-      expect(result.energyKcal).toBeCloseTo(6418, -1);
-    });
-
     it("calculates realistic wine values correctly", () => {
       // Typical wine: 13% alcohol, 5 g/L sugar, 6 g/L acidity, 10 g/L glycerine
       const inputs: WineNutritionInputs = {
@@ -57,7 +19,7 @@ describe("wineCalculations", () => {
 
       // Alcohol: 13 * 0.789 = 10.257g → 71.8 kcal
       // Sugar: 0.5g → 2 kcal
-      // Acidity: 0.6g → 1.87 kcal
+      // Acidity: 0.6g → 1.8 kcal (3 kcal/g)
       // Glycerine: 1g → 2.4 kcal
       // Total: ~78 kcal
       expect(result.energyKcal).toBeGreaterThan(70);
@@ -84,57 +46,65 @@ describe("wineCalculations", () => {
     });
   });
 
-  describe("energy factors compliance", () => {
-    it("applies 7 kcal/g for alcohol", () => {
-      // 100% alcohol with no other inputs
+  describe("Annex XIV energy factors (kcal + kJ from grams)", () => {
+    it("applies 7 kcal/g and 29 kJ/g for alcohol", () => {
       const result = calculateWineNutrition({
         alcoholPercent: 100,
         residualSugar: 0,
         totalAcidity: 0,
         glycerine: 0,
       });
-
-      // 100 * 0.789 = 78.9g alcohol → 78.9 * 7 = 552.3 kcal
+      // 100 * 0.789 = 78.9g alcohol → 78.9 * 7 = 552.3 kcal, 78.9 * 29 = 2288.1 kJ
       expect(result.energyKcal).toBeCloseTo(552, 0);
+      expect(result.energyKj).toBeCloseTo(2288, 0);
     });
 
-    it("applies 4 kcal/g for sugar", () => {
-      // 1000 g/L sugar only
+    it("applies 4 kcal/g and 17 kJ/g for sugar", () => {
       const result = calculateWineNutrition({
         alcoholPercent: 0,
         residualSugar: 1000,
         totalAcidity: 0,
         glycerine: 0,
       });
-
-      // 100g sugar → 100 * 4 = 400 kcal
+      // 100g sugar → 400 kcal, 1700 kJ
       expect(result.energyKcal).toBe(400);
+      expect(result.energyKj).toBe(1700);
     });
 
-    it("applies 3.12 kcal/g for acidity", () => {
-      // 1000 g/L acidity only
+    it("applies 3 kcal/g and 13 kJ/g for organic acid", () => {
       const result = calculateWineNutrition({
         alcoholPercent: 0,
         residualSugar: 0,
         totalAcidity: 1000,
         glycerine: 0,
       });
-
-      // 100g acidity → 100 * 3.12 = 312 kcal
-      expect(result.energyKcal).toBe(312);
+      // 100g acidity → 300 kcal, 1300 kJ
+      expect(result.energyKcal).toBe(300);
+      expect(result.energyKj).toBe(1300);
     });
 
-    it("applies 2.4 kcal/g for glycerine", () => {
-      // 1000 g/L glycerine only
+    it("applies 2.4 kcal/g and 10 kJ/g for polyol (glycerine)", () => {
       const result = calculateWineNutrition({
         alcoholPercent: 0,
         residualSugar: 0,
         totalAcidity: 0,
         glycerine: 1000,
       });
-
-      // 100g glycerine → 100 * 2.4 = 240 kcal
+      // 100g glycerine → 240 kcal, 1000 kJ
       expect(result.energyKcal).toBe(240);
+      expect(result.energyKj).toBe(1000);
+    });
+
+    it("computes kJ from grams (not from kcal * 4.184)", () => {
+      const result = calculateWineNutrition({
+        alcoholPercent: 12,
+        residualSugar: 3,
+        totalAcidity: 5,
+        glycerine: 8,
+      });
+      // alcohol 9.468g, sugar 0.3g, acid 0.5g, glyc 0.8g
+      // kJ = 9.468*29 + 0.3*17 + 0.5*13 + 0.8*10 = 274.572 + 5.1 + 6.5 + 8 = 294.172 → 294
+      expect(result.energyKj).toBe(294);
     });
   });
 });

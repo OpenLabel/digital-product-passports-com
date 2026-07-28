@@ -32,8 +32,9 @@ export function useReferral() {
 
   useEffect(() => {
     const ref = searchParams.get('ref');
+    // BUG-36: bound length so we never persist an oversized string
     if (ref && /^[a-zA-Z0-9]+$/.test(ref)) {
-      localStorage.setItem(REFERRAL_KEY, ref);
+      localStorage.setItem(REFERRAL_KEY, ref.slice(0, 64));
     }
   }, [searchParams]);
 }

@@ -59,12 +59,14 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Sync local state with server data
+  // Sync local state with server data. BUG-14: only sync once the fetch has
+  // resolved — otherwise a stale non-empty `passports` snapshot can flash
+  // ghost cards after the user deletes their last passport.
   useEffect(() => {
-    if (passports.length > 0) {
+    if (!isLoading) {
       setLocalPassports(passports);
     }
-  }, [passports]);
+  }, [passports, isLoading]);
 
   useEffect(() => {
     if (!authLoading && !user) {

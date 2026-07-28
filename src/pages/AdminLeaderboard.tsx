@@ -70,8 +70,13 @@ export default function AdminLeaderboard() {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    fetch(`${FUNCTIONS_URL}?token=${encodeURIComponent(token)}`, {
-      headers: { Accept: "application/json" },
+    // BUG-35: send the token via Authorization: Bearer header only — never
+    // in the URL, where it would end up in server logs and browser history.
+    fetch(FUNCTIONS_URL, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then(async (r) => {
         const body = await r.json().catch(() => ({}));
@@ -107,7 +112,7 @@ export default function AdminLeaderboard() {
     );
   }
 
-  const apiUrl = `${FUNCTIONS_URL}?token=${encodeURIComponent(token)}`;
+  const apiUrl = FUNCTIONS_URL;
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">

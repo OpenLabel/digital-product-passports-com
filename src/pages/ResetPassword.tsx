@@ -96,19 +96,28 @@ export default function ResetPassword() {
             <CardDescription>{t('auth.setNewPasswordDesc')}</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="password">{t('auth.newPassword')}</Label>
-                <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirmPassword">{t('auth.confirmPassword')}</Label>
-                <Input id="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-              </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? t('common.loading') : t('auth.updatePassword')}
-              </Button>
-            </form>
+            {/* BUG-34: gate the form on a real PASSWORD_RECOVERY event — the
+                page must not accept a new password unless Supabase actually
+                delivered a recovery session. */}
+            {!isRecovery ? (
+              <p className="text-sm text-muted-foreground text-center">
+                {t('auth.recoveryLinkRequired', 'Open the password reset link from your email to continue.')}
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="password">{t('auth.newPassword')}</Label>
+                  <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">{t('auth.confirmPassword')}</Label>
+                  <Input id="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                </div>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? t('common.loading') : t('auth.updatePassword')}
+                </Button>
+              </form>
+            )}
           </CardContent>
         </Card>
       </div>

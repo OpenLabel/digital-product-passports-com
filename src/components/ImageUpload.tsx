@@ -3,14 +3,6 @@
  * Copyright (C) 2026 Open-Label.eu
  *
  * Licensed under the Open-Label Public License (OLPL) v1.0.
- * You may use, modify, and distribute this software under the terms
- * of the OLPL license.
- *
- * Interfaces displaying Digital Product Passports generated using
- * this software must display:
- *
- *     Powered by Open-Label.eu
- *
  * See LICENSE and NOTICE files for details.
  */
 
@@ -29,12 +21,38 @@ interface ImageUploadProps {
   className?: string;
 }
 
+// Extract the storage path (relative to the bucket) from a public URL.
+// Returns null when the URL is not a passport-images public URL — we must
+// never attempt to delete arbitrary objects supplied by the client.
+function extractStoragePath(url: string | null | undefined, userId: string): string | null {
+  if (!url) return null;
+  const marker = '/storage/v1/object/public/passport-images/';
+  const idx = url.indexOf(marker);
+  if (idx === -1) return null;
+  const path = url.slice(idx + marker.length).split('?')[0];
+  // Only allow deleting objects owned by the current user (folder = userId).
+  if (!path.startsWith(`${userId}/`)) return null;
+  return path;
+}
+
 export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { user } = useAuth();
   const { t } = useTranslation();
+
+  const removePreviousObject = async (previousUrl: string | null) => {
+    if (!previousUrl || !user) return;
+    const path = extractStoragePath(previousUrl, user.id);
+    if (!path) return;
+    try {
+      await supabase.storage.from('passport-images').remove([path]);
+    } catch (err) {
+      // Best-effort cleanup; never block the UI on a failed delete.
+      console.warn('Failed to delete previous image:', err);
+    }
+  };
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -45,6 +63,7 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
       return;
     }
 
+    // BUG-31: enforce MIME + size before touching storage
     if (!file.type.startsWith('image/')) {
       setError(t('imageUpload.invalidType'));
       return;
@@ -74,7 +93,11 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
         .from('passport-images')
         .getPublicUrl(filePath);
 
+      // BUG-31: after the new upload succeeds, delete the previous object
+      // so orphaned images don't accumulate in storage.
+      const previousUrl = value;
       onChange(data.publicUrl);
+      await removePreviousObject(previousUrl);
     } catch (err: any) {
       setError(err.message || t('imageUpload.uploadFailed'));
     } finally {
@@ -82,11 +105,13 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
     }
   };
 
-  const handleRemove = () => {
+  const handleRemove = async () => {
+    const previousUrl = value;
     onChange(null);
     if (inputRef.current) {
       inputRef.current.value = '';
     }
+    await removePreviousObject(previousUrl);
   };
 
   return (

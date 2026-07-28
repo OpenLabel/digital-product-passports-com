@@ -481,11 +481,12 @@ export function CategoryQuestions({
           <Input
             id={question.id}
             type="number"
-            value={(value as number) || ''}
+            // BUG-19: preserve legitimate 0; use '' only when null/undefined
+            value={value === 0 || value ? String(value) : ''}
             onChange={(e) =>
               handleChange(
                 question.id,
-                e.target.value ? Number(e.target.value) : '',
+                e.target.value === '' ? null : Number(e.target.value),
               )
             }
             placeholder={tPlaceholder(t, question)}

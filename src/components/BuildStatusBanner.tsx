@@ -15,6 +15,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { AlertTriangle, Copy, Check, ChevronDown, Loader2 } from 'lucide-react';
@@ -49,11 +50,12 @@ export function BuildStatusBanner() {
   const [dismissed, setDismissed] = useState(false);
   const { toast } = useToast();
   const { config, loading: configLoading } = useSiteConfig();
+  // BUG-33: use useLocation so route changes re-evaluate isPublicRoute
+  // without a full remount and stale window.location reads.
+  const location = useLocation();
 
   const isPreview = import.meta.env.DEV || window.location.hostname.includes('id-preview--');
-  // Never render on public-facing routes (DPP, referral, legal, setup) — those pages
-  // are shown to end customers / regulators and must stay free of dev/admin chrome.
-  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const path = location.pathname;
   const isPublicRoute =
     path.startsWith('/p/') ||
     path.startsWith('/referral') ||
@@ -72,10 +74,14 @@ export function BuildStatusBanner() {
     }
 
     const fetchUrl = `${baseUrl}/build-status.json`;
+    // BUG-33: abort the pending fetch on unmount / re-run so a slow
+    // response can't race and overwrite fresher state.
+    const controller = new AbortController();
 
     supabase.functions
       .invoke('get-build-status', { body: { url: fetchUrl } })
       .then(({ data, error }) => {
+        if (controller.signal.aborted) return;
         if (error) {
           setResolved({ status: 'unknown', message: `Could not fetch build status: ${error.message}` });
           return;
@@ -88,8 +94,11 @@ export function BuildStatusBanner() {
         }
       })
       .catch((err) => {
+        if (controller.signal.aborted) return;
         setResolved({ status: 'unknown', message: `Could not fetch build status: ${err?.message ?? 'Network error'}` });
       });
+
+    return () => controller.abort();
   }, [isPreview, configLoading, config?.site_url]);
 
   useEffect(() => {
