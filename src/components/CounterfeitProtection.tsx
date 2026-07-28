@@ -96,8 +96,6 @@ export function CounterfeitProtection({
     onChange(false);
   };
 
-  if (enabled) {
-    return (
   // BUG-10: only show the "email sent" confirmation once we actually have a
   // request timestamp persisted. Before that, the toggle is on but no email
   // has been dispatched yet (happens on first save via PassportForm).
