@@ -25,10 +25,11 @@ import { WinePublicPassport } from '@/components/wine/WinePublicPassport';
 import { ToyPublicPassport } from '@/components/toys/ToyPublicPassport';
 import { ShieldCheck } from 'lucide-react';
 import DOMPurify from 'dompurify';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 export default function PublicPassport() {
   const { t, i18n } = useTranslation();
-  const displayLanguage = i18n.language.split('-')[0];
+  const displayLanguage = toDppLanguage(i18n.language);
   const { slug } = useParams<{ slug: string }>();
   const { data: passport, isLoading, error } = usePassportBySlug(slug);
 
