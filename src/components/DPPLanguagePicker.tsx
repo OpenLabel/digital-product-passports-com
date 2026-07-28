@@ -25,6 +25,7 @@ import {
 } from '@/components/ui/select';
 import { Globe } from 'lucide-react';
 import { EU_LANGUAGES } from '@/components/TranslationButton';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface DPPLanguagePickerProps {
   /** When true, changes affect only local state (for preview mode) */
@@ -50,7 +51,7 @@ export function DPPLanguagePicker({
   
   // Use provided language or fall back to i18n language, constrained to EU languages
   const getEffectiveLanguage = () => {
-    const lang = currentLanguage || i18n.language.split('-')[0];
+    const lang = currentLanguage || toDppLanguage(i18n.language);
     // Check if it's an EU language, otherwise default to English
     const isEULang = EU_LANGUAGES.some(l => l.code === lang);
     return isEULang ? lang : 'en';
@@ -58,13 +59,13 @@ export function DPPLanguagePicker({
 
   const [selectedLang, setSelectedLang] = useState(getEffectiveLanguage);
 
-  // On initial mount (public DPP page), if user's language is non-EU, 
+  // On initial mount (public DPP page), if user's language is non-EU,
   // sync i18n to English so the content matches the picker
   useEffect(() => {
     if (!localOnly && !currentLanguage) {
-      const currentLang = i18n.language.split('-')[0];
+      const currentLang = toDppLanguage(i18n.language);
       const isEULang = EU_LANGUAGES.some(l => l.code === currentLang);
-      
+
       if (!isEULang && i18n.language !== 'en') {
         // User's language is not an EU language - sync i18n to English
         i18n.changeLanguage('en');

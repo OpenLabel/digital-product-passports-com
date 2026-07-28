@@ -24,6 +24,7 @@ import { Badge } from '@/components/ui/badge';
 import { ShieldCheck } from 'lucide-react';
 import DOMPurify from 'dompurify';
 import type { ProductCategory } from '@/types/passport';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface PassportPreviewProps {
   formData: {

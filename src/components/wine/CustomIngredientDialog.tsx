@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 export interface CustomIngredient {
   id: string;

@@ -56,7 +56,7 @@ const EU_LANG_CODES = Object.keys(languageNames) as [string, ...string[]];
 const TranslateSchema = z.object({
   text: z.string().trim().min(1).max(50_000),
   sourceLanguage: z.enum(EU_LANG_CODES),
-  targetLanguages: z.array(z.enum(EU_LANG_CODES)).min(1).max(24),
+  targetLanguages: z.array(z.enum(EU_LANG_CODES)).min(1).max(25),
 });
 
 serve(async (req) => {

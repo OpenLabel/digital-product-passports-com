@@ -31,6 +31,7 @@ import { calculateWineNutrition } from '@/lib/wineCalculations';
 import { TranslationButton, Translations } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
 import { LabelWithHint, FieldHint } from '@/components/ui/field-hint';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface WineFieldsProps {
   data: Record<string, unknown>;

@@ -23,6 +23,7 @@ import {
   type Translations,
 } from '@/components/TranslationButton';
 import { useAutoTranslate } from '@/hooks/useAutoTranslate';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface TranslatableFieldProps {
   id: string;

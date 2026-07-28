@@ -35,6 +35,7 @@ import { useSiteConfig } from '@/hooks/useSiteConfig';
 import { isLegacyAllergenDeclaration, type SelectedFragrance } from '@/data/toyFragrances';
 
 import { DPPLanguagePicker } from '@/components/DPPLanguagePicker';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface ToyPublicPassportProps {
   passport: {

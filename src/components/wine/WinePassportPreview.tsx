@@ -17,6 +17,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { WinePublicPassport } from './WinePublicPassport';
+import { toDppLanguage } from '@/lib/dppLanguage';
 
 interface WinePassportPreviewProps {
   formData: {
