@@ -28,6 +28,15 @@ export class BatteryTemplate extends BaseTemplate {
       description: 'Basic battery identification per EU Battery Regulation',
       questions: [
         {
+          id: 'battery_unique_identifier',
+          label: 'Unique Battery Identifier',
+          type: 'text',
+          required: true,
+          placeholder: 'Serial number / GS1 unique ID',
+          helpText: 'Persistent unique identifier per Annex VI of Regulation (EU) 2023/1542.',
+        },
+
+        {
           id: 'battery_type',
           label: 'Battery Type',
           type: 'select',
