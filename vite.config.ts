@@ -82,6 +82,9 @@ function buildVerboseStatus(testResultsDir: string, coverageDir: string): object
     };
   }
   if (testRunAttempted && !trExists && !cvExists) {
+    if (testRunTerminated) {
+      return { status: "unknown", message: "Test run terminated by environment (SIGTERM). Artifacts unavailable." };
+    }
     return { status: "fail", message: "No test artifacts generated.", stderr: testRunStderr?.slice(-3000) || undefined };
   }
   if (!trExists && !cvExists) {
