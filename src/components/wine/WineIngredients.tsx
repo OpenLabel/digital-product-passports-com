@@ -58,11 +58,15 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
   };
 
   const handleApplyFromPicker = (selectedIds: string[]) => {
-    // Get existing custom ingredients
-    const customIngredients = selectedIngredients.filter((ing) => ing.isCustom);
-    
-    // Convert selected IDs to ingredient objects
-    const standardIngredients: SelectedIngredient[] = selectedIds
+    const selectedIdSet = new Set(selectedIds);
+    // Preserve existing order for items that are still selected (standard or custom).
+    const preserved: SelectedIngredient[] = selectedIngredients.filter(
+      (ing) => ing.isCustom || selectedIdSet.has(ing.id),
+    );
+    const existingIds = new Set(preserved.map((i) => i.id));
+    // Append any newly selected standard ingredients that weren't already present, in picker order.
+    const additions: SelectedIngredient[] = selectedIds
+      .filter((id) => !existingIds.has(id))
       .map((id) => {
         const ingredient = getIngredientById(id);
         if (!ingredient) return null;
@@ -78,7 +82,7 @@ export function WineIngredients({ data, onChange }: WineIngredientsProps) {
 
     onChange({
       ...data,
-      ingredients: [...standardIngredients, ...customIngredients],
+      ingredients: [...preserved, ...additions],
     });
   };
 
