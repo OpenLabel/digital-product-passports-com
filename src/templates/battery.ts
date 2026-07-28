@@ -239,7 +239,7 @@ export class BatteryTemplate extends BaseTemplate {
   getRequiredLogos(data: Record<string, unknown>): string[] {
     const logos: string[] = [];
     
-    if (data.separate_collection_required) logos.push('weee');
+    if (data.separate_collection_required) logos.push('battery-crossed-bin');
     if (data.carbon_footprint_class) logos.push('carbon-class');
     
     return logos;
