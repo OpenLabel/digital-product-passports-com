@@ -190,7 +190,7 @@ export default function Index() {
             <Card className="border-2 hover:border-primary/50 transition-colors">
               <CardContent className="pt-6">
                 <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Infinity className="h-6 w-6 text-primary" />
+                  <InfinityIcon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{t('landing.features.openSource.title')}</h3>
                 <p className="text-sm text-muted-foreground">
