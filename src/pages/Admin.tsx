@@ -61,9 +61,14 @@ export default function Admin() {
 
   const token = config.admin_leaderboard_token;
   const baseUrl = config.site_url?.trim() || window.location.origin;
+  // BUG-35: don't append the token to the URL — the browser URL is stored in
+  // history, logs, and analytics. Point at the human page (which passes the
+  // token in the hash) and at the plain API endpoint (which accepts it via
+  // Authorization: Bearer). The API URL alone is not enough to authenticate.
   const humanUrl = token ? `${baseUrl}/admin-leaderboard#${encodeURIComponent(token)}` : '';
-  const apiUrl = token
-    ? `https://${import.meta.env.VITE_SUPABASE_PROJECT_ID}.functions.supabase.co/get-admin-leaderboard?token=${encodeURIComponent(token)}`
+  const apiUrl = `https://${import.meta.env.VITE_SUPABASE_PROJECT_ID}.functions.supabase.co/get-admin-leaderboard`;
+  const apiCurlExample = token
+    ? `curl -H "Authorization: Bearer ${token}" "${apiUrl}"`
     : '';
 
   const copy = (s: string, label: string) => {
@@ -154,10 +159,23 @@ export default function Admin() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label>JSON API URL</Label>
+                  <Label>JSON API endpoint</Label>
                   <div className="flex gap-2">
                     <Input readOnly value={apiUrl} className="font-mono text-xs" />
                     <Button type="button" variant="outline" size="icon" onClick={() => copy(apiUrl, 'API URL')}>
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Send the token via <code className="font-mono">Authorization: Bearer &lt;token&gt;</code>.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Example curl command</Label>
+                  <div className="flex gap-2">
+                    <Input readOnly value={apiCurlExample} className="font-mono text-xs" />
+                    <Button type="button" variant="outline" size="icon" onClick={() => copy(apiCurlExample, 'curl command')}>
                       <Copy className="h-4 w-4" />
                     </Button>
                   </div>

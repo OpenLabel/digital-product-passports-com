@@ -36,6 +36,7 @@ import { isLegacyAllergenDeclaration, type SelectedFragrance } from '@/data/toyF
 
 import { DPPLanguagePicker } from '@/components/DPPLanguagePicker';
 import { toDppLanguage } from '@/lib/dppLanguage';
+import { sanitizeUrl } from '@/lib/sanitizeUrl';
 
 interface ToyPublicPassportProps {
   passport: {
@@ -256,7 +257,7 @@ export function ToyPublicPassport({
             value={
               d.manufacturer_website ? (
                 <a
-                  href={String(d.manufacturer_website)}
+                  href={sanitizeUrl(String(d.manufacturer_website))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary underline inline-flex items-center gap-1"
@@ -471,7 +472,7 @@ export function ToyPublicPassport({
                   {(d.notified_body_certificate_url as string) && (
                     <div className="text-xs">
                       <a
-                        href={d.notified_body_certificate_url as string}
+                        href={sanitizeUrl(d.notified_body_certificate_url as string)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary underline inline-flex items-center gap-1"
@@ -586,7 +587,7 @@ export function ToyPublicPassport({
                 <li>
                   {t('toyPublic.safety.web')}:{' '}
                   <a
-                    href={d.safety_website as string}
+                    href={sanitizeUrl(d.safety_website as string)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary underline"

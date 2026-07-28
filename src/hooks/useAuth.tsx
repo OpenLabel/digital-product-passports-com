@@ -71,13 +71,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       },
     });
 
-    // Save referral association if a code was captured
+    // BUG-16 / BUG-36: only clear referral code after a successful insert,
+    // and log any insert error so it can be investigated.
     if (!error && data.user && referralCode) {
-      await supabase.from('referrals').insert({
+      const { error: referralError } = await supabase.from('referrals').insert({
         user_id: data.user.id,
         referral_code: referralCode,
       });
-      clearReferralCode();
+      if (referralError) {
+        console.error('Failed to persist referral code:', referralError);
+      } else {
+        clearReferralCode();
+      }
     }
 
     return { error };

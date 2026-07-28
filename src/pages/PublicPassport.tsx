@@ -113,7 +113,7 @@ export default function PublicPassport() {
               </Badge>
             )}
             <h1 className="text-3xl font-bold mb-2">
-              {(categoryData.product_name_translations as Record<string, string>)?.[displayLanguage] || (categoryData.product_name as string) || ''}
+              {(categoryData.product_name_translations as Record<string, string>)?.[displayLanguage] || (categoryData.product_name as string) || passport.name || ''}
             </h1>
             
             {/* Check Authenticity Button */}

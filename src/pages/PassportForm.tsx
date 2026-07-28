@@ -264,6 +264,21 @@ export default function PassportForm() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [formData, saving]);
 
+  // BUG-13: warn the user before they close the tab / navigate away with
+  // unsaved edits. Only attaches while the form is actually dirty so we
+  // don't nag on a pristine passport.
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (hasUnsavedChanges()) {
+        e.preventDefault();
+        // Legacy Chrome still requires setting returnValue.
+        e.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [hasUnsavedChanges]);
+
   if (authLoading || (isEditing && passportLoading)) {
     return (
       <div className="min-h-screen bg-muted/30 p-8">
