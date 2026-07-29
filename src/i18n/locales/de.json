@@ -490,7 +490,8 @@
     "sending": "Wird gesendet...",
     "errorNoEmail": "Anfrage konnte nicht gesendet werden - Benutzer-E-Mail nicht gefunden",
     "errorSaveFirst": "Bitte speichern Sie den Pass zuerst, bevor Sie den Fälschungsschutz aktivieren",
-    "errorFailed": "Fälschungsschutzanfrage konnte nicht gesendet werden"
+    "errorFailed": "Fälschungsschutzanfrage konnte nicht gesendet werden",
+    "pendingSend": "Der Partner wird benachrichtigt, sobald Sie diesen Pass das nächste Mal speichern."
   },
   "customIngredient": {
     "title": "Benutzerdefinierte Zutat definieren",
@@ -539,13 +540,6 @@
     "code": "Code",
     "material": "Material",
     "disposal": "Entsorgung",
-    "componentTypes": {
-      "bottle": "Flasche",
-      "closure": "Verschluss",
-      "capsule": "Kapsel",
-      "label": "Etikett",
-      "box": "Karton"
-    },
     "selectMaterial": "Material auswählen",
     "individualComponents": "Einzelkomponenten",
     "compositeComponents": "Verbundkomponenten",

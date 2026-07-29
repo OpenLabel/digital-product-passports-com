@@ -464,13 +464,6 @@
     "code": "Kodiċi",
     "material": "Materjal",
     "disposal": "Rimi",
-    "componentTypes": {
-      "bottle": "Flixkun",
-      "closure": "Għeluq",
-      "capsule": "Kapsula",
-      "label": "Tikketta",
-      "box": "Kaxxa"
-    },
     "selectMaterial": "Agħżel materjal",
     "individualComponents": "Komponenti individwali",
     "compositeComponents": "Komponenti komposti",
@@ -507,7 +500,8 @@
     "sending": "Qed jintbagħat...",
     "errorNoEmail": "Ma tistax tintbagħat it-talba – l-email tal-utent ma nstabx",
     "errorSaveFirst": "Jekk jogħġbok issejvja l-passaport l-ewwel qabel ma tattiva l-protezzjoni",
-    "errorFailed": "Ma rnexxiex tintbagħat it-talba tal-protezzjoni kontra l-falsifikazzjoni"
+    "errorFailed": "Ma rnexxiex tintbagħat it-talba tal-protezzjoni kontra l-falsifikazzjoni",
+    "pendingSend": "Is-sieħeb se jiġi nnotifikat id-darba li jmiss li tissejvja dan il-passaport."
   },
   "customIngredient": {
     "title": "Iddefinixxi ingredjent personalizzat",

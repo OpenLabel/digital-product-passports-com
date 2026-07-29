@@ -111,8 +111,9 @@ export function ImageUpload({ value, onChange, className, onPendingDelete }: Ima
       const previousUrl = value;
       onChange(data.publicUrl);
       await removePreviousObject(previousUrl);
-    } catch (err: any) {
-      setError(err.message || t('imageUpload.uploadFailed'));
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      setError(message || t('imageUpload.uploadFailed'));
     } finally {
       setUploading(false);
     }

@@ -464,13 +464,6 @@
     "code": "Kód",
     "material": "Anyag",
     "disposal": "Ártalmatlanítás",
-    "componentTypes": {
-      "bottle": "Palack",
-      "closure": "Zárókupak",
-      "capsule": "Kapszula",
-      "label": "Címke",
-      "box": "Doboz"
-    },
     "selectMaterial": "Válasszon anyagot",
     "individualComponents": "Egyedi alkatrészek",
     "compositeComponents": "Összetett alkatrészek",
@@ -507,7 +500,8 @@
     "sending": "Küldés...",
     "errorNoEmail": "Nem sikerült elküldeni a kérést – felhasználói e-mail nem található",
     "errorSaveFirst": "Kérjük, először mentse el az útlevelet a védelem engedélyezése előtt",
-    "errorFailed": "Nem sikerült elküldeni a hamisítás elleni védelmi kérést"
+    "errorFailed": "Nem sikerült elküldeni a hamisítás elleni védelmi kérést",
+    "pendingSend": "A partner értesítést kap, amikor legközelebb menti ezt az útlevelet."
   },
   "customIngredient": {
     "title": "Egyéni összetevő meghatározása",

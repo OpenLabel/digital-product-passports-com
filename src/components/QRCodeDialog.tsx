@@ -346,7 +346,6 @@ export function QRCodeDialog({
     while (clone.childNodes.length > 0) {
       g.appendChild(clone.childNodes[0]);
     }
-    if (cloneViewBox) g.setAttribute('data-viewbox', cloneViewBox);
     wrapper.appendChild(g);
 
     // Security seal overlay

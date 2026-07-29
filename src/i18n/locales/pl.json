@@ -482,7 +482,8 @@
     "sending": "Wysyłanie...",
     "errorNoEmail": "Nie można wysłać żądania - nie znaleziono e-maila użytkownika",
     "errorSaveFirst": "Proszę najpierw zapisać paszport przed włączeniem ochrony przed fałszerstwami",
-    "errorFailed": "Nie udało się wysłać żądania ochrony przed fałszerstwami"
+    "errorFailed": "Nie udało się wysłać żądania ochrony przed fałszerstwami",
+    "pendingSend": "Partner zostanie powiadomiony przy następnym zapisie tego paszportu."
   },
   "qrDialog": {
     "title": "Kod QR",
@@ -531,13 +532,6 @@
     "code": "Kod",
     "material": "Materiał",
     "disposal": "Utylizacja",
-    "componentTypes": {
-      "bottle": "Butelka",
-      "closure": "Zamknięcie",
-      "capsule": "Kapsuła",
-      "label": "Etykieta",
-      "box": "Pudełko"
-    },
     "selectMaterial": "Wybierz materiał",
     "individualComponents": "Komponenty pojedyncze",
     "compositeComponents": "Komponenty złożone",

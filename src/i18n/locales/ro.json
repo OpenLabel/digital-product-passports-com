@@ -464,13 +464,6 @@
     "code": "Cod",
     "material": "Material",
     "disposal": "Eliminare",
-    "componentTypes": {
-      "bottle": "Sticlă",
-      "closure": "Dop",
-      "capsule": "Capsulă",
-      "label": "Etichetă",
-      "box": "Cutie"
-    },
     "selectMaterial": "Selectați materialul",
     "individualComponents": "Componente individuale",
     "compositeComponents": "Componente compozite",
@@ -507,7 +500,8 @@
     "sending": "Se trimite...",
     "errorNoEmail": "Nu se poate trimite cererea – e-mailul utilizatorului nu a fost găsit",
     "errorSaveFirst": "Salvați mai întâi pașaportul înainte de activarea protecției",
-    "errorFailed": "Nu s-a putut trimite cererea de protecție anti-contrafacere"
+    "errorFailed": "Nu s-a putut trimite cererea de protecție anti-contrafacere",
+    "pendingSend": "Partenerul va fi notificat data viitoare când salvați acest pașaport."
   },
   "customIngredient": {
     "title": "Definește un ingredient personalizat",

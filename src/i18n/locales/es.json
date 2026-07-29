@@ -482,7 +482,8 @@
     "sending": "Enviando...",
     "errorNoEmail": "No se puede enviar la solicitud - correo electrónico del usuario no encontrado",
     "errorSaveFirst": "Por favor guarde el pasaporte primero antes de activar la protección antifalsificación",
-    "errorFailed": "Error al enviar la solicitud de protección antifalsificación"
+    "errorFailed": "Error al enviar la solicitud de protección antifalsificación",
+    "pendingSend": "Se notificará al socio la próxima vez que guarde este pasaporte."
   },
   "customIngredient": {
     "title": "Definir un ingrediente personalizado",
@@ -531,13 +532,6 @@
     "code": "Código",
     "material": "Material",
     "disposal": "Eliminación",
-    "componentTypes": {
-      "bottle": "Botella",
-      "closure": "Cierre",
-      "capsule": "Cápsula",
-      "label": "Etiqueta",
-      "box": "Caja"
-    },
     "selectMaterial": "Seleccionar material",
     "individualComponents": "Componentes individuales",
     "compositeComponents": "Componentes compuestos",

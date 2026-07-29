@@ -1,59 +1,78 @@
-# Complete Fix Batch — Post-Verification Remediation
+# Fix Cycle 3 — Implementation Plan
 
-Implements all items A–F from the audit report in one pass. Ordered so the test gate is restored first, then fixes land in dependency order.
+Scope mirrors the Round 2 verification report exactly. Grouped by risk, P2 regressions first.
 
-## Phase A — Unbreak the test gate (blocking)
+## A. P2 Regression: legacy wine recycling table (NEW-11)
 
-1. **`src/pages/Dashboard.test.tsx`** — hoist a module-level stable `mockPassports: Passport[] = []` and return the same reference from the `usePassports` mock (kills the infinite render loop / OOM caused by BUG-14's sync effect).
-2. Add BUG-14 regression test: render Dashboard with one passport, rerender with `[]`, assert `dashboard.noPassports` renders and no `passport-card` remains.
+`src/components/wine/WinePublicPassport.tsx` (~L311-316, L547-573): the `m.id`-keyed column model breaks passports saved before ids existed — every column re-does `packagingMaterials.find(p => p.id === col.id)`, which returns the first match for all id-less rows, so one component's composition/code/disposal renders under every header (with duplicate React keys).
 
-## Phase B — Complete the partial fixes
+Fix: build columns that carry the material object.
+```ts
+const columns = packagingMaterials.map((m, i) => ({
+  key: m.id ?? `${m.typeId}_${i}`,
+  name: getMaterialTypeName(m),
+  material: m,
+}));
+```
+Render every cell from `col.material` and drop the `.find(...)` lookups. Use `col.key` for React keys.
 
-3. **BUG-03** `useAutoTranslate.ts` — change init latch to only fire once a non-empty `value` arrives; deps `[value, existingTranslations]`. Add test: mount with `existingTranslations={fr:'manual'}`, value arrives post-mount → no overwrite.
-4. **BUG-16** `useAuth.tsx` — in `onAuthStateChange`, on `SIGNED_IN` retry pending `getReferralCode()` insert; clear only on success.
-5. **BUG-17** `WinePublicPassport.tsx` — key packaging table columns on each material's unique `m.id` (not `typeId`); use `getMaterialTypeName(m)` for header; look rows up by `id`. Test: two custom components render two distinct columns.
-6. **BUG-29 display half** `WineFields.tsx` — pass `''` (not `0`) to nutrition inputs when `*_manual && stored === ''`. Fix all four fields (energy_kcal, carbs, fat, protein equivalents at :908/930/953/976).
-7. **BUG-23** `PassportPreview.tsx` — apply the same `titleKey/labelKey/option-labelKey` resolution used in `PublicPassport.tsx`.
-8. **BUG-21** `sanitizeUrl.ts` — allowlist scheme approach: parse and accept only `http:`, `https:`, `mailto:`, `tel:`, plus relative/scheme-relative; otherwise return `undefined`. Wrap `CategoryQuestions.tsx:201` `href={value}` with it. Anchors omitted rather than `href="#"`.
-9. **BUG-15** — add error toast in `usePassports.reorderPassports.onError`.
+Test additions in `src/components/wine/WinePublicPassport.render.test.tsx`:
+- Two id-less materials (`typeId: 'bottle'` + `typeId: 'cork'`, distinct compositions) — each column shows its own composition.
+- Two custom-typed materials (both `typeId: 'custom'`, with ids) — asserts two distinct columns render (also closes the BUG-17 test gap).
 
-## Phase C — Two untouched bugs
+## B. P2 Data-loss: duplicated-passport image deletion (NEW-02-R)
 
-10. **BUG-18** — add `wine.recycling.types.<id>`, `.compositions.<id>`, `.disposal.<id>` keys to `en.json` and all 24 other locales (25 files total). Use them in `WinePublicPassport.tsx` `getMaterialTypeName` and disposal/composition renders with English fallback. Delete orphan `recycling.componentTypes` map. French render test asserts translated disposal.
-11. **BUG-30** — add 7 keys (`qrDialog.urlMismatch`, `qrDialog.printSizeInstruction`, `qrDialog.openPassport`, `qrDialog.downloadSvg`, `qrDialog.downloadPng`, `passport.productInfo`, `passport.description`) to all 25 locales; replace inline English defaults in `QRCodeDialog.tsx` (270/449/461/491/494) and `PassportForm.tsx` (577/587) with `t()`.
+`src/pages/PassportForm.tsx` L255-276: `pendingImageDeletionsRef` flush blindly removes storage objects. Duplicated passports share a URL, so replacing one image then saving deletes the sibling's live asset.
 
-## Phase D — Regressions the batch introduced
+Fix: before deleting, query `passports.image_url` for the current user for each pending URL; only delete URLs not referenced by any other row. Keep existing sequencing (flush only after successful save).
 
-12. **NEW-02** `ImageUpload` + `PassportForm` — defer storage deletions until after successful save; skip delete if any other passport row references the same `image_url`. `duplicatePassport` copies the storage object rather than aliasing the URL.
-13. **NEW-03** `CounterfeitProtection` + `usePassports` — persist `counterfeit_request_sent_at` before/with create-flow navigation; `updatePassport.onSuccess` invalidates `['passport', id]`; render Disable control whenever `enabled === true`; backfill `counterfeit_request_sent_at` for pre-existing enabled rows; make `send-counterfeit-request` idempotent per slug.
-14. **NEW-04** `ResetPassword.tsx` — also treat page as recovery-eligible when URL contains `type=recovery` on mount OR persist a sessionStorage flag when `PASSWORD_RECOVERY` fires.
-15. **NEW-05** `WinePublicPassport.tsx` + `WinePassportPreview.tsx` — normalize `'' → undefined` for all nutrition reads so cleared values don't render `" kJ"` and don't suppress `wine.negligibleAmounts` notice.
-16. **NEW-07** — add `auth.recoveryLinkRequired` to all 25 locales.
+## C. Two remaining code gaps
 
-## Phase E — Mandatory tests (FIX_SPEC §B.2)
+1. **BUG-23** — `src/components/PassportPreview.tsx` L233, L251, L256: apply the same `titleKey` / `labelKey` / option `labelKey` i18n resolution already present in `src/pages/PublicPassport.tsx` L194, L214, L218. No more raw English labels in preview.
+2. **BUG-15** — `src/hooks/usePassports.tsx` `reorderPassports.onError` (L154-157): add a user-visible `toast.error` (sonner) alongside the cache invalidation so reorder failures surface.
 
-Add tests for: BUG-01 setup-mode auth routing, BUG-02 late `content` prop syncs into editor DOM, BUG-04 `__ai_autofill` stripped and no re-run on second mount, BUG-05 sulfite bolding via real selection path + integrity test that 4 sulfite ids are allergens in both `wineIngredients.ts` and `wine-label-ocr`, BUG-06 yes/no/unknown declaration texts, BUG-07 `false` checkbox hidden under `i18n.language='fr'`, BUG-08 exported `<g>` transform contains `scale(250/cells)`, BUG-09 zh-CN render, BUG-11 8-hex slug accepted, BUG-12 failed `site_config` fetch → `isSetupRequired === false`, BUG-19 stored `0` renders and clearing stores `null`.
+## D. Seven still-missing §B.2 tests
 
-## Phase F — Housekeeping (P3)
+| Bug | New test |
+|---|---|
+| BUG-01 | `App.test.tsx`: mock `isSetupRequired:true` + no user, navigate to `/auth`, assert Auth renders (no redirect loop to `/setup`). |
+| BUG-03 | `useAutoTranslate` hook test: initial `value:''` + empty translations, rerender to `value:'Wine'` + `{fr:'manual'}`, advance fake timers past `debounceMs`, assert translate edge function never invoked. |
+| BUG-04 | `WineFields`: mount with `data.__ai_autofill` seeded; assert `onChange` payload has no `__ai_autofill` key and a remount with cleaned data does not re-fire autofill merge. |
+| BUG-05 | Add integrity assertion for the 4 sulfite ids in `supabase/functions/wine-label-ocr` `KNOWN_INGREDIENTS` (new test file next to it or in existing wine ingredients integrity test). Replace hard-coded `isAllergen:true` at `WinePublicPassport.render.test.tsx:114` with `getIngredientById('sulfites')`. |
+| BUG-06 | `ToyPublicPassport` × 3 renders: `has_allergenic_fragrances` = `no` / `yes` + list / `unknown`, assert each localized declaration renders. |
+| BUG-07 | Section with a `false` checkbox under `i18n.language='fr'`; assert the row is absent. |
+| BUG-08 | Assert `handleDownloadSvg`'s exported `<g transform>` contains `scale(250/cells)` derived from the clone's viewBox (`QRCodeDialog`). |
+| BUG-09 | Strengthen `fixSpecRegressions.test.tsx` L61-81: add `product_name_translations:{'zh-CN':'示例酒庄'}`, drive `displayLanguage` via `previewLanguage` prop, assert Chinese value renders. |
 
-- **BUG-37** replace remaining `catch (error: any)` with `catch (error: unknown)` + narrowing in: `Dashboard.tsx` (109/119/129), `ResetPassword.tsx:72`, `Setup.tsx:94`, `PassportForm.tsx:286`, `Admin.tsx` (93/107), `Auth.tsx:86`, `ImageUpload.tsx:101`.
-- **NEW-06** `buildVerboseStatus` — clean or timestamp-gate reads of `test-results/` and `coverage/` so stale artifacts can't leak a bogus `pass`.
-- **NEW-09** `CounterfeitProtection.tsx` — drop dead hardcoded loading; add pre-save enable feedback.
-- **NEW-10** cosmetics: trailing newlines in locale JSONs, `WineRecycling.tsx:84` redundant ternary, dead `isCustomComposition*` fields, no-op `data-viewbox`.
-- Fix pre-existing `recycling_materials`/`packaging_materials` key mismatch at `WineFields.tsx:505`.
+## E. Small fixes
 
-## Verification
+1. **NEW-12** — Add `counterfeit.pendingSend` = "The partner will be notified the next time you save this passport." to `en.json` + all 24 other locales (parity tests enforce).
+2. **NEW-13** — `src/components/WineFields.tsx` L913, L935, L960, L983: `value={calculatedValues.energyKcal ?? ''}` (and kJ / carbohydrates / sugar) to fix controlled→uncontrolled flip.
+3. **NEW-03-R** — Backfill `counterfeit_request_sent_at` for legacy-enabled passports via a one-off migration; make `send-counterfeit-request` idempotent per slug; on send-success/persist-failure, retry the DB update instead of toasting a send error.
 
-Run and report:
-- `tsgo --noEmit` → clean
-- Full `bunx vitest run` (no shard workaround in committed config) → all pass, no OOM
-- `bunx eslint .` → not regressed
-- `npm run build` → pass
+## F. Housekeeping (P3)
 
-## Technical notes
+- **NEW-06**: `buildVerboseStatus` should clean and timestamp-gate `test-results/` + `coverage/`.
+- **NEW-09**: remove dead `const loading = false` branch in `CounterfeitProtection.tsx` L42.
+- **NEW-10 leftovers**:
+  - Redundant ternary at `WineRecycling.tsx` L84.
+  - Dead `isCustomComposition*` fields in `wineRecycling.ts` L141-143.
+  - No-op `data-viewbox` in `QRCodeDialog.tsx` L349.
+  - Orphaned `recycling.componentTypes` map in `en.json`.
+- Replace `catch (error: any)` with `unknown` + narrowing in `Admin.tsx` L93, L107 and `ImageUpload.tsx` L114.
 
-- Test gate ordering matters: Phase A must land before running the suite locally, otherwise the OOM masks all other results.
-- Locale changes touch 25 files each (en + 23 EU + zh-CN); duplicate-key + completeness tests will enforce parity.
-- `WinePublicPassport` column keying change is a data-shape change to how the table is built, not a schema change — no migration.
-- `send-counterfeit-request` idempotency is server-side only; client already guards on `counterfeit_request_sent_at`.
-- No threshold/policy relaxation anywhere; `vite.config.ts` test-gate config stays as-is.
+## Guard rails
+
+- Do not weaken any gate: no `;` chaining, keep `&&` fail-closed.
+- `npm run build` remains production-build-only (tests stay in `verify`).
+- No skipped/deleted tests, no lowered thresholds, no locale audit relaxation.
+- All new user-visible strings (only NEW-12) added to all 25 locales.
+
+## Final verification
+
+Run in order and report:
+1. `tsgo --noEmit`
+2. Full sharded `vitest run`
+3. `npm run build`
+
+Reported as PASS/FAIL with counts.

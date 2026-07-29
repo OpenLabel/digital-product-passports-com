@@ -464,13 +464,6 @@
     "code": "Koodi",
     "material": "Materiaali",
     "disposal": "Hävittäminen",
-    "componentTypes": {
-      "bottle": "Pullo",
-      "closure": "Korkki",
-      "capsule": "Kapseli",
-      "label": "Etiketti",
-      "box": "Laatikko"
-    },
     "selectMaterial": "Valitse materiaali",
     "individualComponents": "Yksittäiset osat",
     "compositeComponents": "Komposiittiosat",
@@ -507,7 +500,8 @@
     "sending": "Lähetetään...",
     "errorNoEmail": "Pyyntöä ei voida lähettää – käyttäjän sähköpostia ei löydy",
     "errorSaveFirst": "Tallenna passi ensin ennen suojauksen käyttöönottoa",
-    "errorFailed": "Väärennössuojauspyynnön lähettäminen epäonnistui"
+    "errorFailed": "Väärennössuojauspyynnön lähettäminen epäonnistui",
+    "pendingSend": "Kumppanille ilmoitetaan, kun tallennat tämän passin seuraavan kerran."
   },
   "customIngredient": {
     "title": "Määritä mukautettu ainesosa",

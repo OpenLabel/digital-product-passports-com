@@ -490,7 +490,8 @@
     "sending": "Envoi en cours...",
     "errorNoEmail": "Impossible d'envoyer la demande - e-mail utilisateur non trouvé",
     "errorSaveFirst": "Veuillez d'abord enregistrer le passeport avant d'activer la protection anti-contrefaçon",
-    "errorFailed": "Échec de l'envoi de la demande de protection anti-contrefaçon"
+    "errorFailed": "Échec de l'envoi de la demande de protection anti-contrefaçon",
+    "pendingSend": "Le partenaire sera notifié la prochaine fois que vous enregistrerez ce passeport."
   },
   "customIngredient": {
     "title": "Définir un ingrédient personnalisé",
@@ -539,13 +540,6 @@
     "code": "Code",
     "material": "Matériau",
     "disposal": "Élimination",
-    "componentTypes": {
-      "bottle": "Bouteille",
-      "closure": "Bouchon",
-      "capsule": "Capsule",
-      "label": "Étiquette",
-      "box": "Boîte"
-    },
     "selectMaterial": "Sélectionner le matériau",
     "individualComponents": "Composants individuels",
     "compositeComponents": "Composants composites",

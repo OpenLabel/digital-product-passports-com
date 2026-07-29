@@ -464,13 +464,6 @@
     "code": "Kodas",
     "material": "Medžiaga",
     "disposal": "Šalinimas",
-    "componentTypes": {
-      "bottle": "Butelis",
-      "closure": "Kamštis",
-      "capsule": "Kapsulė",
-      "label": "Etiketė",
-      "box": "Dėžė"
-    },
     "selectMaterial": "Pasirinkite medžiagą",
     "individualComponents": "Atskiri komponentai",
     "compositeComponents": "Sudėtiniai komponentai",
@@ -507,7 +500,8 @@
     "sending": "Siunčiama...",
     "errorNoEmail": "Nepavyko išsiųsti užklausos – naudotojo el. paštas nerastas",
     "errorSaveFirst": "Prieš įjungiant apsaugą, pirmiausia išsaugokite pasą",
-    "errorFailed": "Nepavyko išsiųsti apsaugos nuo klastojimo užklausos"
+    "errorFailed": "Nepavyko išsiųsti apsaugos nuo klastojimo užklausos",
+    "pendingSend": "Partneris bus informuotas kitą kartą išsaugojus šį pasą."
   },
   "customIngredient": {
     "title": "Apibrėžti pasirinktinę sudedamąją dalį",

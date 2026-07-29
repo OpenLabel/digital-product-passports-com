@@ -464,13 +464,6 @@
     "code": "Kode",
     "material": "Materiale",
     "disposal": "Bortskaffelse",
-    "componentTypes": {
-      "bottle": "Flaske",
-      "closure": "Lukning",
-      "capsule": "Kapsel",
-      "label": "Etiket",
-      "box": "Kasse"
-    },
     "selectMaterial": "Vælg materiale",
     "individualComponents": "Individuelle komponenter",
     "compositeComponents": "Sammensatte komponenter",
@@ -507,7 +500,8 @@
     "sending": "Sender...",
     "errorNoEmail": "Kan ikke sende anmodning – brugerens e-mail ikke fundet",
     "errorSaveFirst": "Gem venligst passet først, inden du aktiverer beskyttelsen",
-    "errorFailed": "Kunne ikke sende anmodning om beskyttelse mod forfalskning"
+    "errorFailed": "Kunne ikke sende anmodning om beskyttelse mod forfalskning",
+    "pendingSend": "Partneren vil blive underrettet næste gang du gemmer dette pas."
   },
   "customIngredient": {
     "title": "Definér en brugerdefineret ingrediens",

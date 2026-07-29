@@ -464,13 +464,6 @@
     "code": "Κωδικός",
     "material": "Υλικό",
     "disposal": "Απόρριψη",
-    "componentTypes": {
-      "bottle": "Μπουκάλι",
-      "closure": "Πώμα",
-      "capsule": "Κάψουλα",
-      "label": "Ετικέτα",
-      "box": "Κουτί"
-    },
     "selectMaterial": "Επιλέξτε υλικό",
     "individualComponents": "Μεμονωμένα εξαρτήματα",
     "compositeComponents": "Σύνθετα εξαρτήματα",
@@ -507,7 +500,8 @@
     "sending": "Αποστολή...",
     "errorNoEmail": "Δεν βρέθηκε email χρήστη",
     "errorSaveFirst": "Αποθηκεύστε πρώτα το διαβατήριο",
-    "errorFailed": "Αποτυχία αποστολής αιτήματος"
+    "errorFailed": "Αποτυχία αποστολής αιτήματος",
+    "pendingSend": "Ο συνεργάτης θα ειδοποιηθεί την επόμενη φορά που θα αποθηκεύσετε αυτό το διαβατήριο."
   },
   "customIngredient": {
     "title": "Ορισμός προσαρμοσμένου συστατικού",

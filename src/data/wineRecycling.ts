@@ -138,9 +138,6 @@ export interface PackagingMaterial {
   disposalMethodName?: string;
   isCustomType?: boolean;
   customTypeName?: string;
-  isCustomComposition?: boolean;
-  customCompositionName?: string;
-  customCompositionCode?: string;
 }
 
 export const getCompositionsByCategory = () => {

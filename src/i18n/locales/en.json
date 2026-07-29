@@ -472,13 +472,6 @@
     "code": "Code",
     "material": "Material",
     "disposal": "Disposal",
-    "componentTypes": {
-      "bottle": "Bottle",
-      "closure": "Closure",
-      "capsule": "Capsule",
-      "label": "Label",
-      "box": "Box"
-    },
     "selectMaterial": "Select material",
     "individualComponents": "Individual Components",
     "compositeComponents": "Composite Components",
@@ -515,7 +508,8 @@
     "sending": "Sending...",
     "errorNoEmail": "Unable to send request - user email not found",
     "errorSaveFirst": "Please save the passport first before enabling counterfeit protection",
-    "errorFailed": "Failed to send counterfeit protection request"
+    "errorFailed": "Failed to send counterfeit protection request",
+    "pendingSend": "The partner will be notified the next time you save this passport."
   },
   "customIngredient": {
     "title": "Define a custom ingredient",

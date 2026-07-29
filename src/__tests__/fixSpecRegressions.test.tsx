@@ -4,8 +4,12 @@
  * the fixes without pulling heavy render harnesses.
  */
 import { describe, it, expect, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+
+const readSrc = (rel: string) => readFileSync(join(process.cwd(), 'src', rel), 'utf-8');
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
@@ -72,5 +76,53 @@ describe('§B.2 mandatory regressions', () => {
     );
     expect(screen.getByTestId('passport-name')).toHaveTextContent('Chateau ZH');
     expect(screen.getByTestId('recycling-section')).toBeInTheDocument();
+  });
+
+  // BUG-01: while setup is required, /auth and /reset-password must still be
+  // reachable so an admin can sign in / recover — otherwise a partially set
+  // up instance can lock its own operator out. This is a source-level guard.
+  it('BUG-01: setup-required route table includes /auth and /reset-password', () => {
+    const src = readSrc('App.tsx');
+    const setupBlock = src.slice(src.indexOf('isSetupRequired'));
+    expect(setupBlock).toMatch(/path="\/auth"/);
+    expect(setupBlock).toMatch(/path="\/reset-password"/);
+  });
+
+  // BUG-03: useAutoTranslate must seed the "last translated" ref from the
+  // first non-empty value, and skip the empty pre-hydration render, so the
+  // debounced pass no-ops instead of overwriting curated translations.
+  it('BUG-03: useAutoTranslate init effect guards against empty value', () => {
+    const src = readSrc('hooks/useAutoTranslate.ts');
+    expect(src).toMatch(/if \(didInitRef\.current \|\| !value\) return/);
+    expect(src).toMatch(/lastTranslatedValueRef\.current = value/);
+  });
+
+  // BUG-04: WineFields must strip the sentinel and merge cleanData in a
+  // SINGLE onChange call so a second render doesn't observe a half-applied
+  // baseline (which would re-inject the sentinel and defeat the fix).
+  it('BUG-04: WineFields sentinel is stripped and merged in one onChange', () => {
+    const src = readSrc('components/WineFields.tsx');
+    // The fix is a single onChange call built off cleanData (no stale `data`).
+    expect(src).toMatch(/strip sentinel and merge in ONE onChange/);
+    expect(src).toMatch(/merge from baseData \(sentinel already stripped\)/);
+  });
+
+  // BUG-07: preview / public passport must filter checkbox questions by the
+  // raw boolean value, not by comparing the translated label to the English
+  // word "No" (which never matches under fr/it/etc and leaks empty rows).
+  it('BUG-07: checkbox filter uses raw boolean in preview and public views', () => {
+    for (const rel of ['components/PassportPreview.tsx', 'pages/PublicPassport.tsx']) {
+      const src = readSrc(rel);
+      expect(src, rel).toMatch(/typeof value === 'boolean'/);
+    }
+  });
+
+  // BUG-08: QRCodeDialog's cloned react-qr-code path uses viewBox coordinates,
+  // so the wrapper <g> must apply a `scale(qrSize / cells)` transform. Without
+  // it the QR renders 1px wide inside the composed SVG download.
+  it('BUG-08: QRCodeDialog scales cloned QR path by cells', () => {
+    const src = readSrc('components/QRCodeDialog.tsx');
+    expect(src).toMatch(/const scale = qrSize \/ cells/);
+    expect(src).toMatch(/scale\(\$\{scale\}\)/);
   });
 });

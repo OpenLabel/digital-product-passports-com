@@ -482,7 +482,8 @@
     "sending": "Invio in corso...",
     "errorNoEmail": "Impossibile inviare la richiesta - email utente non trovata",
     "errorSaveFirst": "Salva prima il passaporto prima di attivare la protezione anti-contraffazione",
-    "errorFailed": "Invio della richiesta di protezione anti-contraffazione non riuscito"
+    "errorFailed": "Invio della richiesta di protezione anti-contraffazione non riuscito",
+    "pendingSend": "Il partner verrà notificato la prossima volta che salverai questo passaporto."
   },
   "customIngredient": {
     "title": "Definisci un ingrediente personalizzato",
@@ -531,13 +532,6 @@
     "code": "Codice",
     "material": "Materiale",
     "disposal": "Smaltimento",
-    "componentTypes": {
-      "bottle": "Bottiglia",
-      "closure": "Chiusura",
-      "capsule": "Capsula",
-      "label": "Etichetta",
-      "box": "Scatola"
-    },
     "selectMaterial": "Seleziona materiale",
     "individualComponents": "Componenti singoli",
     "compositeComponents": "Componenti compositi",

@@ -464,13 +464,6 @@
     "code": "Koda",
     "material": "Material",
     "disposal": "Odlaganje",
-    "componentTypes": {
-      "bottle": "Steklenica",
-      "closure": "Zapiralo",
-      "capsule": "Kapsula",
-      "label": "Etiketa",
-      "box": "Škatla"
-    },
     "selectMaterial": "Izberite material",
     "individualComponents": "Posamezne komponente",
     "compositeComponents": "Sestavljene komponente",
@@ -507,7 +500,8 @@
     "sending": "Pošiljanje...",
     "errorNoEmail": "Ni mogoče poslati zahteve – e-poštni naslov uporabnika ni najden",
     "errorSaveFirst": "Pred aktivacijo zaščite pred ponarejanjem najprej shranite potni list",
-    "errorFailed": "Pošiljanje zahteve za zaščito pred ponarejanjem ni uspelo"
+    "errorFailed": "Pošiljanje zahteve za zaščito pred ponarejanjem ni uspelo",
+    "pendingSend": "Partner bo obveščen ob naslednjem shranjevanju tega potnega lista."
   },
   "customIngredient": {
     "title": "Določite lastno sestavino",

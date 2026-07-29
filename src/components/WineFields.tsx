@@ -911,7 +911,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 <Input
                   id="energy_kcal"
                   type="number"
-                  value={calculatedValues.energyKcal}
+                  value={calculatedValues.energyKcal ?? ''}
                   onChange={(e) => handleChange('energy_kcal', e.target.value ? Number(e.target.value) : '')}
                   disabled={!data.energy_kcal_manual}
                   className={!data.energy_kcal_manual ? 'bg-muted' : ''}
@@ -933,7 +933,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                 <Input
                   id="energy_kj"
                   type="number"
-                  value={calculatedValues.energyKj}
+                  value={calculatedValues.energyKj ?? ''}
                   onChange={(e) => handleChange('energy_kj', e.target.value ? Number(e.target.value) : '')}
                   disabled={!data.energy_kj_manual}
                   className={!data.energy_kj_manual ? 'bg-muted' : ''}
@@ -956,7 +956,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                   id="carbohydrates"
                   type="number"
                   step="0.1"
-                  value={calculatedValues.carbohydrates}
+                  value={calculatedValues.carbohydrates ?? ''}
                   onChange={(e) => handleChange('carbohydrates', e.target.value ? Number(e.target.value) : '')}
                   disabled={!data.carbohydrates_manual}
                   className={!data.carbohydrates_manual ? 'bg-muted' : ''}
@@ -979,7 +979,7 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
                   id="sugar"
                   type="number"
                   step="0.1"
-                  value={calculatedValues.sugar}
+                  value={calculatedValues.sugar ?? ''}
                   onChange={(e) => handleChange('sugar', e.target.value ? Number(e.target.value) : '')}
                   disabled={!data.sugar_manual}
                   className={!data.sugar_manual ? 'bg-muted' : ''}

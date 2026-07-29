@@ -81,7 +81,7 @@ export function WineRecycling({ data, onChange }: WineRecyclingProps) {
     const newMaterial: PackagingMaterialWithTranslations = {
       id: `mat_${crypto.randomUUID()}`,
       typeId: isCustom ? 'custom' : typeId,
-      typeName: isCustom ? typeName : typeName,
+      typeName: typeName,
       isCustomType: isCustom,
       customTypeName: isCustom ? typeName : undefined,
     };
