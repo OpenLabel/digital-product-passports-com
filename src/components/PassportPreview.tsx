@@ -230,7 +230,7 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                         return (
                           <Card key={sectionIndex}>
                             <CardHeader className="pb-2">
-                              <CardTitle className="text-sm">{section.title}</CardTitle>
+                              <CardTitle className="text-sm">{section.titleKey ? t(section.titleKey, section.title) : section.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                               <dl className="grid gap-2">
@@ -248,12 +248,16 @@ export function PassportPreview({ formData }: PassportPreviewProps) {
                                   let displayLabel = displayValue;
                                   if (question.type === 'select' && question.options) {
                                     const option = question.options.find(o => o.value === value);
-                                    if (option) displayLabel = option.label;
+                                    if (option) {
+                                      displayLabel = option.labelKey ? t(option.labelKey, option.label) : option.label;
+                                    }
                                   }
+
+                                  const questionLabel = question.labelKey ? t(question.labelKey, question.label) : question.label;
 
                                   return (
                                     <div key={question.id} className="grid grid-cols-2 gap-1">
-                                      <dt className="text-muted-foreground text-xs truncate">{question.label}</dt>
+                                      <dt className="text-muted-foreground text-xs truncate">{questionLabel}</dt>
                                       <dd className="text-xs font-medium">
                                         {question.type === 'checkbox' ? (
                                           <Badge variant="secondary" className="text-[10px]">✓</Badge>
