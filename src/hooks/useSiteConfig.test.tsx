@@ -65,4 +65,15 @@ describe('useSiteConfig', () => {
     expect(result.current.config?.company_name).toBe('');
     consoleSpy.mockRestore();
   });
+
+  // BUG-12: a failed site_config fetch must NOT force logged-in users into
+  // the Setup wizard.
+  it('isSetupRequired is false on a failed fetch (BUG-12)', async () => {
+    mockSelect.mockResolvedValueOnce({ data: null, error: new Error('boom') });
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const { result } = renderHook(() => useSiteConfig(), { wrapper });
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.isSetupRequired).toBe(false);
+    consoleSpy.mockRestore();
+  });
 });
