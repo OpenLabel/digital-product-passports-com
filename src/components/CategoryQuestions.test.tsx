@@ -90,4 +90,21 @@ describe('CategoryQuestions', () => {
     );
     expect(container.querySelector('.space-y-6')).toBeInTheDocument();
   });
+
+  // BUG-19: stored 0 must render in the number input (not blank).
+  it('renders a stored 0 in a number input (BUG-19)', () => {
+    render(<CategoryQuestions category="battery" data={{ capacity_kwh: 0 }} onChange={vi.fn()} />);
+    const input = document.getElementById('capacity_kwh') as HTMLInputElement;
+    expect(input.value).toBe('0');
+  });
+
+  // BUG-19: clearing a number input stores null (not '').
+  it('clearing a number input stores null (BUG-19)', () => {
+    const onChange = vi.fn();
+    render(<CategoryQuestions category="battery" data={{ capacity_kwh: 5 }} onChange={onChange} />);
+    const input = document.getElementById('capacity_kwh') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: '' } });
+    expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ capacity_kwh: null }));
+  });
 });
+
