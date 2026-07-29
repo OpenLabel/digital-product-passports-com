@@ -19,7 +19,13 @@ interface ImageUploadProps {
   value: string | null;
   onChange: (url: string | null) => void;
   className?: string;
+  // NEW-02: when provided, ImageUpload defers deletion of the previous storage
+  // object to the caller (so a discard-without-save doesn't destroy the image
+  // the persisted DPP still points to). The caller should flush the queue
+  // AFTER a successful save.
+  onPendingDelete?: (previousUrl: string) => void;
 }
+
 
 // Extract the storage path (relative to the bucket) from a public URL.
 // Returns null when the URL is not a passport-images public URL — we must
@@ -35,7 +41,7 @@ function extractStoragePath(url: string | null | undefined, userId: string): str
   return path;
 }
 
-export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
+export function ImageUpload({ value, onChange, className, onPendingDelete }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,6 +50,12 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
 
   const removePreviousObject = async (previousUrl: string | null) => {
     if (!previousUrl || !user) return;
+    // NEW-02: if a caller has opted into deferred deletion, hand the URL over
+    // and let them flush after save. Otherwise, fall back to eager delete.
+    if (onPendingDelete) {
+      onPendingDelete(previousUrl);
+      return;
+    }
     const path = extractStoragePath(previousUrl, user.id);
     if (!path) return;
     try {
@@ -53,6 +65,7 @@ export function ImageUpload({ value, onChange, className }: ImageUploadProps) {
       console.warn('Failed to delete previous image:', err);
     }
   };
+
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
