@@ -154,7 +154,11 @@ export function usePassports() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });
     },
-    onError: () => {
+    onError: (err: unknown) => {
+      // BUG-15: surface reorder failures to the user; also refetch so the
+      // UI reverts to server truth if the optimistic order is wrong.
+      const message = err instanceof Error ? err.message : 'Failed to reorder passports';
+      toast.error(message);
       queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });
     },
   });
