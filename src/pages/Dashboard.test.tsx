@@ -1,11 +1,16 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import type { Passport } from '@/types/passport';
 
 const mockSignOut = vi.fn();
 const mockDuplicateAsync = vi.fn();
 const mockDeleteAsync = vi.fn();
 const mockReorderMutate = vi.fn();
+
+// Stable reference — returning a new [] on every render would infinite-loop
+// against the sync-effect in Dashboard.tsx (BUG-14 regression).
+const mockPassports: Passport[] = [];
 
 vi.mock('@/hooks/useAuth', () => ({
   useAuth: () => ({
@@ -18,7 +23,7 @@ vi.mock('@/hooks/useAuth', () => ({
 
 vi.mock('@/hooks/usePassports', () => ({
   usePassports: () => ({
-    passports: [],
+    passports: mockPassports,
     isLoading: false,
     error: null,
     createPassport: { mutateAsync: vi.fn(), isPending: false },
@@ -27,6 +32,7 @@ vi.mock('@/hooks/usePassports', () => ({
     reorderPassports: { mutate: mockReorderMutate },
   }),
 }));
+
 
 vi.mock('@/hooks/useSiteConfig', () => ({
   useSiteConfig: () => ({
