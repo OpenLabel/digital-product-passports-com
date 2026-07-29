@@ -548,37 +548,28 @@ export function WinePublicPassport({
                     <tr className="border-b">
                       <th className="text-left py-2"></th>
                       {componentColumns.map((col) => (
-                        <th key={col.id} className="text-center py-2 font-medium">{col.name}</th>
+                        <th key={col.key} className="text-center py-2 font-medium">{col.name}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.code')}</td>
-                      {componentColumns.map((col) => {
-                        const mat = packagingMaterials.find((m) => m.id === col.id);
-                        return (
-                          <td key={col.id} className="py-2 text-center">{mat?.compositionCode || '-'}</td>
-                        );
-                      })}
+                      {componentColumns.map((col) => (
+                        <td key={col.key} className="py-2 text-center">{col.material.compositionCode || '-'}</td>
+                      ))}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.material')}</td>
-                      {componentColumns.map((col) => {
-                        const mat = packagingMaterials.find((m) => m.id === col.id);
-                        return (
-                          <td key={col.id} className="py-2 text-center">{mat ? (getCompositionName(mat) || '-') : '-'}</td>
-                        );
-                      })}
+                      {componentColumns.map((col) => (
+                        <td key={col.key} className="py-2 text-center">{getCompositionName(col.material) || '-'}</td>
+                      ))}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.disposal')}</td>
-                      {componentColumns.map((col) => {
-                        const mat = packagingMaterials.find((m) => m.id === col.id);
-                        return (
-                          <td key={col.id} className="py-2 text-center">{mat ? (getDisposalName(mat) || '-') : '-'}</td>
-                        );
-                      })}
+                      {componentColumns.map((col) => (
+                        <td key={col.key} className="py-2 text-center">{getDisposalName(col.material) || '-'}</td>
+                      ))}
                     </tr>
                   </tbody>
                 </table>
