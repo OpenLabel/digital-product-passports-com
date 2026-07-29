@@ -187,7 +187,8 @@
     "confirmPassword": "Vahvista salasana",
     "updatePassword": "Päivitä salasana",
     "passwordMismatch": "Salasanat eivät täsmää",
-    "passwordUpdated": "Salasana päivitetty onnistuneesti!"
+    "passwordUpdated": "Salasana päivitetty onnistuneesti!",
+    "recoveryLinkRequired": "Käytä sähköpostissasi olevaa salasanan palautuslinkkiä."
   },
   "dashboard": {
     "title": "Passisi",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Varhainen alfa",
     "earlyAlphaDesc": "Tämä malli on varhaisessa alfavaiheessa eikä välttämättä ole täysin säädösten mukainen. Tarkista tiedot ennen käyttöä.",
     "missingRequiredTitle": "Joitakin pakollisia kenttiä ei ole täytetty",
-    "missingRequiredBody": "Voit silti tallentaa ja julkaista tämän DPP:n, mutta seuraavat kentät vaaditaan täydellistä sääntelyn noudattamista varten:"
+    "missingRequiredBody": "Voit silti tallentaa ja julkaista tämän DPP:n, mutta seuraavat kentät vaaditaan täydellistä sääntelyn noudattamista varten:",
+    "productInfo": "Tuotetiedot",
+    "description": "Kuvaus"
   },
   "categories": {
     "battery": "Akut",
@@ -523,7 +526,12 @@
     "title": "QR-koodi",
     "download": "Lataa QR-koodi",
     "copyLink": "Kopioi linkki",
-    "printSizeInstructionWine": "Tulosta 1,8 cm leveänä. Korkeus vaihtelee sisällön mukaan. Kuusikulmio vastaa 1 cm:ä turvasinetille."
+    "printSizeInstructionWine": "Tulosta 1,8 cm leveänä. Korkeus vaihtelee sisällön mukaan. Kuusikulmio vastaa 1 cm:ä turvasinetille.",
+    "urlMismatch": "URL-osoitteen ristiriita havaittu",
+    "printSizeInstruction": "Tulosta 1,8 cm leveänä. Korkeus vaihtelee sisällön mukaan.",
+    "openPassport": "Avaa passi",
+    "downloadSvg": "Lataa SVG",
+    "downloadPng": "Lataa PNG"
   },
   "translation": {
     "title": "Käännökset",

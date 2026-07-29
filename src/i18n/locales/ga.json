@@ -187,7 +187,8 @@
     "confirmPassword": "Deimhnigh pasfhocal",
     "updatePassword": "Nuashonraigh pasfhocal",
     "passwordMismatch": "Ní hionann na pasfhocail",
-    "passwordUpdated": "Pasfhocal nuashonraithe go rathúil!"
+    "passwordUpdated": "Pasfhocal nuashonraithe go rathúil!",
+    "recoveryLinkRequired": "Úsáid an nasc aisghabhála pasfhocail ó do ríomhphost, le do thoil."
   },
   "dashboard": {
     "title": "Do Phasanna",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Alfa luath",
     "earlyAlphaDesc": "Tá an teimpléad seo i bhfás alfa luath agus b'fhéidir nach gcomhlíonann sé na rialacháin reatha go hiomlán. Fíoraigh gach faisnéis roimh úsáid.",
     "missingRequiredTitle": "Níl roinnt réimsí éigeantacha líonta isteach",
-    "missingRequiredBody": "Is féidir leat an DPP seo a shábháil agus a fhoilsiú fós, ach tá na réimsí seo a leanas riachtanach le haghaidh comhlíonadh rialála iomlán:"
+    "missingRequiredBody": "Is féidir leat an DPP seo a shábháil agus a fhoilsiú fós, ach tá na réimsí seo a leanas riachtanach le haghaidh comhlíonadh rialála iomlán:",
+    "productInfo": "Faisnéis Táirge",
+    "description": "Cur síos"
   },
   "categories": {
     "battery": "Cadhnraí",
@@ -523,7 +526,12 @@
     "title": "Cód QR",
     "download": "Íoslódáil Cód QR",
     "copyLink": "Cóipeáil Nasc",
-    "printSizeInstructionWine": "Priontáil le leithead 1.8 cm. Athraíonn an airde de réir an ábhair. Comhfhreagraíonn an heicseagán do 1 cm don séala slándála."
+    "printSizeInstructionWine": "Priontáil le leithead 1.8 cm. Athraíonn an airde de réir an ábhair. Comhfhreagraíonn an heicseagán do 1 cm don séala slándála.",
+    "urlMismatch": "Braitheadh mímheaitseáil URL",
+    "printSizeInstruction": "Priontáil ag leithead 1.8 cm. Athraíonn an airde de réir an ábhair.",
+    "openPassport": "Oscail an pas",
+    "downloadSvg": "Íoslódáil SVG",
+    "downloadPng": "Íoslódáil PNG"
   },
   "translation": {
     "title": "Aistriúcháin",

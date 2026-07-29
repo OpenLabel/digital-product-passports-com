@@ -187,7 +187,8 @@
     "confirmPassword": "Bevestig wachtwoord",
     "updatePassword": "Wachtwoord bijwerken",
     "passwordMismatch": "Wachtwoorden komen niet overeen",
-    "passwordUpdated": "Wachtwoord succesvol bijgewerkt!"
+    "passwordUpdated": "Wachtwoord succesvol bijgewerkt!",
+    "recoveryLinkRequired": "Gebruik de link voor wachtwoordherstel uit uw e-mail."
   },
   "dashboard": {
     "title": "Uw Paspoorten",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Vroege alfa",
     "earlyAlphaDesc": "Dit sjabloon is in vroege alfa en voldoet mogelijk niet volledig aan de huidige regelgeving. Controleer alle informatie aan de hand van officiële vereisten voor gebruik.",
     "missingRequiredTitle": "Sommige verplichte velden zijn niet ingevuld",
-    "missingRequiredBody": "U kunt deze DPP nog steeds opslaan en publiceren, maar de volgende velden zijn vereist voor volledige naleving van de regelgeving:"
+    "missingRequiredBody": "U kunt deze DPP nog steeds opslaan en publiceren, maar de volgende velden zijn vereist voor volledige naleving van de regelgeving:",
+    "productInfo": "Productinformatie",
+    "description": "Beschrijving"
   },
   "imageUpload": {
     "loginRequired": "U moet ingelogd zijn om afbeeldingen te uploaden",
@@ -493,7 +496,12 @@
     "title": "QR Code",
     "download": "QR-code downloaden",
     "copyLink": "Kopieer Link",
-    "printSizeInstructionWine": "Print met een breedte van 1,8 cm. De hoogte varieert afhankelijk van de inhoud. De zeshoek komt overeen met 1 cm voor het veiligheidszegel."
+    "printSizeInstructionWine": "Print met een breedte van 1,8 cm. De hoogte varieert afhankelijk van de inhoud. De zeshoek komt overeen met 1 cm voor het veiligheidszegel.",
+    "urlMismatch": "URL-mismatch gedetecteerd",
+    "printSizeInstruction": "Print in 1,8 cm breed. De hoogte varieert per inhoud.",
+    "openPassport": "Paspoort openen",
+    "downloadSvg": "SVG downloaden",
+    "downloadPng": "PNG downloaden"
   },
   "customIngredient": {
     "title": "Definieer een aangepast ingrediënt",

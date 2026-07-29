@@ -187,7 +187,8 @@
     "confirmPassword": "Confirmați parola",
     "updatePassword": "Actualizează parola",
     "passwordMismatch": "Parolele nu coincid",
-    "passwordUpdated": "Parola a fost actualizată cu succes!"
+    "passwordUpdated": "Parola a fost actualizată cu succes!",
+    "recoveryLinkRequired": "Utilizați linkul de recuperare a parolei din e-mailul dvs."
   },
   "dashboard": {
     "title": "Pașapoartele tale",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Alfa timpurie",
     "earlyAlphaDesc": "Acest șablon este în alfa timpurie și este posibil să nu fie conform cu reglementările. Verificați informațiile înainte de utilizare.",
     "missingRequiredTitle": "Unele câmpuri obligatorii nu sunt completate",
-    "missingRequiredBody": "Puteți încă salva și publica acest DPP, dar următoarele câmpuri sunt necesare pentru conformitatea reglementară completă:"
+    "missingRequiredBody": "Puteți încă salva și publica acest DPP, dar următoarele câmpuri sunt necesare pentru conformitatea reglementară completă:",
+    "productInfo": "Informații despre produs",
+    "description": "Descriere"
   },
   "categories": {
     "battery": "Baterii",
@@ -523,7 +526,12 @@
     "title": "Cod QR",
     "download": "Descarcă codul QR",
     "copyLink": "Copiază linkul",
-    "printSizeInstructionWine": "Imprimați la o lățime de 1,8 cm. Înălțimea variază în funcție de conținut. Hexagonul corespunde la 1 cm pentru sigiliul de securitate."
+    "printSizeInstructionWine": "Imprimați la o lățime de 1,8 cm. Înălțimea variază în funcție de conținut. Hexagonul corespunde la 1 cm pentru sigiliul de securitate.",
+    "urlMismatch": "Nepotrivire URL detectată",
+    "printSizeInstruction": "Imprimați la 1,8 cm lățime. Înălțimea variază în funcție de conținut.",
+    "openPassport": "Deschide pașaportul",
+    "downloadSvg": "Descarcă SVG",
+    "downloadPng": "Descarcă PNG"
   },
   "translation": {
     "title": "Traduceri",

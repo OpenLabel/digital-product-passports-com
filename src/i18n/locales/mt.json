@@ -187,7 +187,8 @@
     "confirmPassword": "Ikkonferma l-password",
     "updatePassword": "Aġġorna l-password",
     "passwordMismatch": "Il-passwords ma jaqblux",
-    "passwordUpdated": "Il-password ġiet aġġornata b'suċċess!"
+    "passwordUpdated": "Il-password ġiet aġġornata b'suċċess!",
+    "recoveryLinkRequired": "Jekk jogħġbok uża l-link tal-irkupru tal-password mill-email tiegħek."
   },
   "dashboard": {
     "title": "Il-passaporti tiegħek",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Alfa bikrija",
     "earlyAlphaDesc": "Dan il-mudell huwa fi verżjoni alfa bikrija u jista' ma jkunx kompletament konformi mar-regolamenti. Ivverifika l-informazzjoni qabel l-użu.",
     "missingRequiredTitle": "Xi oqsma obbligatorji mhumiex mimlija",
-    "missingRequiredBody": "Tista' xorta tissejvja u tippubblika dan id-DPP, iżda l-oqsma li ġejjin huma meħtieġa għal konformità regolatorja sħiħa:"
+    "missingRequiredBody": "Tista' xorta tissejvja u tippubblika dan id-DPP, iżda l-oqsma li ġejjin huma meħtieġa għal konformità regolatorja sħiħa:",
+    "productInfo": "Informazzjoni dwar il-Prodott",
+    "description": "Deskrizzjoni"
   },
   "categories": {
     "battery": "Batteriji",
@@ -523,7 +526,12 @@
     "title": "Kodiċi QR",
     "download": "Niżżel il-Kodiċi QR",
     "copyLink": "Ikkopja l-Link",
-    "printSizeInstructionWine": "Ipprintja b'wisa' ta' 1.8 cm. L-għoli jvarja skont il-kontenut. L-eżagonu jikkorrispondi għal 1 cm għas-siġill tas-sigurtà."
+    "printSizeInstructionWine": "Ipprintja b'wisa' ta' 1.8 cm. L-għoli jvarja skont il-kontenut. L-eżagonu jikkorrispondi għal 1 cm għas-siġill tas-sigurtà.",
+    "urlMismatch": "Ġie identifikat nuqqas ta' qbil fl-URL",
+    "printSizeInstruction": "Ipprintja bi wisa' ta' 1.8 ċm. L-għoli jvarja skont il-kontenut.",
+    "openPassport": "Iftaħ il-passaport",
+    "downloadSvg": "Niżżel SVG",
+    "downloadPng": "Niżżel PNG"
   },
   "translation": {
     "title": "Traduzzjonijiet",

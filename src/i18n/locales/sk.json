@@ -187,7 +187,8 @@
     "confirmPassword": "Potvrďte heslo",
     "updatePassword": "Aktualizovať heslo",
     "passwordMismatch": "Heslá sa nezhodujú",
-    "passwordUpdated": "Heslo bolo úspešne aktualizované!"
+    "passwordUpdated": "Heslo bolo úspešne aktualizované!",
+    "recoveryLinkRequired": "Použite prosím odkaz na obnovenie hesla z vášho e-mailu."
   },
   "dashboard": {
     "title": "Vaše pasy",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Skorá alfa",
     "earlyAlphaDesc": "Táto šablóna je v skorej alfa verzii a nemusí byť v súlade s predpismi. Pred použitím overte informácie.",
     "missingRequiredTitle": "Niektoré povinné polia nie sú vyplnené",
-    "missingRequiredBody": "Tento DPP môžete stále uložiť a publikovať, ale nasledujúce polia sú povinné pre úplný regulačný súlad:"
+    "missingRequiredBody": "Tento DPP môžete stále uložiť a publikovať, ale nasledujúce polia sú povinné pre úplný regulačný súlad:",
+    "productInfo": "Informácie o produkte",
+    "description": "Popis"
   },
   "categories": {
     "battery": "Batérie",
@@ -523,7 +526,12 @@
     "title": "QR kód",
     "download": "Stiahnuť QR kód",
     "copyLink": "Kopírovať odkaz",
-    "printSizeInstructionWine": "Tlačte v šírke 1,8 cm. Výška sa mení podľa obsahu. Šesťuholník zodpovedá 1 cm pre bezpečnostnú pečať."
+    "printSizeInstructionWine": "Tlačte v šírke 1,8 cm. Výška sa mení podľa obsahu. Šesťuholník zodpovedá 1 cm pre bezpečnostnú pečať.",
+    "urlMismatch": "Zistený nesúlad URL",
+    "printSizeInstruction": "Tlačte v šírke 1,8 cm. Výška sa líši podľa obsahu.",
+    "openPassport": "Otvoriť pas",
+    "downloadSvg": "Stiahnuť SVG",
+    "downloadPng": "Stiahnuť PNG"
   },
   "translation": {
     "title": "Preklady",

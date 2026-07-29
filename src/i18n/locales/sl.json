@@ -187,7 +187,8 @@
     "confirmPassword": "Potrdite geslo",
     "updatePassword": "Posodobi geslo",
     "passwordMismatch": "Gesli se ne ujemata",
-    "passwordUpdated": "Geslo je bilo uspešno posodobljeno!"
+    "passwordUpdated": "Geslo je bilo uspešno posodobljeno!",
+    "recoveryLinkRequired": "Uporabite povezavo za obnovitev gesla iz e-pošte."
   },
   "dashboard": {
     "title": "Vaši potni listi",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Zgodnja alfa",
     "earlyAlphaDesc": "Ta predloga je v zgodnji alfa različici in morda ni skladna s predpisi. Pred uporabo preverite informacije.",
     "missingRequiredTitle": "Nekatera obvezna polja niso izpolnjena",
-    "missingRequiredBody": "Ta DPP lahko še vedno shranite in objavite, vendar so naslednja polja obvezna za popolno regulativno skladnost:"
+    "missingRequiredBody": "Ta DPP lahko še vedno shranite in objavite, vendar so naslednja polja obvezna za popolno regulativno skladnost:",
+    "productInfo": "Podatki o izdelku",
+    "description": "Opis"
   },
   "categories": {
     "battery": "Baterije",
@@ -523,7 +526,12 @@
     "title": "QR koda",
     "download": "Prenesi QR kodo",
     "copyLink": "Kopiraj povezavo",
-    "printSizeInstructionWine": "Natisnite v širini 1,8 cm. Višina se spreminja glede na vsebino. Šestkotnik ustreza 1 cm za varnostni pečat."
+    "printSizeInstructionWine": "Natisnite v širini 1,8 cm. Višina se spreminja glede na vsebino. Šestkotnik ustreza 1 cm za varnostni pečat.",
+    "urlMismatch": "Zaznano neujemanje URL-ja",
+    "printSizeInstruction": "Natisnite v širini 1,8 cm. Višina se razlikuje glede na vsebino.",
+    "openPassport": "Odpri potni list",
+    "downloadSvg": "Prenesi SVG",
+    "downloadPng": "Prenesi PNG"
   },
   "translation": {
     "title": "Prevodi",

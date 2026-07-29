@@ -187,7 +187,8 @@
     "confirmPassword": "Potvrdite lozinku",
     "updatePassword": "Ažuriraj lozinku",
     "passwordMismatch": "Lozinke se ne podudaraju",
-    "passwordUpdated": "Lozinka je uspješno ažurirana!"
+    "passwordUpdated": "Lozinka je uspješno ažurirana!",
+    "recoveryLinkRequired": "Upotrijebite poveznicu za oporavak lozinke iz vaše e-pošte."
   },
   "dashboard": {
     "title": "Vaše putovnice",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Rana alfa",
     "earlyAlphaDesc": "Ovaj predložak je u ranoj alfa fazi i možda nije u potpunosti usklađen s propisima. Provjerite informacije prije korištenja.",
     "missingRequiredTitle": "Neka obavezna polja nisu ispunjena",
-    "missingRequiredBody": "I dalje možete spremiti i objaviti ovaj DPP, ali sljedeća polja su obavezna za potpunu regulatornu usklađenost:"
+    "missingRequiredBody": "I dalje možete spremiti i objaviti ovaj DPP, ali sljedeća polja su obavezna za potpunu regulatornu usklađenost:",
+    "productInfo": "Informacije o proizvodu",
+    "description": "Opis"
   },
   "categories": {
     "battery": "Baterije",
@@ -523,7 +526,12 @@
     "title": "QR kod",
     "download": "Preuzmi QR kod",
     "copyLink": "Kopiraj poveznicu",
-    "printSizeInstructionWine": "Ispišite širinom 1,8 cm. Visina varira ovisno o sadržaju. Šesterokut odgovara 1 cm za sigurnosni pečat."
+    "printSizeInstructionWine": "Ispišite širinom 1,8 cm. Visina varira ovisno o sadržaju. Šesterokut odgovara 1 cm za sigurnosni pečat.",
+    "urlMismatch": "Otkriveno neslaganje URL-a",
+    "printSizeInstruction": "Ispišite u širini 1,8 cm. Visina ovisi o sadržaju.",
+    "openPassport": "Otvori putovnicu",
+    "downloadSvg": "Preuzmi SVG",
+    "downloadPng": "Preuzmi PNG"
   },
   "translation": {
     "title": "Prijevodi",

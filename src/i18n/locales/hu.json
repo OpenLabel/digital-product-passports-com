@@ -187,7 +187,8 @@
     "confirmPassword": "Jelszó megerősítése",
     "updatePassword": "Jelszó frissítése",
     "passwordMismatch": "A jelszavak nem egyeznek",
-    "passwordUpdated": "A jelszó sikeresen frissítve!"
+    "passwordUpdated": "A jelszó sikeresen frissítve!",
+    "recoveryLinkRequired": "Kérjük, használja az e-mailben található jelszó-visszaállító linket."
   },
   "dashboard": {
     "title": "Útleveleid",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Korai alfa",
     "earlyAlphaDesc": "Ez a sablon korai alfa állapotban van és nem biztos, hogy megfelel a jelenlegi szabályozásoknak. Ellenőrizze az információkat használat előtt.",
     "missingRequiredTitle": "Néhány kötelező mező nincs kitöltve",
-    "missingRequiredBody": "Ezt a DPP-t továbbra is mentheti és közzéteheti, de a következő mezők szükségesek a teljes szabályozási megfeleléshez:"
+    "missingRequiredBody": "Ezt a DPP-t továbbra is mentheti és közzéteheti, de a következő mezők szükségesek a teljes szabályozási megfeleléshez:",
+    "productInfo": "Termékinformációk",
+    "description": "Leírás"
   },
   "categories": {
     "battery": "Akkumulátorok",
@@ -523,7 +526,12 @@
     "title": "QR kód",
     "download": "QR kód letöltése",
     "copyLink": "Link másolása",
-    "printSizeInstructionWine": "Nyomtasson 1,8 cm szélességben. A magasság a tartalomtól függően változik. A hatszög 1 cm-nek felel meg a biztonsági pecséthez."
+    "printSizeInstructionWine": "Nyomtasson 1,8 cm szélességben. A magasság a tartalomtól függően változik. A hatszög 1 cm-nek felel meg a biztonsági pecséthez.",
+    "urlMismatch": "URL-eltérés észlelve",
+    "printSizeInstruction": "Nyomtassa 1,8 cm szélességben. A magasság a tartalomtól függ.",
+    "openPassport": "Útlevél megnyitása",
+    "downloadSvg": "SVG letöltése",
+    "downloadPng": "PNG letöltése"
   },
   "translation": {
     "title": "Fordítások",

@@ -187,7 +187,8 @@
     "confirmPassword": "Bekräfta lösenord",
     "updatePassword": "Uppdatera lösenord",
     "passwordMismatch": "Lösenorden stämmer inte överens",
-    "passwordUpdated": "Lösenordet har uppdaterats!"
+    "passwordUpdated": "Lösenordet har uppdaterats!",
+    "recoveryLinkRequired": "Använd länken för lösenordsåterställning från din e-post."
   },
   "dashboard": {
     "title": "Dina pass",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Tidig alfa",
     "earlyAlphaDesc": "Denna mall är i tidig alfaversion och kanske inte helt överensstämmer med gällande föreskrifter. Vänligen verifiera all information mot officiella krav innan användning.",
     "missingRequiredTitle": "Vissa obligatoriska fält är inte ifyllda",
-    "missingRequiredBody": "Du kan fortfarande spara och publicera detta DPP, men följande fält krävs för fullständig regelefterlevnad:"
+    "missingRequiredBody": "Du kan fortfarande spara och publicera detta DPP, men följande fält krävs för fullständig regelefterlevnad:",
+    "productInfo": "Produktinformation",
+    "description": "Beskrivning"
   },
   "imageUpload": {
     "loginRequired": "Du måste vara inloggad för att ladda upp bilder",
@@ -531,7 +534,12 @@
     "title": "QR-kod",
     "download": "Ladda ner QR-kod",
     "copyLink": "Kopiera länk",
-    "printSizeInstructionWine": "Skriv ut med en bredd på 1,8 cm. Höjden varierar beroende på innehållet. Hexagonen motsvarar 1 cm för säkerhetssigillet."
+    "printSizeInstructionWine": "Skriv ut med en bredd på 1,8 cm. Höjden varierar beroende på innehållet. Hexagonen motsvarar 1 cm för säkerhetssigillet.",
+    "urlMismatch": "URL-avvikelse upptäckt",
+    "printSizeInstruction": "Skriv ut med 1,8 cm bredd. Höjden varierar med innehållet.",
+    "openPassport": "Öppna pass",
+    "downloadSvg": "Ladda ner SVG",
+    "downloadPng": "Ladda ner PNG"
   },
   "translation": {
     "title": "Översättningar",

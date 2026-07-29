@@ -187,7 +187,8 @@
     "confirmPassword": "Potwierdź hasło",
     "updatePassword": "Zaktualizuj hasło",
     "passwordMismatch": "Hasła nie są zgodne",
-    "passwordUpdated": "Hasło zostało pomyślnie zaktualizowane!"
+    "passwordUpdated": "Hasło zostało pomyślnie zaktualizowane!",
+    "recoveryLinkRequired": "Użyj linku do odzyskiwania hasła z wiadomości e-mail."
   },
   "dashboard": {
     "title": "Twoje Paszporty",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Wczesna alfa",
     "earlyAlphaDesc": "Ten szablon jest we wczesnej fazie alfa i może nie być w pełni zgodny z aktualnymi przepisami. Proszę zweryfikować wszystkie informacje przed użyciem.",
     "missingRequiredTitle": "Niektóre pola obowiązkowe nie są wypełnione",
-    "missingRequiredBody": "Możesz nadal zapisać i opublikować ten DPP, ale następujące pola są wymagane do pełnej zgodności regulacyjnej:"
+    "missingRequiredBody": "Możesz nadal zapisać i opublikować ten DPP, ale następujące pola są wymagane do pełnej zgodności regulacyjnej:",
+    "productInfo": "Informacje o produkcie",
+    "description": "Opis"
   },
   "categories": {
     "battery": "Baterie",
@@ -485,7 +488,12 @@
     "title": "Kod QR",
     "download": "Pobierz Kod QR",
     "copyLink": "Kopiuj Link",
-    "printSizeInstructionWine": "Drukuj z szerokością 1,8 cm. Wysokość zmienia się w zależności od treści. Sześciokąt odpowiada 1 cm na pieczęć bezpieczeństwa."
+    "printSizeInstructionWine": "Drukuj z szerokością 1,8 cm. Wysokość zmienia się w zależności od treści. Sześciokąt odpowiada 1 cm na pieczęć bezpieczeństwa.",
+    "urlMismatch": "Wykryto niezgodność adresu URL",
+    "printSizeInstruction": "Wydrukuj z szerokością 1,8 cm. Wysokość zależy od zawartości.",
+    "openPassport": "Otwórz paszport",
+    "downloadSvg": "Pobierz SVG",
+    "downloadPng": "Pobierz PNG"
   },
   "customIngredient": {
     "title": "Zdefiniuj własny składnik",

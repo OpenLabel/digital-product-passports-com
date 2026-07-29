@@ -187,7 +187,8 @@
     "confirmPassword": "Confirmar palavra-passe",
     "updatePassword": "Atualizar palavra-passe",
     "passwordMismatch": "As palavras-passe não coincidem",
-    "passwordUpdated": "Palavra-passe atualizada com sucesso!"
+    "passwordUpdated": "Palavra-passe atualizada com sucesso!",
+    "recoveryLinkRequired": "Utilize o link de recuperação de senha do seu e-mail."
   },
   "dashboard": {
     "title": "Os Seus Passaportes",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Alfa inicial",
     "earlyAlphaDesc": "Este modelo está em fase alfa inicial e pode não estar totalmente em conformidade com os regulamentos atuais. Verifique todas as informações antes de usar.",
     "missingRequiredTitle": "Alguns campos obrigatórios não estão preenchidos",
-    "missingRequiredBody": "Ainda pode guardar e publicar este DPP, mas os seguintes campos são necessários para a conformidade regulamentar completa:"
+    "missingRequiredBody": "Ainda pode guardar e publicar este DPP, mas os seguintes campos são necessários para a conformidade regulamentar completa:",
+    "productInfo": "Informações do produto",
+    "description": "Descrição"
   },
   "categories": {
     "battery": "Baterias",
@@ -498,7 +501,12 @@
     "title": "Código QR",
     "download": "Baixar código QR",
     "copyLink": "Copiar link",
-    "printSizeInstructionWine": "Imprima com uma largura de 1,8 cm. A altura varia conforme o conteúdo. O hexágono corresponde a 1 cm para o selo de segurança."
+    "printSizeInstructionWine": "Imprima com uma largura de 1,8 cm. A altura varia conforme o conteúdo. O hexágono corresponde a 1 cm para o selo de segurança.",
+    "urlMismatch": "Divergência de URL detetada",
+    "printSizeInstruction": "Imprima com 1,8 cm de largura. A altura varia com o conteúdo.",
+    "openPassport": "Abrir passaporte",
+    "downloadSvg": "Descarregar SVG",
+    "downloadPng": "Descarregar PNG"
   },
   "translation": {
     "title": "Traduções",

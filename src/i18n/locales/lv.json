@@ -187,7 +187,8 @@
     "confirmPassword": "Apstiprināt paroli",
     "updatePassword": "Atjaunināt paroli",
     "passwordMismatch": "Paroles nesakrīt",
-    "passwordUpdated": "Parole veiksmīgi atjaunināta!"
+    "passwordUpdated": "Parole veiksmīgi atjaunināta!",
+    "recoveryLinkRequired": "Lūdzu, izmantojiet paroles atkopšanas saiti no savas e-pasta adreses."
   },
   "dashboard": {
     "title": "Jūsu pases",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Agrīnā alfa",
     "earlyAlphaDesc": "Šī veidne ir agrīnā alfa versijā un var neatbilst noteikumiem. Pārbaudiet informāciju pirms izmantošanas.",
     "missingRequiredTitle": "Daži obligātie lauki nav aizpildīti",
-    "missingRequiredBody": "Jūs joprojām varat saglabāt un publicēt šo DPP, taču šie lauki ir nepieciešami pilnīgai regulatīvai atbilstībai:"
+    "missingRequiredBody": "Jūs joprojām varat saglabāt un publicēt šo DPP, taču šie lauki ir nepieciešami pilnīgai regulatīvai atbilstībai:",
+    "productInfo": "Produkta informācija",
+    "description": "Apraksts"
   },
   "categories": {
     "battery": "Baterijas",
@@ -523,7 +526,12 @@
     "title": "QR kods",
     "download": "Lejupielādēt QR kodu",
     "copyLink": "Kopēt saiti",
-    "printSizeInstructionWine": "Drukājiet 1,8 cm platumā. Augstums mainās atkarībā no satura. Sešstūris atbilst 1 cm drošības zīmogam."
+    "printSizeInstructionWine": "Drukājiet 1,8 cm platumā. Augstums mainās atkarībā no satura. Sešstūris atbilst 1 cm drošības zīmogam.",
+    "urlMismatch": "Konstatēta URL neatbilstība",
+    "printSizeInstruction": "Drukājiet 1,8 cm platumā. Augstums mainās atkarībā no satura.",
+    "openPassport": "Atvērt pasi",
+    "downloadSvg": "Lejupielādēt SVG",
+    "downloadPng": "Lejupielādēt PNG"
   },
   "translation": {
     "title": "Tulkojumi",

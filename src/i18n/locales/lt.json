@@ -187,7 +187,8 @@
     "confirmPassword": "Patvirtinti slaptažodį",
     "updatePassword": "Atnaujinti slaptažodį",
     "passwordMismatch": "Slaptažodžiai nesutampa",
-    "passwordUpdated": "Slaptažodis sėkmingai atnaujintas!"
+    "passwordUpdated": "Slaptažodis sėkmingai atnaujintas!",
+    "recoveryLinkRequired": "Naudokite slaptažodžio atkūrimo nuorodą iš savo el. pašto."
   },
   "dashboard": {
     "title": "Jūsų pasai",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Ankstyvoji alfa",
     "earlyAlphaDesc": "Šis šablonas yra ankstyvoje alfa versijoje ir gali ne visiškai atitikti teisės aktus. Patikrinkite informaciją prieš naudojimą.",
     "missingRequiredTitle": "Kai kurie privalomi laukai neužpildyti",
-    "missingRequiredBody": "Vis tiek galite išsaugoti ir paskelbti šį DPP, tačiau šie laukai būtini visiškam reguliavimo atitikimui:"
+    "missingRequiredBody": "Vis tiek galite išsaugoti ir paskelbti šį DPP, tačiau šie laukai būtini visiškam reguliavimo atitikimui:",
+    "productInfo": "Produkto informacija",
+    "description": "Aprašymas"
   },
   "categories": {
     "battery": "Baterijos",
@@ -523,7 +526,12 @@
     "title": "QR kodas",
     "download": "Atsisiųsti QR kodą",
     "copyLink": "Kopijuoti nuorodą",
-    "printSizeInstructionWine": "Spausdinkite 1,8 cm pločiu. Aukštis priklauso nuo turinio. Šešiakampis atitinka 1 cm saugumo antspaudui."
+    "printSizeInstructionWine": "Spausdinkite 1,8 cm pločiu. Aukštis priklauso nuo turinio. Šešiakampis atitinka 1 cm saugumo antspaudui.",
+    "urlMismatch": "Aptiktas URL neatitikimas",
+    "printSizeInstruction": "Spausdinkite 1,8 cm pločio. Aukštis priklauso nuo turinio.",
+    "openPassport": "Atidaryti pasą",
+    "downloadSvg": "Atsisiųsti SVG",
+    "downloadPng": "Atsisiųsti PNG"
   },
   "translation": {
     "title": "Vertimai",
