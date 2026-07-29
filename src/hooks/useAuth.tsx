@@ -43,6 +43,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+
+        // BUG-16: retry referral insert on first authenticated session so
+        // codes captured before email-confirmation are not lost.
+        if (event === 'SIGNED_IN' && session?.user) {
+          const referralCode = getReferralCode();
+          if (referralCode) {
+            const uid = session.user.id;
+            setTimeout(() => {
+              supabase
+                .from('referrals')
+                .insert({ user_id: uid, referral_code: referralCode })
+                .then(({ error }) => {
+                  if (!error) {
+                    clearReferralCode();
+                  } else if (error.code !== '23505') {
+                    // 23505 = duplicate; already inserted at sign-up
+                    console.error('Failed to persist referral code:', error);
+                  } else {
+                    clearReferralCode();
+                  }
+                });
+            }, 0);
+          }
+        }
       }
     );
 
