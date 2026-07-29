@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "vitest run",
+    "test": "rm -rf test-results coverage && vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "build": "rm -rf test-results coverage && vitest run --coverage && vite build",
+    "test:coverage": "rm -rf test-results coverage && vitest run --coverage",
+    "verify": "rm -rf test-results coverage && vitest run --coverage && vite build",
+    "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"

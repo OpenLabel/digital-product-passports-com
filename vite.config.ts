@@ -218,7 +218,6 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
-    runTestsOnBuild(),
     react(),
     mode === "development" && componentTagger(),
     buildStatusPlugin(),
