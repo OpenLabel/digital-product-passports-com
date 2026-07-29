@@ -85,6 +85,11 @@ export default function PassportForm() {
   const [saving, setSaving] = useState(false);
   const [showUnsavedDialog, setShowUnsavedDialog] = useState(false);
   const savedFormDataRef = useRef<string>('');
+  // NEW-02: URLs of previously-attached passport-images to delete AFTER the
+  // form is successfully saved. Discarding the form without saving leaves the
+  // storage object intact (so the persisted DPP still resolves its image).
+  const pendingImageDeletionsRef = useRef<string[]>([]);
+
 
   // Helper to update category_data
   const handleCategoryDataChange = useCallback((key: string, value: unknown) => {
