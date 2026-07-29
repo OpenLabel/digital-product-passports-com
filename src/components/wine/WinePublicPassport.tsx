@@ -306,12 +306,15 @@ export function WinePublicPassport({
     return result;
   };
 
-  // BUG-17: key columns on the component's unique `id`, not `typeId`, so two
-  // custom components with the same typeId ('custom') render as two columns.
+  // BUG-17/NEW-11: key columns on the component's own identity (or index
+  // fallback for legacy id-less rows) and carry the material object so each
+  // cell reads directly from it — no .find() lookups that collapse legacy
+  // rows onto the first match.
   const componentColumns = useMemo(() => {
-    return packagingMaterials.map((m) => ({
-      id: m.id,
+    return packagingMaterials.map((m, i) => ({
+      key: m.id ?? `${m.typeId ?? 'row'}_${i}`,
       name: getMaterialTypeName(m),
+      material: m,
     }));
   }, [packagingMaterials, displayLanguage]);
 
