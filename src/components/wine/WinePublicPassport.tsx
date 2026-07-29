@@ -281,15 +281,13 @@ export function WinePublicPassport({
     return result;
   };
 
-  // Get unique component types for recycling table columns
-  const uniqueComponentTypes = useMemo(() => {
-    const types = new Map<string, { id: string; name: string }>();
-    packagingMaterials.forEach(m => {
-      if (!types.has(m.typeId)) {
-        types.set(m.typeId, { id: m.typeId, name: getMaterialTypeName(m) });
-      }
-    });
-    return Array.from(types.entries());
+  // BUG-17: key columns on the component's unique `id`, not `typeId`, so two
+  // custom components with the same typeId ('custom') render as two columns.
+  const componentColumns = useMemo(() => {
+    return packagingMaterials.map((m) => ({
+      id: m.id,
+      name: getMaterialTypeName(m),
+    }));
   }, [packagingMaterials, displayLanguage]);
 
   return (
