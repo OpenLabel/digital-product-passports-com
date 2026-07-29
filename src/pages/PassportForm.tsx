@@ -488,7 +488,11 @@ export default function PassportForm() {
                   <ImageUpload
                     value={formData.image_url}
                     onChange={(url) => setFormData((prev) => ({ ...prev, image_url: url }))}
+                    onPendingDelete={(previousUrl) => {
+                      if (previousUrl) pendingImageDeletionsRef.current.push(previousUrl);
+                    }}
                   />
+
                 </CardContent>
               </Card>
 
