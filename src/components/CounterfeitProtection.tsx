@@ -108,17 +108,9 @@ export function CounterfeitProtection({
           variant="outline"
           size="sm"
           onClick={handleEnable}
-          disabled={loading}
           className="border-red-300 text-red-700 hover:bg-red-100 dark:border-red-800 dark:text-red-300 dark:hover:bg-red-900/30"
         >
-          {loading ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin mr-1" />
-              {t('counterfeit.sending', 'Sending...')}
-            </>
-          ) : (
-            t('counterfeit.enable')
-          )}
+          {t('counterfeit.enable')}
         </Button>
       </div>
     </div>
