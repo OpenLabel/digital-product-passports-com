@@ -4,8 +4,12 @@
  * the fixes without pulling heavy render harnesses.
  */
 import { describe, it, expect, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+
+const readSrc = (rel: string) => readFileSync(join(process.cwd(), 'src', rel), 'utf-8');
 
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
