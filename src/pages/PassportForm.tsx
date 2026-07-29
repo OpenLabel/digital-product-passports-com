@@ -252,12 +252,38 @@ export default function PassportForm() {
         // is missing counterfeit_request_sent_at.
       }
 
-      // NEW-02: flush deferred storage deletions now that the DPP row is
-      // persisted with the new image_url. Only delete objects the current
-      // user owns; ignore failures (best-effort orphan cleanup).
+      // NEW-02 / NEW-02-R: flush deferred storage deletions now that the
+      // DPP row is persisted with the new image_url. Only delete objects the
+      // current user owns AND only when no other passport row of the same
+      // user still references that URL (duplicated passports share image
+      // objects — deleting one would break the other). Best-effort cleanup.
       if (user && pendingImageDeletionsRef.current.length > 0) {
         const marker = '/storage/v1/object/public/passport-images/';
-        const paths = pendingImageDeletionsRef.current
+        const pending = pendingImageDeletionsRef.current.slice();
+        pendingImageDeletionsRef.current = [];
+
+        // Find URLs still referenced by any of this user's passports.
+        let stillReferenced = new Set<string>();
+        try {
+          const { data: refs } = await supabase
+            .from('passports')
+            .select('image_url')
+            .eq('user_id', user.id)
+            .in('image_url', pending);
+          stillReferenced = new Set(
+            (refs ?? [])
+              .map((r) => r.image_url)
+              .filter((u): u is string => !!u)
+          );
+        } catch (err) {
+          // If we can't verify references, err on the safe side and skip
+          // deletion entirely — orphan cleanup is best-effort.
+          console.warn('Skipping image cleanup (reference query failed):', err);
+          stillReferenced = new Set(pending);
+        }
+
+        const paths = pending
+          .filter((u) => !stillReferenced.has(u))
           .map((u) => {
             const idx = u.indexOf(marker);
             if (idx === -1) return null;
@@ -265,7 +291,7 @@ export default function PassportForm() {
             return p.startsWith(`${user.id}/`) ? p : null;
           })
           .filter((p): p is string => !!p);
-        pendingImageDeletionsRef.current = [];
+
         if (paths.length > 0) {
           try {
             await supabase.storage.from('passport-images').remove(paths);
