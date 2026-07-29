@@ -38,6 +38,7 @@ import { FragrancePicker } from '@/components/toys/FragrancePicker';
 import { TranslatableField } from '@/components/TranslatableField';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { sanitizeUrl } from '@/lib/sanitizeUrl';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
