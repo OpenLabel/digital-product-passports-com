@@ -247,7 +247,9 @@ export default function PassportForm() {
         savedPassport = newPassport;
         toast({ title: t('common.success'), description: t('passport.created') });
         savedFormDataRef.current = JSON.stringify(formData);
-        navigate(`/passport/${newPassport.id}/edit`, { replace: true });
+        // NEW-03: DO NOT navigate yet — the counterfeit send-and-persist
+        // step below must run first so /edit doesn't hydrate a row that
+        // is missing counterfeit_request_sent_at.
       }
 
       // NEW-02: flush deferred storage deletions now that the DPP row is
@@ -273,11 +275,10 @@ export default function PassportForm() {
         }
       }
 
-
-
-      // BUG-10: dispatch counterfeit protection email after a successful save
-      // whenever the toggle is on and no request has been sent yet. The
-      // timestamp is persisted so we never resend on subsequent saves.
+      // BUG-10 / NEW-03: dispatch counterfeit protection email after a
+      // successful save whenever the toggle is on and no request has been
+      // sent yet. The timestamp is persisted before we navigate so the
+      // create-flow doesn't re-send on the next save.
       const cfEnabled = formData.category_data.counterfeit_protection_enabled === true;
       const cfAlreadySent = !!formData.category_data.counterfeit_request_sent_at;
       const slug = savedPassport?.public_slug;
@@ -312,6 +313,12 @@ export default function PassportForm() {
             variant: 'destructive',
           });
         }
+      }
+
+      // NEW-03: navigate to /edit only after all persistence completes,
+      // so hydration always sees the final row (including sent_at).
+      if (!isEditing && savedPassport) {
+        navigate(`/passport/${savedPassport.id}/edit`, { replace: true });
       }
     } catch (error: unknown) {
       toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });

@@ -1230,5 +1230,65 @@
         "gatePortal": "EU Safety Gate-portalen"
       }
     }
+  },
+  "wineRecycling": {
+    "types": {
+      "bottle": "Flaska",
+      "capsule": "Kapsyl",
+      "cage": "Kork­bur",
+      "cork": "Kork",
+      "cardboard": "Kartong",
+      "bag": "Påse",
+      "tap": "Kran"
+    },
+    "compositions": {
+      "pet_1": "Polyethylene terephthalate",
+      "hdpe_2": "High-density polyethylene",
+      "pvc_3": "Polyvinyl chloride",
+      "ldpe_4": "Low-density polyethylene",
+      "pp_5": "Polypropylene",
+      "ps_6": "Polystyrene",
+      "o_7": "Other plastics (polyamide, cellophane, etc.)",
+      "pap_20": "Corrugated cardboard",
+      "pap_21": "Non-corrugated cardboard or sugarcane",
+      "pap_22": "Paper",
+      "fe_40": "Steel",
+      "alu_41": "Aluminum",
+      "tin_42": "Tin",
+      "for_50": "Wood",
+      "for_51": "Cork",
+      "tex_60": "Cotton",
+      "tex_61": "Jute",
+      "tex_62": "Other textile materials",
+      "gl_70": "Colorless glass",
+      "gl_71": "Green glass",
+      "gl_72": "Brown glass",
+      "gl_73": "Black glass",
+      "wax_200301": "Sealing wax",
+      "c_80": "Paper and cardboard/various metals",
+      "c_81": "Paper and cardboard/plastic",
+      "c_82": "Paper and cardboard/aluminum",
+      "c_83": "Paper and cardboard/tin",
+      "c_84": "Paper and cardboard/plastic/aluminum",
+      "c_85": "Paper and cardboard/plastic/aluminum/tin",
+      "c_86": "Wood/plastic",
+      "c_90": "Plastic/aluminum",
+      "c_91": "Plastic/tin",
+      "c_92": "Plastic/various metals",
+      "c_95": "Glass/plastic",
+      "c_96": "Glass/aluminum",
+      "c_97": "Glass/tin",
+      "c_98": "Glass/various metals"
+    },
+    "disposal": {
+      "plastic_collection": "Plaståtervinning",
+      "dedicated_waste": "Särskild insamling",
+      "paper_collection": "Pappersåtervinning",
+      "steel_collection": "Metallåtervinning",
+      "glass_collection": "Glasåtervinning",
+      "residual_waste": "Restavfall",
+      "organic_waste": "Matavfall",
+      "textile_collection": "Textilåtervinning"
+    }
   }
 }
