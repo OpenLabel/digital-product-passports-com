@@ -187,7 +187,8 @@
     "confirmPassword": "Confirmar contraseña",
     "updatePassword": "Actualizar contraseña",
     "passwordMismatch": "Las contraseñas no coinciden",
-    "passwordUpdated": "¡Contraseña actualizada exitosamente!"
+    "passwordUpdated": "¡Contraseña actualizada exitosamente!",
+    "recoveryLinkRequired": "Utilice el enlace de recuperación de contraseña de su correo electrónico."
   },
   "dashboard": {
     "title": "Tus pasaportes",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Alfa temprana",
     "earlyAlphaDesc": "Esta plantilla está en fase alfa temprana y puede no cumplir completamente con las regulaciones actuales. Verifique toda la información antes de usarla.",
     "missingRequiredTitle": "Algunos campos obligatorios no están completos",
-    "missingRequiredBody": "Aún puede guardar y publicar este DPP, pero los siguientes campos son obligatorios para el cumplimiento normativo completo:"
+    "missingRequiredBody": "Aún puede guardar y publicar este DPP, pero los siguientes campos son obligatorios para el cumplimiento normativo completo:",
+    "productInfo": "Información del producto",
+    "description": "Descripción"
   },
   "categories": {
     "battery": "Baterías",
@@ -498,7 +501,12 @@
     "title": "Código QR",
     "download": "Descargar código QR",
     "copyLink": "Copiar enlace",
-    "printSizeInstructionWine": "Imprima con un ancho de 1,8 cm. La altura varía según el contenido. El hexágono corresponde a 1 cm para el sello de seguridad."
+    "printSizeInstructionWine": "Imprima con un ancho de 1,8 cm. La altura varía según el contenido. El hexágono corresponde a 1 cm para el sello de seguridad.",
+    "urlMismatch": "Discrepancia de URL detectada",
+    "printSizeInstruction": "Imprima con 1,8 cm de ancho. La altura varía según el contenido.",
+    "openPassport": "Abrir pasaporte",
+    "downloadSvg": "Descargar SVG",
+    "downloadPng": "Descargar PNG"
   },
   "translation": {
     "title": "Traducciones",

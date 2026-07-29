@@ -75,8 +75,8 @@ export default function ResetPassword() {
       if (error) throw error;
       toast({ title: t('auth.passwordUpdated') });
       navigate('/dashboard');
-    } catch (error: any) {
-      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
+    } catch (error: unknown) {
+      toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     } finally {
       setLoading(false);
     }

@@ -106,8 +106,8 @@ export default function Dashboard() {
     try {
       await duplicatePassport.mutateAsync(passport);
       toast({ title: t('dashboard.duplicated') });
-    } catch (error: any) {
-      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
+    } catch (error: unknown) {
+      toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     }
   };
 
@@ -116,8 +116,8 @@ export default function Dashboard() {
     try {
       await deletePassport.mutateAsync(id);
       toast({ title: t('dashboard.deleted') });
-    } catch (error: any) {
-      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
+    } catch (error: unknown) {
+      toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     }
   };
 
@@ -126,8 +126,8 @@ export default function Dashboard() {
       const created = await createPassport.mutateAsync(buildSampleToyPassport());
       toast({ title: t('dashboard.sampleToyCreated') });
       navigate(`/passport/${created.id}/edit`);
-    } catch (error: any) {
-      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
+    } catch (error: unknown) {
+      toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     }
   };
 

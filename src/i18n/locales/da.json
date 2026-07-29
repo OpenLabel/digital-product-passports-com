@@ -187,7 +187,8 @@
     "confirmPassword": "Bekræft adgangskode",
     "updatePassword": "Opdater adgangskode",
     "passwordMismatch": "Adgangskoderne stemmer ikke overens",
-    "passwordUpdated": "Adgangskoden er opdateret!"
+    "passwordUpdated": "Adgangskoden er opdateret!",
+    "recoveryLinkRequired": "Brug venligst linket til nulstilling af adgangskode fra din e-mail."
   },
   "dashboard": {
     "title": "Dine pas",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Tidlig alfa",
     "earlyAlphaDesc": "Denne skabelon er i tidlig alfa og er muligvis ikke fuldt i overensstemmelse med gældende regler. Verificer alle oplysninger mod officielle krav.",
     "missingRequiredTitle": "Nogle obligatoriske felter er ikke udfyldt",
-    "missingRequiredBody": "Du kan stadig gemme og publicere dette DPP, men følgende felter er påkrævet for fuld regulatorisk overholdelse:"
+    "missingRequiredBody": "Du kan stadig gemme og publicere dette DPP, men følgende felter er påkrævet for fuld regulatorisk overholdelse:",
+    "productInfo": "Produktinformation",
+    "description": "Beskrivelse"
   },
   "categories": {
     "battery": "Batterier",
@@ -523,7 +526,12 @@
     "title": "QR-kode",
     "download": "Download QR-kode",
     "copyLink": "Kopiér link",
-    "printSizeInstructionWine": "Udskriv med en bredde på 1,8 cm. Højden varierer efter indhold. Sekskanten svarer til 1 cm til sikkerhedsseglet."
+    "printSizeInstructionWine": "Udskriv med en bredde på 1,8 cm. Højden varierer efter indhold. Sekskanten svarer til 1 cm til sikkerhedsseglet.",
+    "urlMismatch": "URL-uoverensstemmelse fundet",
+    "printSizeInstruction": "Udskriv i 1,8 cm bredde. Højden varierer afhængigt af indholdet.",
+    "openPassport": "Åbn pas",
+    "downloadSvg": "Hent SVG",
+    "downloadPng": "Hent PNG"
   },
   "translation": {
     "title": "Oversættelser",

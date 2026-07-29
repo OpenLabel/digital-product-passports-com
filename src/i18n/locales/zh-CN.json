@@ -187,7 +187,8 @@
     "confirmPassword": "确认密码",
     "updatePassword": "更新密码",
     "passwordMismatch": "密码不匹配",
-    "passwordUpdated": "密码更新成功！"
+    "passwordUpdated": "密码更新成功！",
+    "recoveryLinkRequired": "请使用您邮件中的密码恢复链接。"
   },
   "dashboard": {
     "title": "您的产品护照",
@@ -235,7 +236,9 @@
     "earlyAlpha": "早期Alpha版本",
     "earlyAlphaDesc": "此模板处于早期Alpha版本，可能不完全符合当前法规。使用前请根据官方要求核实所有信息。",
     "missingRequiredTitle": "部分必填字段未填写",
-    "missingRequiredBody": "您仍然可以保存并发布此DPP，但以下字段是完全符合法规所必需的："
+    "missingRequiredBody": "您仍然可以保存并发布此DPP，但以下字段是完全符合法规所必需的：",
+    "productInfo": "产品信息",
+    "description": "描述"
   },
   "imageUpload": {
     "loginRequired": "您必须登录才能上传图片",
@@ -531,7 +534,12 @@
     "title": "二维码",
     "download": "下载二维码",
     "copyLink": "复制链接",
-    "printSizeInstructionWine": "打印宽度为 1.8 厘米。高度随内容变化。六边形对应安全封条的 1 厘米。"
+    "printSizeInstructionWine": "打印宽度为 1.8 厘米。高度随内容变化。六边形对应安全封条的 1 厘米。",
+    "urlMismatch": "检测到 URL 不匹配",
+    "printSizeInstruction": "以 1.8 厘米宽度打印。高度因内容而异。",
+    "openPassport": "打开护照",
+    "downloadSvg": "下载 SVG",
+    "downloadPng": "下载 PNG"
   },
   "translation": {
     "title": "翻译",

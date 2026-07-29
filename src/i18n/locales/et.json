@@ -187,7 +187,8 @@
     "confirmPassword": "Kinnitage parool",
     "updatePassword": "Uuenda parooli",
     "passwordMismatch": "Paroolid ei ühti",
-    "passwordUpdated": "Parool on edukalt uuendatud!"
+    "passwordUpdated": "Parool on edukalt uuendatud!",
+    "recoveryLinkRequired": "Palun kasutage e-kirjas olevat parooli taastamise linki."
   },
   "dashboard": {
     "title": "Sinu passid",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Varajane alfa",
     "earlyAlphaDesc": "See mall on varajases alfaversioonis ja ei pruugi vastata kehtivatele eeskirjadele. Kontrollige kogu teavet enne kasutamist.",
     "missingRequiredTitle": "Mõned kohustuslikud väljad on täitmata",
-    "missingRequiredBody": "Saate selle DPP siiski salvestada ja avaldada, kuid järgmised väljad on täielikuks regulatiivseks vastavuseks kohustuslikud:"
+    "missingRequiredBody": "Saate selle DPP siiski salvestada ja avaldada, kuid järgmised väljad on täielikuks regulatiivseks vastavuseks kohustuslikud:",
+    "productInfo": "Toote teave",
+    "description": "Kirjeldus"
   },
   "categories": {
     "battery": "Akud",
@@ -523,7 +526,12 @@
     "title": "QR-kood",
     "download": "Laadi alla QR-kood",
     "copyLink": "Kopeeri link",
-    "printSizeInstructionWine": "Printige laiusega 1,8 cm. Kõrgus varieerub sisu järgi. Kuusnurk vastab 1 cm-le turvaplaadi jaoks."
+    "printSizeInstructionWine": "Printige laiusega 1,8 cm. Kõrgus varieerub sisu järgi. Kuusnurk vastab 1 cm-le turvaplaadi jaoks.",
+    "urlMismatch": "Tuvastati URL-i mittevastavus",
+    "printSizeInstruction": "Printige 1,8 cm laiuselt. Kõrgus sõltub sisust.",
+    "openPassport": "Ava pass",
+    "downloadSvg": "Laadi alla SVG",
+    "downloadPng": "Laadi alla PNG"
   },
   "translation": {
     "title": "Tõlked",

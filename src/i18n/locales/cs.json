@@ -187,7 +187,8 @@
     "confirmPassword": "Potvrďte heslo",
     "updatePassword": "Aktualizovat heslo",
     "passwordMismatch": "Hesla se neshodují",
-    "passwordUpdated": "Heslo bylo úspěšně aktualizováno!"
+    "passwordUpdated": "Heslo bylo úspěšně aktualizováno!",
+    "recoveryLinkRequired": "Použijte prosím odkaz pro obnovení hesla z vašeho e-mailu."
   },
   "dashboard": {
     "title": "Vaše pasy",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Raná alfa verze",
     "earlyAlphaDesc": "Tato šablona je v rané alfa verzi a nemusí plně odpovídat aktuálním předpisům. Ověřte všechny informace oproti oficiálním požadavkům.",
     "missingRequiredTitle": "Některá povinná pole nejsou vyplněna",
-    "missingRequiredBody": "Tento DPP můžete uložit a publikovat, ale následující pole jsou povinná pro plný regulační soulad:"
+    "missingRequiredBody": "Tento DPP můžete uložit a publikovat, ale následující pole jsou povinná pro plný regulační soulad:",
+    "productInfo": "Informace o produktu",
+    "description": "Popis"
   },
   "categories": {
     "battery": "Baterie",
@@ -523,7 +526,12 @@
     "title": "QR kód",
     "download": "Stáhnout QR kód",
     "copyLink": "Kopírovat odkaz",
-    "printSizeInstructionWine": "Tiskněte v šířce 1,8 cm. Výška se mění podle obsahu. Šestiúhelník odpovídá 1 cm pro bezpečnostní pečeť."
+    "printSizeInstructionWine": "Tiskněte v šířce 1,8 cm. Výška se mění podle obsahu. Šestiúhelník odpovídá 1 cm pro bezpečnostní pečeť.",
+    "urlMismatch": "Zjištěn nesoulad URL",
+    "printSizeInstruction": "Tiskněte v šířce 1,8 cm. Výška se liší podle obsahu.",
+    "openPassport": "Otevřít pas",
+    "downloadSvg": "Stáhnout SVG",
+    "downloadPng": "Stáhnout PNG"
   },
   "translation": {
     "title": "Překlady",

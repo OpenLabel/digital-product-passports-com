@@ -187,7 +187,8 @@
     "confirmPassword": "Confirm Password",
     "updatePassword": "Update Password",
     "passwordMismatch": "Passwords do not match",
-    "passwordUpdated": "Password updated successfully!"
+    "passwordUpdated": "Password updated successfully!",
+    "recoveryLinkRequired": "Please use the password recovery link from your email."
   },
   "dashboard": {
     "title": "Your Passports",
@@ -235,7 +236,9 @@
     "earlyAlpha": "Early Alpha",
     "earlyAlphaDesc": "This template is in early alpha and may not be fully compliant with current regulations. Please verify all information against official requirements before use.",
     "missingRequiredTitle": "Some mandatory fields are not filled",
-    "missingRequiredBody": "You can still save and publish this DPP, but the following fields are required for full regulatory compliance:"
+    "missingRequiredBody": "You can still save and publish this DPP, but the following fields are required for full regulatory compliance:",
+    "productInfo": "Product Information",
+    "description": "Description"
   },
   "imageUpload": {
     "loginRequired": "You must be logged in to upload images",
@@ -531,7 +534,12 @@
     "title": "QR Code",
     "download": "Download QR Code",
     "copyLink": "Copy Link",
-    "printSizeInstructionWine": "Print at 1.8 cm wide. Height varies with content. The hexagon corresponds to 1 cm for the security seal."
+    "printSizeInstructionWine": "Print at 1.8 cm wide. Height varies with content. The hexagon corresponds to 1 cm for the security seal.",
+    "urlMismatch": "URL mismatch detected",
+    "printSizeInstruction": "Print at 1.8 cm wide. Height varies with content.",
+    "openPassport": "Open Passport",
+    "downloadSvg": "Download SVG",
+    "downloadPng": "Download PNG"
   },
   "translation": {
     "title": "Translations",
