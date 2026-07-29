@@ -91,8 +91,12 @@ export function usePassports() {
       if (error) throw error;
       return data as Passport;
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['passports', user?.id] });
+      // NEW-03: invalidate the per-passport cache so a subsequent form load
+      // (e.g. right after a counterfeit send-and-persist flow) doesn't read
+      // a stale row missing counterfeit_request_sent_at.
+      if (data?.id) queryClient.invalidateQueries({ queryKey: ['passport', data.id] });
     },
   });
 
