@@ -7,17 +7,34 @@
  */
 
 /**
- * Sanitize a URL for use in an anchor `href`. Rejects dangerous schemes such
- * as `javascript:`, `data:`, `vbscript:`, or `file:` and returns `#` instead.
- * Preserves relative URLs and standard http(s)/mailto/tel schemes.
+ * Sanitize a URL for use in an anchor `href`. Uses a strict scheme
+ * allowlist: only `http:`, `https:`, `mailto:`, `tel:` and relative /
+ * scheme-relative URLs are preserved. Everything else (including
+ * `javascript:`, `data:`, `vbscript:`, `file:`, `blob:`, `intent:`,
+ * custom schemes, etc.) is rejected — this function returns `'#'` for
+ * back-compat so `href` remains a string. Prefer `sanitizeUrlOrNull` at
+ * call sites that can omit the anchor.
  */
-export function sanitizeUrl(url: string | null | undefined): string {
-  if (!url) return '#';
-  const trimmed = String(url).trim();
-  if (!trimmed) return '#';
-  // Reject dangerous schemes (case-insensitive, allow leading whitespace/control chars)
+const ALLOWED_SCHEMES = new Set(['http:', 'https:', 'mailto:', 'tel:']);
+
+export function sanitizeUrlOrNull(url: string | null | undefined): string | null {
+  if (!url) return null;
+  const raw = String(url);
+  // Strip control chars for scheme detection but preserve the original for return.
   // eslint-disable-next-line no-control-regex
-  const normalized = trimmed.replace(/[\u0000-\u001F\u007F]/g, '').toLowerCase();
-  if (/^(javascript|data|vbscript|file):/i.test(normalized)) return '#';
-  return trimmed;
+  const cleaned = raw.replace(/[\u0000-\u001F\u007F]/g, '').trim();
+  if (!cleaned) return null;
+
+  // Relative or scheme-relative URLs (no scheme prefix) are safe as-is.
+  // Scheme detection: leading letter followed by letters/digits/+/-/. and a colon
+  const schemeMatch = cleaned.match(/^([a-zA-Z][a-zA-Z0-9+\-.]*):/);
+  if (!schemeMatch) return cleaned;
+
+  const scheme = schemeMatch[1].toLowerCase() + ':';
+  if (ALLOWED_SCHEMES.has(scheme)) return cleaned;
+  return null;
+}
+
+export function sanitizeUrl(url: string | null | undefined): string {
+  return sanitizeUrlOrNull(url) ?? '#';
 }

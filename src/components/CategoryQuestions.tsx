@@ -198,7 +198,7 @@ function FileUploadField({
       {value ? (
         <div className="flex items-center gap-2 border rounded-md p-2 bg-muted/30">
           <a
-            href={value}
+            href={sanitizeUrl(value as string)}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-primary underline inline-flex items-center gap-1 flex-1 truncate"
