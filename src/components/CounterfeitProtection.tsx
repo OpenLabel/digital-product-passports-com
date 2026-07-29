@@ -60,10 +60,13 @@ export function CounterfeitProtection({
     onChange(false);
   };
 
-  // BUG-10: only show the "email sent" confirmation once we actually have a
-  // request timestamp persisted. Before that, the toggle is on but no email
-  // has been dispatched yet (happens on first save via PassportForm).
-  if (enabled && requestSentAt) {
+  // NEW-03: whenever the toggle is on, render a panel with a Disable
+  // control. Show the "email sent" confirmation copy only once we have a
+  // request timestamp persisted; otherwise indicate the email will go out
+  // on save. Legacy passports enabled under the old flow (email sent, no
+  // sent_at) can now be disabled directly.
+  if (enabled) {
+    const emailSent = !!requestSentAt;
     return (
       <div className="rounded-lg border-2 border-green-500/50 bg-green-50 dark:bg-green-950/20 p-4">
         <div className="flex items-start gap-3">
@@ -73,7 +76,9 @@ export function CounterfeitProtection({
               {t('counterfeit.enabled', 'Counterfeit Protection Enabled')}
             </h3>
             <p className="text-sm text-green-700 dark:text-green-300 mt-1">
-              {t('counterfeit.enabledDescription', 'An email has been sent to our counterfeit protection partner. They will contact you to deliver the security seal.')}
+              {emailSent
+                ? t('counterfeit.enabledDescription', 'An email has been sent to our counterfeit protection partner. They will contact you to deliver the security seal.')
+                : t('counterfeit.pendingSend', 'The partner will be notified the next time you save this passport.')}
             </p>
           </div>
           <Button
