@@ -72,3 +72,16 @@ Deno.test("returns 404 for nonexistent valid slug (not 500)", async () => {
   const data = await res.json();
   assert(data.error);
 });
+
+// BUG-11: legacy 8-hex slugs must be accepted (validation passes, no 400).
+Deno.test("accepts 8-hex legacy slug (BUG-11)", async () => {
+  const res = await fetch(FUNCTION_URL, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ slug: "abcdef01" }),
+  });
+  // Not 400 = validation accepted it. 404 (not found) or 200 (found) are both OK.
+  assert(res.status !== 400, `expected non-400, got ${res.status}`);
+  await res.text();
+});
+
