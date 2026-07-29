@@ -41,7 +41,7 @@ describe('CounterfeitProtection', () => {
     expect(screen.getByText('Counterfeit Protection Enabled')).toBeInTheDocument();
   });
 
-  it('still shows the enable prompt when enabled but no request has been sent yet', () => {
+  it('shows the pending-send panel when enabled but no request has been sent yet', () => {
     render(
       <CounterfeitProtection
         passportName="Test"
@@ -52,10 +52,13 @@ describe('CounterfeitProtection', () => {
         onChange={vi.fn()}
       />
     );
-    // BUG-10: email is only dispatched on save, so before the timestamp
-    // exists we intentionally stay in the un-sent state.
-    expect(screen.getByText('Add Counterfeit Protection (optional)')).toBeInTheDocument();
+    // NEW-03: the toggle is on but the email hasn't been dispatched yet
+    // (that happens on save). The UI acknowledges the enabled state and
+    // still exposes a Disable action so users can back out before saving.
+    expect(screen.getByText('Counterfeit Protection Enabled')).toBeInTheDocument();
+    expect(screen.getByText('Disable')).toBeInTheDocument();
   });
+
 
   it('shows disable button when enabled with a request timestamp', () => {
     render(
