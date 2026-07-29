@@ -47,7 +47,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/build-status.json TEST_LOG.md
+          git add public/build-status.json
+          if [ -f TEST_LOG.md ]; then git add TEST_LOG.md; fi
           if ! git diff --cached --quiet; then
             git commit -m "ci: update test status & log [skip ci]"
             git pull --rebase origin main
