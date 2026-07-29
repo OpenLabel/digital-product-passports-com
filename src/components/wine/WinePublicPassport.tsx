@@ -115,17 +115,24 @@ export function WinePublicPassport({
   // Nutritional values
 
   // Nutritional values
-  const alcoholPercent = categoryData.alcohol_percent as number | undefined;
-  const residualSugar = categoryData.residual_sugar as number | undefined;
-  const totalAcidity = categoryData.total_acidity as number | undefined;
-  const energyKcal = categoryData.energy_kcal as number | undefined;
-  const energyKj = categoryData.energy_kj as number | undefined;
-  const carbohydrates = categoryData.carbohydrates as number | undefined;
-  const sugar = categoryData.sugar as number | undefined;
-  const fat = categoryData.fat as number | undefined;
-  const saturatedFat = categoryData.saturated_fat as number | undefined;
-  const proteins = categoryData.proteins as number | undefined;
-  const salt = categoryData.salt as number | undefined;
+  // NEW-05: normalize empty strings / null to undefined so a user-cleared
+  // nutrition field doesn't render as `0`.
+  const num = (v: unknown): number | undefined => {
+    if (v === null || v === undefined || v === '') return undefined;
+    const n = typeof v === 'number' ? v : Number(v);
+    return Number.isFinite(n) ? n : undefined;
+  };
+  const alcoholPercent = num(categoryData.alcohol_percent);
+  const residualSugar = num(categoryData.residual_sugar);
+  const totalAcidity = num(categoryData.total_acidity);
+  const energyKcal = num(categoryData.energy_kcal);
+  const energyKj = num(categoryData.energy_kj);
+  const carbohydrates = num(categoryData.carbohydrates);
+  const sugar = num(categoryData.sugar);
+  const fat = num(categoryData.fat);
+  const saturatedFat = num(categoryData.saturated_fat);
+  const proteins = num(categoryData.proteins);
+  const salt = num(categoryData.salt);
 
   // Display options - these control visibility in product info section
   const showAlcohol = categoryData.show_alcohol_on_label === true;
@@ -145,15 +152,33 @@ export function WinePublicPassport({
   const hasRecyclingInfo = packagingMaterials.length > 0;
   const hasProducerInfo = producerName || bottlerInfo || country;
   
-  // Helper to get material type name with translation support
+  // Helper to get material type name with translation support.
+  // BUG-18: prefer i18n `wine.recycling.types.<id>` when present; fall back
+  // to the English name. Custom-typed materials use user-provided translations
+  // per displayLanguage when available.
   const getMaterialTypeName = (material: PackagingMaterial): string => {
     if (material.isCustomType) {
-      // Check for user-provided translation
       const customTranslation = material.customTypeNameTranslations?.[displayLanguage];
       if (customTranslation) return customTranslation;
       return material.customTypeName || material.typeName;
     }
-    return material.typeName;
+    const key = `wine.recycling.types.${material.typeId}`;
+    const translated = t(key);
+    return translated === key ? material.typeName : translated;
+  };
+
+  const getCompositionName = (m: PackagingMaterial): string => {
+    if (!m.compositionId) return m.compositionName || '';
+    const key = `wine.recycling.compositions.${m.compositionId}`;
+    const translated = t(key);
+    return translated === key ? (m.compositionName || '') : translated;
+  };
+
+  const getDisposalName = (m: PackagingMaterial): string => {
+    if (!m.disposalMethodId) return m.disposalMethodName || '';
+    const key = `wine.recycling.disposal.${m.disposalMethodId}`;
+    const translated = t(key);
+    return translated === key ? (m.disposalMethodName || '') : translated;
   };
 
   // Translate ingredient name
@@ -281,15 +306,13 @@ export function WinePublicPassport({
     return result;
   };
 
-  // Get unique component types for recycling table columns
-  const uniqueComponentTypes = useMemo(() => {
-    const types = new Map<string, { id: string; name: string }>();
-    packagingMaterials.forEach(m => {
-      if (!types.has(m.typeId)) {
-        types.set(m.typeId, { id: m.typeId, name: getMaterialTypeName(m) });
-      }
-    });
-    return Array.from(types.entries());
+  // BUG-17: key columns on the component's unique `id`, not `typeId`, so two
+  // custom components with the same typeId ('custom') render as two columns.
+  const componentColumns = useMemo(() => {
+    return packagingMaterials.map((m) => ({
+      id: m.id,
+      name: getMaterialTypeName(m),
+    }));
   }, [packagingMaterials, displayLanguage]);
 
   return (
@@ -521,36 +544,36 @@ export function WinePublicPassport({
                   <thead>
                     <tr className="border-b">
                       <th className="text-left py-2"></th>
-                      {uniqueComponentTypes.map(([typeId, typeInfo]) => (
-                        <th key={typeId} className="text-center py-2 font-medium">{typeInfo.name}</th>
+                      {componentColumns.map((col) => (
+                        <th key={col.id} className="text-center py-2 font-medium">{col.name}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.code')}</td>
-                      {uniqueComponentTypes.map(([typeId]) => {
-                        const mat = packagingMaterials.find(m => m.typeId === typeId);
+                      {componentColumns.map((col) => {
+                        const mat = packagingMaterials.find((m) => m.id === col.id);
                         return (
-                          <td key={typeId} className="py-2 text-center">{mat?.compositionCode || '-'}</td>
+                          <td key={col.id} className="py-2 text-center">{mat?.compositionCode || '-'}</td>
                         );
                       })}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.material')}</td>
-                      {uniqueComponentTypes.map(([typeId]) => {
-                        const mat = packagingMaterials.find(m => m.typeId === typeId);
+                      {componentColumns.map((col) => {
+                        const mat = packagingMaterials.find((m) => m.id === col.id);
                         return (
-                          <td key={typeId} className="py-2 text-center">{mat?.compositionName || '-'}</td>
+                          <td key={col.id} className="py-2 text-center">{mat ? (getCompositionName(mat) || '-') : '-'}</td>
                         );
                       })}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.disposal')}</td>
-                      {uniqueComponentTypes.map(([typeId]) => {
-                        const mat = packagingMaterials.find(m => m.typeId === typeId);
+                      {componentColumns.map((col) => {
+                        const mat = packagingMaterials.find((m) => m.id === col.id);
                         return (
-                          <td key={typeId} className="py-2 text-center">{mat?.disposalMethodName || '-'}</td>
+                          <td key={col.id} className="py-2 text-center">{mat ? (getDisposalName(mat) || '-') : '-'}</td>
                         );
                       })}
                     </tr>

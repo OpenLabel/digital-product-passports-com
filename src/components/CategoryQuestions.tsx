@@ -38,6 +38,7 @@ import { FragrancePicker } from '@/components/toys/FragrancePicker';
 import { TranslatableField } from '@/components/TranslatableField';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { sanitizeUrl } from '@/lib/sanitizeUrl';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -198,7 +199,7 @@ function FileUploadField({
       {value ? (
         <div className="flex items-center gap-2 border rounded-md p-2 bg-muted/30">
           <a
-            href={value}
+            href={sanitizeUrl(value as string)}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-primary underline inline-flex items-center gap-1 flex-1 truncate"
