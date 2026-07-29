@@ -319,8 +319,8 @@ export default function PassportForm() {
       // so hydration always sees the final row (including sent_at).
       if (!isEditing && savedPassport) {
         navigate(`/passport/${savedPassport.id}/edit`, { replace: true });
-      }
 
+    } catch (error: unknown) {
       toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     } finally {
       setSaving(false);
