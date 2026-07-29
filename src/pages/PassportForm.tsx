@@ -250,6 +250,28 @@ export default function PassportForm() {
         navigate(`/passport/${newPassport.id}/edit`, { replace: true });
       }
 
+      // NEW-02: flush deferred storage deletions now that the DPP row is
+      // persisted with the new image_url. Only delete objects the current
+      // user owns; ignore failures (best-effort orphan cleanup).
+      if (user && pendingImageDeletionsRef.current.length > 0) {
+        const marker = '/storage/v1/object/public/passport-images/';
+        const paths = pendingImageDeletionsRef.current
+          .map((u) => {
+            const idx = u.indexOf(marker);
+            if (idx === -1) return null;
+            const p = u.slice(idx + marker.length).split('?')[0];
+            return p.startsWith(`${user.id}/`) ? p : null;
+          })
+          .filter((p): p is string => !!p);
+        pendingImageDeletionsRef.current = [];
+        if (paths.length > 0) {
+          try {
+            await supabase.storage.from('passport-images').remove(paths);
+          } catch (err) {
+            console.warn('Failed to flush deferred image deletions:', err);
+          }
+        }
+
       // BUG-10: dispatch counterfeit protection email after a successful save
       // whenever the toggle is on and no request has been sent yet. The
       // timestamp is persisted so we never resend on subsequent saves.
