@@ -162,21 +162,21 @@ export function WinePublicPassport({
       if (customTranslation) return customTranslation;
       return material.customTypeName || material.typeName;
     }
-    const key = `wine.recycling.types.${material.typeId}`;
+    const key = `wineRecycling.types.${material.typeId}`;
     const translated = t(key);
     return translated === key ? material.typeName : translated;
   };
 
   const getCompositionName = (m: PackagingMaterial): string => {
     if (!m.compositionId) return m.compositionName || '';
-    const key = `wine.recycling.compositions.${m.compositionId}`;
+    const key = `wineRecycling.compositions.${m.compositionId}`;
     const translated = t(key);
     return translated === key ? (m.compositionName || '') : translated;
   };
 
   const getDisposalName = (m: PackagingMaterial): string => {
     if (!m.disposalMethodId) return m.disposalMethodName || '';
-    const key = `wine.recycling.disposal.${m.disposalMethodId}`;
+    const key = `wineRecycling.disposal.${m.disposalMethodId}`;
     const translated = t(key);
     return translated === key ? (m.disposalMethodName || '') : translated;
   };
