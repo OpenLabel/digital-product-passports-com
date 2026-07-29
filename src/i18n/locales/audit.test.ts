@@ -98,11 +98,10 @@ function isLegitimateMatch(key: string, value: string, langCode: string): boolea
   // Ingredient names are scientific/chemical terms — identical across EU languages
   if (key.startsWith("ingredients.")) return true;
 
-  // BUG-18: wine packaging composition names are EU regulatory/scientific
-  // terms (polymer names, alloys, standard EU material codes) that are kept
-  // identical across the EU's own multilingual publications — same rationale
-  // as ingredients above.
-  if (key.startsWith("wineRecycling.compositions.")) return true;
+  // BUG-18: wine recycling material codes (e.g. "PET 1", "PAP 20", "ALU 41",
+  // "GL 70") are standard EU regulatory identifiers and remain identical
+  // across all languages. Descriptive composition names MUST be translated.
+  if (/^[A-Z]{2,4} \d+$/.test(value)) return true;
 
   // Values containing E-numbers in parentheses (e.g., "Argon (E938)")
   if (/\(E\d{3,4}[a-z]?\)/i.test(value)) return true;
