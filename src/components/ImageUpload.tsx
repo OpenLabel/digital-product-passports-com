@@ -19,7 +19,13 @@ interface ImageUploadProps {
   value: string | null;
   onChange: (url: string | null) => void;
   className?: string;
+  // NEW-02: when provided, ImageUpload defers deletion of the previous storage
+  // object to the caller (so a discard-without-save doesn't destroy the image
+  // the persisted DPP still points to). The caller should flush the queue
+  // AFTER a successful save.
+  onPendingDelete?: (previousUrl: string) => void;
 }
+
 
 // Extract the storage path (relative to the bucket) from a public URL.
 // Returns null when the URL is not a passport-images public URL — we must
