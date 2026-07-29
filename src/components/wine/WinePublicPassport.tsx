@@ -145,15 +145,33 @@ export function WinePublicPassport({
   const hasRecyclingInfo = packagingMaterials.length > 0;
   const hasProducerInfo = producerName || bottlerInfo || country;
   
-  // Helper to get material type name with translation support
+  // Helper to get material type name with translation support.
+  // BUG-18: prefer i18n `wine.recycling.types.<id>` when present; fall back
+  // to the English name. Custom-typed materials use user-provided translations
+  // per displayLanguage when available.
   const getMaterialTypeName = (material: PackagingMaterial): string => {
     if (material.isCustomType) {
-      // Check for user-provided translation
       const customTranslation = material.customTypeNameTranslations?.[displayLanguage];
       if (customTranslation) return customTranslation;
       return material.customTypeName || material.typeName;
     }
-    return material.typeName;
+    const key = `wine.recycling.types.${material.typeId}`;
+    const translated = t(key);
+    return translated === key ? material.typeName : translated;
+  };
+
+  const getCompositionName = (m: PackagingMaterial): string => {
+    if (!m.compositionId) return m.compositionName || '';
+    const key = `wine.recycling.compositions.${m.compositionId}`;
+    const translated = t(key);
+    return translated === key ? (m.compositionName || '') : translated;
+  };
+
+  const getDisposalName = (m: PackagingMaterial): string => {
+    if (!m.disposalMethodId) return m.disposalMethodName || '';
+    const key = `wine.recycling.disposal.${m.disposalMethodId}`;
+    const translated = t(key);
+    return translated === key ? (m.disposalMethodName || '') : translated;
   };
 
   // Translate ingredient name
