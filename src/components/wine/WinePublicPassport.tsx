@@ -115,17 +115,24 @@ export function WinePublicPassport({
   // Nutritional values
 
   // Nutritional values
-  const alcoholPercent = categoryData.alcohol_percent as number | undefined;
-  const residualSugar = categoryData.residual_sugar as number | undefined;
-  const totalAcidity = categoryData.total_acidity as number | undefined;
-  const energyKcal = categoryData.energy_kcal as number | undefined;
-  const energyKj = categoryData.energy_kj as number | undefined;
-  const carbohydrates = categoryData.carbohydrates as number | undefined;
-  const sugar = categoryData.sugar as number | undefined;
-  const fat = categoryData.fat as number | undefined;
-  const saturatedFat = categoryData.saturated_fat as number | undefined;
-  const proteins = categoryData.proteins as number | undefined;
-  const salt = categoryData.salt as number | undefined;
+  // NEW-05: normalize empty strings / null to undefined so a user-cleared
+  // nutrition field doesn't render as `0`.
+  const num = (v: unknown): number | undefined => {
+    if (v === null || v === undefined || v === '') return undefined;
+    const n = typeof v === 'number' ? v : Number(v);
+    return Number.isFinite(n) ? n : undefined;
+  };
+  const alcoholPercent = num(categoryData.alcohol_percent);
+  const residualSugar = num(categoryData.residual_sugar);
+  const totalAcidity = num(categoryData.total_acidity);
+  const energyKcal = num(categoryData.energy_kcal);
+  const energyKj = num(categoryData.energy_kj);
+  const carbohydrates = num(categoryData.carbohydrates);
+  const sugar = num(categoryData.sugar);
+  const fat = num(categoryData.fat);
+  const saturatedFat = num(categoryData.saturated_fat);
+  const proteins = num(categoryData.proteins);
+  const salt = num(categoryData.salt);
 
   // Display options - these control visibility in product info section
   const showAlcohol = categoryData.show_alcohol_on_label === true;
