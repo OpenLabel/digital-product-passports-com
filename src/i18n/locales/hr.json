@@ -464,13 +464,6 @@
     "code": "Kod",
     "material": "Materijal",
     "disposal": "Zbrinjavanje",
-    "componentTypes": {
-      "bottle": "Boca",
-      "closure": "Zatvarač",
-      "capsule": "Kapsula",
-      "label": "Etiketa",
-      "box": "Kutija"
-    },
     "selectMaterial": "Odaberite materijal",
     "individualComponents": "Pojedinačne komponente",
     "compositeComponents": "Kompozitne komponente",

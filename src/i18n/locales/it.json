@@ -532,13 +532,6 @@
     "code": "Codice",
     "material": "Materiale",
     "disposal": "Smaltimento",
-    "componentTypes": {
-      "bottle": "Bottiglia",
-      "closure": "Chiusura",
-      "capsule": "Capsula",
-      "label": "Etichetta",
-      "box": "Scatola"
-    },
     "selectMaterial": "Seleziona materiale",
     "individualComponents": "Componenti singoli",
     "compositeComponents": "Componenti compositi",

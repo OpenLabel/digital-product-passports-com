@@ -464,13 +464,6 @@
     "code": "Cód",
     "material": "Ábhar",
     "disposal": "Diúscairt",
-    "componentTypes": {
-      "bottle": "Buidéal",
-      "closure": "Dúnadh",
-      "capsule": "Capsúl",
-      "label": "Lipéad",
-      "box": "Bosca"
-    },
     "selectMaterial": "Roghnaigh ábhar",
     "individualComponents": "Comhpháirteanna Aonair",
     "compositeComponents": "Comhpháirteanna Ilchodacha",

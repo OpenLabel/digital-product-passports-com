@@ -464,13 +464,6 @@
     "code": "Kood",
     "material": "Materjal",
     "disposal": "Kõrvaldamine",
-    "componentTypes": {
-      "bottle": "Pudel",
-      "closure": "Kork",
-      "capsule": "Kapsel",
-      "label": "Etikett",
-      "box": "Karp"
-    },
     "selectMaterial": "Valige materjal",
     "individualComponents": "Üksikud komponendid",
     "compositeComponents": "Komposiitkomponendid",

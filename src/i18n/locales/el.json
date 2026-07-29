@@ -464,13 +464,6 @@
     "code": "Κωδικός",
     "material": "Υλικό",
     "disposal": "Απόρριψη",
-    "componentTypes": {
-      "bottle": "Μπουκάλι",
-      "closure": "Πώμα",
-      "capsule": "Κάψουλα",
-      "label": "Ετικέτα",
-      "box": "Κουτί"
-    },
     "selectMaterial": "Επιλέξτε υλικό",
     "individualComponents": "Μεμονωμένα εξαρτήματα",
     "compositeComponents": "Σύνθετα εξαρτήματα",

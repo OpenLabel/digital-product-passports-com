@@ -464,13 +464,6 @@
     "code": "Kód",
     "material": "Anyag",
     "disposal": "Ártalmatlanítás",
-    "componentTypes": {
-      "bottle": "Palack",
-      "closure": "Zárókupak",
-      "capsule": "Kapszula",
-      "label": "Címke",
-      "box": "Doboz"
-    },
     "selectMaterial": "Válasszon anyagot",
     "individualComponents": "Egyedi alkatrészek",
     "compositeComponents": "Összetett alkatrészek",

@@ -464,13 +464,6 @@
     "code": "Kód",
     "material": "Materiál",
     "disposal": "Likvidácia",
-    "componentTypes": {
-      "bottle": "Fľaša",
-      "closure": "Uzáver",
-      "capsule": "Kapsula",
-      "label": "Etiketa",
-      "box": "Krabica"
-    },
     "selectMaterial": "Vyberte materiál",
     "individualComponents": "Jednotlivé komponenty",
     "compositeComponents": "Kompozitné komponenty",

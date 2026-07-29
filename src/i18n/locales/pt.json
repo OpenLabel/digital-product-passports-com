@@ -532,13 +532,6 @@
     "code": "Código",
     "material": "Material",
     "disposal": "Eliminação",
-    "componentTypes": {
-      "bottle": "Garrafa",
-      "closure": "Fecho",
-      "capsule": "Cápsula",
-      "label": "Rótulo",
-      "box": "Caixa"
-    },
     "selectMaterial": "Selecionar material",
     "individualComponents": "Componentes individuais",
     "compositeComponents": "Componentes compostos",

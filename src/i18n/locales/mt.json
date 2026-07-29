@@ -464,13 +464,6 @@
     "code": "Kodiċi",
     "material": "Materjal",
     "disposal": "Rimi",
-    "componentTypes": {
-      "bottle": "Flixkun",
-      "closure": "Għeluq",
-      "capsule": "Kapsula",
-      "label": "Tikketta",
-      "box": "Kaxxa"
-    },
     "selectMaterial": "Agħżel materjal",
     "individualComponents": "Komponenti individwali",
     "compositeComponents": "Komponenti komposti",

@@ -464,13 +464,6 @@
     "code": "Kode",
     "material": "Materiale",
     "disposal": "Bortskaffelse",
-    "componentTypes": {
-      "bottle": "Flaske",
-      "closure": "Lukning",
-      "capsule": "Kapsel",
-      "label": "Etiket",
-      "box": "Kasse"
-    },
     "selectMaterial": "Vælg materiale",
     "individualComponents": "Individuelle komponenter",
     "compositeComponents": "Sammensatte komponenter",

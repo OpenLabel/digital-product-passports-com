@@ -464,13 +464,6 @@
     "code": "Koodi",
     "material": "Materiaali",
     "disposal": "Hävittäminen",
-    "componentTypes": {
-      "bottle": "Pullo",
-      "closure": "Korkki",
-      "capsule": "Kapseli",
-      "label": "Etiketti",
-      "box": "Laatikko"
-    },
     "selectMaterial": "Valitse materiaali",
     "individualComponents": "Yksittäiset osat",
     "compositeComponents": "Komposiittiosat",

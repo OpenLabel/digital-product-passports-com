@@ -540,13 +540,6 @@
     "code": "Code",
     "material": "Materiaal",
     "disposal": "Afvoer",
-    "componentTypes": {
-      "bottle": "Fles",
-      "closure": "Sluiting",
-      "capsule": "Capsule",
-      "label": "Etiket",
-      "box": "Doos"
-    },
     "selectMaterial": "Selecteer materiaal",
     "individualComponents": "Individuele componenten",
     "compositeComponents": "Samengestelde componenten",

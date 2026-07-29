@@ -464,13 +464,6 @@
     "code": "Cod",
     "material": "Material",
     "disposal": "Eliminare",
-    "componentTypes": {
-      "bottle": "Sticlă",
-      "closure": "Dop",
-      "capsule": "Capsulă",
-      "label": "Etichetă",
-      "box": "Cutie"
-    },
     "selectMaterial": "Selectați materialul",
     "individualComponents": "Componente individuale",
     "compositeComponents": "Componente compozite",

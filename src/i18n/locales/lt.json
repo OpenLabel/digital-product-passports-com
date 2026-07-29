@@ -464,13 +464,6 @@
     "code": "Kodas",
     "material": "Medžiaga",
     "disposal": "Šalinimas",
-    "componentTypes": {
-      "bottle": "Butelis",
-      "closure": "Kamštis",
-      "capsule": "Kapsulė",
-      "label": "Etiketė",
-      "box": "Dėžė"
-    },
     "selectMaterial": "Pasirinkite medžiagą",
     "individualComponents": "Atskiri komponentai",
     "compositeComponents": "Sudėtiniai komponentai",

@@ -464,13 +464,6 @@
     "code": "Kods",
     "material": "Materiāls",
     "disposal": "Utilizācija",
-    "componentTypes": {
-      "bottle": "Pudele",
-      "closure": "Aizbāznis",
-      "capsule": "Kapsula",
-      "label": "Etiķete",
-      "box": "Kaste"
-    },
     "selectMaterial": "Izvēlēties materiālu",
     "individualComponents": "Atsevišķi komponenti",
     "compositeComponents": "Kompozītmateriālu komponenti",

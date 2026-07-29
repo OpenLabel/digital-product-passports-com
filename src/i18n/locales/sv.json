@@ -472,13 +472,6 @@
     "code": "Kod",
     "material": "Material",
     "disposal": "Kassering",
-    "componentTypes": {
-      "bottle": "Flaska",
-      "closure": "Förslutning",
-      "capsule": "Kapsel",
-      "label": "Etikett",
-      "box": "Kartong"
-    },
     "selectMaterial": "Välj material",
     "individualComponents": "Enskilda komponenter",
     "compositeComponents": "Sammansatta komponenter",

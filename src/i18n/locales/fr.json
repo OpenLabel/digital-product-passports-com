@@ -540,13 +540,6 @@
     "code": "Code",
     "material": "Matériau",
     "disposal": "Élimination",
-    "componentTypes": {
-      "bottle": "Bouteille",
-      "closure": "Bouchon",
-      "capsule": "Capsule",
-      "label": "Étiquette",
-      "box": "Boîte"
-    },
     "selectMaterial": "Sélectionner le matériau",
     "individualComponents": "Composants individuels",
     "compositeComponents": "Composants composites",

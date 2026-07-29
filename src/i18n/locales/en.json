@@ -472,13 +472,6 @@
     "code": "Code",
     "material": "Material",
     "disposal": "Disposal",
-    "componentTypes": {
-      "bottle": "Bottle",
-      "closure": "Closure",
-      "capsule": "Capsule",
-      "label": "Label",
-      "box": "Box"
-    },
     "selectMaterial": "Select material",
     "individualComponents": "Individual Components",
     "compositeComponents": "Composite Components",

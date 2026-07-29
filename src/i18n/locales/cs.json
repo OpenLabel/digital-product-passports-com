@@ -464,13 +464,6 @@
     "code": "Kód",
     "material": "Materiál",
     "disposal": "Likvidace",
-    "componentTypes": {
-      "bottle": "Láhev",
-      "closure": "Uzávěr",
-      "capsule": "Kapsle",
-      "label": "Etiketa",
-      "box": "Krabice"
-    },
     "selectMaterial": "Vyberte materiál",
     "individualComponents": "Jednotlivé komponenty",
     "compositeComponents": "Kompozitní komponenty",

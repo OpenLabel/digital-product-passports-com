@@ -472,13 +472,6 @@
     "code": "代码",
     "material": "材料",
     "disposal": "处置",
-    "componentTypes": {
-      "bottle": "瓶子",
-      "closure": "瓶盖",
-      "capsule": "胶囊",
-      "label": "标签",
-      "box": "盒子"
-    },
     "selectMaterial": "选择材料",
     "individualComponents": "单个组件",
     "compositeComponents": "复合组件",
