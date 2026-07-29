@@ -238,7 +238,7 @@
     "missingRequiredTitle": "Certains champs obligatoires ne sont pas remplis",
     "missingRequiredBody": "Vous pouvez tout de même enregistrer et publier ce DPP, mais les champs suivants sont requis pour une conformité réglementaire complète :",
     "productInfo": "Informations produit",
-    "description": "Description"
+    "description": "Description du produit"
   },
   "imageUpload": {
     "loginRequired": "Vous devez être connecté pour télécharger des images",
