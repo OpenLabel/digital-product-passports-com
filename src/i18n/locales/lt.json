@@ -507,7 +507,8 @@
     "sending": "Siunčiama...",
     "errorNoEmail": "Nepavyko išsiųsti užklausos – naudotojo el. paštas nerastas",
     "errorSaveFirst": "Prieš įjungiant apsaugą, pirmiausia išsaugokite pasą",
-    "errorFailed": "Nepavyko išsiųsti apsaugos nuo klastojimo užklausos"
+    "errorFailed": "Nepavyko išsiųsti apsaugos nuo klastojimo užklausos",
+    "pendingSend": "Partneris bus informuotas kitą kartą išsaugojus šį pasą."
   },
   "customIngredient": {
     "title": "Apibrėžti pasirinktinę sudedamąją dalį",

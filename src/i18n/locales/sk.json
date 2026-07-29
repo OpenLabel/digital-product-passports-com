@@ -507,7 +507,8 @@
     "sending": "Odosielanie...",
     "errorNoEmail": "Nie je možné odoslať požiadavku – e-mail používateľa nenájdený",
     "errorSaveFirst": "Najprv prosím uložte pas pred aktiváciou ochrany",
-    "errorFailed": "Nepodarilo sa odoslať požiadavku na ochranu proti falšovaniu"
+    "errorFailed": "Nepodarilo sa odoslať požiadavku na ochranu proti falšovaniu",
+    "pendingSend": "Partner bude informovaný pri ďalšom uložení tohto pasu."
   },
   "customIngredient": {
     "title": "Definovať vlastnú zložku",

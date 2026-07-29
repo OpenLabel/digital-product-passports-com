@@ -507,7 +507,8 @@
     "sending": "Lähetetään...",
     "errorNoEmail": "Pyyntöä ei voida lähettää – käyttäjän sähköpostia ei löydy",
     "errorSaveFirst": "Tallenna passi ensin ennen suojauksen käyttöönottoa",
-    "errorFailed": "Väärennössuojauspyynnön lähettäminen epäonnistui"
+    "errorFailed": "Väärennössuojauspyynnön lähettäminen epäonnistui",
+    "pendingSend": "Kumppanille ilmoitetaan, kun tallennat tämän passin seuraavan kerran."
   },
   "customIngredient": {
     "title": "Määritä mukautettu ainesosa",

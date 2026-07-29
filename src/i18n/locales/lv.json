@@ -507,7 +507,8 @@
     "sending": "Sūta...",
     "errorNoEmail": "Nevar nosūtīt pieprasījumu – lietotāja e-pasts nav atrasts",
     "errorSaveFirst": "Lūdzu vispirms saglabājiet pasi pirms aizsardzības iespējošanas",
-    "errorFailed": "Neizdevās nosūtīt aizsardzības pieprasījumu"
+    "errorFailed": "Neizdevās nosūtīt aizsardzības pieprasījumu",
+    "pendingSend": "Partneris tiks informēts nākamajā reizē, kad saglabāsiet šo pasi."
   },
   "customIngredient": {
     "title": "Definēt pielāgotu sastāvdaļu",

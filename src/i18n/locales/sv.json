@@ -515,7 +515,8 @@
     "sending": "Skickar...",
     "errorNoEmail": "Kan inte skicka förfrågan — användarens e-post hittades inte",
     "errorSaveFirst": "Spara passet först innan du aktiverar förfalskningsskydd",
-    "errorFailed": "Misslyckades med att skicka förfrågan om förfalskningsskydd"
+    "errorFailed": "Misslyckades med att skicka förfrågan om förfalskningsskydd",
+    "pendingSend": "Partnern kommer att meddelas nästa gång du sparar detta pass."
   },
   "customIngredient": {
     "title": "Definiera en anpassad ingrediens",

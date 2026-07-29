@@ -490,7 +490,8 @@
     "sending": "Verzenden...",
     "errorNoEmail": "Kan verzoek niet verzenden - gebruikers-e-mail niet gevonden",
     "errorSaveFirst": "Sla eerst het paspoort op voordat u vervalsingsbeveiliging inschakelt",
-    "errorFailed": "Verzenden van vervalsingsbeveiliging verzoek mislukt"
+    "errorFailed": "Verzenden van vervalsingsbeveiliging verzoek mislukt",
+    "pendingSend": "De partner wordt op de hoogte gesteld wanneer u dit paspoort de volgende keer opslaat."
   },
   "qrDialog": {
     "title": "QR Code",

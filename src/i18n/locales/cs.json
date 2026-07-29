@@ -507,7 +507,8 @@
     "sending": "Odesílání...",
     "errorNoEmail": "Nelze odeslat požadavek – e-mail uživatele nenalezen",
     "errorSaveFirst": "Nejprve prosím uložte pas před aktivací ochrany",
-    "errorFailed": "Nepodařilo se odeslat požadavek na ochranu proti padělkům"
+    "errorFailed": "Nepodařilo se odeslat požadavek na ochranu proti padělkům",
+    "pendingSend": "Partner bude informován při příštím uložení tohoto pasu."
   },
   "customIngredient": {
     "title": "Definovat vlastní složku",

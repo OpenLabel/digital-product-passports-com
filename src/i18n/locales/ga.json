@@ -507,7 +507,8 @@
     "sending": "Ag seoladh...",
     "errorNoEmail": "Ní féidir iarratas a sheoladh — ríomhphost úsáideora gan aimsiú",
     "errorSaveFirst": "Sábháil an pas ar dtús le do thoil sula gcumasaíonn tú cosaint góchumadóireachta",
-    "errorFailed": "Theip ar iarratas cosanta góchumadóireachta a sheoladh"
+    "errorFailed": "Theip ar iarratas cosanta góchumadóireachta a sheoladh",
+    "pendingSend": "Cuirfear an comhpháirtí ar an eolas an chéad uair eile a shábhálann tú an pas seo."
   },
   "customIngredient": {
     "title": "Sainmhínigh comhábhar saincheaptha",

@@ -515,7 +515,8 @@
     "sending": "正在发送...",
     "errorNoEmail": "无法发送请求 - 未找到用户电子邮件",
     "errorSaveFirst": "请先保存护照，然后再启用防伪保护",
-    "errorFailed": "发送防伪保护请求失败"
+    "errorFailed": "发送防伪保护请求失败",
+    "pendingSend": "下次保存此护照时将通知合作伙伴。"
   },
   "customIngredient": {
     "title": "定义自定义成分",

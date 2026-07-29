@@ -482,7 +482,8 @@
     "sending": "A enviar...",
     "errorNoEmail": "Não foi possível enviar o pedido - e-mail do utilizador não encontrado",
     "errorSaveFirst": "Por favor guarde o passaporte primeiro antes de ativar a proteção contra falsificação",
-    "errorFailed": "Falha ao enviar pedido de proteção contra falsificação"
+    "errorFailed": "Falha ao enviar pedido de proteção contra falsificação",
+    "pendingSend": "O parceiro será notificado na próxima vez que guardar este passaporte."
   },
   "customIngredient": {
     "title": "Definir um ingrediente personalizado",

@@ -507,7 +507,8 @@
     "sending": "Saatmine...",
     "errorNoEmail": "Päringut ei saa saata – kasutaja e-posti ei leitud",
     "errorSaveFirst": "Palun salvesta pass esmalt enne kaitse lubamist",
-    "errorFailed": "Võltsimiskaitse päringu saatmine ebaõnnestus"
+    "errorFailed": "Võltsimiskaitse päringu saatmine ebaõnnestus",
+    "pendingSend": "Partnerit teavitatakse selle passi järgmisel salvestamisel."
   },
   "customIngredient": {
     "title": "Määra kohandatud koostisaine",
