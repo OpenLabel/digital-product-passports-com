@@ -530,8 +530,8 @@
     "urlMismatch": "URL-uoverensstemmelse fundet",
     "printSizeInstruction": "Udskriv i 1,8 cm bredde. Højden varierer afhængigt af indholdet.",
     "openPassport": "Åbn pas",
-    "downloadSvg": "Download SVG",
-    "downloadPng": "Download PNG"
+    "downloadSvg": "Hent SVG",
+    "downloadPng": "Hent PNG"
   },
   "translation": {
     "title": "Oversættelser",
