@@ -283,7 +283,7 @@ export default function PassportForm() {
           });
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
     } finally {
       setSaving(false);

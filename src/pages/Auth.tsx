@@ -83,7 +83,7 @@ export default function Auth() {
         if (error) throw error;
         toast({ title: t('auth.checkEmail'), description: t('auth.resetLinkSent') });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
     } finally {
       setLoading(false);
