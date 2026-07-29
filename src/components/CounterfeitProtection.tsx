@@ -38,7 +38,6 @@ export function CounterfeitProtection({
 }: CounterfeitProtectionProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const loading = false;
 
   const handleEnable = async () => {
     // BUG-10: the email is now dispatched by PassportForm.handleSubmit after
