@@ -141,12 +141,18 @@ export function WineFields({ data, onChange }: WineFieldsProps) {
       glycerine,
     });
 
+    // BUG-29: keep manual empties as `undefined`, not 0.
+    const parseManual = (v: unknown): number | undefined => {
+      if (v === '' || v === null || v === undefined) return undefined;
+      const n = Number(v);
+      return Number.isFinite(n) ? n : undefined;
+    };
     return {
       glycerine,
-      energyKcal: data.energy_kcal_manual ? Number(data.energy_kcal) : result.energyKcal,
-      energyKj: data.energy_kj_manual ? Number(data.energy_kj) : result.energyKj,
-      carbohydrates: data.carbohydrates_manual ? Number(data.carbohydrates) : result.carbohydrates,
-      sugar: data.sugar_manual ? Number(data.sugar) : result.sugar,
+      energyKcal: data.energy_kcal_manual ? parseManual(data.energy_kcal) : result.energyKcal,
+      energyKj: data.energy_kj_manual ? parseManual(data.energy_kj) : result.energyKj,
+      carbohydrates: data.carbohydrates_manual ? parseManual(data.carbohydrates) : result.carbohydrates,
+      sugar: data.sugar_manual ? parseManual(data.sugar) : result.sugar,
     };
   }, [data]);
 
