@@ -116,5 +116,14 @@ describe('Dashboard page', () => {
     fireEvent.click(logoutBtn);
     expect(mockSignOut).toHaveBeenCalled();
   });
+
+  // BUG-14: rendering with empty passports must show the empty state,
+  // not stale cards, and must not infinite-loop.
+  it('renders empty state when passports array is empty (BUG-14)', () => {
+    const { container } = render(<MemoryRouter><Dashboard /></MemoryRouter>);
+    expect(screen.getByText('dashboard.noPassports')).toBeInTheDocument();
+    expect(container.querySelectorAll('[data-testid="passport-card"]').length).toBe(0);
+  });
 });
+
 
