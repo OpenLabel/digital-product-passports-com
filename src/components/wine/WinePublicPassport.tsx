@@ -537,36 +537,36 @@ export function WinePublicPassport({
                   <thead>
                     <tr className="border-b">
                       <th className="text-left py-2"></th>
-                      {uniqueComponentTypes.map(([typeId, typeInfo]) => (
-                        <th key={typeId} className="text-center py-2 font-medium">{typeInfo.name}</th>
+                      {componentColumns.map((col) => (
+                        <th key={col.id} className="text-center py-2 font-medium">{col.name}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.code')}</td>
-                      {uniqueComponentTypes.map(([typeId]) => {
-                        const mat = packagingMaterials.find(m => m.typeId === typeId);
+                      {componentColumns.map((col) => {
+                        const mat = packagingMaterials.find((m) => m.id === col.id);
                         return (
-                          <td key={typeId} className="py-2 text-center">{mat?.compositionCode || '-'}</td>
+                          <td key={col.id} className="py-2 text-center">{mat?.compositionCode || '-'}</td>
                         );
                       })}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.material')}</td>
-                      {uniqueComponentTypes.map(([typeId]) => {
-                        const mat = packagingMaterials.find(m => m.typeId === typeId);
+                      {componentColumns.map((col) => {
+                        const mat = packagingMaterials.find((m) => m.id === col.id);
                         return (
-                          <td key={typeId} className="py-2 text-center">{mat?.compositionName || '-'}</td>
+                          <td key={col.id} className="py-2 text-center">{mat ? (getCompositionName(mat) || '-') : '-'}</td>
                         );
                       })}
                     </tr>
                     <tr className="border-b">
                       <td className="py-2 text-muted-foreground">{t('recycling.disposal')}</td>
-                      {uniqueComponentTypes.map(([typeId]) => {
-                        const mat = packagingMaterials.find(m => m.typeId === typeId);
+                      {componentColumns.map((col) => {
+                        const mat = packagingMaterials.find((m) => m.id === col.id);
                         return (
-                          <td key={typeId} className="py-2 text-center">{mat?.disposalMethodName || '-'}</td>
+                          <td key={col.id} className="py-2 text-center">{mat ? (getDisposalName(mat) || '-') : '-'}</td>
                         );
                       })}
                     </tr>
