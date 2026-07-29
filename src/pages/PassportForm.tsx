@@ -271,6 +271,9 @@ export default function PassportForm() {
             console.warn('Failed to flush deferred image deletions:', err);
           }
         }
+      }
+
+
 
       // BUG-10: dispatch counterfeit protection email after a successful save
       // whenever the toggle is on and no request has been sent yet. The
