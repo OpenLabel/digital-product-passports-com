@@ -92,7 +92,7 @@ export default function Setup() {
       toast({ title: 'Setup complete!', description: 'Your instance is now configured.' });
       navigate('/');
     } catch (error: unknown) {
-      toast({ title: 'Error', description: error.message, variant: 'destructive' });
+      toast({ title: 'Error', description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     } finally {
       setSaving(false);
     }

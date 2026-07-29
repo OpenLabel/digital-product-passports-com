@@ -284,7 +284,7 @@ export default function PassportForm() {
         }
       }
     } catch (error: unknown) {
-      toast({ title: t('common.error'), description: error.message, variant: 'destructive' });
+      toast({ title: t('common.error'), description: error instanceof Error ? error.message : String(error), variant: 'destructive' });
     } finally {
       setSaving(false);
     }
