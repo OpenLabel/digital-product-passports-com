@@ -90,8 +90,9 @@ export default function Admin() {
         site_url: siteUrl.trim(),
       });
       toast({ title: 'Configuration saved' });
-    } catch (err: any) {
-      toast({ title: 'Error', description: err.message, variant: 'destructive' });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      toast({ title: 'Error', description: message, variant: 'destructive' });
     } finally {
       setSaving(false);
     }
@@ -104,8 +105,9 @@ export default function Admin() {
       await saveConfig({ admin_leaderboard_token: generateAdminToken() });
       await refetch();
       toast({ title: 'Token rotated' });
-    } catch (err: any) {
-      toast({ title: 'Error', description: err.message, variant: 'destructive' });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      toast({ title: 'Error', description: message, variant: 'destructive' });
     } finally {
       setRotating(false);
     }
