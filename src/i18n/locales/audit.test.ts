@@ -57,13 +57,13 @@ function flattenKeys(obj: TranslationObject, prefix = ""): Record<string, string
 const perLanguageAllowedValues: Record<string, string[]> = {
   bg: ["Open Source"],
   cs: ["Open Source", "Region"],
-  da: ["Open Source", "Region", "Protein", "Salt", "Allergen"],
-  de: ["Open Source", "Details", "Region", "Allergen", "Code", "Material", "Status"],
+  da: ["Open Source", "Region", "Protein", "Salt", "Allergen", "Jute"],
+  de: ["Open Source", "Details", "Region", "Allergen", "Code", "Material", "Status", "Jute"],
   el: ["Open Source", "Email"],
   es: ["Open Source", "Manual", "Error", "Alcohol", "General", "Material", "Experimental"],
   et: ["Open Source"],
   fi: ["Open Source"],
-  fr: ["Open Source", "Volume", "Batteries", "Code", "Capsule"],
+  fr: ["Open Source", "Volume", "Batteries", "Code", "Capsule", "Jute"],
   ga: ["Open Source"],
   hr: ["Open Source"],
   hu: ["Open Source"],
@@ -71,13 +71,13 @@ const perLanguageAllowedValues: Record<string, string[]> = {
   lt: ["Open Source"],
   lv: ["Open Source"],
   mt: ["Open Source", "Email", "Password", "Powered by", "Vintage"],
-  nl: ["Open Source", "Volume", "Details", "Alcohol", "Code", "Capsule", "QR Code"],
+  nl: ["Open Source", "Volume", "Details", "Alcohol", "Code", "Capsule", "QR Code", "Jute"],
   pl: ["Open Source", "Region"],
   pt: ["Open Source", "Volume", "Manual", "Material", "Experimental"],
   ro: ["Open Source", "Manual", "General", "Material", "Experimental", "Model"],
   sk: ["Open Source"],
   sl: ["Open Source", "Material"],
-  sv: ["Open Source", "Region", "Protein", "Salt", "Allergen", "Material", "Status"],
+  sv: ["Open Source", "Region", "Protein", "Salt", "Allergen", "Material", "Status", "Jute"],
   "zh-CN": ["Open Source", "YYYY-MM-DD"],
 };
 
@@ -98,11 +98,10 @@ function isLegitimateMatch(key: string, value: string, langCode: string): boolea
   // Ingredient names are scientific/chemical terms — identical across EU languages
   if (key.startsWith("ingredients.")) return true;
 
-  // BUG-18: wine packaging composition names are EU regulatory/scientific
-  // terms (polymer names, alloys, standard EU material codes) that are kept
-  // identical across the EU's own multilingual publications — same rationale
-  // as ingredients above.
-  if (key.startsWith("wineRecycling.compositions.")) return true;
+  // BUG-18: wine recycling material codes (e.g. "PET 1", "PAP 20", "ALU 41",
+  // "GL 70") are standard EU regulatory identifiers and remain identical
+  // across all languages. Descriptive composition names MUST be translated.
+  if (/^[A-Z]{2,4} \d+$/.test(value)) return true;
 
   // Values containing E-numbers in parentheses (e.g., "Argon (E938)")
   if (/\(E\d{3,4}[a-z]?\)/i.test(value)) return true;
