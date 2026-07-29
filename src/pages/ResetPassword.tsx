@@ -43,9 +43,9 @@ export default function ResetPassword() {
     // user reloads the page the event won't fire again, but Supabase has
     // already stored the recovery session — treat any active session on this
     // route as a valid recovery context so the form isn't a dead-end.
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) setIsRecovery(true);
-    });
+    supabase.auth.getSession?.().then(({ data }) => {
+      if (data?.session) setIsRecovery(true);
+    }).catch(() => {});
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY' || event === 'SIGNED_IN') {
         setIsRecovery(true);
