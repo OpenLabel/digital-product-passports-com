@@ -1,0 +1,59 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1" # weekly full run — Mondays 06:00 UTC
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run tests with coverage
+        id: vitest
+        continue-on-error: true # status file + log are written either way
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+        run: >
+          npx vitest run --coverage
+          --coverage.reporter=json-summary
+          --coverage.reporter=text-summary
+
+      - name: Compose build-status.json and TEST_LOG.md
+        env:
+          TRIGGER: ${{ github.event_name }}
+        run: node .github/scripts/compose-status.mjs
+
+      - name: Commit status + log back to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/build-status.json TEST_LOG.md
+          if ! git diff --cached --quiet; then
+            git commit -m "ci: update test status & log [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Fail the job if tests failed
+        if: steps.vitest.outcome == 'failure'
+        run: exit 1
