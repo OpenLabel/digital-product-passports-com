@@ -35,6 +35,7 @@ import {
   Package,
 } from 'lucide-react';
 import TimelineCard from '@/components/TimelineCard';
+import PassportShowcase from '@/components/PassportShowcase';
 
 const CTA_TARGET = '/?ref=cypheme+ppc';
 
@@ -161,20 +162,7 @@ export default function CyphemeLanding() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-muted/40 p-6">
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {passportFacts.map(({ icon: Icon, label, sub, value }) => (
-                <li key={label} className="rounded-xl bg-background p-4 shadow-sm">
-                  <div className="flex items-center gap-2 text-sm font-semibold">
-                    <Icon className="h-4 w-4 text-primary" />
-                    {label}
-                  </div>
-                  <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
-                  <p className="mt-2 text-sm font-medium">{value}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <PassportShowcase facts={passportFacts} />
         </section>
 
         {/* What is a DPP */}
