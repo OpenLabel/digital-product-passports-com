@@ -81,12 +81,12 @@ const timeline = [
 ];
 
 const comparison = [
-  { capability: 'Unique product ID', standard: 'Required', cypheme: 'Linked ID' },
-  { capability: 'EU compliance', standard: 'Data reqs', cypheme: 'Full + auth' },
-  { capability: 'Physical verification', standard: 'Digital only', cypheme: 'Physical + data' },
-  { capability: 'Counterfeit protection', standard: 'May appear OK', cypheme: 'Blocked' },
-  { capability: 'Supply chain', standard: 'Data unverified', cypheme: 'Full trace' },
-  { capability: 'Consumer trust', standard: "Can't verify", cypheme: 'Complete' },
+  { capability: 'Unique product ID', standard: 'Required', standardValid: true, cypheme: 'Linked ID' },
+  { capability: 'EU compliance', standard: 'Data reqs', standardValid: false, cypheme: 'Full + auth' },
+  { capability: 'Physical verification', standard: 'Digital only', standardValid: false, cypheme: 'Physical + data' },
+  { capability: 'Counterfeit protection', standard: 'May appear OK', standardValid: false, cypheme: 'Blocked' },
+  { capability: 'Supply chain', standard: 'Data unverified', standardValid: false, cypheme: 'Full trace' },
+  { capability: 'Consumer trust', standard: "Can't verify", standardValid: false, cypheme: 'Complete' },
 ];
 
 function CtaButton({ children }: { children: React.ReactNode }) {
