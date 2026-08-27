@@ -82,7 +82,7 @@ const timeline = [
 
 const comparison = [
   { capability: 'Unique product ID', standard: 'Required', standardValid: true, cypheme: 'Linked ID' },
-  { capability: 'EU compliance', standard: 'Data reqs', standardValid: false, cypheme: 'Full + auth' },
+  { capability: 'EU compliance', standard: 'Data reqs', standardValid: true, cypheme: 'Full + auth' },
   { capability: 'Physical verification', standard: 'Digital only', standardValid: false, cypheme: 'Physical + data' },
   { capability: 'Counterfeit protection', standard: 'May appear OK', standardValid: false, cypheme: 'Blocked' },
   { capability: 'Supply chain', standard: 'Data unverified', standardValid: false, cypheme: 'Full trace' },
