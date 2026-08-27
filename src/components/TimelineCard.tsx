@@ -14,17 +14,23 @@
  * See LICENSE and NOTICE files for details.
  */
 
+import type { LucideIcon } from 'lucide-react';
+
 export interface TimelineCardProps {
   period: string;
   title: string;
   body: string;
+  icon: LucideIcon;
 }
 
-export default function TimelineCard({ period, title, body }: TimelineCardProps) {
+export default function TimelineCard({ period, title, body, icon: Icon }: TimelineCardProps) {
   return (
     <article className="relative overflow-hidden rounded-xl border border-border bg-background p-5 shadow-sm transition-shadow hover:shadow-md">
       <div className="absolute left-0 top-0 h-full w-1 bg-primary" aria-hidden="true" />
-      <p className="text-sm font-semibold uppercase tracking-wide text-primary">{period}</p>
+      <div className="flex items-center gap-2 text-primary">
+        <Icon className="h-5 w-5" aria-hidden="true" />
+        <p className="text-sm font-semibold uppercase tracking-wide">{period}</p>
+      </div>
       <h3 className="mt-2 text-lg font-semibold">{title}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{body}</p>
     </article>
