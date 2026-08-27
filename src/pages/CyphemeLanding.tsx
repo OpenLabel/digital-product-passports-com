@@ -28,6 +28,11 @@ import {
   Check,
   X,
   ArrowRight,
+  Battery,
+  Shirt,
+  Smartphone,
+  Puzzle,
+  Package,
 } from 'lucide-react';
 import TimelineCard from '@/components/TimelineCard';
 
