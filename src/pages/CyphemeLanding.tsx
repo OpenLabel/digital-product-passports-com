@@ -235,6 +235,7 @@ export default function CyphemeLanding() {
                 period={item.period}
                 title={item.title}
                 body={item.body}
+                icon={item.icon}
               />
             ))}
           </div>
