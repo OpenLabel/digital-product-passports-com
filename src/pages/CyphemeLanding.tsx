@@ -313,12 +313,30 @@ export default function CyphemeLanding() {
         </section>
 
         {/* Final CTA */}
-        <section className="mx-auto max-w-4xl px-4 py-20 text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            One click secures authentication + compliance
-          </h2>
-          <div className="mt-8">
-            <CtaButton>Get My DPP Now</CtaButton>
+        <section className="mx-auto max-w-6xl px-4 py-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-ring px-4 py-20 text-center shadow-xl">
+            {/* Decorative blurred glows */}
+            <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary-foreground/10 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
+            {/* Subtle top-right accent radial highlight */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.18),transparent_50%)]"
+            />
+            {/* Inner glow border effect */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_0_1px_40px_hsl(var(--primary-foreground)/0.12)]"
+            />
+
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold italic tracking-tight text-primary-foreground md:text-4xl">
+                One click secures authentication + compliance
+              </h2>
+              <div className="mt-8">
+                <CtaButton variant="on-dark">Get My DPP Now</CtaButton>
+              </div>
+            </div>
           </div>
         </section>
       </main>
