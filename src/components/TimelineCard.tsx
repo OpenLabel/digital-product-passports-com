@@ -25,14 +25,16 @@ export interface TimelineCardProps {
 
 export default function TimelineCard({ period, title, body, icon: Icon }: TimelineCardProps) {
   return (
-    <article className="relative overflow-hidden rounded-xl border border-border bg-background p-5 shadow-sm transition-shadow hover:shadow-md">
-      <div className="absolute left-0 top-0 h-full w-1 bg-primary" aria-hidden="true" />
-      <div className="flex items-center gap-2 text-primary">
-        <Icon className="h-5 w-5" aria-hidden="true" />
-        <p className="text-sm font-semibold uppercase tracking-wide">{period}</p>
+    <article className="flex h-full flex-col items-center rounded-xl border border-border bg-background px-6 py-8 text-center shadow-sm transition-shadow hover:shadow-md">
+      <div
+        className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary"
+        aria-hidden="true"
+      >
+        <Icon className="h-5 w-5" />
       </div>
-      <h3 className="mt-2 text-lg font-semibold">{title}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">{body}</p>
+      <p className="mt-4 text-base font-semibold text-primary">{period}</p>
+      <h3 className="mt-2 text-base font-semibold">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
     </article>
   );
 }
