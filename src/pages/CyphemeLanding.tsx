@@ -52,26 +52,31 @@ const timeline = [
     period: '2027',
     title: 'Battery Passports',
     body: 'Battery passports for electric vehicle and industrial batteries under the EU Battery Regulation.',
+    icon: Battery,
   },
   {
     period: '2027–2028',
     title: 'Textiles & Apparel',
     body: 'Digital Product Passports for textiles and apparel improve sustainability, traceability, and circularity across the supply chain.',
+    icon: Shirt,
   },
   {
     period: '2028–2030',
     title: 'Electronics & ICT',
     body: 'Electronics and ICT products adopt Digital Product Passports to enhance transparency, repairability, and lifecycle tracking.',
+    icon: Smartphone,
   },
   {
     period: '2028–2030',
     title: 'Toys',
     body: 'Toy products are expected to adopt Digital Product Passports to strengthen product safety, traceability, and compliance across the European market.',
+    icon: Puzzle,
   },
   {
     period: '2030',
     title: 'Most Products',
     body: 'By 2030, most products sold in the European Union will require a Digital Product Passport under the Ecodesign for Sustainable Products framework.',
+    icon: Package,
   },
 ];
 
