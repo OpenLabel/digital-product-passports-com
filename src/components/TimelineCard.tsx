@@ -25,7 +25,7 @@ export interface TimelineCardProps {
 
 export default function TimelineCard({ period, title, body, icon: Icon }: TimelineCardProps) {
   return (
-    <article className="flex h-full flex-col items-center rounded-xl border border-border bg-background px-6 py-8 text-center shadow-sm transition-shadow hover:shadow-md">
+    <article className="flex h-full w-full max-w-sm flex-col items-center rounded-xl border border-border bg-background px-6 py-8 text-center shadow-sm transition-shadow hover:shadow-md">
       <div
         className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary"
         aria-hidden="true"
