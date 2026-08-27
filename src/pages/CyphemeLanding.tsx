@@ -14,8 +14,8 @@
  * See LICENSE and NOTICE files for details.
  */
 
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import {
   ShieldCheck,
   BadgeCheck,
@@ -91,22 +91,23 @@ function CtaButton({ children }: { children: React.ReactNode }) {
 }
 
 export default function CyphemeLanding() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = 'Free EU Digital Product Passport Generator | Cypheme';
+    const meta = document.querySelector('meta[name="description"]');
+    const previousDescription = meta?.getAttribute('content') ?? null;
+    meta?.setAttribute(
+      'content',
+      'Create fully EU-compliant, product-ready Digital Product Passports online, free of charge. Authenticity verification included by Cypheme.',
+    );
+    return () => {
+      document.title = previousTitle;
+      if (previousDescription !== null) meta?.setAttribute('content', previousDescription);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Helmet>
-        <title>Free EU Digital Product Passport Generator | Cypheme</title>
-        <meta
-          name="description"
-          content="Create fully EU-compliant, product-ready Digital Product Passports online, free of charge. Authenticity verification included by Cypheme."
-        />
-        <meta property="og:title" content="Free EU Digital Product Passport Generator | Cypheme" />
-        <meta
-          property="og:description"
-          content="Create fully EU-compliant, product-ready Digital Product Passports online, free of charge."
-        />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
 
       <header className="border-b border-border">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
