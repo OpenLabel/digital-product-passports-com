@@ -228,15 +228,19 @@ export default function CyphemeLanding() {
             Brands preparing now do not just comply. They compete.
           </p>
 
-          <div className="mt-10 grid place-items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
             {timeline.map((item) => (
-              <TimelineCard
+              <div
                 key={`${item.period}-${item.title}`}
-                period={item.period}
-                title={item.title}
-                body={item.body}
-                icon={item.icon}
-              />
+                className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)] max-w-sm"
+              >
+                <TimelineCard
+                  period={item.period}
+                  title={item.title}
+                  body={item.body}
+                  icon={item.icon}
+                />
+              </div>
             ))}
           </div>
 
