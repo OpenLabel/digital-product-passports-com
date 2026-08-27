@@ -39,6 +39,7 @@ import ReferralStats from "./pages/ReferralStats";
 import ReferralLeaderboard from "./pages/ReferralLeaderboard";
 import AdminLeaderboard from "./pages/AdminLeaderboard";
 import Admin from "./pages/Admin";
+import CyphemeLanding from "./pages/CyphemeLanding";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const queryClient = new QueryClient();
@@ -75,6 +76,7 @@ function AppRoutes() {
         <Route path="/legal" element={<LegalMentions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/cypheme/digital-product/passport" element={<CyphemeLanding />} />
         <Route path="*" element={<Navigate to="/setup" replace />} />
       </Routes>
     );
@@ -96,6 +98,7 @@ function AppRoutes() {
       <Route path="/legal" element={<LegalMentions />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
+      <Route path="/cypheme/digital-product/passport" element={<CyphemeLanding />} />
       <Route path="/setup" element={<Navigate to="/" replace />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
