@@ -39,6 +39,7 @@ import ReferralStats from "./pages/ReferralStats";
 import ReferralLeaderboard from "./pages/ReferralLeaderboard";
 import AdminLeaderboard from "./pages/AdminLeaderboard";
 import Admin from "./pages/Admin";
+import CyphemeLanding from "./pages/CyphemeLanding";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const queryClient = new QueryClient();
