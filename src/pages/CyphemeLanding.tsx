@@ -29,6 +29,7 @@ import {
   X,
   ArrowRight,
 } from 'lucide-react';
+import TimelineCard from '@/components/TimelineCard';
 
 const CTA_TARGET = '/?ref=cypheme+ppc';
 
