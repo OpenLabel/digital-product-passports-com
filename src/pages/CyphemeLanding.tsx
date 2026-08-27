@@ -217,16 +217,16 @@ export default function CyphemeLanding() {
             Brands preparing now do not just comply. They compete.
           </p>
 
-          <ol className="mt-10 space-y-6 border-l border-border pl-6">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {timeline.map((item) => (
-              <li key={`${item.period}-${item.title}`} className="relative">
-                <span className="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full bg-primary" />
-                <p className="text-sm font-semibold text-primary">{item.period}</p>
-                <h3 className="mt-1 text-lg font-semibold">{item.title}</h3>
-                <p className="mt-1 text-muted-foreground">{item.body}</p>
-              </li>
+              <TimelineCard
+                key={`${item.period}-${item.title}`}
+                period={item.period}
+                title={item.title}
+                body={item.body}
+              />
             ))}
-          </ol>
+          </div>
 
           <div className="mt-10">
             <CtaButton>Prepare Your Products Today</CtaButton>
