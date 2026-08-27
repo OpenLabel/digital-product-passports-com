@@ -281,9 +281,13 @@ export default function CyphemeLanding() {
                   {comparison.map((row) => (
                     <tr key={row.capability} className="border-b border-border last:border-0">
                       <th scope="row" className="px-4 py-3 font-medium">{row.capability}</th>
-                      <td className="px-4 py-3 text-muted-foreground">
+                      <td className={row.standardValid ? 'px-4 py-3 font-medium' : 'px-4 py-3 text-muted-foreground'}>
                         <span className="inline-flex items-center gap-2">
-                          <X className="h-4 w-4 shrink-0 opacity-60" />
+                          {row.standardValid ? (
+                            <Check className="h-4 w-4 shrink-0 text-primary" />
+                          ) : (
+                            <X className="h-4 w-4 shrink-0 opacity-60" />
+                          )}
                           {row.standard}
                         </span>
                       </td>
