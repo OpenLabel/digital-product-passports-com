@@ -35,6 +35,7 @@ import {
   Package,
 } from 'lucide-react';
 import TimelineCard from '@/components/TimelineCard';
+import PassportShowcase from '@/components/PassportShowcase';
 
 const CTA_TARGET = '/?ref=cypheme+ppc';
 
