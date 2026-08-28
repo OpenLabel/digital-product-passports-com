@@ -179,8 +179,8 @@ export default function CyphemeLanding() {
         </section>
 
         {/* What is a DPP */}
-        <section className="border-t border-border bg-muted/30">
-          <div className="mx-auto max-w-3xl px-4 py-16 md:py-20">
+        <section className="bg-muted/30">
+          <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
             <p className="text-sm font-medium uppercase tracking-wide text-primary">
               The regulation you need to know
             </p>
@@ -219,7 +219,7 @@ export default function CyphemeLanding() {
         </section>
 
         {/* Timeline */}
-        <section className="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <section className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <p className="text-sm font-medium uppercase tracking-wide text-primary">
             Regulatory Timeline
           </p>
@@ -251,7 +251,7 @@ export default function CyphemeLanding() {
         </section>
 
         {/* Comparison */}
-        <section className="border-t border-border bg-muted/30">
+        <section className="bg-muted/30">
           <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
             <p className="text-sm font-medium uppercase tracking-wide text-primary">
               The limits of the Digital Product Passport
@@ -317,7 +317,7 @@ export default function CyphemeLanding() {
         </section>
 
         {/* Final CTA */}
-        <section className="mx-auto max-w-6xl px-4 py-8">
+        <section className="mx-auto max-w-4xl px-4 py-8">
           <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-50 via-fuchsia-50 to-amber-50 px-4 py-20 text-center shadow-xl dark:from-violet-950/30 dark:via-fuchsia-950/30 dark:to-amber-950/30">
             {/* Inset dashed border */}
             <div
