@@ -84,6 +84,7 @@ export default {
       backgroundImage: {
         "cy-hero": "var(--cy-gradient-hero)",
         "cy-cta": "var(--cy-gradient-cta)",
+        "cy-blue-cta": "var(--cy-gradient-blue)",
       },
       boxShadow: {
         cy: "var(--cy-shadow-card)",

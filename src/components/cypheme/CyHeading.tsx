@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils';
 interface CyHeadingProps {
   children: ReactNode;
   level?: 1 | 2 | 3;
-  variant?: 'ink' | 'navy' | 'gradient';
+  variant?: 'ink' | 'navy' | 'gradient' | 'onDark';
   className?: string;
 }
 
@@ -46,7 +46,9 @@ export default function CyHeading({
           ? 'bg-cy-cta bg-clip-text text-transparent'
           : variant === 'navy'
             ? 'text-cy-navy'
-            : 'text-cy-ink',
+            : variant === 'onDark'
+              ? 'text-primary-foreground'
+              : 'text-cy-ink',
         className,
       )}
     >

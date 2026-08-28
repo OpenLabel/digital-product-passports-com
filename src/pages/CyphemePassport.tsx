@@ -253,21 +253,19 @@ export default function CyphemePassport() {
 
         {/* Final CTA */}
         <CySection tone="plain" innerClassName="px-5 py-8">
-          <div className="relative overflow-hidden rounded-[2rem] bg-cy-hero px-4 py-20 text-center shadow-cy">
+          <div className="relative overflow-hidden rounded-[2rem] bg-cy-blue-cta px-4 py-24 text-center shadow-cy">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-3 rounded-[1.5rem] border-2 border-dashed border-cy-orange/40"
+              className="pointer-events-none absolute inset-3 rounded-[1.5rem] border-2 border-dashed border-white/70"
             />
             <div className="relative z-10">
-              <CyHeading variant="gradient" className="italic">
+              <CyHeading variant="onDark" className="italic">
                 One click secures
                 <br />
                 authentication + compliance
               </CyHeading>
-              <div className="mt-8 flex justify-center">
-                <CyButton to={CTA_TARGET} variant="gradient">
-                  Get My DPP Now
-                </CyButton>
+              <div className="mt-10 flex justify-center">
+                <CyButton to={CTA_TARGET}>Get My DPP Now</CyButton>
               </div>
             </div>
           </div>
