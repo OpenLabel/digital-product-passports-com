@@ -93,9 +93,11 @@ const comparison = [
 function CtaButton({
   children,
   variant = 'default',
+  showArrow = true,
 }: {
   children: React.ReactNode;
   variant?: 'default' | 'on-dark' | 'gradient';
+  showArrow?: boolean;
 }) {
   const variants = {
     default:
@@ -108,7 +110,7 @@ function CtaButton({
   return (
     <Link to={CTA_TARGET} className={variants[variant]}>
       {children}
-      <ArrowRight className="h-4 w-4" />
+      {showArrow && <ArrowRight className="h-4 w-4" />}
     </Link>
   );
 }
