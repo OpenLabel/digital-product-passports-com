@@ -31,7 +31,7 @@ const base =
   'inline-flex items-center justify-center gap-2 rounded-cy-btn px-7 py-3.5 font-cy-display text-base font-bold transition-all';
 
 const variants: Record<CyButtonVariant, string> = {
-  primary: 'bg-cy-orange text-white shadow-cy hover:brightness-105',
+  primary: 'bg-cy-orange text-white shadow-cy-btn hover:brightness-105',
   outline: 'border-2 border-cy-orange bg-transparent text-cy-orange hover:bg-cy-tint-warm',
   gradient: 'bg-cy-cta text-white shadow-cy hover:brightness-110',
 };
