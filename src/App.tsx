@@ -98,7 +98,6 @@ function AppRoutes() {
       <Route path="/legal" element={<LegalMentions />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
-      <Route path="/cypheme/digital-product/passport" element={<CyphemeLanding />} />
       <Route path="/cypheme/passport" element={<CyphemePassport />} />
       <Route path="/setup" element={<Navigate to="/" replace />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
