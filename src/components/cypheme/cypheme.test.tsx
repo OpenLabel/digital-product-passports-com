@@ -20,12 +20,14 @@ import CyTimelineCard from './CyTimelineCard';
 import CyPassportShowcase from './CyPassportShowcase';
 
 describe('Cypheme design system isolation', () => {
-  const css = readFileSync(resolve(process.cwd(), 'src/styles/cypheme.css'), 'utf8');
+  const raw = readFileSync(resolve(process.cwd(), 'src/styles/cypheme.css'), 'utf8');
+  const css = raw.replace(/\/\*[\s\S]*?\*\//g, '');
 
   it('never defines tokens on :root or .dark', () => {
     expect(css).not.toMatch(/:root/);
     expect(css).not.toMatch(/\.dark\b/);
   });
+
 
   it('defines every token inside the .cypheme-theme scope', () => {
     expect(css).toMatch(/\.cypheme-theme\s*\{/);
