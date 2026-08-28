@@ -103,4 +103,23 @@ describe('Cypheme primitives', () => {
     expect(screen.getAllByRole('button')).toHaveLength(2);
     expect(screen.getByText('val a')).toBeInTheDocument();
   });
+
+  it('CyComparisonTable renders the recommended badge and every row', () => {
+    render(
+      <CyComparisonTable
+        rows={[
+          { capability: 'Supply chain', standard: 'Data unverified', standardStatus: 'warn', cypheme: 'Full trace' },
+          { capability: 'Consumer trust', standard: "Can't verify", standardStatus: 'no', cypheme: 'Complete' },
+        ]}
+        capabilityLabel="Capability"
+        standardLabel="Standard Digital Product Passport"
+        cyphemeLabel="DPP with Cypheme"
+        recommendedLabel="Recommended"
+      />,
+    );
+    expect(screen.getByText('Recommended')).toBeInTheDocument();
+    expect(screen.getAllByRole('row')).toHaveLength(3);
+    expect(screen.getByText('Full trace')).toBeInTheDocument();
+  });
 });
+
