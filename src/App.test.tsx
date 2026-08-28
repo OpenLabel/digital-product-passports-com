@@ -70,10 +70,10 @@ describe('App', () => {
     expect(screen.getByText('Index Page')).toBeInTheDocument();
   });
 
-  it('redirects /legal-mentions to the legal mentions page', () => {
+  it('does not expose /legal-mentions', () => {
     window.history.pushState({}, '', '/legal-mentions');
     render(<App />);
-    expect(screen.getByText('Legal Mentions')).toBeInTheDocument();
+    expect(screen.queryByText('Legal Mentions')).not.toBeInTheDocument();
     window.history.pushState({}, '', '/');
   });
 });
