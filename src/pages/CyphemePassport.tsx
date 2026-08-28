@@ -232,44 +232,16 @@ export default function CyphemePassport() {
             traceability and confidence.
           </p>
 
-          <CyCard className="mt-8 overflow-x-auto p-0">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-cy-line bg-cy-surface">
-                <tr className="font-cy-display text-cy-ink">
-                  <th scope="col" className="px-4 py-3 font-semibold">Capability</th>
-                  <th scope="col" className="px-4 py-3 font-semibold">Standard DPP</th>
-                  <th scope="col" className="px-4 py-3 font-semibold text-cy-orange">
-                    DPP with Cypheme
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row) => (
-                  <tr key={row.capability} className="border-b border-cy-line last:border-0">
-                    <th scope="row" className="px-4 py-3 font-medium text-cy-ink">
-                      {row.capability}
-                    </th>
-                    <td className={row.standardValid ? 'px-4 py-3 font-medium text-cy-ink' : 'px-4 py-3 text-cy-grey'}>
-                      <span className="inline-flex items-center gap-2">
-                        {row.standardValid ? (
-                          <Check className="h-4 w-4 shrink-0 text-cy-orange" />
-                        ) : (
-                          <X className="h-4 w-4 shrink-0 opacity-60" />
-                        )}
-                        {row.standard}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-2 font-medium text-cy-ink">
-                        <Check className="h-4 w-4 shrink-0 text-cy-orange" />
-                        {row.cypheme}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </CyCard>
+          <div className="mt-8">
+            <CyComparisonTable
+              rows={comparison}
+              capabilityLabel="Capability"
+              standardLabel="Standard Digital Product Passport"
+              cyphemeLabel="DPP with Cypheme"
+              recommendedLabel="Recommended"
+            />
+          </div>
+
 
           <p className="mt-6 text-cy-grey">
             Digital Product Passports improve transparency.{' '}
