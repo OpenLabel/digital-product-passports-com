@@ -93,7 +93,7 @@ const comparison = [
 function CtaButton({
   children,
   variant = 'default',
-  showArrow = true,
+  showArrow = false,
 }: {
   children: React.ReactNode;
   variant?: 'default' | 'on-dark' | 'gradient';
@@ -311,7 +311,7 @@ export default function CyphemeLanding() {
               </strong>
             </p>
             <div className="mt-8">
-              <CtaButton showArrow={false}>Secure Your Products</CtaButton>
+              <CtaButton>Secure Your Products</CtaButton>
             </div>
           </div>
         </section>
