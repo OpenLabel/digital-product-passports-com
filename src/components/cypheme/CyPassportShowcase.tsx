@@ -64,7 +64,7 @@ export default function CyPassportShowcase({ facts }: CyPassportShowcaseProps) {
       <div className="mx-auto flex aspect-[3/4] w-48 flex-col items-center justify-center rounded-2xl bg-cy-navy p-4 shadow-cy sm:w-56">
         <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-xl border border-dashed border-cy-orange/70 p-4">
           <Globe className="h-16 w-16 text-cy-orange sm:h-20 sm:w-20" strokeWidth={1.25} aria-hidden="true" />
-          <p className="text-center font-cy-display text-base font-semibold uppercase leading-tight tracking-wide text-cy-orange sm:text-lg">
+          <p className="text-center font-cy-display text-base font-semibold uppercase leading-tight tracking-wide text-cy-gold sm:text-lg">
             Digital
             <br />
             Product
