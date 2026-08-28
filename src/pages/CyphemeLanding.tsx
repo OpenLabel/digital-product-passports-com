@@ -93,7 +93,7 @@ const comparison = [
 function CtaButton({
   children,
   variant = 'default',
-  showArrow = true,
+  showArrow = false,
 }: {
   children: React.ReactNode;
   variant?: 'default' | 'on-dark' | 'gradient';
