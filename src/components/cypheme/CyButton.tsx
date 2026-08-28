@@ -36,9 +36,23 @@ const variants: Record<CyButtonVariant, string> = {
   gradient: 'bg-cy-cta text-white shadow-cy hover:brightness-110',
 };
 
+function isExternalUrl(url: string) {
+  return /^https?:\/\//i.test(url);
+}
+
 export default function CyButton({ children, to, variant = 'primary', className }: CyButtonProps) {
+  const classes = cn(base, variants[variant], className);
+
+  if (isExternalUrl(to)) {
+    return (
+      <a href={to} className={classes}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link to={to} className={cn(base, variants[variant], className)}>
+    <Link to={to} className={classes}>
       {children}
     </Link>
   );

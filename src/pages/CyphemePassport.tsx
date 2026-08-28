@@ -40,7 +40,7 @@ import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/Cy
 import CyComparisonTable, { type CyComparisonRow } from '@/components/cypheme/CyComparisonTable';
 
 
-const CTA_TARGET = '/?ref=cypheme+ppc';
+const CTA_TARGET = 'https://open-label.eu/auth';
 
 const passportFacts: CyPassportFact[] = [
   { icon: Globe, label: 'Origin', sub: 'Country of manufacture', value: 'Made in France' },
