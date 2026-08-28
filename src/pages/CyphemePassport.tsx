@@ -40,6 +40,8 @@ import CyCard from '@/components/cypheme/CyCard';
 import CyEyebrow from '@/components/cypheme/CyEyebrow';
 import CyTimelineCard from '@/components/cypheme/CyTimelineCard';
 import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/CyPassportShowcase';
+import CyComparisonTable, { type CyComparisonRow } from '@/components/cypheme/CyComparisonTable';
+
 
 const CTA_TARGET = '/?ref=cypheme+ppc';
 
