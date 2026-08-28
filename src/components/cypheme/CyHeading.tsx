@@ -20,31 +20,33 @@ import { cn } from '@/lib/utils';
 interface CyHeadingProps {
   children: ReactNode;
   level?: 1 | 2 | 3;
-  variant?: 'navy' | 'gradient';
+  variant?: 'ink' | 'navy' | 'gradient';
   className?: string;
 }
 
 const sizes: Record<1 | 2 | 3, string> = {
-  1: 'text-4xl md:text-5xl leading-[1.1]',
-  2: 'text-3xl md:text-4xl leading-tight',
-  3: 'text-lg md:text-xl leading-snug',
+  1: 'text-[2.75rem] md:text-6xl leading-[1.05]',
+  2: 'text-3xl md:text-[2.5rem] leading-[1.15]',
+  3: 'text-xl md:text-2xl leading-snug',
 };
 
 export default function CyHeading({
   children,
   level = 2,
-  variant = 'navy',
+  variant = 'ink',
   className,
 }: CyHeadingProps) {
   const Tag = (`h${level}` as const) as 'h1' | 'h2' | 'h3';
   return (
     <Tag
       className={cn(
-        'font-cy-display font-bold tracking-tight',
+        'font-cy-display font-bold tracking-[-0.02em]',
         sizes[level],
         variant === 'gradient'
           ? 'bg-cy-cta bg-clip-text text-transparent'
-          : 'text-cy-navy',
+          : variant === 'navy'
+            ? 'text-cy-navy'
+            : 'text-cy-ink',
         className,
       )}
     >

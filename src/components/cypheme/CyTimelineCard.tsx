@@ -40,7 +40,7 @@ export default function CyTimelineCard({ period, title, body, icon: Icon }: CyTi
       <p className="mt-5 font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
         {period}
       </p>
-      <h3 className="mt-2 font-cy-display text-lg font-semibold text-cy-navy">{title}</h3>
+      <h3 className="mt-2 font-cy-display text-lg font-semibold text-cy-ink">{title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-cy-grey">{body}</p>
     </CyCard>
   );
