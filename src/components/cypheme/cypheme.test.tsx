@@ -18,6 +18,8 @@ import CyHeading from './CyHeading';
 import CySection from './CySection';
 import CyTimelineCard from './CyTimelineCard';
 import CyPassportShowcase from './CyPassportShowcase';
+import CyComparisonTable from './CyComparisonTable';
+
 
 describe('Cypheme design system isolation', () => {
   const raw = readFileSync(resolve(process.cwd(), 'src/styles/cypheme.css'), 'utf8');
