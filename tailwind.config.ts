@@ -71,6 +71,10 @@ export default {
           line: "hsl(var(--cy-line))",
           "tint-warm": "hsl(var(--cy-tint-warm))",
           "tint-cool": "hsl(var(--cy-tint-cool))",
+          ok: "hsl(var(--cy-ok))",
+          no: "hsl(var(--cy-no))",
+          warn: "hsl(var(--cy-warn))",
+
         },
       },
       fontFamily: {

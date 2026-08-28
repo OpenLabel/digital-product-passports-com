@@ -85,14 +85,15 @@ const timeline = [
   },
 ];
 
-const comparison = [
-  { capability: 'Unique product ID', standard: 'Required', standardValid: true, cypheme: 'Linked ID' },
-  { capability: 'EU compliance', standard: 'Data reqs', standardValid: true, cypheme: 'Full + auth' },
-  { capability: 'Physical verification', standard: 'Digital only', standardValid: false, cypheme: 'Physical + data' },
-  { capability: 'Counterfeit protection', standard: 'May appear OK', standardValid: false, cypheme: 'Blocked' },
-  { capability: 'Supply chain', standard: 'Data unverified', standardValid: false, cypheme: 'Full trace' },
-  { capability: 'Consumer trust', standard: "Can't verify", standardValid: false, cypheme: 'Complete' },
+const comparison: CyComparisonRow[] = [
+  { capability: 'Unique product ID', standard: 'Required', standardStatus: 'ok', cypheme: 'Linked ID' },
+  { capability: 'EU compliance', standard: 'Data reqs', standardStatus: 'ok', cypheme: 'Full + auth' },
+  { capability: 'Physical verification', standard: 'Digital only', standardStatus: 'no', cypheme: 'Physical + data' },
+  { capability: 'Counterfeit protection', standard: 'May appear OK', standardStatus: 'no', cypheme: 'Blocked' },
+  { capability: 'Supply chain', standard: 'Data unverified', standardStatus: 'warn', cypheme: 'Full trace' },
+  { capability: 'Consumer trust', standard: "Can't verify", standardStatus: 'no', cypheme: 'Complete' },
 ];
+
 
 const dppFacts = [
   'Origin and materials',
