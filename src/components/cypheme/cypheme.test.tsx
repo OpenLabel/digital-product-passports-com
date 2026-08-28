@@ -19,6 +19,8 @@ import CySection from './CySection';
 import CyTimelineCard from './CyTimelineCard';
 import CyPassportShowcase from './CyPassportShowcase';
 import CyComparisonTable from './CyComparisonTable';
+import CyphemeThemeProvider from './CyphemeThemeProvider';
+
 
 
 describe('Cypheme design system isolation', () => {
