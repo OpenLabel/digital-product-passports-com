@@ -17,7 +17,7 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-export type CyCardTone = 'plain' | 'warm' | 'cool';
+export type CyCardTone = 'plain' | 'warm' | 'cool' | 'surface';
 
 interface CyCardProps {
   children: ReactNode;
@@ -30,11 +30,12 @@ const tones: Record<CyCardTone, string> = {
   plain: 'bg-background border-cy-line',
   warm: 'bg-cy-tint-warm border-cy-orange/20',
   cool: 'bg-cy-tint-cool border-cy-blue/20',
+  surface: 'bg-cy-surface border-cy-line',
 };
 
 export default function CyCard({ children, tone = 'plain', className, as = 'div' }: CyCardProps) {
   const Tag = as;
   return (
-    <Tag className={cn('rounded-2xl border p-6 shadow-cy', tones[tone], className)}>{children}</Tag>
+    <Tag className={cn('rounded-cy-btn border p-6 shadow-cy', tones[tone], className)}>{children}</Tag>
   );
 }
