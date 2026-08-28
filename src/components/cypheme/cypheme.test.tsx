@@ -136,5 +136,19 @@ describe('Cypheme primitives', () => {
     expect(screen.getAllByRole('row')).toHaveLength(3);
     expect(screen.getByText('Full trace')).toBeInTheDocument();
   });
+
+  it('CyphemeThemeProvider injects and removes noindex robots meta', () => {
+    const { unmount } = render(
+      <CyphemeThemeProvider noindex>
+        <span>content</span>
+      </CyphemeThemeProvider>,
+    );
+    const meta = document.querySelector('meta[name="robots"]');
+    expect(meta).toBeInTheDocument();
+    expect(meta).toHaveAttribute('content', 'noindex, nofollow');
+    unmount();
+    expect(document.querySelector('meta[name="robots"]')).not.toBeInTheDocument();
+  });
 });
+
 
