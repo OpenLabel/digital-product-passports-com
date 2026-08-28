@@ -95,13 +95,15 @@ function CtaButton({
   variant = 'default',
 }: {
   children: React.ReactNode;
-  variant?: 'default' | 'on-dark';
+  variant?: 'default' | 'on-dark' | 'orange';
 }) {
   const variants = {
     default:
       'inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90',
     'on-dark':
       'inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/10 transition-colors hover:bg-accent/90',
+    orange:
+      'inline-flex items-center gap-2 rounded-lg bg-[#f97316] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/10 transition-colors hover:bg-[#ea580c]',
   };
   return (
     <Link to={CTA_TARGET} className={variants[variant]}>
