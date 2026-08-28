@@ -74,6 +74,7 @@ function AppRoutes() {
         <Route path="/referral-leaderboard" element={<ReferralLeaderboard />} />
         <Route path="/admin-leaderboard" element={<AdminLeaderboard />} />
         <Route path="/legal" element={<LegalMentions />} />
+        <Route path="/legal-mentions" element={<Navigate to="/legal" replace />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/cypheme/passport" element={<CyphemePassport />} />
@@ -96,6 +97,7 @@ function AppRoutes() {
       <Route path="/admin-leaderboard" element={<AdminLeaderboard />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/legal" element={<LegalMentions />} />
+      <Route path="/legal-mentions" element={<Navigate to="/legal" replace />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/cypheme/passport" element={<CyphemePassport />} />

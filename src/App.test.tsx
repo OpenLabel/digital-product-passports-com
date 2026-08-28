@@ -69,4 +69,11 @@ describe('App', () => {
     // The Index page should render by default
     expect(screen.getByText('Index Page')).toBeInTheDocument();
   });
+
+  it('redirects /legal-mentions to the legal mentions page', () => {
+    window.history.pushState({}, '', '/legal-mentions');
+    render(<App />);
+    expect(screen.getByText('Legal Mentions')).toBeInTheDocument();
+    window.history.pushState({}, '', '/');
+  });
 });
