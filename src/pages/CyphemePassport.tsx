@@ -24,8 +24,6 @@ import {
   Recycle,
   Wrench,
   ScrollText,
-  Check,
-  X,
   Battery,
   Shirt,
   Smartphone,
@@ -36,7 +34,6 @@ import CyphemeThemeProvider from '@/components/cypheme/CyphemeThemeProvider';
 import CySection from '@/components/cypheme/CySection';
 import CyHeading from '@/components/cypheme/CyHeading';
 import CyButton from '@/components/cypheme/CyButton';
-import CyCard from '@/components/cypheme/CyCard';
 import CyEyebrow from '@/components/cypheme/CyEyebrow';
 import CyTimelineCard from '@/components/cypheme/CyTimelineCard';
 import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/CyPassportShowcase';
