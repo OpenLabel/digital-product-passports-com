@@ -310,7 +310,7 @@ export default function CyphemeLanding() {
                 Cypheme ensures your DPP is trusted, authentic, and fully verified.
               </strong>
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8">
               <CtaButton showArrow={false}>Secure Your Products</CtaButton>
             </div>
           </div>
