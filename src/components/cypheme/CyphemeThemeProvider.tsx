@@ -69,5 +69,17 @@ export default function CyphemeThemeProvider({
     };
   }, [title, description]);
 
+  useEffect(() => {
+    if (!noindex) return;
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    return () => {
+      meta.remove();
+    };
+  }, [noindex]);
+
   return <div className="cypheme-theme font-cy-body min-h-screen">{children}</div>;
 }
+
