@@ -327,7 +327,8 @@ export default function CyphemeLanding() {
 
             <div className="relative z-10">
               <h2 className="text-3xl font-bold italic tracking-tight bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-600 bg-clip-text text-transparent md:text-4xl">
-                One click secures authentication + compliance
+                One click secures<br />
+                authentication + compliance
               </h2>
               <div className="mt-8">
                 <CtaButton variant="gradient">Get My DPP Now</CtaButton>
