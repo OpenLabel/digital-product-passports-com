@@ -1,6 +1,6 @@
 # Cypheme landing-only design system
 
-Goal: give the Cypheme landing page its real brand look without touching the design tokens used by the app, the dashboard, or public DPPs.
+Goal: build a **new** page at `/cypheme/passport` that uses a real Cypheme-branded design system, fully isolated from the app. The existing `/cypheme/digital-product/passport` page stays exactly as it is today.
 
 ## Derived brand values (scraped from cypheme.com/dpp-ppc — please review)
 
