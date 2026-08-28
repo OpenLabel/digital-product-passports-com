@@ -24,8 +24,6 @@ import {
   Recycle,
   Wrench,
   ScrollText,
-  Check,
-  X,
   Battery,
   Shirt,
   Smartphone,
@@ -36,10 +34,11 @@ import CyphemeThemeProvider from '@/components/cypheme/CyphemeThemeProvider';
 import CySection from '@/components/cypheme/CySection';
 import CyHeading from '@/components/cypheme/CyHeading';
 import CyButton from '@/components/cypheme/CyButton';
-import CyCard from '@/components/cypheme/CyCard';
 import CyEyebrow from '@/components/cypheme/CyEyebrow';
 import CyTimelineCard from '@/components/cypheme/CyTimelineCard';
 import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/CyPassportShowcase';
+import CyComparisonTable, { type CyComparisonRow } from '@/components/cypheme/CyComparisonTable';
+
 
 const CTA_TARGET = '/?ref=cypheme+ppc';
 
@@ -85,14 +84,15 @@ const timeline = [
   },
 ];
 
-const comparison = [
-  { capability: 'Unique product ID', standard: 'Required', standardValid: true, cypheme: 'Linked ID' },
-  { capability: 'EU compliance', standard: 'Data reqs', standardValid: true, cypheme: 'Full + auth' },
-  { capability: 'Physical verification', standard: 'Digital only', standardValid: false, cypheme: 'Physical + data' },
-  { capability: 'Counterfeit protection', standard: 'May appear OK', standardValid: false, cypheme: 'Blocked' },
-  { capability: 'Supply chain', standard: 'Data unverified', standardValid: false, cypheme: 'Full trace' },
-  { capability: 'Consumer trust', standard: "Can't verify", standardValid: false, cypheme: 'Complete' },
+const comparison: CyComparisonRow[] = [
+  { capability: 'Unique product ID', standard: 'Required', standardStatus: 'ok', cypheme: 'Linked ID' },
+  { capability: 'EU compliance', standard: 'Data reqs', standardStatus: 'ok', cypheme: 'Full + auth' },
+  { capability: 'Physical verification', standard: 'Digital only', standardStatus: 'no', cypheme: 'Physical + data' },
+  { capability: 'Counterfeit protection', standard: 'May appear OK', standardStatus: 'no', cypheme: 'Blocked' },
+  { capability: 'Supply chain', standard: 'Data unverified', standardStatus: 'warn', cypheme: 'Full trace' },
+  { capability: 'Consumer trust', standard: "Can't verify", standardStatus: 'no', cypheme: 'Complete' },
 ];
+
 
 const dppFacts = [
   'Origin and materials',
@@ -229,44 +229,16 @@ export default function CyphemePassport() {
             traceability and confidence.
           </p>
 
-          <CyCard className="mt-8 overflow-x-auto p-0">
-            <table className="w-full text-left text-sm">
-              <thead className="border-b border-cy-line bg-cy-surface">
-                <tr className="font-cy-display text-cy-ink">
-                  <th scope="col" className="px-4 py-3 font-semibold">Capability</th>
-                  <th scope="col" className="px-4 py-3 font-semibold">Standard DPP</th>
-                  <th scope="col" className="px-4 py-3 font-semibold text-cy-orange">
-                    DPP with Cypheme
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row) => (
-                  <tr key={row.capability} className="border-b border-cy-line last:border-0">
-                    <th scope="row" className="px-4 py-3 font-medium text-cy-ink">
-                      {row.capability}
-                    </th>
-                    <td className={row.standardValid ? 'px-4 py-3 font-medium text-cy-ink' : 'px-4 py-3 text-cy-grey'}>
-                      <span className="inline-flex items-center gap-2">
-                        {row.standardValid ? (
-                          <Check className="h-4 w-4 shrink-0 text-cy-orange" />
-                        ) : (
-                          <X className="h-4 w-4 shrink-0 opacity-60" />
-                        )}
-                        {row.standard}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-2 font-medium text-cy-ink">
-                        <Check className="h-4 w-4 shrink-0 text-cy-orange" />
-                        {row.cypheme}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </CyCard>
+          <div className="mt-8">
+            <CyComparisonTable
+              rows={comparison}
+              capabilityLabel="Capability"
+              standardLabel="Standard Digital Product Passport"
+              cyphemeLabel="DPP with Cypheme"
+              recommendedLabel="Recommended"
+            />
+          </div>
+
 
           <p className="mt-6 text-cy-grey">
             Digital Product Passports improve transparency.{' '}
