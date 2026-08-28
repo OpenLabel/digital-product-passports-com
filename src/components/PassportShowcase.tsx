@@ -84,21 +84,8 @@ export default function PassportShowcase({ facts }: PassportShowcaseProps) {
         </div>
       </div>
 
-      {/* Desktop: floating tags around the passport */}
-      <div className="pointer-events-none absolute inset-0 hidden lg:block">
-        {facts.slice(0, TAG_POSITIONS.length).map((fact, index) => (
-          <div
-            key={fact.label}
-            className={`absolute w-56 animate-fade-in ${TAG_POSITIONS[index]}`}
-            style={{ animationDelay: `${index * 120}ms`, animationFillMode: 'both' }}
-          >
-            <FactTag {...fact} />
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile & tablet: one animated tag cycling through the facts */}
-      <div className="mt-8 lg:hidden">
+      {/* Fact carousel */}
+      <div className="mt-8">
         <div key={activeFact.label} className="animate-fade-in">
           <FactTag {...activeFact} />
         </div>
