@@ -58,12 +58,36 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* Cypheme landing-only palette (tokens defined in src/styles/cypheme.css) */
+        cy: {
+          orange: "hsl(var(--cy-orange))",
+          blue: "hsl(var(--cy-blue))",
+          navy: "hsl(var(--cy-navy))",
+          gold: "hsl(var(--cy-gold))",
+          grey: "hsl(var(--cy-grey))",
+          line: "hsl(var(--cy-line))",
+          "tint-warm": "hsl(var(--cy-tint-warm))",
+          "tint-cool": "hsl(var(--cy-tint-cool))",
+        },
+      },
+      fontFamily: {
+        "cy-display": ["Poppins", "system-ui", "sans-serif"],
+        "cy-body": ["Roboto", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "cy-hero": "var(--cy-gradient-hero)",
+        "cy-cta": "var(--cy-gradient-cta)",
+      },
+      boxShadow: {
+        cy: "var(--cy-shadow-card)",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        pill: "var(--cy-radius-pill, 50px)",
       },
+
       keyframes: {
         "accordion-down": {
           from: {

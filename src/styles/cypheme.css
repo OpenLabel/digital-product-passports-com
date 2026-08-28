@@ -1,0 +1,51 @@
+/*
+ * Open-Label Digital Product Passport Engine
+ * Copyright (C) 2026 Open-Label.eu
+ *
+ * Licensed under the Open-Label Public License (OLPL) v1.0.
+ *
+ * Cypheme landing-page design system.
+ * Scoped exclusively to `.cypheme-theme` — never define these on :root,
+ * so no app, dashboard or public DPP surface can inherit them.
+ */
+
+.cypheme-theme {
+  /* Brand palette (HSL triplets) */
+  --cy-orange: 24 100% 50%;      /* #ff6600 */
+  --cy-blue: 205 100% 49%;       /* #0094f9 */
+  --cy-navy: 232 55% 23%;        /* #1b225c */
+  --cy-gold: 38 56% 51%;         /* #c9973a */
+  --cy-tint-warm: 24 100% 96%;   /* #fff3eb */
+  --cy-tint-cool: 205 87% 95%;   /* #e8f4fd */
+  --cy-line: 0 0% 92%;           /* #ebebeb */
+  --cy-grey: 0 0% 53%;           /* #888888 */
+
+  /* Shadcn token overrides, local to this scope */
+  --background: 0 0% 100%;
+  --foreground: var(--cy-navy);
+  --card: 0 0% 100%;
+  --card-foreground: var(--cy-navy);
+  --popover: 0 0% 100%;
+  --popover-foreground: var(--cy-navy);
+  --primary: var(--cy-orange);
+  --primary-foreground: 0 0% 100%;
+  --secondary: var(--cy-tint-cool);
+  --secondary-foreground: var(--cy-navy);
+  --muted: var(--cy-tint-warm);
+  --muted-foreground: var(--cy-grey);
+  --accent: var(--cy-blue);
+  --accent-foreground: 0 0% 100%;
+  --border: var(--cy-line);
+  --input: var(--cy-line);
+  --ring: var(--cy-orange);
+  --radius: 1rem;
+
+  /* Landing-only extras */
+  --cy-radius-pill: 50px;
+  --cy-shadow-card: 0 10px 30px -12px hsl(var(--cy-navy) / 0.18);
+  --cy-gradient-hero: linear-gradient(135deg, hsl(var(--cy-tint-warm)) 0%, hsl(var(--cy-tint-cool)) 100%);
+  --cy-gradient-cta: linear-gradient(90deg, hsl(var(--cy-orange)) 0%, hsl(var(--cy-gold)) 100%);
+
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
