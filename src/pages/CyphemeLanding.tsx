@@ -334,7 +334,7 @@ export default function CyphemeLanding() {
                 One click secures authentication + compliance
               </h2>
               <div className="mt-8">
-                <CtaButton variant="orange">Get My DPP Now</CtaButton>
+                <CtaButton>Get My DPP Now</CtaButton>
               </div>
             </div>
           </div>
