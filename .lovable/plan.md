@@ -20,38 +20,37 @@ Goal: build a **new** page at `/cypheme/passport` that uses a real Cypheme-brand
 
 Tell me if any of these are wrong or if there are official brand values I should use instead — everything downstream is generated from this table.
 
-## Approach: scoped token layer
+## Approach: isolated token scope
 
-Create a `.cypheme-theme` scope. Every token is redefined inside that class only, so nothing outside the landing route changes and dark mode / DPP theming stay untouched.
+All Cypheme tokens live in a dedicated stylesheet, `src/styles/cypheme.css`, imported only by the new landing page. Tokens are defined under a `.cypheme-theme` class — never on `:root` — so no app, dashboard or DPP surface can inherit them.
 
 ```text
-:root                -> existing Open-Label tokens (unchanged)
-.cypheme-theme       -> Cypheme brand tokens override the same variable names
-                        + new landing-only variables (gradients, tints, pill radius)
+:root                -> existing Open-Label tokens (untouched)
+.cypheme-theme       -> Cypheme brand tokens (same variable names, overridden locally)
+                        + landing-only variables (tints, gradients, pill radius, shadows)
 ```
 
-Because shadcn components already read `--primary`, `--radius`, etc., existing buttons/cards automatically pick up the Cypheme look inside the wrapper — no rewrite of every element.
+Because shadcn components read `--primary`, `--radius`, etc., any component rendered inside the wrapper picks up the Cypheme look automatically, and reverts outside it.
 
 ## What gets built
 
-1. **Token layer** in `src/index.css`: a `.cypheme-theme` block with HSL values for background, foreground, primary (orange), secondary (blue), accent (gold), muted, border, ring, plus landing-only tokens: `--landing-tint-warm`, `--landing-tint-cool`, `--landing-navy`, `--landing-gradient-hero`, `--landing-gradient-cta`, `--landing-radius-pill`, `--landing-shadow-card`.
-2. **Tailwind mapping** in `tailwind.config.ts`: expose the new landing tokens as utilities (`bg-landing-tint-warm`, `text-landing-navy`, `rounded-pill`, `shadow-landing`) and register `font-display` (Poppins) / `font-body` (Roboto).
-3. **Fonts**: Poppins + Roboto via Google Fonts, injected only on the landing route (link tags added/removed by the layout component) so the app bundle and DPP pages stay unaffected.
-4. **Landing UI primitives** in `src/components/landing/`:
-   - `LandingLayout.tsx` — applies `.cypheme-theme`, font classes, and the Google Fonts injection.
-   - `LandingSection.tsx` — standard `max-w-4xl` section wrapper with consistent vertical rhythm.
-   - `LandingHeading.tsx` — h1/h2/h3 scale with the navy/gradient variants.
-   - `LandingButton.tsx` — pill CTA with `primary` (orange), `secondary` (blue outline), `gradient` variants; replaces the local `CtaButton`.
-   - `LandingCard.tsx` — tinted surface card; `TimelineCard` and the comparison table are refactored onto it.
-5. **Migration of the page**: `CyphemeLanding.tsx`, `TimelineCard.tsx`, `PassportShowcase.tsx` switch from ad-hoc Tailwind color classes (`violet-600`, `blue-50`, …) to the landing tokens. Layout, copy, and section order stay exactly as they are today — only styling changes.
-6. **Guardrail test**: a unit test asserting that landing components emit no hardcoded color utilities and that the theme class is present, so the scoped system can't leak or rot.
+1. **`src/styles/cypheme.css`** — `.cypheme-theme` block with HSL values for background, foreground, primary (orange), secondary (blue), accent (gold), muted, border, ring, radius, plus landing-only tokens: `--cy-tint-warm`, `--cy-tint-cool`, `--cy-navy`, `--cy-gradient-hero`, `--cy-gradient-cta`, `--cy-radius-pill`, `--cy-shadow-card`. Imported by the landing layout only, not by `src/index.css`.
+2. **Tailwind mapping** in `tailwind.config.ts`: additive-only entries — `cy` color group, `rounded-pill`, `shadow-cy`, `font-cy-display` (Poppins) / `font-cy-body` (Roboto). No existing key is modified, so app styling is unchanged.
+3. **Fonts**: Poppins + Roboto loaded from Google Fonts by the landing layout on mount and removed on unmount, so other routes never download them.
+4. **Landing primitives** in `src/components/cypheme/`:
+   - `CyphemeThemeProvider.tsx` — wraps children in `.cypheme-theme font-cy-body`, handles font injection and page metadata.
+   - `CySection.tsx` — section wrapper with consistent max width and vertical rhythm.
+   - `CyHeading.tsx` — h1/h2/h3 scale with navy and gradient variants.
+   - `CyButton.tsx` — pill CTA: `primary` (orange), `outline` (blue), `gradient`.
+   - `CyCard.tsx` — tinted surface card.
+   - `CyTimelineCard.tsx`, `CyPassportShowcase.tsx` — Cypheme-styled counterparts of the existing components (the current `TimelineCard` / `PassportShowcase` are left untouched).
+5. **New page** `src/pages/CyphemePassport.tsx`, route `/cypheme/passport` in `src/App.tsx` (registered in both the setup-required and normal route trees, like the current landing page). Content mirrors the existing landing page's sections — hero, passport showcase, timeline, comparison, CTA — rebuilt on the Cypheme primitives.
+6. **Tests**: a render smoke test for the new page, tests for each new primitive, and an isolation test asserting the Cypheme tokens are only emitted under `.cypheme-theme` and that no `:root` rule is added.
 
 ## Scope and safety
 
-- Only `/cypheme/digital-product/passport` uses this system; the home page, dashboard and DPPs are untouched.
-- No changes to i18n (this page is English-only marketing copy), no backend changes.
-- Full test suite is run after the change; no threshold changes.
+- `/cypheme/digital-product/passport` and all its components are left byte-identical.
+- No changes to `src/index.css` `:root`/`.dark`; Tailwind changes are additive only.
+- No i18n changes (English-only marketing copy), no backend changes.
+- Full test suite run afterwards; no threshold changes.
 
-## Open point
-
-The rebuild will visually shift the page toward orange-led Cypheme branding, away from the current blue/violet Open-Label look. Confirm that is intended for this page.
