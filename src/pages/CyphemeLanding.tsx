@@ -245,7 +245,7 @@ export default function CyphemeLanding() {
             ))}
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 flex justify-center">
             <CtaButton>Prepare Your Products Today</CtaButton>
           </div>
         </section>
