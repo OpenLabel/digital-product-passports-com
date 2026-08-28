@@ -36,7 +36,7 @@ function CyFactTag({ icon: Icon, label, sub, value }: CyPassportFact) {
         <Icon className="h-4 w-4 text-cy-orange" aria-hidden="true" />
       </span>
       <span className="min-w-0">
-        <span className="block truncate font-cy-display text-sm font-semibold leading-tight text-cy-navy">
+        <span className="block truncate font-cy-display text-sm font-semibold leading-tight text-cy-ink">
           {label}
         </span>
         <span className="block truncate text-xs text-cy-grey">{sub}</span>

@@ -119,7 +119,7 @@ export default function CyphemePassport() {
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-pill bg-cy-orange font-cy-display text-sm font-bold text-white">
               OL
             </span>
-            <span className="font-cy-display text-lg font-semibold text-cy-navy">
+            <span className="font-cy-display text-lg font-semibold text-cy-ink">
               Open Label <span className="font-bold text-cy-orange">.eu</span>
             </span>
           </Link>
@@ -133,7 +133,7 @@ export default function CyphemePassport() {
           <div>
             <CyHeading level={1}>
               Get your EU Digital Product Passport{' '}
-              <span className="text-cy-orange">free of charge</span>
+              <span className="text-cy-blue">free of charge</span>
             </CyHeading>
             <p className="mt-6 max-w-xl text-lg text-cy-grey">
               Cypheme provides you fully EU-compliant, product-ready DPPs through an online
@@ -142,7 +142,7 @@ export default function CyphemePassport() {
             <div className="mt-8">
               <CyButton to={CTA_TARGET}>Get My DPP Now</CyButton>
             </div>
-            <div className="mt-10 flex flex-wrap gap-6 border-t border-cy-line pt-6 text-sm text-cy-navy">
+            <div className="mt-10 flex flex-wrap gap-6 border-t border-cy-line pt-6 text-sm text-cy-ink">
               <span className="inline-flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-cy-orange" />
                 Market-ready Digital Product Passport
@@ -158,7 +158,7 @@ export default function CyphemePassport() {
         </CySection>
 
         {/* What is a DPP */}
-        <CySection tone="warm">
+        <CySection tone="surface">
           <p className="font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
             The regulation you need to know
           </p>
@@ -223,7 +223,7 @@ export default function CyphemePassport() {
         </CySection>
 
         {/* Comparison */}
-        <CySection tone="cool">
+        <CySection tone="surface">
           <p className="font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
             The limits of the Digital Product Passport
           </p>
@@ -231,15 +231,15 @@ export default function CyphemePassport() {
           <p className="mt-4 text-cy-grey">
             Digital Product Passports store and share product data but don't verify the physical
             product. Without authentication, counterfeit or mislabelled items may seem compliant.{' '}
-            <strong className="text-cy-navy">Cypheme's award-winning EU solution</strong> ensures
+            <strong className="text-cy-ink">Cypheme's award-winning EU solution</strong> ensures
             every DPP is backed by verified product authenticity, giving your business full
             traceability and confidence.
           </p>
 
           <CyCard className="mt-8 overflow-x-auto p-0">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-cy-line bg-cy-tint-warm">
-                <tr className="font-cy-display text-cy-navy">
+              <thead className="border-b border-cy-line bg-cy-surface">
+                <tr className="font-cy-display text-cy-ink">
                   <th scope="col" className="px-4 py-3 font-semibold">Capability</th>
                   <th scope="col" className="px-4 py-3 font-semibold">Standard DPP</th>
                   <th scope="col" className="px-4 py-3 font-semibold text-cy-orange">
@@ -250,10 +250,10 @@ export default function CyphemePassport() {
               <tbody>
                 {comparison.map((row) => (
                   <tr key={row.capability} className="border-b border-cy-line last:border-0">
-                    <th scope="row" className="px-4 py-3 font-medium text-cy-navy">
+                    <th scope="row" className="px-4 py-3 font-medium text-cy-ink">
                       {row.capability}
                     </th>
-                    <td className={row.standardValid ? 'px-4 py-3 font-medium text-cy-navy' : 'px-4 py-3 text-cy-grey'}>
+                    <td className={row.standardValid ? 'px-4 py-3 font-medium text-cy-ink' : 'px-4 py-3 text-cy-grey'}>
                       <span className="inline-flex items-center gap-2">
                         {row.standardValid ? (
                           <Check className="h-4 w-4 shrink-0 text-cy-orange" />
@@ -264,7 +264,7 @@ export default function CyphemePassport() {
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-2 font-medium text-cy-navy">
+                      <span className="inline-flex items-center gap-2 font-medium text-cy-ink">
                         <Check className="h-4 w-4 shrink-0 text-cy-orange" />
                         {row.cypheme}
                       </span>
@@ -277,7 +277,7 @@ export default function CyphemePassport() {
 
           <p className="mt-6 text-cy-grey">
             Digital Product Passports improve transparency.{' '}
-            <strong className="text-cy-navy">
+            <strong className="text-cy-ink">
               Cypheme ensures your DPP is trusted, authentic, and fully verified.
             </strong>
           </p>

@@ -17,7 +17,7 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-export type CySectionTone = 'plain' | 'warm' | 'cool' | 'gradient';
+export type CySectionTone = 'plain' | 'surface' | 'warm' | 'cool' | 'gradient';
 
 interface CySectionProps {
   children: ReactNode;
@@ -28,6 +28,7 @@ interface CySectionProps {
 
 const tones: Record<CySectionTone, string> = {
   plain: 'bg-background',
+  surface: 'bg-cy-surface',
   warm: 'bg-cy-tint-warm',
   cool: 'bg-cy-tint-cool',
   gradient: 'bg-cy-hero',
