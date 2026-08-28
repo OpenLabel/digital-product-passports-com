@@ -20,7 +20,7 @@ import { cn } from '@/lib/utils';
 interface CyHeadingProps {
   children: ReactNode;
   level?: 1 | 2 | 3;
-  variant?: 'ink' | 'navy' | 'gradient';
+  variant?: 'ink' | 'navy' | 'gradient' | 'onDark';
   className?: string;
 }
 
