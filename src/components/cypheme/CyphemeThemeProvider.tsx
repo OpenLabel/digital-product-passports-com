@@ -18,7 +18,7 @@ import { useEffect, type ReactNode } from 'react';
 import '@/styles/cypheme.css';
 
 const FONT_HREF =
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap';
+  'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap';
 const FONT_ID = 'cypheme-fonts';
 
 interface CyphemeThemeProviderProps {

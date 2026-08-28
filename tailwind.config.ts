@@ -65,14 +65,17 @@ export default {
           navy: "hsl(var(--cy-navy))",
           gold: "hsl(var(--cy-gold))",
           grey: "hsl(var(--cy-grey))",
+          "grey-soft": "hsl(var(--cy-grey-soft))",
+          ink: "hsl(var(--cy-ink))",
+          surface: "hsl(var(--cy-surface))",
           line: "hsl(var(--cy-line))",
           "tint-warm": "hsl(var(--cy-tint-warm))",
           "tint-cool": "hsl(var(--cy-tint-cool))",
         },
       },
       fontFamily: {
-        "cy-display": ["Poppins", "system-ui", "sans-serif"],
-        "cy-body": ["Roboto", "system-ui", "sans-serif"],
+        "cy-display": ["Roboto", "Helvetica Neue", "system-ui", "sans-serif"],
+        "cy-body": ["Inter", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "cy-hero": "var(--cy-gradient-hero)",
@@ -86,6 +89,7 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
         pill: "var(--cy-radius-pill, 50px)",
+        "cy-btn": "var(--cy-radius-btn, 16px)",
       },
 
       keyframes: {
