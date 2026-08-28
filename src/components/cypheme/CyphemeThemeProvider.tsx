@@ -25,7 +25,9 @@ interface CyphemeThemeProviderProps {
   children: ReactNode;
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
+
 
 /**
  * Wraps landing content in the isolated Cypheme design system scope.
