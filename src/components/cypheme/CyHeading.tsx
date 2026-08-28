@@ -46,7 +46,9 @@ export default function CyHeading({
           ? 'bg-cy-cta bg-clip-text text-transparent'
           : variant === 'navy'
             ? 'text-cy-navy'
-            : 'text-cy-ink',
+            : variant === 'onDark'
+              ? 'text-primary-foreground'
+              : 'text-cy-ink',
         className,
       )}
     >
