@@ -38,7 +38,9 @@ export default function CyphemeThemeProvider({
   children,
   title,
   description,
+  noindex,
 }: CyphemeThemeProviderProps) {
+
   useEffect(() => {
     let link = document.getElementById(FONT_ID) as HTMLLinkElement | null;
     const created = !link;
