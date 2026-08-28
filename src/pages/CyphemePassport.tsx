@@ -113,7 +113,9 @@ export default function CyphemePassport() {
     <CyphemeThemeProvider
       title="EU Digital Product Passport with Authentication | Cypheme"
       description="Cypheme delivers EU-compliant Digital Product Passports backed by physical authenticity verification — free to create, ready for the market."
+      noindex
     >
+
       <header className="border-b border-cy-line bg-background">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-5">
           <Link to="/" className="inline-flex items-center gap-2">

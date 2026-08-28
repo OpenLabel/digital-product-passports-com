@@ -25,7 +25,9 @@ interface CyphemeThemeProviderProps {
   children: ReactNode;
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
+
 
 /**
  * Wraps landing content in the isolated Cypheme design system scope.
@@ -36,7 +38,9 @@ export default function CyphemeThemeProvider({
   children,
   title,
   description,
+  noindex,
 }: CyphemeThemeProviderProps) {
+
   useEffect(() => {
     let link = document.getElementById(FONT_ID) as HTMLLinkElement | null;
     const created = !link;
@@ -65,5 +69,17 @@ export default function CyphemeThemeProvider({
     };
   }, [title, description]);
 
+  useEffect(() => {
+    if (!noindex) return;
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex, nofollow';
+    document.head.appendChild(meta);
+    return () => {
+      meta.remove();
+    };
+  }, [noindex]);
+
   return <div className="cypheme-theme font-cy-body min-h-screen">{children}</div>;
 }
+
