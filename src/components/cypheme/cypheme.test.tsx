@@ -45,7 +45,7 @@ describe('Cypheme design system isolation', () => {
 });
 
 describe('Cypheme primitives', () => {
-  it('CyButton renders a pill link with the requested variant', () => {
+  it('CyButton renders a brand-radius link with the requested variant', () => {
     render(
       <BrowserRouter>
         <CyButton to="/target" variant="outline">
@@ -55,8 +55,8 @@ describe('Cypheme primitives', () => {
     );
     const link = screen.getByRole('link', { name: 'Go' });
     expect(link).toHaveAttribute('href', '/target');
-    expect(link.className).toContain('rounded-pill');
-    expect(link.className).toContain('border-cy-blue');
+    expect(link.className).toContain('rounded-cy-btn');
+    expect(link.className).toContain('border-cy-orange');
   });
 
   it('CyHeading renders the requested level and gradient variant', () => {
