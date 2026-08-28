@@ -29,16 +29,6 @@ interface PassportShowcaseProps {
   facts: PassportFact[];
 }
 
-/** Desktop placement of each floating tag around the passport card. */
-const TAG_POSITIONS = [
-  'left-0 top-[12%]',
-  'right-0 top-[4%]',
-  'left-0 top-[44%]',
-  'right-0 top-[38%]',
-  'left-0 bottom-[10%]',
-  'right-0 bottom-[4%]',
-];
-
 function FactTag({ icon: Icon, label, sub, value }: PassportFact) {
   return (
     <div className="flex items-center gap-3 rounded-full border border-border bg-background/95 px-4 py-2 shadow-lg backdrop-blur">
