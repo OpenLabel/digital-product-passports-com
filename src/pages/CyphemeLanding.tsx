@@ -95,13 +95,15 @@ function CtaButton({
   variant = 'default',
 }: {
   children: React.ReactNode;
-  variant?: 'default' | 'on-dark';
+  variant?: 'default' | 'on-dark' | 'orange';
 }) {
   const variants = {
     default:
       'inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90',
     'on-dark':
       'inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/10 transition-colors hover:bg-accent/90',
+    orange:
+      'inline-flex items-center gap-2 rounded-lg bg-[#f97316] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/10 transition-colors hover:bg-[#ea580c]',
   };
   return (
     <Link to={CTA_TARGET} className={variants[variant]}>
@@ -314,27 +316,25 @@ export default function CyphemeLanding() {
 
         {/* Final CTA */}
         <section className="mx-auto max-w-6xl px-4 py-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-ring px-4 py-20 text-center shadow-xl">
-            {/* Decorative blurred glows */}
-            <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-primary-foreground/10 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
-            {/* Subtle top-right accent radial highlight */}
+          <div
+            className="relative overflow-hidden rounded-[2rem] px-4 py-20 text-center shadow-xl"
+            style={{
+              background:
+                'linear-gradient(135deg, #0c4a6e 0%, #075985 20%, #0ea5e9 40%, #0284c7 60%, #0369a1 80%, #0c4a6e 100%)',
+            }}
+          >
+            {/* Inset dashed border */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.18),transparent_50%)]"
-            />
-            {/* Inner glow border effect */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 rounded-3xl shadow-[inset_0_1px_40px_hsl(var(--primary-foreground)/0.12)]"
+              className="pointer-events-none absolute inset-3 rounded-[1.5rem] border-2 border-dashed border-white/60"
             />
 
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold italic tracking-tight text-primary-foreground md:text-4xl">
+              <h2 className="text-3xl font-bold italic tracking-tight text-white md:text-4xl">
                 One click secures authentication + compliance
               </h2>
               <div className="mt-8">
-                <CtaButton variant="on-dark">Get My DPP Now</CtaButton>
+                <CtaButton variant="orange">Get My DPP Now</CtaButton>
               </div>
             </div>
           </div>
