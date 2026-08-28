@@ -61,6 +61,17 @@ describe('Cypheme primitives', () => {
     expect(link.className).toContain('border-cy-orange');
   });
 
+  it('CyButton renders external URLs as an anchor tag', () => {
+    render(
+      <BrowserRouter>
+        <CyButton to="https://open-label.eu/auth">Sign up</CyButton>
+      </BrowserRouter>,
+    );
+    const link = screen.getByRole('link', { name: 'Sign up' });
+    expect(link.tagName).toBe('A');
+    expect(link).toHaveAttribute('href', 'https://open-label.eu/auth');
+  });
+
   it('CyHeading renders the requested level and gradient variant', () => {
     const { container } = render(
       <CyHeading level={3} variant="gradient">
