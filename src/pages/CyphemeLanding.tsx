@@ -311,7 +311,7 @@ export default function CyphemeLanding() {
               </strong>
             </p>
             <div className="mt-8">
-              <CtaButton showArrow={false}>Secure Your Products</CtaButton>
+              <CtaButton>Secure Your Products</CtaButton>
             </div>
           </div>
         </section>
