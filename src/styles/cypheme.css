@@ -22,6 +22,10 @@
   --cy-line: 0 0% 92%;           /* #ebebeb */
   --cy-grey: 0 0% 40%;           /* body copy grey */
   --cy-grey-soft: 0 0% 53%;      /* #888888 - captions */
+  --cy-ok: 145 63% 42%;          /* comparison check green */
+  --cy-no: 4 79% 58%;            /* comparison cross red */
+  --cy-warn: 38 92% 55%;         /* comparison warning amber */
+
 
   /* Shadcn token overrides, local to this scope */
   --background: 0 0% 100%;
