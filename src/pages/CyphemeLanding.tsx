@@ -150,7 +150,7 @@ export default function CyphemeLanding() {
 
       <main>
         {/* Hero */}
-        <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:grid-cols-2 md:py-24">
+        <section className="mx-auto grid max-w-4xl items-center gap-12 px-4 py-16 md:grid-cols-2 md:py-24">
           <div>
             <h1 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
               Get your EU Digital Product Passport{' '}
