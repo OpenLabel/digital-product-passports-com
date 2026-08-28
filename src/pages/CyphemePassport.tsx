@@ -37,6 +37,7 @@ import CySection from '@/components/cypheme/CySection';
 import CyHeading from '@/components/cypheme/CyHeading';
 import CyButton from '@/components/cypheme/CyButton';
 import CyCard from '@/components/cypheme/CyCard';
+import CyEyebrow from '@/components/cypheme/CyEyebrow';
 import CyTimelineCard from '@/components/cypheme/CyTimelineCard';
 import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/CyPassportShowcase';
 
@@ -159,9 +160,7 @@ export default function CyphemePassport() {
 
         {/* What is a DPP */}
         <CySection tone="surface">
-          <p className="font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
-            The regulation you need to know
-          </p>
+          <CyEyebrow>The regulation you need to know</CyEyebrow>
           <CyHeading className="mt-2">What is a Digital Product Passport?</CyHeading>
           <p className="mt-6 text-cy-grey">
             European Union regulations are introducing Digital Product Passports (DPPs) to improve
@@ -171,12 +170,9 @@ export default function CyphemePassport() {
             A Digital Product Passport is a digital identity linked to a physical product that tracks
             key information across its lifecycle, including:
           </p>
-          <ul className="mt-4 space-y-2 text-cy-grey">
+          <ul className="mt-4 list-disc space-y-1 pl-6 text-cy-grey marker:text-cy-grey">
             {dppFacts.map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <Check className="mt-1 h-4 w-4 shrink-0 text-cy-orange" />
-                {item}
-              </li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
           <p className="mt-4 text-cy-grey">
@@ -184,17 +180,13 @@ export default function CyphemePassport() {
             clear traceability and accountability throughout the product's journey.
           </p>
           <div className="mt-8">
-            <CyButton to={CTA_TARGET} variant="outline">
-              Stay Compliant
-            </CyButton>
+            <CyButton to={CTA_TARGET}>Stay Compliant</CyButton>
           </div>
         </CySection>
 
         {/* Timeline */}
         <CySection tone="plain">
-          <p className="font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
-            Regulatory Timeline
-          </p>
+          <CyEyebrow>Regulatory Timeline</CyEyebrow>
           <CyHeading className="mt-2">Time Is Running Out</CyHeading>
           <p className="mt-2 text-cy-grey">
             EU Digital Product Passport rollout 2027 to 2030. Regulations are rolling out in phases.
@@ -224,9 +216,7 @@ export default function CyphemePassport() {
 
         {/* Comparison */}
         <CySection tone="surface">
-          <p className="font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
-            The limits of the Digital Product Passport
-          </p>
+          <CyEyebrow>The limits of the Digital Product Passport</CyEyebrow>
           <CyHeading className="mt-2">Digital Compliance Alone Is Not Enough</CyHeading>
           <p className="mt-4 text-cy-grey">
             Digital Product Passports store and share product data but don't verify the physical

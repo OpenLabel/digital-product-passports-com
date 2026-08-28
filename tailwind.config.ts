@@ -83,6 +83,7 @@ export default {
       },
       boxShadow: {
         cy: "var(--cy-shadow-card)",
+        "cy-btn": "var(--cy-shadow-btn)",
       },
       borderRadius: {
         lg: "var(--radius)",
