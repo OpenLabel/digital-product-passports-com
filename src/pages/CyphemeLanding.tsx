@@ -316,25 +316,19 @@ export default function CyphemeLanding() {
 
         {/* Final CTA */}
         <section className="mx-auto max-w-6xl px-4 py-8">
-          <div
-            className="relative overflow-hidden rounded-[2rem] px-4 py-20 text-center shadow-xl"
-            style={{
-              background:
-                'linear-gradient(135deg, #0c4a6e 0%, #075985 20%, #0ea5e9 40%, #0284c7 60%, #0369a1 80%, #0c4a6e 100%)',
-            }}
-          >
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-violet-50 via-fuchsia-50 to-amber-50 px-4 py-20 text-center shadow-xl dark:from-violet-950/30 dark:via-fuchsia-950/30 dark:to-amber-950/30">
             {/* Inset dashed border */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-3 rounded-[1.5rem] border-2 border-dashed border-white/60"
+              className="pointer-events-none absolute inset-3 rounded-[1.5rem] border-2 border-dashed border-violet-300 dark:border-violet-700"
             />
 
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold italic tracking-tight text-white md:text-4xl">
+              <h2 className="text-3xl font-bold italic tracking-tight bg-gradient-to-r from-violet-600 via-fuchsia-600 to-amber-600 bg-clip-text text-transparent md:text-4xl">
                 One click secures authentication + compliance
               </h2>
               <div className="mt-8">
-                <CtaButton>Get My DPP Now</CtaButton>
+                <CtaButton variant="gradient">Get My DPP Now</CtaButton>
               </div>
             </div>
           </div>
