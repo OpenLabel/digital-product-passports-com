@@ -28,18 +28,16 @@ export default function CyTimelineCard({ period, title, body, icon: Icon }: CyTi
   return (
     <CyCard
       as="article"
-      tone="warm"
-      className="flex h-full w-full max-w-sm flex-col items-center px-6 py-8 text-center"
+      tone="plain"
+      className="flex h-full w-full max-w-sm flex-col items-center rounded-3xl border-cy-line/70 px-7 py-9 text-center"
     >
       <span
-        className="flex h-14 w-14 items-center justify-center rounded-pill bg-cy-orange/10 text-cy-orange"
+        className="flex h-12 w-12 items-center justify-center rounded-pill bg-cy-blue/10 text-cy-blue"
         aria-hidden="true"
       >
-        <Icon className="h-6 w-6" />
+        <Icon className="h-5 w-5" />
       </span>
-      <p className="mt-5 font-cy-display text-sm font-semibold uppercase tracking-wide text-cy-orange">
-        {period}
-      </p>
+      <p className="mt-5 font-cy-display text-base font-bold text-cy-blue">{period}</p>
       <h3 className="mt-2 font-cy-display text-lg font-semibold text-cy-ink">{title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-cy-grey">{body}</p>
     </CyCard>

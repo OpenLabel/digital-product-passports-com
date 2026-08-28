@@ -188,9 +188,12 @@ export default function CyphemePassport() {
         <CySection tone="plain">
           <CyEyebrow>Regulatory Timeline</CyEyebrow>
           <CyHeading className="mt-2">Time Is Running Out</CyHeading>
-          <p className="mt-2 text-cy-grey">
-            EU Digital Product Passport rollout 2027 to 2030. Regulations are rolling out in phases.
-            Brands preparing now do not just comply. They compete.
+          <h3 className="mt-6 font-cy-display text-xl font-bold text-cy-ink sm:text-2xl">
+            EU Digital Product Passport Rollout 2027 to 2030
+          </h3>
+          <p className="mt-3 text-cy-grey">
+            Regulations are rolling out in phases. Brands preparing now do not just comply. They
+            compete.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
