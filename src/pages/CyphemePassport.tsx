@@ -149,7 +149,7 @@ export default function CyphemePassport() {
               generator. No hassle, no compliance headaches, no fees.
             </p>
             <div className="mt-8">
-              <CyButton to={CTA_TARGET}>Get My DPP Now</CyButton>
+              <CyButton to={ctaTarget()}>Get My DPP Now</CyButton>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 border-t border-cy-line pt-6 text-sm text-cy-ink">
               <span className="inline-flex items-center gap-2">
@@ -188,7 +188,7 @@ export default function CyphemePassport() {
             clear traceability and accountability throughout the product's journey.
           </p>
           <div className="mt-8">
-            <CyButton to={CTA_TARGET}>Stay Compliant</CyButton>
+            <CyButton to={ctaTarget()}>Stay Compliant</CyButton>
           </div>
         </CySection>
 
@@ -221,7 +221,7 @@ export default function CyphemePassport() {
           </div>
 
           <div className="mt-10 flex justify-center">
-            <CyButton to={CTA_TARGET}>Prepare Your Products Today</CyButton>
+            <CyButton to={ctaTarget()}>Prepare Your Products Today</CyButton>
           </div>
         </CySection>
 
@@ -255,7 +255,7 @@ export default function CyphemePassport() {
             </strong>
           </p>
           <div className="mt-8">
-            <CyButton to={CTA_TARGET}>Secure Your Products</CyButton>
+            <CyButton to={ctaTarget()}>Secure Your Products</CyButton>
           </div>
         </CySection>
 
@@ -273,7 +273,7 @@ export default function CyphemePassport() {
                 authentication + compliance
               </CyHeading>
               <div className="mt-10 flex justify-center">
-                <CyButton to={CTA_TARGET}>Get My DPP Now</CyButton>
+                <CyButton to={ctaTarget()}>Get My DPP Now</CyButton>
               </div>
             </div>
           </div>
