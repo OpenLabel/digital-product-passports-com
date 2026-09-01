@@ -19,7 +19,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { initGoogleAdsTag, trackPageView } from "@/lib/googleAdsTracking";
 import { useReferral } from "@/hooks/useReferral";
 import { AuthProvider } from "@/hooks/useAuth";
 import { SiteConfigProvider, useSiteConfig } from "@/hooks/useSiteConfig";
@@ -46,6 +48,17 @@ const queryClient = new QueryClient();
 
 function ReferralCapture() {
   useReferral();
+  return null;
+}
+
+function GoogleAdsTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    initGoogleAdsTag();
+  }, []);
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location.pathname, location.search]);
   return null;
 }
 
@@ -116,6 +129,7 @@ const App = () => (
           <BrowserRouter>
             <BuildStatusBanner />
             <ReferralCapture />
+            <GoogleAdsTracker />
             <AppRoutes />
           </BrowserRouter>
         </TooltipProvider>
