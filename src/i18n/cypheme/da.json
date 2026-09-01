@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU digitalt produktpas med autentificering | Cypheme",
+    "description": "Cypheme leverer EU-kompatible digitale produktpas understøttet af fysisk ægthedsverificering — gratis at oprette, klar til markedet."
+  },
+  "header": {
+    "by": "af Cypheme"
+  },
+  "hero": {
+    "titleLead": "Få dit EU digitalt produktpas",
+    "titleHighlight": "gratis",
+    "body": "Cypheme giver dig fuldt EU-kompatible, produktklare digitale produktpas via en online-generator. Intet besvær, ingen hovedpine med regelefterlevelse, ingen gebyrer.",
+    "cta": "Få mit DPP nu",
+    "badgeReady": "Markedsklart digitalt produktpas",
+    "badgeCompliant": "Fuldt EU-kompatibel"
+  },
+  "facts": {
+    "origin": {
+      "label": "Oprindelse",
+      "sub": "Produktionsland",
+      "value": "Fremstillet i Frankrig"
+    },
+    "materials": {
+      "label": "Materialer",
+      "sub": "Komponentoversigt",
+      "value": "92% genanvendt bomuld"
+    },
+    "carbon": {
+      "label": "CO₂-aftryk",
+      "sub": "Aftryksscore",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Genanvendelighed",
+      "sub": "Vurdering ved endt levetid",
+      "value": "Klasse A — fuldt genanvendeligt"
+    },
+    "maintenance": {
+      "label": "Vedligeholdelse",
+      "sub": "Plejevejledning",
+      "value": "Kun kemisk rens"
+    },
+    "compliance": {
+      "label": "Regelefterlevelse",
+      "sub": "Regulatorisk status",
+      "value": "EU ESPR-certificeret"
+    }
+  },
+  "what": {
+    "eyebrow": "Forordningen, du skal kende til",
+    "title": "Hvad er et digitalt produktpas?",
+    "p1": "EU-forordninger introducerer digitale produktpas (DPP) for at forbedre produkters ægthed, gennemsigtighed og bæredygtighed.",
+    "p2": "Et digitalt produktpas er en digital identitet knyttet til et fysisk produkt, der sporer nøgleinformationer gennem hele dets livscyklus, herunder:",
+    "items": {
+      "origin": "Oprindelse og materialer",
+      "sustainability": "Bæredygtighedsmålinger (CO₂-aftryk, genanvendelighed)",
+      "repair": "Reparations- og vedligeholdelsesvejledning",
+      "regulatory": "Regulatoriske data og regelefterlevelsesdata"
+    },
+    "p3": "Passet er tilgængeligt via en simpel scanning og giver myndigheder, partnere i forsyningskæden og forbrugere klar sporbarhed og ansvarlighed gennem hele produktets rejse.",
+    "cta": "Overhold reglerne"
+  },
+  "timeline": {
+    "eyebrow": "Regulatorisk tidsplan",
+    "title": "Tiden er ved at løbe ud",
+    "subtitle": "Udrulning af EU's digitale produktpas fra 2027 til 2030",
+    "body": "Forordningerne udrulles i faser. De brands, der forbereder sig nu, overholder ikke bare reglerne. De konkurrerer.",
+    "cta": "Forbered dine produkter i dag",
+    "batteries": {
+      "period": "2027",
+      "title": "Batteripas",
+      "body": "Batteripas til batterier i elbiler og industrielle batterier under EU's batteriforordning."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstiler og beklædning",
+      "body": "Digitale produktpas til tekstiler og beklædning forbedrer bæredygtighed, sporbarhed og cirkularitet i hele forsyningskæden."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronik og ICT",
+      "body": "Elektronik- og ICT-produkter tager digitale produktpas i brug for at øge gennemsigtighed, reparationsmuligheder og sporing af livscyklus."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Legetøj",
+      "body": "Det forventes, at legetøjsprodukter vil tage digitale produktpas i brug for at styrke produktsikkerhed, sporbarhed og regelefterlevelse på det europæiske marked."
+    },
+    "most": {
+      "period": "2030",
+      "title": "De fleste produkter",
+      "body": "I 2030 vil de fleste produkter, der sælges i EU, kræve et digitalt produktpas i henhold til forordningen om økodesign for bæredygtige produkter."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Begrænsningerne ved det digitale produktpas",
+    "title": "Digital regelefterlevelse er ikke nok i sig selv",
+    "intro": "Digitale produktpas gemmer og deler produktdata, men verificerer ikke det fysiske produkt. Uden autentificering kan forfalskede eller forkert mærkede varer fremstå som kompatible.",
+    "introStrong": "Cyphemes prisvindende EU-løsning",
+    "introEnd": "sikrer, at hvert DPP er understøttet af verificeret produktægthed, hvilket giver din virksomhed fuld sporbarhed og tillid.",
+    "outro": "Digitale produktpas forbedrer gennemsigtigheden.",
+    "outroStrong": "Cypheme sikrer, at dit DPP er troværdigt, autentisk og fuldt verificeret.",
+    "cta": "Sikr dine produkter",
+    "capabilityLabel": "Egenskab",
+    "standardLabel": "Standard digitalt produktpas",
+    "cyphemeLabel": "DPP med Cypheme",
+    "recommendedLabel": "Anbefalet",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unikt produkt-ID",
+        "standard": "Påkrævet",
+        "cypheme": "Tilknyttet ID"
+      },
+      "euCompliance": {
+        "capability": "EU-kompatibilitet",
+        "standard": "Datakrav",
+        "cypheme": "Fuld + aut."
+      },
+      "physical": {
+        "capability": "Fysisk verificering",
+        "standard": "Kun digital",
+        "cypheme": "Fysisk + data"
+      },
+      "counterfeit": {
+        "capability": "Beskyttelse mod forfalskning",
+        "standard": "Kan se OK ud",
+        "cypheme": "Blokeret"
+      },
+      "supplyChain": {
+        "capability": "Forsyningskæde",
+        "standard": "Data ikke-verificeret",
+        "cypheme": "Fuld sporing"
+      },
+      "trust": {
+        "capability": "Forbrugertillid",
+        "standard": "Kan ikke verificere",
+        "cypheme": "Komplet"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Ét klik sikrer",
+    "titleLine2": "autentificering + regelefterlevelse",
+    "cta": "Få mit DPP nu"
+  },
+  "footer": {
+    "tagline": "Sikre digitale produktpas med indbygget autentificeringsteknologi.",
+    "about": "Om Cypheme",
+    "contact": "Kontakt os",
+    "privacy": "Privatlivspolitik",
+    "terms": "Brugsbetingelser",
+    "legal": "© 2026 Cypheme | GDPR-kompatibel | ISO 27001-certificeret · Drevet af Open-Label.eu"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU Digitaal Productpaspoort met Authenticatie | Cypheme",
+    "description": "Cypheme levert EU-compliant Digitale Productpaspoorten ondersteund door fysieke authenticiteitsverificatie — gratis te creëren, klaar voor de markt."
+  },
+  "header": {
+    "by": "door Cypheme"
+  },
+  "hero": {
+    "titleLead": "Ontvang uw EU Digitaal Productpaspoort",
+    "titleHighlight": "gratis",
+    "body": "Cypheme biedt u volledig EU-compliant, productklare Digitale Productpaspoorten via een online generator. Geen gedoe, geen kopzorgen over naleving, geen kosten.",
+    "cta": "Creëer nu mijn DPP",
+    "badgeReady": "Marktklaar Digitaal Productpaspoort",
+    "badgeCompliant": "Volledig EU-compliant"
+  },
+  "facts": {
+    "origin": {
+      "label": "Herkomst",
+      "sub": "Land van productie",
+      "value": "Geproduceerd in Frankrijk"
+    },
+    "materials": {
+      "label": "Materialen",
+      "sub": "Samenstelling",
+      "value": "92% gerecycled katoen"
+    },
+    "carbon": {
+      "label": "CO₂-uitstoot",
+      "sub": "Voetafdrukscore",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Recycleerbaarheid",
+      "sub": "Eindelevensduur-beoordeling",
+      "value": "Klasse A — volledig recyclebaar"
+    },
+    "maintenance": {
+      "label": "Onderhoud",
+      "sub": "Onderhoudsinstructies",
+      "value": "Alleen chemisch reinigen"
+    },
+    "compliance": {
+      "label": "Naleving",
+      "sub": "Regelgevende status",
+      "value": "EU ESPR-gecertificeerd"
+    }
+  },
+  "what": {
+    "eyebrow": "De regelgeving die u moet kennen",
+    "title": "Wat is een Digitaal Productpaspoort?",
+    "p1": "De regelgeving van de Europese Unie introduceert Digitale Productpaspoorten (DPP's) om de authenticiteit, transparantie en duurzaamheid van producten te verbeteren.",
+    "p2": "Een Digitaal Productpaspoort is een digitale identiteit gekoppeld aan een fysiek product die belangrijke informatie gedurende de gehele levenscyclus bijhoudt, waaronder:",
+    "items": {
+      "origin": "Herkomst en materialen",
+      "sustainability": "Duurzaamheidsstatistieken (CO₂-voetafdruk, recycleerbaarheid)",
+      "repair": "Reparatie- en onderhoudsinstructies",
+      "regulatory": "Regelgevende en nalevingsgegevens"
+    },
+    "p3": "Toegankelijk via een simpele scan, biedt het regelgevers, ketenpartners en consumenten duidelijke traceerbaarheid en verantwoordingsplicht gedurende het hele traject van het product.",
+    "cta": "Zorg voor Naleving"
+  },
+  "timeline": {
+    "eyebrow": "Regelgevende Tijdlijn",
+    "title": "De Tijd Dringt",
+    "subtitle": "EU Digitaal Productpaspoort Uitrol 2027 tot 2030",
+    "body": "De regelgeving wordt gefaseerd uitgerold. Merken die zich nu voorbereiden, voldoen niet alleen aan de eisen. Ze concurreren.",
+    "cta": "Bereid uw producten vandaag nog voor",
+    "batteries": {
+      "period": "2027",
+      "title": "Batterijpaspoorten",
+      "body": "Batterijpaspoorten voor accu's van elektrische voertuigen en industriële accu's onder de EU-batterijverordening."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textiel & Kleding",
+      "body": "Digitale Productpaspoorten voor textiel en kleding verbeteren de duurzaamheid, traceerbaarheid en circulariteit in de hele toeleveringsketen."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronica & ICT",
+      "body": "Elektronica- en ICT-producten implementeren Digitale Productpaspoorten om transparantie, repareerbaarheid en levenscyclus-tracking te verbeteren."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Speelgoed",
+      "body": "Verwacht wordt dat speelgoedproducten Digitale Productpaspoorten zullen implementeren om de productveiligheid, traceerbaarheid en naleving op de Europese markt te versterken."
+    },
+    "most": {
+      "period": "2030",
+      "title": "De Meeste Producten",
+      "body": "Vanaf 2030 vereisen de meeste producten die in de Europese Unie worden verkocht een Digitaal Productpaspoort onder de Ecodesign voor Duurzame Producten Verordening."
+    }
+  },
+  "comparison": {
+    "eyebrow": "De beperkingen van het Digitaal Productpaspoort",
+    "title": "Digitale Naleving Alleen Is Niet Genoeg",
+    "intro": "Digitale Productpaspoorten slaan productgegevens op en delen deze, maar verifiëren niet het fysieke product. Zonder authenticatie kunnen vervalste of verkeerd gelabelde artikelen compliant lijken.",
+    "introStrong": "Cypheme's bekroonde EU-oplossing",
+    "introEnd": "zorgt ervoor dat elke DPP wordt ondersteund door geverifieerde productauthenticiteit, wat uw bedrijf volledige traceerbaarheid en vertrouwen geeft.",
+    "outro": "Digitale Productpaspoorten verbeteren de transparantie.",
+    "outroStrong": "Cypheme zorgt ervoor dat uw DPP betrouwbaar, authentiek en volledig geverifieerd is.",
+    "cta": "Beveilig uw producten",
+    "capabilityLabel": "Functionaliteit",
+    "standardLabel": "Standaard Digitaal Productpaspoort",
+    "cyphemeLabel": "DPP met Cypheme",
+    "recommendedLabel": "Aanbevolen",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unieke product-ID",
+        "standard": "Vereist",
+        "cypheme": "Gekoppelde ID"
+      },
+      "euCompliance": {
+        "capability": "EU-naleving",
+        "standard": "Gegevensvereisten",
+        "cypheme": "Volledig + auth"
+      },
+      "physical": {
+        "capability": "Fysieke verificatie",
+        "standard": "Alleen digitaal",
+        "cypheme": "Fysiek + data"
+      },
+      "counterfeit": {
+        "capability": "Bescherming tegen vervalsing",
+        "standard": "Kan OK lijken",
+        "cypheme": "Geblokkeerd"
+      },
+      "supplyChain": {
+        "capability": "Toeleveringsketen",
+        "standard": "Data ongeverifieerd",
+        "cypheme": "Volledige traceerbaarheid"
+      },
+      "trust": {
+        "capability": "Consumentenvertrouwen",
+        "standard": "Niet te verifiëren",
+        "cypheme": "Compleet"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Eén klik beveiligt",
+    "titleLine2": "authenticatie + naleving",
+    "cta": "Creëer nu mijn DPP"
+  },
+  "footer": {
+    "tagline": "Beveiligde Digitale Productpaspoorten met ingebouwde authenticatietechnologie.",
+    "about": "Over Cypheme",
+    "contact": "Neem contact op",
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "legal": "© 2026 Cypheme | GDPR Compliant | ISO 27001 Gecertificeerd · Mogelijk gemaakt door Open-Label.eu"
+  }
+}

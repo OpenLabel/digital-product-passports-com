@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU digitalna putovnica proizvoda s autentifikacijom | Cypheme",
+    "description": "Cypheme nudi digitalne putovnice proizvoda usklađene s EU, potkrijepljene provjerom fizičke autentičnosti — besplatne za izradu i spremne za tržište."
+  },
+  "header": {
+    "by": "od Cyphemea"
+  },
+  "hero": {
+    "titleLead": "Preuzmite svoju EU digitalnu putovnicu proizvoda",
+    "titleHighlight": "besplatno",
+    "body": "Cypheme vam pruža potpuno usklađene s EU i spremne za proizvode digitalne putovnice proizvoda putem online generatora. Bez muke, bez brige o usklađenosti, bez naknada.",
+    "cta": "Zatražite svoj DPP sada",
+    "badgeReady": "Digitalna putovnica proizvoda spremna za tržište",
+    "badgeCompliant": "Potpuno usklađeno s EU"
+  },
+  "facts": {
+    "origin": {
+      "label": "Podrijetlo",
+      "sub": "Zemlja proizvodnje",
+      "value": "Proizvedeno u Francuskoj"
+    },
+    "materials": {
+      "label": "Materijali",
+      "sub": "Sastav komponenti",
+      "value": "92% reciklirani pamuk"
+    },
+    "carbon": {
+      "label": "Ugljik",
+      "sub": "Ocjena ugljičnog otiska",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Mogućnost recikliranja",
+      "sub": "Ocjena na kraju životnog vijeka",
+      "value": "Razred A — potpuno se može reciklirati"
+    },
+    "maintenance": {
+      "label": "Održavanje",
+      "sub": "Upute za održavanje",
+      "value": "Samo kemijsko čišćenje"
+    },
+    "compliance": {
+      "label": "Usklađenost",
+      "sub": "Regulatorni status",
+      "value": "Certificirano prema EU ESPR"
+    }
+  },
+  "what": {
+    "eyebrow": "Propis koji morate poznavati",
+    "title": "Što je digitalna putovnica proizvoda?",
+    "p1": "Propisi Europske unije uvode digitalne putovnice proizvoda (DPP) kako bi se poboljšala autentičnost, transparentnost i održivost proizvoda.",
+    "p2": "Digitalna putovnica proizvoda je digitalni identitet povezan s fizičkim proizvodom koji prati ključne informacije tijekom njegova životnog ciklusa, uključujući:",
+    "items": {
+      "origin": "Podrijetlo i materijali",
+      "sustainability": "Metrike održivosti (ugljični otisak, mogućnost recikliranja)",
+      "repair": "Upute za popravak i održavanje",
+      "regulatory": "Regulatorni podaci i podaci o usklađenosti"
+    },
+    "p3": "Dostupna jednostavnim skeniranjem, pruža regulatorima, partnerima u opskrbnom lancu i potrošačima jasnu sljedivost i odgovornost tijekom cijelog puta proizvoda.",
+    "cta": "Ostanite usklađeni"
+  },
+  "timeline": {
+    "eyebrow": "Regulatorni vremenski okvir",
+    "title": "Vrijeme istječe",
+    "subtitle": "Uvođenje EU digitalne putovnice proizvoda od 2027. do 2030.",
+    "body": "Propisi se uvode postupno. Brendovi koji se sada pripremaju ne samo da postižu usklađenost, već se i natječu.",
+    "cta": "Pripremite svoje proizvode danas",
+    "batteries": {
+      "period": "2027",
+      "title": "Putovnice za baterije",
+      "body": "Putovnice za baterije za električna vozila i industrijske baterije prema Uredbi EU-a o baterijama."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstil i odjeća",
+      "body": "Digitalne putovnice proizvoda za tekstil i odjeću poboljšavaju održivost, sljedivost i kružnost u cijelom opskrbnom lancu."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika i ICT",
+      "body": "Elektronički i ICT proizvodi usvajaju digitalne putovnice proizvoda kako bi se poboljšala transparentnost, mogućnost popravka i praćenje životnog ciklusa."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Igračke",
+      "body": "Očekuje se da će igračke usvojiti digitalne putovnice proizvoda kako bi se ojačala sigurnost proizvoda, sljedivost i usklađenost na europskom tržištu."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Većina proizvoda",
+      "body": "Do 2030. godine većina proizvoda koji se prodaju u Europskoj uniji zahtijevat će digitalnu putovnicu proizvoda prema Uredbi o ekodizajnu održivih proizvoda."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Ograničenja digitalne putovnice proizvoda",
+    "title": "Sama digitalna usklađenost nije dovoljna",
+    "intro": "Digitalne putovnice proizvoda pohranjuju i dijele podatke o proizvodu, ali ne provjeravaju fizički proizvod. Bez autentifikacije, krivotvoreni ili pogrešno označeni proizvodi mogu se činiti usklađenima.",
+    "introStrong": "Nagrađivano EU rješenje tvrtke Cypheme",
+    "introEnd": "osigurava da je svaki DPP potkrijepljen provjerenom autentičnošću proizvoda, pružajući vašem poslovanju potpunu sljedivost i povjerenje.",
+    "outro": "Digitalne putovnice proizvoda poboljšavaju transparentnost.",
+    "outroStrong": "Cypheme osigurava da je vaš DPP pouzdan, autentičan i potpuno provjeren.",
+    "cta": "Osigurajte svoje proizvode",
+    "capabilityLabel": "Mogućnost",
+    "standardLabel": "Standardna digitalna putovnica proizvoda",
+    "cyphemeLabel": "DPP s Cyphemeom",
+    "recommendedLabel": "Preporučeno",
+    "rows": {
+      "uniqueId": {
+        "capability": "Jedinstveni ID proizvoda",
+        "standard": "Obavezno",
+        "cypheme": "Povezani ID"
+      },
+      "euCompliance": {
+        "capability": "EU usklađenost",
+        "standard": "Podatkovni zahtjevi",
+        "cypheme": "Potpuno + aut."
+      },
+      "physical": {
+        "capability": "Fizička provjera",
+        "standard": "Samo digitalno",
+        "cypheme": "Fizički + podaci"
+      },
+      "counterfeit": {
+        "capability": "Zaštita od krivotvorina",
+        "standard": "Može izgledati u redu",
+        "cypheme": "Blokirano"
+      },
+      "supplyChain": {
+        "capability": "Opskrbni lanac",
+        "standard": "Neprovjereni podaci",
+        "cypheme": "Potpuna sljedivost"
+      },
+      "trust": {
+        "capability": "Povjerenje potrošača",
+        "standard": "Nije moguće provjeriti",
+        "cypheme": "Potpuno"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Jedan klik osigurava",
+    "titleLine2": "autentifikaciju + usklađenost",
+    "cta": "Zatražite svoj DPP sada"
+  },
+  "footer": {
+    "tagline": "Sigurne digitalne putovnice proizvoda s ugrađenom tehnologijom za autentifikaciju.",
+    "about": "O Cyphemeu",
+    "contact": "Kontaktirajte nas",
+    "privacy": "Pravila privatnosti",
+    "terms": "Uvjeti korištenja",
+    "legal": "© 2026 Cypheme | Usklađeno s GDPR-om | Certificirano prema ISO 27001 · Pokreće Open-Label.eu"
+  }
+}

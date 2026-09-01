@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Digitálny produktový pas EÚ s autentifikáciou | Cypheme",
+    "description": "Cypheme poskytuje digitálne produktové pasy kompatibilné s EÚ, podporené fyzickým overením pravosti — vytvorenie zadarmo, pripravené pre trh."
+  },
+  "header": {
+    "by": "od Cypheme"
+  },
+  "hero": {
+    "titleLead": "Získajte svoj digitálny produktový pas EÚ",
+    "titleHighlight": "zadarmo",
+    "body": "Cypheme vám poskytuje plne kompatibilné digitálne produktové pasy pripravené pre produkty prostredníctvom online generátora. Bez starostí, bez problémov so súladom s predpismi, bez poplatkov.",
+    "cta": "Získať môj DPP teraz",
+    "badgeReady": "Digitálny produktový pas pripravený pre trh",
+    "badgeCompliant": "Plne kompatibilný s EÚ"
+  },
+  "facts": {
+    "origin": {
+      "label": "Pôvod",
+      "sub": "Krajina výroby",
+      "value": "Vyrobené vo Francúzsku"
+    },
+    "materials": {
+      "label": "Materiály",
+      "sub": "Zloženie komponentov",
+      "value": "92 % recyklovaná bavlna"
+    },
+    "carbon": {
+      "label": "Uhlík",
+      "sub": "Skóre uhlíkovej stopy",
+      "value": "3.2 kg CO₂ ekv."
+    },
+    "recyclability": {
+      "label": "Recyklovateľnosť",
+      "sub": "Hodnotenie na konci životnosti",
+      "value": "Trieda A — plne recyklovateľné"
+    },
+    "maintenance": {
+      "label": "Údržba",
+      "sub": "Pokyny na ošetrovanie",
+      "value": "Iba chemické čistenie"
+    },
+    "compliance": {
+      "label": "Súlad s predpismi",
+      "sub": "Regulačný status",
+      "value": "Certifikované podľa EÚ ESPR"
+    }
+  },
+  "what": {
+    "eyebrow": "Nariadenie, ktoré potrebujete poznať",
+    "title": "Čo je digitálny produktový pas?",
+    "p1": "Predpisy Európskej únie zavádzajú digitálne produktové pasy (DPP) s cieľom zlepšiť pravosť, transparentnosť a udržateľnosť produktov.",
+    "p2": "Digitálny produktový pas je digitálna identita prepojená s fyzickým produktom, ktorá sleduje kľúčové informácie počas celého jeho životného cyklu, vrátane:",
+    "items": {
+      "origin": "Pôvod a materiály",
+      "sustainability": "Metriky udržateľnosti (uhlíková stopa, recyklovateľnosť)",
+      "repair": "Pokyny na opravu a údržbu",
+      "regulatory": "Regulačné údaje a údaje o súlade s predpismi"
+    },
+    "p3": "Je prístupný jednoduchým skenovaním a poskytuje regulačným orgánom, partnerom v dodávateľskom reťazci a spotrebiteľom jasnú sledovateľnosť a zodpovednosť počas celej cesty produktu.",
+    "cta": "Zostaňte v súlade s predpismi"
+  },
+  "timeline": {
+    "eyebrow": "Regulačný harmonogram",
+    "title": "Čas sa kráti",
+    "subtitle": "Zavádzanie digitálneho produktového pasu EÚ v rokoch 2027 až 2030",
+    "body": "Nariadenia sa zavádzajú postupne. Značky, ktoré sa pripravujú už teraz, nielenže spĺňajú požiadavky, ale získavajú aj konkurenčnú výhodu.",
+    "cta": "Pripravte svoje produkty ešte dnes",
+    "batteries": {
+      "period": "2027",
+      "title": "Pasy pre batérie",
+      "body": "Pasy pre batérie elektrických vozidiel a priemyselné batérie podľa nariadenia EÚ o batériách."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textil a odevy",
+      "body": "Digitálne produktové pasy pre textil a odevy zlepšujú udržateľnosť, sledovateľnosť a obehovosť v celom dodávateľskom reťazci."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika a ICT",
+      "body": "Elektronika a produkty ICT zavádzajú digitálne produktové pasy na zvýšenie transparentnosti, opraviteľnosti a sledovania životného cyklu."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Hračky",
+      "body": "Očakáva sa, že hračky zavedú digitálne produktové pasy s cieľom posilniť bezpečnosť výrobkov, sledovateľnosť a súlad s predpismi na európskom trhu."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Väčšina produktov",
+      "body": "Do roku 2030 bude pre väčšinu produktov predávaných v Európskej únii potrebný digitálny produktový pas podľa nariadenia o ekodizajne pre udržateľné výrobky."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Limity digitálneho produktového pasu",
+    "title": "Samotný digitálny súlad nestačí",
+    "intro": "Digitálne produktové pasy ukladajú a zdieľajú údaje o produkte, ale neoverujú fyzický produkt. Bez autentifikácie sa falšované alebo nesprávne označené položky môžu javiť ako vyhovujúce.",
+    "introStrong": "Oceňované riešenie od Cypheme pre EÚ",
+    "introEnd": "zabezpečuje, že každý DPP je podložený overenou pravosťou produktu, čo vášmu podnikaniu poskytuje úplnú sledovateľnosť a dôveru.",
+    "outro": "Digitálne produktové pasy zlepšujú transparentnosť.",
+    "outroStrong": "Cypheme zaručuje, že váš DPP je dôveryhodný, autentický a plne overený.",
+    "cta": "Zabezpečte svoje produkty",
+    "capabilityLabel": "Funkcia",
+    "standardLabel": "Štandardný digitálny produktový pas",
+    "cyphemeLabel": "DPP s Cypheme",
+    "recommendedLabel": "Odporúčané",
+    "rows": {
+      "uniqueId": {
+        "capability": "Jedinečné ID produktu",
+        "standard": "Vyžadované",
+        "cypheme": "Prepojené ID"
+      },
+      "euCompliance": {
+        "capability": "Súlad s EÚ",
+        "standard": "Dátové požiadavky",
+        "cypheme": "Úplný + autent."
+      },
+      "physical": {
+        "capability": "Fyzické overenie",
+        "standard": "Iba digitálne",
+        "cypheme": "Fyzické + dáta"
+      },
+      "counterfeit": {
+        "capability": "Ochrana proti falzifikátom",
+        "standard": "Môžu sa javiť v poriadku",
+        "cypheme": "Blokované"
+      },
+      "supplyChain": {
+        "capability": "Dodávateľský reťazec",
+        "standard": "Neoverené dáta",
+        "cypheme": "Úplné sledovanie"
+      },
+      "trust": {
+        "capability": "Dôvera spotrebiteľov",
+        "standard": "Nemožno overiť",
+        "cypheme": "Úplná"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Jedno kliknutie zabezpečí",
+    "titleLine2": "autentifikáciu + súlad s predpismi",
+    "cta": "Získať môj DPP teraz"
+  },
+  "footer": {
+    "tagline": "Zabezpečené digitálne produktové pasy so zabudovanou technológiou autentifikácie.",
+    "about": "O Cypheme",
+    "contact": "Kontaktujte nás",
+    "privacy": "Zásady ochrany osobných údajov",
+    "terms": "Podmienky používania",
+    "legal": "© 2026 Cypheme | V súlade s GDPR | Certifikované podľa ISO 27001 · Používa technológiu Open-Label.eu"
+  }
+}

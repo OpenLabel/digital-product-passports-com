@@ -45,6 +45,10 @@ import sl from './locales/sl.json';
 import sv from './locales/sv.json';
 import zhCN from './locales/zh-CN.json';
 
+// Cypheme landing page strings live in their own enclosed namespace.
+import { cyphemeResources, CYPHEME_NAMESPACE } from './cypheme';
+
+
 export const supportedLanguages = [
   { code: 'bg', name: 'Bulgarian', nativeName: 'Български' },
   { code: 'cs', name: 'Czech', nativeName: 'Čeština' },
@@ -103,13 +107,23 @@ const resources = {
   'zh-CN': { translation: zhCN },
 };
 
+// Attach the enclosed Cypheme landing namespace to each language bundle.
+for (const [code, bundle] of Object.entries(cyphemeResources)) {
+  if (resources[code as keyof typeof resources]) {
+    (resources[code as keyof typeof resources] as Record<string, unknown>)[CYPHEME_NAMESPACE] = bundle;
+  }
+}
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
     fallbackLng: 'en',
+    ns: ['translation', CYPHEME_NAMESPACE],
+    defaultNS: 'translation',
     supportedLngs: supportedLanguages.map(l => l.code),
+
     interpolation: {
       escapeValue: false,
     },

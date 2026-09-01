@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Cyfrowy Paszport Produktu UE z Uwierzytelnianiem | Cypheme",
+    "description": "Cypheme dostarcza zgodne z UE Cyfrowe Paszporty Produktów, poparte fizyczną weryfikacją autentyczności — bezpłatne i gotowe do wprowadzenia na rynek."
+  },
+  "header": {
+    "by": "od Cypheme"
+  },
+  "hero": {
+    "titleLead": "Odbierz swój Cyfrowy Paszport Produktu UE",
+    "titleHighlight": "za darmo",
+    "body": "Cypheme oferuje w pełni zgodne z UE i gotowe do użycia Cyfrowe Paszporty Produktów za pośrednictwem generatora online. Bez kłopotów, bez obaw o zgodność i bez opłat.",
+    "cta": "Odbierz Mój DPP Teraz",
+    "badgeReady": "Gotowy na rynek Cyfrowy Paszport Produktu",
+    "badgeCompliant": "W pełni zgodny z UE"
+  },
+  "facts": {
+    "origin": {
+      "label": "Pochodzenie",
+      "sub": "Kraj produkcji",
+      "value": "Wyprodukowano we Francji"
+    },
+    "materials": {
+      "label": "Materiały",
+      "sub": "Skład",
+      "value": "92% bawełna z recyklingu"
+    },
+    "carbon": {
+      "label": "Ślad węglowy",
+      "sub": "Wynik śladu węglowego",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Możliwość recyklingu",
+      "sub": "Ocena po zakończeniu życia produktu",
+      "value": "Klasa A — w pełni nadaje się do recyklingu"
+    },
+    "maintenance": {
+      "label": "Konserwacja",
+      "sub": "Instrukcje pielęgnacji",
+      "value": "Tylko czyszczenie chemiczne"
+    },
+    "compliance": {
+      "label": "Zgodność",
+      "sub": "Status regulacyjny",
+      "value": "Certyfikat zgodności z ESPR UE"
+    }
+  },
+  "what": {
+    "eyebrow": "Rozporządzenie, które musisz znać",
+    "title": "Czym jest Cyfrowy Paszport Produktu?",
+    "p1": "Rozporządzenia Unii Europejskiej wprowadzają Cyfrowe Paszporty Produktów (DPP), aby poprawić autentyczność, przejrzystość i zrównoważony rozwój produktów.",
+    "p2": "Cyfrowy Paszport Produktu to cyfrowa tożsamość powiązana z fizycznym produktem, która śledzi kluczowe informacje w całym cyklu jego życia, w tym:",
+    "items": {
+      "origin": "Pochodzenie i materiały",
+      "sustainability": "Wskaźniki zrównoważonego rozwoju (ślad węglowy, możliwość recyklingu)",
+      "repair": "Instrukcje naprawy i konserwacji",
+      "regulatory": "Dane regulacyjne i dotyczące zgodności"
+    },
+    "p3": "Dostępny po prostym zeskanowaniu, daje organom regulacyjnym, partnerom w łańcuchu dostaw i konsumentom jasną identyfikowalność i odpowiedzialność na całej drodze produktu.",
+    "cta": "Zachowaj Zgodność"
+  },
+  "timeline": {
+    "eyebrow": "Harmonogram Regulacyjny",
+    "title": "Czas ucieka",
+    "subtitle": "Wprowadzenie Cyfrowego Paszportu Produktu UE w latach 2027-2030",
+    "body": "Rozporządzenia są wprowadzane etapami. Marki, które przygotowują się już teraz, nie tylko zapewniają zgodność, ale zyskują przewagę konkurencyjną.",
+    "cta": "Przygotuj Swoje Produkty Już Dziś",
+    "batteries": {
+      "period": "2027",
+      "title": "Paszporty Baterii",
+      "body": "Paszporty dla baterii do pojazdów elektrycznych i baterii przemysłowych w ramach Rozporządzenia UE w sprawie baterii."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstylia i Odzież",
+      "body": "Cyfrowe Paszporty Produktów dla tekstyliów i odzieży poprawiają zrównoważony rozwój, identyfikowalność i cyrkularność w całym łańcuchu dostaw."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika i ICT",
+      "body": "Produkty elektroniczne i ICT wdrażają Cyfrowe Paszporty Produktów w celu zwiększenia przejrzystości, możliwości naprawy i śledzenia cyklu życia."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Zabawki",
+      "body": "Oczekuje się, że producenci zabawek wdrożą Cyfrowe Paszporty Produktów, aby wzmocnić bezpieczeństwo produktów, identyfikowalność i zgodność na rynku europejskim."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Większość Produktów",
+      "body": "Do 2030 roku większość produktów sprzedawanych w Unii Europejskiej będzie wymagała Cyfrowego Paszportu Produktu zgodnie z Rozporządzeniem o Ekoprojektowaniu dla Zrównoważonych Produktów."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Ograniczenia Cyfrowego Paszportu Produktu",
+    "title": "Sama cyfrowa zgodność to za mało",
+    "intro": "Cyfrowe Paszporty Produktów przechowują i udostępniają dane o produkcie, ale nie weryfikują fizycznego produktu. Bez uwierzytelniania, podrobione lub błędnie oznaczone produkty mogą wydawać się zgodne z przepisami.",
+    "introStrong": "Nagradzane rozwiązanie Cypheme dla UE",
+    "introEnd": "gwarantuje, że każdy DPP jest poparty zweryfikowaną autentycznością produktu, zapewniając Twojej firmie pełną identyfikowalność i pewność.",
+    "outro": "Cyfrowe Paszporty Produktów zwiększają przejrzystość.",
+    "outroStrong": "Cypheme gwarantuje, że Twój DPP jest zaufany, autentyczny i w pełni zweryfikowany.",
+    "cta": "Zabezpiecz Swoje Produkty",
+    "capabilityLabel": "Funkcja",
+    "standardLabel": "Standardowy Cyfrowy Paszport Produktu",
+    "cyphemeLabel": "DPP z Cypheme",
+    "recommendedLabel": "Zalecane",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unikalny ID produktu",
+        "standard": "Wymagane",
+        "cypheme": "Powiązany ID"
+      },
+      "euCompliance": {
+        "capability": "Zgodność z UE",
+        "standard": "Wym. dot. danych",
+        "cypheme": "Pełna + aut."
+      },
+      "physical": {
+        "capability": "Weryfikacja fizyczna",
+        "standard": "Tylko cyfrowa",
+        "cypheme": "Fizyczna + dane"
+      },
+      "counterfeit": {
+        "capability": "Ochrona przed podróbkami",
+        "standard": "Mogą wydawać się OK",
+        "cypheme": "Zablokowane"
+      },
+      "supplyChain": {
+        "capability": "Łańcuch dostaw",
+        "standard": "Dane niezweryfikowane",
+        "cypheme": "Pełna identyfikowalność"
+      },
+      "trust": {
+        "capability": "Zaufanie konsumentów",
+        "standard": "Brak możliwości weryfikacji",
+        "cypheme": "Pełne"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Jedno kliknięcie zapewnia",
+    "titleLine2": "uwierzytelnianie + zgodność",
+    "cta": "Odbierz Mój DPP Teraz"
+  },
+  "footer": {
+    "tagline": "Bezpieczne Cyfrowe Paszporty Produktów z wbudowaną technologią uwierzytelniania.",
+    "about": "O Cypheme",
+    "contact": "Kontakt",
+    "privacy": "Polityka Prywatności",
+    "terms": "Warunki Użytkowania",
+    "legal": "© 2026 Cypheme | Zgodny z GDPR | Certyfikat ISO 27001 · Wspierane przez Open-Label.eu"
+  }
+}

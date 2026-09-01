@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Digitalni potni list izdelkov EU z avtentikacijo | Cypheme",
+    "description": "Cypheme ponuja digitalne potne liste izdelkov, skladne z EU, podprte s preverjanjem fizične avtentičnosti — brezplačna izdelava, pripravljeni za trg."
+  },
+  "header": {
+    "by": "od Cypheme"
+  },
+  "hero": {
+    "titleLead": "Zagotovite si svoj digitalni potni list izdelkov EU",
+    "titleHighlight": "brezplačno",
+    "body": "Cypheme vam prek spletnega generatorja zagotavlja digitalne potne liste izdelkov, ki so popolnoma skladni z EU in pripravljeni za uporabo. Brez zapletov, brez skrbi glede skladnosti in brez stroškov.",
+    "cta": "Pridobite svoj DPP zdaj",
+    "badgeReady": "Digitalni potni list izdelkov, pripravljen za trg",
+    "badgeCompliant": "Popolnoma skladen z EU"
+  },
+  "facts": {
+    "origin": {
+      "label": "Poreklo",
+      "sub": "Država proizvodnje",
+      "value": "Izdelano v Franciji"
+    },
+    "materials": {
+      "label": "Materiali",
+      "sub": "Sestava komponent",
+      "value": "92 % recikliranega bombaža"
+    },
+    "carbon": {
+      "label": "Ogljik",
+      "sub": "Ogljični odtis",
+      "value": "3,2 kg CO₂ ekv."
+    },
+    "recyclability": {
+      "label": "Možnost recikliranja",
+      "sub": "Ocena ob koncu življenjske dobe",
+      "value": "Razred A — v celoti reciklabilno"
+    },
+    "maintenance": {
+      "label": "Vzdrževanje",
+      "sub": "Navodila za nego",
+      "value": "Samo kemično čiščenje"
+    },
+    "compliance": {
+      "label": "Skladnost",
+      "sub": "Regulativni status",
+      "value": "Certificirano v skladu z EU ESPR"
+    }
+  },
+  "what": {
+    "eyebrow": "Uredba, ki jo morate poznati",
+    "title": "Kaj je digitalni potni list izdelkov?",
+    "p1": "Predpisi Evropske unije uvajajo digitalne potne liste izdelkov (DPP) za izboljšanje avtentičnosti, preglednosti in trajnosti izdelkov.",
+    "p2": "Digitalni potni list izdelkov je digitalna identiteta, povezana s fizičnim izdelkom, ki sledi ključnim informacijam v celotnem življenjskem ciklu, vključno z:",
+    "items": {
+      "origin": "Poreklo in materiali",
+      "sustainability": "Metrike trajnosti (ogljični odtis, možnost recikliranja)",
+      "repair": "Navodila za popravilo in vzdrževanje",
+      "regulatory": "Regulativni podatki in podatki o skladnosti"
+    },
+    "p3": "Dostopen je s preprostim skeniranjem in regulatorjem, partnerjem v dobavni verigi ter potrošnikom zagotavlja jasno sledljivost in odgovornost na celotni poti izdelka.",
+    "cta": "Ostanite skladni"
+  },
+  "timeline": {
+    "eyebrow": "Regulativni časovni okvir",
+    "title": "Čas se izteka",
+    "subtitle": "Uvajanje digitalnega potnega lista izdelkov EU od 2027 do 2030",
+    "body": "Predpisi se uvajajo postopoma. Blagovne znamke, ki se pripravljajo zdaj, ne zagotavljajo le skladnosti. Tekmujejo.",
+    "cta": "Pripravite svoje izdelke še danes",
+    "batteries": {
+      "period": "2027",
+      "title": "Potni listi za baterije",
+      "body": "Potni listi za baterije za električna vozila in industrijske baterije v skladu z Uredbo EU o baterijah."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstil in oblačila",
+      "body": "Digitalni potni listi izdelkov za tekstil in oblačila izboljšujejo trajnost, sledljivost in krožnost v celotni dobavni verigi."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika in ICT",
+      "body": "Elektronski in ICT izdelki uvajajo digitalne potne liste izdelkov za večjo preglednost, lažje popravilo in sledenje življenjskemu ciklu."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Igrače",
+      "body": "Pričakuje se, da bodo proizvajalci igrač uvedli digitalne potne liste izdelkov za krepitev varnosti izdelkov, sledljivosti in skladnosti na celotnem evropskem trgu."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Večina izdelkov",
+      "body": "Do leta 2030 bo večina izdelkov, prodanih v Evropski uniji, zahtevala digitalni potni list izdelkov v skladu z uredbo o ekodizajnu trajnostnih izdelkov."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Omejitve digitalnega potnega lista izdelkov",
+    "title": "Samo digitalna skladnost ni dovolj",
+    "intro": "Digitalni potni listi izdelkov shranjujejo in delijo podatke o izdelku, vendar ne preverjajo fizičnega izdelka. Brez avtentikacije se lahko ponarejeni ali napačno označeni izdelki zdijo skladni.",
+    "introStrong": "Nagrajena rešitev EU podjetja Cypheme",
+    "introEnd": "zagotavlja, da je vsak DPP podprt s preverjeno avtentičnostjo izdelka, kar vašemu podjetju omogoča popolno sledljivost in zaupanje.",
+    "outro": "Digitalni potni listi izdelkov izboljšujejo preglednost.",
+    "outroStrong": "Cypheme zagotavlja, da je vaš DPP zaupanja vreden, avtentičen in v celoti preverjen.",
+    "cta": "Zavarujte svoje izdelke",
+    "capabilityLabel": "Zmogljivost",
+    "standardLabel": "Standardni digitalni potni list izdelkov",
+    "cyphemeLabel": "DPP s Cypheme",
+    "recommendedLabel": "Priporočeno",
+    "rows": {
+      "uniqueId": {
+        "capability": "Enolični ID izdelka",
+        "standard": "Zahtevano",
+        "cypheme": "Povezan ID"
+      },
+      "euCompliance": {
+        "capability": "Skladnost z EU",
+        "standard": "Podatkovne zahteve",
+        "cypheme": "Popolna + avtentikacija"
+      },
+      "physical": {
+        "capability": "Fizično preverjanje",
+        "standard": "Samo digitalno",
+        "cypheme": "Fizično + podatki"
+      },
+      "counterfeit": {
+        "capability": "Zaščita pred ponaredki",
+        "standard": "Lahko se zdi v redu",
+        "cypheme": "Blokirano"
+      },
+      "supplyChain": {
+        "capability": "Dobavna veriga",
+        "standard": "Nepreverjeni podatki",
+        "cypheme": "Popolna sledljivost"
+      },
+      "trust": {
+        "capability": "Zaupanje potrošnikov",
+        "standard": "Ni mogoče preveriti",
+        "cypheme": "Popolno"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "En klik zagotavlja",
+    "titleLine2": "avtentikacijo + skladnost",
+    "cta": "Pridobite svoj DPP zdaj"
+  },
+  "footer": {
+    "tagline": "Varni digitalni potni listi izdelkov z vgrajeno tehnologijo za avtentikacijo.",
+    "about": "O podjetju Cypheme",
+    "contact": "Kontakt",
+    "privacy": "Politika zasebnosti",
+    "terms": "Pogoji uporabe",
+    "legal": "© 2026 Cypheme | Skladno z GDPR | Certificirano po ISO 27001 · Poganja Open-Label.eu"
+  }
+}

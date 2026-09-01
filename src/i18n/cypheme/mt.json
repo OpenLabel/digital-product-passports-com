@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Passaport Diġitali tal-Prodott tal-UE b'Awtentikazzjoni | Cypheme",
+    "description": "Cypheme jipprovdi Passaporti Diġitali tal-Prodotti konformi mal-UE, appoġġjati minn verifika tal-awtentiċità fiżika — b'xejn biex toħloqhom, lesti għas-suq."
+  },
+  "header": {
+    "by": "minn Cypheme"
+  },
+  "hero": {
+    "titleLead": "Ikseb il-Passaport Diġitali tal-Prodott tal-UE tiegħek",
+    "titleHighlight": "b'xejn",
+    "body": "Cypheme jipprovdilek Passaporti Diġitali tal-Prodotti kompletament konformi mal-UE u lesti għall-prodott permezz ta' ġeneratur online. Bla battikata, bla uġigħ ta' ras dwar il-konformità, bla ħlas.",
+    "cta": "Ikseb id-DPP Tiegħi Issa",
+    "badgeReady": "Passaport Diġitali tal-Prodott Lest għas-Suq",
+    "badgeCompliant": "Kompletament konformi mal-UE"
+  },
+  "facts": {
+    "origin": {
+      "label": "Oriġini",
+      "sub": "Pajjiż tal-manifattura",
+      "value": "Magħmul fi Franza"
+    },
+    "materials": {
+      "label": "Materjali",
+      "sub": "Komponenti",
+      "value": "92% qoton riċiklat"
+    },
+    "carbon": {
+      "label": "Karbonju",
+      "sub": "Punteġġ tal-impronta",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Riċiklabbiltà",
+      "sub": "Klassifikazzjoni fi tmiem il-ħajja",
+      "value": "Grad A — kompletament riċiklabbli"
+    },
+    "maintenance": {
+      "label": "Manutenzjoni",
+      "sub": "Istruzzjonijiet għall-kura",
+      "value": "Dry clean biss"
+    },
+    "compliance": {
+      "label": "Konformità",
+      "sub": "Status regolatorju",
+      "value": "Ċertifikat EU ESPR"
+    }
+  },
+  "what": {
+    "eyebrow": "Ir-regolament li għandek tkun taf",
+    "title": "X'inhu Passaport Diġitali tal-Prodott?",
+    "p1": "Ir-regolamenti tal-Unjoni Ewropea qed jintroduċu l-Passaporti Diġitali tal-Prodotti (DPPs) biex itejbu l-awtentiċità, it-trasparenza, u s-sostenibbiltà tal-prodotti.",
+    "p2": "Passaport Diġitali tal-Prodott huwa identità diġitali marbuta ma' prodott fiżiku li jsegwi informazzjoni ewlenija matul iċ-ċiklu tal-ħajja tiegħu, inkluż:",
+    "items": {
+      "origin": "Oriġini u materjali",
+      "sustainability": "Metriċi tas-sostenibbiltà (impronta tal-karbonju, riċiklabbiltà)",
+      "repair": "Istruzzjonijiet għat-tiswija u l-manutenzjoni",
+      "regulatory": "Data regolatorja u tal-konformità"
+    },
+    "p3": "Aċċessibbli permezz ta' skan sempliċi, jagħti lir-regolaturi, lill-imsieħba fil-katina tal-provvista, u lill-konsumaturi traċċabilità ċara u responsabbiltà matul il-vjaġġ kollu tal-prodott.",
+    "cta": "Ibqa' Konformi"
+  },
+  "timeline": {
+    "eyebrow": "Kronogramma Regolatorja",
+    "title": "Iż-Żmien Qed Jgħaddi",
+    "subtitle": "Tnedija tal-Passaport Diġitali tal-Prodott tal-UE mill-2027 sal-2030",
+    "body": "Ir-regolamenti qed jiġu introdotti f'fażijiet. Il-marki li jippreparaw issa mhux biss ikunu konformi. Jikkompetu.",
+    "cta": "Prepara l-Prodotti Tiegħek Illum",
+    "batteries": {
+      "period": "2027",
+      "title": "Passaporti tal-Batteriji",
+      "body": "Passaporti tal-batteriji għal vetturi elettriċi u batteriji industrijali skont ir-Regolament tal-UE dwar il-Batteriji."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tessuti u Ilbies",
+      "body": "Il-Passaporti Diġitali tal-Prodotti għat-tessuti u l-ilbies itejbu s-sostenibbiltà, it-traċċabilità, u ċ-ċirkolarità tul il-katina tal-provvista."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elettronika u ICT",
+      "body": "Il-prodotti tal-elettronika u tal-ICT jadottaw il-Passaporti Diġitali tal-Prodotti biex itejbu t-trasparenza, il-kapaċità ta' tiswija, u t-traċċar taċ-ċiklu tal-ħajja."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Ġugarelli",
+      "body": "Huwa mistenni li l-prodotti tal-ġugarelli jadottaw il-Passaporti Diġitali tal-Prodotti biex isaħħu s-sigurtà tal-prodott, it-traċċabilità, u l-konformità fis-suq Ewropew kollu."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Il-Biċċa l-Kbira tal-Prodotti",
+      "body": "Sal-2030, il-biċċa l-kbira tal-prodotti mibjugħa fl-Unjoni Ewropea se jeħtieġu Passaport Diġitali tal-Prodott skont ir-Regolament dwar l-Ekodisinn ta' Prodotti Sostenibbli."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Il-limiti tal-Passaport Diġitali tal-Prodott",
+    "title": "Il-Konformità Diġitali Waħedha Mhijiex Biżżejjed",
+    "intro": "Il-Passaporti Diġitali tal-Prodotti jaħżnu u jaqsmu d-data tal-prodott iżda ma jivverifikawx il-prodott fiżiku. Mingħajr awtentikazzjoni, oġġetti ffalsifikati jew b'tikketta ħażina jistgħu jidhru konformi.",
+    "introStrong": "Is-soluzzjoni rebbieħa tal-premjijiet ta' Cypheme għall-UE",
+    "introEnd": "tiżgura li kull DPP ikun appoġġjat minn awtentiċità verifikata tal-prodott, u tagħti lin-negozju tiegħek traċċabilità sħiħa u kunfidenza.",
+    "outro": "Il-Passaporti Diġitali tal-Prodotti jtejbu t-trasparenza.",
+    "outroStrong": "Cypheme jiżgura li d-DPP tiegħek ikun affidabbli, awtentiku, u vverifikat kompletament.",
+    "cta": "Ipproteġi l-Prodotti Tiegħek",
+    "capabilityLabel": "Kapaċità",
+    "standardLabel": "Passaport Diġitali tal-Prodott Standard",
+    "cyphemeLabel": "DPP ma' Cypheme",
+    "recommendedLabel": "Rakkomandat",
+    "rows": {
+      "uniqueId": {
+        "capability": "ID uniku tal-prodott",
+        "standard": "Meħtieġ",
+        "cypheme": "ID marbut"
+      },
+      "euCompliance": {
+        "capability": "Konformità mal-UE",
+        "standard": "Rekwiżiti tad-data",
+        "cypheme": "Sħiħa + awtent."
+      },
+      "physical": {
+        "capability": "Verifika fiżika",
+        "standard": "Diġitali biss",
+        "cypheme": "Fiżika + data"
+      },
+      "counterfeit": {
+        "capability": "Protezzjoni kontra l-falsifikazzjoni",
+        "standard": "Jista' jidher OK",
+        "cypheme": "Imblukkat"
+      },
+      "supplyChain": {
+        "capability": "Katina tal-provvista",
+        "standard": "Data mhux verifikata",
+        "cypheme": "Traċċa sħiħa"
+      },
+      "trust": {
+        "capability": "Fiduċja tal-konsumatur",
+        "standard": "Ma tistax tivverifika",
+        "cypheme": "Kompleta"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Klikk waħda tiżgura",
+    "titleLine2": "awtentikazzjoni + konformità",
+    "cta": "Ikseb id-DPP Tiegħi Issa"
+  },
+  "footer": {
+    "tagline": "Passaporti Diġitali tal-Prodotti Sikuri b'teknoloġija tal-awtentikazzjoni integrata.",
+    "about": "Dwar Cypheme",
+    "contact": "Ikkuntattjana",
+    "privacy": "Politika tal-Privatezza",
+    "terms": "Termini tal-Użu",
+    "legal": "© 2026 Cypheme | Konformi mal-GDPR | Ċertifikat ISO 27001 · Mħaddem minn Open-Label.eu"
+  }
+}

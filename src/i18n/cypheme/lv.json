@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "ES digitālā produkta pase ar autentifikāciju | Cypheme",
+    "description": "Cypheme nodrošina ES saderīgas digitālās produktu pases ar fiziskas autentiskuma pārbaudes atbalstu — izveidojiet bez maksas, gatavas tirgum."
+  },
+  "header": {
+    "by": "no Cypheme"
+  },
+  "hero": {
+    "titleLead": "Saņemiet savu ES digitālo produkta pasi",
+    "titleHighlight": "bez maksas",
+    "body": "Cypheme nodrošina pilnībā ES saderīgas, tirgum gatavas digitālās produktu pases, izmantojot tiešsaistes ģeneratoru. Bez pūlēm, bez raizēm par atbilstību, bez maksas.",
+    "cta": "Saņemt manu DPP tagad",
+    "badgeReady": "Tirgum gatava digitālā produkta pase",
+    "badgeCompliant": "Pilnībā ES saderīgs"
+  },
+  "facts": {
+    "origin": {
+      "label": "Izcelsme",
+      "sub": "Ražotājvalsts",
+      "value": "Ražots Francijā"
+    },
+    "materials": {
+      "label": "Materiāli",
+      "sub": "Sastāvdaļu sadalījums",
+      "value": "92% pārstrādāta kokvilna"
+    },
+    "carbon": {
+      "label": "Ogleklis",
+      "sub": "Pēdas nospieduma rādītājs",
+      "value": "3.2 kg CO₂ ekv."
+    },
+    "recyclability": {
+      "label": "Pārstrādājamība",
+      "sub": "Lietošanas beigu novērtējums",
+      "value": "A klase — pilnībā pārstrādājams"
+    },
+    "maintenance": {
+      "label": "Apkope",
+      "sub": "Kopšanas norādījumi",
+      "value": "Tikai ķīmiskā tīrīšana"
+    },
+    "compliance": {
+      "label": "Atbilstība",
+      "sub": "Regulējuma statuss",
+      "value": "ES ESPR sertificēts"
+    }
+  },
+  "what": {
+    "eyebrow": "Regulējums, kas jums jāzina",
+    "title": "Kas ir digitālā produkta pase?",
+    "p1": "Eiropas Savienības regulējums ievieš digitālās produktu pases (DPP), lai uzlabotu produktu autentiskumu, caurskatāmību un ilgtspēju.",
+    "p2": "Digitālā produkta pase ir digitāla identitāte, kas saistīta ar fizisku produktu un kurā tiek reģistrēta galvenā informācija visā tā aprites ciklā, tostarp:",
+    "items": {
+      "origin": "Izcelsme un materiāli",
+      "sustainability": "Ilgtspējas rādītāji (oglekļa pēdas nospiedums, pārstrādājamība)",
+      "repair": "Remonta un apkopes norādījumi",
+      "regulatory": "Regulējuma un atbilstības dati"
+    },
+    "p3": "Tā ir pieejama ar vienkāršu skenēšanu un nodrošina regulatoriem, piegādes ķēdes partneriem un patērētājiem skaidru izsekojamību un pārskatatbildību visā produkta ceļā.",
+    "cta": "Nodrošiniet atbilstību"
+  },
+  "timeline": {
+    "eyebrow": "Regulējuma laika grafiks",
+    "title": "Laiks iet uz beigām",
+    "subtitle": "ES digitālās produktu pases ieviešana no 2027. līdz 2030. gadam",
+    "body": "Regulējums tiek ieviests pakāpeniski. Zīmoli, kas gatavojas jau tagad, ne tikai nodrošina atbilstību. Tie konkurē.",
+    "cta": "Sagatavojiet savus produktus jau šodien",
+    "batteries": {
+      "period": "2027",
+      "title": "Bateriju pases",
+      "body": "Bateriju pases elektrotransportlīdzekļu un rūpnieciskajām baterijām saskaņā ar ES Bateriju regulu."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstilizstrādājumi un apģērbs",
+      "body": "Digitālās produktu pases tekstilizstrādājumiem un apģērbam uzlabo ilgtspēju, izsekojamību un apritīgumu visā piegādes ķēdē."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika un ICT",
+      "body": "Elektronikas un ICT produktiem tiek ieviestas digitālās produktu pases, lai uzlabotu caurskatāmību, remontējamību un aprites cikla uzskaiti."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Rotaļlietas",
+      "body": "Paredzams, ka rotaļlietām tiks ieviestas digitālās produktu pases, lai stiprinātu produktu drošumu, izsekojamību un atbilstību visā Eiropas tirgū."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Lielākā daļa produktu",
+      "body": "Līdz 2030. gadam lielākajai daļai Eiropas Savienībā pārdoto produktu būs nepieciešama digitālā produkta pase saskaņā ar Ekodizaina ilgtspējīgu produktu regulējumu."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Digitālās produkta pases ierobežojumi",
+    "title": "Ar digitālo atbilstību vien nepietiek",
+    "intro": "Digitālās produktu pases uzglabā un kopīgo produkta datus, bet nepārbauda fizisko produktu. Bez autentifikācijas viltotas vai nepareizi marķētas preces var šķist saderīgas.",
+    "introStrong": "Cypheme godalgotais ES risinājums",
+    "introEnd": "nodrošina, ka katra DPP pamatā ir pārbaudīta produkta autentiskums, sniedzot jūsu uzņēmumam pilnīgu izsekojamību un pārliecību.",
+    "outro": "Digitālās produktu pases uzlabo caurskatāmību.",
+    "outroStrong": "Cypheme nodrošina, ka jūsu DPP ir uzticama, autentiska un pilnībā pārbaudīta.",
+    "cta": "Nodrošiniet savus produktus",
+    "capabilityLabel": "Iespēja",
+    "standardLabel": "Standarta digitālā produkta pase",
+    "cyphemeLabel": "DPP ar Cypheme",
+    "recommendedLabel": "Ieteicams",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unikāls produkta ID",
+        "standard": "Nepieciešams",
+        "cypheme": "Saistīts ID"
+      },
+      "euCompliance": {
+        "capability": "ES atbilstība",
+        "standard": "Datu pras.",
+        "cypheme": "Pilna + aut."
+      },
+      "physical": {
+        "capability": "Fiziska pārbaude",
+        "standard": "Tikai digitāla",
+        "cypheme": "Fiziska + dati"
+      },
+      "counterfeit": {
+        "capability": "Aizsardzība pret viltojumiem",
+        "standard": "Var šķist kārtībā",
+        "cypheme": "Bloķēts"
+      },
+      "supplyChain": {
+        "capability": "Piegādes ķēde",
+        "standard": "Dati nepārbaudīti",
+        "cypheme": "Pilna izsekošana"
+      },
+      "trust": {
+        "capability": "Patērētāju uzticība",
+        "standard": "Nevar pārbaudīt",
+        "cypheme": "Pilnīga"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Viens klikšķis nodrošina",
+    "titleLine2": "autentifikāciju + atbilstību",
+    "cta": "Saņemt manu DPP tagad"
+  },
+  "footer": {
+    "tagline": "Drošas digitālās produktu pases ar iebūvētu autentifikācijas tehnoloģiju.",
+    "about": "Par Cypheme",
+    "contact": "Sazināties ar mums",
+    "privacy": "Privātuma politika",
+    "terms": "Lietošanas noteikumi",
+    "legal": "© 2026 Cypheme | GDPR saderīgs | ISO 27001 sertificēts · Darbina Open-Label.eu"
+  }
+}

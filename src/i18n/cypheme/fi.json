@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU:n digitaalinen tuotepassi ja aitouden todentaminen | Cypheme",
+    "description": "Cypheme toimittaa EU-yhteensopivia digitaalisia tuotepasseja, jotka on varmennettu fyysisellä aitouden todentamisella — ilmainen luoda, valmis markkinoille."
+  },
+  "header": {
+    "by": "Cyphemen"
+  },
+  "hero": {
+    "titleLead": "Hanki EU:n digitaalinen tuotepassi",
+    "titleHighlight": "veloituksetta",
+    "body": "Cypheme tarjoaa täysin EU-yhteensopivia, tuotevalmiita digitaalisia tuotepasseja verkkogeneraattorin kautta. Ei vaivaa, ei päänvaivaa vaatimustenmukaisuudesta, ei maksuja.",
+    "cta": "Hanki DPP nyt",
+    "badgeReady": "Markkinavalmis digitaalinen tuotepassi",
+    "badgeCompliant": "Täysin EU-yhteensopiva"
+  },
+  "facts": {
+    "origin": {
+      "label": "Alkuperä",
+      "sub": "Valmistusmaa",
+      "value": "Valmistettu Ranskassa"
+    },
+    "materials": {
+      "label": "Materiaalit",
+      "sub": "Komponenttierittely",
+      "value": "92 % kierrätettyä puuvillaa"
+    },
+    "carbon": {
+      "label": "Hiili",
+      "sub": "Jalanjälki",
+      "value": "3,2 kg CO₂-ekv."
+    },
+    "recyclability": {
+      "label": "Kierrätettävyys",
+      "sub": "Elinkaaren lopun luokitus",
+      "value": "Luokka A — täysin kierrätettävä"
+    },
+    "maintenance": {
+      "label": "Hoito",
+      "sub": "Hoito-ohjeet",
+      "value": "Vain kemiallinen pesu"
+    },
+    "compliance": {
+      "label": "Vaatimustenmukaisuus",
+      "sub": "Sääntelyn tila",
+      "value": "EU ESPR -sertifioitu"
+    }
+  },
+  "what": {
+    "eyebrow": "Sääntely, joka sinun on tunnettava",
+    "title": "Mikä on digitaalinen tuotepassi?",
+    "p1": "Euroopan unionin sääntelyllä otetaan käyttöön digitaaliset tuotepassit (DPP) tuotteiden aitouden, läpinäkyvyyden ja kestävyyden parantamiseksi.",
+    "p2": "Digitaalinen tuotepassi on fyysiseen tuotteeseen liitetty digitaalinen identiteetti, joka seuraa keskeisiä tietoja tuotteen koko elinkaaren ajan, mukaan lukien:",
+    "items": {
+      "origin": "Alkuperä ja materiaalit",
+      "sustainability": "Kestävyysmittarit (hiilijalanjälki, kierrätettävyys)",
+      "repair": "Korjaus- ja hoito-ohjeet",
+      "regulatory": "Sääntely- ja vaatimustenmukaisuustiedot"
+    },
+    "p3": "Yksinkertaisella skannauksella käytettävä passi antaa sääntelyviranomaisille, toimitusketjun kumppaneille ja kuluttajille selkeän jäljitettävyyden ja vastuullisuuden tuotteen koko matkan ajan.",
+    "cta": "Varmista yhteensopivuus"
+  },
+  "timeline": {
+    "eyebrow": "Sääntelyaikataulu",
+    "title": "Aika on käymässä vähiin",
+    "subtitle": "EU:n digitaalisen tuotepassin käyttöönotto 2027–2030",
+    "body": "Sääntely otetaan käyttöön vaiheittain. Brändit, jotka valmistautuvat nyt, eivät ainoastaan noudata sääntöjä, vaan myös kilpailevat.",
+    "cta": "Valmistele tuotteesi jo tänään",
+    "batteries": {
+      "period": "2027",
+      "title": "Akkupassit",
+      "body": "Akkupassit sähköajoneuvojen ja teollisuusakkujen akuille EU:n akkuasetuksen mukaisesti."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstiilit ja vaatteet",
+      "body": "Digitaaliset tuotepassit tekstiileille ja vaatteille parantavat kestävyyttä, jäljitettävyyttä ja kiertotaloutta koko toimitusketjussa."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektroniikka ja ICT",
+      "body": "Elektroniikka- ja ICT-tuotteet ottavat käyttöön digitaaliset tuotepassit parantaakseen läpinäkyvyyttä, korjattavuutta ja elinkaaren seurantaa."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Lelut",
+      "body": "Lelutuotteiden odotetaan ottavan käyttöön digitaaliset tuotepassit tuoteturvallisuuden, jäljitettävyyden ja vaatimustenmukaisuuden vahvistamiseksi Euroopan markkinoilla."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Useimmat tuotteet",
+      "body": "Vuoteen 2030 mennessä useimmat Euroopan unionissa myytävät tuotteet vaativat digitaalisen tuotepassin ekosuunnitteluasetuksen mukaisesti."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Digitaalisen tuotepassin rajoitukset",
+    "title": "Digitaalinen vaatimustenmukaisuus ei yksin riitä",
+    "intro": "Digitaaliset tuotepassit tallentavat ja jakavat tuotetietoja, mutta eivät todenna fyysistä tuotetta. Ilman aitouden todentamista väärennetyt tai väärin merkityt tuotteet voivat vaikuttaa yhteensopivilta.",
+    "introStrong": "Cyphemen palkittu EU-ratkaisu",
+    "introEnd": "varmistaa, että jokainen DPP on varmennettu todennetulla tuotteen aitoudella, mikä antaa yrityksellesi täyden jäljitettävyyden ja luottamuksen.",
+    "outro": "Digitaaliset tuotepassit parantavat läpinäkyvyyttä.",
+    "outroStrong": "Cypheme varmistaa, että DPP on luotettava, aito ja täysin todennettu.",
+    "cta": "Suojaa tuotteesi",
+    "capabilityLabel": "Ominaisuus",
+    "standardLabel": "Tavallinen digitaalinen tuotepassi",
+    "cyphemeLabel": "DPP Cyphemella",
+    "recommendedLabel": "Suositeltu",
+    "rows": {
+      "uniqueId": {
+        "capability": "Yksilöllinen tuotetunniste",
+        "standard": "Vaadittu",
+        "cypheme": "Linkitetty tunniste"
+      },
+      "euCompliance": {
+        "capability": "EU-vaatimustenmukaisuus",
+        "standard": "Tietovaatimukset",
+        "cypheme": "Täysi + aitous"
+      },
+      "physical": {
+        "capability": "Fyysinen todentaminen",
+        "standard": "Vain digitaalinen",
+        "cypheme": "Fyysinen + data"
+      },
+      "counterfeit": {
+        "capability": "Väärennössuoja",
+        "standard": "Voi näyttää aidolta",
+        "cypheme": "Estetty"
+      },
+      "supplyChain": {
+        "capability": "Toimitusketju",
+        "standard": "Data todentamaton",
+        "cypheme": "Täysi jäljitys"
+      },
+      "trust": {
+        "capability": "Kuluttajaluottamus",
+        "standard": "Ei voi todentaa",
+        "cypheme": "Täydellinen"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Yksi klikkaus takaa",
+    "titleLine2": "aitouden ja vaatimustenmukaisuuden",
+    "cta": "Hanki DPP nyt"
+  },
+  "footer": {
+    "tagline": "Turvalliset digitaaliset tuotepassit sisäänrakennetulla aitouden todentamisteknologialla.",
+    "about": "Tietoa Cyphemesta",
+    "contact": "Ota yhteyttä",
+    "privacy": "Tietosuojakäytäntö",
+    "terms": "Käyttöehdot",
+    "legal": "© 2026 Cypheme | GDPR-yhteensopiva | ISO 27001 -sertifioitu · Toteuttanut Open-Label.eu"
+  }
+}

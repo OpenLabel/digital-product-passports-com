@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU Digitaler Produktpass mit Authentifizierung | Cypheme",
+    "description": "Cypheme liefert EU-konforme Digitale Produktpässe mit physischer Echtheitsprüfung – kostenlos zu erstellen und marktreif."
+  },
+  "header": {
+    "by": "von Cypheme"
+  },
+  "hero": {
+    "titleLead": "Erhalten Sie Ihren EU Digitalen Produktpass",
+    "titleHighlight": "kostenlos",
+    "body": "Cypheme bietet Ihnen vollständig EU-konforme, produktfertige Digitale Produktpässe über einen Online-Generator. Kein Aufwand, keine Compliance-Sorgen, keine Gebühren.",
+    "cta": "Jetzt meinen DPP erhalten",
+    "badgeReady": "Marktreifer Digitaler Produktpass",
+    "badgeCompliant": "Vollständig EU-konform"
+  },
+  "facts": {
+    "origin": {
+      "label": "Herkunft",
+      "sub": "Herstellungsland",
+      "value": "Hergestellt in Frankreich"
+    },
+    "materials": {
+      "label": "Materialien",
+      "sub": "Materialzusammensetzung",
+      "value": "92 % recycelte Baumwolle"
+    },
+    "carbon": {
+      "label": "CO₂-Fußabdruck",
+      "sub": "Bilanz",
+      "value": "3,2 kg CO₂-Äq."
+    },
+    "recyclability": {
+      "label": "Recyclingfähigkeit",
+      "sub": "Einstufung am Lebensende",
+      "value": "Klasse A — vollständig recycelbar"
+    },
+    "maintenance": {
+      "label": "Pflege",
+      "sub": "Pflegehinweise",
+      "value": "Nur chemisch reinigen"
+    },
+    "compliance": {
+      "label": "Compliance",
+      "sub": "Regulatorischer Status",
+      "value": "EU ESPR-zertifiziert"
+    }
+  },
+  "what": {
+    "eyebrow": "Die Verordnung, die Sie kennen müssen",
+    "title": "Was ist ein Digitaler Produktpass?",
+    "p1": "Die Vorschriften der Europäischen Union führen den Digitalen Produktpass (DPP) ein, um die Echtheit, Transparenz und Nachhaltigkeit von Produkten zu verbessern.",
+    "p2": "Ein Digitaler Produktpass ist eine digitale Identität, die mit einem physischen Produkt verknüpft ist und wichtige Informationen über dessen gesamten Lebenszyklus hinweg erfasst, darunter:",
+    "items": {
+      "origin": "Herkunft und Materialien",
+      "sustainability": "Nachhaltigkeitskennzahlen (CO₂-Fußabdruck, Recyclingfähigkeit)",
+      "repair": "Reparatur- und Wartungsanleitungen",
+      "regulatory": "Regulatorische und Compliance-Daten"
+    },
+    "p3": "Er ist durch einen einfachen Scan zugänglich und bietet Regulierungsbehörden, Lieferkettenpartnern und Verbrauchern klare Rückverfolgbarkeit und Nachvollziehbarkeit über den gesamten Produktweg.",
+    "cta": "Bleiben Sie konform"
+  },
+  "timeline": {
+    "eyebrow": "Regulierungszeitplan",
+    "title": "Die Zeit wird knapp",
+    "subtitle": "Einführung des EU Digitalen Produktpasses von 2027 bis 2030",
+    "body": "Die Vorschriften werden schrittweise eingeführt. Marken, die sich jetzt vorbereiten, halten nicht nur die Vorschriften ein. Sie sichern sich einen Wettbewerbsvorteil.",
+    "cta": "Bereiten Sie Ihre Produkte noch heute vor",
+    "batteries": {
+      "period": "2027",
+      "title": "Batteriepässe",
+      "body": "Batteriepässe für Elektrofahrzeug- und Industriebatterien gemäß der EU-Batterienverordnung."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textilien & Bekleidung",
+      "body": "Digitale Produktpässe für Textilien und Bekleidung verbessern die Nachhaltigkeit, Rückverfolgbarkeit und Kreislaufwirtschaft in der gesamten Lieferkette."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronik & ICT",
+      "body": "Elektronik- und ICT-Produkte führen Digitale Produktpässe ein, um Transparenz, Reparierbarkeit und die Nachverfolgung des Lebenszyklus zu verbessern."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Spielzeug",
+      "body": "Es wird erwartet, dass für Spielzeugprodukte der Digitale Produktpass eingeführt wird, um die Produktsicherheit, Rückverfolgbarkeit und Compliance auf dem europäischen Markt zu stärken."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Die meisten Produkte",
+      "body": "Bis 2030 wird für die meisten in der Europäischen Union verkauften Produkte ein Digitaler Produktpass gemäß der Ökodesign-Verordnung für nachhaltige Produkte erforderlich sein."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Die Grenzen des Digitalen Produktpasses",
+    "title": "Digitale Compliance allein reicht nicht aus",
+    "intro": "Digitale Produktpässe speichern und teilen Produktdaten, überprüfen aber nicht das physische Produkt. Ohne Authentifizierung können gefälschte oder falsch gekennzeichnete Artikel konform erscheinen.",
+    "introStrong": "Die preisgekrönte EU-Lösung von Cypheme",
+    "introEnd": "stellt sicher, dass jeder DPP durch eine verifizierte Produktechtheit abgesichert ist, und bietet Ihrem Unternehmen volle Rückverfolgbarkeit und Sicherheit.",
+    "outro": "Digitale Produktpässe verbessern die Transparenz.",
+    "outroStrong": "Cypheme stellt sicher, dass Ihr DPP vertrauenswürdig, authentisch und vollständig verifiziert ist.",
+    "cta": "Sichern Sie Ihre Produkte",
+    "capabilityLabel": "Funktion",
+    "standardLabel": "Standardmäßiger Digitaler Produktpass",
+    "cyphemeLabel": "DPP mit Cypheme",
+    "recommendedLabel": "Empfohlen",
+    "rows": {
+      "uniqueId": {
+        "capability": "Eindeutige Produkt-ID",
+        "standard": "Erforderlich",
+        "cypheme": "Verknüpfte ID"
+      },
+      "euCompliance": {
+        "capability": "EU-Compliance",
+        "standard": "Datenerfordernisse",
+        "cypheme": "Vollständig + Auth."
+      },
+      "physical": {
+        "capability": "Physische Verifizierung",
+        "standard": "Nur digital",
+        "cypheme": "Physisch + Daten"
+      },
+      "counterfeit": {
+        "capability": "Schutz vor Fälschungen",
+        "standard": "Kann als OK erscheinen",
+        "cypheme": "Blockiert"
+      },
+      "supplyChain": {
+        "capability": "Lieferkette",
+        "standard": "Daten nicht verifiziert",
+        "cypheme": "Vollst. Rückverfolgb."
+      },
+      "trust": {
+        "capability": "Verbrauchervertrauen",
+        "standard": "Nicht verifizierbar",
+        "cypheme": "Vollständig"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Ein Klick sichert",
+    "titleLine2": "Authentifizierung + Compliance",
+    "cta": "Jetzt meinen DPP erhalten"
+  },
+  "footer": {
+    "tagline": "Sichere Digitale Produktpässe mit integrierter Authentifizierungstechnologie.",
+    "about": "Über Cypheme",
+    "contact": "Kontakt",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "legal": "© 2026 Cypheme | GDPR-konform | ISO 27001-zertifiziert · Powered by Open-Label.eu"
+  }
+}

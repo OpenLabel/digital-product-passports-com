@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU digitális termékútlevél hitelesítéssel | Cypheme",
+    "description": "A Cypheme EU-kompatibilis digitális termékútleveleket kínál, fizikai eredetiség-ellenőrzéssel támogatva – ingyenesen létrehozható és piacra kész."
+  },
+  "header": {
+    "by": "a Cypheme-től"
+  },
+  "hero": {
+    "titleLead": "Szerezze be EU digitális termékútlevelét",
+    "titleHighlight": "ingyenesen",
+    "body": "A Cypheme egy online generátoron keresztül teljesen EU-kompatibilis, piacra kész digitális termékútleveleket biztosít Önnek. Nincs macera, nincsenek megfelelőségi fejfájások, nincsenek díjak.",
+    "cta": "Kérem a DPP-met most",
+    "badgeReady": "Piacra kész digitális termékútlevél",
+    "badgeCompliant": "Teljesen EU-kompatibilis"
+  },
+  "facts": {
+    "origin": {
+      "label": "Származás",
+      "sub": "Gyártás helye",
+      "value": "Franciaországban készült"
+    },
+    "materials": {
+      "label": "Anyagok",
+      "sub": "Összetevők",
+      "value": "92% újrahasznosított pamut"
+    },
+    "carbon": {
+      "label": "Szén-dioxid",
+      "sub": "Lábnyom",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Újrahasznosíthatóság",
+      "sub": "Életciklus végi besorolás",
+      "value": "A besorolás – teljesen újrahasznosítható"
+    },
+    "maintenance": {
+      "label": "Karbantartás",
+      "sub": "Kezelési útmutató",
+      "value": "Csak vegyileg tisztítható"
+    },
+    "compliance": {
+      "label": "Megfelelőség",
+      "sub": "Szabályozási státusz",
+      "value": "EU ESPR tanúsítvánnyal rendelkezik"
+    }
+  },
+  "what": {
+    "eyebrow": "A szabályozás, amit ismernie kell",
+    "title": "Mi az a digitális termékútlevél?",
+    "p1": "Az Európai Unió szabályozásai a termékek eredetiségének, átláthatóságának és fenntarthatóságának javítása érdekében vezetik be a digitális termékútleveleket (DPP).",
+    "p2": "A digitális termékútlevél egy fizikai termékhez kapcsolt digitális identitás, amely nyomon követi a kulcsfontosságú információkat a termék teljes életciklusa során, beleértve a következőket:",
+    "items": {
+      "origin": "Származás és anyagok",
+      "sustainability": "Fenntarthatósági mutatók (szénlábnyom, újrahasznosíthatóság)",
+      "repair": "Javítási és karbantartási útmutatók",
+      "regulatory": "Szabályozási és megfelelőségi adatok"
+    },
+    "p3": "Egy egyszerű beolvasással elérhető, így a szabályozó hatóságok, az ellátási lánc partnerei és a fogyasztók számára is egyértelmű nyomonkövethetőséget és elszámoltathatóságot biztosít a termék teljes útja során.",
+    "cta": "Gondoskodjon a megfelelőségről"
+  },
+  "timeline": {
+    "eyebrow": "Szabályozási ütemterv",
+    "title": "Kifutunk az időből",
+    "subtitle": "Az EU digitális termékútlevél bevezetése 2027-től 2030-ig",
+    "body": "A szabályozásokat fokozatosan vezetik be. Azok a márkák, amelyek már most felkészülnek, nem csupán megfelelnek az előírásoknak, hanem versenyelőnyre is szert tesznek.",
+    "cta": "Készítse fel termékeit még ma",
+    "batteries": {
+      "period": "2027",
+      "title": "Akkumulátor útlevelek",
+      "body": "Akkumulátor útlevelek az elektromos járművek és ipari akkumulátorok számára az EU akkumulátorrendelete alapján."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textil és ruházat",
+      "body": "A textil- és ruházati termékekhez készült digitális termékútlevelek javítják a fenntarthatóságot, a nyomonkövethetőséget és a körforgásosságot az ellátási lánc egészében."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika és ICT",
+      "body": "Az elektronikai és ICT termékek digitális termékútleveleket vezetnek be az átláthatóság, a javíthatóság és az életciklus-követés javítása érdekében."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Játékok",
+      "body": "A játéktermékek várhatóan digitális termékútleveleket fognak alkalmazni a termékbiztonság, a nyomonkövethetőség és a megfelelőség megerősítése érdekében az európai piacon."
+    },
+    "most": {
+      "period": "2030",
+      "title": "A legtöbb termék",
+      "body": "2030-ra az Európai Unióban értékesített legtöbb termékhez digitális termékútlevélre lesz szükség a fenntartható termékek környezettudatos tervezéséről szóló rendelet (ESPR) értelmében."
+    }
+  },
+  "comparison": {
+    "eyebrow": "A digitális termékútlevél korlátai",
+    "title": "A digitális megfelelőség önmagában nem elég",
+    "intro": "A digitális termékútlevelek tárolják és megosztják a termékadatokat, de nem igazolják a fizikai termék eredetiségét. Hitelesítés nélkül a hamisított vagy tévesen címkézett termékek is megfelelőnek tűnhetnek.",
+    "introStrong": "A Cypheme díjnyertes EU megoldása",
+    "introEnd": "biztosítja, hogy minden DPP mögött ellenőrzött termékeredetiség álljon, teljes körű nyomonkövethetőséget és bizalmat nyújtva vállalkozásának.",
+    "outro": "A digitális termékútlevelek növelik az átláthatóságot.",
+    "outroStrong": "A Cypheme garantálja, hogy az Ön DPP-je megbízható, hiteles és teljes mértékben ellenőrzött.",
+    "cta": "Tegye biztonságossá termékeit",
+    "capabilityLabel": "Képesség",
+    "standardLabel": "Standard digitális termékútlevél",
+    "cyphemeLabel": "DPP a Cypheme-mel",
+    "recommendedLabel": "Ajánlott",
+    "rows": {
+      "uniqueId": {
+        "capability": "Egyedi termékazonosító",
+        "standard": "Kötelező",
+        "cypheme": "Kapcsolt azonosító"
+      },
+      "euCompliance": {
+        "capability": "EU megfelelőség",
+        "standard": "Adatkövetelmények",
+        "cypheme": "Teljes + hitelesítés"
+      },
+      "physical": {
+        "capability": "Fizikai ellenőrzés",
+        "standard": "Csak digitális",
+        "cypheme": "Fizikai + adat"
+      },
+      "counterfeit": {
+        "capability": "Hamisítás elleni védelem",
+        "standard": "Rendben lévőnek tűnhet",
+        "cypheme": "Blokkolva"
+      },
+      "supplyChain": {
+        "capability": "Ellátási lánc",
+        "standard": "Nem ellenőrzött adatok",
+        "cypheme": "Teljes nyomonkövetés"
+      },
+      "trust": {
+        "capability": "Fogyasztói bizalom",
+        "standard": "Nem ellenőrizhető",
+        "cypheme": "Teljes körű"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Egy kattintás biztosítja",
+    "titleLine2": "a hitelesítést + a megfelelőséget",
+    "cta": "Kérem a DPP-met most"
+  },
+  "footer": {
+    "tagline": "Biztonságos digitális termékútlevelek beépített hitelesítési technológiával.",
+    "about": "A Cypheme-ről",
+    "contact": "Kapcsolat",
+    "privacy": "Adatvédelmi irányelvek",
+    "terms": "Felhasználási feltételek",
+    "legal": "© 2026 Cypheme | GDPR kompatibilis | ISO 27001 tanúsítvánnyal rendelkezik · Működteti: Open-Label.eu"
+  }
+}

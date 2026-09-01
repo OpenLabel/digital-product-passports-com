@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "带真伪验证功能的欧盟数字产品护照 | Cypheme",
+    "description": "Cypheme 提供符合欧盟标准的数字产品护照，并以实体真伪验证为后盾 — 免费创建，可直接投放市场。"
+  },
+  "header": {
+    "by": "由 Cypheme 提供"
+  },
+  "hero": {
+    "titleLead": "获取您的欧盟数字产品护照",
+    "titleHighlight": "完全免费",
+    "body": "Cypheme 通过在线生成器为您提供完全符合欧盟标准、可直接用于产品的数字产品护照。轻松无忧，告别合规难题，零费用。",
+    "cta": "立即获取我的 DPP",
+    "badgeReady": "可直接投放市场的数字产品护照",
+    "badgeCompliant": "完全符合欧盟标准"
+  },
+  "facts": {
+    "origin": {
+      "label": "原产地",
+      "sub": "制造国家",
+      "value": "法国制造"
+    },
+    "materials": {
+      "label": "材料",
+      "sub": "成分明细",
+      "value": "92% 再生棉"
+    },
+    "carbon": {
+      "label": "碳足迹",
+      "sub": "足迹评分",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "可回收性",
+      "sub": "产品寿命终点评级",
+      "value": "A 级 — 完全可回收"
+    },
+    "maintenance": {
+      "label": "保养",
+      "sub": "护理说明",
+      "value": "仅限干洗"
+    },
+    "compliance": {
+      "label": "合规性",
+      "sub": "法规状态",
+      "value": "经欧盟 ESPR 认证"
+    }
+  },
+  "what": {
+    "eyebrow": "您需要了解的法规",
+    "title": "什么是数字产品护照？",
+    "p1": "欧盟法规正在引入数字产品护照 (DPP)，以提高产品的真实性、透明度和可持续性。",
+    "p2": "数字产品护照是与实体产品相关联的数字身份，用于追踪其整个生命周期的关键信息，包括：",
+    "items": {
+      "origin": "原产地和材料",
+      "sustainability": "可持续性指标（碳足迹、可回收性）",
+      "repair": "维修和保养说明",
+      "regulatory": "法规与合规数据"
+    },
+    "p3": "通过简单扫描即可访问，它为监管机构、供应链合作伙伴和消费者在产品的整个流通环节中提供了明确的可追溯性和责任明确性。",
+    "cta": "保持合规"
+  },
+  "timeline": {
+    "eyebrow": "法规时间表",
+    "title": "时间紧迫",
+    "subtitle": "欧盟数字产品护照推广计划 2027 至 2030",
+    "body": "法规正在分阶段推出。立即开始准备的品牌不仅是为了合规，更是为了赢得竞争。",
+    "cta": "立即为您的产品做好准备",
+    "batteries": {
+      "period": "2027",
+      "title": "电池护照",
+      "body": "根据欧盟电池法规，为电动汽车和工业电池引入电池护照。"
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "纺织品与服装",
+      "body": "纺织品和服装的数字产品护照将提高整个供应链的可持续性、可追溯性和循环性。"
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "电子产品与 ICT",
+      "body": "电子和 ICT 产品采用数字产品护照，以增强透明度、可修复性和生命周期追踪。"
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "玩具",
+      "body": "玩具产品预计将采用数字产品护照，以加强整个欧洲市场的产品安全、可追溯性和合规性。"
+    },
+    "most": {
+      "period": "2030",
+      "title": "大多数产品",
+      "body": "到 2030 年，根据生态设计可持续产品法规，在欧盟销售的大多数产品都将需要数字产品护照。"
+    }
+  },
+  "comparison": {
+    "eyebrow": "数字产品护照的局限性",
+    "title": "仅有数字合规是远远不够的",
+    "intro": "数字产品护照存储和共享产品数据，但无法验证实体产品。没有真伪验证，假冒或贴错标签的产品也可能看似合规。",
+    "introStrong": "Cypheme 屡获殊荣的欧盟解决方案",
+    "introEnd": "确保每个 DPP 都有经过验证的产品真实性作为支持，为您的企业提供完全的可追溯性和信心。",
+    "outro": "数字产品护照提高了透明度。",
+    "outroStrong": "Cypheme 确保您的 DPP 值得信赖、真实可靠且经过全面验证。",
+    "cta": "保障您的产品安全",
+    "capabilityLabel": "功能",
+    "standardLabel": "标准数字产品护照",
+    "cyphemeLabel": "采用 Cypheme 技术的 DPP",
+    "recommendedLabel": "推荐",
+    "rows": {
+      "uniqueId": {
+        "capability": "唯一产品 ID",
+        "standard": "必需",
+        "cypheme": "关联 ID"
+      },
+      "euCompliance": {
+        "capability": "欧盟合规",
+        "standard": "数据要求",
+        "cypheme": "完整 + 验证"
+      },
+      "physical": {
+        "capability": "实体验证",
+        "standard": "仅数字",
+        "cypheme": "实体 + 数据"
+      },
+      "counterfeit": {
+        "capability": "防伪保护",
+        "standard": "可能看似正常",
+        "cypheme": "拦截"
+      },
+      "supplyChain": {
+        "capability": "供应链",
+        "standard": "数据未经核实",
+        "cypheme": "全程追溯"
+      },
+      "trust": {
+        "capability": "消费者信任",
+        "standard": "无法验证",
+        "cypheme": "完全"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "一键保障",
+    "titleLine2": "真伪验证 + 合规",
+    "cta": "立即获取我的 DPP"
+  },
+  "footer": {
+    "tagline": "内置真伪验证技术的安全数字产品护照。",
+    "about": "关于 Cypheme",
+    "contact": "联系我们",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "legal": "© 2026 Cypheme | 符合 GDPR | ISO 27001 认证 · 由 Open-Label.eu 提供技术支持"
+  }
+}
