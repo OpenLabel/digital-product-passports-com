@@ -151,4 +151,29 @@ describe('Cypheme primitives', () => {
   });
 });
 
+describe('CyButton conversion tracking', () => {
+  it('fires the given conversion action on click', async () => {
+    const mod = await import('@/lib/googleAdsTracking');
+    (mod.CONVERSION_LABELS as Record<string, string>).click_openlabel_landing_hero_get_dpp =
+      'AW-672872996/hero';
+    const calls: unknown[][] = [];
+    window.gtag = (...args: unknown[]) => { calls.push(args); };
+    render(
+      <MemoryRouter>
+        <CyButton to="/auth" trackAction="click_openlabel_landing_hero_get_dpp">Go</CyButton>
+      </MemoryRouter>
+    );
+    await userEvent.click(screen.getByRole('link', { name: 'Go' }));
+    expect(calls).toEqual([['event', 'conversion', { send_to: 'AW-672872996/hero' }]]);
+    delete window.gtag;
+  });
 
+  it('renders without tracking when no action is given', () => {
+    render(
+      <MemoryRouter>
+        <CyButton to="/auth">Plain</CyButton>
+      </MemoryRouter>
+    );
+    expect(screen.getByRole('link', { name: 'Plain' })).toBeInTheDocument();
+  });
+});
