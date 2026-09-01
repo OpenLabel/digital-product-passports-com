@@ -1,17 +1,17 @@
 {
   "meta": {
-    "title": "EU Digital Product Passport met Authenticatie | Cypheme",
+    "title": "EU Digitaal Productpaspoort met Authenticatie | Cypheme",
     "description": "Cypheme levert EU-compliant Digitale Productpaspoorten ondersteund door fysieke authenticiteitsverificatie — gratis te creëren, klaar voor de markt."
   },
   "header": {
     "by": "door Cypheme"
   },
   "hero": {
-    "titleLead": "Ontvang uw EU Digital Product Passport",
+    "titleLead": "Ontvang uw EU Digitaal Productpaspoort",
     "titleHighlight": "gratis",
     "body": "Cypheme biedt u volledig EU-compliant, productklare Digitale Productpaspoorten via een online generator. Geen gedoe, geen kopzorgen over naleving, geen kosten.",
     "cta": "Creëer nu mijn DPP",
-    "badgeReady": "Marktklare Digital Product Passport",
+    "badgeReady": "Marktklare Digitaal Productpaspoort",
     "badgeCompliant": "Volledig EU-compliant"
   },
   "facts": {
@@ -48,9 +48,9 @@
   },
   "what": {
     "eyebrow": "De regelgeving die u moet kennen",
-    "title": "Wat is een Digital Product Passport?",
+    "title": "Wat is een Digitaal Productpaspoort?",
     "p1": "De regelgeving van de Europese Unie introduceert Digitale Productpaspoorten (DPP's) om de authenticiteit, transparantie en duurzaamheid van producten te verbeteren.",
-    "p2": "Een Digital Product Passport is een digitale identiteit gekoppeld aan een fysiek product die belangrijke informatie gedurende de gehele levenscyclus bijhoudt, waaronder:",
+    "p2": "Een Digitaal Productpaspoort is een digitale identiteit gekoppeld aan een fysiek product die belangrijke informatie gedurende de gehele levenscyclus bijhoudt, waaronder:",
     "items": {
       "origin": "Herkomst en materialen",
       "sustainability": "Duurzaamheidsstatistieken (CO₂-voetafdruk, recycleerbaarheid)",
@@ -63,7 +63,7 @@
   "timeline": {
     "eyebrow": "Regelgevende Tijdlijn",
     "title": "De Tijd Dringt",
-    "subtitle": "EU Digital Product Passport Uitrol 2027 tot 2030",
+    "subtitle": "EU Digitaal Productpaspoort Uitrol 2027 tot 2030",
     "body": "De regelgeving wordt gefaseerd uitgerold. Merken die zich nu voorbereiden, voldoen niet alleen aan de eisen. Ze concurreren.",
     "cta": "Bereid uw producten vandaag nog voor",
     "batteries": {
@@ -89,11 +89,11 @@
     "most": {
       "period": "2030",
       "title": "De Meeste Producten",
-      "body": "Vanaf 2030 vereisen de meeste producten die in de Europese Unie worden verkocht een Digital Product Passport onder de Ecodesign voor Duurzame Producten Verordening."
+      "body": "Vanaf 2030 vereisen de meeste producten die in de Europese Unie worden verkocht een Digitaal Productpaspoort onder de Ecodesign voor Duurzame Producten Verordening."
     }
   },
   "comparison": {
-    "eyebrow": "De beperkingen van het Digital Product Passport",
+    "eyebrow": "De beperkingen van het Digitaal Productpaspoort",
     "title": "Digitale Naleving Alleen Is Niet Genoeg",
     "intro": "Digitale Productpaspoorten slaan productgegevens op en delen deze, maar verifiëren niet het fysieke product. Zonder authenticatie kunnen vervalste of verkeerd gelabelde artikelen compliant lijken.",
     "introStrong": "Cypheme's bekroonde EU-oplossing",
@@ -102,7 +102,7 @@
     "outroStrong": "Cypheme zorgt ervoor dat uw DPP betrouwbaar, authentiek en volledig geverifieerd is.",
     "cta": "Beveilig uw producten",
     "capabilityLabel": "Functionaliteit",
-    "standardLabel": "Standaard Digital Product Passport",
+    "standardLabel": "Standaard Digitaal Productpaspoort",
     "cyphemeLabel": "DPP met Cypheme",
     "recommendedLabel": "Aanbevolen",
     "rows": {
