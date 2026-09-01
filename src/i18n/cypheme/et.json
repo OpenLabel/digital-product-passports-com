@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EL-i digitaalne tootepass koos autentimisega | Cypheme",
+    "description": "Cypheme pakub EL-iga ühilduvaid digitaalseid tootepasse, mida toetab füüsiline autentsuse kontroll — tasuta loomine, turuvalmis."
+  },
+  "header": {
+    "by": "Cypheme'ilt"
+  },
+  "hero": {
+    "titleLead": "Saa oma EL-i digitaalne tootepass",
+    "titleHighlight": "tasuta",
+    "body": "Cypheme pakub veebigeneraatori kaudu täielikult EL-iga ühilduvaid ja turuvalmis digitaalseid tootepasse. Ei mingit tüli, ei mingeid vastavusprobleeme, ei mingeid tasusid.",
+    "cta": "Saa oma DPP kohe",
+    "badgeReady": "Turuvalmis digitaalne tootepass",
+    "badgeCompliant": "Täielikult EL-iga ühilduv"
+  },
+  "facts": {
+    "origin": {
+      "label": "Päritolu",
+      "sub": "Tootjariik",
+      "value": "Toodetud Prantsusmaal"
+    },
+    "materials": {
+      "label": "Materjalid",
+      "sub": "Komponentide jaotus",
+      "value": "92% taaskasutatud puuvill"
+    },
+    "carbon": {
+      "label": "Süsinik",
+      "sub": "Jalajälje skoor",
+      "value": "3.2 kg CO₂ ekv."
+    },
+    "recyclability": {
+      "label": "Taaskasutatavus",
+      "sub": "Kasutuselt kõrvaldamise hinnang",
+      "value": "Klass A — täielikult taaskasutatav"
+    },
+    "maintenance": {
+      "label": "Hooldus",
+      "sub": "Hooldusjuhised",
+      "value": "Ainult keemiline puhastus"
+    },
+    "compliance": {
+      "label": "Vastavus",
+      "sub": "Regulatiivne staatus",
+      "value": "EL ESPR sertifitseeritud"
+    }
+  },
+  "what": {
+    "eyebrow": "Regulatsioon, mida pead teadma",
+    "title": "Mis on digitaalne tootepass?",
+    "p1": "Euroopa Liidu määrused võtavad kasutusele digitaalsed tootepassid (DPP), et parandada toodete autentsust, läbipaistvust ja jätkusuutlikkust.",
+    "p2": "Digitaalne tootepass on füüsilise tootega seotud digitaalne identiteet, mis jälgib olulist teavet kogu selle elutsükli vältel, sealhulgas:",
+    "items": {
+      "origin": "Päritolu ja materjalid",
+      "sustainability": "Jätkusuutlikkuse näitajad (süsiniku jalajälg, taaskasutatavus)",
+      "repair": "Remondi- ja hooldusjuhised",
+      "regulatory": "Regulatiivsed ja vastavusandmed"
+    },
+    "p3": "Lihtsa skaneerimisega juurdepääsetav pass annab regulaatoritele, tarneahela partneritele ja tarbijatele selge jälgitavuse ja vastutuse kogu toote teekonna vältel.",
+    "cta": "Tagage vastavus"
+  },
+  "timeline": {
+    "eyebrow": "Regulatiivne ajakava",
+    "title": "Aeg hakkab otsa saama",
+    "subtitle": "EL-i digitaalse tootepassi kasutuselevõtt 2027–2030",
+    "body": "Määrused kehtestatakse etapiviisiliselt. Brändid, kes valmistuvad praegu, ei taga ainult vastavust. Nad konkureerivad.",
+    "cta": "Valmista oma tooted ette juba täna",
+    "batteries": {
+      "period": "2027",
+      "title": "Akude passid",
+      "body": "Akude passid elektrisõidukite ja tööstuslike akude jaoks vastavalt EL-i akude määrusele."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstiilid ja rõivad",
+      "body": "Tekstiilide ja rõivaste digitaalsed tootepassid parandavad jätkusuutlikkust, jälgitavust ja ringlust kogu tarneahelas."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektroonika ja ICT",
+      "body": "Elektroonika- ja ICT-tooted võtavad kasutusele digitaalsed tootepassid, et suurendada läbipaistvust, parandatavust ja elutsükli jälgimist."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Mänguasjad",
+      "body": "Eeldatakse, et mänguasjatooted võtavad kasutusele digitaalsed tootepassid, et tugevdada tooteohutust, jälgitavust ja vastavust kogu Euroopa turul."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Enamik tooteid",
+      "body": "Aastaks 2030 nõuab enamik Euroopa Liidus müüdavaid tooteid digitaalset tootepassi vastavalt ökodisaini jätkusuutlike toodete määrusele."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Digitaalse tootepassi piirangud",
+    "title": "Ainult digitaalsest vastavusest ei piisa",
+    "intro": "Digitaalsed tootepassid salvestavad ja jagavad tooteandmeid, kuid ei kontrolli füüsilist toodet. Ilma autentimiseta võivad võltsitud või valesti märgistatud tooted tunduda ühilduvad.",
+    "introStrong": "Cypheme'i auhinnatud EL-i lahendus",
+    "introEnd": "tagab, et iga DPP on toetatud kontrollitud toote autentsusega, andes teie ettevõttele täieliku jälgitavuse ja kindlustunde.",
+    "outro": "Digitaalsed tootepassid parandavad läbipaistvust.",
+    "outroStrong": "Cypheme tagab, et teie DPP on usaldusväärne, autentne ja täielikult kontrollitud.",
+    "cta": "Turva oma tooted",
+    "capabilityLabel": "Võimekus",
+    "standardLabel": "Tavaline digitaalne tootepass",
+    "cyphemeLabel": "DPP koos Cypheme'iga",
+    "recommendedLabel": "Soovitatav",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unikaalne toote ID",
+        "standard": "Nõutav",
+        "cypheme": "Seotud ID"
+      },
+      "euCompliance": {
+        "capability": "EL-i vastavus",
+        "standard": "Andmenõuded",
+        "cypheme": "Täielik + autentimine"
+      },
+      "physical": {
+        "capability": "Füüsiline kontroll",
+        "standard": "Ainult digitaalne",
+        "cypheme": "Füüsiline + andmed"
+      },
+      "counterfeit": {
+        "capability": "Kaitse võltsingute eest",
+        "standard": "Võib tunduda korras",
+        "cypheme": "Blokeeritud"
+      },
+      "supplyChain": {
+        "capability": "Tarneahel",
+        "standard": "Andmed kontrollimata",
+        "cypheme": "Täielik jälg"
+      },
+      "trust": {
+        "capability": "Tarbija usaldus",
+        "standard": "Ei saa kontrollida",
+        "cypheme": "Täielik"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Üks klõps tagab",
+    "titleLine2": "autentimise + vastavuse",
+    "cta": "Saa oma DPP kohe"
+  },
+  "footer": {
+    "tagline": "Turvalised digitaalsed tootepassid sisseehitatud autentimistehnoloogiaga.",
+    "about": "Cypheme'ist",
+    "contact": "Võta ühendust",
+    "privacy": "Privaatsuspoliitika",
+    "terms": "Kasutustingimused",
+    "legal": "© 2026 Cypheme | GDPR-iga ühilduv | ISO 27001 sertifitseeritud · Toetab Open-Label.eu"
+  }
+}

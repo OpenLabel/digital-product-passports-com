@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "ES skaitmeninis produkto pasas su autentiškumo patvirtinimu | Cypheme",
+    "description": "Cypheme siūlo ES reikalavimus atitinkančius skaitmeninius produktų pasus su fizinio autentiškumo patvirtinimu — kurkite nemokamai, paruošta rinkai."
+  },
+  "header": {
+    "by": "Sukurta Cypheme"
+  },
+  "hero": {
+    "titleLead": "Gaukite savo ES skaitmeninį produkto pasą",
+    "titleHighlight": "nemokamai",
+    "body": "Cypheme suteikia jums visiškai ES reikalavimus atitinkančius, rinkai paruoštus skaitmeninius produktų pasus per internetinį generatorių. Jokių rūpesčių, jokio galvos skausmo dėl atitikties, jokių mokesčių.",
+    "cta": "Gaukite mano DPP dabar",
+    "badgeReady": "Rinkai paruoštas skaitmeninis produkto pasas",
+    "badgeCompliant": "Visiškai atitinka ES reikalavimus"
+  },
+  "facts": {
+    "origin": {
+      "label": "Kilmė",
+      "sub": "Gamybos šalis",
+      "value": "Pagaminta Prancūzijoje"
+    },
+    "materials": {
+      "label": "Medžiagos",
+      "sub": "Komponentų sudėtis",
+      "value": "92% perdirbta medvilnė"
+    },
+    "carbon": {
+      "label": "CO₂ pėdsakas",
+      "sub": "Pėdsako įvertinimas",
+      "value": "3.2 kg CO₂ ekv."
+    },
+    "recyclability": {
+      "label": "Perdirbamumas",
+      "sub": "Eksploatavimo pabaigos įvertinimas",
+      "value": "A klasė — visiškai perdirbamas"
+    },
+    "maintenance": {
+      "label": "Priežiūra",
+      "sub": "Priežiūros instrukcijos",
+      "value": "Tik sausas valymas"
+    },
+    "compliance": {
+      "label": "Atitiktis",
+      "sub": "Reguliavimo statusas",
+      "value": "Sertifikuota pagal ES ESPR"
+    }
+  },
+  "what": {
+    "eyebrow": "Reglamentas, kurį turite žinoti",
+    "title": "Kas yra skaitmeninis produkto pasas?",
+    "p1": "Europos Sąjungos reglamentai įveda skaitmeninius produktų pasus (DPP), siekiant pagerinti produktų autentiškumą, skaidrumą ir tvarumą.",
+    "p2": "Skaitmeninis produkto pasas yra skaitmeninė tapatybė, susieta su fiziniu produktu, kuriame stebima pagrindinė informacija per visą jo gyvavimo ciklą, įskaitant:",
+    "items": {
+      "origin": "Kilmė ir medžiagos",
+      "sustainability": "Tvarumo rodikliai (CO₂ pėdsakas, perdirbamumas)",
+      "repair": "Remonto ir priežiūros instrukcijos",
+      "regulatory": "Reguliavimo ir atitikties duomenys"
+    },
+    "p3": "Pasiekiamas paprastu nuskaitymu, jis suteikia reguliavimo institucijoms, tiekimo grandinės partneriams ir vartotojams aiškų atsekamumą ir atskaitomybę per visą produkto kelionę.",
+    "cta": "Užtikrinkite atitiktį"
+  },
+  "timeline": {
+    "eyebrow": "Reguliavimo tvarkaraštis",
+    "title": "Laikas senka",
+    "subtitle": "ES skaitmeninio produkto paso įvedimas 2027–2030 m.",
+    "body": "Reglamentai įvedami etapais. Prekių ženklai, kurie ruošiasi dabar, ne tik užtikrina atitiktį. Jie konkuruoja.",
+    "cta": "Paruoškite savo produktus jau šiandien",
+    "batteries": {
+      "period": "2027",
+      "title": "Baterijų pasai",
+      "body": "Baterijų pasai elektromobilių ir pramoninėms baterijoms pagal ES baterijų reglamentą."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Tekstilė ir drabužiai",
+      "body": "Skaitmeniniai produktų pasai tekstilei ir drabužiams pagerina tvarumą, atsekamumą ir žiediškumą visoje tiekimo grandinėje."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronika ir ICT",
+      "body": "Elektronikos ir ICT produktai pritaiko skaitmeninius produktų pasus, siekiant padidinti skaidrumą, pataisomumą ir gyvavimo ciklo stebėjimą."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Žaislai",
+      "body": "Tikimasi, kad žaislų gaminiams bus pritaikyti skaitmeniniai produktų pasai, siekiant sustiprinti produktų saugą, atsekamumą ir atitiktį visoje Europos rinkoje."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Dauguma produktų",
+      "body": "Iki 2030 m. daugumai Europos Sąjungoje parduodamų produktų bus reikalingas skaitmeninis produkto pasas pagal Ekodizaino tvarių produktų reglamentą."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Skaitmeninio produkto paso ribotumai",
+    "title": "Vien skaitmeninės atitikties nepakanka",
+    "intro": "Skaitmeniniai produktų pasai saugo ir dalijasi produkto duomenimis, bet nepatvirtina fizinio produkto autentiškumo. Be autentiškumo patvirtinimo, suklastoti ar neteisingai paženklinti gaminiai gali atrodyti atitinkantys reikalavimus.",
+    "introStrong": "Cypheme apdovanojimus pelnęs ES sprendimas",
+    "introEnd": "užtikrina, kad kiekvienas DPP būtų paremtas patvirtintu produkto autentiškumu, suteikdamas jūsų verslui visišką atsekamumą ir pasitikėjimą.",
+    "outro": "Skaitmeniniai produktų pasai didina skaidrumą.",
+    "outroStrong": "Cypheme užtikrina, kad jūsų DPP būtų patikimas, autentiškas ir visiškai patikrintas.",
+    "cta": "Apsaugokite savo produktus",
+    "capabilityLabel": "Galimybė",
+    "standardLabel": "Standartinis skaitmeninis produkto pasas",
+    "cyphemeLabel": "DPP su Cypheme",
+    "recommendedLabel": "Rekomenduojama",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unikalus produkto ID",
+        "standard": "Privaloma",
+        "cypheme": "Susietas ID"
+      },
+      "euCompliance": {
+        "capability": "Atitiktis ES reikalavimams",
+        "standard": "Duomenų reikalavimai",
+        "cypheme": "Visiška + aut. patv."
+      },
+      "physical": {
+        "capability": "Fizinis patikrinimas",
+        "standard": "Tik skaitmeninis",
+        "cypheme": "Fizinis + duomenys"
+      },
+      "counterfeit": {
+        "capability": "Apsauga nuo klastočių",
+        "standard": "Gali atrodyti gerai",
+        "cypheme": "Užblokuota"
+      },
+      "supplyChain": {
+        "capability": "Tiekimo grandinė",
+        "standard": "Duomenys nepatikrinti",
+        "cypheme": "Visiškas atsekamumas"
+      },
+      "trust": {
+        "capability": "Vartotojų pasitikėjimas",
+        "standard": "Negalima patikrinti",
+        "cypheme": "Visiškas"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Vienas paspaudimas užtikrina",
+    "titleLine2": "autentiškumo patvirtinimą + atitiktį",
+    "cta": "Gaukite mano DPP dabar"
+  },
+  "footer": {
+    "tagline": "Saugūs skaitmeniniai produktų pasai su integruota autentiškumo patvirtinimo technologija.",
+    "about": "Apie Cypheme",
+    "contact": "Susisiekite su mumis",
+    "privacy": "Privatumo politika",
+    "terms": "Naudojimosi sąlygos",
+    "legal": "© 2026 Cypheme | Atitinka GDPR | Sertifikuota pagal ISO 27001 · Sprendimas: Open-Label.eu"
+  }
+}

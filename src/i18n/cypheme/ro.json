@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Pașaport digital de produs UE cu autentificare | Cypheme",
+    "description": "Cypheme oferă pașapoarte digitale de produse conforme UE, susținute de verificarea autenticității fizice — gratuite, gata de lansare pe piață."
+  },
+  "header": {
+    "by": "de Cypheme"
+  },
+  "hero": {
+    "titleLead": "Obține pașaportul tău digital de produs UE",
+    "titleHighlight": "gratuit",
+    "body": "Cypheme îți oferă pașapoarte digitale de produse complet conforme UE și gata de utilizare, printr-un generator online. Fără bătăi de cap, fără griji legate de conformitate, fără taxe.",
+    "cta": "Obține DPP-ul meu acum",
+    "badgeReady": "Pașaport digital de produs gata de lansare",
+    "badgeCompliant": "Complet conform UE"
+  },
+  "facts": {
+    "origin": {
+      "label": "Origine",
+      "sub": "Țara de fabricație",
+      "value": "Fabricat în Franța"
+    },
+    "materials": {
+      "label": "Materiale",
+      "sub": "Compoziția componentelor",
+      "value": "92% bumbac reciclat"
+    },
+    "carbon": {
+      "label": "Carbon",
+      "sub": "Scor amprentă de carbon",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Reciclabilitate",
+      "sub": "Clasificare la finalul ciclului de viață",
+      "value": "Clasa A — complet reciclabil"
+    },
+    "maintenance": {
+      "label": "Întreținere",
+      "sub": "Instrucțiuni de îngrijire",
+      "value": "Doar curățare chimică"
+    },
+    "compliance": {
+      "label": "Conformitate",
+      "sub": "Statut reglementativ",
+      "value": "Certificat ESPR (UE)"
+    }
+  },
+  "what": {
+    "eyebrow": "Regulamentul pe care trebuie să-l cunoști",
+    "title": "Ce este un pașaport digital de produs?",
+    "p1": "Regulamentele Uniunii Europene introduc pașapoartele digitale de produse (DPP) pentru a îmbunătăți autenticitatea, transparența și sustenabilitatea produselor.",
+    "p2": "Un pașaport digital de produs este o identitate digitală asociată unui produs fizic, care urmărește informații cheie de-a lungul ciclului său de viață, inclusiv:",
+    "items": {
+      "origin": "Origine și materiale",
+      "sustainability": "Indicatori de sustenabilitate (amprenta de carbon, reciclabilitate)",
+      "repair": "Instrucțiuni de reparație și întreținere",
+      "regulatory": "Date reglementative și de conformitate"
+    },
+    "p3": "Accesibil printr-o simplă scanare, acesta oferă autorităților de reglementare, partenerilor din lanțul de aprovizionare și consumatorilor trasabilitate și responsabilitate clare pe parcursul întregului ciclu de viață al produsului.",
+    "cta": "Rămâi conform"
+  },
+  "timeline": {
+    "eyebrow": "Calendar reglementativ",
+    "title": "Timpul se scurge",
+    "subtitle": "Introducerea pașaportului digital de produs UE între 2027 și 2030",
+    "body": "Regulamentele sunt introduse în etape. Brandurile care se pregătesc acum nu doar se conformează. Ele devin competitive.",
+    "cta": "Pregătește-ți produsele astăzi",
+    "batteries": {
+      "period": "2027",
+      "title": "Pașapoarte pentru baterii",
+      "body": "Pașapoarte pentru bateriile vehiculelor electrice și bateriile industriale, conform Regulamentului UE privind bateriile."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textile și articole de îmbrăcăminte",
+      "body": "Pașapoartele digitale de produse pentru textile și articole de îmbrăcăminte îmbunătățesc sustenabilitatea, trasabilitatea și circularitatea de-a lungul lanțului de aprovizionare."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Electronice și ICT",
+      "body": "Produsele electronice și ICT adoptă pașapoarte digitale de produse pentru a spori transparența, reparabilitatea și urmărirea ciclului de viață."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Jucării",
+      "body": "Se preconizează că produsele din categoria jucăriilor vor adopta pașapoarte digitale de produse pentru a consolida siguranța, trasabilitatea și conformitatea pe piața europeană."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Majoritatea produselor",
+      "body": "Până în 2030, majoritatea produselor vândute în Uniunea Europeană vor necesita un pașaport digital de produs în temeiul Regulamentului privind Ecoproiectarea Produselor Sustenabile."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Limitele pașaportului digital de produs",
+    "title": "Conformitatea digitală nu este suficientă",
+    "intro": "Pașapoartele digitale de produse stochează și partajează date despre produs, dar nu verifică produsul fizic. Fără autentificare, articolele contrafăcute sau etichetate greșit pot părea conforme.",
+    "introStrong": "Soluția premiată Cypheme pentru UE",
+    "introEnd": "asigură că fiecare DPP este susținut de autenticitatea verificată a produsului, oferind afacerii tale trasabilitate completă și încredere.",
+    "outro": "Pașapoartele digitale de produse îmbunătățesc transparența.",
+    "outroStrong": "Cypheme asigură că DPP-ul tău este de încredere, autentic și complet verificat.",
+    "cta": "Securizează-ți produsele",
+    "capabilityLabel": "Capabilitate",
+    "standardLabel": "Pașaport digital de produs standard",
+    "cyphemeLabel": "DPP cu Cypheme",
+    "recommendedLabel": "Recomandat",
+    "rows": {
+      "uniqueId": {
+        "capability": "ID unic de produs",
+        "standard": "Obligatoriu",
+        "cypheme": "ID asociat"
+      },
+      "euCompliance": {
+        "capability": "Conformitate UE",
+        "standard": "Cerințe de date",
+        "cypheme": "Complet + autentificare"
+      },
+      "physical": {
+        "capability": "Verificare fizică",
+        "standard": "Doar digital",
+        "cypheme": "Fizic + date"
+      },
+      "counterfeit": {
+        "capability": "Protecție anti-contrafacere",
+        "standard": "Pot părea OK",
+        "cypheme": "Blocat"
+      },
+      "supplyChain": {
+        "capability": "Lanț de aprovizionare",
+        "standard": "Date neverificate",
+        "cypheme": "Trasabilitate completă"
+      },
+      "trust": {
+        "capability": "Încrederea consumatorului",
+        "standard": "Nu se poate verifica",
+        "cypheme": "Completă"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Un singur clic securizează",
+    "titleLine2": "autentificarea + conformitatea",
+    "cta": "Obține DPP-ul meu acum"
+  },
+  "footer": {
+    "tagline": "Pașapoarte digitale de produse securizate cu tehnologie de autentificare integrată.",
+    "about": "Despre Cypheme",
+    "contact": "Contact",
+    "privacy": "Politică de confidențialitate",
+    "terms": "Termeni și condiții",
+    "legal": "© 2026 Cypheme | Conform GDPR | Certificat ISO 27001 · Susținut de Open-Label.eu"
+  }
+}

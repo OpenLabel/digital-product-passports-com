@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Passaporte Digital de Produto da UE com Autenticação | Cypheme",
+    "description": "A Cypheme oferece Passaportes Digitais de Produto em conformidade com a UE, apoiados por verificação de autenticidade física — gratuitos para criar, prontos para o mercado."
+  },
+  "header": {
+    "by": "por Cypheme"
+  },
+  "hero": {
+    "titleLead": "Obtenha o seu Passaporte Digital de Produto da UE",
+    "titleHighlight": "gratuitamente",
+    "body": "A Cypheme fornece-lhe Passaportes Digitais de Produto totalmente em conformidade com a UE e prontos para o produto, através de um gerador online. Sem complicações, sem dores de cabeça com a conformidade, sem custos.",
+    "cta": "Obter o Meu DPP Agora",
+    "badgeReady": "Passaporte Digital de Produto pronto para o mercado",
+    "badgeCompliant": "Totalmente em conformidade com a UE"
+  },
+  "facts": {
+    "origin": {
+      "label": "Origem",
+      "sub": "País de fabrico",
+      "value": "Fabricado em França"
+    },
+    "materials": {
+      "label": "Materiais",
+      "sub": "Composição dos componentes",
+      "value": "92% algodão reciclado"
+    },
+    "carbon": {
+      "label": "Carbono",
+      "sub": "Pegada de carbono",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Reciclabilidade",
+      "sub": "Classificação de fim de vida",
+      "value": "Grau A — totalmente reciclável"
+    },
+    "maintenance": {
+      "label": "Manutenção",
+      "sub": "Instruções de cuidado",
+      "value": "Lavar a seco apenas"
+    },
+    "compliance": {
+      "label": "Conformidade",
+      "sub": "Estado regulamentar",
+      "value": "Certificado EU ESPR"
+    }
+  },
+  "what": {
+    "eyebrow": "A regulamentação que precisa de conhecer",
+    "title": "O que é um Passaporte Digital de Produto?",
+    "p1": "As regulamentações da União Europeia estão a introduzir os Passaportes Digitais de Produto (DPPs) para melhorar a autenticidade, transparência e sustentabilidade dos produtos.",
+    "p2": "Um Passaporte Digital de Produto é uma identidade digital ligada a um produto físico que rastreia informações essenciais ao longo do seu ciclo de vida, incluindo:",
+    "items": {
+      "origin": "Origem e materiais",
+      "sustainability": "Métricas de sustentabilidade (pegada de carbono, reciclabilidade)",
+      "repair": "Instruções de reparação e manutenção",
+      "regulatory": "Dados regulamentares e de conformidade"
+    },
+    "p3": "Acessível através de uma simples leitura, oferece aos reguladores, parceiros da cadeia de abastecimento e consumidores uma clara rastreabilidade e responsabilidade ao longo de todo o percurso do produto.",
+    "cta": "Mantenha-se em Conformidade"
+  },
+  "timeline": {
+    "eyebrow": "Cronograma Regulamentar",
+    "title": "O Tempo Está a Esgotar-se",
+    "subtitle": "Implementação do Passaporte Digital de Produto da UE de 2027 a 2030",
+    "body": "As regulamentações estão a ser implementadas por fases. As marcas que se preparam agora não estão apenas a garantir a conformidade. Estão a competir.",
+    "cta": "Prepare os Seus Produtos Hoje",
+    "batteries": {
+      "period": "2027",
+      "title": "Passaportes de Bateria",
+      "body": "Passaportes de bateria para veículos elétricos e baterias industriais ao abrigo do Regulamento de Baterias da UE."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Têxteis e Vestuário",
+      "body": "Os Passaportes Digitais de Produto para têxteis e vestuário melhoram a sustentabilidade, a rastreabilidade e a circularidade em toda a cadeia de abastecimento."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Eletrónica e ICT",
+      "body": "Os produtos de eletrónica e ICT adotam os Passaportes Digitais de Produto para aumentar a transparência, a reparabilidade e o acompanhamento do ciclo de vida."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Brinquedos",
+      "body": "Prevê-se que os brinquedos adotem os Passaportes Digitais de Produto para reforçar a segurança do produto, a rastreabilidade e a conformidade em todo o mercado europeu."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Maioria dos Produtos",
+      "body": "Até 2030, a maioria dos produtos vendidos na União Europeia exigirá um Passaporte Digital de Produto ao abrigo do Regulamento de Ecodesign para Produtos Sustentáveis."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Os limites do Passaporte Digital de Produto",
+    "title": "A Conformidade Digital por si só não é Suficiente",
+    "intro": "Os Passaportes Digitais de Produto armazenam e partilham dados do produto, mas não verificam o produto físico. Sem autenticação, itens falsificados ou com rótulo incorreto podem parecer estar em conformidade.",
+    "introStrong": "A solução premiada da Cypheme para a UE",
+    "introEnd": "garante que cada DPP é apoiado por autenticidade de produto verificada, dando ao seu negócio total rastreabilidade e confiança.",
+    "outro": "Os Passaportes Digitais de Produto melhoram a transparência.",
+    "outroStrong": "A Cypheme garante que o seu DPP é fiável, autêntico e totalmente verificado.",
+    "cta": "Proteja os Seus Produtos",
+    "capabilityLabel": "Capacidade",
+    "standardLabel": "Passaporte Digital de Produto Padrão",
+    "cyphemeLabel": "DPP com Cypheme",
+    "recommendedLabel": "Recomendado",
+    "rows": {
+      "uniqueId": {
+        "capability": "ID de produto único",
+        "standard": "Obrigatório",
+        "cypheme": "ID vinculado"
+      },
+      "euCompliance": {
+        "capability": "Conformidade com a UE",
+        "standard": "Req. de dados",
+        "cypheme": "Total + aut."
+      },
+      "physical": {
+        "capability": "Verificação física",
+        "standard": "Apenas digital",
+        "cypheme": "Física + dados"
+      },
+      "counterfeit": {
+        "capability": "Proteção contra contrafação",
+        "standard": "Pode parecer OK",
+        "cypheme": "Bloqueado"
+      },
+      "supplyChain": {
+        "capability": "Cadeia de abastecimento",
+        "standard": "Dados não verificados",
+        "cypheme": "Rastreio total"
+      },
+      "trust": {
+        "capability": "Confiança do consumidor",
+        "standard": "Não se pode verificar",
+        "cypheme": "Completa"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Um clique garante",
+    "titleLine2": "autenticação + conformidade",
+    "cta": "Obter o Meu DPP Agora"
+  },
+  "footer": {
+    "tagline": "Passaportes Digitais de Produto seguros com tecnologia de autenticação integrada.",
+    "about": "Sobre a Cypheme",
+    "contact": "Contacte-nos",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Utilização",
+    "legal": "© 2026 Cypheme | Em conformidade com o GDPR | Certificado ISO 27001 · Desenvolvido por Open-Label.eu"
+  }
+}

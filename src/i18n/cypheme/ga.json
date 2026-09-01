@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "Pas Táirge Digiteach an AE le Fíordheimhniú | Cypheme",
+    "description": "Soláthraíonn Cypheme Pasanna Táirge Digiteacha atá comhlíontach leis an AE, le tacaíocht ó fhíorú barántúlachta fisiciúil — saor in aisce le cruthú, réidh don mhargadh."
+  },
+  "header": {
+    "by": "le Cypheme"
+  },
+  "hero": {
+    "titleLead": "Faigh do Phas Táirge Digiteach an AE",
+    "titleHighlight": "saor in aisce",
+    "body": "Cuireann Cypheme Pasanna Táirge Digiteacha ar fáil duit atá lán-chomhlíontach leis an AE agus réidh don táirge, trí ghineadóir ar líne. Gan stró, gan tinneas cinn comhlíontachta, gan táillí.",
+    "cta": "Faigh Mo DPP Anois",
+    "badgeReady": "Pas Táirge Digiteach réidh don mhargadh",
+    "badgeCompliant": "Lán-chomhlíontach leis an AE"
+  },
+  "facts": {
+    "origin": {
+      "label": "Bunús",
+      "sub": "Tír monaraithe",
+      "value": "Déanta sa Fhrainc"
+    },
+    "materials": {
+      "label": "Ábhair",
+      "sub": "Miondealú comhpháirteanna",
+      "value": "92% cadás athchúrsáilte"
+    },
+    "carbon": {
+      "label": "Carbón",
+      "sub": "Scór lorg",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "In-athchúrsáilteacht",
+      "sub": "Rátáil dheireadh ré",
+      "value": "Grád A — lán-inathchúrsáilte"
+    },
+    "maintenance": {
+      "label": "Cothabháil",
+      "sub": "Treoracha cúraim",
+      "value": "Tirimghlanadh amháin"
+    },
+    "compliance": {
+      "label": "Comhlíontacht",
+      "sub": "Stádas rialála",
+      "value": "Deimhnithe ag ESPR an AE"
+    }
+  },
+  "what": {
+    "eyebrow": "An rialachán nach mór duit a bheith ar an eolas faoi",
+    "title": "Cad is Pas Táirge Digiteach ann?",
+    "p1": "Tá rialacháin an Aontais Eorpaigh ag tabhairt isteach Pasanna Táirge Digiteacha (DPPanna) chun feabhas a chur ar bharántúlacht táirgí, ar thrédhearcacht, agus ar inbhuanaitheacht.",
+    "p2": "Is éard is Pas Táirge Digiteach ann ná féiniúlacht dhigiteach atá nasctha le táirge fisiciúil a rianaíonn príomhfhaisnéis ar feadh a shaolré, lena n-áirítear:",
+    "items": {
+      "origin": "Bunús agus ábhair",
+      "sustainability": "Meadrachtaí inbhuanaitheachta (lorg carbóin, in-athchúrsáilteacht)",
+      "repair": "Treoracha deisiúcháin agus cothabhála",
+      "regulatory": "Sonraí rialála agus comhlíontachta"
+    },
+    "p3": "Agus é inrochtana trí scanadh simplí, tugann sé inrianaitheacht shoiléir agus cuntasacht do rialtóirí, do chomhpháirtithe an tslabhra soláthair, agus do thomhaltóirí ar feadh thuras an táirge.",
+    "cta": "Bí Comhlíontach"
+  },
+  "timeline": {
+    "eyebrow": "Amlíne Rialála",
+    "title": "Tá an t-am ag rith amach",
+    "subtitle": "Cur i bhFeidhm Pas Táirge Digiteach an AE 2027 go 2030",
+    "body": "Tá rialacháin á dtabhairt isteach de réir a chéile. Ní hamháin go mbíonn brandaí a ullmhaíonn anois comhlíontach. Bíonn siad iomaíoch.",
+    "cta": "Ullmhaigh do Tháirgí Inniu",
+    "batteries": {
+      "period": "2027",
+      "title": "Pasanna Cadhnraí",
+      "body": "Pasanna cadhnraí d'fheithiclí leictreacha agus do chadhnraí tionsclaíocha faoi Rialachán Cadhnraí an AE."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Teicstílí & Éadaí",
+      "body": "Feabhsaíonn Pasanna Táirge Digiteacha do theicstílí agus d'éadaí an inbhuanaitheacht, an inrianaitheacht, agus an ciorclaíocht ar fud an tslabhra soláthair."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Leictreonaic & ICT",
+      "body": "Glacann táirgí leictreonacha agus ICT le Pasanna Táirge Digiteacha chun trédhearcacht, in-deisitheacht, agus rianú saolré a fheabhsú."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Bréagáin",
+      "body": "Táthar ag súil go nglacfaidh táirgí bréagán le Pasanna Táirge Digiteacha chun sábháilteacht táirgí, inrianaitheacht, agus comhlíontacht a neartú ar fud mhargadh na hEorpa."
+    },
+    "most": {
+      "period": "2030",
+      "title": "An Chuid is Mó de Tháirgí",
+      "body": "Faoi 2030, beidh Pas Táirge Digiteach ag teastáil don chuid is mó de na táirgí a dhíoltar san Aontas Eorpach faoi Rialachán na hÉicidhearthóireachta do Tháirgí Inbhuanaithe."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Teorainneacha an Phas Táirge Digiteach",
+    "title": "Ní Leor Comhlíontacht Dhigiteach Amháin",
+    "intro": "Stórálann agus comhroinneann Pasanna Táirge Digiteacha sonraí táirge ach ní fhíoraíonn siad an táirge fisiciúil. Gan fíordheimhniú, d'fhéadfadh sé go mbeadh an chuma ar earraí góchumtha nó mílipéadaithe go bhfuil siad comhlíontach.",
+    "introStrong": "Réiteach Eorpach Cypheme a bhfuil gradaim buaite aige",
+    "introEnd": "cinntíonn sé go bhfuil gach DPP tacaithe ag barántúlacht táirge fíoraithe, ag tabhairt inrianaitheacht iomlán agus muinín do do ghnó.",
+    "outro": "Feabhsaíonn Pasanna Táirge Digiteacha an trédhearcacht.",
+    "outroStrong": "Cinntíonn Cypheme go bhfuil do DPP iontaofa, barántúil, agus lánfhíoraithe.",
+    "cta": "Slánaigh do Tháirgí",
+    "capabilityLabel": "Cumas",
+    "standardLabel": "Pas Táirge Digiteach Caighdeánach",
+    "cyphemeLabel": "DPP le Cypheme",
+    "recommendedLabel": "Molta",
+    "rows": {
+      "uniqueId": {
+        "capability": "Aitheantas uathúil táirge",
+        "standard": "Riachtanach",
+        "cypheme": "Aitheantas nasctha"
+      },
+      "euCompliance": {
+        "capability": "Comhlíontacht leis an AE",
+        "standard": "Riachtanais sonraí",
+        "cypheme": "Iomlán + fíordheimhniú"
+      },
+      "physical": {
+        "capability": "Fíorú fisiciúil",
+        "standard": "Digiteach amháin",
+        "cypheme": "Fisiciúil + sonraí"
+      },
+      "counterfeit": {
+        "capability": "Cosaint ar ghóchumadh",
+        "standard": "D'fhéadfadh cuma cheart a bheith air",
+        "cypheme": "Blocáilte"
+      },
+      "supplyChain": {
+        "capability": "Slabhra soláthair",
+        "standard": "Sonraí neamhfhíoraithe",
+        "cypheme": "Rianú iomlán"
+      },
+      "trust": {
+        "capability": "Muinín an tomhaltóra",
+        "standard": "Ní féidir fíorú",
+        "cypheme": "Iomlán"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Daingníonn aon chlic amháin",
+    "titleLine2": "fíordheimhniú + comhlíontacht",
+    "cta": "Faigh Mo DPP Anois"
+  },
+  "footer": {
+    "tagline": "Pasanna Táirge Digiteacha slána le teicneolaíocht fíordheimhnithe ionsuite.",
+    "about": "Maidir le Cypheme",
+    "contact": "Déan Teagmháil Linn",
+    "privacy": "Polasaí Príobháideachta",
+    "terms": "Téarmaí Úsáide",
+    "legal": "© 2026 Cypheme | Comhlíontach le GDPR | Deimhnithe ag ISO 27001 · Le cumhacht ó Open-Label.eu"
+  }
+}

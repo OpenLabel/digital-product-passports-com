@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU digitalt produktpass med autentisering | Cypheme",
+    "description": "Cypheme levererar EU-kompatibla digitala produktpass med fysisk äkthetsverifiering – gratis att skapa, redo för marknaden."
+  },
+  "header": {
+    "by": "av Cypheme"
+  },
+  "hero": {
+    "titleLead": "Skaffa ditt digitala produktpass för EU",
+    "titleHighlight": "helt gratis",
+    "body": "Cypheme ger dig helt EU-kompatibla, produktklara digitala produktpass via en onlinegenerator. Inget krångel, inga bekymmer med efterlevnad, inga avgifter.",
+    "cta": "Skaffa mitt DPP nu",
+    "badgeReady": "Marknadsklart digitalt produktpass",
+    "badgeCompliant": "Helt EU-kompatibel"
+  },
+  "facts": {
+    "origin": {
+      "label": "Ursprung",
+      "sub": "Tillverkningsland",
+      "value": "Tillverkad i Frankrike"
+    },
+    "materials": {
+      "label": "Material",
+      "sub": "Komponentuppdelning",
+      "value": "92 % återvunnen bomull"
+    },
+    "carbon": {
+      "label": "Koldioxid",
+      "sub": "Klimatavtryck",
+      "value": "3,2 kg CO₂-ekv."
+    },
+    "recyclability": {
+      "label": "Återvinningsbarhet",
+      "sub": "Betyg vid livscykelns slut",
+      "value": "Klass A – helt återvinningsbar"
+    },
+    "maintenance": {
+      "label": "Underhåll",
+      "sub": "Skötselråd",
+      "value": "Endast kemtvätt"
+    },
+    "compliance": {
+      "label": "Efterlevnad",
+      "sub": "Regulatorisk status",
+      "value": "EU ESPR-certifierad"
+    }
+  },
+  "what": {
+    "eyebrow": "Regleringen du behöver känna till",
+    "title": "Vad är ett digitalt produktpass?",
+    "p1": "Europeiska unionens regleringar inför digitala produktpass (DPP) för att förbättra produkters äkthet, transparens och hållbarhet.",
+    "p2": "Ett digitalt produktpass är en digital identitet kopplad till en fysisk produkt som spårar nyckelinformation genom hela dess livscykel, inklusive:",
+    "items": {
+      "origin": "Ursprung och material",
+      "sustainability": "Hållbarhetsmått (klimatavtryck, återvinningsbarhet)",
+      "repair": "Reparations- och underhållsinstruktioner",
+      "regulatory": "Regulatoriska data och efterlevnadsdata"
+    },
+    "p3": "Det är tillgängligt via en enkel skanning och ger tillsynsmyndigheter, leveranskedjepartners och konsumenter tydlig spårbarhet och ansvarsskyldighet under hela produktens resa.",
+    "cta": "Säkerställ efterlevnad"
+  },
+  "timeline": {
+    "eyebrow": "Regleringstidslinje",
+    "title": "Tiden rinner ut",
+    "subtitle": "Införande av EU:s digitala produktpass 2027 till 2030",
+    "body": "Regleringarna införs stegvis. Varumärken som förbereder sig nu uppnår inte bara efterlevnad. De konkurrerar.",
+    "cta": "Förbered dina produkter idag",
+    "batteries": {
+      "period": "2027",
+      "title": "Batteripass",
+      "body": "Batteripass för elfordons- och industribatterier enligt EU:s batteriförordning."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textilier och kläder",
+      "body": "Digitala produktpass för textilier och kläder förbättrar hållbarhet, spårbarhet och cirkularitet i hela leveranskedjan."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Elektronik och ICT",
+      "body": "Elektronik- och ICT-produkter inför digitala produktpass för att öka transparens, reparerbarhet och livscykelspårning."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Leksaker",
+      "body": "Leksaksprodukter förväntas införa digitala produktpass för att stärka produktsäkerhet, spårbarhet och efterlevnad på den europeiska marknaden."
+    },
+    "most": {
+      "period": "2030",
+      "title": "De flesta produkter",
+      "body": "År 2030 kommer de flesta produkter som säljs i Europeiska unionen att kräva ett digitalt produktpass enligt EU:s ekodesignförordning."
+    }
+  },
+  "comparison": {
+    "eyebrow": "Begränsningarna med det digitala produktpasset",
+    "title": "Digital efterlevnad är inte tillräckligt",
+    "intro": "Digitala produktpass lagrar och delar produktdata men verifierar inte den fysiska produkten. Utan autentisering kan förfalskade eller felmärkta varor verka kompatibla.",
+    "introStrong": "Cyphemes prisbelönta EU-lösning",
+    "introEnd": "säkerställer att varje DPP backas upp av verifierad produktäkthet, vilket ger ditt företag full spårbarhet och trygghet.",
+    "outro": "Digitala produktpass ökar transparensen.",
+    "outroStrong": "Cypheme säkerställer att ditt DPP är pålitligt, äkta och fullständigt verifierat.",
+    "cta": "Säkra dina produkter",
+    "capabilityLabel": "Funktion",
+    "standardLabel": "Standard digitalt produktpass",
+    "cyphemeLabel": "DPP med Cypheme",
+    "recommendedLabel": "Rekommenderas",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unikt produkt-ID",
+        "standard": "Krävs",
+        "cypheme": "Länkat ID"
+      },
+      "euCompliance": {
+        "capability": "EU-efterlevnad",
+        "standard": "Datakrav",
+        "cypheme": "Fullständig + autentisering"
+      },
+      "physical": {
+        "capability": "Fysisk verifiering",
+        "standard": "Endast digital",
+        "cypheme": "Fysisk + data"
+      },
+      "counterfeit": {
+        "capability": "Skydd mot förfalskning",
+        "standard": "Kan verka OK",
+        "cypheme": "Blockeras"
+      },
+      "supplyChain": {
+        "capability": "Leveranskedja",
+        "standard": "Data overifierad",
+        "cypheme": "Full spårbarhet"
+      },
+      "trust": {
+        "capability": "Konsumentförtroende",
+        "standard": "Kan ej verifieras",
+        "cypheme": "Fullständigt"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "Ett klick säkrar",
+    "titleLine2": "autentisering + efterlevnad",
+    "cta": "Skaffa mitt DPP nu"
+  },
+  "footer": {
+    "tagline": "Säkra digitala produktpass med inbyggd autentiseringsteknik.",
+    "about": "Om Cypheme",
+    "contact": "Kontakta oss",
+    "privacy": "Integritetspolicy",
+    "terms": "Användarvillkor",
+    "legal": "© 2026 Cypheme | GDPR-kompatibel | ISO 27001-certifierad · Drivs av Open-Label.eu"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "EU Digital Product Passport with Authentication | Cypheme",
+    "description": "Cypheme delivers EU-compliant Digital Product Passports backed by physical authenticity verification — free to create, ready for the market."
+  },
+  "header": {
+    "by": "by Cypheme"
+  },
+  "hero": {
+    "titleLead": "Get your EU Digital Product Passport",
+    "titleHighlight": "free of charge",
+    "body": "Cypheme provides you fully EU-compliant, product-ready Digital Product Passports through an online generator. No hassle, no compliance headaches, no fees.",
+    "cta": "Get My DPP Now",
+    "badgeReady": "Market-ready Digital Product Passport",
+    "badgeCompliant": "Fully EU-compliant"
+  },
+  "facts": {
+    "origin": {
+      "label": "Origin",
+      "sub": "Country of manufacture",
+      "value": "Made in France"
+    },
+    "materials": {
+      "label": "Materials",
+      "sub": "Component breakdown",
+      "value": "92% recycled cotton"
+    },
+    "carbon": {
+      "label": "Carbon",
+      "sub": "Footprint score",
+      "value": "3.2 kg CO₂ eq."
+    },
+    "recyclability": {
+      "label": "Recyclability",
+      "sub": "End-of-life rating",
+      "value": "Grade A — fully recyclable"
+    },
+    "maintenance": {
+      "label": "Maintenance",
+      "sub": "Care instructions",
+      "value": "Dry clean only"
+    },
+    "compliance": {
+      "label": "Compliance",
+      "sub": "Regulatory status",
+      "value": "EU ESPR certified"
+    }
+  },
+  "what": {
+    "eyebrow": "The regulation you need to know",
+    "title": "What is a Digital Product Passport?",
+    "p1": "European Union regulations are introducing Digital Product Passports (DPPs) to improve product authenticity, transparency, and sustainability.",
+    "p2": "A Digital Product Passport is a digital identity linked to a physical product that tracks key information across its lifecycle, including:",
+    "items": {
+      "origin": "Origin and materials",
+      "sustainability": "Sustainability metrics (carbon footprint, recyclability)",
+      "repair": "Repair and maintenance instructions",
+      "regulatory": "Regulatory and compliance data"
+    },
+    "p3": "Accessible via a simple scan, it gives regulators, supply chain partners, and consumers clear traceability and accountability throughout the product's journey.",
+    "cta": "Stay Compliant"
+  },
+  "timeline": {
+    "eyebrow": "Regulatory Timeline",
+    "title": "Time Is Running Out",
+    "subtitle": "EU Digital Product Passport Rollout 2027 to 2030",
+    "body": "Regulations are rolling out in phases. Brands preparing now do not just comply. They compete.",
+    "cta": "Prepare Your Products Today",
+    "batteries": {
+      "period": "2027",
+      "title": "Battery Passports",
+      "body": "Battery passports for electric vehicle and industrial batteries under the EU Battery Regulation."
+    },
+    "textiles": {
+      "period": "2027–2028",
+      "title": "Textiles & Apparel",
+      "body": "Digital Product Passports for textiles and apparel improve sustainability, traceability, and circularity across the supply chain."
+    },
+    "electronics": {
+      "period": "2028–2030",
+      "title": "Electronics & ICT",
+      "body": "Electronics and ICT products adopt Digital Product Passports to enhance transparency, repairability, and lifecycle tracking."
+    },
+    "toys": {
+      "period": "2028–2030",
+      "title": "Toys",
+      "body": "Toy products are expected to adopt Digital Product Passports to strengthen product safety, traceability, and compliance across the European market."
+    },
+    "most": {
+      "period": "2030",
+      "title": "Most Products",
+      "body": "By 2030, most products sold in the European Union will require a Digital Product Passport under the Ecodesign for Sustainable Products Regulation."
+    }
+  },
+  "comparison": {
+    "eyebrow": "The limits of the Digital Product Passport",
+    "title": "Digital Compliance Alone Is Not Enough",
+    "intro": "Digital Product Passports store and share product data but don't verify the physical product. Without authentication, counterfeit or mislabelled items may seem compliant.",
+    "introStrong": "Cypheme's award-winning EU solution",
+    "introEnd": "ensures every DPP is backed by verified product authenticity, giving your business full traceability and confidence.",
+    "outro": "Digital Product Passports improve transparency.",
+    "outroStrong": "Cypheme ensures your DPP is trusted, authentic, and fully verified.",
+    "cta": "Secure Your Products",
+    "capabilityLabel": "Capability",
+    "standardLabel": "Standard Digital Product Passport",
+    "cyphemeLabel": "DPP with Cypheme",
+    "recommendedLabel": "Recommended",
+    "rows": {
+      "uniqueId": {
+        "capability": "Unique product ID",
+        "standard": "Required",
+        "cypheme": "Linked ID"
+      },
+      "euCompliance": {
+        "capability": "EU compliance",
+        "standard": "Data reqs",
+        "cypheme": "Full + auth"
+      },
+      "physical": {
+        "capability": "Physical verification",
+        "standard": "Digital only",
+        "cypheme": "Physical + data"
+      },
+      "counterfeit": {
+        "capability": "Counterfeit protection",
+        "standard": "May appear OK",
+        "cypheme": "Blocked"
+      },
+      "supplyChain": {
+        "capability": "Supply chain",
+        "standard": "Data unverified",
+        "cypheme": "Full trace"
+      },
+      "trust": {
+        "capability": "Consumer trust",
+        "standard": "Can't verify",
+        "cypheme": "Complete"
+      }
+    }
+  },
+  "finalCta": {
+    "titleLine1": "One click secures",
+    "titleLine2": "authentication + compliance",
+    "cta": "Get My DPP Now"
+  },
+  "footer": {
+    "tagline": "Secure Digital Product Passports with built-in authentication technology.",
+    "about": "About Cypheme",
+    "contact": "Contact Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "legal": "© 2026 Cypheme | GDPR Compliant | ISO 27001 Certified · Powered by Open-Label.eu"
+  }
+}
