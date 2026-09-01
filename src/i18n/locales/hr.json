@@ -1284,5 +1284,13 @@
       "organic_waste": "Prikupljanje biootpada",
       "textile_collection": "Prikupljanje tekstila"
     }
+  },
+  "consent": {
+    "title": "Kolačići za oglašavanje",
+    "description": "Upotrebljavamo oglasne kolačiće za mjerenje uspješnosti naših oglasa. Postavljaju se samo ako ih prihvatite.",
+    "accept": "Prihvati",
+    "decline": "Odbij",
+    "manage": "Postavke kolačića",
+    "privacyLink": "Pravila o privatnosti"
   }
 }

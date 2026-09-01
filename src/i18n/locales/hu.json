@@ -1284,5 +1284,13 @@
       "organic_waste": "Bio­hulladékgyűjtés",
       "textile_collection": "Textilgyűjtés"
     }
+  },
+  "consent": {
+    "title": "Hirdetési sütik",
+    "description": "Hirdetési sütiket használunk hirdetéseink teljesítményének mérésére. Csak akkor kerülnek elhelyezésre, ha elfogadja őket.",
+    "accept": "Elfogadás",
+    "decline": "Elutasítás",
+    "manage": "Sütibeállítások",
+    "privacyLink": "Adatvédelmi szabályzat"
   }
 }

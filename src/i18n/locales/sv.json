@@ -1284,5 +1284,13 @@
       "organic_waste": "Matavfall",
       "textile_collection": "Textilåtervinning"
     }
+  },
+  "consent": {
+    "title": "Cookies för annonsering",
+    "description": "Vi använder annonscookies för att mäta hur våra annonser presterar. De sätts endast om du godkänner dem.",
+    "accept": "Godkänn",
+    "decline": "Neka",
+    "manage": "Cookie-inställningar",
+    "privacyLink": "Integritetspolicy"
   }
 }

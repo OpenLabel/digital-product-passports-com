@@ -1284,5 +1284,13 @@
       "organic_waste": "Zbiranje biološkega odpadka",
       "textile_collection": "Zbiranje tekstila"
     }
+  },
+  "consent": {
+    "title": "Oglaševalski piškotki",
+    "description": "Uporabljamo oglaševalske piškotke za merjenje uspešnosti naših oglasov. Nastavijo se le, če jih sprejmete.",
+    "accept": "Sprejmi",
+    "decline": "Zavrni",
+    "manage": "Nastavitve piškotkov",
+    "privacyLink": "Politika zasebnosti"
   }
 }

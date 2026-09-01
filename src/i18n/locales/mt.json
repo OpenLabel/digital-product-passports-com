@@ -1284,5 +1284,13 @@
       "organic_waste": "Ġbir tal-iskart organiku",
       "textile_collection": "Ġbir tat-tessuti"
     }
+  },
+  "consent": {
+    "title": "Cookies għar-reklamar",
+    "description": "Nużaw cookies tar-reklamar biex inkejlu kif jaħdmu r-reklami tagħna. Jiġu stabbiliti biss jekk taċċetta.",
+    "accept": "Aċċetta",
+    "decline": "Irrifjuta",
+    "manage": "Issettjar tal-cookies",
+    "privacyLink": "Politika ta' privatezza"
   }
 }

@@ -1284,5 +1284,13 @@
       "organic_waste": "Bailiú bruscair orgánaigh",
       "textile_collection": "Bailiú teicstíle"
     }
+  },
+  "consent": {
+    "title": "Fianáin fógraíochta",
+    "description": "Úsáidimid fianáin fógraíochta chun feidhmíocht ár bhfógraí a thomhas. Ní shocraítear iad ach amháin má ghlacann tú leo.",
+    "accept": "Glac leo",
+    "decline": "Diúltaigh",
+    "manage": "Socruithe fianán",
+    "privacyLink": "Beartas príobháideachais"
   }
 }

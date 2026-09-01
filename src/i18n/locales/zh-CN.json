@@ -1284,5 +1284,13 @@
       "organic_waste": "厨余回收",
       "textile_collection": "纺织品回收"
     }
+  },
+  "consent": {
+    "title": "广告 Cookie",
+    "description": "我们使用广告 Cookie 来衡量广告效果。只有在您同意后才会启用。",
+    "accept": "接受",
+    "decline": "拒绝",
+    "manage": "Cookie 设置",
+    "privacyLink": "隐私政策"
   }
 }

@@ -1284,5 +1284,13 @@
       "organic_waste": "Collecte des biodéchets",
       "textile_collection": "Collecte des textiles"
     }
+  },
+  "consent": {
+    "title": "Cookies publicitaires",
+    "description": "Nous utilisons des cookies publicitaires pour mesurer la performance de nos annonces. Ils ne sont déposés que si vous les acceptez.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "manage": "Paramètres des cookies",
+    "privacyLink": "Politique de confidentialité"
   }
 }

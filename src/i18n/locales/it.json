@@ -1284,5 +1284,13 @@
       "organic_waste": "Raccolta organico",
       "textile_collection": "Raccolta tessili"
     }
+  },
+  "consent": {
+    "title": "Cookie pubblicitari",
+    "description": "Utilizziamo cookie pubblicitari per misurare il rendimento dei nostri annunci. Vengono impostati solo se li accetti.",
+    "accept": "Accetta",
+    "decline": "Rifiuta",
+    "manage": "Impostazioni cookie",
+    "privacyLink": "Informativa sulla privacy"
   }
 }

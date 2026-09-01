@@ -1284,5 +1284,13 @@
       "organic_waste": "Bioabfallsammlung",
       "textile_collection": "Textilsammlung"
     }
+  },
+  "consent": {
+    "title": "Cookies für Werbung",
+    "description": "Wir verwenden Werbe-Cookies, um die Leistung unserer Anzeigen zu messen. Sie werden nur gesetzt, wenn Sie zustimmen.",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen",
+    "manage": "Cookie-Einstellungen",
+    "privacyLink": "Datenschutzerklärung"
   }
 }
