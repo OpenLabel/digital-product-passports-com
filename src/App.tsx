@@ -49,6 +49,17 @@ function ReferralCapture() {
   return null;
 }
 
+function GoogleAdsTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    initGoogleAdsTag();
+  }, []);
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location.pathname, location.search]);
+  return null;
+}
+
 function AppRoutes() {
   const { loading, isSetupRequired } = useSiteConfig();
 
@@ -116,6 +127,7 @@ const App = () => (
           <BrowserRouter>
             <BuildStatusBanner />
             <ReferralCapture />
+            <GoogleAdsTracker />
             <AppRoutes />
           </BrowserRouter>
         </TooltipProvider>
