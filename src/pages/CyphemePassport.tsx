@@ -38,6 +38,7 @@ import CyEyebrow from '@/components/cypheme/CyEyebrow';
 import CyTimelineCard from '@/components/cypheme/CyTimelineCard';
 import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/CyPassportShowcase';
 import CyComparisonTable, { type CyComparisonRow } from '@/components/cypheme/CyComparisonTable';
+import { withAdParams } from '@/lib/googleAdsTracking';
 
 
 const CTA_TARGET = 'https://open-label.eu/auth';
