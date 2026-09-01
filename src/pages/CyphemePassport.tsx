@@ -42,6 +42,11 @@ import CyComparisonTable, { type CyComparisonRow } from '@/components/cypheme/Cy
 
 const CTA_TARGET = 'https://open-label.eu/auth';
 
+/** CTA href with ad click / campaign parameters forwarded for attribution. */
+function ctaTarget(): string {
+  return withAdParams(CTA_TARGET);
+}
+
 const passportFacts: CyPassportFact[] = [
   { icon: Globe, label: 'Origin', sub: 'Country of manufacture', value: 'Made in France' },
   { icon: Layers, label: 'Materials', sub: 'Component breakdown', value: '92% recycled cotton' },
