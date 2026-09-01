@@ -28,7 +28,9 @@ vi.mock('@/hooks/useSiteConfig', () => ({
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (k: string) => k, i18n: { language: 'en', changeLanguage: vi.fn() } }),
   Trans: ({ children }: any) => children,
+  initReactI18next: { type: '3rdParty', init: vi.fn() },
 }));
+
 
 vi.mock('@/hooks/useReferral', () => ({
   useReferral: () => {},
