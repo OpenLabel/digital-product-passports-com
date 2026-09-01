@@ -80,6 +80,38 @@ export function trackConversionOnce(sendTo: string): void {
   window.gtag('event', 'conversion', { send_to: sendTo });
 }
 
+/**
+ * Conversion actions from the approved tracking plan.
+ * Values are the Google Ads send-to labels (`AW-672872996/xxxxx`).
+ * Empty string = not yet created in Google Ads; events for it are skipped
+ * until the label is pasted here.
+ */
+export const CONVERSION_LABELS = {
+  click_openlabel_landing_hero_get_dpp: '',
+  click_openlabel_landing_stay_compliant: '',
+  click_openlabel_landing_prepare_products: '',
+  click_openlabel_landing_secure_products: '',
+  click_openlabel_landing_final_get_dpp: '',
+  openlabel_accountcreation: '',
+} as const;
+
+export type ConversionAction = keyof typeof CONVERSION_LABELS;
+
+/** Fire a button-click conversion (secondary). No-op until its label is set. */
+export function trackButtonConversion(action: ConversionAction): void {
+  const sendTo = CONVERSION_LABELS[action];
+  if (!sendTo) return;
+  if (typeof window === 'undefined' || !window.gtag) return;
+  window.gtag('event', 'conversion', { send_to: sendTo });
+}
+
+/** Fire the primary account-creation conversion, once per session. */
+export function trackAccountCreation(): void {
+  const sendTo = CONVERSION_LABELS.openlabel_accountcreation;
+  if (!sendTo) return;
+  trackConversionOnce(sendTo);
+}
+
 const AD_PARAMS = ['gclid', 'gclsrc', 'dclid', 'wbraid', 'gbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
 /**

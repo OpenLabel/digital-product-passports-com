@@ -94,3 +94,69 @@ describe('googleAdsTracking', () => {
     });
   });
 });
+
+describe('conversion registry', () => {
+  beforeEach(() => {
+    __resetGoogleAdsTagForTests();
+    document.head.innerHTML = '';
+    delete window.gtag;
+    delete window.dataLayer;
+    window.sessionStorage.clear();
+  });
+
+  it('defines all six planned conversion actions', async () => {
+    const { CONVERSION_LABELS } = await import('./googleAdsTracking');
+    expect(Object.keys(CONVERSION_LABELS).sort()).toEqual([
+      'click_openlabel_landing_final_get_dpp',
+      'click_openlabel_landing_hero_get_dpp',
+      'click_openlabel_landing_prepare_products',
+      'click_openlabel_landing_secure_products',
+      'click_openlabel_landing_stay_compliant',
+      'openlabel_accountcreation',
+    ]);
+  });
+
+  it('skips button conversions whose label is not yet configured', async () => {
+    const { trackButtonConversion } = await import('./googleAdsTracking');
+    initGoogleAdsTag();
+    const calls: unknown[][] = [];
+    window.gtag = (...args: unknown[]) => {
+      calls.push(args);
+    };
+    trackButtonConversion('click_openlabel_landing_hero_get_dpp');
+    expect(calls).toEqual([]);
+  });
+
+  it('fires button conversions on every click once a label is configured', async () => {
+    const mod = await import('./googleAdsTracking');
+    (mod.CONVERSION_LABELS as Record<string, string>).click_openlabel_landing_stay_compliant =
+      'AW-672872996/btnlabel';
+    initGoogleAdsTag();
+    const calls: unknown[][] = [];
+    window.gtag = (...args: unknown[]) => {
+      calls.push(args);
+    };
+    mod.trackButtonConversion('click_openlabel_landing_stay_compliant');
+    mod.trackButtonConversion('click_openlabel_landing_stay_compliant');
+    expect(calls).toEqual([
+      ['event', 'conversion', { send_to: 'AW-672872996/btnlabel' }],
+      ['event', 'conversion', { send_to: 'AW-672872996/btnlabel' }],
+    ]);
+  });
+
+  it('fires account creation once per session and only when configured', async () => {
+    const mod = await import('./googleAdsTracking');
+    initGoogleAdsTag();
+    const calls: unknown[][] = [];
+    window.gtag = (...args: unknown[]) => {
+      calls.push(args);
+    };
+    mod.trackAccountCreation();
+    expect(calls).toEqual([]);
+    (mod.CONVERSION_LABELS as Record<string, string>).openlabel_accountcreation =
+      'AW-672872996/signup';
+    mod.trackAccountCreation();
+    mod.trackAccountCreation();
+    expect(calls).toEqual([['event', 'conversion', { send_to: 'AW-672872996/signup' }]]);
+  });
+});

@@ -27,6 +27,7 @@ import { useToast } from '@/hooks/use-toast';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
+import { trackAccountCreation } from '@/lib/googleAdsTracking';
 
 const emailSchema = z.string().email(); // validation message handled via i18n
 const passwordSchema = z.string().min(6); // validation message handled via i18n
@@ -77,6 +78,7 @@ export default function Auth() {
       } else if (mode === 'signup') {
         const { error } = await signUp(email, password, companyName);
         if (error) throw error;
+        trackAccountCreation();
         toast({ title: t('auth.accountCreated'), description: t('auth.accountCreatedDesc') });
       } else {
         const { error } = await resetPassword(email);

@@ -85,3 +85,26 @@ describe('Auth page', () => {
     expect(screen.getByTestId('lang-switcher')).toBeInTheDocument();
   });
 });
+
+describe('Auth conversion tracking', () => {
+  it('fires the account creation conversion after successful sign-up', async () => {
+    const mod = await import('@/lib/googleAdsTracking');
+    (mod.CONVERSION_LABELS as Record<string, string>).openlabel_accountcreation =
+      'AW-672872996/signup';
+    const calls: unknown[][] = [];
+    window.gtag = (...args: unknown[]) => { calls.push(args); };
+    window.sessionStorage.clear();
+
+    render(<MemoryRouter><Auth /></MemoryRouter>);
+    await userEvent.click(screen.getByRole('tab', { name: 'auth.signUp' }));
+    await userEvent.type(screen.getByLabelText('auth.companyName'), 'Acme');
+    await userEvent.type(screen.getByLabelText('auth.email'), 'a@b.co');
+    await userEvent.type(screen.getByLabelText('auth.password'), 'secret1');
+    await userEvent.click(screen.getByRole('button', { name: 'auth.signUp' }));
+
+    await vi.waitFor(() => {
+      expect(calls).toContainEqual(['event', 'conversion', { send_to: 'AW-672872996/signup' }]);
+    });
+    delete window.gtag;
+  });
+});
