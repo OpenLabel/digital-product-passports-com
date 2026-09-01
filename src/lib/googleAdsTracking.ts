@@ -16,9 +16,12 @@
  * Google Ads tag (AW-672872996) — manual install, no connector.
  * Loads gtag.js exactly once and exposes page_view / conversion helpers.
  *
- * NOTE: consent handling for regulated regions (EEA/UK/CH) is not yet
- * implemented; see ads tracking plan. Consent setup stays available.
+ * Consent Mode v2 defaults are pushed before the tag is configured:
+ * denied in the regions that require consent (EEA/UK/CH), granted
+ * elsewhere. See `@/lib/adsConsent` and the ConsentBanner component.
  */
+
+import { applyStoredConsent, setConsentDefaults } from './adsConsent';
 
 export const GOOGLE_ADS_TAG_ID = 'AW-672872996';
 
@@ -43,6 +46,10 @@ export function initGoogleAdsTag(tagId: string = GOOGLE_ADS_TAG_ID): void {
     function gtag(...args: unknown[]) {
       window.dataLayer!.push(args);
     };
+
+  // Consent defaults MUST be set before the tag is configured.
+  setConsentDefaults();
+  applyStoredConsent();
 
   const script = document.createElement('script');
   script.async = true;
