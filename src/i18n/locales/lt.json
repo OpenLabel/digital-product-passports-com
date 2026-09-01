@@ -1284,5 +1284,13 @@
       "organic_waste": "Biologinių atliekų surinkimas",
       "textile_collection": "Tekstilės surinkimas"
     }
+  },
+  "consent": {
+    "title": "Reklamos slapukai",
+    "description": "Naudojame reklamos slapukus, kad įvertintume savo skelbimų veiksmingumą. Jie įrašomi tik jums sutikus.",
+    "accept": "Sutinku",
+    "decline": "Atsisakau",
+    "manage": "Slapukų nustatymai",
+    "privacyLink": "Privatumo politika"
   }
 }

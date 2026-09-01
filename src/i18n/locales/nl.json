@@ -1284,5 +1284,13 @@
       "organic_waste": "GFT-inzameling",
       "textile_collection": "Textielinzameling"
     }
+  },
+  "consent": {
+    "title": "Advertentiecookies",
+    "description": "We gebruiken advertentiecookies om te meten hoe onze advertenties presteren. Ze worden alleen geplaatst als u ze accepteert.",
+    "accept": "Accepteren",
+    "decline": "Weigeren",
+    "manage": "Cookie-instellingen",
+    "privacyLink": "Privacybeleid"
   }
 }

@@ -1284,5 +1284,13 @@
       "organic_waste": "Bioaffald",
       "textile_collection": "Tekstilindsamling"
     }
+  },
+  "consent": {
+    "title": "Cookies til annoncering",
+    "description": "Vi bruger annoncecookies til at måle, hvordan vores annoncer klarer sig. De sættes kun, hvis du accepterer.",
+    "accept": "Accepter",
+    "decline": "Afvis",
+    "manage": "Cookieindstillinger",
+    "privacyLink": "Privatlivspolitik"
   }
 }

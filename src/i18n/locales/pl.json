@@ -1284,5 +1284,13 @@
       "organic_waste": "Zbiórka bioodpadów",
       "textile_collection": "Zbiórka tekstyliów"
     }
+  },
+  "consent": {
+    "title": "Pliki cookie reklamowe",
+    "description": "Używamy reklamowych plików cookie, aby mierzyć skuteczność naszych reklam. Są zapisywane tylko po wyrażeniu zgody.",
+    "accept": "Akceptuję",
+    "decline": "Odrzuć",
+    "manage": "Ustawienia plików cookie",
+    "privacyLink": "Polityka prywatności"
   }
 }

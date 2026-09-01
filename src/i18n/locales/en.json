@@ -1284,5 +1284,13 @@
       "organic_waste": "Organic waste collection",
       "textile_collection": "Textile collection"
     }
+  },
+  "consent": {
+    "title": "Cookies for advertising",
+    "description": "We use advertising cookies to measure how our ads perform. They are only set if you accept.",
+    "accept": "Accept",
+    "decline": "Reject",
+    "manage": "Cookie settings",
+    "privacyLink": "Privacy policy"
   }
 }

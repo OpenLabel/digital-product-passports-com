@@ -1284,5 +1284,13 @@
       "organic_waste": "Biojäte",
       "textile_collection": "Tekstiilinkeräys"
     }
+  },
+  "consent": {
+    "title": "Mainontaevästeet",
+    "description": "Käytämme mainontaevästeitä mainostemme tehokkuuden mittaamiseen. Ne asetetaan vain, jos hyväksyt ne.",
+    "accept": "Hyväksy",
+    "decline": "Hylkää",
+    "manage": "Evästeasetukset",
+    "privacyLink": "Tietosuojakäytäntö"
   }
 }

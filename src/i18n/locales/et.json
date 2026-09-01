@@ -1284,5 +1284,13 @@
       "organic_waste": "Biojäätmete kogumine",
       "textile_collection": "Tekstiili kogumine"
     }
+  },
+  "consent": {
+    "title": "Reklaamiküpsised",
+    "description": "Kasutame reklaamiküpsiseid, et mõõta oma reklaamide tulemuslikkust. Need salvestatakse ainult teie nõusolekul.",
+    "accept": "Nõustun",
+    "decline": "Keeldun",
+    "manage": "Küpsiste seaded",
+    "privacyLink": "Privaatsuspoliitika"
   }
 }

@@ -1284,5 +1284,13 @@
       "organic_waste": "Colectare deșeuri organice",
       "textile_collection": "Colectare textile"
     }
+  },
+  "consent": {
+    "title": "Cookie-uri de publicitate",
+    "description": "Folosim cookie-uri de publicitate pentru a măsura performanța anunțurilor noastre. Sunt setate doar dacă le acceptați.",
+    "accept": "Sunt de acord",
+    "decline": "Refuz",
+    "manage": "Setări cookie-uri",
+    "privacyLink": "Politica de confidențialitate"
   }
 }

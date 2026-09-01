@@ -1284,5 +1284,13 @@
       "organic_waste": "Recolha de biorresíduos",
       "textile_collection": "Recolha de têxteis"
     }
+  },
+  "consent": {
+    "title": "Cookies de publicidade",
+    "description": "Utilizamos cookies de publicidade para medir o desempenho dos nossos anúncios. Só são definidos se os aceitar.",
+    "accept": "Aceitar",
+    "decline": "Recusar",
+    "manage": "Definições de cookies",
+    "privacyLink": "Política de privacidade"
   }
 }

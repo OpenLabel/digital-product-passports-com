@@ -1284,5 +1284,13 @@
       "organic_waste": "Zber bioodpadu",
       "textile_collection": "Zber textilu"
     }
+  },
+  "consent": {
+    "title": "Reklamné súbory cookie",
+    "description": "Používame reklamné súbory cookie na meranie výkonnosti našich reklám. Nastavia sa iba vtedy, ak ich prijmete.",
+    "accept": "Prijať",
+    "decline": "Odmietnuť",
+    "manage": "Nastavenia súborov cookie",
+    "privacyLink": "Zásady ochrany osobných údajov"
   }
 }

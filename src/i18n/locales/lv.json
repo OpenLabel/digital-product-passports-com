@@ -1284,5 +1284,13 @@
       "organic_waste": "Bioatkritumu savākšana",
       "textile_collection": "Tekstila savākšana"
     }
+  },
+  "consent": {
+    "title": "Reklāmas sīkdatnes",
+    "description": "Mēs izmantojam reklāmas sīkdatnes, lai novērtētu mūsu reklāmu sniegumu. Tās tiek iestatītas tikai tad, ja tām piekrītat.",
+    "accept": "Piekrītu",
+    "decline": "Noraidīt",
+    "manage": "Sīkdatņu iestatījumi",
+    "privacyLink": "Privātuma politika"
   }
 }
