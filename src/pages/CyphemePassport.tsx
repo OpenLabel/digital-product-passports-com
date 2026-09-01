@@ -15,6 +15,7 @@
  */
 
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   ShieldCheck,
   BadgeCheck,
@@ -39,6 +40,7 @@ import CyTimelineCard from '@/components/cypheme/CyTimelineCard';
 import CyPassportShowcase, { type CyPassportFact } from '@/components/cypheme/CyPassportShowcase';
 import CyComparisonTable, { type CyComparisonRow } from '@/components/cypheme/CyComparisonTable';
 import { withAdParams } from '@/lib/googleAdsTracking';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 
 const CTA_TARGET = 'https://open-label.eu/auth';
@@ -48,71 +50,40 @@ function ctaTarget(): string {
   return withAdParams(CTA_TARGET);
 }
 
-const passportFacts: CyPassportFact[] = [
-  { icon: Globe, label: 'Origin', sub: 'Country of manufacture', value: 'Made in France' },
-  { icon: Layers, label: 'Materials', sub: 'Component breakdown', value: '92% recycled cotton' },
-  { icon: Leaf, label: 'Carbon', sub: 'Footprint score', value: '3.2 kg CO₂ eq.' },
-  { icon: Recycle, label: 'Recyclability', sub: 'End-of-life rating', value: 'Grade A — fully recyclable' },
-  { icon: Wrench, label: 'Maintenance', sub: 'Care instructions', value: 'Dry clean only' },
-  { icon: ScrollText, label: 'Compliance', sub: 'Regulatory status', value: 'EU ESPR certified' },
+const factKeys = [
+  { key: 'origin', icon: Globe },
+  { key: 'materials', icon: Layers },
+  { key: 'carbon', icon: Leaf },
+  { key: 'recyclability', icon: Recycle },
+  { key: 'maintenance', icon: Wrench },
+  { key: 'compliance', icon: ScrollText },
+] as const;
+
+const timelineKeys = [
+  { key: 'batteries', icon: Battery },
+  { key: 'textiles', icon: Shirt },
+  { key: 'electronics', icon: Smartphone },
+  { key: 'toys', icon: Puzzle },
+  { key: 'most', icon: Package },
+] as const;
+
+const comparisonKeys: Array<{ key: string; status: CyComparisonRow['standardStatus'] }> = [
+  { key: 'uniqueId', status: 'ok' },
+  { key: 'euCompliance', status: 'ok' },
+  { key: 'physical', status: 'no' },
+  { key: 'counterfeit', status: 'no' },
+  { key: 'supplyChain', status: 'warn' },
+  { key: 'trust', status: 'no' },
 ];
 
-const timeline = [
-  {
-    period: '2027',
-    title: 'Battery Passports',
-    body: 'Battery passports for electric vehicle and industrial batteries under the EU Battery Regulation.',
-    icon: Battery,
-  },
-  {
-    period: '2027–2028',
-    title: 'Textiles & Apparel',
-    body: 'Digital Product Passports for textiles and apparel improve sustainability, traceability, and circularity across the supply chain.',
-    icon: Shirt,
-  },
-  {
-    period: '2028–2030',
-    title: 'Electronics & ICT',
-    body: 'Electronics and ICT products adopt Digital Product Passports to enhance transparency, repairability, and lifecycle tracking.',
-    icon: Smartphone,
-  },
-  {
-    period: '2028–2030',
-    title: 'Toys',
-    body: 'Toy products are expected to adopt Digital Product Passports to strengthen product safety, traceability, and compliance across the European market.',
-    icon: Puzzle,
-  },
-  {
-    period: '2030',
-    title: 'Most Products',
-    body: 'By 2030, most products sold in the European Union will require a Digital Product Passport under the Ecodesign for Sustainable Products framework.',
-    icon: Package,
-  },
-];
-
-const comparison: CyComparisonRow[] = [
-  { capability: 'Unique product ID', standard: 'Required', standardStatus: 'ok', cypheme: 'Linked ID' },
-  { capability: 'EU compliance', standard: 'Data reqs', standardStatus: 'ok', cypheme: 'Full + auth' },
-  { capability: 'Physical verification', standard: 'Digital only', standardStatus: 'no', cypheme: 'Physical + data' },
-  { capability: 'Counterfeit protection', standard: 'May appear OK', standardStatus: 'no', cypheme: 'Blocked' },
-  { capability: 'Supply chain', standard: 'Data unverified', standardStatus: 'warn', cypheme: 'Full trace' },
-  { capability: 'Consumer trust', standard: "Can't verify", standardStatus: 'no', cypheme: 'Complete' },
-];
-
-
-const dppFacts = [
-  'Origin and materials',
-  'Sustainability metrics (carbon footprint, recyclability)',
-  'Repair and maintenance instructions',
-  'Regulatory and compliance data',
-];
+const dppFactKeys = ['origin', 'sustainability', 'repair', 'regulatory'] as const;
 
 const footerLinks = [
-  { href: 'https://www.cypheme.com/about-us', label: 'About Cypheme' },
-  { href: 'https://www.cypheme.com/contact-us', label: 'Contact Us' },
-  { href: 'https://www.cypheme.com/privacy-policy', label: 'Privacy Policy' },
-  { href: 'https://www.cypheme.com/terms-of-use', label: 'Terms of Use' },
-];
+  { href: 'https://www.cypheme.com/about-us', key: 'about' },
+  { href: 'https://www.cypheme.com/contact-us', key: 'contact' },
+  { href: 'https://www.cypheme.com/privacy-policy', key: 'privacy' },
+  { href: 'https://www.cypheme.com/terms-of-use', key: 'terms' },
+] as const;
 
 export default function CyphemePassport() {
   return (
