@@ -26,6 +26,7 @@ import { useReferral } from "@/hooks/useReferral";
 import { AuthProvider } from "@/hooks/useAuth";
 import { SiteConfigProvider, useSiteConfig } from "@/hooks/useSiteConfig";
 import { BuildStatusBanner } from "@/components/BuildStatusBanner";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
@@ -131,6 +132,7 @@ const App = () => (
             <ReferralCapture />
             <GoogleAdsTracker />
             <AppRoutes />
+            <ConsentBanner />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
