@@ -149,7 +149,7 @@ export default function CyphemePassport() {
               generator. No hassle, no compliance headaches, no fees.
             </p>
             <div className="mt-8">
-              <CyButton to={ctaTarget()}>Get My DPP Now</CyButton>
+              <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_hero_get_dpp">Get My DPP Now</CyButton>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 border-t border-cy-line pt-6 text-sm text-cy-ink">
               <span className="inline-flex items-center gap-2">
@@ -188,7 +188,7 @@ export default function CyphemePassport() {
             clear traceability and accountability throughout the product's journey.
           </p>
           <div className="mt-8">
-            <CyButton to={ctaTarget()}>Stay Compliant</CyButton>
+            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_stay_compliant">Stay Compliant</CyButton>
           </div>
         </CySection>
 
@@ -221,7 +221,7 @@ export default function CyphemePassport() {
           </div>
 
           <div className="mt-10 flex justify-center">
-            <CyButton to={ctaTarget()}>Prepare Your Products Today</CyButton>
+            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_prepare_products">Prepare Your Products Today</CyButton>
           </div>
         </CySection>
 
@@ -255,7 +255,7 @@ export default function CyphemePassport() {
             </strong>
           </p>
           <div className="mt-8">
-            <CyButton to={ctaTarget()}>Secure Your Products</CyButton>
+            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_secure_products">Secure Your Products</CyButton>
           </div>
         </CySection>
 
@@ -273,7 +273,7 @@ export default function CyphemePassport() {
                 authentication + compliance
               </CyHeading>
               <div className="mt-10 flex justify-center">
-                <CyButton to={ctaTarget()}>Get My DPP Now</CyButton>
+                <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_final_get_dpp">Get My DPP Now</CyButton>
               </div>
             </div>
           </div>
