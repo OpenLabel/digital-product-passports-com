@@ -45,6 +45,10 @@ import sl from './locales/sl.json';
 import sv from './locales/sv.json';
 import zhCN from './locales/zh-CN.json';
 
+// Cypheme landing page strings live in their own enclosed namespace.
+import { cyphemeResources, CYPHEME_NAMESPACE } from './cypheme';
+
+
 export const supportedLanguages = [
   { code: 'bg', name: 'Bulgarian', nativeName: 'Български' },
   { code: 'cs', name: 'Czech', nativeName: 'Čeština' },
