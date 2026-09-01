@@ -17,6 +17,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { trackButtonConversion, type ConversionAction } from '@/lib/googleAdsTracking';
 
 export type CyButtonVariant = 'primary' | 'outline' | 'gradient';
 
@@ -25,6 +26,8 @@ interface CyButtonProps {
   to: string;
   variant?: CyButtonVariant;
   className?: string;
+  /** Optional Google Ads conversion action fired when the button is clicked. */
+  trackAction?: ConversionAction;
 }
 
 const base =
@@ -40,19 +43,20 @@ function isExternalUrl(url: string) {
   return /^https?:\/\//i.test(url);
 }
 
-export default function CyButton({ children, to, variant = 'primary', className }: CyButtonProps) {
+export default function CyButton({ children, to, variant = 'primary', className, trackAction }: CyButtonProps) {
   const classes = cn(base, variants[variant], className);
+  const handleClick = trackAction ? () => trackButtonConversion(trackAction) : undefined;
 
   if (isExternalUrl(to)) {
     return (
-      <a href={to} className={classes}>
+      <a href={to} className={classes} onClick={handleClick}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link to={to} className={classes}>
+    <Link to={to} className={classes} onClick={handleClick}>
       {children}
     </Link>
   );
