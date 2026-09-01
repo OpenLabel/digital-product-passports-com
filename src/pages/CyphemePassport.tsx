@@ -86,15 +86,26 @@ const footerLinks = [
 ] as const;
 
 export default function CyphemePassport() {
-  return (
-    <CyphemeThemeProvider
-      title="EU Digital Product Passport with Authentication | Cypheme"
-      description="Cypheme delivers EU-compliant Digital Product Passports backed by physical authenticity verification — free to create, ready for the market."
-      noindex
-    >
+  const { t } = useTranslation('cypheme');
 
+  const passportFacts: CyPassportFact[] = factKeys.map(({ key, icon }) => ({
+    icon,
+    label: t(`facts.${key}.label`),
+    sub: t(`facts.${key}.sub`),
+    value: t(`facts.${key}.value`),
+  }));
+
+  const comparison: CyComparisonRow[] = comparisonKeys.map(({ key, status }) => ({
+    capability: t(`comparison.rows.${key}.capability`),
+    standard: t(`comparison.rows.${key}.standard`),
+    standardStatus: status,
+    cypheme: t(`comparison.rows.${key}.cypheme`),
+  }));
+
+  return (
+    <CyphemeThemeProvider title={t('meta.title')} description={t('meta.description')} noindex>
       <header className="border-b border-cy-line bg-background">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-5">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-5 py-5">
           <Link to="/" className="inline-flex items-center gap-2">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-pill bg-cy-orange font-cy-display text-sm font-bold text-white">
               OL
@@ -103,7 +114,10 @@ export default function CyphemePassport() {
               Open Label <span className="font-bold text-cy-orange">.eu</span>
             </span>
           </Link>
-          <span className="text-sm text-cy-grey">by Cypheme</span>
+          <div className="flex items-center gap-4">
+            <span className="hidden text-sm text-cy-grey sm:inline">{t('header.by')}</span>
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
 
@@ -112,24 +126,23 @@ export default function CyphemePassport() {
         <CySection tone="plain" innerClassName="grid items-center gap-12 md:grid-cols-2">
           <div>
             <CyHeading level={1}>
-              Get your EU Digital Product Passport{' '}
-              <span className="text-cy-blue">free of charge</span>
+              {t('hero.titleLead')}{' '}
+              <span className="text-cy-blue">{t('hero.titleHighlight')}</span>
             </CyHeading>
-            <p className="mt-6 max-w-xl text-lg text-cy-grey">
-              Cypheme provides you fully EU-compliant, product-ready DPPs through an online
-              generator. No hassle, no compliance headaches, no fees.
-            </p>
+            <p className="mt-6 max-w-xl text-lg text-cy-grey">{t('hero.body')}</p>
             <div className="mt-8">
-              <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_hero_get_dpp">Get My DPP Now</CyButton>
+              <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_hero_get_dpp">
+                {t('hero.cta')}
+              </CyButton>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 border-t border-cy-line pt-6 text-sm text-cy-ink">
               <span className="inline-flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-cy-orange" />
-                Market-ready Digital Product Passport
+                {t('hero.badgeReady')}
               </span>
               <span className="inline-flex items-center gap-2">
                 <BadgeCheck className="h-4 w-4 text-cy-orange" />
-                Fully EU-compliant
+                {t('hero.badgeCompliant')}
               </span>
             </div>
           </div>
@@ -139,94 +152,83 @@ export default function CyphemePassport() {
 
         {/* What is a DPP */}
         <CySection tone="surface">
-          <CyEyebrow>The regulation you need to know</CyEyebrow>
-          <CyHeading className="mt-2">What is a Digital Product Passport?</CyHeading>
-          <p className="mt-6 text-cy-grey">
-            European Union regulations are introducing Digital Product Passports (DPPs) to improve
-            product authenticity, transparency, and sustainability.
-          </p>
-          <p className="mt-4 text-cy-grey">
-            A Digital Product Passport is a digital identity linked to a physical product that tracks
-            key information across its lifecycle, including:
-          </p>
+          <CyEyebrow>{t('what.eyebrow')}</CyEyebrow>
+          <CyHeading className="mt-2">{t('what.title')}</CyHeading>
+          <p className="mt-6 text-cy-grey">{t('what.p1')}</p>
+          <p className="mt-4 text-cy-grey">{t('what.p2')}</p>
           <ul className="mt-4 list-disc space-y-1 pl-6 text-cy-grey marker:text-cy-grey">
-            {dppFacts.map((item) => (
-              <li key={item}>{item}</li>
+            {dppFactKeys.map((key) => (
+              <li key={key}>{t(`what.items.${key}`)}</li>
             ))}
           </ul>
-          <p className="mt-4 text-cy-grey">
-            Accessible via a simple scan, it gives regulators, supply chain partners, and consumers
-            clear traceability and accountability throughout the product's journey.
-          </p>
+          <p className="mt-4 text-cy-grey">{t('what.p3')}</p>
           <div className="mt-8">
-            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_stay_compliant">Stay Compliant</CyButton>
+            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_stay_compliant">
+              {t('what.cta')}
+            </CyButton>
           </div>
         </CySection>
 
         {/* Timeline */}
         <CySection tone="plain">
-          <CyEyebrow>Regulatory Timeline</CyEyebrow>
-          <CyHeading className="mt-2">Time Is Running Out</CyHeading>
+          <CyEyebrow>{t('timeline.eyebrow')}</CyEyebrow>
+          <CyHeading className="mt-2">{t('timeline.title')}</CyHeading>
           <h3 className="mt-6 font-cy-display text-xl font-bold text-cy-ink sm:text-2xl">
-            EU Digital Product Passport Rollout 2027 to 2030
+            {t('timeline.subtitle')}
           </h3>
-          <p className="mt-3 text-cy-grey">
-            Regulations are rolling out in phases. Brands preparing now do not just comply. They
-            compete.
-          </p>
+          <p className="mt-3 text-cy-grey">{t('timeline.body')}</p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            {timeline.map((item) => (
+            {timelineKeys.map(({ key, icon }) => (
               <div
-                key={`${item.period}-${item.title}`}
+                key={key}
                 className="w-full max-w-sm sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)]"
               >
                 <CyTimelineCard
-                  period={item.period}
-                  title={item.title}
-                  body={item.body}
-                  icon={item.icon}
+                  period={t(`timeline.${key}.period`)}
+                  title={t(`timeline.${key}.title`)}
+                  body={t(`timeline.${key}.body`)}
+                  icon={icon}
                 />
               </div>
             ))}
           </div>
 
           <div className="mt-10 flex justify-center">
-            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_prepare_products">Prepare Your Products Today</CyButton>
+            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_prepare_products">
+              {t('timeline.cta')}
+            </CyButton>
           </div>
         </CySection>
 
         {/* Comparison */}
         <CySection tone="surface">
-          <CyEyebrow>The limits of the Digital Product Passport</CyEyebrow>
-          <CyHeading className="mt-2">Digital Compliance Alone Is Not Enough</CyHeading>
+          <CyEyebrow>{t('comparison.eyebrow')}</CyEyebrow>
+          <CyHeading className="mt-2">{t('comparison.title')}</CyHeading>
           <p className="mt-4 text-cy-grey">
-            Digital Product Passports store and share product data but don't verify the physical
-            product. Without authentication, counterfeit or mislabelled items may seem compliant.{' '}
-            <strong className="text-cy-ink">Cypheme's award-winning EU solution</strong> ensures
-            every DPP is backed by verified product authenticity, giving your business full
-            traceability and confidence.
+            {t('comparison.intro')}{' '}
+            <strong className="text-cy-ink">{t('comparison.introStrong')}</strong>{' '}
+            {t('comparison.introEnd')}
           </p>
 
           <div className="mt-8">
             <CyComparisonTable
               rows={comparison}
-              capabilityLabel="Capability"
-              standardLabel="Standard Digital Product Passport"
-              cyphemeLabel="DPP with Cypheme"
-              recommendedLabel="Recommended"
+              capabilityLabel={t('comparison.capabilityLabel')}
+              standardLabel={t('comparison.standardLabel')}
+              cyphemeLabel={t('comparison.cyphemeLabel')}
+              recommendedLabel={t('comparison.recommendedLabel')}
             />
           </div>
 
-
           <p className="mt-6 text-cy-grey">
-            Digital Product Passports improve transparency.{' '}
-            <strong className="text-cy-ink">
-              Cypheme ensures your DPP is trusted, authentic, and fully verified.
-            </strong>
+            {t('comparison.outro')}{' '}
+            <strong className="text-cy-ink">{t('comparison.outroStrong')}</strong>
           </p>
           <div className="mt-8">
-            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_secure_products">Secure Your Products</CyButton>
+            <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_secure_products">
+              {t('comparison.cta')}
+            </CyButton>
           </div>
         </CySection>
 
@@ -239,12 +241,14 @@ export default function CyphemePassport() {
             />
             <div className="relative z-10">
               <CyHeading variant="onDark" className="italic">
-                One click secures
+                {t('finalCta.titleLine1')}
                 <br />
-                authentication + compliance
+                {t('finalCta.titleLine2')}
               </CyHeading>
               <div className="mt-10 flex justify-center">
-                <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_final_get_dpp">Get My DPP Now</CyButton>
+                <CyButton to={ctaTarget()} trackAction="click_openlabel_landing_final_get_dpp">
+                  {t('finalCta.cta')}
+                </CyButton>
               </div>
             </div>
           </div>
@@ -253,7 +257,7 @@ export default function CyphemePassport() {
 
       <footer className="border-t border-cy-line bg-background">
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-sm text-cy-grey md:flex-row md:items-center md:justify-between">
-          <p>Secure Digital Product Passports with built-in authentication technology.</p>
+          <p>{t('footer.tagline')}</p>
           <div className="flex flex-wrap gap-4">
             {footerLinks.map((link) => (
               <a
@@ -263,14 +267,12 @@ export default function CyphemePassport() {
                 rel="noopener noreferrer"
                 className="hover:text-cy-orange"
               >
-                {link.label}
+                {t(`footer.${link.key}`)}
               </a>
             ))}
           </div>
         </div>
-        <div className="mx-auto max-w-5xl px-5 pb-8 text-xs text-cy-grey">
-          © 2026 Cypheme | GDPR Compliant | ISO 27001 Certified · Powered by Open-Label.eu
-        </div>
+        <div className="mx-auto max-w-5xl px-5 pb-8 text-xs text-cy-grey">{t('footer.legal')}</div>
       </footer>
     </CyphemeThemeProvider>
   );
