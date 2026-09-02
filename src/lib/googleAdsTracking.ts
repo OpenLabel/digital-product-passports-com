@@ -99,7 +99,7 @@ export function trackConversionOnce(sendTo: string): void {
  */
 export const CONVERSION_LABELS = {
   click_openlabel_landing_hero_get_dpp: 'AW-672872996/7743455269',
-  click_openlabel_landing_stay_compliant: '',
+  click_openlabel_landing_stay_compliant: 'AW-672872996/7743455272',
   click_openlabel_landing_prepare_products: '',
   click_openlabel_landing_secure_products: '',
   click_openlabel_landing_final_get_dpp: '',
