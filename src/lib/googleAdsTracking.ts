@@ -103,7 +103,7 @@ export const CONVERSION_LABELS = {
   click_openlabel_landing_prepare_products: '',
   click_openlabel_landing_secure_products: '',
   click_openlabel_landing_final_get_dpp: '',
-  openlabel_accountcreation: '',
+  openlabel_accountcreation: 'AW-672872996/7743922303',
 } as const;
 
 export type ConversionAction = keyof typeof CONVERSION_LABELS;
