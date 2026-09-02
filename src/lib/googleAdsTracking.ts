@@ -98,7 +98,7 @@ export function trackConversionOnce(sendTo: string): void {
  * until the label is pasted here.
  */
 export const CONVERSION_LABELS = {
-  click_openlabel_landing_hero_get_dpp: '',
+  click_openlabel_landing_hero_get_dpp: 'AW-672872996/7743455269',
   click_openlabel_landing_stay_compliant: '',
   click_openlabel_landing_prepare_products: '',
   click_openlabel_landing_secure_products: '',
