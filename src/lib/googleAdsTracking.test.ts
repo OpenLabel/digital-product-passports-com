@@ -12,7 +12,7 @@
  *     Powered by Open-Label.eu
  */
 
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
   GOOGLE_ADS_TAG_ID,
   initGoogleAdsTag,
@@ -163,5 +163,70 @@ describe('conversion registry', () => {
     mod.trackAccountCreation();
     mod.trackAccountCreation();
     expect(calls).toEqual([['event', 'conversion', { send_to: 'AW-672872996/signup' }]]);
+  });
+});
+
+describe('conversion delivery before navigation', () => {
+  beforeEach(() => {
+    __resetGoogleAdsTagForTests();
+    document.head.innerHTML = '';
+    delete window.gtag;
+    delete window.dataLayer;
+    window.sessionStorage.clear();
+  });
+
+  it('invokes the callback when the tag confirms delivery', async () => {
+    const { trackButtonConversion } = await import('./googleAdsTracking');
+    initGoogleAdsTag();
+    window.gtag = (..._args: unknown[]) => {
+      const params = _args[2] as { event_callback?: () => void };
+      params.event_callback?.();
+    };
+    let navigated = false;
+    trackButtonConversion('click_openlabel_landing_hero_get_dpp', () => {
+      navigated = true;
+    });
+    expect(navigated).toBe(true);
+  });
+
+  it('invokes the callback only once even if the timer also fires', async () => {
+    vi.useFakeTimers();
+    const { trackButtonConversion, NAV_FALLBACK_MS } = await import('./googleAdsTracking');
+    initGoogleAdsTag();
+    window.gtag = (..._args: unknown[]) => {
+      const params = _args[2] as { event_callback?: () => void };
+      params.event_callback?.();
+    };
+    let count = 0;
+    trackButtonConversion('click_openlabel_landing_hero_get_dpp', () => {
+      count += 1;
+    });
+    vi.advanceTimersByTime(NAV_FALLBACK_MS * 2);
+    expect(count).toBe(1);
+    vi.useRealTimers();
+  });
+
+  it('falls back to the timer when the tag never answers', async () => {
+    vi.useFakeTimers();
+    const { trackButtonConversion, NAV_FALLBACK_MS } = await import('./googleAdsTracking');
+    initGoogleAdsTag();
+    window.gtag = () => {};
+    let navigated = false;
+    trackButtonConversion('click_openlabel_landing_hero_get_dpp', () => {
+      navigated = true;
+    });
+    expect(navigated).toBe(false);
+    vi.advanceTimersByTime(NAV_FALLBACK_MS);
+    expect(navigated).toBe(true);
+    vi.useRealTimers();
+  });
+
+  it('still navigates when gtag is unavailable', async () => {
+    const { trackButtonConversion } = await import('./googleAdsTracking');
+    let navigated = false;
+    trackButtonConversion('click_openlabel_landing_hero_get_dpp', () => {
+      navigated = true;
+    });
+    expect(navigated).toBe(true);
   });
 });
