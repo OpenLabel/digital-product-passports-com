@@ -108,13 +108,35 @@ export const CONVERSION_LABELS = {
 
 export type ConversionAction = keyof typeof CONVERSION_LABELS;
 
-/** Fire a button-click conversion (secondary). No-op until its label is set. */
-export function trackButtonConversion(action: ConversionAction): void {
+/**
+ * Fire a button-click conversion (secondary). No-op until its label is set.
+ *
+ * When `onSent` is provided it is invoked once the tag confirms delivery
+ * (`event_callback`), or after `NAV_FALLBACK_MS` if the tag never answers —
+ * callers use it to delay navigation so the ping is not cancelled by unload.
+ */
+export const NAV_FALLBACK_MS = 500;
+
+export function trackButtonConversion(action: ConversionAction, onSent?: () => void): void {
   const sendTo = CONVERSION_LABELS[action];
-  if (!sendTo) return;
-  if (typeof window === 'undefined' || !window.gtag) return;
-  window.gtag('event', 'conversion', { send_to: sendTo });
+  const done = () => onSent?.();
+  if (!sendTo || typeof window === 'undefined' || !window.gtag) {
+    done();
+    return;
+  }
+  let settled = false;
+  const finish = () => {
+    if (settled) return;
+    settled = true;
+    done();
+  };
+  window.gtag('event', 'conversion', {
+    send_to: sendTo,
+    event_callback: onSent ? finish : undefined,
+  });
+  if (onSent) window.setTimeout(finish, NAV_FALLBACK_MS);
 }
+
 
 /** Fire the primary account-creation conversion, once per session. */
 export function trackAccountCreation(): void {
