@@ -47,10 +47,11 @@ describe('CyphemePassport', () => {
     expect(screen.getByText('Most Products')).toBeInTheDocument();
   });
 
-  it('points every CTA at the account creation page', () => {
+  it('points every CTA at the in-app account creation page', () => {
     renderPage();
     const ctas = screen.getAllByRole('link', { name: /DPP|Compliant|Products/i });
     expect(ctas.length).toBeGreaterThan(3);
-    ctas.forEach((cta) => expect(cta.getAttribute('href')).toBe('https://open-label.eu/auth'));
+    ctas.forEach((cta) => expect(cta.getAttribute('href')).toBe('/auth'));
   });
+
 });

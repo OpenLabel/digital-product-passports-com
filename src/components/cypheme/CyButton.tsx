@@ -45,11 +45,10 @@ function isExternalUrl(url: string) {
 
 export default function CyButton({ children, to, variant = 'primary', className, trackAction }: CyButtonProps) {
   const classes = cn(base, variants[variant], className);
-  const external = isExternalUrl(to);
 
-  if (external) {
-    // A same-tab navigation cancels in-flight conversion pings, so hold the
-    // jump until the tag confirms delivery (or the fallback timer fires).
+  if (isExternalUrl(to)) {
+    // A same-tab document navigation cancels in-flight conversion pings, so
+    // hold the jump until the tag confirms delivery (or the fallback fires).
     const handleExternalClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
       if (!trackAction) return;
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) {
@@ -69,10 +68,13 @@ export default function CyButton({ children, to, variant = 'primary', className,
     );
   }
 
+  // In-app route change: React Router keeps the document alive, so the
+  // conversion ping completes without delaying navigation.
   return (
     <Link to={to} className={classes} onClick={trackAction ? () => trackButtonConversion(trackAction) : undefined}>
       {children}
     </Link>
   );
 }
+
 
