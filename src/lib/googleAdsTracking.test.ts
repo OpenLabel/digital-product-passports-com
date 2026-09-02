@@ -96,12 +96,17 @@ describe('googleAdsTracking', () => {
 });
 
 describe('conversion registry', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     __resetGoogleAdsTagForTests();
     document.head.innerHTML = '';
     delete window.gtag;
     delete window.dataLayer;
     window.sessionStorage.clear();
+    // Tests that assert "not configured" behavior need a clean registry.
+    const mod = await import('./googleAdsTracking');
+    Object.keys(mod.CONVERSION_LABELS).forEach((key) => {
+      (mod.CONVERSION_LABELS as Record<string, string>)[key] = '';
+    });
   });
 
   it('defines all six planned conversion actions', async () => {
