@@ -43,12 +43,14 @@ import { withAdParams } from '@/lib/googleAdsTracking';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 
-const CTA_TARGET = 'https://open-label.eu/auth';
+/** Same-app account creation page. */
+const CTA_TARGET = '/auth';
 
 /** CTA href with ad click / campaign parameters forwarded for attribution. */
 function ctaTarget(): string {
   return withAdParams(CTA_TARGET);
 }
+
 
 const factKeys = [
   { key: 'origin', icon: Globe },
