@@ -1,1 +1,1 @@
-{"status":"pass"}
+{"status":"fail","message":"1 test(s) failed; No coverage summary produced","failedTests":["conversion registry fires account creation once per session and only when configured — AssertionError: expected [ [ 'event', 'conversion', …(1) ] ] to deeply equal []\n    at /home/runner/work/open-label/open-label/src/lib/googleAdsTracking.test.ts:155:19\n    at processTicksAndRejections"]}
