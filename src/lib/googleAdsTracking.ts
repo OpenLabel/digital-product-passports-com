@@ -41,11 +41,15 @@ export function initGoogleAdsTag(tagId: string = GOOGLE_ADS_TAG_ID): void {
   loaded = true;
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag =
-    window.gtag ||
-    function gtag(...args: unknown[]) {
-      window.dataLayer!.push(args);
+  // gtag.js only processes dataLayer entries that are real `arguments`
+  // objects — pushing a plain array makes every command a silent no-op.
+  if (!window.gtag) {
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments);
     };
+  }
+
 
   // Consent defaults MUST be set before the tag is configured.
   setConsentDefaults();

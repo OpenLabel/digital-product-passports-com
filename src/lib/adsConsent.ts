@@ -46,9 +46,14 @@ function gtag(...args: unknown[]): void {
   if (window.gtag) {
     window.gtag(...args);
   } else {
-    window.dataLayer.push(args);
+    // gtag.js ignores plain arrays: push a real `arguments` object.
+    (function pushArgs() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments);
+    }).apply(null, args as []);
   }
 }
+
 
 /**
  * Push Consent Mode defaults. MUST run before the tag is configured.
