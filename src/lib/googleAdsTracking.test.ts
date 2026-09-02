@@ -167,7 +167,10 @@ describe('conversion registry', () => {
 });
 
 describe('conversion delivery before navigation', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
+    const mod = await import('./googleAdsTracking');
+    (mod.CONVERSION_LABELS as Record<string, string>).click_openlabel_landing_hero_get_dpp =
+      'AW-672872996/7743455269';
     __resetGoogleAdsTagForTests();
     document.head.innerHTML = '';
     delete window.gtag;
