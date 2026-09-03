@@ -98,12 +98,12 @@ export function trackConversionOnce(sendTo: string): void {
  * until the label is pasted here.
  */
 export const CONVERSION_LABELS = {
-  click_openlabel_landing_hero_get_dpp: 'AW-672872996/7743455269',
-  click_openlabel_landing_stay_compliant: 'AW-672872996/7743455272',
-  click_openlabel_landing_prepare_products: 'AW-672872996/7743455275',
-  click_openlabel_landing_secure_products: 'AW-672872996/7743455278',
-  click_openlabel_landing_final_get_dpp: 'AW-672872996/7743455401',
-  openlabel_accountcreation: 'AW-672872996/7743922303',
+  click_openlabel_landing_hero_get_dpp: 'AW-672872996/xRFeCKWAr-wcEKT07MAC',
+  click_openlabel_landing_stay_compliant: 'AW-672872996/iyxvCKiAr-wcEKT07MAC',
+  click_openlabel_landing_prepare_products: 'AW-672872996/xyumCKuAr-wcEKT07MAC',
+  click_openlabel_landing_secure_products: 'AW-672872996/k2FBCK6Ar-wcEKT07MAC',
+  click_openlabel_landing_final_get_dpp: 'AW-672872996/vdJqCKmBr-wcEKT07MAC',
+  openlabel_accountcreation: 'AW-672872996/EHf5CP_Ay-wcEKT07MAC',
 } as const;
 
 export type ConversionAction = keyof typeof CONVERSION_LABELS;
