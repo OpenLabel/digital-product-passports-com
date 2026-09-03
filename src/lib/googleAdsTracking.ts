@@ -61,7 +61,9 @@ export function initGoogleAdsTag(tagId: string = GOOGLE_ADS_TAG_ID): void {
   document.head.appendChild(script);
 
   window.gtag('js', new Date());
-  window.gtag('config', tagId);
+  // `send_page_view: false` — the SPA reports every route (including the
+  // first) through trackPageView, so the tag must not send its own.
+  window.gtag('config', tagId, { send_page_view: false });
 }
 
 /** Test-only: reset the idempotency guard between tests. */
